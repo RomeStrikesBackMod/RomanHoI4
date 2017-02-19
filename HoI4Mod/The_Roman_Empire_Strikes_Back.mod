@@ -1,0 +1,6 @@
+name = "Converted - The_Roman_Empire_Strikes_Back"
+path = "mod/The_Roman_Empire_Strikes_Back/"
+user_dir = "The_Roman_Empire_Strikes_Back_user_dir"
+replace_path="history/countries"
+replace_path="history/states"
+supported_version="1.3.*"
