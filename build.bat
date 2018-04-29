@@ -1,3 +1,6 @@
+del results /S /Q
+rmdir results /S /Q
+mkdir results
 xcopy Converter_Files "D:\My Projects\paradoxGameConverters - Vic2ToHoI4\Vic2ToHoI4\Release\" /Y /Q
 copy Saves\The_Roman_Empire1936_01_01.v2 "D:\My Projects\paradoxGameConverters - Vic2ToHoI4\Vic2ToHoI4\Release\"
 cd "D:\My Projects\paradoxGameConverters - Vic2ToHoI4\Vic2ToHoI4\Release\"
