@@ -1,6 +1,6 @@
 add_namespace = tesb_rome
 
-# Event starting neutral civil war
+# Event starting republican civil war
 country_event = {
 	id = tesb_rome.1
 	title = tesb_rome.1.t
@@ -12,23 +12,23 @@ country_event = {
 		name = tesb_rome.1.a
 		hidden_effect = {
 			RME = {
-				country_event = { id = tesb_rome.2 }
+				country_event = { id = tesb_rome.10 }
 			}
 		}
 	}
 }
 
 country_event = {
-	id = tesb_rome.2
-	title = tesb_rome.2.t
-	desc = tesb_rome.2.d
+	id = tesb_rome.10
+	title = tesb_rome.10.t
+	desc = tesb_rome.10.d
 	picture = GFX_report_event_ger_civil_war
 
 	is_triggered_only = yes
 	
 	#civil war starts
 	option = {
-		name = tesb_rome.2.a
+		name = tesb_rome.10.a
 		hidden_effect = {
 			set_capital = 398
 			start_civil_war = {
@@ -61,13 +61,13 @@ country_event = {
 		custom_effect_tooltip = RME_democratic_war_tt
 		add_stability = -0.25
 		hidden_effect = { set_cosmetic_tag = RME_provisional_gvt }
+		country_event = { id = tesb_rome.20 }
 		random_other_country = {
 			limit = {
 				original_tag = RME
 				has_government = absolutist
 			}
 			set_cosmetic_tag = RME_civil_war
-			#hidden_effect = { activate_mission = GER_mefo_bills_mission }
 		}
 		create_country_leader = {
 			name = "August von Mackensen"
@@ -85,7 +85,7 @@ country_event = {
 					original_tag = RME
 					has_government = absolutist
 				}
-				save_event_target_as = absolutist_germany_civil_war
+				save_event_target_as = absolutist_rome_civil_war
 				every_unit_leader = {
 					set_nationality = RME
 				}
@@ -104,5 +104,27 @@ country_event = {
 			#	}
 			#}
 		}
+	}
+}
+
+country_event = {
+	id = tesb_rome.20
+	title = tesb_rome.20.t
+	desc = tesb_rome.20.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.20.a
+		release = BEL
+		release = CAT
+		release = SPA
+		release = CAS
+		release = CAT
+		release = PHI
+		release = MAT
+		release = AZR
+		release = ISR
+		release = X17
 	}
 }
