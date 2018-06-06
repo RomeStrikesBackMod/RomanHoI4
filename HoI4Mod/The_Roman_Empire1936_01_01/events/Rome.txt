@@ -35,8 +35,7 @@ country_event = {
 				ruling_party = democratic
 				ideology = absolutist
 				size = 0.5
-				set_capital = 389
-				states = { 389 360 361 362 363 364 365 366 367 368 369 373 374 375 376 377 378 379 380 382 383 384 385 386 387 388 390 392 }
+				states = { 389 382 383 384 385 386 387 388 390 392 }
 			}
 			set_party_name = { ideology = democratic long_name = RME_democratic_party name = RME_democratic_party }
 			#load_oob = "GER_German_Civil_War_neutrality"
@@ -68,13 +67,14 @@ country_event = {
 				has_government = absolutist
 			}
 			set_cosmetic_tag = RME_civil_war
+			country_event = { id = tesb_rome.21 }
 		}
 		create_country_leader = {
 			name = "August von Mackensen"
 			desc = "POLITICS_AUGUST_VON_MACKENSEN_DESC"
 			picture = GFX_portrait_ger_august_von_mackensen
 			expire = "1965.1.1"
-			ideology = absolutist
+			ideology = absolute_monarchy
 			traits = {
 				great_war_hero
 			}
@@ -145,5 +145,31 @@ country_event = {
 		release = X17
 		release = X18
 		release = SIC
+		release = SWI
+		release = YUG
+		release = CRO
+		release = SER
+		release = WAL
+		release = SYR
+		release = ARM
+		release = GEO
+	}
+}
+
+country_event = {
+	id = tesb_rome.21
+	title = tesb_rome.21.t
+	desc = tesb_rome.21.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.21.a
+		end_puppet = NZL
+		end_puppet = SAF
+		end_puppet = X05
+		end_puppet = X06
+		end_puppet = X07
+		end_puppet = X08
 	}
 }
