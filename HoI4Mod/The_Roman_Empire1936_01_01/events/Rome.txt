@@ -105,6 +105,77 @@ country_event = {
 			#}
 		}
 	}
+	option = {
+		name = tesb_rome.10.b
+		hidden_effect = {
+			start_civil_war = {
+				ruling_party = absolutist
+				ideology = democratic
+				size = 0.5
+				states = { 398 391 393 394 395 396 397 399 400 401 402 403 411 440 441 442 455 513 }
+			}
+			#load_oob = "GER_German_Civil_War_neutrality"
+			random_other_country = {
+				limit = {
+					original_tag = RME
+					has_government = democratic
+				}
+				set_stability = 0.9
+				set_war_support = 0.8
+				#load_oob = "GER_German_Civil_War_fascist"
+			}
+			#hidden_effect = { news_event = { id = wtt_news.1 hours = 6 } }
+			set_stability = 0.9
+			set_war_support = 0.8
+		}
+		custom_effect_tooltip = RME_absolutist_war_tt
+		add_stability = -0.25
+		hidden_effect = { set_cosmetic_tag = RME_civil_war }
+		country_event = { id = tesb_rome.20 }
+		country_event = { id = tesb_rome.21 }
+		random_other_country = {
+			limit = {
+				original_tag = RME
+				has_government = democratic
+			}
+			set_cosmetic_tag = RME_provisional_gvt
+		}
+		create_country_leader = {
+			name = "August von Mackensen"
+			desc = "POLITICS_AUGUST_VON_MACKENSEN_DESC"
+			picture = GFX_portrait_ger_august_von_mackensen
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+				great_war_hero
+			}
+		}
+		hidden_effect = {
+			random_other_country = {
+				limit = {
+					original_tag = RME
+					has_government = democratic
+				}
+				save_event_target_as = democratic_rome_civil_war
+				every_unit_leader = {
+					set_nationality = RME
+				}
+			}
+			#RME = {
+			#	every_unit_leader = {
+			#		limit = {
+			#			OR = {
+			#				has_id = 10
+			#				has_id = 15
+			#				has_id = 20
+			#				has_id = 24
+			#			}
+			#		}
+			#		set_nationality = event_target:fascist_germany_civil_war
+			#	}
+			#}
+		}
+	}
 }
 
 country_event = {
