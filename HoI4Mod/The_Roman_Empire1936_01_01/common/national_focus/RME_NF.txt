@@ -30,15 +30,22 @@ focus_tree = {
 				category = industry
 			}
 			#add_ideas = schacht
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = hjalmar_schacht
+			#custom_effect_tooltip = available_political_advisor
+			#show_ideas_tooltip = hjalmar_schacht
 		}
 	}
 
 	focus = {
-		id = RME_west_wall
+		id = RME_danube_limes
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = RME_four_year_plan }
+		available = {
+			OR = {
+				has_full_control_of_state = 378
+				has_full_control_of_state = 375
+				has_full_control_of_state = 364
+			}
+		}
 		x = -5
 		y = 1
 		relative_position_id = RME_four_year_plan
@@ -48,936 +55,347 @@ focus_tree = {
 		}
 			
 		completion_reward = {
-			#add_ideas = todt
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = todt
-			50 = {
+			378 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
-					custom_effect_tooltip = RME_west_wall_forts
+					custom_effect_tooltip = RME_danube_limes_378
 					hidden_effect = {
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 11640
+							province = 630
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 6712
+							province = 6634
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 6542
+							province = 11583
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 3530
+							province = 11586
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3609
 							instant_build = yes
 						}
 					}
 				}
 			}
-			if = {
-				limit = { 42 = { is_demilitarized_zone = yes } }
-				custom_effect_tooltip = RME_west_wall_tt
+			375 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					custom_effect_tooltip = RME_danube_limes_375
+					hidden_effect = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11577
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 6647
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 9608
+							instant_build = yes
+						}
+					}
+				}
 			}
-			42 = {
-				custom_effect_tooltip = RME_west_wall_forts
+			364 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					custom_effect_tooltip = RME_danube_limes_364
+					hidden_effect = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 9643
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3680
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 6703
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11663
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 9676
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 6720
+							instant_build = yes
+						}
+					}
+				}
 			}
-			hidden_effect = {
-				42 = {
-					if = {
-						limit = { is_controlled_by = ROOT }
+		}
+	}
+
+	focus = {
+		id = RME_rhine_limes
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = RME_danube_limes }
+		available = {
+			OR = {
+				has_full_control_of_state = 34
+				has_full_control_of_state = 36
+				has_full_control_of_state = 38
+			}
+		}
+		cancel_if_invalid = yes
+		x = -1
+		y = 1
+		relative_position_id = RME_danube_limes
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_ideas = RME_rhine_limes_idea
+			34 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					custom_effect_tooltip = RME_rhine_limes_34
+					hidden_effect = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3444
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 587
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3547
+							instant_build = yes
+						}
+					}
+				}
+			}
+			36 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					custom_effect_tooltip = RME_rhine_limes_36
+					hidden_effect = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 678
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 6529
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 9503
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 549
+							instant_build = yes
+						}
+					}
+				}
+			}
+			38 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					custom_effect_tooltip = RME_rhine_limes_38
+					hidden_effect = {
 						add_building_construction = {
 							type = bunker
 							level = 3
 							province = 3558
 							instant_build = yes
 						}
-						
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 563
+							province = 11560
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 11531
+							province = 3423
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 9575
+							province = 11494
 							instant_build = yes
 						}
 					}
 				}
-			}			
+			}
 		}
 	}
 
 	focus = {
-		id = RME_atlantikwall
-		icon = GFX_focus_generic_coastal_fort
-		prerequisite = { focus = RME_west_wall }
+		id = RME_georgia_limes
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = RME_danube_limes }
 		available = {
 			OR = {
-				FRA = { has_capitulated = yes }
-				NOT = { country_exists = FRA }
-			}
-		}
-		cancel_if_invalid = yes
-		x = -1
-		y = 1
-		relative_position_id = RME_west_wall
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			add_ideas = RME_atlantikwall_idea
-			custom_effect_tooltip = atlantikwall_tooltip
-			custom_effect_tooltip = atlantikwall_tooltip_2
-			hidden_effect = {
-				if = {
-					limit = {
-						has_full_control_of_state = 19
-					}
-					19 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 23
-					}
-					23 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 30
-					}
-					30 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 14
-					}
-					14 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 15
-					}
-					15 = {
-						#Fortify naval bases a bit extra close to Calais
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 3
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 29
-					}
-					29 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-	
-						#Bonus Fortifications on Calais coastline
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 2
-            	    	    instant_build = yes
-            	    	}
-            	    	#Biggest fortifications on Calais itself
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_victory_point = yes
-            	    	    }
-            	    	    level = 3
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 6
-					}
-					6 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}	
-				if = {
-					limit = {
-						has_full_control_of_state = 7
-					}
-					7 = {
-						#Fortify naval bases a bit extra close to Calais
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 3
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}	
-				if = {
-					limit = {
-						has_full_control_of_state = 36
-					}	
-					36 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 56
-					}		
-					56 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 59
-					}		
-					59 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 58
-					}		
-					58 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 99
-					}		
-					99 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 110
-					}		
-					110 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 142
-					}		
-					142 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 143
-					}		
-					143 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 144
-					}		
-					144 = {
-						#Fortify naval bases
-						add_building_construction = {
-							type = coastal_bunker
-							province = {
-								all_provinces = yes
-								limit_to_naval_base = yes
-							}
-							level = 2
-							instant_build = yes
-						}
-						add_building_construction = {
-            	    	    type = coastal_bunker
-            	    	    province = {
-            	    	        all_provinces = yes
-            	    	        limit_to_coastal = yes
-            	    	    }
-            	    	    level = 1
-            	    	    instant_build = yes
-            	    	}
-					}
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = RME_ostwall
-		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = RME_west_wall }
-		available = {
-			any_country = {
-				OR = {
-					tag = RME
-					is_in_faction_with = RME
-				}
-				OR = {
-					has_full_control_of_state = 191
-					has_full_control_of_state = 209
-					has_full_control_of_state = 210
-					has_full_control_of_state = 207
-					has_full_control_of_state = 206
-					has_full_control_of_state = 204
-					has_full_control_of_state = 194
-					has_full_control_of_state = 202
-					has_full_control_of_state = 203
-					has_full_control_of_state = 226
-					has_full_control_of_state = 200
-				}
+				has_full_control_of_state = 407
+				has_full_control_of_state = 408
 			}
 		}
 		x = 1
 		y = 1
-		relative_position_id = RME_west_wall
+		relative_position_id = RME_danube_limes
 		cost = 10
 		ai_will_do = {
 			factor = 1
 		}
 		
 		completion_reward = {
-			add_ideas = RME_ostwall_idea
-			custom_effect_tooltip = RME_ostwall_forts
-			custom_effect_tooltip = RME_ostwall_forts_2
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 191 
-					}
-				}
-				hidden_effect = {
-					191 = {
+			add_ideas = RME_georgia_limes_idea
+			407 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					custom_effect_tooltip = RME_georgia_limes_407
+					hidden_effect = {
 						add_building_construction = {
 							type = bunker
-							level = 2
-							province = 4640
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 209
-					}
-				}
-				hidden_effect = {
-					209 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 415
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3310
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 210 
-					}
-				}
-				hidden_effect = {
-					210 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3333
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 11259
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 9386
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 207 
-					}
-				}
-				hidden_effect = {
-					207 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 323
+							level = 3
+							province = 6783
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 11241
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 11220
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3331
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 206 
-					}
-				}
-				hidden_effect = {
-					206 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 9289
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3378
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 204 
-					}
-				}
-				hidden_effect = {
-					204 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 6373
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 194 
-					}
-				}
-				hidden_effect = {
-					194 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 6319
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 9249
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3507
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 202 
-					}
-				}
-				hidden_effect = {
-					202 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 9568
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3543
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 5
-							province = 525
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3494
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 203 
-					}
-				}
-				hidden_effect = {
-					203 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 11454
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 488
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 3468
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 6478
-							instant_build = yes
-						}
-					}
-				}
-			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 226 
-					}
-				}
-				hidden_effect = {
-					226 = {
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 9433
+							province = 765
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 11437
+							province = 9744
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3587
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 775
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3779
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 6796
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11727
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 9722
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 9705
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11693
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11690
 							instant_build = yes
 						}
 					}
 				}
 			}
-			if = {
-				limit = { 
-					any_country = {
-						OR = {
-							tag = RME
-							is_in_faction_with = RME
-						}
-						has_full_control_of_state = 200 
-					}
-				}
-				hidden_effect = {
-					200 = {
+			408 = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					custom_effect_tooltip = RME_georgia_limes_408
+					hidden_effect = {
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 11405
+							province = 728
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
-							level = 1
-							province = 6596
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 1
-							province = 11700
+							level = 3
+							province = 6748
 							instant_build = yes
 						}
 					}
@@ -1014,7 +432,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_hermann_goring_werke
+		id = RME_industrial_minister
 		icon = GFX_goal_generic_construct_civ_factory
 		dynamic = yes
 		prerequisite = { focus = RME_autarky }
@@ -1093,13 +511,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_kdf_wagen
+		id = RME_people_venture
 		icon = GFX_goal_generic_construct_civ_factory
 		dynamic = yes
-		prerequisite = { focus = RME_hermann_goring_werke }
+		prerequisite = { focus = RME_industrial_minister }
 		x = 0
 		y = 1
-		relative_position_id = RME_hermann_goring_werke
+		relative_position_id = RME_industrial_minister
 		cost = 10
 		ai_will_do = {
 			factor = 5
@@ -1184,7 +602,7 @@ focus_tree = {
 		}
 
 		available = {
-			has_full_control_of_state = 65
+			has_full_control_of_state = 386
 		}
 		
 		completion_reward = {
@@ -1196,9 +614,9 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					has_full_control_of_state = 65
+					has_full_control_of_state = 386
 				}
-				65 = {
+				386 = {
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
 						type = synthetic_refinery
@@ -1223,12 +641,6 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			#modify_building_resources = {
-        	#   building = synthetic_refinery
-        	#   resource = oil
-        	#   amount = -2
-        	#}
-	
         	modify_building_resources = {
         	   building = synthetic_refinery
         	   resource = rubber
@@ -1241,10 +653,10 @@ focus_tree = {
 		id = RME_extra_tech_slot
 		icon = GFX_focus_research
 		text = extra_tech_slot
-		prerequisite = { focus = RME_kdf_wagen focus = RME_synthetic_rubber }
+		prerequisite = { focus = RME_people_venture focus = RME_synthetic_rubber }
 		x = -1
 		y = 1
-		relative_position_id = RME_kdf_wagen
+		relative_position_id = RME_people_venture
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -1258,7 +670,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_autobahn
+		id = RME_roman_roads
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = RME_autarky }
 		x = -2
@@ -1270,18 +682,16 @@ focus_tree = {
 		}
 
 		available = {
-			OR = {
-				has_full_control_of_state = 64
-				has_full_control_of_state = 59
-				has_full_control_of_state = 60
-				has_full_control_of_state = 54
-			}
+			has_full_control_of_state = 389
+			has_full_control_of_state = 386
+			has_full_control_of_state = 382
+			has_full_control_of_state = 394
 		}
 		
 		completion_reward = {
-			custom_effect_tooltip = RME_autobahn_tt
+			custom_effect_tooltip = RME_roman_roads_tt
 			hidden_effect = {
-				64 = {
+				389 = {
 					if = {
 						limit = { is_controlled_by = ROOT }
 						add_building_construction = {
@@ -1291,7 +701,7 @@ focus_tree = {
 						}
 					}
 				}
-				59 = {
+				386 = {
 					if = {
 						limit = { is_controlled_by = ROOT }
 
@@ -1302,7 +712,7 @@ focus_tree = {
 						}
 					}
 				}
-				60 = {
+				382 = {
 					if = {
 						limit = { is_controlled_by = ROOT }
 						add_building_construction = {
@@ -1312,7 +722,7 @@ focus_tree = {
 						}
 					}
 				}
-				54 = {
+				394 = {
 					if = {
 						limit = { is_controlled_by = ROOT }
 						add_building_construction = {
@@ -1327,13 +737,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_german_war_economy
+		id = RME_roman_war_economy
 		icon = GFX_goal_generic_construct_mil_factory
-		prerequisite = { focus = RME_autobahn }
+		prerequisite = { focus = RME_roman_roads }
 		mutually_exclusive = { focus = RME_integrate_war_economies }
 		x = 0
 		y = 1
-		relative_position_id = RME_autobahn
+		relative_position_id = RME_roman_roads
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -1345,7 +755,7 @@ focus_tree = {
 		}
 		complete_tooltip = {
 			every_state = {
-				limit = { has_state_flag = RME_german_war_economy }
+				limit = { has_state_flag = RME_roman_war_economy }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
@@ -1377,7 +787,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = RME_german_war_economy
+				set_state_flag = RME_roman_war_economy
 			}
 			random_owned_controlled_state = {
 				limit = {
@@ -1393,7 +803,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = RME_german_war_economy
+				set_state_flag = RME_roman_war_economy
 			}
 			random_owned_controlled_state = {
 				limit = {
@@ -1409,13 +819,13 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = RME_german_war_economy
+				set_state_flag = RME_roman_war_economy
 			}
 		}
 	}
 
 	focus = {
-		id = RME_grosraumwirtschaft
+		id = RME_greater_economy
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = RME_four_year_plan }
 		x = 0
@@ -1427,24 +837,24 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_ideas = RME_grosraumwirtschaft
+			add_ideas = RME_greater_economy_idea
 		}
 	}
 
 	focus = {
-		id = RME_align_hungary
+		id = RME_align_iraq
 		icon = GFX_goal_generic_positive_trade_relations
-		prerequisite = { focus = RME_grosraumwirtschaft }
+		prerequisite = { focus = RME_greater_economy }
 		x = 0
 		y = 1
-		relative_position_id = RME_grosraumwirtschaft
+		relative_position_id = RME_greater_economy
 		cost = 10
 		ai_will_do = {
 			factor = 1
 		}
 
 		bypass = {
-			HUN = {
+			IRQ = {
 				OR = {
 					exists = no
 					is_subject = yes			
@@ -1461,52 +871,76 @@ focus_tree = {
 				limit = {
 					has_government = fascism
 				}
-				HUN = {
-					add_ideas = RME_align_hungary
+				IRQ = {
+					add_ideas = RME_align_iraq_fascism
+				}
+			}
+			if = {
+				limit = {
+					has_government = communism
+				}
+				IRQ = {
+					add_ideas = RME_align_iraq_communism
+				}
+			}
+			if = {
+				limit = {
+					has_government = absolutist
+				}
+				IRQ = {
+					add_ideas = RME_align_iraq_absolutist
+				}
+			}
+			if = {
+				limit = {
+					has_government = radical
+				}
+				IRQ = {
+					add_ideas = RME_align_iraq_radical
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				IRQ = {
+					add_ideas = RME_align_iraq_democratic
 				}
 			}	
 			if = {
 				limit = {
 					has_government = neutrality
 				}
-				HUN = {
-					add_ideas = RME_align_hungary_unaligned
+				IRQ = {
+					add_ideas = RME_align_iraq_unaligned
 				}
 			}	
-			if = {
-				limit = {
-					has_government = democratic
-				}
-				HUN = {
-					add_ideas = RME_align_hungary_democratic
-				}
-			}	
-			HUN = {
+			IRQ = {
 				add_opinion_modifier = {
 					target = ROOT
-					modifier = RME_align_hungary
+					modifier = RME_align_iraq
 				}
 			}
 		}
 	}
 
 	focus = {
-		id = RME_align_romania
+		id = RME_align_hedjaz
 		icon = GFX_goal_generic_positive_trade_relations
-		prerequisite = { focus = RME_grosraumwirtschaft }
+		prerequisite = { focus = RME_greater_economy }
 		x = -2
 		y = 1
-		relative_position_id = RME_grosraumwirtschaft
+		relative_position_id = RME_greater_economy
 		cost = 10
 		ai_will_do = {
 			factor = 1
 		}
 
 		bypass = {
-			ROM = {
+			X05 = {
 				OR = {
 					exists = no
-					is_subject = yes		
+					is_subject = yes			
 					AND = {
 						is_subject = no
 						is_in_faction_with = ROOT
@@ -1520,30 +954,54 @@ focus_tree = {
 				limit = {
 					has_government = fascism
 				}
-				ROM = {
-					add_ideas = RME_align_romania
+				X05 = {
+					add_ideas = RME_align_hedjaz_fascism
+				}
+			}
+			if = {
+				limit = {
+					has_government = communism
+				}
+				X05 = {
+					add_ideas = RME_align_hedjaz_communism
+				}
+			}
+			if = {
+				limit = {
+					has_government = absolutist
+				}
+				X05 = {
+					add_ideas = RME_align_hedjaz_absolutist
+				}
+			}
+			if = {
+				limit = {
+					has_government = radical
+				}
+				X05 = {
+					add_ideas = RME_align_hedjaz_radical
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				X05 = {
+					add_ideas = RME_align_hedjaz_democratic
 				}
 			}	
 			if = {
 				limit = {
 					has_government = neutrality
 				}
-				ROM = {
-					add_ideas = RME_align_romania_unaligned
+				X05 = {
+					add_ideas = RME_align_hedjaz_unaligned
 				}
 			}	
-			if = {
-				limit = {
-					has_government = democratic
-				}
-				ROM = {
-					add_ideas = RME_align_romania_democratic
-				}
-			}	
-			ROM = {
+			X05 = {
 				add_opinion_modifier = {
 					target = ROOT
-					modifier = RME_align_romania
+					modifier = RME_align_hedjaz
 				}
 			}
 		}
@@ -1552,12 +1010,12 @@ focus_tree = {
 	focus = {
 		id = RME_integrate_war_economies
 		icon = GFX_goal_generic_construct_mil_factory
-		prerequisite = { focus = RME_align_hungary }
-		prerequisite = { focus = RME_align_romania }
-		mutually_exclusive = { focus = RME_german_war_economy }
+		prerequisite = { focus = RME_align_iraq }
+		prerequisite = { focus = RME_align_hedjaz }
+		mutually_exclusive = { focus = RME_roman_war_economy }
 		x = 0
 		y = 1
-		relative_position_id = RME_align_hungary
+		relative_position_id = RME_align_iraq
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -1565,11 +1023,11 @@ focus_tree = {
 
 		available = {
 			OR = {
-				HUN = {
+				IRQ = {
 					is_in_faction_with = ROOT
 					is_free_or_subject_of_root = yes
 				}
-				ROM = {
+				X05 = {
 					is_in_faction_with = ROOT
 					is_free_or_subject_of_root = yes
 				}
@@ -1597,7 +1055,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			HUN = {
+			IRQ = {
 				every_state = {
 					limit = { has_state_flag = RME_integrate_war_economies_1 }
 					add_extra_state_shared_building_slots = 2
@@ -1617,7 +1075,7 @@ focus_tree = {
 					}
 				}
 			}
-			ROM = {
+			X05 = {
 				every_state = {
 					limit = { has_state_flag = RME_integrate_war_economies_1 }
 					add_extra_state_shared_building_slots = 2
@@ -1642,19 +1100,19 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = {
-					NOT = { is_in_faction_with = HUN }
+					NOT = { is_in_faction_with = IRQ }
 				}
 				custom_effect_tooltip = RME_integrate_war_economies_tt
 			}
 			if = {
 				limit = {
-					NOT = { is_in_faction_with = ROM }
+					NOT = { is_in_faction_with = X05 }
 				}
 				custom_effect_tooltip = RME_integrate_war_economies_tt2
 			}
 			if = {
 				limit = {
-					HUN = {
+					IRQ = {
 						is_in_faction_with = RME
 						is_free_or_subject_of_root = yes
 					}
@@ -1694,7 +1152,7 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					ROM = {
+					X05 = {
 						is_in_faction_with = RME
 						is_free_or_subject_of_root = yes
 					}
@@ -1734,12 +1192,12 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					HUN = {
+					IRQ = {
 						is_in_faction_with = RME
 						is_free_or_subject_of_root = yes
 					}
 				}
-				HUN = {
+				IRQ = {
 					random_owned_controlled_state = {
 						limit = {
 							free_building_slots = {
@@ -1776,12 +1234,12 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					ROM = {
+					X05 = {
 						is_in_faction_with = RME
 						is_free_or_subject_of_root = yes
 					}
 				}
-				ROM = {
+				X05 = {
 					random_owned_controlled_state = {
 						limit = {
 							free_building_slots = {
@@ -1820,84 +1278,84 @@ focus_tree = {
 			if = {
 				limit = {
 					has_dlc = "Death or Dishonor" 
-					HUN = {
+					IRQ = {
 						is_in_faction_with = RME
 					}
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = HUN autonomy_state = autonomy_satellite }
+					set_autonomy = { target = IRQ autonomy_state = autonomy_satellite }
 				}
 			}
 			if = {
 				limit = { 
 					has_dlc = "Death or Dishonor" 
-					ROM = {
+					X05 = {
 						is_in_faction_with = RME
 					}
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = ROM autonomy_state = autonomy_satellite }
+					set_autonomy = { target = X05 autonomy_state = autonomy_satellite }
 				}
 			}
 			if = {
 				limit = { 
 					has_dlc = "Together for Victory"
 					NOT = { has_dlc = "Death or Dishonor" } 
-					HUN = {
+					IRQ = {
 						is_in_faction_with = RME
 					}
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = HUN autonomy_state = autonomy_dominion }
+					set_autonomy = { target = IRQ autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
 				limit = { 
 					has_dlc = "Together for Victory" 
 					NOT = { has_dlc = "Death or Dishonor" }
-					ROM = {
+					X05 = {
 						is_in_faction_with = RME
 					}
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = ROM autonomy_state = autonomy_dominion }
+					set_autonomy = { target = X05 autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
 				limit = { 
 					NOT = { has_dlc = "Together for Victory" }
 					NOT = { has_dlc = "Death or Dishonor" }
-					HUN = {
+					IRQ = {
 						is_in_faction_with = RME
 					}
 					is_subject = no
 				}
-				puppet = HUN
+				puppet = IRQ
 			}
 			if = {
 				limit = { 
 					NOT = { has_dlc = "Together for Victory" }
 					NOT = { has_dlc = "Death or Dishonor" }
-					ROM = {
+					X05 = {
 						is_in_faction_with = RME
 					}
 					is_subject = no
 				}
-				puppet = ROM
+				puppet = X05
 			}
 		}
 	}
 
 	focus = {
-		id = RME_form_the_reichskommissariats
+		id = RME_form_the_aftokratoria
 		icon = GFX_focus_ger_reichskommisariats
-		prerequisite = { focus = RME_german_war_economy focus = RME_integrate_war_economies }
+		prerequisite = { focus = RME_roman_war_economy focus = RME_integrate_war_economies }
 		available = {
-			has_government = fascism
+			has_government = absolutist
 		}
 		x = 1
 		y = 1
@@ -1908,12 +1366,12 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			custom_effect_tooltip = RME_reichskommissariats_tt
-			unlock_decision_tooltip = RME_reichskommissariat_norwegen
-			unlock_decision_tooltip = RME_reichskommissariat_niederlande
-			unlock_decision_tooltip = RME_reichskommissariat_belgien_nordfrankreich
-			unlock_decision_tooltip = RME_reichskommissariat_ostland
-			unlock_decision_tooltip = RME_reichskommissariat_ukraine
+			custom_effect_tooltip = RME_aftokratoria_tt
+			#unlock_decision_tooltip = RME_reichskommissariat_norwegen
+			#unlock_decision_tooltip = RME_reichskommissariat_niederlande
+			#unlock_decision_tooltip = RME_reichskommissariat_belgien_nordfrankreich
+			#unlock_decision_tooltip = RME_reichskommissariat_ostland
+			#unlock_decision_tooltip = RME_reichskommissariat_ukraine
 		}
 	}
 
@@ -2343,7 +1801,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_wunderwaffe
+		id = RME_thavmasta_opla
 		icon = GFX_focus_wonderweapons
 		prerequisite = { focus = RME_rocketry_focus }
 		x = 0
