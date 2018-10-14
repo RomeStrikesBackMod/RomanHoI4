@@ -1645,7 +1645,7 @@ focus_tree = {
 			NOT = { has_completed_focus = RME_anti_soviet_pact }
 			OR = {
 				NOT = { has_completed_focus = RME_bulwark_against_bolshevism }
-				NOT = { has_completed_focus = RME_the_great_red_menace }
+				NOT = { has_completed_focus = RME_restore_rome }
 			}
 		}
 		#cancel = { 
@@ -1659,7 +1659,7 @@ focus_tree = {
 				has_war_with = SOV
 				NOT = { country_exists = SOV }
 				has_completed_focus = RME_bulwark_against_bolshevism
-				has_completed_focus = RME_the_great_red_menace
+				has_completed_focus = RME_restore_rome
 			}
 		}
 
@@ -1839,7 +1839,7 @@ focus_tree = {
 				country_exists = SOV
 			}
 			NOT = { has_completed_focus = RME_bulwark_against_bolshevism }
-			NOT = { has_completed_focus = RME_the_great_red_menace }
+			NOT = { has_completed_focus = RME_restore_rome }
 		}
 		cancel = {
 			OR = {
@@ -1956,7 +1956,6 @@ focus_tree = {
 	focus = {
 		id = RME_rhineland
 		icon = GFX_goal_generic_military_sphere
-		mutually_exclusive = { focus = RME_oppose_hitler }
 		x = 25
 		y = 0
 		cost = 10
@@ -4843,17 +4842,11 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_oppose_hitler
-		icon = GFX_focus_ger_oppose_hitler
-		mutually_exclusive = { focus = RME_rhineland }
-
-		allow_branch = {
-			has_dlc = "Waking the Tiger"
-		}
-
+		id = RME_secure_the_new_state
+		icon = GFX_focus_generic_support_the_left_right
 		available = {
 			is_puppet = no
-			has_government = fascism
+			has_war = no
 		}
 		x = 47
 		y = 0
@@ -4863,44 +4856,8 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			custom_effect_tooltip = RME_oppose_hitler_civil_war
-			effect_tooltip = {
-				RME_remove_mefo_bills = yes
-			}
-			42 = { set_demilitarized_zone = no }
-			51 = { set_demilitarized_zone = no }
-			add_political_power = 120
-			add_named_threat = { threat = 5 name = RME_oppose_hitler }
-			country_event = { id = wtt_germany.1 }
-		}
-	}
-
-	focus = {
-		id = RME_secure_the_new_state
-		icon = GFX_focus_generic_support_the_left_right
-		prerequisite = { focus = RME_oppose_hitler }
-		available = {
-			is_puppet = no
-			has_war = no
-			NOT = {
-				any_country = {
-					original_tag = RME
-					has_government = fascism
-				}
-			}
-		}
-		x = 0
-		y = 2
-		relative_position_id = RME_oppose_hitler
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
 			add_stability = 0.1
 			add_political_power = 120
-			add_ideas = RME_clamp_down_on_fascism
 		}
 	}
 
@@ -4908,7 +4865,7 @@ focus_tree = {
 		id = RME_revive_the_kaiserreich
 		icon = GFX_focus_ger_revive_kaiserreich
 		prerequisite = { focus = RME_secure_the_new_state }
-		mutually_exclusive = { focus = RME_reestablish_free_elections }
+		mutually_exclusive = { focus = RME_establish_free_elections }
 		bypass = {
 			has_country_flag = RME_mackensen_dead
 			NOT = { has_government = democratic }
@@ -4937,7 +4894,7 @@ focus_tree = {
 	focus = {
 		id = RME_rebuild_the_nation
 		icon = GFX_goal_generic_construction2
-		prerequisite = { focus = RME_revive_the_kaiserreich focus = RME_reestablish_free_elections }
+		prerequisite = { focus = RME_revive_the_kaiserreich focus = RME_establish_free_elections }
 		available = {
 		}
 		x = 1
@@ -6476,12 +6433,13 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_reestablish_free_elections
+		id = RME_establish_free_elections
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = RME_secure_the_new_state }
 		mutually_exclusive = { focus = RME_revive_the_kaiserreich }
 		available = {
 			is_puppet = no
+			has_government = democratic
 		}
 		cancel_if_invalid = yes
 		x = 1
@@ -6491,17 +6449,15 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		}
-		
 		completion_reward = {
-			add_ideas = { RME_reestablish_free_elections }
-			set_party_name = { ideology = neutrality long_name = RME_neutrality_party_kaiserreich_long name = RME_neutrality_party_kaiserreich }
+			add_ideas = { RME_establish_free_elections }
 		}
 	}
 
 	focus = {
-		id = RME_the_monarchy_compromise
+		id = RME_constitutional_convention
 		icon = GFX_goal_tfv_strengthen_commonwealth_ties
-		prerequisite = { focus = RME_reestablish_free_elections }
+		prerequisite = { focus = RME_establish_free_elections }
 		available = {
 			is_puppet = no
 			democratic > 0.4
@@ -6509,7 +6465,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		x = 2
 		y = 1
-		relative_position_id = RME_reestablish_free_elections
+		relative_position_id = RME_establish_free_elections
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -6518,70 +6474,94 @@ focus_tree = {
 		completion_reward = {
 			add_popularity = { ideology = democratic popularity = 0.1 }
 			set_politics = { ruling_party = democratic elections_allowed = yes }
-			add_ideas = { RME_wilhelm_iii }
+			add_ideas = { michael_VIII }
 			add_stability = 0.05
-			hidden_effect = {
-				set_cosmetic_tag = RME_german_monarchy
-			}
 		}
 	}
 
 	focus = {
-		id = RME_the_great_red_menace
-		icon = GFX_focus_ger_great_red_menace
-		prerequisite = { focus = RME_the_monarchy_compromise }
+		id = RME_restore_rome
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = RME_constitutional_convention }
 		available = {
 			is_puppet = no
 			has_war = no
-			SOV = { has_government = communism }
 			has_added_tension_amount < 15
 		}
 		cancel_if_invalid = yes
 		x = 0
 		y = 2
-		relative_position_id = RME_the_monarchy_compromise
+		relative_position_id = RME_constitutional_convention
 		cost = 10
 		ai_will_do = {
 			factor = 8
 		}
 		
 		completion_reward = {
-			add_named_threat = { threat = 10 name = RME_the_great_red_menace }
-			SOV = { country_event = { id = wtt_germany.19 days = 1 } }
-			hidden_effect = { news_event = { id = wtt_news.21 hours = 6 } }
+			add_named_threat = { threat = 10 name = RME_restore_rome }
 			every_other_country = {
 				limit = {
-					any_owned_state = { is_on_continent = europe }
-					NOT = {
+					OR = {
+						tag = ALG
+						tag = ANG
+						tag = AQI
+						tag = ARM
+						tag = AST
+						tag = AZR
+						tag = BEL
+						tag = BEN
+						tag = BRG
+						tag = BRI
+						tag = BRK
+						tag = CAT
+						tag = CHD
+						tag = CMR
+						tag = COG
+						tag = CRO
+						tag = DAH
+						tag = EGY
 						tag = ENG
 						tag = FRA
-						tag = SWI
+						tag = GAB
+						tag = GEO
+						tag = GUI
+						tag = GUY
+						tag = INS
+						tag = IRQ
+						tag = ISR
 						tag = ITA
-						tag = IRE
-						tag = TUR
-						tag = ALB
-						original_tag = SPR
-						tag = POR
-						tag = GRE
-						has_government = communism
-						has_government = fascism
+						tag = LBA
+						tag = LIB
+						tag = MAR
+						tag = MAU
+						tag = MLI
+						tag = NGR
+						tag = NIG
+						tag = NBR
+						tag = NMB
+						tag = NZL
+						tag = PHI
+						tag = SAF
+						tag = SEN
+						tag = SER
+						tag = SIC
+						tag = SPR
+						tag = SWI
+						tag = SYR
+						tag = TOG
+						tag = TUN
+						tag = WAL
+						tag = X43
+						tag = YUG
 					}
 				}
-				country_event = { id = wtt_germany.24 }
-				add_ideas = RME_the_great_red_menace
+				country_event = { id = tesb_news.2 }
+				add_ideas = RME_restore_rome
 				add_ai_strategy = {
 					type = befriend
 					id = "RME"			
 					value = 200
 				}
-				add_ai_strategy = {
-					type = befriend
-					id = "ENG"			
-					value = -200
-				}
-			}
-			SOV = { 
-				add_opinion_modifier = { target = RME modifier = embargo } 
 			}
 		}
 	}
@@ -6589,7 +6569,7 @@ focus_tree = {
 	focus = {
 		id = RME_central_european_alliance
 		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = RME_the_great_red_menace }
+		prerequisite = { focus = RME_restore_rome }
 		prerequisite = { focus = RME_bulwark_against_bolshevism }
 		available = {
 			is_puppet = no
@@ -6598,7 +6578,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		x = 0
 		y = 1
-		relative_position_id = RME_the_great_red_menace
+		relative_position_id = RME_restore_rome
 		cost = 10
 		ai_will_do = {
 			factor = 5
@@ -6619,7 +6599,7 @@ focus_tree = {
 			}
 			every_country = {
 				limit = {
-					has_idea = RME_the_great_red_menace
+					has_idea = RME_restore_rome
 					has_idea = neutrality_idea
 				}
 				remove_ideas = neutrality_idea
@@ -7616,15 +7596,15 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_reverse_the_brain_drain
+		id = RME_university_of_constantinople
 		icon = GFX_focus_research
-		prerequisite = { focus = RME_the_monarchy_compromise }
+		prerequisite = { focus = RME_constitutional_convention }
 		available = {
 			is_puppet = no
 		}
 		x = 2
 		y = 1
-		relative_position_id = RME_the_monarchy_compromise
+		relative_position_id = RME_constitutional_convention
 		cost = 10
 		ai_will_do = {
 			factor = 5
@@ -7638,7 +7618,7 @@ focus_tree = {
 	focus = {
 		id = RME_shared_rd_programs
 		icon = GFX_goal_tfv_generic_tech_sharing
-		prerequisite = { focus = RME_reverse_the_brain_drain }
+		prerequisite = { focus = RME_university_of_constantinople }
 		prerequisite = { focus = RME_central_european_alliance }
 		available = {
 			is_puppet = no
