@@ -4862,7 +4862,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_revive_the_kaiserreich
+		id = RME_imperial_coronation
 		icon = GFX_focus_ger_revive_kaiserreich
 		prerequisite = { focus = RME_secure_the_new_state }
 		mutually_exclusive = { focus = RME_establish_free_elections }
@@ -4882,24 +4882,32 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_ideas = RME_revive_the_kaiserreich
-			custom_effect_tooltip = RME_revive_the_kaiserreich_tt
+			add_ideas = RME_imperial_coronation
 			hidden_effect = { set_cosmetic_tag = RME_german_empire }
-			set_party_name = { ideology = neutrality long_name = RME_neutrality_party_kaiserreich_long name = RME_neutrality_party_kaiserreich }
+			create_country_leader = {
+				name = "Konstantinos XXI"
+				desc = "POLITICS_KONSTANTINOS_XXI_DESC"
+				picture = "gfx/leaders/ENG/Portrait_Britain_Edward_VIII.dds"
+				expire = "1965.1.1"
+				ideology = absolute_monarchy
+				traits = {
+					inexperienced_imperialist
+				}
+			}
 			set_rule = { can_send_volunteers = yes }
-			add_named_threat = { threat = 5 name = RME_revive_the_kaiserreich }
+			add_named_threat = { threat = 5 name = RME_imperial_coronation }
 		}
 	}
 
 	focus = {
 		id = RME_rebuild_the_nation
 		icon = GFX_goal_generic_construction2
-		prerequisite = { focus = RME_revive_the_kaiserreich focus = RME_establish_free_elections }
+		prerequisite = { focus = RME_imperial_coronation focus = RME_establish_free_elections }
 		available = {
 		}
 		x = 1
 		y = 1
-		relative_position_id = RME_revive_the_kaiserreich
+		relative_position_id = RME_imperial_coronation
 		cost = 10
 		ai_will_do = {
 			factor = 9
@@ -5037,38 +5045,32 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_return_of_the_kaiser
+		id = RME_eimai_to_kratos
 		icon = GFX_focus_ger_return_of_the_kaiser
-		prerequisite = { focus = RME_revive_the_kaiserreich }
+		prerequisite = { focus = RME_imperial_coronation }
 		available = {
 			is_puppet = no
-			neutrality > 0.4
-			has_country_leader = { ruling_only = yes name = "August von Mackensen" }
-		}
-		bypass = {
-			has_country_flag = RME_mackensen_dead
-			NOT = { has_government = democratic }
+			absolutist > 0.4
 		}
 		x = -2
 		y = 1
-		relative_position_id = RME_revive_the_kaiserreich
+		relative_position_id = RME_imperial_coronation
 		cost = 10
 		ai_will_do = {
 			factor = 1
 		}
 		
 		completion_reward = {
-			add_named_threat = { threat = 5 name = RME_return_of_the_kaiser }
-			HOL = {
-				country_event = { id = wtt_germany.3 }
-			}
+			add_named_threat = { threat = 5 name = RME_eimai_to_kratos }
+			add_popularity = { ideology = absolutist popularity = 0.1 }
+			add_stability = 0.05
 		}
 	}
 
 	focus = {
 		id = RME_focus_on_the_true_enemy
 		icon = GFX_goal_generic_occupy_states_coastal
-		prerequisite = { focus = RME_return_of_the_kaiser }
+		prerequisite = { focus = RME_eimai_to_kratos }
 		prerequisite = { focus = RME_naval_effort }
 		mutually_exclusive = { focus = RME_expatriate_the_communists }
 		available = {
@@ -5076,7 +5078,7 @@ focus_tree = {
 		}
 		x = -6
 		y = 1
-		relative_position_id = RME_return_of_the_kaiser
+		relative_position_id = RME_eimai_to_kratos
 		cost = 10
 		ai_will_do = {
 			factor = 3
@@ -5086,7 +5088,7 @@ focus_tree = {
 			add_war_support = 0.05
 			add_named_threat = { threat = 5 name = RME_focus_on_the_true_enemy }
 			swap_ideas = {
-				remove_idea = RME_revive_the_kaiserreich
+				remove_idea = RME_imperial_coronation
 				add_idea = RME_revive_the_kaiserreich2
 			}
 		}
@@ -5756,7 +5758,7 @@ focus_tree = {
 	focus = {
 		id = RME_expatriate_the_communists
 		icon = GFX_goal_anti_comintern_pact
-		prerequisite = { focus = RME_return_of_the_kaiser }
+		prerequisite = { focus = RME_eimai_to_kratos }
 		mutually_exclusive = { focus = RME_focus_on_the_true_enemy }
 		available = {
 			is_puppet = no
@@ -5765,7 +5767,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		x = -2
 		y = 1
-		relative_position_id = RME_return_of_the_kaiser
+		relative_position_id = RME_eimai_to_kratos
 		cost = 10
 		ai_will_do = {
 			factor = 0.5
@@ -5969,83 +5971,80 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_see_to_the_eastern_front
+		id = RME_reclaim_the_empire
 		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = RME_return_of_the_kaiser }
+		prerequisite = { focus = RME_eimai_to_kratos }
 		available = { 
 			is_puppet = no
-			has_full_control_of_state = 5
 		}
 		cancel_if_invalid = yes
 		x = 0
 		y = 2
-		relative_position_id = RME_return_of_the_kaiser
+		relative_position_id = RME_eimai_to_kratos
 		cost = 10
 		ai_will_do = {
 			factor = 5
 		}
 		
 		completion_reward = {
-			188 = { add_claim_by = RME }
-			add_named_threat = { threat = 3 name = RME_demand_memel_threat }
-			random_other_country = {
+			add_named_threat = { threat = 10 name = RME_reclaim_the_empire }
+			every_other_country = {
 				limit = {
-					owns_state = 188
-					controls_state = 188 
-				}
-				country_event = { id = baltic.4 }
-			}
-			if = {
-				limit = {
-					has_full_control_of_state = 5
-				}
-				5 = {
-					custom_effect_tooltip = RME_see_to_the_eastern_front_tt
-					hidden_effect = {
-						add_building_construction = {
-							type = bunker
-							level = 2
-							province = 11265
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 2
-							province = 348
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 2
-							province = 281
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 2
-							province = 3384
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 2
-							province = 9327
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 2
-							province = 11386
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 2
-							province = 9372
-							instant_build = yes
-						}
+					OR = {
+						tag = ALG
+						tag = ANG
+						tag = AQI
+						tag = ARM
+						tag = AST
+						tag = AZR
+						tag = BEL
+						tag = BEN
+						tag = BRG
+						tag = BRI
+						tag = BRK
+						tag = CAT
+						tag = CHD
+						tag = CMR
+						tag = COG
+						tag = CRO
+						tag = DAH
+						tag = EGY
+						tag = ENG
+						tag = FRA
+						tag = GAB
+						tag = GEO
+						tag = GUI
+						tag = GUY
+						tag = INS
+						tag = IRQ
+						tag = ISR
+						tag = ITA
+						tag = LBA
+						tag = LIB
+						tag = MAR
+						tag = MAU
+						tag = MLI
+						tag = NGR
+						tag = NIG
+						tag = NBR
+						tag = NMB
+						tag = NZL
+						tag = PHI
+						tag = SAF
+						tag = SEN
+						tag = SER
+						tag = SIC
+						tag = SPR
+						tag = SWI
+						tag = SYR
+						tag = TOG
+						tag = TUN
+						tag = WAL
+						tag = X43
+						tag = YUG
 					}
 				}
+				country_event = { id = tesb_news.3 }
 			}
 		}
 	}
@@ -6053,7 +6052,7 @@ focus_tree = {
 	focus = {
 		id = RME_danzig_for_guarantees
 		icon = GFX_focus_generic_polish_deal
-		prerequisite = { focus = RME_see_to_the_eastern_front }
+		prerequisite = { focus = RME_reclaim_the_empire }
 		prerequisite = { focus = RME_bulwark_against_bolshevism }
 		available = { 
 			is_puppet = no
@@ -6076,7 +6075,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		x = 2
 		y = 2
-		relative_position_id = RME_see_to_the_eastern_front
+		relative_position_id = RME_reclaim_the_empire
 		cost = 10
 		ai_will_do = {
 			factor = 5
@@ -6090,7 +6089,7 @@ focus_tree = {
 	focus = {
 		id = RME_safeguard_the_baltic
 		icon = GFX_goal_generic_defence
-		prerequisite = { focus = RME_see_to_the_eastern_front }
+		prerequisite = { focus = RME_reclaim_the_empire }
 		available = {
 			is_puppet = no
 			NOT = { has_war_with = EST }
@@ -6138,7 +6137,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		x = 0
 		y = 1
-		relative_position_id = RME_see_to_the_eastern_front
+		relative_position_id = RME_reclaim_the_empire
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -6436,7 +6435,7 @@ focus_tree = {
 		id = RME_establish_free_elections
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = RME_secure_the_new_state }
-		mutually_exclusive = { focus = RME_revive_the_kaiserreich }
+		mutually_exclusive = { focus = RME_imperial_coronation }
 		available = {
 			is_puppet = no
 			has_government = democratic
