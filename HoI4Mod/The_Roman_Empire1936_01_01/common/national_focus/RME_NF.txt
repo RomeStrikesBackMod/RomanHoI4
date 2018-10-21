@@ -1644,7 +1644,7 @@ focus_tree = {
 		available = {
 			NOT = { has_completed_focus = RME_anti_soviet_pact }
 			OR = {
-				NOT = { has_completed_focus = RME_bulwark_against_bolshevism }
+				NOT = { has_completed_focus = RME_bulwark_against_barbarism }
 				NOT = { has_completed_focus = RME_restore_rome }
 			}
 		}
@@ -1658,7 +1658,7 @@ focus_tree = {
 			OR = {
 				has_war_with = SOV
 				NOT = { country_exists = SOV }
-				has_completed_focus = RME_bulwark_against_bolshevism
+				has_completed_focus = RME_bulwark_against_barbarism
 				has_completed_focus = RME_restore_rome
 			}
 		}
@@ -1838,7 +1838,7 @@ focus_tree = {
 				NOT = { has_war_with = RME }
 				country_exists = SOV
 			}
-			NOT = { has_completed_focus = RME_bulwark_against_bolshevism }
+			NOT = { has_completed_focus = RME_bulwark_against_barbarism }
 			NOT = { has_completed_focus = RME_restore_rome }
 		}
 		cancel = {
@@ -4920,7 +4920,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_fan_the_prussian_militarism
+		id = RME_glorify_the_legions
 		icon = GFX_focus_generic_military_mission
 		prerequisite = { focus = RME_rebuild_the_nation }
 		available = {
@@ -4953,7 +4953,7 @@ focus_tree = {
 					has_idea = RME_national_revitalization
 				}
 				swap_ideas = {
-					remove_idea =RME_national_revitalization
+					remove_idea = RME_national_revitalization
 					add_idea = RME_national_revitalization2
 				}
 			}
@@ -4970,7 +4970,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_a_new_and_better_germany
+		id = RME_a_new_and_better_rome
 		icon = GFX_goal_generic_construction
 		prerequisite = { focus = RME_rebuild_the_nation }
 		available = {
@@ -5020,27 +5020,23 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_bulwark_against_bolshevism
-		icon = GFX_focus_ger_bulwark_against_bolshevism
-		prerequisite = { focus = RME_fan_the_prussian_militarism }
-		prerequisite = { focus = RME_a_new_and_better_germany }
+		id = RME_bulwark_against_barbarism
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = RME_glorify_the_legions }
+		prerequisite = { focus = RME_a_new_and_better_rome }
 		available = {
 			is_puppet = no
 		}
 		x = 1
 		y = 1
-		relative_position_id = RME_fan_the_prussian_militarism
+		relative_position_id = RME_glorify_the_legions
 		cost = 10
 		ai_will_do = {
 			factor = 5
 		}
 		
 		completion_reward = {
-			add_ideas = RME_bulwark_against_bolshevism
-			custom_effect_tooltip = RME_bulwark_against_bolshevism_tt
-			SOV = { 
-				add_opinion_modifier = { target = RME modifier = embargo } 
-			}
+			add_ideas = RME_bulwark_against_barbarism
 		}
 	}
 
@@ -5064,6 +5060,293 @@ focus_tree = {
 			add_named_threat = { threat = 5 name = RME_eimai_to_kratos }
 			add_popularity = { ideology = absolutist popularity = 0.1 }
 			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = RME_caucasus
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_bulwark_against_barbarism }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		available = {
+			is_puppet = no
+		}
+		x = 2
+		y = 1
+		relative_position_id = RME_bulwark_against_barbarism
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 407
+			add_state_core = 408
+			add_state_core = 409
+			add_state_core = 410
+			add_state_core = 486
+		}
+	}
+
+	focus = {
+		id = RME_eastern_mediterranean
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_bulwark_against_barbarism }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		available = {
+			is_puppet = no
+		}
+		x = -2
+		y = 1
+		relative_position_id = RME_bulwark_against_barbarism
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 404
+			add_state_core = 405
+			add_state_core = 406
+			add_state_core = 431
+			add_state_core = 432
+			add_state_core = 433
+			add_state_core = 434
+			add_state_core = 435
+			add_state_core = 436
+			add_state_core = 437
+			add_state_core = 456
+			add_state_core = 487
+		}
+	}
+	
+	focus = {
+		id = RME_balkans
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_bulwark_against_barbarism }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		available = {
+			is_puppet = no
+		}
+		x = 0
+		y = 1
+		relative_position_id = RME_bulwark_against_barbarism
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 364
+			add_state_core = 365
+			add_state_core = 366
+			add_state_core = 367
+			add_state_core = 368
+			add_state_core = 369
+			add_state_core = 373
+			add_state_core = 374
+			add_state_core = 375
+			add_state_core = 376
+			add_state_core = 377
+			add_state_core = 378
+			add_state_core = 379
+			add_state_core = 380
+		}
+	}
+	
+	focus = {
+		id = RME_central_mediterranean
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_eastern_mediterranean }
+		available = {
+			is_puppet = no
+		}
+		x = 0
+		y = 1
+		relative_position_id = RME_eastern_mediterranean
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 370
+			add_state_core = 371
+			add_state_core = 372
+			add_state_core = 426
+			add_state_core = 427
+			add_state_core = 428
+			add_state_core = 429
+			add_state_core = 430
+			add_state_core = 480
+			add_state_core = 481
+		}
+	}
+
+	focus = {
+		id = RME_northern_mediterranean
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_balkans focus = RME_central_mediterranean }
+		available = {
+			is_puppet = no
+		}
+		x = 2
+		y = 1
+		relative_position_id = RME_central_mediterranean
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 10
+			add_state_core = 12
+			add_state_core = 13
+			add_state_core = 14
+			add_state_core = 15
+			add_state_core = 222
+			add_state_core = 223
+			add_state_core = 224
+			add_state_core = 225
+			add_state_core = 226
+			add_state_core = 227
+			add_state_core = 228
+			add_state_core = 229
+			add_state_core = 230
+			add_state_core = 231
+			add_state_core = 360
+			add_state_core = 361
+			add_state_core = 362
+			add_state_core = 363
+		}
+	}
+	
+	focus = {
+		id = RME_western_mediterranean
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_central_mediterranean focus = RME_northern_mediterranean }
+		available = {
+			is_puppet = no
+		}
+		x = 0
+		y = 2
+		relative_position_id = RME_central_mediterranean
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 416
+			add_state_core = 417
+			add_state_core = 421
+			add_state_core = 422
+			add_state_core = 423
+			add_state_core = 424
+			add_state_core = 425
+			add_state_core = 461
+			add_state_core = 482
+			add_state_core = 483
+			add_state_core = 491
+			add_state_core = 496
+			add_state_core = 497
+			add_state_core = 498
+		}
+	}
+
+	focus = {
+		id = RME_gaul
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_northern_mediterranean }
+		available = {
+			is_puppet = no
+		}
+		x = 0
+		y = 1
+		relative_position_id = RME_northern_mediterranean
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 11
+			add_state_core = 34
+			add_state_core = 35
+			add_state_core = 36
+			add_state_core = 37
+			add_state_core = 38
+			add_state_core = 39
+			add_state_core = 40
+			add_state_core = 41
+			add_state_core = 42
+			add_state_core = 43
+			add_state_core = 138
+			add_state_core = 139
+			add_state_core = 141
+			add_state_core = 142
+			add_state_core = 502
+			add_state_core = 503
+		}
+	}
+	
+	focus = {
+		id = RME_atlantic_coast
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_gaul focus = RME_western_mediterranean }
+		available = {
+			is_puppet = no
+		}
+		x = 1
+		y = 1
+		relative_position_id = RME_western_mediterranean
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 10
+			add_state_core = 12
+			add_state_core = 44
+			add_state_core = 140
+			add_state_core = 415
+			add_state_core = 418
+			add_state_core = 419
+			add_state_core = 420
+			add_state_core = 488
+			add_state_core = 489
+			add_state_core = 490
+			add_state_core = 492
+			add_state_core = 493
+			add_state_core = 494
+			add_state_core = 495
+		}
+	}
+
+	focus = {
+		id = RME_britain
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = RME_gaul focus = RME_atlantic_coast }
+		available = {
+			is_puppet = no
+		}
+		x = 1
+		y = 1
+		relative_position_id = RME_atlantic_coast
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_state_core = 89
+			add_state_core = 90
+			add_state_core = 91
+			add_state_core = 92
+			add_state_core = 93
+			add_state_core = 94
+			add_state_core = 95
 		}
 	}
 
@@ -5894,83 +6177,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_bypass_maginot_in_the_south
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		prerequisite = { focus = RME_carte_blanche_for_alsace_and_french_colonies }
-		available = {
-			is_puppet = no
-			has_war_with = FRA
-			NOT = { is_in_faction_with = SWI }
-		}
-		bypass = {
-			NOT = { country_exists = SWI }
-		}
-		cancel_if_invalid = yes
-		will_lead_to_war_with = SWI
-		x = 0
-		y = 2
-		relative_position_id = RME_carte_blanche_for_alsace_and_french_colonies
-		cost = 4
-		ai_will_do = {
-			factor = 10
-		}
-		
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = SWI
-			}
-		}
-	}
-
-	focus = {
-		id = RME_reinstate_imperial_possessions
-		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = RME_schlieffen_once_more focus = RME_bypass_maginot_in_the_south }
-		available = {
-			is_puppet = no
-			has_full_control_of_state = 28
-			OR = {
-				FRA = { has_capitulated = yes }
-				FRA = { is_subject_of = RME }
-				NOT = {
-					any_country = {
-						original_tag = FRA
-						exists = yes
-					}
-				}
-				owns_state = 28
-			}
-		}
-		bypass = {
-		}
-		cancel_if_invalid = yes
-		x = 0
-		y = 1
-		relative_position_id = RME_schlieffen_once_more
-		cost = 10
-		ai_will_do = {
-			factor = 10
-		}
-		
-		completion_reward = {
-			add_state_core = 28
-			if = {
-				limit = {
-					NOT = { owns_state = 28 }
-				}
-				transfer_state = 28
-			}
-			28 = { set_state_name = "Elsass-Lothringen" }
-			set_province_name = { id = 9503 name = "Strassburg" }
-			set_province_name = { id = 678 name = "Mulhausen" }
-			FRA = {
-				country_event = { id = wtt_germany.63 }
-			}
-		}
-	}
-
-	focus = {
 		id = RME_reclaim_the_empire
 		icon = GFX_goal_generic_position_armies
 		prerequisite = { focus = RME_eimai_to_kratos }
@@ -6045,388 +6251,6 @@ focus_tree = {
 					}
 				}
 				country_event = { id = tesb_news.3 }
-			}
-		}
-	}
-
-	focus = {
-		id = RME_danzig_for_guarantees
-		icon = GFX_focus_generic_polish_deal
-		prerequisite = { focus = RME_reclaim_the_empire }
-		prerequisite = { focus = RME_bulwark_against_bolshevism }
-		available = { 
-			is_puppet = no
-			NOT = { has_war_with = POL }
-			NOT = { is_in_faction_with = POL }
-		}
-		bypass = {
-			OR = {
-				AND = {
-					POL = { has_war = yes }
-					NOT = { has_war_with = POL }
-				}
-				AND = {
-					POL = { is_subject = yes }
-					NOT = { POL = { is_subject_of = RME } }
-				}
-				POL = { exists = no }
-			}
-		}
-		cancel_if_invalid = yes
-		x = 2
-		y = 2
-		relative_position_id = RME_reclaim_the_empire
-		cost = 10
-		ai_will_do = {
-			factor = 5
-		}
-		
-		completion_reward = {
-			POL = { country_event = { id = wtt_germany.14 } }
-		}
-	}
-
-	focus = {
-		id = RME_safeguard_the_baltic
-		icon = GFX_goal_generic_defence
-		prerequisite = { focus = RME_reclaim_the_empire }
-		available = {
-			is_puppet = no
-			NOT = { has_war_with = EST }
-			NOT = { has_war_with = LAT }
-			NOT = { has_war_with = LIT }
-		}
-		bypass = {
-			OR = {
-				has_guaranteed = EST
-				NOT = { country_exists = EST }
-				AND = {
-					EST = { has_war = yes }
-					NOT = { has_war_with = EST }
-				}
-				AND = {
-					EST = { is_subject = yes }
-					NOT = { EST = { is_subject_of = RME } }
-				}
-			}
-			OR = {
-				has_guaranteed = LAT
-				NOT = { country_exists = LAT }
-				AND = {
-					LAT = { has_war = yes }
-					NOT = { has_war_with = LAT }
-				}
-				AND = {
-					LAT = { is_subject = yes }
-					NOT = { LAT = { is_subject_of = RME } }
-				}
-			}
-			OR = {
-				has_guaranteed = LIT
-				NOT = { country_exists = LIT }
-				AND = {
-					LIT = { has_war = yes }
-					NOT = { has_war_with = LIT }
-				}
-				AND = {
-					LIT = { is_subject = yes }
-					NOT = { LIT = { is_subject_of = RME } }
-				}
-			}
-		}
-		cancel_if_invalid = yes
-		x = 0
-		y = 1
-		relative_position_id = RME_reclaim_the_empire
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			if = {
-				limit = { country_exists = EST }
-				EST = {	
-					add_ideas = RME_safeguard_the_baltic
-					add_ai_strategy = {
-						type = befriend
-						id = "RME"			
-						value = 200
-					}
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"			
-						value = 200
-					}
-				}
-
-				if = { 
-					limit = { NOT = { is_subject_of = ROOT } }
-					give_guarantee = EST
-				}
-			}
-			if = {
-				limit = { country_exists = LAT }
-				LAT = {
-					add_ideas = RME_safeguard_the_baltic
-					add_ai_strategy = {
-						type = befriend
-						id = "RME"			
-						value = 200
-					}
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"			
-						value = 200
-					}
-				}
-
-				if = { 
-					limit = { NOT = { is_subject_of = ROOT } }
-					give_guarantee = LAT
-				}
-			}
-			if = {
-				limit = { country_exists = LIT }
-				LIT = {
-					add_ideas = RME_safeguard_the_baltic
-					add_ai_strategy = {
-						type = befriend
-						id = "RME"			
-						value = 200
-					}
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"			
-						value = 200
-					}
-				}
-
-				if = { 
-					limit = { NOT = { is_subject_of = ROOT } }
-					give_guarantee = LIT
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = RME_support_the_finns
-		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = RME_safeguard_the_baltic }
-		available = {
-			is_puppet = no
-			NOT = { has_war_with = FIN }
-		}
-		bypass = {
-			OR = {
-				AND = {
-					FIN = { has_war = yes }
-					NOT = { has_war_with = FIN }
-				}
-				AND = {
-					FIN = { is_subject = yes }
-					NOT = { FIN = { is_subject_of = RME } }
-				}
-				FIN = { exists = no }
-			}
-		}
-		cancel_if_invalid = yes
-		x = 0
-		y = 1
-		relative_position_id = RME_safeguard_the_baltic
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			diplomatic_relation = {
-				country = FIN
-				relation = guarantee
-				active = yes
-			}
-			FIN = {
-				add_ideas = RME_FIN_industrial_support
-				add_ai_strategy = {
-					type = befriend
-					id = "RME"			
-					value = 200
-				}
-				add_ai_strategy = {
-					type = alliance
-					id = "RME"			
-					value = 200
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = RME_anti_comintern_pact_unaligned
-		icon = GFX_goal_anti_comintern_pact
-		prerequisite = { focus = RME_support_the_finns }
-		prerequisite = { focus = RME_danzig_for_guarantees }
-		x = 1
-		y = 1
-		relative_position_id = RME_support_the_finns
-		cost = 10
-		available = {
-			is_puppet = no
-			NOT = { has_government = communism }
-			NOT = { is_in_faction_with = SOV }
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			SOV = { add_opinion_modifier = { target = ROOT modifier = pact_against_us } }
-			add_named_threat = { threat = 2 name = RME_anti_comintern_pact_unaligned }
-			every_other_country = {
-				limit = {
-					NOT = { tag = RME }
-					NOT = { has_war_with = RME }
-					NOT = { is_in_faction_with = SOV }
-					is_subject = no
-					OR = {
-						capital_scope = {
-								is_on_continent = europe
-						}
-						AND = {
-							capital_scope = {
-									is_on_continent = asia
-							}
-							is_neighbor_of = SOV
-						}
-						num_of_factories > 30
-					}
-					OR = {
-						has_government = neutrality 
-						AND = {
-							is_neighbor_of = SOV
-							NOT = { has_government = communism }
-						}
-					}
-				}
-				country_event = germany.5
-			}
-		}
-	}
-
-	focus = {
-		id = RME_anti_soviet_pact_unaligned
-		icon = GFX_goal_anti_comintern_pact
-		prerequisite = { focus = RME_anti_comintern_pact_unaligned }
-		available = {
-			is_puppet = no
-			has_army_manpower = { size > 849999 } #ca 90 div
-		}
-		x = 0
-		y = 1
-		relative_position_id = RME_anti_comintern_pact_unaligned
-		cost = 10
-		ai_will_do = {
-			factor = 2.5	
-		}
-		completion_reward = {
-			hidden_effect = {
-				SOV = { remove_opinion_modifier = { target = ROOT modifier = pact_against_us } }
-				add_ideas = anti_soviet_pact
-			}
-			SOV = { add_opinion_modifier = { target = ROOT modifier = worse_pact_against_us } }
-			custom_effect_tooltip = RME_anti_soviet_pact_tt_3
-			custom_effect_tooltip = RME_anti_soviet_pact_tt
-			custom_effect_tooltip = RME_anti_soviet_pact_tt_2
-			every_other_country = {
-				limit = {
-					has_opinion_modifier = anti_comintern_pact_opinion
-					is_subject = no
-					NOT = { tag = RME }
-					NOT = { has_war_with = RME }
-					NOT = { has_idea = anti_soviet_pact }
-				}
-				country_event = germany.83
-			}
-			hidden_effect = {
-				news_event = { id = wtt_news.20 hours = 6 }
-			}
-		}
-	}
-
-	focus = {
-		id = RME_tackle_the_communist_threat
-		icon = GFX_goal_generic_war_with_comintern
-		prerequisite = { focus = RME_anti_soviet_pact_unaligned focus = RME_carte_blanche_for_alsace_and_french_colonies }
-		available = {
-			is_puppet = no
-			SOV = {
-				has_government = communism
-				has_war = yes
-			}
-			NOT = { is_in_faction_with = SOV }
-		}
-		bypass = {
-			has_war_with = SOV
-			NOT = { country_exists = SOV }
-		}
-		cancel_if_invalid = yes
-		x = 0
-		y = 1
-		relative_position_id = RME_anti_soviet_pact_unaligned
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			if = {
-				limit = {
-					NOT = { is_in_faction = yes }
-				}
-				create_faction = "RME_anti_communist_bloc"
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = SOV
-			}
-		}
-	}
-
-	focus = {
-		id = RME_the_iberian_problem
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		prerequisite = { focus = RME_tackle_the_communist_threat }
-		available = {
-			is_puppet = no
-			any_country = {
-				original_tag = SPR
-				has_government = communism
-				NOT = { has_war_with = ROOT }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = RME_tackle_the_communist_threat
-		cost = 10
-		ai_will_do = {
-			factor = 1
-		}
-		
-		completion_reward = {
-			custom_effect_tooltip = RME_spain_wargoal_tt
-			hidden_effect = {
-				random_other_country = {
-					limit = {
-						original_tag = SPR
-						has_government = communism
-					}
-					RME = {
-						create_wargoal = {
-							type = annex_everything
-							target = PREV
-						}
-					}
-				}
 			}
 		}
 	}
@@ -6569,15 +6393,15 @@ focus_tree = {
 		id = RME_central_european_alliance
 		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = RME_restore_rome }
-		prerequisite = { focus = RME_bulwark_against_bolshevism }
+		prerequisite = { focus = RME_britain }
 		available = {
 			is_puppet = no
 			has_war = no
 		}
 		cancel_if_invalid = yes
-		x = 0
+		x = 3
 		y = 1
-		relative_position_id = RME_restore_rome
+		relative_position_id = RME_britain
 		cost = 10
 		ai_will_do = {
 			factor = 5
