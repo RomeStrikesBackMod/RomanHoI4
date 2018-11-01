@@ -1,0 +1,54 @@
+can_lose_democracy_support = {
+	absolutist < 0.18
+	communism < 0.18
+	democratic > 0.65
+	fascism < 0.18
+	neutrality < 0.18
+	radical < 0.18
+}
+has_unsupported_manpower_law = {
+	if = {
+		limit = {
+			has_idea = limited_conscription
+		}
+		has_idea = limited_conscription
+		has_war_support < 0.1
+	}
+	else_if = {
+		limit = {
+			has_idea = extensive_conscription
+		}
+		has_idea = extensive_conscription
+		has_war_support < 0.2
+		NOT = { has_government = absolutist }
+		NOT = { has_government = communism }
+		NOT = { has_government = fascism }
+		NOT = { has_government = radical }
+	}
+	else_if = {
+		limit = {
+			has_idea = service_by_requirement
+		}
+		has_idea = service_by_requirement
+		has_war_support < 0.6
+		NOT = { has_government = absolutist }
+		NOT = { has_government = communism }
+		NOT = { has_government = fascism }
+		NOT = { has_government = radical }
+	}
+	else_if = {
+		limit = {
+			has_idea = all_adults_serve
+		}
+		has_idea = all_adults_serve
+	}
+	else_if = {
+		limit = {
+			has_idea = scraping_the_barrel
+		}
+		has_idea = scraping_the_barrel
+	}
+	else = {
+		always = no
+	}
+}
