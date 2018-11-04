@@ -1,0 +1,33 @@
+﻿add_namespace = tesb_england
+
+country_event = {
+	id = tesb_england.1
+	title = tesb_england.1.t
+	desc = tesb_england.1.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_england.1.a
+		U73 = {
+			add_state_claim = 341
+			declare_war_on = {
+				target = PRU
+				type = take_state
+				generator = { 341 }
+			}
+		}
+		ADA = {
+			add_to_war = { 
+				targeted_alliance = U73
+				enemy = PRU
+			}
+		}
+		MEX = {
+			add_to_war = { 
+				targeted_alliance = PRU
+				enemy = U73
+			}
+		}
+	}
+}
