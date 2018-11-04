@@ -40,10 +40,40 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = RME_four_year_plan }
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = RME_danube_limes.trigtt
 			OR = {
+				378 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				375 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				364 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
 				has_full_control_of_state = 378
 				has_full_control_of_state = 375
 				has_full_control_of_state = 364
+			}
 			}
 		}
 		x = -5
@@ -58,16 +88,47 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_full_control_of_state = 378
-						has_full_control_of_state = 375
-						has_full_control_of_state = 364
+						378 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						375 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						364 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
 					}
 				}
 				custom_effect_tooltip = RME_danube_limes.tt
 			}
 			378 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_danube_limes_378
 					hidden_effect = {
 						add_building_construction = {
@@ -105,7 +166,14 @@ focus_tree = {
 			}
 			375 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_danube_limes_375
 					hidden_effect = {
 						add_building_construction = {
@@ -131,7 +199,14 @@ focus_tree = {
 			}
 			364 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_danube_limes_364
 					hidden_effect = {
 						add_building_construction = {
@@ -182,6 +257,33 @@ focus_tree = {
 		prerequisite = { focus = RME_danube_limes }
 		available = {
 			OR = {
+				34 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				36 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				38 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
 				has_full_control_of_state = 34
 				has_full_control_of_state = 36
 				has_full_control_of_state = 38
@@ -200,6 +302,33 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
+						34 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						36 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						38 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
 						has_full_control_of_state = 378
 						has_full_control_of_state = 375
 						has_full_control_of_state = 364
@@ -210,7 +339,14 @@ focus_tree = {
 			add_ideas = RME_rhine_limes_idea
 			34 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_rhine_limes_34
 					hidden_effect = {
 						add_building_construction = {
@@ -236,7 +372,14 @@ focus_tree = {
 			}
 			36 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_rhine_limes_36
 					hidden_effect = {
 						add_building_construction = {
@@ -268,7 +411,14 @@ focus_tree = {
 			}
 			38 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_rhine_limes_38
 					hidden_effect = {
 						add_building_construction = {
@@ -307,6 +457,24 @@ focus_tree = {
 		prerequisite = { focus = RME_danube_limes }
 		available = {
 			OR = {
+				407 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				408 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
 				has_full_control_of_state = 407
 				has_full_control_of_state = 408
 			}
@@ -323,9 +491,26 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						has_full_control_of_state = 378
-						has_full_control_of_state = 375
-						has_full_control_of_state = 364
+						407 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						408 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						has_full_control_of_state = 407
+						has_full_control_of_state = 408
 					}
 				}
 				custom_effect_tooltip = RME_georgia_limes.tt
@@ -333,7 +518,14 @@ focus_tree = {
 			add_ideas = RME_georgia_limes_idea
 			407 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_georgia_limes_407
 					hidden_effect = {
 						add_building_construction = {
@@ -413,7 +605,14 @@ focus_tree = {
 			}
 			408 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_georgia_limes_408
 					hidden_effect = {
 						add_building_construction = {
@@ -921,14 +1120,14 @@ focus_tree = {
 					add_ideas = RME_align_TAG_absolutist
 				}
 			}
-			if = {
-				limit = {
-					has_government = radical
-				}
-				OMA = {
-					add_ideas = RME_align_TAG_radical
-				}
-			}
+			#if = {
+			#	limit = {
+			#		#has_government = radical
+			#	}
+			#	OMA = {
+			#		add_ideas = RME_align_TAG_radical
+			#	}
+			#}
 			if = {
 				limit = {
 					has_government = democratic
@@ -1004,14 +1203,14 @@ focus_tree = {
 					add_ideas = RME_align_TAG_absolutist
 				}
 			}
-			if = {
-				limit = {
-					has_government = radical
-				}
-				IRQ = {
-					add_ideas = RME_align_TAG_radical
-				}
-			}
+			#if = {
+			#	limit = {
+			#		#has_government = radical
+			#	}
+			#	IRQ = {
+			#		add_ideas = RME_align_TAG_radical
+			#	}
+			#}
 			if = {
 				limit = {
 					has_government = democratic
@@ -1087,14 +1286,14 @@ focus_tree = {
 					add_ideas = RME_align_TAG_absolutist
 				}
 			}
-			if = {
-				limit = {
-					has_government = radical
-				}
-				X05 = {
-					add_ideas = RME_align_TAG_radical
-				}
-			}
+			#if = {
+			#	limit = {
+			#		#has_government = radical
+			#	}
+			#	X05 = {
+			#		add_ideas = RME_align_TAG_radical
+			#	}
+			#}
 			if = {
 				limit = {
 					has_government = democratic
@@ -2960,7 +3159,7 @@ focus_tree = {
 			is_puppet = no
 			absolutist > 0.4
 		}
-		x = -2
+		x = -1
 		y = 1
 		relative_position_id = RME_imperial_coronation
 		cost = 10
@@ -2979,7 +3178,7 @@ focus_tree = {
 		id = RME_caucasus
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = RME_bulwark_against_barbarism }
-		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_reestablish_roman_hegemony focus = RME_restore_rome }
 		available = {
 			is_puppet = no
 		}
@@ -2992,11 +3191,37 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_state_core = 407
-			add_state_core = 408
-			add_state_core = 409
-			add_state_core = 410
-			add_state_core = 486
+			custom_effect_tooltip = RME_caucasus.tt
+			if = {
+				limit = {
+					has_completed_focus = RME_reclaim_the_empire
+				}
+				add_state_core = 407
+				add_state_core = 408
+				add_state_core = 409
+				add_state_core = 410
+				add_state_core = 486
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_reestablish_roman_hegemony
+				}
+				add_state_core = 407
+				add_state_core = 408
+				add_state_core = 409
+				add_state_core = 410
+				add_state_core = 486
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome
+				}
+				add_state_core = 407
+				add_state_core = 408
+				add_state_core = 409
+				add_state_core = 410
+				add_state_core = 486
+			}
 		}
 	}
 
@@ -3004,7 +3229,7 @@ focus_tree = {
 		id = RME_eastern_mediterranean
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = RME_bulwark_against_barbarism }
-		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_reestablish_roman_hegemony focus = RME_restore_rome }
 		available = {
 			is_puppet = no
 		}
@@ -3017,18 +3242,58 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_state_core = 404
-			add_state_core = 405
-			add_state_core = 406
-			add_state_core = 431
-			add_state_core = 432
-			add_state_core = 433
-			add_state_core = 434
-			add_state_core = 435
-			add_state_core = 436
-			add_state_core = 437
-			add_state_core = 456
-			add_state_core = 487
+			custom_effect_tooltip = RME_eastern_mediterranean.tt
+			if = {
+				limit = {
+					has_completed_focus = RME_reclaim_the_empire
+				}
+				add_state_core = 404
+				add_state_core = 405
+				add_state_core = 406
+				add_state_core = 431
+				add_state_core = 432
+				add_state_core = 433
+				add_state_core = 434
+				add_state_core = 435
+				add_state_core = 436
+				add_state_core = 437
+				add_state_core = 456
+				add_state_core = 487
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_reestablish_roman_hegemony
+				}
+				add_state_core = 404
+				add_state_core = 405
+				add_state_core = 406
+				add_state_core = 431
+				add_state_core = 432
+				add_state_core = 433
+				add_state_core = 434
+				add_state_core = 435
+				add_state_core = 436
+				add_state_core = 437
+				add_state_core = 456
+				add_state_core = 487
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome
+				}
+				add_state_core = 404
+				add_state_core = 405
+				add_state_core = 406
+				add_state_core = 431
+				add_state_core = 432
+				add_state_core = 433
+				add_state_core = 434
+				add_state_core = 435
+				add_state_core = 436
+				add_state_core = 437
+				add_state_core = 456
+				add_state_core = 487
+			}
 		}
 	}
 	
@@ -3036,7 +3301,7 @@ focus_tree = {
 		id = RME_balkans
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = RME_bulwark_against_barbarism }
-		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_reestablish_roman_hegemony focus = RME_restore_rome }
 		available = {
 			is_puppet = no
 		}
@@ -3049,20 +3314,64 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_state_core = 364
-			add_state_core = 365
-			add_state_core = 366
-			add_state_core = 367
-			add_state_core = 368
-			add_state_core = 369
-			add_state_core = 373
-			add_state_core = 374
-			add_state_core = 375
-			add_state_core = 376
-			add_state_core = 377
-			add_state_core = 378
-			add_state_core = 379
-			add_state_core = 380
+			custom_effect_tooltip = RME_balkans.tt
+			if = {
+				limit = {
+					has_completed_focus = RME_reclaim_the_empire
+				}
+				add_state_core = 364
+				add_state_core = 365
+				add_state_core = 366
+				add_state_core = 367
+				add_state_core = 368
+				add_state_core = 369
+				add_state_core = 373
+				add_state_core = 374
+				add_state_core = 375
+				add_state_core = 376
+				add_state_core = 377
+				add_state_core = 378
+				add_state_core = 379
+				add_state_core = 380
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_reestablish_roman_hegemony
+				}
+				add_state_core = 364
+				add_state_core = 365
+				add_state_core = 366
+				add_state_core = 367
+				add_state_core = 368
+				add_state_core = 369
+				add_state_core = 373
+				add_state_core = 374
+				add_state_core = 375
+				add_state_core = 376
+				add_state_core = 377
+				add_state_core = 378
+				add_state_core = 379
+				add_state_core = 380
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome
+				}
+				add_state_core = 364
+				add_state_core = 365
+				add_state_core = 366
+				add_state_core = 367
+				add_state_core = 368
+				add_state_core = 369
+				add_state_core = 373
+				add_state_core = 374
+				add_state_core = 375
+				add_state_core = 376
+				add_state_core = 377
+				add_state_core = 378
+				add_state_core = 379
+				add_state_core = 380
+			}
 		}
 	}
 	
@@ -4028,7 +4337,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_reclaim_the_empire
+		id = RME_reestablish_roman_hegemony
 		icon = GFX_goal_generic_position_armies
 		prerequisite = { focus = RME_eimai_to_kratos }
 		available = { 
@@ -4038,6 +4347,85 @@ focus_tree = {
 		x = 0
 		y = 2
 		relative_position_id = RME_eimai_to_kratos
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			add_named_threat = { threat = 10 name = RME_reclaim_the_empire }
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = ALG
+						tag = ANG
+						tag = AQI
+						tag = ARM
+						tag = AST
+						tag = AZR
+						tag = BEL
+						tag = BEN
+						tag = BRG
+						tag = BRI
+						tag = BRK
+						tag = CAT
+						tag = CHD
+						tag = CMR
+						tag = COG
+						tag = CRO
+						tag = DAH
+						tag = EGY
+						tag = ENG
+						tag = FRA
+						tag = GAB
+						tag = GEO
+						tag = GUI
+						tag = GUY
+						tag = INS
+						tag = IRQ
+						tag = ISR
+						tag = ITA
+						tag = LBA
+						tag = LIB
+						tag = MAR
+						tag = MAU
+						tag = MLI
+						tag = NGR
+						tag = NIG
+						tag = NBR
+						tag = NMB
+						tag = NZL
+						tag = PHI
+						tag = SAF
+						tag = SEN
+						tag = SER
+						tag = SIC
+						tag = SPR
+						tag = SWI
+						tag = SYR
+						tag = TOG
+						tag = TUN
+						tag = WAL
+						tag = X43
+						tag = YUG
+					}
+				}
+				country_event = { id = tesb_news.3 }
+			}
+		}
+	}
+
+	focus = {
+		id = RME_reclaim_the_empire
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = RME_embrace_imperialists }
+		available = { 
+			is_puppet = no
+		}
+		cancel_if_invalid = yes
+		x = 0
+		y = 1
+		relative_position_id = RME_embrace_imperialists
 		cost = 10
 		ai_will_do = {
 			factor = 5
@@ -4154,9 +4542,57 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RME_embrace_imperialists
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = RME_constitutional_convention }
+		mutually_exclusive = { focus = RME_reject_imperialists }
+		available = {
+			is_puppet = no
+			democratic > 0.4
+		}
+		cancel_if_invalid = yes
+		x = 0
+		y = 1
+		relative_position_id = RME_constitutional_convention
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.1 }
+			add_ideas = { RME_a_new_empire }
+		}
+	}
+	
+	focus = {
+		id = RME_reject_imperialists
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		prerequisite = { focus = RME_constitutional_convention }
+		mutually_exclusive = { focus = RME_embrace_imperialists }
+		available = {
+			is_puppet = no
+			democratic > 0.4
+		}
+		cancel_if_invalid = yes
+		x = 2
+		y = 1
+		relative_position_id = RME_constitutional_convention
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = -0.2 }
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
 		id = RME_restore_rome
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = RME_constitutional_convention }
+		prerequisite = { focus = RME_reject_imperialists }
 		available = {
 			is_puppet = no
 			has_war = no
@@ -4164,8 +4600,8 @@ focus_tree = {
 		}
 		cancel_if_invalid = yes
 		x = 0
-		y = 2
-		relative_position_id = RME_constitutional_convention
+		y = 1
+		relative_position_id = RME_reject_imperialists
 		cost = 10
 		ai_will_do = {
 			factor = 8
@@ -5276,7 +5712,7 @@ focus_tree = {
 		available = {
 			is_puppet = no
 		}
-		x = 2
+		x = 7
 		y = 1
 		relative_position_id = RME_constitutional_convention
 		cost = 10

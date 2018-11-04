@@ -1,0 +1,343 @@
+ideas = {
+	country = {
+		royal_dictatorship_focus = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			picture = generic_intel_bonus
+			modifier = {
+				drift_defence_factor = 0.2
+			}
+		}
+
+		historical_claims_focus = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			picture = Generic_constitutional_guarantee
+			modifier = {
+				justify_war_goal_time = -0.5
+				take_states_cost_factor = 0.5
+			}
+		}
+
+		absolutist_defeated = {
+			removal_cost = -1
+			allowed = {
+				always = no # Triggered via event
+			}
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				stability_factor = 0.1
+			}
+		}
+
+		absolutist_influence = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				absolutist_drift = 0.1
+				absolutist_acceptance = 85
+			}
+		}
+
+		absolutism = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			picture = generic_infantry_bonus
+			modifier = {
+				absolutist_drift = 0.1
+			}
+		}
+
+		absolutist_revolutionaries = {
+			removal_cost = -1
+			allowed = {
+				always = no # Triggered via event
+			}
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+
+		absolutist_partisans_recruiting = {
+			allowed = {
+				always = no # Triggered via event
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			picture = generic_communism_drift_bonus
+			modifier = {
+				conscription = -0.002
+				absolutist_drift = 0.05
+			}
+		}
+
+		communism_banned = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			picture = anti_soviet_pact
+			modifier = {
+				communism_drift = -0.05
+			}
+		}
+
+		communist_pressure = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = communism
+			}
+			picture = generic_communism_drift_bonus
+			modifier = {
+				communism_drift = 0.1
+			}
+		}
+
+		communist_influence = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = communism
+			}
+			picture = generic_communism_drift_bonus
+			modifier = {
+				communism_drift = 0.1
+				communism_acceptance = 85
+			}
+		}
+
+		internationalism = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = communism
+			}
+			picture = generic_intel_bonus
+			modifier = {
+				#justify_war_goal_time = -0.25
+				communism_drift = 0.1
+			}
+		}
+
+		communism_partisans_recruiting = {
+			allowed = {
+				always = no # Triggered via event
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			picture = generic_communism_drift_bonus
+			modifier = {
+				conscription = -0.002
+				communism_drift = 0.05
+			}
+		}
+
+		communism_revolutionaries = {
+			removal_cost = -1
+			allowed = {
+				always = no # Triggered via event
+			}
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+
+		political_commissars_focus = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = communism
+			}
+			picture = generic_morale_bonus
+			modifier = {
+				army_morale_factor = 0.1
+			}
+		}
+
+		collectivist_ethos_focus_democratic = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				AND = {
+					NOT = { has_government = democratic }
+					NOT = { has_government = neutrality }
+				}
+			}
+			picture = generic_pp_unity_bonus
+			modifier = {
+				democratic_drift = -0.02
+			}
+		}
+
+		democratic_influence = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				democratic_drift = 0.1
+				democratic_acceptance = 85
+			}
+		}
+
+		democratic_opposition_voicing_protests = {
+			allowed = {
+				always = no # Triggered via event
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				political_power_factor = -0.5
+				democratic_drift = 0.05
+			}
+		}
+
+		fascism_banned = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+			picture = generic_fascism_banned
+			modifier = {
+				fascism_drift = -0.05
+			}
+		}
+
+		fascist_influence = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				fascism_drift = 0.1
+				fascism_acceptance = 85
+			}
+		}
+
+		nationalism = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			picture = generic_infantry_bonus
+			modifier = {
+				fascism_drift = 0.1
+			}
+		}
+
+		fascist_assault_divisions = {
+			allowed = {
+				always = no # Triggered via event
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				stability_factor = -0.05
+				conscription = 0.002
+				fascism_drift = 0.05
+			}
+		}
+
+		fascism_revolutionaries = {
+			removal_cost = -1
+			allowed = {
+				always = no # Triggered via event
+			}
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+
+		fascism_partisans_recruiting = {
+			allowed = {
+				always = no # Triggered via event
+			}
+			ai_will_do = {
+				factor = 0
+			}
+			picture = generic_communism_drift_bonus
+			modifier = {
+				conscription = -0.002
+				fascism_drift = 0.05
+			}
+		}
+
+		collectivist_ethos_focus_neutral = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				AND = {
+					NOT = { has_government = democratic }
+					NOT = { has_government = neutrality }
+				}
+			}
+			picture = generic_pp_unity_bonus
+			modifier = {
+				neutrality_drift = -0.02
+			}
+		}
+
+	}
+}
