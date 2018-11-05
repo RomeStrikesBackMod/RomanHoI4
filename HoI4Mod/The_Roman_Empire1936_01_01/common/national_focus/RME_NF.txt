@@ -40,10 +40,40 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = RME_four_year_plan }
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = RME_danube_limes.trigtt
 			OR = {
+				378 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				375 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				364 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
 				has_full_control_of_state = 378
 				has_full_control_of_state = 375
 				has_full_control_of_state = 364
+			}
 			}
 		}
 		x = -5
@@ -55,9 +85,50 @@ focus_tree = {
 		}
 			
 		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						378 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						375 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						364 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+					}
+				}
+				custom_effect_tooltip = RME_danube_limes.tt
+			}
 			378 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_danube_limes_378
 					hidden_effect = {
 						add_building_construction = {
@@ -95,7 +166,14 @@ focus_tree = {
 			}
 			375 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_danube_limes_375
 					hidden_effect = {
 						add_building_construction = {
@@ -121,7 +199,14 @@ focus_tree = {
 			}
 			364 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_danube_limes_364
 					hidden_effect = {
 						add_building_construction = {
@@ -172,6 +257,33 @@ focus_tree = {
 		prerequisite = { focus = RME_danube_limes }
 		available = {
 			OR = {
+				34 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				36 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				38 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
 				has_full_control_of_state = 34
 				has_full_control_of_state = 36
 				has_full_control_of_state = 38
@@ -187,10 +299,54 @@ focus_tree = {
 		}
 		
 		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						34 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						36 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						38 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						has_full_control_of_state = 378
+						has_full_control_of_state = 375
+						has_full_control_of_state = 364
+					}
+				}
+				custom_effect_tooltip = RME_rhine_limes.tt
+			}
 			add_ideas = RME_rhine_limes_idea
 			34 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_rhine_limes_34
 					hidden_effect = {
 						add_building_construction = {
@@ -216,7 +372,14 @@ focus_tree = {
 			}
 			36 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_rhine_limes_36
 					hidden_effect = {
 						add_building_construction = {
@@ -248,7 +411,14 @@ focus_tree = {
 			}
 			38 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_rhine_limes_38
 					hidden_effect = {
 						add_building_construction = {
@@ -287,6 +457,24 @@ focus_tree = {
 		prerequisite = { focus = RME_danube_limes }
 		available = {
 			OR = {
+				407 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
+				408 = {
+					owner = {
+						controls_state = PREV
+						OR = {
+							tag = RME
+							is_subject_of = RME
+						}
+					}
+				}
 				has_full_control_of_state = 407
 				has_full_control_of_state = 408
 			}
@@ -300,10 +488,44 @@ focus_tree = {
 		}
 		
 		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						407 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						408 = {
+							owner = {
+								controls_state = PREV
+								OR = {
+									tag = RME
+									is_subject_of = RME
+								}
+							}
+						}
+						has_full_control_of_state = 407
+						has_full_control_of_state = 408
+					}
+				}
+				custom_effect_tooltip = RME_georgia_limes.tt
+			}
 			add_ideas = RME_georgia_limes_idea
 			407 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_georgia_limes_407
 					hidden_effect = {
 						add_building_construction = {
@@ -383,7 +605,14 @@ focus_tree = {
 			}
 			408 = {
 				if = {
-					limit = { is_controlled_by = ROOT }
+					limit = {
+						controller = {
+							OR = {
+								tag = RME
+								is_subject_of = RME
+							}
+						}
+					}
 					custom_effect_tooltip = RME_georgia_limes_408
 					hidden_effect = {
 						add_building_construction = {
@@ -408,7 +637,7 @@ focus_tree = {
 		id = RME_autarky
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = RME_four_year_plan }
-		x = 4
+		x = 6
 		y = 1
 		relative_position_id = RME_four_year_plan
 		cost = 10
@@ -842,6 +1071,89 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RME_align_oman
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = RME_greater_economy }
+		x = 2
+		y = 1
+		relative_position_id = RME_greater_economy
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		bypass = {
+			OMA = {
+				OR = {
+					exists = no
+					is_subject = yes			
+					AND = {
+						is_subject = no
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					has_government = fascism
+				}
+				OMA = {
+					add_ideas = RME_align_TAG_fascism
+				}
+			}
+			if = {
+				limit = {
+					has_government = communism
+				}
+				OMA = {
+					add_ideas = RME_align_TAG_communism
+				}
+			}
+			if = {
+				limit = {
+					has_government = absolutist
+				}
+				OMA = {
+					add_ideas = RME_align_TAG_absolutist
+				}
+			}
+			#if = {
+			#	limit = {
+			#		#has_government = radical
+			#	}
+			#	OMA = {
+			#		add_ideas = RME_align_TAG_radical
+			#	}
+			#}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				OMA = {
+					add_ideas = RME_align_TAG_democratic
+				}
+			}	
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				OMA = {
+					add_ideas = RME_align_TAG_neutral
+				}
+			}	
+			OMA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = RME_align_TAG
+				}
+			}
+		}
+	}
+
+	focus = {
 		id = RME_align_iraq
 		icon = GFX_goal_generic_positive_trade_relations
 		prerequisite = { focus = RME_greater_economy }
@@ -872,7 +1184,7 @@ focus_tree = {
 					has_government = fascism
 				}
 				IRQ = {
-					add_ideas = RME_align_iraq_fascism
+					add_ideas = RME_align_TAG_fascism
 				}
 			}
 			if = {
@@ -880,7 +1192,7 @@ focus_tree = {
 					has_government = communism
 				}
 				IRQ = {
-					add_ideas = RME_align_iraq_communism
+					add_ideas = RME_align_TAG_communism
 				}
 			}
 			if = {
@@ -888,23 +1200,23 @@ focus_tree = {
 					has_government = absolutist
 				}
 				IRQ = {
-					add_ideas = RME_align_iraq_absolutist
+					add_ideas = RME_align_TAG_absolutist
 				}
 			}
-			if = {
-				limit = {
-					has_government = radical
-				}
-				IRQ = {
-					add_ideas = RME_align_iraq_radical
-				}
-			}
+			#if = {
+			#	limit = {
+			#		#has_government = radical
+			#	}
+			#	IRQ = {
+			#		add_ideas = RME_align_TAG_radical
+			#	}
+			#}
 			if = {
 				limit = {
 					has_government = democratic
 				}
 				IRQ = {
-					add_ideas = RME_align_iraq_democratic
+					add_ideas = RME_align_TAG_democratic
 				}
 			}	
 			if = {
@@ -912,13 +1224,13 @@ focus_tree = {
 					has_government = neutrality
 				}
 				IRQ = {
-					add_ideas = RME_align_iraq_unaligned
+					add_ideas = RME_align_TAG_neutral
 				}
 			}	
 			IRQ = {
 				add_opinion_modifier = {
 					target = ROOT
-					modifier = RME_align_iraq
+					modifier = RME_align_TAG
 				}
 			}
 		}
@@ -955,7 +1267,7 @@ focus_tree = {
 					has_government = fascism
 				}
 				X05 = {
-					add_ideas = RME_align_hedjaz_fascism
+					add_ideas = RME_align_TAG_fascism
 				}
 			}
 			if = {
@@ -963,7 +1275,7 @@ focus_tree = {
 					has_government = communism
 				}
 				X05 = {
-					add_ideas = RME_align_hedjaz_communism
+					add_ideas = RME_align_TAG_communism
 				}
 			}
 			if = {
@@ -971,23 +1283,23 @@ focus_tree = {
 					has_government = absolutist
 				}
 				X05 = {
-					add_ideas = RME_align_hedjaz_absolutist
+					add_ideas = RME_align_TAG_absolutist
 				}
 			}
-			if = {
-				limit = {
-					has_government = radical
-				}
-				X05 = {
-					add_ideas = RME_align_hedjaz_radical
-				}
-			}
+			#if = {
+			#	limit = {
+			#		#has_government = radical
+			#	}
+			#	X05 = {
+			#		add_ideas = RME_align_TAG_radical
+			#	}
+			#}
 			if = {
 				limit = {
 					has_government = democratic
 				}
 				X05 = {
-					add_ideas = RME_align_hedjaz_democratic
+					add_ideas = RME_align_TAG_democratic
 				}
 			}	
 			if = {
@@ -995,13 +1307,13 @@ focus_tree = {
 					has_government = neutrality
 				}
 				X05 = {
-					add_ideas = RME_align_hedjaz_unaligned
+					add_ideas = RME_align_TAG_neutral
 				}
 			}	
 			X05 = {
 				add_opinion_modifier = {
 					target = ROOT
-					modifier = RME_align_hedjaz
+					modifier = RME_align_TAG
 				}
 			}
 		}
@@ -1012,6 +1324,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = { focus = RME_align_iraq }
 		prerequisite = { focus = RME_align_hedjaz }
+		prerequisite = { focus = RME_align_oman }
 		mutually_exclusive = { focus = RME_roman_war_economy }
 		x = 0
 		y = 1
@@ -1028,6 +1341,10 @@ focus_tree = {
 					is_free_or_subject_of_root = yes
 				}
 				X05 = {
+					is_in_faction_with = ROOT
+					is_free_or_subject_of_root = yes
+				}
+				OMA = {
 					is_in_faction_with = ROOT
 					is_free_or_subject_of_root = yes
 				}
@@ -1095,6 +1412,26 @@ focus_tree = {
 					}
 				}
 			}
+			OMA = {
+				every_state = {
+					limit = { has_state_flag = RME_integrate_war_economies_1 }
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = { has_state_flag = RME_integrate_war_economies_2 }
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
 		}
 		
 		completion_reward = {
@@ -1109,6 +1446,12 @@ focus_tree = {
 					NOT = { is_in_faction_with = X05 }
 				}
 				custom_effect_tooltip = RME_integrate_war_economies_tt2
+			}
+			if = {
+				limit = {
+					NOT = { is_in_faction_with = OMA }
+				}
+				custom_effect_tooltip = RME_integrate_war_economies_tt3
 			}
 			if = {
 				limit = {
@@ -1153,6 +1496,46 @@ focus_tree = {
 			if = {
 				limit = {
 					X05 = {
+						is_in_faction_with = RME
+						is_free_or_subject_of_root = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = RME_integrate_war_economies_1
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = RME_integrate_war_economies_2
+				}
+			}
+			if = {
+				limit = {
+					OMA = {
 						is_in_faction_with = RME
 						is_free_or_subject_of_root = yes
 					}
@@ -1272,7 +1655,50 @@ focus_tree = {
 						}
 						set_state_flag = RME_integrate_war_economies_2
 					}
-					country_event = { id = wtt_germany.7 days = 1 }
+					#country_event = { id = wtt_germany.7 days = 1 }
+				}
+			}
+			if = {
+				limit = {
+					OMA = {
+						is_in_faction_with = RME
+						is_free_or_subject_of_root = yes
+					}
+				}
+				OMA = {
+					random_owned_controlled_state = {
+						limit = {
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+						}
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = arms_factory
+							level = 2
+							instant_build = yes
+						}
+						set_state_flag = RME_integrate_war_economies_1
+					}
+					random_owned_controlled_state = {
+						limit = {
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+						}
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = arms_factory
+							level = 2
+							instant_build = yes
+						}
+						set_state_flag = RME_integrate_war_economies_2
+					}
+					#country_event = { id = wtt_germany.7 days = 1 }
 				}
 			}
 			if = {
@@ -1297,6 +1723,18 @@ focus_tree = {
 				}
 				RME = {
 					set_autonomy = { target = X05 autonomy_state = autonomy_satellite }
+				}
+			}
+			if = {
+				limit = { 
+					has_dlc = "Death or Dishonor" 
+					OMA = {
+						is_in_faction_with = RME
+					}
+					is_subject = no
+				}
+				RME = {
+					set_autonomy = { target = OMA autonomy_state = autonomy_satellite }
 				}
 			}
 			if = {
@@ -1327,6 +1765,19 @@ focus_tree = {
 			}
 			if = {
 				limit = { 
+					has_dlc = "Together for Victory" 
+					NOT = { has_dlc = "Death or Dishonor" }
+					OMA = {
+						is_in_faction_with = RME
+					}
+					is_subject = no
+				}
+				RME = {
+					set_autonomy = { target = OMA autonomy_state = autonomy_dominion }
+				}
+			}
+			if = {
+				limit = { 
 					NOT = { has_dlc = "Together for Victory" }
 					NOT = { has_dlc = "Death or Dishonor" }
 					IRQ = {
@@ -1347,6 +1798,17 @@ focus_tree = {
 				}
 				puppet = X05
 			}
+			if = {
+				limit = { 
+					NOT = { has_dlc = "Together for Victory" }
+					NOT = { has_dlc = "Death or Dishonor" }
+					OMA = {
+						is_in_faction_with = RME
+					}
+					is_subject = no
+				}
+				puppet = OMA
+			}
 		}
 	}
 
@@ -1357,7 +1819,7 @@ focus_tree = {
 		available = {
 			has_government = absolutist
 		}
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = RME_integrate_war_economies
 		cost = 10
@@ -1380,7 +1842,7 @@ focus_tree = {
 		id = RME_air_innovation
 		text = air_innovation
 		icon = GFX_goal_generic_build_airforce
-		x = 16
+		x = 17
 		y = 0
 		cost = 10
 		ai_will_do = {
@@ -1414,7 +1876,7 @@ focus_tree = {
 				}
 			}
 			custom_effect_tooltip = available_chief_of_airforce
-			show_ideas_tooltip = ritter_von_greim
+			#show_ideas_tooltip = ritter_von_greim
 		}
 		
 		completion_reward = {
@@ -1490,7 +1952,7 @@ focus_tree = {
 				set_state_flag = RME_air_innovation_2air
 			}
 			custom_effect_tooltip = available_chief_of_airforce
-			show_ideas_tooltip = ritter_von_greim
+			#show_ideas_tooltip = ritter_von_greim
 		}
 	}
 
@@ -1611,7 +2073,7 @@ focus_tree = {
 	focus = {
 		id = RME_army_innovation
 		icon = GFX_goal_generic_axis_build_infantry
-		x = 19
+		x = 20
 		y = 0
 		cost = 10
 		ai_will_do = {
@@ -1633,18 +2095,18 @@ focus_tree = {
 				category = land_doctrine
 			}
 			custom_effect_tooltip = available_chief_of_army
-			show_ideas_tooltip = walther_von_brauchitsch			
+			#show_ideas_tooltip = walther_von_brauchitsch			
 		}
 	}
 	
 	focus = {
-		id = RME_soviet_treaty
+		id = RME_commonwealth_treaty
 		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = RME_army_innovation }
 		bypass = { 
 			OR = {
-				has_war_with = SOV
-				NOT = { country_exists = SOV }
+				has_war_with = PLC
+				NOT = { country_exists = PLC }
 				has_completed_focus = RME_bulwark_against_barbarism
 				has_completed_focus = RME_restore_rome
 			}
@@ -1658,20 +2120,17 @@ focus_tree = {
 			factor = 10
 		}	
 		completion_reward = {
-			SOV = {
-				country_event = { id = germany.75 days = 1 }
+			PLC = {
+				country_event = { id = tesb_rome.75 days = 1 }
 				custom_effect_tooltip = needs_approval
 			}
-			# Actual reward effects added in event if Soviets approve
 			effect_tooltip = {
-				# Trade influence with the USSR? Or simply let the opinion mod do the work
 				add_tech_bonus = {
 					name = med_armor_bonus
 					bonus = 0.5
 					ahead_reduction = 1
 					technology = basic_medium_tank
 				}
-				# Balance research bonus to 2 techs in armor, also in event
 				add_tech_bonus = {
 					name = armor_bonus
 					bonus = 0.5
@@ -1685,7 +2144,7 @@ focus_tree = {
 	focus = {
 		id = RME_air_innovation_2
 		icon = GFX_goal_generic_air_fighter2
-		prerequisite = { focus = RME_strategic_air_effort focus = RME_tactical_air_effort focus = RME_soviet_treaty }
+		prerequisite = { focus = RME_strategic_air_effort focus = RME_tactical_air_effort focus = RME_commonwealth_treaty }
 		x = 0
 		y = 2
 		relative_position_id = RME_strategic_air_effort
@@ -1699,7 +2158,7 @@ focus_tree = {
 		completion_reward = { 
 			air_experience = 50
 
-			add_ideas = RME_air_innovations_2_idea
+			#add_ideas = RME_air_innovations_2_idea
 			# Balance research bonus to next tech among radio, radio_detection, decimetric_radar, improved_decimetric_radar, centimetric_radar, improved_centimetric_radar, advanced_centimetric_radar
 			add_tech_bonus = {
 				name = radar_tech_bonus
@@ -1722,10 +2181,10 @@ focus_tree = {
 	focus = {
 		id = RME_army_innovation_2
 		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = RME_soviet_treaty }
+		prerequisite = { focus = RME_commonwealth_treaty }
 		x = 0
 		y = 2
-		relative_position_id = RME_soviet_treaty
+		relative_position_id = RME_commonwealth_treaty
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -1771,7 +2230,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = RME_rocketry_idea
+			#add_ideas = RME_rocketry_idea
 			add_tech_bonus = {
 				name = RME_rocketry_focus
 				bonus = 0.5
@@ -2230,7 +2689,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = RME_modular_construction
+			#add_ideas = RME_modular_construction
 		}
 	}
 
@@ -2238,7 +2697,7 @@ focus_tree = {
 		id = RME_denmark_friend
 		icon = GFX_goal_generic_improve_relations
 		prerequisite = { focus = RME_plan_z }
-		mutually_exclusive = { focus = RME_weserubung }
+		#mutually_exclusive = { focus = RME_weserubung }
 
 		available = {
 			has_government = fascism
@@ -2374,8 +2833,8 @@ focus_tree = {
 		prerequisite = { focus = RME_denmark_friend }
 		available = {
 			has_government = fascism
-			NOT = { has_war_with = HOL }
-			HOL = {
+			NOT = { has_war_with = BEL }
+			BEL = {
 				custom_trigger_tooltip = {
 					tooltip = RME_alone_or_peace_faction_tt
 					is_alone_or_in_faction_at_peace_with_RME = yes
@@ -2384,8 +2843,8 @@ focus_tree = {
 		}
 		bypass = {
 			OR = {
-				HOL = { is_in_faction_with = RME }
-				NOT = { country_exists = HOL }
+				BEL = { is_in_faction_with = RME }
+				NOT = { country_exists = BEL }
 			}
 		}
 		x = 1
@@ -2396,7 +2855,7 @@ focus_tree = {
 			factor = 1
 		}	
 		completion_reward = {
-			HOL = {
+			BEL = {
 				add_opinion_modifier = { target = RME modifier = ger_naval_intimidation_focus }
 				if = {
 					limit = {
@@ -2700,7 +3159,7 @@ focus_tree = {
 			is_puppet = no
 			absolutist > 0.4
 		}
-		x = -2
+		x = -1
 		y = 1
 		relative_position_id = RME_imperial_coronation
 		cost = 10
@@ -2719,7 +3178,7 @@ focus_tree = {
 		id = RME_caucasus
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = RME_bulwark_against_barbarism }
-		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_reestablish_roman_hegemony focus = RME_restore_rome }
 		available = {
 			is_puppet = no
 		}
@@ -2732,11 +3191,37 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_state_core = 407
-			add_state_core = 408
-			add_state_core = 409
-			add_state_core = 410
-			add_state_core = 486
+			custom_effect_tooltip = RME_caucasus.tt
+			if = {
+				limit = {
+					has_completed_focus = RME_reclaim_the_empire
+				}
+				add_state_core = 407
+				add_state_core = 408
+				add_state_core = 409
+				add_state_core = 410
+				add_state_core = 486
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_reestablish_roman_hegemony
+				}
+				add_state_core = 407
+				add_state_core = 408
+				add_state_core = 409
+				add_state_core = 410
+				add_state_core = 486
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome
+				}
+				add_state_core = 407
+				add_state_core = 408
+				add_state_core = 409
+				add_state_core = 410
+				add_state_core = 486
+			}
 		}
 	}
 
@@ -2744,7 +3229,7 @@ focus_tree = {
 		id = RME_eastern_mediterranean
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = RME_bulwark_against_barbarism }
-		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_reestablish_roman_hegemony focus = RME_restore_rome }
 		available = {
 			is_puppet = no
 		}
@@ -2757,18 +3242,58 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_state_core = 404
-			add_state_core = 405
-			add_state_core = 406
-			add_state_core = 431
-			add_state_core = 432
-			add_state_core = 433
-			add_state_core = 434
-			add_state_core = 435
-			add_state_core = 436
-			add_state_core = 437
-			add_state_core = 456
-			add_state_core = 487
+			custom_effect_tooltip = RME_eastern_mediterranean.tt
+			if = {
+				limit = {
+					has_completed_focus = RME_reclaim_the_empire
+				}
+				add_state_core = 404
+				add_state_core = 405
+				add_state_core = 406
+				add_state_core = 431
+				add_state_core = 432
+				add_state_core = 433
+				add_state_core = 434
+				add_state_core = 435
+				add_state_core = 436
+				add_state_core = 437
+				add_state_core = 456
+				add_state_core = 487
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_reestablish_roman_hegemony
+				}
+				add_state_core = 404
+				add_state_core = 405
+				add_state_core = 406
+				add_state_core = 431
+				add_state_core = 432
+				add_state_core = 433
+				add_state_core = 434
+				add_state_core = 435
+				add_state_core = 436
+				add_state_core = 437
+				add_state_core = 456
+				add_state_core = 487
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome
+				}
+				add_state_core = 404
+				add_state_core = 405
+				add_state_core = 406
+				add_state_core = 431
+				add_state_core = 432
+				add_state_core = 433
+				add_state_core = 434
+				add_state_core = 435
+				add_state_core = 436
+				add_state_core = 437
+				add_state_core = 456
+				add_state_core = 487
+			}
 		}
 	}
 	
@@ -2776,7 +3301,7 @@ focus_tree = {
 		id = RME_balkans
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = RME_bulwark_against_barbarism }
-		prerequisite = { focus = RME_reclaim_the_empire focus = RME_restore_rome }
+		prerequisite = { focus = RME_reclaim_the_empire focus = RME_reestablish_roman_hegemony focus = RME_restore_rome }
 		available = {
 			is_puppet = no
 		}
@@ -2789,20 +3314,64 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_state_core = 364
-			add_state_core = 365
-			add_state_core = 366
-			add_state_core = 367
-			add_state_core = 368
-			add_state_core = 369
-			add_state_core = 373
-			add_state_core = 374
-			add_state_core = 375
-			add_state_core = 376
-			add_state_core = 377
-			add_state_core = 378
-			add_state_core = 379
-			add_state_core = 380
+			custom_effect_tooltip = RME_balkans.tt
+			if = {
+				limit = {
+					has_completed_focus = RME_reclaim_the_empire
+				}
+				add_state_core = 364
+				add_state_core = 365
+				add_state_core = 366
+				add_state_core = 367
+				add_state_core = 368
+				add_state_core = 369
+				add_state_core = 373
+				add_state_core = 374
+				add_state_core = 375
+				add_state_core = 376
+				add_state_core = 377
+				add_state_core = 378
+				add_state_core = 379
+				add_state_core = 380
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_reestablish_roman_hegemony
+				}
+				add_state_core = 364
+				add_state_core = 365
+				add_state_core = 366
+				add_state_core = 367
+				add_state_core = 368
+				add_state_core = 369
+				add_state_core = 373
+				add_state_core = 374
+				add_state_core = 375
+				add_state_core = 376
+				add_state_core = 377
+				add_state_core = 378
+				add_state_core = 379
+				add_state_core = 380
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome
+				}
+				add_state_core = 364
+				add_state_core = 365
+				add_state_core = 366
+				add_state_core = 367
+				add_state_core = 368
+				add_state_core = 369
+				add_state_core = 373
+				add_state_core = 374
+				add_state_core = 375
+				add_state_core = 376
+				add_state_core = 377
+				add_state_core = 378
+				add_state_core = 379
+				add_state_core = 380
+			}
 		}
 	}
 	
@@ -3022,10 +3591,10 @@ focus_tree = {
 		completion_reward = {
 			add_war_support = 0.05
 			add_named_threat = { threat = 5 name = RME_focus_on_the_true_enemy }
-			swap_ideas = {
-				remove_idea = RME_imperial_coronation
-				add_idea = RME_revive_the_kaiserreich2
-			}
+			#swap_ideas = {
+				#remove_idea = RME_imperial_coronation
+				#add_idea = RME_revive_the_kaiserreich2
+			#}
 		}
 	}
 
@@ -3069,7 +3638,7 @@ focus_tree = {
 				category = bb_tech
 				category = shbb_tech
 			}
-			add_ideas = RME_rebuild_the_high_seas_fleet
+			#add_ideas = RME_rebuild_the_high_seas_fleet
 		}
 		
 		completion_reward = {
@@ -3104,7 +3673,7 @@ focus_tree = {
 				category = bb_tech
 				category = shbb_tech
 			}
-			add_ideas = RME_rebuild_the_high_seas_fleet
+			#add_ideas = RME_rebuild_the_high_seas_fleet
 		}
 	}
 
@@ -3126,16 +3695,16 @@ focus_tree = {
 		completion_reward = {
 			add_war_support = 0.05
 			ENG = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = RME_our_place_in_the_sun
-				}
+				#add_opinion_modifier = {
+					#target = ROOT
+					#modifier = RME_our_place_in_the_sun
+				#}
 			}
 			FRA = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = RME_our_place_in_the_sun
-				}
+				#add_opinion_modifier = {
+					#target = ROOT
+					#modifier = RME_our_place_in_the_sun
+				#}
 			}
 			add_named_threat = { threat = 5 name = RME_our_place_in_the_sun }
 			if = {
@@ -3262,7 +3831,7 @@ focus_tree = {
 		
 		completion_reward = {
 			add_stability = 0.05
-			add_ideas = RME_prepare_for_the_next_blockade
+			#add_ideas = RME_prepare_for_the_next_blockade
 		}
 	}
 
@@ -3322,15 +3891,15 @@ focus_tree = {
 				}
 			}
 			NOT = { is_in_faction_with = BEL }
-			NOT = { is_in_faction_with = LUX }
+			#NOT = { is_in_faction_with = LUX }
 		}
 		bypass = {
 			NOT = { country_exists = BEL }
-			NOT = { country_exists = LUX }
+			#NOT = { country_exists = LUX }
 		}
 		cancel_if_invalid = yes
 		will_lead_to_war_with = BEL
-		will_lead_to_war_with = LUX
+		#will_lead_to_war_with = LUX
 		x = 0
 		y = 1
 		relative_position_id = RME_break_the_anglo_french_colonial_hegemony
@@ -3497,67 +4066,6 @@ focus_tree = {
 				}
 				create_faction = "RME_central_powers_faction"
 			}
-
-			if = {
-				limit = {
-					ITA = { 
-						is_ai = yes
-						is_puppet = no
-						is_in_faction = no
-						has_government = neutrality
-						NOT = { has_war_with = RME }
-					}					
-				}
-				add_to_faction = ITA
-				ITA = {
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"
-						value = 200
-					}
-				}
-			}
-			if = {
-				limit = {
-					HUN = { 
-						is_ai = yes
-						is_puppet = no
-						is_in_faction = no
-						has_government = neutrality
-						NOT = { has_war_with = RME }
-					}					
-					NOT = { country_exists = AUS }
-				}
-				add_to_faction = HUN
-				HUN = {
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"
-						value = 200
-					}
-				}
-			}
-			if = {
-				limit = {
-					AUS = { 
-						exists = yes
-						is_ai = yes
-						is_puppet = no
-						is_in_faction = no
-						has_government = neutrality
-						NOT = { has_war_with = RME }
-					}		
-					NOT = { country_exists = HUN }			
-				}
-				add_to_faction = AUS
-				AUS = {
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"
-						value = 200
-					}
-				}
-			}
 		}
 	}
 
@@ -3585,7 +4093,7 @@ focus_tree = {
 			custom_effect_tooltip = RME_prepare_italian_coup_tt
 			effect_tooltip = {
 				ITA = {
-					add_ideas = RME_preparing_ITA_coup
+					#add_ideas = RME_preparing_ITA_coup
 				}
 			}
 		}
@@ -3617,22 +4125,22 @@ focus_tree = {
 				ITA = {
 					set_politics = { ruling_party = neutrality elections_allowed = no }
 					add_popularity = { ideology = neutrality popularity = 0.1 }
-					swap_ideas = {
-						remove_idea = RME_preparing_ITA_coup
-						add_idea = RME_preparing_ITA_coup2
-					}
+					#swap_ideas = {
+					#	remove_idea = RME_preparing_ITA_coup
+					#	add_idea = RME_preparing_ITA_coup2
+					#}
 					kill_country_leader = yes
 					create_country_leader = {
 						name = "Victor Emmanuel III"
 						desc = "POLITICS_VICTOR_EMMANUEL_III_DESC"
 						picture = "GFX_portrait_italy_victor_emmanuel_iii"
 						expire = "1965.1.1"
-						ideology = despotism
+						ideology = absolute_monarchy_neutral
 						traits = {
 			
 						}
 					}
-					hidden_effect = { remove_ideas = victor_emmanuel }
+					#hidden_effect = { remove_ideas = victor_emmanuel }
 					RME = {
 						add_to_faction = ITA
 						country_event = { id = wtt_germany.12 }
@@ -3667,7 +4175,7 @@ focus_tree = {
 					AUS = { exists = yes }
 				}
 				AUS = {
-					add_ideas = RME_rekindle_imperial_sentiment
+					#add_ideas = RME_rekindle_imperial_sentiment
 				}
 			}
 			if = {
@@ -3675,7 +4183,7 @@ focus_tree = {
 					HUN = { exists = yes }
 				}
 				HUN = {
-					add_ideas = RME_rekindle_imperial_sentiment
+					#add_ideas = RME_rekindle_imperial_sentiment
 				}
 			}
 			if = {
@@ -3683,7 +4191,7 @@ focus_tree = {
 					CZE = { exists = yes }
 				}
 				CZE = {
-					add_ideas = RME_rekindle_imperial_sentiment
+					#add_ideas = RME_rekindle_imperial_sentiment
 				}
 			}
 			custom_effect_tooltip = RME_rekindle_imperial_sentiment_tt
@@ -3710,10 +4218,10 @@ focus_tree = {
 		
 		completion_reward = {
 			add_war_support = 0.05
-			add_ideas = RME_expatriate_the_communists
+			#add_ideas = RME_expatriate_the_communists
 			add_named_threat = { threat = 5 name = RME_expatriate_the_communists }
 			FRA = { 
-				add_ideas = RME_communist_refugees
+				#add_ideas = RME_communist_refugees
 				country_event = { id = wtt_germany.17 }
 			}
 			hidden_effect = {
@@ -3756,12 +4264,12 @@ focus_tree = {
 		
 		completion_reward = {
 			ENG = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = RME_accept_british_naval_dominance_opinion
-				}
+				#add_opinion_modifier = {
+					#target = ROOT
+					#modifier = RME_accept_british_naval_dominance_opinion
+				#}
 			}
-			add_ideas = RME_redirecting_naval_production
+			#add_ideas = RME_redirecting_naval_production
 		}
 	}
 
@@ -3829,7 +4337,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_reclaim_the_empire
+		id = RME_reestablish_roman_hegemony
 		icon = GFX_goal_generic_position_armies
 		prerequisite = { focus = RME_eimai_to_kratos }
 		available = { 
@@ -3839,6 +4347,85 @@ focus_tree = {
 		x = 0
 		y = 2
 		relative_position_id = RME_eimai_to_kratos
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+		
+		completion_reward = {
+			add_named_threat = { threat = 10 name = RME_reclaim_the_empire }
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = ALG
+						tag = ANG
+						tag = AQI
+						tag = ARM
+						tag = AST
+						tag = AZR
+						tag = BEL
+						tag = BEN
+						tag = BRG
+						tag = BRI
+						tag = BRK
+						tag = CAT
+						tag = CHD
+						tag = CMR
+						tag = COG
+						tag = CRO
+						tag = DAH
+						tag = EGY
+						tag = ENG
+						tag = FRA
+						tag = GAB
+						tag = GEO
+						tag = GUI
+						tag = GUY
+						tag = INS
+						tag = IRQ
+						tag = ISR
+						tag = ITA
+						tag = LBA
+						tag = LIB
+						tag = MAR
+						tag = MAU
+						tag = MLI
+						tag = NGR
+						tag = NIG
+						tag = NBR
+						tag = NMB
+						tag = NZL
+						tag = PHI
+						tag = SAF
+						tag = SEN
+						tag = SER
+						tag = SIC
+						tag = SPR
+						tag = SWI
+						tag = SYR
+						tag = TOG
+						tag = TUN
+						tag = WAL
+						tag = X43
+						tag = YUG
+					}
+				}
+				country_event = { id = tesb_news.3 }
+			}
+		}
+	}
+
+	focus = {
+		id = RME_reclaim_the_empire
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = RME_embrace_imperialists }
+		available = { 
+			is_puppet = no
+		}
+		cancel_if_invalid = yes
+		x = 0
+		y = 1
+		relative_position_id = RME_embrace_imperialists
 		cost = 10
 		ai_will_do = {
 			factor = 5
@@ -3955,9 +4542,57 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RME_embrace_imperialists
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = RME_constitutional_convention }
+		mutually_exclusive = { focus = RME_reject_imperialists }
+		available = {
+			is_puppet = no
+			democratic > 0.4
+		}
+		cancel_if_invalid = yes
+		x = 0
+		y = 1
+		relative_position_id = RME_constitutional_convention
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.1 }
+			add_ideas = { RME_a_new_empire }
+		}
+	}
+	
+	focus = {
+		id = RME_reject_imperialists
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		prerequisite = { focus = RME_constitutional_convention }
+		mutually_exclusive = { focus = RME_embrace_imperialists }
+		available = {
+			is_puppet = no
+			democratic > 0.4
+		}
+		cancel_if_invalid = yes
+		x = 2
+		y = 1
+		relative_position_id = RME_constitutional_convention
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = -0.2 }
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
 		id = RME_restore_rome
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = RME_constitutional_convention }
+		prerequisite = { focus = RME_reject_imperialists }
 		available = {
 			is_puppet = no
 			has_war = no
@@ -3965,8 +4600,8 @@ focus_tree = {
 		}
 		cancel_if_invalid = yes
 		x = 0
-		y = 2
-		relative_position_id = RME_constitutional_convention
+		y = 1
+		relative_position_id = RME_reject_imperialists
 		cost = 10
 		ai_will_do = {
 			factor = 8
@@ -4079,9 +4714,9 @@ focus_tree = {
 				}
 				remove_ideas = neutrality_idea
 			}
-			SOV = { country_event = { id = wtt_germany.20 days = 1 } }
+			#SOV = { country_event = { id = wtt_germany.20 days = 1 } }
 			hidden_effect = {
-				news_event = { id = wtt_news.22 hours = 6 }
+				#news_event = { id = wtt_news.22 hours = 6 }
 				if = {
 					limit = {
 						FRA = { has_government = communism }
@@ -4168,7 +4803,7 @@ focus_tree = {
 				}
 				# Making England less likely to guarantee European nations.
 				ENG = {
-					RME_democratic_nations_ai_strategies = yes
+					#RME_democratic_nations_ai_strategies = yes
 				}
 			}
 		}
@@ -4453,21 +5088,21 @@ focus_tree = {
 		prerequisite = { focus = RME_central_european_alliance }
 		available = {
 			is_puppet = no
-			NOT = { has_war_with = HOL }
+			#NOT = { has_war_with = HOL }
 			NOT = { has_war_with = BEL }
-			NOT = { has_war_with = LUX }
+			#NOT = { has_war_with = LUX }
 		}
 		bypass = {
 			OR = {
 				AND = {
-					is_in_faction_with = HOL
+					#is_in_faction_with = HOL
 					is_in_faction_with = BEL
-					is_in_faction_with = LUX
+					#is_in_faction_with = LUX
 				}
 				AND = {
-					NOT = { country_exists = HOL }
+					#NOT = { country_exists = HOL }
 					NOT = { country_exists = BEL }
-					NOT = { country_exists = LUX }
+					#NOT = { country_exists = LUX }
 				}
 			}
 		}
@@ -4482,19 +5117,19 @@ focus_tree = {
 		
 		completion_reward = {
 			custom_effect_tooltip = invite_non_fascist_communist_only_TT
-			if = {
-				limit = {
-					HOL = {
-						NOT = {
-							has_government = communism
-							has_government = fascism
-						}
-					}
-				}
-				HOL = {
-					country_event = { id = generic.5 }
-				}
-			}
+			#if = {
+			#	limit = {
+			#		HOL = {
+			#			NOT = {
+			#				has_government = communism
+			#				has_government = fascism
+			#			}
+			#		}
+			#	}
+			#	HOL = {
+			#		country_event = { id = generic.5 }
+			#	}
+			#}
 			if = {
 				limit = {
 					BEL = {
@@ -4508,19 +5143,19 @@ focus_tree = {
 					country_event = { id = generic.5 }
 				}
 			}
-			if = {
-				limit = {
-					LUX = {
-						NOT = {
-							has_government = communism
-							has_government = fascism
-						}
-					}
-				}
-				LUX = {
-					country_event = { id = generic.5 }
-				}
-			}
+			#if = {
+			#	limit = {
+			#		LUX = {
+			#			NOT = {
+			#				has_government = communism
+			#				has_government = fascism
+			#			}
+			#		}
+			#	}
+			#	LUX = {
+			#		country_event = { id = generic.5 }
+			#	}
+			#}
 		}
 	}
 
@@ -4535,18 +5170,18 @@ focus_tree = {
 					original_tag = FRA
 					has_government = communism 
 				}
-				any_country = { 
-					original_tag = HOL
-					has_government = communism 
-				}
+				#any_country = { 
+				#	original_tag = HOL
+				#	has_government = communism 
+				#}
 				any_country = { 
 					original_tag = BEL
 					has_government = communism 
 				}
-				any_country = { 
-					original_tag = LUX
-					has_government = communism 
-				}
+				#any_country = { 
+				#	original_tag = LUX
+				#	has_government = communism 
+				#}
 			}
 		}
 		x = 0
@@ -4582,29 +5217,29 @@ focus_tree = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					any_country = { 
-						original_tag = HOL
-						has_government = communism 
-					}
-				}
-				custom_effect_tooltip = RME_no_reds_in_western_europe_HOL_tt
-				hidden_effect = {
-					random_other_country = {
-						limit = {
-							original_tag = HOL
-							has_government = communism
-						}
-						RME = {
-							create_wargoal = {
-								type = topple_government
-								target = PREV
-							}
-						}
-					}
-				}
-			}
+			#if = {
+			#	limit = {
+			#		any_country = { 
+			#			original_tag = HOL
+			#			has_government = communism 
+			#		}
+			#	}
+			#	custom_effect_tooltip = RME_no_reds_in_western_europe_HOL_tt
+			#	hidden_effect = {
+			#		random_other_country = {
+			#			limit = {
+			#				original_tag = HOL
+			#				has_government = communism
+			#			}
+			#			RME = {
+			#				create_wargoal = {
+			#					type = topple_government
+			#					target = PREV
+			#				}
+			#			}
+			#		}
+			#	}
+			#}
 			if = {
 				limit = {
 					any_country = { 
@@ -4628,29 +5263,29 @@ focus_tree = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					any_country = { 
-						original_tag = LUX
-						has_government = communism 
-					}
-				}
-				custom_effect_tooltip = RME_no_reds_in_western_europe_LUX_tt
-				hidden_effect = {
-					random_other_country = {
-						limit = {
-							original_tag = LUX
-							has_government = communism
-						}
-						RME = {
-							create_wargoal = {
-								type = topple_government
-								target = PREV
-							}
-						}
-					}
-				}
-			}
+			#if = {
+			#	limit = {
+			#		any_country = { 
+			#			original_tag = LUX
+			#			has_government = communism 
+			#		}
+			#	}
+			#	custom_effect_tooltip = RME_no_reds_in_western_europe_LUX_tt
+			#	hidden_effect = {
+			#		random_other_country = {
+			#			limit = {
+			#				original_tag = LUX
+			#				has_government = communism
+			#			}
+			#			RME = {
+			#				create_wargoal = {
+			#					type = topple_government
+			#					target = PREV
+			#				}
+			#			}
+			#		}
+			#	}
+			#}
 		}
 	}
 
@@ -4737,42 +5372,42 @@ focus_tree = {
 		prerequisite = { focus = RME_scandinavian_membership }
 		available = {
 			is_puppet = no
-			NOT = { has_war_with = EST }
-			NOT = { has_war_with = LAT }
+			#NOT = { has_war_with = EST }
+			##NOT = { has_war_with = LAT }
 			NOT = { has_war_with = LIT }
 			SOV = {
 				OR = {
-					NOT = { has_war_with = EST }
-					NOT = { has_war_with = LAT }
-					NOT = { has_war_with = LIT }
+					#NOT = { has_war_with = EST }
+					#NOT = { has_war_with = LAT }
+					#NOT = { has_war_with = LIT }
 				}
 			}
 		}
 		bypass = {
-			EST = {
-				OR = {
-					is_in_faction_with = ROOT
-					is_in_faction_with = SOV
-					exists = no
-					has_war_with = SOV
-				}
-			}
-			LAT = {
-				OR = {
-					is_in_faction_with = ROOT
-					is_in_faction_with = SOV
-					exists = no
-					has_war_with = SOV
-				}
-			}
-			LIT = {
-				OR = {
-					is_in_faction_with = ROOT
-					is_in_faction_with = SOV
-					exists = no
-					has_war_with = SOV
-				}
-			}
+		#	EST = {
+		#		OR = {
+		#			is_in_faction_with = ROOT
+		#			is_in_faction_with = SOV
+		#			exists = no
+		#			has_war_with = SOV
+		#		}
+		#	}
+		#	LAT = {
+		#		OR = {
+		#			is_in_faction_with = ROOT
+		#			is_in_faction_with = SOV
+		#			exists = no
+		#			has_war_with = SOV
+		#		}
+		#	}
+		#	LIT = {
+		#		OR = {
+		#			is_in_faction_with = ROOT
+		#			is_in_faction_with = SOV
+		#			exists = no
+		#			has_war_with = SOV
+		#		}
+		#	}
 		}
 		cancel_if_invalid = yes
 		x = -2
@@ -4786,60 +5421,60 @@ focus_tree = {
 		completion_reward = {
 			add_named_threat = { threat = 5 name = RME_baltic_membership }
 			custom_effect_tooltip = invite_non_fascist_communist_only_TT
-			if = {
-				limit = {
-					EST = {
-						NOT = {
-							has_government = communism
-							has_government = fascism
-						}
-					}
-				}
-				EST = {
-					country_event = { id = generic.5 }
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"			
-						value = 200
-					}	
-				}
-			}
-			if = {
-				limit = {
-					LAT = {
-						NOT = {
-							has_government = communism
-							has_government = fascism
-						}
-					}
-				}
-				LAT = {
-					country_event = { id = generic.5 }
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"			
-						value = 200
-					}	
-				}
-			}
-			if = {
-				limit = {
-					LIT = {
-						NOT = {
-							has_government = communism
-							has_government = fascism
-						}
-					}
-				}
-				LIT = {
-					country_event = { id = generic.5 }
-					add_ai_strategy = {
-						type = alliance
-						id = "RME"			
-						value = 200
-					}	
-				}
-			}
+			#if = {
+			#	limit = {
+			#		EST = {
+			#			NOT = {
+			#				has_government = communism
+			#				has_government = fascism
+			#			}
+			#		}
+			#	}
+			#	EST = {
+			#		country_event = { id = generic.5 }
+			#		add_ai_strategy = {
+			#			type = alliance
+			#			id = "RME"			
+			#			value = 200
+			#		}	
+			#	}
+			#}
+			#if = {
+			#	limit = {
+			#		LAT = {
+			#			NOT = {
+			#				has_government = communism
+			#				has_government = fascism
+			#			}
+			#		}
+			#	}
+			#	LAT = {
+			#		country_event = { id = generic.5 }
+			#		add_ai_strategy = {
+			#			type = alliance
+			#			id = "RME"			
+			#			value = 200
+			#		}	
+			#	}
+			#}
+			#if = {
+			#	limit = {
+			#		LIT = {
+			#			NOT = {
+			#				has_government = communism
+			#				has_government = fascism
+			#			}
+			#		}
+			#	}
+			#	LIT = {
+			#		country_event = { id = generic.5 }
+			#		add_ai_strategy = {
+			#			type = alliance
+			#			id = "RME"			
+			#			value = 200
+			#		}	
+			#	}
+			#}
 			SOV = { country_event = { id = wtt_germany.21 } }
 			POL = {
 				add_ai_strategy = {
@@ -4910,27 +5545,27 @@ focus_tree = {
 				}
 			}
 			SOV = { country_event = { id = wtt_germany.22 } }
-			EST = {
-				add_ai_strategy = {
-					type = alliance
-					id = "ENG"			
-					value = -500
-				}	
-			}
-			LAT = {
-				add_ai_strategy = {
-					type = alliance
-					id = "ENG"			
-					value = -500
-				}	
-			}
-			LIT = {
-				add_ai_strategy = {
-					type = alliance
-					id = "ENG"			
-					value = -500
-				}	
-			}
+			#EST = {
+			#	add_ai_strategy = {
+			#		type = alliance
+			#		id = "ENG"			
+			#		value = -500
+			#	}	
+			#}
+			#LAT = {
+			#	add_ai_strategy = {
+			#		type = alliance
+			#		id = "ENG"			
+			#		value = -500
+			#	}	
+			#}
+			#LIT = {
+			#	add_ai_strategy = {
+			#		type = alliance
+			#		id = "ENG"			
+			#		value = -500
+			#	}	
+			#}
 			FIN = {
 				add_ai_strategy = {
 					type = alliance
@@ -4993,27 +5628,27 @@ focus_tree = {
 				}
 			}
 			SOV = { country_event = { id = wtt_germany.23 } }
-			EST = {
-				add_ai_strategy = {
-					type = alliance
-					id = "ENG"			
-					value = -500
-				}	
-			}
-			LAT = {
-				add_ai_strategy = {
-					type = alliance
-					id = "ENG"			
-					value = -500
-				}	
-			}
-			LIT = {
-				add_ai_strategy = {
-					type = alliance
-					id = "ENG"			
-					value = -500
-				}	
-			}
+			#EST = {
+			#	add_ai_strategy = {
+			#		type = alliance
+			#		id = "ENG"			
+			#		value = -500
+			#	}	
+			#}
+			#LAT = {
+			#	add_ai_strategy = {
+			#		type = alliance
+			#		id = "ENG"			
+			#		value = -500
+			#	}	
+			#}
+			#LIT = {
+			#	add_ai_strategy = {
+			#		type = alliance
+			#		id = "ENG"			
+			#		value = -500
+			#	}	
+			#}
 			POL = {
 				add_ai_strategy = {
 					type = alliance
@@ -5077,7 +5712,7 @@ focus_tree = {
 		available = {
 			is_puppet = no
 		}
-		x = 2
+		x = 7
 		y = 1
 		relative_position_id = RME_constitutional_convention
 		cost = 10
@@ -5193,12 +5828,12 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_ideas = RME_pool_technical_know_how
+			#add_ideas = RME_pool_technical_know_how
 			custom_effect_tooltip = RME_pool_technical_know_how_tt
 			hidden_effect = {
 				every_other_country = {
 					limit = { is_in_faction_with = RME }
-					add_ideas = RME_pool_technical_know_how
+					#add_ideas = RME_pool_technical_know_how
 				}
 			}
 		}

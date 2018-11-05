@@ -1,4 +1,34 @@
 regaining_rome = {
+	negotiate_with_territory = {
+		icon = generic_form_nation
+		available = {
+			has_completed_focus = RME_restore_rome
+			FROM = {
+				is_subject = no			
+			}
+		}
+		
+		visible = {
+			FROM = {
+				exists = yes
+			}
+		}
+		target_trigger = {
+			FROM = {
+				has_idea = RME_former_territory
+				any_owned_state = {
+					is_core_of = RME
+				}
+			}
+		}
+		
+		cost = 50
+		
+		complete_effect = {
+			country_event = { id = tesb_rome.115 hours = 1 }
+		}
+		
+	}
 	negotiate_with_georgia = {
 		icon = generic_form_nation
 

@@ -1,0 +1,18 @@
+is_alone_or_in_faction_at_peace_with_RME = {
+	OR = {
+		is_in_faction = no
+		is_in_faction_with = RME
+		AND = {
+			is_in_faction = yes
+			NOT = {
+				is_in_faction_with = RME
+			}
+		}
+	}
+	NOT = {
+		any_other_country = {
+			is_in_faction_with = PREV
+			has_war_with = RME
+		}
+	}
+}
