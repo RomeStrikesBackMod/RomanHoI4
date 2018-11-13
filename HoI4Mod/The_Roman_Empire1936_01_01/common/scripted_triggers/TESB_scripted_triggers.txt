@@ -16,3 +16,29 @@ is_alone_or_in_faction_at_peace_with_RME = {
 		}
 	}
 }
+
+#state_scope
+is_owned_by_ROOT_or_subject = {
+	custom_trigger_tooltip = {
+		tooltip = is_owned_by_ROOT_or_subject
+		OWNER = {
+			OR = {
+				tag = ROOT
+				is_subject_of = ROOT
+			}
+		}
+	}
+}
+
+is_free_ally_or_subject_of_root = {
+	custom_trigger_tooltip = {
+		tooltip = is_free_ally_or_subject_of_root.tt
+		OR = {
+			AND = {
+				is_subject = no
+				is_in_faction_with = ROOT
+			}
+			is_subject_of = ROOT
+		}
+	}
+}
