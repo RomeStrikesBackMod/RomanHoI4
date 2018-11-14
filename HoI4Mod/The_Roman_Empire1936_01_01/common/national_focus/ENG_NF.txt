@@ -1531,7 +1531,6 @@ focus_tree = {
 				has_government = communism
 				has_government = fascism
 				has_government = neutrality
-				#has_government = radical
 			}
 		}
 		completion_reward = {
@@ -1656,13 +1655,6 @@ focus_tree = {
 					popularity = 0.2
 				}
 			}
-			#if = {
-			#	limit = { #has_government = radical }
-			#	add_popularity = {
-			#		ideology = radical
-			#		popularity = 0.2
-			#	}
-			#}
 		}
 	}
 
@@ -1914,7 +1906,6 @@ focus_tree = {
 						has_government = democratic
 						has_government = fascism
 						has_government = neutrality
-						#has_government = radical
 					}
 				}
 				NOT = {
@@ -2050,7 +2041,7 @@ focus_tree = {
 		id = technology_sharingENG
 		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = ideological_fanaticismENG focus = why_we_fightENG }
-		x = 4
+		x = 3
 		y = 1
 		relative_position_id = ideological_fanaticismENG
 		cost = 10
@@ -2157,6 +2148,117 @@ focus_tree = {
 	}
 
 	focus = {
+		id = WarPlanENGRME
+		icon = GFX_goal_generic_position_armies
+		text = "War Plan The Roman Empire"
+		prerequisite = { focus = LimENG }
+		bypass = {
+			has_war_with = RME
+		}
+		x = -5
+		y = 1
+		relative_position_id = LimENG
+		cost = 10
+		available = {
+			any_other_country = {
+				original_tag = RME
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = ENG }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+				}
+			}
+		}
+		completion_reward = {
+			army_experience = 20
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = EmbargoENGRME
+		icon = GFX_goal_generic_trade
+		text = "Embargo The Roman Empire"
+		prerequisite = { focus =  WarPlanENGRME }
+		bypass = {
+			has_war_with = RME
+		}
+		x = 0
+		y = 1
+		relative_position_id = WarPlanENGRME
+		cost = 10
+		available = {
+			any_other_country = {
+				original_tag = RME
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = ENG }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+					threat > 0.6
+				}
+			}
+		}
+		completion_reward = {
+			RME = {
+				add_opinion_modifier = { target = ENG modifier = embargo }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = WARENGRME
+		icon = GFX_goal_support_democracy
+		text = "Enact War Plan The Roman Empire"
+		prerequisite = { focus =  EmbargoENGRME }
+		prerequisite = { focus =  LimENG }
+		bypass = {
+			has_war_with = RME
+		}
+		x = 2
+		y = 1
+		relative_position_id = EmbargoENGRME
+		cost = 10
+		available = {
+			has_war = no
+			any_other_country = {
+				original_tag = RME
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = ENG }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+					threat > 0.6
+				}
+			}
+		}
+		completion_reward = {
+			declare_war_on = {
+				type = puppet_wargoal_focus
+				target = RME
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
 		id = WarPlanENGJAP
 		icon = GFX_goal_generic_position_armies
 		text = "War Plan Japan"
@@ -2164,7 +2266,7 @@ focus_tree = {
 		bypass = {
 			has_war_with = JAP
 		}
-		x = -5
+		x = -1
 		y = 1
 		relative_position_id = LimENG
 		cost = 10
@@ -2268,123 +2370,12 @@ focus_tree = {
 	}
 
 	focus = {
-		id = WarPlanENGX16
+		id = WarPlanENGMNG
 		icon = GFX_goal_generic_position_armies
 		text = "War Plan Ming"
 		prerequisite = { focus = LimENG }
 		bypass = {
-			has_war_with = X16
-		}
-		x = -1
-		y = 1
-		relative_position_id = LimENG
-		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = X16
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-				}
-			}
-		}
-		completion_reward = {
-			army_experience = 20
-			add_tech_bonus = {
-				name = land_doc_bonus
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = EmbargoENGX16
-		icon = GFX_goal_generic_trade
-		text = "Embargo Ming"
-		prerequisite = { focus =  WarPlanENGX16 }
-		bypass = {
-			has_war_with = X16
-		}
-		x = 0
-		y = 1
-		relative_position_id = WarPlanENGX16
-		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = X16
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
-		}
-		completion_reward = {
-			X16 = {
-				add_opinion_modifier = { target = ENG modifier = embargo }
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = WARENGX16
-		icon = GFX_goal_support_democracy
-		text = "Enact War Plan Ming"
-		prerequisite = { focus =  EmbargoENGX16 }
-		prerequisite = { focus =  LimENG }
-		bypass = {
-			has_war_with = X16
-		}
-		x = 2
-		y = 1
-		relative_position_id = EmbargoENGX16
-		cost = 10
-		available = {
-			has_war = no
-			any_other_country = {
-				original_tag = X16
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
-		}
-		completion_reward = {
-			declare_war_on = {
-				type = puppet_wargoal_focus
-				target = X16
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = WarPlanENGRME
-		icon = GFX_goal_generic_position_armies
-		text = "War Plan The Roman Empire"
-		prerequisite = { focus = LimENG }
-		bypass = {
-			has_war_with = RME
+			has_war_with = MNG
 		}
 		x = 3
 		y = 1
@@ -2392,7 +2383,7 @@ focus_tree = {
 		cost = 10
 		available = {
 			any_other_country = {
-				original_tag = RME
+				original_tag = MNG
 				exists = yes
 				NOT = { has_government = democratic } 
 				NOT = { is_in_faction_with = ENG }
@@ -2417,20 +2408,20 @@ focus_tree = {
 	}
 
 	focus = {
-		id = EmbargoENGRME
+		id = EmbargoENGMNG
 		icon = GFX_goal_generic_trade
-		text = "Embargo The Roman Empire"
-		prerequisite = { focus =  WarPlanENGRME }
+		text = "Embargo Ming"
+		prerequisite = { focus =  WarPlanENGMNG }
 		bypass = {
-			has_war_with = RME
+			has_war_with = MNG
 		}
 		x = 0
 		y = 1
-		relative_position_id = WarPlanENGRME
+		relative_position_id = WarPlanENGMNG
 		cost = 10
 		available = {
 			any_other_country = {
-				original_tag = RME
+				original_tag = MNG
 				exists = yes
 				NOT = { has_government = democratic } 
 				NOT = { is_in_faction_with = ENG }
@@ -2442,7 +2433,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			RME = {
+			MNG = {
 				add_opinion_modifier = { target = ENG modifier = embargo }
 			}
 		}
@@ -2452,22 +2443,22 @@ focus_tree = {
 	}
 
 	focus = {
-		id = WARENGRME
+		id = WARENGMNG
 		icon = GFX_goal_support_democracy
-		text = "Enact War Plan The Roman Empire"
-		prerequisite = { focus =  EmbargoENGRME }
+		text = "Enact War Plan Ming"
+		prerequisite = { focus =  EmbargoENGMNG }
 		prerequisite = { focus =  LimENG }
 		bypass = {
-			has_war_with = RME
+			has_war_with = MNG
 		}
 		x = 2
 		y = 1
-		relative_position_id = EmbargoENGRME
+		relative_position_id = EmbargoENGMNG
 		cost = 10
 		available = {
 			has_war = no
 			any_other_country = {
-				original_tag = RME
+				original_tag = MNG
 				exists = yes
 				NOT = { has_government = democratic } 
 				NOT = { is_in_faction_with = ENG }
@@ -2481,7 +2472,7 @@ focus_tree = {
 		completion_reward = {
 			declare_war_on = {
 				type = puppet_wargoal_focus
-				target = RME
+				target = MNG
 			}
 		}
 		ai_will_do = {

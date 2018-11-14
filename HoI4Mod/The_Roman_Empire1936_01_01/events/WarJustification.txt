@@ -371,6 +371,44 @@ country_event = {
 }
 
 country_event = {
+	id = war_justification.6
+	title = war_justification.6.t
+	desc = war_justification.6.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = communism
+		FROM = { has_government = absolutist }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.6.a
+		FROM = { country_event = { id = war_justification.206 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.206
+	title = war_justification.206.t
+	desc = war_justification.206.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.206.a
+	}
+}
+
+country_event = {
 	id = war_justification.7
 	title = war_justification.7.t
 	desc = war_justification.7.d
@@ -380,7 +418,7 @@ country_event = {
 
 	trigger = {
 		has_government = communism
-		FROM = { has_government = absolutist }
+		FROM = { has_government = communism }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -418,7 +456,7 @@ country_event = {
 
 	trigger = {
 		has_government = communism
-		FROM = { has_government = communism }
+		FROM = { has_government = democratic }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -456,7 +494,7 @@ country_event = {
 
 	trigger = {
 		has_government = communism
-		FROM = { has_government = democratic }
+		FROM = { has_government = fascism }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -494,7 +532,7 @@ country_event = {
 
 	trigger = {
 		has_government = communism
-		FROM = { has_government = fascism }
+		FROM = { has_government = neutrality }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -531,8 +569,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_government = communism
-		FROM = { has_government = neutrality }
+		has_government = democratic
+		FROM = { has_government = absolutist }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -561,6 +599,82 @@ country_event = {
 }
 
 country_event = {
+	id = war_justification.12
+	title = war_justification.12.t
+	desc = war_justification.12.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		FROM = { has_government = communism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.12.a
+		FROM = { country_event = { id = war_justification.212 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.212
+	title = war_justification.212.t
+	desc = war_justification.212.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.212.a
+	}
+}
+
+country_event = {
+	id = war_justification.13
+	title = war_justification.13.t
+	desc = war_justification.13.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		FROM = { has_government = democratic }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.13.a
+		FROM = { country_event = { id = war_justification.213 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.213
+	title = war_justification.213.t
+	desc = war_justification.213.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.213.a
+	}
+}
+
+country_event = {
 	id = war_justification.14
 	title = war_justification.14.t
 	desc = war_justification.14.d
@@ -570,7 +684,7 @@ country_event = {
 
 	trigger = {
 		has_government = democratic
-		FROM = { has_government = communism }
+		FROM = { has_government = fascism }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -608,7 +722,7 @@ country_event = {
 
 	trigger = {
 		has_government = democratic
-		FROM = { has_government = democratic }
+		FROM = { has_government = neutrality }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -645,8 +759,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_government = democratic
-		FROM = { has_government = fascism }
+		has_government = fascism
+		FROM = { has_government = absolutist }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -683,8 +797,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_government = democratic
-		FROM = { has_government = neutrality }
+		has_government = fascism
+		FROM = { has_government = communism }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -713,6 +827,44 @@ country_event = {
 }
 
 country_event = {
+	id = war_justification.18
+	title = war_justification.18.t
+	desc = war_justification.18.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = fascism
+		FROM = { has_government = democratic }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.18.a
+		FROM = { country_event = { id = war_justification.218 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.218
+	title = war_justification.218.t
+	desc = war_justification.218.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.218.a
+	}
+}
+
+country_event = {
 	id = war_justification.19
 	title = war_justification.19.t
 	desc = war_justification.19.d
@@ -722,7 +874,7 @@ country_event = {
 
 	trigger = {
 		has_government = fascism
-		FROM = { has_government = absolutist }
+		FROM = { has_government = fascism }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -760,7 +912,7 @@ country_event = {
 
 	trigger = {
 		has_government = fascism
-		FROM = { has_government = communism }
+		FROM = { has_government = neutrality }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -797,8 +949,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_government = fascism
-		FROM = { has_government = democratic }
+		has_government = neutrality
+		FROM = { has_government = absolutist }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -835,8 +987,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_government = fascism
-		FROM = { has_government = fascism }
+		has_government = neutrality
+		FROM = { has_government = communism }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -873,8 +1025,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_government = fascism
-		FROM = { has_government = neutrality }
+		has_government = neutrality
+		FROM = { has_government = democratic }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -903,6 +1055,44 @@ country_event = {
 }
 
 country_event = {
+	id = war_justification.24
+	title = war_justification.24.t
+	desc = war_justification.24.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = neutrality
+		FROM = { has_government = fascism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.24.a
+		FROM = { country_event = { id = war_justification.224 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.224
+	title = war_justification.224.t
+	desc = war_justification.224.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.224.a
+	}
+}
+
+country_event = {
 	id = war_justification.25
 	title = war_justification.25.t
 	desc = war_justification.25.d
@@ -912,7 +1102,7 @@ country_event = {
 
 	trigger = {
 		has_government = neutrality
-		FROM = { has_government = absolutist }
+		FROM = { has_government = neutrality }
 		NOT = { has_country_flag = war_justification_last_event_political }
 	}
 
@@ -937,158 +1127,6 @@ country_event = {
 
 	option = {
 		name = war_justification.225.a
-	}
-}
-
-country_event = {
-	id = war_justification.26
-	title = war_justification.26.t
-	desc = war_justification.26.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_government = neutrality
-		FROM = { has_government = communism }
-		NOT = { has_country_flag = war_justification_last_event_political }
-	}
-
-	option = {
-		name = war_justification.26.a
-		FROM = { country_event = { id = war_justification.226 } }
-		set_country_flag = war_justification_last_event_political
-		clr_country_flag = war_justification_last_event_generic
-		clr_country_flag = war_justification_last_event_neighbor
-		clr_country_flag = war_justification_last_event_mobilized
-		clr_country_flag = war_justification_last_event_borderthreat
-	}
-}
-
-country_event = {
-	id = war_justification.226
-	title = war_justification.226.t
-	desc = war_justification.226.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	option = {
-		name = war_justification.226.a
-	}
-}
-
-country_event = {
-	id = war_justification.27
-	title = war_justification.27.t
-	desc = war_justification.27.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_government = neutrality
-		FROM = { has_government = democratic }
-		NOT = { has_country_flag = war_justification_last_event_political }
-	}
-
-	option = {
-		name = war_justification.27.a
-		FROM = { country_event = { id = war_justification.227 } }
-		set_country_flag = war_justification_last_event_political
-		clr_country_flag = war_justification_last_event_generic
-		clr_country_flag = war_justification_last_event_neighbor
-		clr_country_flag = war_justification_last_event_mobilized
-		clr_country_flag = war_justification_last_event_borderthreat
-	}
-}
-
-country_event = {
-	id = war_justification.227
-	title = war_justification.227.t
-	desc = war_justification.227.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	option = {
-		name = war_justification.227.a
-	}
-}
-
-country_event = {
-	id = war_justification.28
-	title = war_justification.28.t
-	desc = war_justification.28.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_government = neutrality
-		FROM = { has_government = fascism }
-		NOT = { has_country_flag = war_justification_last_event_political }
-	}
-
-	option = {
-		name = war_justification.28.a
-		FROM = { country_event = { id = war_justification.228 } }
-		set_country_flag = war_justification_last_event_political
-		clr_country_flag = war_justification_last_event_generic
-		clr_country_flag = war_justification_last_event_neighbor
-		clr_country_flag = war_justification_last_event_mobilized
-		clr_country_flag = war_justification_last_event_borderthreat
-	}
-}
-
-country_event = {
-	id = war_justification.228
-	title = war_justification.228.t
-	desc = war_justification.228.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	option = {
-		name = war_justification.228.a
-	}
-}
-
-country_event = {
-	id = war_justification.29
-	title = war_justification.29.t
-	desc = war_justification.29.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_government = neutrality
-		FROM = { has_government = neutrality }
-		NOT = { has_country_flag = war_justification_last_event_political }
-	}
-
-	option = {
-		name = war_justification.29.a
-		FROM = { country_event = { id = war_justification.229 } }
-		set_country_flag = war_justification_last_event_political
-		clr_country_flag = war_justification_last_event_generic
-		clr_country_flag = war_justification_last_event_neighbor
-		clr_country_flag = war_justification_last_event_mobilized
-		clr_country_flag = war_justification_last_event_borderthreat
-	}
-}
-
-country_event = {
-	id = war_justification.229
-	title = war_justification.229.t
-	desc = war_justification.229.d
-	picture = GFX_report_event_iww_demonstration
-
-	is_triggered_only = yes
-
-	option = {
-		name = war_justification.229.a
 	}
 }
 
@@ -1154,5 +1192,4 @@ country_event = {
 		add_political_power = -30
 		add_war_support = -0.03
 	}
-
 }

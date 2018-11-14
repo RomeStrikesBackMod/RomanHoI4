@@ -3,6 +3,62 @@
 country_event = {
 	id = NFEvents.0
 	title = "Trade Incident"
+	desc = "One of our convoys was sunk by Japan"
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = established_traders
+		NOT = { has_country_flag = established_traders_activated }
+	}
+
+	option = {
+		name = "They will Pay!"
+		ai_chance = { factor = 85 }
+		effect_tooltip = {
+			MNG = {
+				set_country_flag = established_traders_activated
+				create_wargoal = {
+					type = annex_everything
+					target = JAP
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = NFEvents.1
+	title = "Trade Incident"
+	desc = "One of our convoys was sunk by India"
+	picture = GFX_report_event_chinese_soldiers_fighting
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = established_traders
+		NOT = { has_country_flag = established_traders_activated }
+	}
+
+	option = {
+		name = "They will Pay!"
+		ai_chance = { factor = 85 }
+		effect_tooltip = {
+			MNG = {
+				set_country_flag = established_traders_activated
+				create_wargoal = {
+					type = annex_everything
+					target = IND
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = NFEvents.2
+	title = "Trade Incident"
 	desc = "One of our convoys was sunk by Russia"
 	picture = GFX_report_event_chinese_soldiers_fighting
 
@@ -21,7 +77,7 @@ country_event = {
 				set_country_flag = established_traders_activated
 				create_wargoal = {
 					type = annex_everything
-					target = SOV
+					target = RUS
 				}
 			}
 		}
@@ -29,7 +85,7 @@ country_event = {
 }
 
 country_event = {
-	id = NFEvents.1
+	id = NFEvents.3
 	title = "Trade Incident"
 	desc = "One of our convoys was sunk by Great Britain"
 	picture = GFX_report_event_chinese_soldiers_fighting
@@ -49,7 +105,7 @@ country_event = {
 				set_country_flag = established_traders_activated
 				create_wargoal = {
 					type = annex_everything
-					target = ENG
+					target = GRB
 				}
 			}
 		}
@@ -57,7 +113,7 @@ country_event = {
 }
 
 country_event = {
-	id = NFEvents.2
+	id = NFEvents.4
 	title = "Trade Incident"
 	desc = "One of our convoys was sunk by England"
 	picture = GFX_report_event_chinese_soldiers_fighting
@@ -77,63 +133,7 @@ country_event = {
 				set_country_flag = established_traders_activated
 				create_wargoal = {
 					type = annex_everything
-					target = U73
-				}
-			}
-		}
-	}
-}
-
-country_event = {
-	id = NFEvents.3
-	title = "Trade Incident"
-	desc = "One of our convoys was sunk by Japan"
-	picture = GFX_report_event_chinese_soldiers_fighting
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_country_flag = established_traders
-		NOT = { has_country_flag = established_traders_activated }
-	}
-
-	option = {
-		name = "They will Pay!"
-		ai_chance = { factor = 85 }
-		effect_tooltip = {
-			X16 = {
-				set_country_flag = established_traders_activated
-				create_wargoal = {
-					type = annex_everything
-					target = JAP
-				}
-			}
-		}
-	}
-}
-
-country_event = {
-	id = NFEvents.4
-	title = "Trade Incident"
-	desc = "One of our convoys was sunk by India"
-	picture = GFX_report_event_chinese_soldiers_fighting
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_country_flag = established_traders
-		NOT = { has_country_flag = established_traders_activated }
-	}
-
-	option = {
-		name = "They will Pay!"
-		ai_chance = { factor = 85 }
-		effect_tooltip = {
-			X16 = {
-				set_country_flag = established_traders_activated
-				create_wargoal = {
-					type = annex_everything
-					target = RAJ
+					target = ENG
 				}
 			}
 		}

@@ -1531,7 +1531,6 @@ focus_tree = {
 				has_government = communism
 				has_government = fascism
 				has_government = neutrality
-				#has_government = radical
 			}
 		}
 		completion_reward = {
@@ -1656,13 +1655,6 @@ focus_tree = {
 					popularity = 0.2
 				}
 			}
-			#if = {
-			#	limit = { #has_government = radical }
-			#	add_popularity = {
-			#		ideology = radical
-			#		popularity = 0.2
-			#	}
-			#}
 		}
 	}
 
@@ -1914,7 +1906,6 @@ focus_tree = {
 						has_government = democratic
 						has_government = fascism
 						has_government = neutrality
-						#has_government = radical
 					}
 				}
 				NOT = {
@@ -2050,7 +2041,7 @@ focus_tree = {
 		id = technology_sharingJAP
 		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = ideological_fanaticismJAP focus = why_we_fightJAP }
-		x = 4
+		x = 3
 		y = 1
 		relative_position_id = ideological_fanaticismJAP
 		cost = 10
@@ -2446,17 +2437,17 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ProtectorateJAPX29
+		id = ProtectorateJAPTIB
 		icon = GFX_goal_generic_major_war
-		text = "Establish Protectorate over Sukhothai"
+		text = "Establish Protectorate over Tibet"
 		prerequisite = { focus = ProtectorateJAPBUR }
 		bypass = {
 			OR = {
 				JAP = {
-					is_in_faction_with = X29
-					has_war_with = X29
+					is_in_faction_with = TIB
+					has_war_with = TIB
 				}
-				NOT = { country_exists = X29 }
+				NOT = { country_exists = TIB }
 			}
 		}
 		x = 0
@@ -2464,19 +2455,19 @@ focus_tree = {
 		relative_position_id = ProtectorateJAPBUR
 		cost = 10
 		available = {
-			X29 = { is_in_faction = no }
+			TIB = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = X29
+				target = TIB
 			}
 		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = X29 ratio < 1 }
+				strength_ratio = { tag = TIB ratio < 1 }
 			}
 		}
 	}
