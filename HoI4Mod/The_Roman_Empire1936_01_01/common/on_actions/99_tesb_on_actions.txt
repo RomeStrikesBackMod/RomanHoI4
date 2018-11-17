@@ -11,10 +11,66 @@ on_actions = {
 				#country_event = { id = tesb_india.1 }
 			}
 			HAI = {
-				country_event = { id = tesb_misc.1 }
+				#country_event = { id = tesb_misc.1 }
 			}
 			HED = {
 				country_event = { id = tesb_misc.2 }
+			}
+		}
+	}
+
+
+	on_declare_war = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							has_idea = RME_former_territory
+							has_idea = RME_former_dominion
+						}
+						OR = {
+							has_idea = RME_restore_rome_democratic
+							has_idea = RME_restore_rome_other
+						}
+					}
+					NOT = {
+						tag = RME
+						is_in_faction_with = RME # I guess USA will not go to war with someone they are in faction with
+						has_war_with = RME
+						#USA = { has_war_with = FROM } Should USA enforce peace in a nation it is already at war with?
+					}
+				}
+				FROM = { country_event = { id = usa.16 days = 1 } }
+			}
+			if = {
+				limit = {
+					FROM = {
+						is_in_faction_with = RME
+					#	has_civil_war = yes
+						NOT = { has_government = democratic }
+					}
+					has_government = democratic
+					RME = { has_government = democratic }
+				}
+				FROM = { set_country_flag = RME_civil_war_target }
+				RME = { remove_from_faction = FROM }
+				RME = { add_to_faction = ROOT }
+				RME = { country_event = tesb_restore_rome.25 }
+			}
+		}
+	}
+	on_government_change = {
+		effect = {
+			if = {
+				limit = {
+					has_idea = RME_restore_rome_other
+					has_government = democratic
+				}
+				swap_ideas = {
+					remove_idea = RME_restore_rome_other
+					add_idea = RME_restore_rome_democratic
+				}
 			}
 		}
 	}

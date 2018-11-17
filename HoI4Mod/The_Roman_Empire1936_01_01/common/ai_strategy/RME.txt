@@ -1,0 +1,136 @@
+# Written by Henrik "Groogy" Hansson
+# Modified by Daniel "Da9L" Sjöberg
+
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+# contain
+# area_priority
+
+#befriend democratic rome
+befriend_democratic_rome = {
+	enable = {
+		has_idea = RME_former_territory
+		RME = { has_completed_focus = RME_restore_rome_focus }
+		has_government = democratic
+	}
+	abort = {
+		OR = {
+			NOT = { has_idea = RME_former_territory }
+			NOT = { has_government = democratic }
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "RME"
+		value = 200
+	}
+	ai_strategy = {
+		type = alliance
+		id = "RME"
+		value = 200
+	}
+}
+befriend_neutral_rome = {
+	enable = {
+		has_idea = RME_former_territory
+		RME = { has_completed_focus = RME_restore_rome_focus }
+		has_government = neutrality
+	}
+	abort = {
+		OR = {
+			NOT = { has_idea = RME_former_territory }
+			NOT = { has_government = neutrality }
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "RME"
+		value = 100
+	}
+	ai_strategy = {
+		type = alliance
+		id = "RME"
+		value = 100
+	}
+}
+
+rome_befriend_democratic_territories = {
+	reversed = yes
+	enable = {
+		has_idea = RME_former_territory
+		RME = { has_completed_focus = RME_restore_rome_focus }
+		has_government = democratic
+	}
+	abort = {
+		OR = {
+			NOT = { has_idea = RME_former_territory }
+			NOT = { has_government = democratic }
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "RME"
+		value = 200
+	}
+	ai_strategy = {
+		type = protect
+		id = "RME"
+		value = 200
+	}
+}
+
+contain_democratic_rome = {
+	enable = {
+		has_idea = RME_former_territory
+		RME = { has_completed_focus = RME_restore_rome_focus }
+		NOT = { has_government = democratic }
+		NOT = { has_government = neutrality }
+	}
+	abort = {
+		OR = {
+			NOT = { has_idea = RME_former_territory }
+			has_government = democratic
+			has_government = neutrality
+		}
+	}
+	ai_strategy = {
+		type = contain
+		id = "RME"
+		value = 200
+	}
+}
+
+fascist_rome_attacks = {
+	reversed = yes
+	enable = {
+		has_idea = RME_former_territory
+		any_state = {
+			is_core_of = RME
+		}
+		RME = { has_completed_focus = RME_reclaim_the_empire }
+	}
+	abort = {
+		OR = {
+			NOT = {
+				any_state = {
+					is_core_of = RME
+				}
+			}
+			NOT = { has_idea = RME_former_territory }
+		}
+	}
+	ai_strategy = {
+		type = conquer
+		id = "RME"
+		value = 200
+	}
+}

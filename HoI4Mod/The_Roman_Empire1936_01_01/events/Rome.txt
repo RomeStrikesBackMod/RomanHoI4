@@ -61,16 +61,6 @@ country_event = {
 				PREV = { add_to_faction = PREV }
 			}
 		}
-		#random_country = {
-		#	limit = {
-		#		has_government = radical
-		#	}
-		#	create_faction = "Radicals"
-		#	every_country = {
-		#		limit = { has_government = radical }
-		#		PREV = { add_to_faction = PREV }
-		#	}
-		#}
 	}
 }
 # Event starting republican civil war
@@ -290,12 +280,12 @@ country_event = {
 			}
 			#load_oob = "AZR_released"
 		}
-		release = BEL
+		release = FLD
 		random_other_country = {
 			limit = {
-				original_tag = BEL
+				original_tag = FLD
 			}
-			#load_oob = "BEL_released"
+			#load_oob = "FLD_released"
 		}
 		release = BRK # no units for Burkina Faso
 		release = CAT
@@ -318,7 +308,7 @@ country_event = {
 			limit = {
 				original_tag = CRO
 			}
-			#load_oob = "CRO_released"
+			#load_oob = "PAN_released"
 		}
 		release = DAH # no units for Dahomey
 		release = EGY
@@ -349,21 +339,21 @@ country_event = {
 			}
 			#load_oob = "GUY_released"
 		}
-		release = INS
+		release = JAV
 		random_other_country = {
 			limit = {
-				original_tag = INS
+				original_tag = JAV
 			}
-			#load_oob = "INS_released"
+			#load_oob = "JAV_released"
 		}
 		release = ISR # no units for Israel
-		release = LBA # no units for Tripoli
-		release = MAR
+		release = TRI # no units for Tripoli
+		release = MOR
 		random_other_country = {
 			limit = {
-				original_tag = MAR
+				original_tag = MOR
 			}
-			#load_oob = "MAR_released"
+			#load_oob = "MOR_released"
 		}
 		release = MAU # no units for Mauritania
 		release = MLI # no units for Mali
@@ -390,12 +380,12 @@ country_event = {
 			}
 			#load_oob = "SER_released"
 		}
-		release = SPR
+		release = SPA
 		random_other_country = {
 			limit = {
-				original_tag = SPR
+				original_tag = SPA
 			}
-			#load_oob = "SPR_released"
+			#load_oob = "SPA_released"
 		}
 		release = SWI
 		random_other_country = {
@@ -419,12 +409,12 @@ country_event = {
 			}
 			#load_oob = "TUN_released"
 		}
-		release = WAL
+		release = MOS
 		random_other_country = {
 			limit = {
-				original_tag = WAL
+				original_tag = MOS
 			}
-			#load_oob = "WAL_released"
+			#load_oob = "MOS_released"
 		}
 		release = YUG
 		random_other_country = {
@@ -449,7 +439,7 @@ country_event = {
 		end_puppet = COG
 		end_puppet = GAB
 		end_puppet = NMB
-		end_puppet = NZL
+		end_puppet = AOT
 		end_puppet = SAF
 	}
 }
@@ -565,7 +555,7 @@ country_event = {
 		}
 		log="Country agreed to be annexed"
 		ai_chance = {
-			factor = 100
+			factor = 10
 		}
 	}
 	option = {
@@ -574,7 +564,7 @@ country_event = {
 			puppet = ROOT
 			set_autonomy = {
 				target = ROOT
-				autonomy_state = integrated_puppet
+				autonomy_state = autonomy_integrated_puppet
 			}
 			news_event = tesb_rome.102
 		}
@@ -589,8 +579,7 @@ country_event = {
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.101
 	title = tesb_rome.101.t
 	desc = tesb_rome.101.desc
@@ -601,8 +590,7 @@ news_event =
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.102
 	title = tesb_rome.102.t
 	desc = tesb_rome.102.desc
@@ -613,8 +601,7 @@ news_event =
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.103
 	title = tesb_rome.103.t
 	desc = tesb_rome.103.desc
@@ -639,7 +626,7 @@ country_event = {
 			puppet = ROOT
 			set_autonomy = {
 				target = ROOT
-				autonomy_state = integrated_puppet
+				autonomy_state = autonomy_integrated_puppet
 			}
 			news_event = tesb_rome.105
 		}
@@ -650,7 +637,7 @@ country_event = {
 			puppet = ROOT
 			set_autonomy = {
 				target = ROOT
-				autonomy_state = dominion
+				autonomy_state = autonomy_dominion
 			}
 			news_event = tesb_rome.106
 		}
@@ -664,8 +651,7 @@ country_event = {
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.105
 	title = tesb_rome.105.t
 	desc = tesb_rome.105.desc
@@ -676,8 +662,7 @@ news_event =
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.106
 	title = tesb_rome.106.t
 	desc = tesb_rome.106.desc
@@ -688,8 +673,7 @@ news_event =
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.107
 	title = tesb_rome.107.t
 	desc = tesb_rome.107.desc
@@ -714,7 +698,7 @@ country_event = {
 			puppet = ROOT
 			set_autonomy = {
 				target = ROOT
-				autonomy_state = colony
+				autonomy_state = autonomy_colony
 			}
 			news_event = tesb_rome.109
 		}
@@ -725,7 +709,7 @@ country_event = {
 			puppet = ROOT
 			set_autonomy = {
 				target = ROOT
-				autonomy_state = dominion
+				autonomy_state = autonomy_dominion
 			}
 			news_event = tesb_rome.110
 		}
@@ -739,8 +723,7 @@ country_event = {
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.109
 	title = tesb_rome.109.t
 	desc = tesb_rome.109.desc
@@ -751,8 +734,7 @@ news_event =
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.110
 	title = tesb_rome.110.t
 	desc = tesb_rome.110.desc
@@ -763,8 +745,7 @@ news_event =
 	}
 }
 
-news_event = 
-{
+news_event = {
 	id = tesb_rome.111
 	title = tesb_rome.111.t
 	desc = tesb_rome.111.desc
@@ -806,777 +787,742 @@ country_event = {
 	}
 }
 
+#alliance with PLC or IRAN
 country_event = {
-	id = tesb_rome.120
-	title = tesb_rome.120.t
-	desc = tesb_rome.120.desc
+	id = tesb_rome.150
+	title = tesb_rome.150.t
+	desc = tesb_rome.150.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
 	option = {
-		name = tesb_rome.120.a
-		GEO = {
-			country_event = tesb_rome.100
+		name = tesb_rome.150.a
+		set_country_flag = join_RME
+		RME = {
+			country_event = { id = tesb_rome.151 hours = 24 }
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ROOT
+			}
+			country_event = { id = tesb_rome.152 }
 		}
 	}
+}
+
+#alliance with PLC or IRAN
+country_event = {
+	id = tesb_rome.151
+	title = tesb_rome.151.t
+	desc = tesb_rome.151.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
 	option = {
-		name = tesb_rome.120.b
-		GEO = {
-			country_event = tesb_rome.104
+		name = tesb_rome.151.a
+		if = {
+			limit = {
+				is_in_faction = no
+			}
+			if = {
+				limit = { FROM = { tag = IRN } }
+				create_faction = "RME_IRN_axis"
+			}
+			else_if = {
+				limit = { FROM = { tag = PLC } }
+				create_faction = "RME_PLC_axis"
+			}
+		}
+		else_if = {
+			limit = {
+				is_faction_leader = no
+			}
+			leave_faction = yes
+			if = {
+				limit = { FROM = { tag = IRN } }
+				create_faction = "RME_IRN_axis"
+			}
+			else_if = {
+				limit = { FROM = { tag = PLC } }
+				create_faction = "RME_PLC_axis"
+			}
+		}
+		every_country = {
+			limit = {
+				has_country_flag = join_RME
+			}
+			RME = { add_to_faction = PREV }
 		}
 	}
+}
+
+#alliance with PLC or IRAN
+country_event = {
+	id = tesb_rome.152
+	title = tesb_rome.152.t
+	desc = tesb_rome.152.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#stay
 	option = {
-		trigger = {
-			has_government = democratic
+		name = tesb_rome.152.a
+		set_country_flag = join_RME
+		ai_chance = {
+			factor = 10
+			modifier = {
+				NOT = { has_government = fascism }
+				factor = 0.1
+			}
 		}
-		name = tesb_rome.120.c
-		GEO = {
-			country_event = tesb_rome.108
+	}
+	
+	#leave
+	option = {
+		name = tesb_rome.152.b
+		leave_faction = yes
+		ai_chance = {
+			factor = 1
+			modifier = {
+				has_government = democratic
+				factor = 5
+			}
+			modifier = {
+				has_government = communism
+				factor = 5
+			}
+		}
+	}
+}
+
+#fascist rome allies IRAN
+country_event = {
+	id = tesb_rome.200
+	title = tesb_rome.200.t
+	desc = tesb_rome.200.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#trade tech
+	option = {
+		name = tesb_rome.200.a
+		IRN = {
+			country_event = { id = tesb_rome.201 hours = 12 }
+			effect_tooltip = {
+				add_tech_bonus = {
+					name = IRN_RME_bonus
+					bonus = 0.5
+					uses = 2
+					category = naval_equipment
+					category = air_equipment
+				}
+			}
 		}
 	}
 }
 
 country_event = {
-	id = tesb_rome.121
-	title = tesb_rome.121.t
-	desc = tesb_rome.121.desc
+	id = tesb_rome.201
+	title = tesb_rome.201.t
+	desc = tesb_rome.201.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
+	#trade tech
 	option = {
-		name = tesb_rome.121.a
-		AZR = {
-			country_event = tesb_rome.100
+		name = tesb_rome.201.a
+		RME = {
+			country_event = { id = tesb_rome.202 hours = 12 }
+		}
+		add_tech_bonus = {
+			name = IRN_RME_bonus
+			bonus = 0.5
+			uses = 2
+			category = naval_equipment
+			category = air_equipment
+		}
+		effect_tooltip = {
+			RME = {
+				add_tech_bonus = {
+					name = RME_IRN_bonus
+					bonus = 0.5
+					uses = 2
+					category = mountaineers_tech
+					category = artillery
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
 		}
 	}
+	#reject
 	option = {
-		name = tesb_rome.121.b
-		AZR = {
-			country_event = tesb_rome.104
+		name = tesb_rome.201.b
+		RME = {
+			country_event = { id = tesb_rome.203 hours = 12 }
 		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.121.c
-		AZR = {
-			country_event = tesb_rome.108
+		ai_chance = {
+			factor = 1
+			modifier = {
+				NOT = { has_government = fascism }
+				factor = 10
+			}
 		}
 	}
 }
 
 country_event = {
-	id = tesb_rome.122
-	title = tesb_rome.122.t
-	desc = tesb_rome.122.desc
+	id = tesb_rome.202
+	title = tesb_rome.202.t
+	desc = tesb_rome.202.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
+	#trade tech
 	option = {
-		name = tesb_rome.122.a
-		ARM = {
-			country_event = tesb_rome.100
+		name = tesb_rome.202.a
+		add_tech_bonus = {
+			name = RME_IRN_bonus
+			bonus = 0.5
+			uses = 2
+			category = mountaineers_tech
+			category = artillery
 		}
+		set_country_flag = IRN_accepted_deal
+	}
+}
+
+country_event = {
+	id = tesb_rome.203
+	title = tesb_rome.203.t
+	desc = tesb_rome.203.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#trade tech
+	option = {
+		name = tesb_rome.203.a
+		set_country_flag = IRN_rejected_deal
+	}
+}
+
+#exchange/promise territories
+country_event = {
+	id = tesb_rome.210
+	title = tesb_rome.210.t
+	desc = tesb_rome.210.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#trade tech
+	option = {
+		name = tesb_rome.210.a
+		IRN = {
+			country_event = { id = tesb_rome.211 hours = 12 }
+		}
+		custom_effect_tooltip = IRN_promised_new_guinea
+		set_country_flag = RME_promised_new_guinea
 	}
 	option = {
-		name = tesb_rome.122.b
-		ARM = {
-			country_event = tesb_rome.104
+		name = tesb_rome.210.b
+		IRN = {
+			country_event = { id = tesb_rome.212 hours = 12 }
 		}
+		custom_effect_tooltip = IRN_promised_java
+		set_country_flag = RME_promised_java
 	}
 	option = {
-		trigger = {
-			has_government = democratic
+		name = tesb_rome.210.c
+		IRN = {
+			country_event = { id = tesb_rome.213 hours = 12 }
 		}
-		name = tesb_rome.122.c
-		ARM = {
-			country_event = tesb_rome.108
+		custom_effect_tooltip = IRN_promised_south_africa
+		set_country_flag = RME_promised_south_africa
+	}
+}
+
+country_event = {
+	id = tesb_rome.211
+	title = tesb_rome.211.t
+	desc = tesb_rome.211.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 414
+						state = 512
+						state = 449
+						state = 450
+						state = 485
+						state = 451
+						state = 446
+						state = 381
+						state = 448
+					}
+				}
+				set_state_flag = promised_to_IRN
+				add_claim_by = IRN
+				remove_claim_by = RME
+				remove_core_of = RME
+				if = {
+					limit = { is_owned_and_controlled_by = RME }
+					IRN = { transfer_state = PREV }
+				}
+				else_if = {
+					limit = {
+						is_owned_by = RME
+					}
+					IRN = { set_state_owner = PREV }
+				}
+				else_if = {
+					limit = {
+						is_controlled_by = RME
+					}
+					IRN = { set_state_controller = PREV }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = tesb_rome.211.a
+		set_country_flag = RME_promised_new_guinea
+	}
+}
+
+country_event = {
+	id = tesb_rome.212
+	title = tesb_rome.212.t
+	desc = tesb_rome.212.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 413
+						state = 453
+						state = 452
+						state = 412
+						state = 501
+						state = 500
+						state = 454
+					}
+				}
+				set_state_flag = promised_to_IRN
+				add_claim_by = IRN
+				remove_claim_by = RME
+				remove_core_of = RME
+				if = {
+					limit = { is_owned_and_controlled_by = RME }
+					IRN = { transfer_state = PREV }
+				}
+				else_if = {
+					limit = {
+						is_owned_by = RME
+					}
+					IRN = { set_state_owner = PREV }
+				}
+				else_if = {
+					limit = {
+						is_controlled_by = RME
+					}
+					IRN = { set_state_controller = PREV }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = tesb_rome.212.a
+		set_country_flag = RME_promised_java
+	}
+}
+
+country_event = {
+	id = tesb_rome.213
+	title = tesb_rome.213.t
+	desc = tesb_rome.213.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 655
+						state = 571
+						state = 570
+						state = 569
+						state = 568
+						state = 567
+						state = 566
+						state = 565
+					}
+				}
+				set_state_flag = promised_to_IRN
+				add_claim_by = IRN
+				remove_claim_by = RME
+				remove_core_of = RME
+				if = {
+					limit = { is_owned_and_controlled_by = RME }
+					IRN = { transfer_state = PREV }
+				}
+				else_if = {
+					limit = {
+						is_owned_by = RME
+					}
+					IRN = { set_state_owner = PREV }
+				}
+				else_if = {
+					limit = {
+						is_controlled_by = RME
+					}
+					IRN = { set_state_controller = PREV }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = tesb_rome.213.a
+		set_country_flag = RME_promised_south_africa
+	}
+}
+
+#fascist rome allies PLC
+country_event = {
+	id = tesb_rome.300
+	title = tesb_rome.300.t
+	desc = tesb_rome.300.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#trade tech
+	option = {
+		name = tesb_rome.300.a
+		PLC = {
+			country_event = { id = tesb_rome.301 hours = 12 }
+			effect_tooltip = {
+				add_tech_bonus = {
+					name = PLC_RME_bonus
+					bonus = 0.5
+					uses = 2
+					category = naval_equipment
+					category = air_equipment
+				}
+			}
 		}
 	}
 }
 
 country_event = {
-	id = tesb_rome.123
-	title = tesb_rome.123.t
-	desc = tesb_rome.123.desc
+	id = tesb_rome.301
+	title = tesb_rome.301.t
+	desc = tesb_rome.301.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
+	#trade tech
 	option = {
-		name = tesb_rome.123.a
-		WAL = {
-			country_event = tesb_rome.100
+		name = tesb_rome.301.a
+		RME = {
+			country_event = { id = tesb_rome.302 hours = 12 }
+		}
+		add_tech_bonus = {
+			name = PLC_RME_bonus
+			bonus = 0.5
+			uses = 2
+			category = naval_equipment
+			category = air_equipment
+		}
+		effect_tooltip = {
+			RME = {
+				add_tech_bonus = {
+					name = RME_PLC_bonus
+					bonus = 0.5
+					uses = 2
+					category = cat_medium_armor
+					category = cat_mobile_warfare
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
 		}
 	}
+	#reject
 	option = {
-		name = tesb_rome.123.b
-		WAL = {
-			country_event = tesb_rome.104
+		name = tesb_rome.301.b
+		RME = {
+			country_event = { id = tesb_rome.303 hours = 12 }
 		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.123.c
-		WAL = {
-			country_event = tesb_rome.108
+		ai_chance = {
+			factor = 1
+			modifier = {
+				NOT = { has_government = fascism }
+				factor = 10
+			}
 		}
 	}
 }
 
 country_event = {
-	id = tesb_rome.124
-	title = tesb_rome.124.t
-	desc = tesb_rome.124.desc
+	id = tesb_rome.302
+	title = tesb_rome.302.t
+	desc = tesb_rome.302.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
+	#trade tech
 	option = {
-		name = tesb_rome.124.a
-		SER = {
-			country_event = tesb_rome.100
+		name = tesb_rome.302.a
+		add_tech_bonus = {
+			name = RME_PLC_bonus
+			bonus = 0.5
+			uses = 2
+			category = cat_medium_armor
+			category = cat_mobile_warfare
 		}
-	}
-	option = {
-		name = tesb_rome.124.b
-		SER = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.124.c
-		SER = {
-			country_event = tesb_rome.108
-		}
+		set_country_flag = PLC_accepted_deal
 	}
 }
 
 country_event = {
-	id = tesb_rome.125
-	title = tesb_rome.125.t
-	desc = tesb_rome.125.desc
+	id = tesb_rome.303
+	title = tesb_rome.303.t
+	desc = tesb_rome.303.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
+	#trade tech
 	option = {
-		name = tesb_rome.125.a
-		YUG = {
-			country_event = tesb_rome.100
+		name = tesb_rome.303.a
+		set_country_flag = PLC_rejected_deal
+	}
+}
+
+#exchange/promise territories
+country_event = {
+	id = tesb_rome.310
+	title = tesb_rome.310.t
+	desc = tesb_rome.310.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#trade tech
+	option = {
+		name = tesb_rome.310.a
+		IRN = {
+			country_event = { id = tesb_rome.311 hours = 12 }
 		}
+		custom_effect_tooltip = PLC_promised_ukraine
+		set_country_flag = RME_promised_ukraine
 	}
 	option = {
-		name = tesb_rome.125.b
-		YUG = {
-			country_event = tesb_rome.104
+		name = tesb_rome.310.b
+		IRN = {
+			country_event = { id = tesb_rome.312 hours = 12 }
 		}
+		custom_effect_tooltip = PLC_promised_asia
+		set_country_flag = RME_promised_asia
 	}
 	option = {
-		trigger = {
-			has_government = democratic
+		name = tesb_rome.310.c
+		IRN = {
+			country_event = { id = tesb_rome.313 hours = 12 }
 		}
-		name = tesb_rome.125.c
-		YUG = {
-			country_event = tesb_rome.108
-		}
+		custom_effect_tooltip = PLC_promised_carribean
+		set_country_flag = RME_promised_carribean
 	}
 }
 
 country_event = {
-	id = tesb_rome.126
-	title = tesb_rome.126.t
-	desc = tesb_rome.126.desc
+	id = tesb_rome.311
+	title = tesb_rome.311.t
+	desc = tesb_rome.311.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
-	option = {
-		name = tesb_rome.126.a
-		CRO = {
-			country_event = tesb_rome.100
+	immediate = {
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 555
+						state = 556
+						state = 557
+						state = 558
+						state = 559
+						state = 560
+						state = 561
+						state = 563
+						state = 564
+					}
+				}
+				set_state_flag = promised_to_IRN
+				add_claim_by = PLC
+				remove_claim_by = RME
+				remove_core_of = RME
+				if = {
+					limit = { is_owned_and_controlled_by = RME }
+					PLC = { transfer_state = PREV }
+				}
+				else_if = {
+					limit = {
+						is_owned_by = RME
+					}
+					PLC = { set_state_owner = PREV }
+				}
+				else_if = {
+					limit = {
+						is_controlled_by = RME
+					}
+					PLC = { set_state_controller = PREV }
+				}
+			}
 		}
 	}
+	
 	option = {
-		name = tesb_rome.126.b
-		CRO = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.126.c
-		CRO = {
-			country_event = tesb_rome.108
-		}
+		name = tesb_rome.311.a
+		set_country_flag = RME_promised_ukraine
 	}
 }
 
 country_event = {
-	id = tesb_rome.127
-	title = tesb_rome.127.t
-	desc = tesb_rome.127.desc
+	id = tesb_rome.312
+	title = tesb_rome.312.t
+	desc = tesb_rome.312.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
-	option = {
-		name = tesb_rome.127.a
-		SYR = {
-			country_event = tesb_rome.100
+	immediate = {
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 46
+						state = 45
+						state = 603
+						state = 604
+						state = 605
+						state = 606
+						state = 595
+						state = 596
+						state = 597
+						state = 202
+						state = 203
+						state = 204
+						state = 205
+						state = 277
+						state = 278
+						state = 411
+					}
+				}
+				set_state_flag = promised_to_IRN
+				add_claim_by = PLC
+				remove_claim_by = RME
+				remove_core_of = RME
+				if = {
+					limit = { is_owned_and_controlled_by = RME }
+					PLC = { transfer_state = PREV }
+				}
+				else_if = {
+					limit = {
+						is_owned_by = RME
+					}
+					PLC = { set_state_owner = PREV }
+				}
+				else_if = {
+					limit = {
+						is_controlled_by = RME
+					}
+					PLC = { set_state_controller = PREV }
+				}
+			}
 		}
 	}
+
 	option = {
-		name = tesb_rome.127.b
-		SYR = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.127.c
-		SYR = {
-			country_event = tesb_rome.108
-		}
+		name = tesb_rome.312.a
+		set_country_flag = RME_promised_asia
 	}
 }
 
 country_event = {
-	id = tesb_rome.128
-	title = tesb_rome.128.t
-	desc = tesb_rome.128.desc
+	id = tesb_rome.313
+	title = tesb_rome.313.t
+	desc = tesb_rome.313.desc
 	picture = GFX_goal_generic_improve_relations
 
 	is_triggered_only = yes
 
-	option = {
-		name = tesb_rome.128.a
-		ISR = {
-			country_event = tesb_rome.100
+	immediate = {
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 482
+						state = 359
+						state = 443
+						state = 444
+						state = 445
+						state = 439
+					}
+				}
+				set_state_flag = promised_to_IRN
+				add_claim_by = PLC
+				remove_claim_by = RME
+				remove_core_of = RME
+				if = {
+					limit = { is_owned_and_controlled_by = RME }
+					PLC = { transfer_state = PREV }
+				}
+				else_if = {
+					limit = {
+						is_owned_by = RME
+					}
+					PLC = { set_state_owner = PREV }
+				}
+				else_if = {
+					limit = {
+						is_controlled_by = RME
+					}
+					PLC = { set_state_controller = PREV }
+				}
+			}
 		}
 	}
-	option = {
-		name = tesb_rome.128.b
-		ISR = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.128.c
-		ISR = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.129
-	title = tesb_rome.129.t
-	desc = tesb_rome.129.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.129.a
-		EGY = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.129.b
-		EGY = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.129.c
-		EGY = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.130
-	title = tesb_rome.130.t
-	desc = tesb_rome.130.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
 
 	option = {
-		name = tesb_rome.130.a
-		LBA = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.130.b
-		LBA = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.130.c
-		LBA = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.131
-	title = tesb_rome.131.t
-	desc = tesb_rome.131.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.131.a
-		TUN = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.131.b
-		TUN = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.131.c
-		TUN = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.132
-	title = tesb_rome.132.t
-	desc = tesb_rome.132.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.132.a
-		SIC = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.132.b
-		SIC = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.132.c
-		SIC = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.133
-	title = tesb_rome.133.t
-	desc = tesb_rome.133.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.133.a
-		SWI = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.133.b
-		SWI = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.133.c
-		SWI = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.134
-	title = tesb_rome.134.t
-	desc = tesb_rome.134.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.134.a
-		ITA = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.134.b
-		ITA = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.134.c
-		ITA = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.135
-	title = tesb_rome.135.t
-	desc = tesb_rome.135.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.135.a
-		AQI = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.135.b
-		AQI = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.135.c
-		AQI = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.136
-	title = tesb_rome.136.t
-	desc = tesb_rome.136.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.136.a
-		ALG = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.136.b
-		ALG = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.136.c
-		ALG = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.137
-	title = tesb_rome.137.t
-	desc = tesb_rome.137.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.137.a
-		MAR = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.137.b
-		MAR = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.137.c
-		MAR = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.138
-	title = tesb_rome.138.t
-	desc = tesb_rome.138.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.138.a
-		CAT = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.138.b
-		CAT = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.138.c
-		CAT = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.139
-	title = tesb_rome.139.t
-	desc = tesb_rome.139.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.139.a
-		BRG = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.139.b
-		BRG = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.139.c
-		BRG = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.140
-	title = tesb_rome.140.t
-	desc = tesb_rome.140.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.140.a
-		FRA = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.140.b
-		FRA = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.140.c
-		FRA = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.141
-	title = tesb_rome.141.t
-	desc = tesb_rome.141.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.141.a
-		BEL = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.141.b
-		BEL = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.141.c
-		BEL = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.142
-	title = tesb_rome.142.t
-	desc = tesb_rome.142.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.142.a
-		SPR = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.142.b
-		SPR = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.142.c
-		SPR = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.143
-	title = tesb_rome.143.t
-	desc = tesb_rome.143.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.143.a
-		BRI = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.143.b
-		BRI = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.143.c
-		BRI = {
-			country_event = tesb_rome.108
-		}
-	}
-}
-
-country_event = {
-	id = tesb_rome.144
-	title = tesb_rome.144.t
-	desc = tesb_rome.144.desc
-	picture = GFX_goal_generic_improve_relations
-
-	is_triggered_only = yes
-
-	option = {
-		name = tesb_rome.144.a
-		ENG = {
-			country_event = tesb_rome.100
-		}
-	}
-	option = {
-		name = tesb_rome.144.b
-		ENG = {
-			country_event = tesb_rome.104
-		}
-	}
-	option = {
-		trigger = {
-			has_government = democratic
-		}
-		name = tesb_rome.144.c
-		ENG = {
-			country_event = tesb_rome.108
-		}
+		name = tesb_rome.313.a
+		set_country_flag = RME_promised_carribean
 	}
 }

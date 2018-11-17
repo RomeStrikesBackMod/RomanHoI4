@@ -3,6 +3,7 @@ ideas = {
 		michael_VII = {
 			allowed = {
 				original_tag = RME
+				always = no
 			}
 			picture = george_vi
 			removal_cost = -1
@@ -12,6 +13,7 @@ ideas = {
 		konstantinos_XXI = {
 			allowed = {
 				original_tag = RME
+				always = no
 			}
 			picture = george_vi
 			removal_cost = -1
@@ -130,21 +132,6 @@ ideas = {
 			}
 		}
 
-		#RME_align_TAG_radical = {
-		#	allowed = {
-		#		always = no
-		#	}
-		#	allowed_civil_war = {
-		#		has_government = radical
-		#	}
-		#	removal_cost = -1
-		#	picture = generic_radical_drift_bonus
-		#	modifier = {
-		#		radical_drift = 0.2
-		#		radical_acceptance = 85
-		#	}
-		#}
-
 		RME_align_TAG_absolutist = {
 			allowed = {
 				always = no
@@ -217,7 +204,35 @@ ideas = {
 				opinion_gain_monthly_same_ideology_factor = 0.5
 			}
 		}
-		
+		RME_restore_rome_democratic = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				 has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				drift_defence_factor = 0.25
+				opinion_gain_monthly_same_ideology_factor = 0.5
+			}
+		}
+		RME_restore_rome_other = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				 NOT = { has_government = democratic }
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				democratic_drift = 0.1
+				democratic_acceptance = 25
+				opinion_gain_monthly_same_ideology_factor = 0.5
+			}
+		}		
 		RME_imperial_coronation = {
 			allowed = {
 				always = no
@@ -375,13 +390,30 @@ ideas = {
 		}
 		RME_former_dominion = {
 			allowed = { always = no }
+			allowed_civil_war = {
+				always = yes
+			}
 			removal_cost = -1
 			picture = generic_neutrality_drift_bonus
 		}
 		RME_former_territory = {
 			allowed = { always = no }
+			allowed_civil_war = {
+				always = yes
+			}
 			removal_cost = -1
 			picture = generic_neutrality_drift_bonus
+		}
+		RME_incorporate_clientes_idea = {
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_intel_bonus
+			modifier = {
+				subjects_autonomy_gain = -1
+			}
 		}
 	}
 }
