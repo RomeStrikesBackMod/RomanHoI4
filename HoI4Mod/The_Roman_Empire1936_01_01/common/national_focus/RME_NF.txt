@@ -4227,7 +4227,7 @@ focus_tree = {
 		available = {
 			is_puppet = no
 			is_faction_leader = yes
-			num_faction_members > 4
+			num_faction_members > 5
 		}
 		x = 0
 		y = 1
@@ -5070,7 +5070,6 @@ focus_tree = {
 			418 = { is_owned_by_ROOT_or_subject = yes }
 			419 = { is_owned_by_ROOT_or_subject = yes }
 			420 = { is_owned_by_ROOT_or_subject = yes }
-			482 = { is_owned_by_ROOT_or_subject = yes }
 			496 = { is_owned_by_ROOT_or_subject = yes }
 			497 = { is_owned_by_ROOT_or_subject = yes }
 			498 = { is_owned_by_ROOT_or_subject = yes }
@@ -5115,7 +5114,6 @@ focus_tree = {
 				add_state_core = 418
 				add_state_core = 419
 				add_state_core = 420
-				add_state_core = 482
 				add_state_core = 496
 				add_state_core = 497
 				add_state_core = 498
@@ -5264,5 +5262,164 @@ focus_tree = {
 			}
 		}
 	}
+	
+	focus = {
+		id = RME_rome_restored
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = RME_gaul focus = RME_britain }
+		available = {
+			is_puppet = no
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_caucasus.tt_1
+				NOT = {
+					any_state = {
+						is_caucasus_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_levant.tt_1
+				NOT = {
+					any_state = {
+						is_levant_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_balkan.tt_1
+				NOT = {
+					any_state = {
+						is_balkan_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_north_africa.tt_1
+				NOT = {
+					any_state = {
+						is_north_africa_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_italy.tt_1
+				NOT = {
+					any_state = {
+						is_italy_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_gaul.tt_1
+				NOT = {
+					any_state = {
+						is_gaul_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_iberia.tt_1
+				NOT = {
+					any_state = {
+						is_iberia_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RME_rome_restored_britain.tt_1
+				NOT = {
+					any_state = {
+						is_britain_state = yes
+						NOT = { is_owned_by_ROOT_or_subject = yes }
+					}
+				}
+			}
+
+		}
+		bypass = {
+			
+		}
+		x = 1
+		y = 1
+		relative_position_id = RME_britain
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = RME_rome_restored_caucasus.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = { is_caucasus_state = yes NOT = { is_core_of = RME } }
+					add_core_of = RME
+				}
+			}
+			custom_effect_tooltip = RME_rome_restored_levant.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = { is_levant_state = yes NOT = { is_core_of = RME } NOT = { state = 457 } }
+					add_core_of = RME
+				}
+			}
+			custom_effect_tooltip = RME_rome_restored_balkan.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = { is_balkan_state = yes NOT = { is_core_of = RME } }
+					add_core_of = RME
+				}
+			}
+			custom_effect_tooltip = RME_rome_restored_north_africa.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_north_africa_state = yes
+						NOT = { is_core_of = RME }
+						NOT = { state = 430 }
+						NOT = { state = 461 }
+						NOT = { state = 481 }
+						NOT = { state = 483 }
+					}
+					add_core_of = RME
+				}
+			}
+			custom_effect_tooltip = RME_rome_restored_italy.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = { is_italy_state = yes NOT = { is_core_of = RME } }
+					add_core_of = RME
+				}
+			}
+			custom_effect_tooltip = RME_rome_restored_gaul.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = { is_gaul_state = yes NOT = { is_core_of = RME } }
+					add_core_of = RME
+				}
+			}
+			custom_effect_tooltip = RME_rome_restored_iberia.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = { is_iberia_state = yes NOT = { is_core_of = RME } }
+					add_core_of = RME
+				}
+			}
+			custom_effect_tooltip = RME_rome_restored_britain.tt_2
+			hidden_effect = {
+				every_state = {
+					limit = { is_britain_state = yes NOT = { is_core_of = RME } }
+					add_core_of = RME
+				}
+			}
+		}
+	}
+	
 
 }
