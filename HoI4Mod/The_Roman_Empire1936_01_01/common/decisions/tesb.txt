@@ -51,6 +51,7 @@ regaining_rome = {
 				FROM = {
 					TESB_check_puppet_willingness = yes
 				}
+<<<<<<< HEAD
 			}
 			if = {
 				limit = {
@@ -60,6 +61,17 @@ regaining_rome = {
 					TESB_check_faction_willingness = yes
 				}
 			}
+=======
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome_focus
+				}
+				FROM = {
+					TESB_check_faction_willingness = yes
+				}
+			}
+>>>>>>> refs/remotes/Idhrendur/master
 		}
 	}
 
@@ -98,6 +110,7 @@ regaining_rome = {
 		visible = {
 			original_tag = RME
 			FROM = {
+<<<<<<< HEAD
 				exists = yes
 				NOT = { is_subject_of = RME }
 				NOT = { is_in_faction_with = RME }
@@ -108,10 +121,14 @@ regaining_rome = {
 				exists = yes
 				has_idea = RME_former_territory
 				has_country_flag = RME_region_integration_started
+=======
+				exists = yes
+>>>>>>> refs/remotes/Idhrendur/master
 				NOT = { is_subject_of = RME }
 				NOT = { is_in_faction_with = RME }
 			}
 		}
+<<<<<<< HEAD
 
 		cost = 50
 
@@ -178,3 +195,37 @@ burgundy_descisions = {
 		}
 	}
 }
+=======
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_idea = RME_former_territory
+				has_country_flag = RME_region_integration_started
+				NOT = { is_subject_of = RME }
+				NOT = { is_in_faction_with = RME }
+			}
+		}
+
+		cost = 50
+
+		complete_effect = {
+			if = {
+				limit = { has_completed_focus = RME_reestablish_roman_hegemony }
+				FROM = {
+					country_event = { id = tesb_restore_rome.10 hours = 1 }
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = RME_restore_rome_focus }
+				FROM = {
+					country_event = { id = tesb_restore_rome.20 hours = 1 }
+				}
+			}
+			else = {
+				country_event = { id = tesb_rome.115 hours = 1 }
+			}
+		}
+	}
+}
+
+>>>>>>> refs/remotes/Idhrendur/master
