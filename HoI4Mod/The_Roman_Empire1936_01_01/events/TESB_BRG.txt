@@ -1,0 +1,322 @@
+﻿add_namespace = tesb_BRG
+
+country_event = {
+	id = tesb_BRG.100
+	title = tesb_BRG.100.t
+	desc = tesb_BRG.100.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_BRG.100.a
+		effect_tooltip = {
+			add_popularity = {
+				ideology = fascism
+				popularity = BRG_fascist_var
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = BRG_communist_var
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = BRG_democratic_var
+			}
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = fascism
+				popularity = BRG_fascist_var1
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = BRG_communist_var1
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = BRG_democratic_var
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = BRG_communist_var2
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = BRG_fascist_var2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_BRG.120
+	title = tesb_BRG.120.t
+	desc = tesb_BRG.120.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join BRG alliance
+	option = {
+		name = tesb_BRG.120.a
+		effect_tooltip = {
+			BRG = { add_to_faction = FROM }
+		}
+		hidden_effect = {
+			BRG = { country_event = { id = tesb_BRG.121 hours = 1 } }
+		}
+	}
+	#Reject BRG alliance
+	option = {
+		name = tesb_BRG.120.b
+		effect_tooltip = {
+			reverse_add_opinion_modifier = {
+				target = BRG
+				modifier = rejected_faction
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_government = FROM }
+			}
+			custom_effect_tooltip = tesb_BRG.120.tt
+		}
+		hidden_effect = {
+			BRG = { country_event = { id = tesb_BRG.122 hours = 1 } }
+		}
+	}
+}
+country_event = {
+	id = tesb_BRG.121
+	title = tesb_BRG.121.t
+	desc = tesb_BRG.121.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join BRG alliance
+	option = {
+		name = tesb_BRG.121.a
+		add_to_faction = FROM
+	}
+}
+country_event = {
+	id = tesb_BRG.122
+	title = tesb_BRG.122.t
+	desc = tesb_BRG.122.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join BRG alliance
+	option = {
+		name = tesb_BRG.122.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_faction
+		}
+	}
+	#Reject BRG alliance
+	option = {
+		trigger = {
+			FROM = {
+				NOT = { has_government = ROOT }
+			}
+		}
+		name = tesb_BRG.122.b
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_faction
+		}
+		create_wargoal = {
+			type = topple_government
+			target = FROM
+		}
+	}
+}
+
+country_event = {
+	id = tesb_BRG.130
+	title = tesb_BRG.130.t
+	desc = tesb_BRG.130.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Submit to BRG
+	option = {
+		name = tesb_BRG.130.a
+		effect_tooltip = {
+			BRG = { puppet = FLD }
+		}
+		hidden_effect = {
+			BRG = { country_event = { id = tesb_BRG.131 hours = 1 } }
+		}
+		set_country_flag = BRG_promised_picardie
+	}
+	#Resist BRG
+	option = {
+		name = tesb_BRG.130.b
+		effect_tooltip = {
+			BRG = {
+				create_wargoal = {
+					type = topple_government
+					target = FLD
+				}
+			}
+		}
+		hidden_effect = {
+			BRG = { country_event = { id = tesb_BRG.132 hours = 1 } }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_BRG.131
+	title = tesb_BRG.131.t
+	desc = tesb_BRG.131.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Submit BRG
+	option = {
+		name = tesb_BRG.131.a
+		puppet = FLD
+	}
+}
+country_event = {
+	id = tesb_BRG.132
+	title = tesb_BRG.132.t
+	desc = tesb_BRG.132.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Resist BRG
+	option = {
+		name = tesb_BRG.132.a
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FLD
+		}
+	}
+}
+
+country_event = {
+	id = tesb_BRG.135
+	title = tesb_BRG.135.t
+	desc = tesb_BRG.135.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Grant FLD picardie
+	option = {
+		name = tesb_BRG.132.a
+		FLD = { transfer_state = 142 }
+	}
+	#Grant FRA picardie/Keep picardie
+	option = {
+		name = tesb_BRG.132.a
+		FLD = {
+			add_opinion_modifier = {
+				opinion = BRG_broke_promise
+				target = BRG
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_BRG.140
+	title = tesb_BRG.140.t
+	desc = tesb_BRG.140.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Submit to BRG
+	option = {
+		name = tesb_BRG.140.a
+		effect_tooltip = {
+			BRG = { transfer_state = 502 }
+		}
+		hidden_effect = {
+			BRG = { country_event = { id = tesb_BRG.141 hours = 1 } }
+		}
+		set_country_flag = BRG_promised_picardie
+	}
+	#Resist BRG
+	option = {
+		name = tesb_BRG.140.b
+		effect_tooltip = {
+			BRG = {
+				create_wargoal = {
+					type = take_core_state
+					target = FLD
+					generator = { 502 }
+				}
+			}
+		}
+		hidden_effect = {
+			BRG = { country_event = { id = tesb_BRG.142 hours = 1 } }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_BRG.141
+	title = tesb_BRG.141.t
+	desc = tesb_BRG.141.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Submit BRG
+	option = {
+		name = tesb_BRG.141.a
+		transfer_state = 502
+	}
+}
+country_event = {
+	id = tesb_BRG.142
+	title = tesb_BRG.142.t
+	desc = tesb_BRG.142.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Resist BRG
+	option = {
+		name = tesb_BRG.142.a
+		create_wargoal = {
+			type = take_core_state
+			target = FLD
+			generator = { 502 }
+		}
+	}
+}
