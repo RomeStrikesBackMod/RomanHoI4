@@ -7,5 +7,8 @@ cd "D:\My Projects\paradoxGameConverters - Vic2ToHoI4\Vic2ToHoI4\Release\"
 V2ToHoI4Converter.exe The_Roman_Empire1936_01_01.v2
 xcopy "output\The_Roman_Empire1936_01_01" "D:\My Projects\RomanHoI4\results\The_Roman_Empire1936_01_01" /E /Y /I /Q
 copy "output\The_Roman_Empire1936_01_01.mod" "D:\My Projects\RomanHoI4\results\"
+
 cd "D:\My Projects\RomanHoI4"
 xcopy HoI4Mod results /E /Y /I /Q
+
+"c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/ALG - Algeria.txt" "HoI4Mod/patch/AlgeriaHistory.patch"
