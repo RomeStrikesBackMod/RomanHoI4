@@ -1,15 +1,15 @@
-ï»¿capital = 166
+ï»¿capital = 402
 set_research_slots = 3
 
-oob = "CUB_OOB"
-
-declare_war_on = {
-	target = HAI
-	type = annex_everything
-}
+oob = "AOT_OOB"
 
 # Starting tech
 set_technology = {
+basic_battleship = 1
+basic_destroyer = 1
+basic_heavy_cruiser = 1
+basic_light_cruiser = 1
+basic_light_tank = 1
 early_battleship = 1
 early_bomber = 1
 early_destroyer = 1
@@ -18,112 +18,169 @@ early_heavy_cruiser = 1
 early_light_cruiser = 1
 early_submarine = 1
 electronic_mechanical_engineering = 1
+fighter1 = 1
 gw_artillery = 1
 gwtank = 1
 infantry_weapons = 1
+infantry_weapons1 = 1
+interwar_antiair = 1
+interwar_artillery = 1
+marines = 1
 motorised_infantry = 1
+support_weapons = 1
+synth_oil_experiments = 1
 tactical_bomber1 = 1
+tech_engineers = 1
+tech_recon = 1
 tech_support = 1
 transport = 1
 }
 
 # Research Bonuses
-add_tech_bonus = { name = land_doc_bonus bonus = 0.9 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = air_doc_bonus bonus = 0.9 uses = 1 category = air_doctrine }
-set_convoys = 2
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_battlefield_support name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_grand_battle_plan name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mass_assault name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mobile_warfare name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_operational_integrity name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_strategic_destruction name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_superior_firepower name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = naval_doctrine name = doctrine_bonus }
+set_convoys = 3
 
 
 set_politics = {
 
     parties = {
+        absolutist = {
+            popularity = 5
+        }
+        communism = {
+            popularity = 1
+        }
+        democratic = {
+            popularity = 62
+        }
         fascism = {
-            popularity = 100
+            popularity = 27
         }
         neutrality = {
-            popularity = 0
+            popularity = 5
         }
     }
     
-    ruling_party = fascism
-    last_election = "1836.1.1"
+    ruling_party = democratic
+    last_election = "1931.7.2"
     election_frequency = 48
-    elections_allowed = no
+    elections_allowed = yes
 }
 add_opinion_modifier = { target = ADA modifier = positive_0 }
+add_opinion_modifier = { target = ALG modifier = positive_0 }
 add_opinion_modifier = { target = ANG modifier = positive_0 }
-add_opinion_modifier = { target = AOT modifier = positive_0 }
 add_opinion_modifier = { target = AQI modifier = positive_0 }
 add_opinion_modifier = { target = ARG modifier = positive_0 }
+add_opinion_modifier = { target = ARM modifier = positive_0 }
+add_opinion_modifier = { target = AST modifier = positive_0 }
+add_opinion_modifier = { target = AZR modifier = positive_0 }
 add_opinion_modifier = { target = BCS modifier = positive_0 }
 add_opinion_modifier = { target = BEN modifier = positive_0 }
-add_opinion_modifier = { target = BIR modifier = negative_47 }
+add_opinion_modifier = { target = BIR modifier = negative_15 }
 add_opinion_modifier = { target = BRG modifier = positive_0 }
 add_opinion_modifier = { target = BRI modifier = positive_0 }
+add_opinion_modifier = { target = BRK modifier = positive_0 }
 add_opinion_modifier = { target = BUR modifier = positive_0 }
 add_opinion_modifier = { target = CAM modifier = positive_0 }
 add_opinion_modifier = { target = CAN modifier = positive_0 }
 add_opinion_modifier = { target = CAS modifier = positive_0 }
+add_opinion_modifier = { target = CAT modifier = positive_0 }
+add_opinion_modifier = { target = CHD modifier = positive_0 }
 add_opinion_modifier = { target = CHG modifier = positive_0 }
+add_opinion_modifier = { target = CMR modifier = positive_0 }
 add_opinion_modifier = { target = COG modifier = positive_0 }
 add_opinion_modifier = { target = COL modifier = positive_0 }
+add_opinion_modifier = { target = CRO modifier = positive_0 }
+add_opinion_modifier = { target = DAH modifier = positive_0 }
+add_opinion_modifier = { target = EGY modifier = positive_0 }
 add_opinion_modifier = { target = ENG modifier = positive_0 }
-add_opinion_modifier = { target = ETH modifier = positive_0 }
+add_opinion_modifier = { target = ETH modifier = positive_30 }
+add_opinion_modifier = { target = FLD modifier = positive_0 }
 add_opinion_modifier = { target = FRA modifier = positive_0 }
 add_opinion_modifier = { target = GAB modifier = positive_0 }
+add_opinion_modifier = { target = GEO modifier = positive_0 }
 add_opinion_modifier = { target = GER modifier = positive_0 }
 add_opinion_modifier = { target = GRB modifier = positive_0 }
+add_opinion_modifier = { target = GUI modifier = positive_0 }
+add_opinion_modifier = { target = GUY modifier = positive_0 }
+add_opinion_modifier = { target = HAI modifier = positive_0 }
 add_opinion_modifier = { target = HED modifier = positive_0 }
 add_opinion_modifier = { target = HUN modifier = positive_0 }
-add_opinion_modifier = { target = IND modifier = negative_100 }
+add_opinion_modifier = { target = IND modifier = positive_0 }
 add_opinion_modifier = { target = IRN modifier = positive_0 }
 add_opinion_modifier = { target = IRQ modifier = positive_0 }
+add_opinion_modifier = { target = ISR modifier = positive_0 }
 add_opinion_modifier = { target = ITA modifier = positive_0 }
 add_opinion_modifier = { target = JAP modifier = positive_0 }
-add_opinion_modifier = { target = KHI modifier = positive_11 }
+add_opinion_modifier = { target = JAV modifier = positive_0 }
+add_opinion_modifier = { target = KHI modifier = positive_0 }
 add_opinion_modifier = { target = KOR modifier = positive_0 }
-add_opinion_modifier = { target = LAO modifier = negative_14 }
-add_opinion_modifier = { target = MAK modifier = negative_18 }
+add_opinion_modifier = { target = LAO modifier = positive_0 }
+add_opinion_modifier = { target = MAK modifier = positive_0 }
 add_opinion_modifier = { target = MAN modifier = positive_0 }
-add_opinion_modifier = { target = MEX modifier = negative_16 }
+add_opinion_modifier = { target = MAU modifier = positive_0 }
+add_opinion_modifier = { target = MEX modifier = positive_0 }
+add_opinion_modifier = { target = MLI modifier = positive_0 }
 add_opinion_modifier = { target = MNG modifier = positive_0 }
-add_opinion_modifier = { target = MUT modifier = positive_8 }
+add_opinion_modifier = { target = MOR modifier = positive_0 }
+add_opinion_modifier = { target = MOS modifier = positive_0 }
+add_opinion_modifier = { target = MUT modifier = positive_5 }
+add_opinion_modifier = { target = NGR modifier = positive_0 }
 add_opinion_modifier = { target = NMB modifier = positive_0 }
 add_opinion_modifier = { target = NOR modifier = positive_0 }
 add_opinion_modifier = { target = OMA modifier = positive_0 }
 add_opinion_modifier = { target = PAT modifier = positive_0 }
+add_opinion_modifier = { target = PHI modifier = positive_0 }
 add_opinion_modifier = { target = PLC modifier = positive_0 }
-add_opinion_modifier = { target = RME modifier = positive_200 }
-add_opinion_modifier = { target = RUS modifier = negative_100 }
+add_opinion_modifier = { target = RME modifier = positive_197 }
+add_opinion_modifier = { target = RUS modifier = positive_0 }
 add_opinion_modifier = { target = SAF modifier = positive_0 }
 add_opinion_modifier = { target = SCA modifier = positive_0 }
-add_opinion_modifier = { target = SCO modifier = positive_0 }
-add_opinion_modifier = { target = SHN modifier = negative_18 }
+add_opinion_modifier = { target = SCO modifier = positive_30 }
+add_opinion_modifier = { target = SEN modifier = positive_0 }
+add_opinion_modifier = { target = SER modifier = positive_0 }
+add_opinion_modifier = { target = SHN modifier = negative_10 }
 add_opinion_modifier = { target = SIA modifier = positive_0 }
-add_opinion_modifier = { target = SOK modifier = positive_12 }
+add_opinion_modifier = { target = SIC modifier = positive_0 }
+add_opinion_modifier = { target = SOK modifier = positive_5 }
+add_opinion_modifier = { target = SPA modifier = positive_0 }
 add_opinion_modifier = { target = SUK modifier = positive_0 }
+add_opinion_modifier = { target = SWI modifier = positive_0 }
+add_opinion_modifier = { target = SYR modifier = positive_0 }
 add_opinion_modifier = { target = TIB modifier = positive_0 }
-add_opinion_modifier = { target = UTA modifier = negative_1 }
+add_opinion_modifier = { target = TOG modifier = positive_0 }
+add_opinion_modifier = { target = TRI modifier = positive_0 }
+add_opinion_modifier = { target = TUN modifier = positive_0 }
+add_opinion_modifier = { target = UTA modifier = negative_15 }
+add_opinion_modifier = { target = YUG modifier = positive_0 }
 
 
 add_ideas = {
 	volunteer_only
 	civilian_economy
 	export_focus
-	culture_caribeno
+	culture_greek
 }
 set_stability = 0.60
-set_war_support = 0.60
+set_war_support = 0.55
 create_country_leader = {
-    name = "Ignacio MÃ¡rquez"
-    desc = "POLITICS_IGNACIO_MÃ¡RQUEZ_DESC"
-    picture = "gfx/leaders/ARG/Portrait_Argentina_Agustin_Pedro_Justo.dds"
+    name = "Ionnis Hatzianestis"
+    desc = "POLITICS_IONNIS_HATZIANESTIS_DESC"
+    picture = "GFX_GRE_Panagis_Tsaldaris"
     expire = "1965.1.1"
-    ideology = falangism
+    ideology = socialism
     traits = {
     }
 }
 create_corps_commander = {
-	name = "Ramón Batista"
+	name = "Ionnis Papadopoulos"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -134,7 +191,183 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Pablo Henríquez"
+	name = "Antonios Typaldos-Alfonsatos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Konstantinos Venizelos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Kyriakoulis Palaskas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Kyriakoulis Christakis-Zografos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Odysseas Kolokotronis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Stylianos Papagos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Benizelos Zymvrakakis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Antonios Papadiamantopoulos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Zinovios Staikopoulos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Sotiris Sofoulis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Ilias Tsolakoglou"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Othon Voulgaris"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Antonios Mavrocordatos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Stylianos Soutsos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Zinovios Spyromilios"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Sotiris Plapoutas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Kyriakoulis Kriezis"
 	picture = ""
 	traits = { }
 	skill = 2
@@ -145,7 +378,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Joaquín Trujillo"
+	name = "Eleftherios Hatzianestis"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -156,7 +389,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Alfredo Herrera"
+	name = "Odysseas Pangalos"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -167,117 +400,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Dionisio de Meriño"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Arturo Puello"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "José Henríquez"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Arturo de la Rosa"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Felipe Mella"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ulises Herrera"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Fernando Estrada"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Carlos Henríquez"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Eugenio de la Rosa"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gregorio González"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Anselmo Sosa"
+	name = "Athanasios Sofoulis"
 	picture = ""
 	traits = { }
 	skill = 2
@@ -288,7 +411,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Ignacio de Meriño"
+	name = "Evripidis Voulgaris"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -299,7 +422,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Antonio Gonzáles"
+	name = "Gennaios Mavrovouniotis"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -310,7 +433,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Dionisio Mella"
+	name = "Epameinontas Plapoutas"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -321,7 +444,51 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Fernando Báez"
+	name = "Athanasios Othonaios"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Sofoklis Plastiras"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Dimitrios Kolokotronis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Benizelos Sarafis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Charilaos Sarafis"
 	picture = ""
 	traits = { }
 	skill = 2
@@ -332,7 +499,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Gregorio Sosa"
+	name = "Antonios Zymvrakakis"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -343,7 +510,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Benigno Espaillat"
+	name = "Pavlos Palaskas"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -354,7 +521,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Calixto de Céspedes"
+	name = "Markos Parakevopouolos"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -365,7 +532,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Romás Guillermo"
+	name = "Benizelos Parakevopouolos"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -376,7 +543,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Horacio Grau"
+	name = "Emmanouil Spyromilios"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -387,7 +554,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "José Miguel Santana"
+	name = "Sofoklis Manos"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -398,7 +565,216 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Pedro Puello"
+	name = "Mikhael Stanotas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Augustinos Zymvrakakis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Makarios Foumis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Staikos Foumis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Staikos Mouskos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Emmanouil Nider"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Othon Nider"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Themistoklis Papagos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Epameinontas Tsakalotos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Athanasios Mavrocordatos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Stefanos Othonaios"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Kyriakos Smolenskis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Mikhael Dousmanis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Augustinos Dousmanis"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Leonidas Kanaris"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Theodoros Soutsos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Evripidis Papadiamantopoulos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Georgios Typaldos-Alfonsatos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Pavlos Typaldos-Alfonsatos"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Makarios Tsakalotos"
 	picture = ""
 	traits = { }
 	skill = 2
@@ -409,29 +785,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Raúl Báez"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gregorio Cabral"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Anselmo Sosa"
+	name = "Ionnis Zaimis"
 	picture = ""
 	traits = { }
 	skill = 2
@@ -442,7 +796,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Anselmo Alfau"
+	name = "Markos Charalambis"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -453,7 +807,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Ulises de Rojas"
+	name = "Tharyvoulos Kriezis"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -464,7 +818,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Felipe Grau"
+	name = "Spyros Sarafis"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -475,7 +829,7 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "José Maceo"
+	name = "Spyridion Vassos"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -486,384 +840,10 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Alfredo Hevia"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Guillermo González"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Fulgencio Trujillo"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Fernando Vázquez"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Domingo Sosa"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Fidel Hevia"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Dionisio Sosa"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Antonio Alfau"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Fidel Puello"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Alberto Zayas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Domingo Espaillat"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Alberto Acosta"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ceferino Morales"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ceferino Herrera"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Juan Laredo"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Alfredo Acosta"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Alejandro Moncada"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gregorio Gonzáles"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Calixto Estrella"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Antonio Estrella"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Salvador Laredo"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Eugenio Castillo"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Carlos Trujillo"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "José Miguel Fernández"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ramón de Meriño"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Federico Santana"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Romás Santana"
+	name = "Alexandros Kondylis"
 	picture = ""
 	traits = { }
 	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Arturo Vázquez"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ulises Trujillo"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Jacinto Méndez"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Mariano Bayo"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Raúl Zayas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ulises Batista"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Jacobo Gonzáles"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Raúl González"
-	picture = ""
-	traits = { }
-	skill = 1
 	attack_skill = 1
 	defense_skill = 1
 	planning_skill = 1
@@ -871,7 +851,7 @@ create_corps_commander = {
 }
 
 create_navy_leader = {
-	name = "Cesáreo Henríquez"
+	name = "Adamantios Kanaris"
 	picture = ""
 	traits = { }
 	skill = 1
