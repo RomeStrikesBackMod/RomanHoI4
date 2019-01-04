@@ -1,6 +1,30 @@
 ﻿add_namespace = tesb_plc
 
 country_event = {
+	id = tesb_plc.5
+	title = tesb_plc.5.t
+	desc = tesb_plc.5.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = tesb_plc.5.a
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+	}
+
+	option = {
+		name = tesb_plc.5.b
+		add_political_power = -100
+		add_stability = -0.2
+	}
+
+}
+
+country_event = {
 	id = tesb_plc.10
 	title = tesb_plc.10.t
 	desc = tesb_plc.10.d
@@ -73,6 +97,42 @@ country_event = {
 }
 
 country_event = {
+	id = tesb_plc.20
+	title = tesb_plc.20.t
+	desc = tesb_plc.20.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Join PLC
+	option = {
+		name = tesb_plc.20.a
+		remove_state_core = 553
+		set_country_flag = PLC_RUS_pact
+	}
+}
+
+country_event = {
+	id = tesb_plc.21
+	title = tesb_plc.21.t
+	desc = tesb_plc.21.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Join PLC
+	option = {
+		name = tesb_plc.21.a
+	}
+}
+
+
+#1st Dresden
+country_event = {
 	id = tesb_plc.100
 	title = tesb_plc.100.t
 	desc = tesb_plc.100.d
@@ -123,6 +183,15 @@ country_event = {
 				country_event = {
 					id = tesb_plc.102
 					hours = 12
+				}
+			}
+			if = {
+				limit = { country_exists = UKR }
+				UKR = { #1
+					country_event = {
+						id = tesb_plc.102
+						hours = 12
+					}
 				}
 			}
 		}
@@ -183,6 +252,10 @@ country_event = {
 		set_country_flag = attending_dresden_1
 		ai_chance = {
 			factor = 20
+			modifier = {
+				has_country_flag = PLC_RUS_pact
+				factor = 2
+			}
 		}
 	}
 	#don't attend
@@ -219,7 +292,7 @@ country_event = {
 		set_country_flag = decided_PLC_dresden_1
 	}
 
-	#support PLC limited
+	#support PLC
 	option = {
 		name = tesb_plc.103.a
 		if = {
@@ -254,9 +327,20 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+			}
+			modifier = {
+				has_country_flag = PLC_RUS_pact
+				factor = 2
+			}
 		}
 	}
-	#don't support PLC limited
+	#don't support PLC
 	option = {
 		name = tesb_plc.103.b
 		set_country_flag = not_supported_PLC
@@ -268,6 +352,7 @@ country_event = {
 			}
 			modifier = {
 				HUN = { has_government = democratic }
+				NOT = { has_government = fascism }
 				factor = 1.5
 			}
 			modifier = {
@@ -281,6 +366,13 @@ country_event = {
 				has_opinion = {
 					target = PLC
 					value < 0
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 24
 				}
 				factor = 1.5
 			}
@@ -348,6 +440,13 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+			}
 		}
 	}
 	#don't support GER limited
@@ -362,6 +461,7 @@ country_event = {
 			}
 			modifier = {
 				HUN = { has_government = democratic }
+				NOT = { has_government = fascism }
 				factor = 1.5
 			}
 			modifier = {
@@ -378,6 +478,13 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = HUN
+					value > 24
+				}
+			}
 		}
 	}
 }
@@ -387,7 +494,7 @@ country_event = {
 	id = tesb_plc.105
 	title = tesb_plc.105.t
 	desc = tesb_plc.105.da
-
+	picture = GFX_report_event_german_italian_pact
 	is_triggered_only = yes
 
 	immediate = {
@@ -499,6 +606,7 @@ country_event = {
 	id = tesb_plc.106
 	title = tesb_plc.106.t
 	desc = tesb_plc.106.d
+	picture = GFX_report_event_german_italian_pact
 
 	is_triggered_only = yes
 
@@ -531,7 +639,7 @@ country_event = {
 		}
 	}
 
-	#give up West Galicia
+	#give up Silesia
 	option = {
 		name = tesb_plc.106.a1
 		GER = { transfer_state = 215 clear_variable = GER_dresden_1 }
@@ -570,7 +678,7 @@ country_event = {
 			}
 		}
 	}
-	#dont give up West Galicia
+	#dont give up Silesia
 	option = {
 		name = tesb_plc.106.a2
 		GER = {
@@ -748,11 +856,15 @@ country_event = {
 	immediate = {
 	}
 
-	#Join PLC
+	#Agree to transfer
 	option = {
 		name = tesb_plc.120.a
 		effect_tooltip = {
 			PLC = { transfer_state = 164 }
+			remove_state_core = 164
+			remove_state_core = 355
+			remove_state_core = 216
+			remove_state_core = 218
 		}
 		hidden_effect = {
 			PLC = { country_event = { id = tesb_plc.121 hours = 1 } }
@@ -765,7 +877,7 @@ country_event = {
 			}
 		}
 	}
-	#Reject PLC
+	#Reject transfer
 	option = {
 		name = tesb_plc.120.b
 		hidden_effect = {
@@ -787,12 +899,16 @@ country_event = {
 	immediate = {
 	}
 
-	#Join PLC
+	#transfers
 	option = {
 		name = tesb_plc.121.a
 		transfer_state = 164
 		164 = { add_manpower = -100000 remove_core_of = GER }
 		GER = {
+			remove_state_core = 164
+			remove_state_core = 355
+			remove_state_core = 218
+			remove_state_core = 216
 			random_owned_controlled_state = {
 				limit = { NOT = { has_state_flag = PLC_transfer } }
 				add_manpower = 100000
@@ -845,7 +961,7 @@ country_event = {
 	immediate = {
 	}
 
-	#Join PLC
+	#Refused transfer
 	option = {
 		name = tesb_plc.122.a
 		add_opinion_modifier = {
@@ -908,6 +1024,15 @@ country_event = {
 					hours = 12
 				}
 			}
+			if = {
+				limit = { country_exists = UKR }
+				UKR = { #1
+					country_event = {
+						id = tesb_plc.152
+						hours = 12
+					}
+				}
+			}
 		}
 	}
 
@@ -915,7 +1040,12 @@ country_event = {
 	option = {
 		name = tesb_plc.150.a
 		set_variable = { PLC_dresden_2 = 1 }
-		set_variable = { BAV_dresden_2 = 1 }
+		if = {
+			limit = {
+				BAV = { exists = no }
+			}
+			set_variable = { BAV_dresden_2 = 1 }
+		}
 		add_political_power = -50
 		ai_chance = {
 			factor = 20
@@ -993,6 +1123,7 @@ country_event = {
 		NOT = { tag = PLC }
 		has_country_flag = attending_dresden_2
 		NOT = { has_country_flag = decided_BAV_dresden_2 }
+		BAV = { exists = no }
 	}
 
 	mean_time_to_happen = {
@@ -1038,6 +1169,24 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				has_opinion = {
+					target = PLC
+					value > 49
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_country_flag = PLC_RUS_pact
+				factor = 2
+			}
 		}
 	}
 	#don't support PLC limited
@@ -1052,6 +1201,7 @@ country_event = {
 			}
 			modifier = {
 				HUN = { has_government = democratic }
+				NOT = { has_government = fascism }
 				factor = 1.5
 			}
 			modifier = {
@@ -1068,6 +1218,13 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 24
+				}
+				factor = 1.5
+			}
 		}
 	}
 }
@@ -1081,7 +1238,10 @@ country_event = {
 	trigger = {
 		NOT = { tag = PLC }
 		has_country_flag = attending_dresden_2
-		has_country_flag = decided_BAV_dresden_2
+		OR = {
+			has_country_flag = decided_BAV_dresden_2
+			country_exists = BAV
+		}
 		NOT = { has_country_flag = decided_PLC_dresden_2 }
 	}
 
@@ -1128,6 +1288,13 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 1.5
+			}
 		}
 	}
 	#don't support PLC limited
@@ -1142,6 +1309,7 @@ country_event = {
 			}
 			modifier = {
 				HUN = { has_government = democratic }
+				NOT = { has_government = fascism }
 				factor = 1.5
 			}
 			modifier = {
@@ -1155,6 +1323,13 @@ country_event = {
 				has_opinion = {
 					target = PLC
 					value < 0
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 24
 				}
 				factor = 1.5
 			}
@@ -1225,6 +1400,13 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 1.5
+			}
 		}
 	}
 	#don't support GER limited
@@ -1242,6 +1424,7 @@ country_event = {
 			}
 			modifier = {
 				HUN = { has_government = democratic }
+				NOT = { has_government = fascism }
 				factor = 1.5
 			}
 			modifier = {
@@ -1258,6 +1441,13 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 24
+				}
+				factor = 1.5
+			}
 		}
 	}
 }
@@ -1267,6 +1457,7 @@ country_event = {
 	id = tesb_plc.155
 	title = tesb_plc.155.t
 	desc = tesb_plc.155.da
+	picture = GFX_report_event_german_italian_pact
 
 	is_triggered_only = yes
 
@@ -1379,6 +1570,7 @@ country_event = {
 	id = tesb_plc.156
 	title = tesb_plc.156.t
 	desc = tesb_plc.156.d
+	picture = GFX_report_event_german_italian_pact
 
 	is_triggered_only = yes
 
@@ -1491,6 +1683,7 @@ country_event = {
 	id = tesb_plc.157
 	title = tesb_plc.157.t
 	desc = tesb_plc.157.d
+	picture = GFX_report_event_german_italian_pact
 
 	is_triggered_only = yes
 
@@ -1523,7 +1716,7 @@ country_event = {
 		}
 	}
 
-	#give up West Galicia
+	#give up BAV
 	option = {
 		name = tesb_plc.157.a1
 		release = BAV
@@ -1834,10 +2027,6 @@ country_event = {
 		}
 		ai_chance = {
 			factor = 10
-			modifier = {
-				factor = 0
-				NOT = { has_government = fascism }
-			}
 		}
 	}
 	#Reject PLC

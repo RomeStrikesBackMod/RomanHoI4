@@ -1,68 +1,5 @@
 ﻿add_namespace = tesb_rome
 
-#TEMP
-country_event = {
-	id = tesb_rome.0
-	title = tesb_rome.0.t
-	desc = tesb_rome.0.d
-	picture = GFX_report_event_election_vote
-	is_triggered_only = yes
-	
-	option = {
-		name = tesb_rome.0.a
-		random_country = {
-			limit = {
-				has_government = absolutist
-			}
-			create_faction = "Absolutists"
-			every_country = {
-				limit = { has_government = absolutist }
-				PREV = { add_to_faction = PREV }
-			}
-		}
-		random_country = {
-			limit = {
-				has_government = communism
-			}
-			
-			create_faction = "Communists"
-			every_country = {
-				limit = { has_government = communism }
-				PREV = { add_to_faction = PREV }
-			}
-		}
-		random_country = {
-			limit = {
-				has_government = democratic
-			}
-			create_faction = "Democratic"
-			every_country = {
-				limit = { has_government = democratic }
-				PREV = { add_to_faction = PREV }
-			}
-		}
-		random_country = {
-			limit = {
-				has_government = fascism
-			}
-			create_faction = "Fascist"
-			every_country = {
-				limit = { has_government = fascism }
-				PREV = { add_to_faction = PREV }
-			}
-		}
-		random_country = {
-			limit = {
-				has_government = neutrality
-			}
-			create_faction = "Neutrals"
-			every_country = {
-				limit = { has_government = neutrality }
-				PREV = { add_to_faction = PREV }
-			}
-		}
-	}
-}
 # Event starting republican civil war
 country_event = {
 	id = tesb_rome.1
@@ -218,7 +155,7 @@ country_event = {
 				create_country_leader = {
 					name = "Alvértos Doukas"
 					desc = "POLITICS_ALVERTOS_DOUKAS_DESC"
-					picture = Portrait_Britain_George_VI.dds
+					picture = "gfx/leaders/ENG/Portrait_Britain_George_VI.dds"
 					expire = "1965.1.1"
 					ideology = conservatism
 					traits = {
@@ -240,6 +177,336 @@ country_event = {
 			#	}
 			#}
 		}
+	}
+}
+
+country_event = {
+	id = tesb_rome.11
+	title = tesb_rome.11.t
+	desc = tesb_rome.11.d
+	picture = GFX_report_event_ger_civil_war
+	hidden = yes 
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size < 10
+						state = 385
+					}
+					divisions_in_state = {
+						size < 10
+						state = 384
+					}
+				}
+			}
+			random_list = {
+				40 = { country_event = { id = tesb_rome.12 } } #385 bulgaria
+				40 = { country_event = { id = tesb_rome.13 } } #384 rumelia
+				20 = { country_event = { id = tesb_rome.14 } } #disaster
+			}
+		}
+		else_if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size > 9
+						state = 385
+					}
+					divisions_in_state = {
+						size < 10
+						state = 384
+					}
+				}
+			}
+			random_list = {
+				25 = { country_event = { id = tesb_rome.12 } } #385 bulgaria
+				45 = { country_event = { id = tesb_rome.13 } } #384 rumelia
+				30 = { country_event = { id = tesb_rome.14 } } #disaster
+			}
+		}
+		else_if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size > 9
+						state = 384
+					}
+					divisions_in_state = {
+						size < 10
+						state = 385
+					}
+				}
+			}
+			random_list = {
+				45 = { country_event = { id = tesb_rome.12 } } #385 bulgaria
+				25 = { country_event = { id = tesb_rome.13 } } #384 rumelia
+				30 = { country_event = { id = tesb_rome.14 } } #disaster
+			}
+		}
+		else_if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size > 9
+						state = 384
+					}
+					divisions_in_state = {
+						size > 9
+						state = 385
+					}
+				}
+			}
+			random_list = {
+				25 = { country_event = { id = tesb_rome.12 } } #385 bulgaria
+				25 = { country_event = { id = tesb_rome.13 } } #384 rumelia
+				50 = { country_event = { id = tesb_rome.14 } } #disaster
+			}
+		}
+		else = {
+			random_list = {
+				33 = { country_event = { id = tesb_rome.12 } } #385 bulgaria
+				33 = { country_event = { id = tesb_rome.13 } } #384 rumelia
+				33 = { country_event = { id = tesb_rome.14 } } #disaster
+			}
+		}
+	}
+	option = {
+		name = tesb_rome.11.a
+	}
+}
+#385 bulgaria
+country_event = {
+	id = tesb_rome.12
+	title = tesb_rome.12.t
+	desc = tesb_rome.12.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.12.a
+		set_province_controller = 9783
+		385 = {
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 9783
+			}
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 9783
+			}
+		}
+	}
+}
+#384 rumelia
+country_event = {
+	id = tesb_rome.13
+	title = tesb_rome.12.t
+	desc = tesb_rome.13.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.13.a
+		set_province_controller = 9902
+		384 = {
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 9902
+			}
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 9902
+			}
+		}
+	}
+}
+#disaster
+country_event = {
+	id = tesb_rome.14
+	title = tesb_rome.12.t
+	desc = tesb_rome.14.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.14.a
+		army_experience = 10
+		add_manpower = -6000
+	}
+}
+
+country_event = {
+	id = tesb_rome.15
+	title = tesb_rome.15.t
+	desc = tesb_rome.15.d
+	picture = GFX_report_event_ger_civil_war
+	hidden = yes 
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size < 10
+						state = 397
+					}
+					divisions_in_state = {
+						size < 10
+						state = 395
+					}
+				}
+			}
+			random_list = {
+				40 = { country_event = { id = tesb_rome.16 } } #397 Ionia/Aydin
+				40 = { country_event = { id = tesb_rome.17 } } #395 Konya
+				20 = { country_event = { id = tesb_rome.18 } } #disaster
+			}
+		}
+		else_if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size > 9
+						state = 397
+					}
+					divisions_in_state = {
+						size < 10
+						state = 395
+					}
+				}
+			}
+			random_list = {
+				25 = { country_event = { id = tesb_rome.16 } } #397 Ionia/Aydin
+				45 = { country_event = { id = tesb_rome.17 } } #395 Konya
+				30 = { country_event = { id = tesb_rome.18 } } #disaster
+			}
+		}
+		else_if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size > 9
+						state = 397
+					}
+					divisions_in_state = {
+						size < 10
+						state = 395
+					}
+				}
+			}
+			random_list = {
+				45 = { country_event = { id = tesb_rome.16 } } #397 Ionia/Aydin
+				25 = { country_event = { id = tesb_rome.17 } } #395 Konya
+				30 = { country_event = { id = tesb_rome.18 } } #disaster
+			}
+		}
+		else_if = {
+			limit = {
+				any_other_country = {
+					original_tag = RME
+					divisions_in_state = {
+						size > 9
+						state = 397
+					}
+					divisions_in_state = {
+						size > 9
+						state = 395
+					}
+				}
+			}
+			random_list = {
+				25 = { country_event = { id = tesb_rome.16 } } #397 Ionia/Aydin
+				25 = { country_event = { id = tesb_rome.17 } } #395 Konya
+				50 = { country_event = { id = tesb_rome.18 } } #disaster
+			}
+		}
+		else = {
+			random_list = {
+				33 = { country_event = { id = tesb_rome.16 } } #397 Ionia/Aydin
+				33 = { country_event = { id = tesb_rome.17 } } #395 Konya
+				33 = { country_event = { id = tesb_rome.18 } } #disaster
+			}
+		}
+	}
+	option = {
+		name = tesb_rome.15.a
+	}
+}
+#397 Ionia/Aydin
+country_event = {
+	id = tesb_rome.16
+	title = tesb_rome.16.t
+	desc = tesb_rome.16.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.16.a
+		set_province_controller = 4112
+		397 = {
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 4112
+			}
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 4112
+			}
+		}
+	}
+}
+#395 Konya
+country_event = {
+	id = tesb_rome.17
+	title = tesb_rome.16.t
+	desc = tesb_rome.17.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.17.a
+		set_province_controller = 1005
+		395 = {
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 1005
+			}
+			create_unit = {
+				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
+				owner = ROOT
+				prioritize_location = 1005
+			}
+		}
+	}
+}
+#disaster
+country_event = {
+	id = tesb_rome.18
+	title = tesb_rome.16.t
+	desc = tesb_rome.18.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_rome.18.a
+		army_experience = 10
+		add_manpower = -6000
 	}
 }
 
