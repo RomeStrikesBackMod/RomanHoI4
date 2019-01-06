@@ -1,0 +1,417 @@
+﻿add_namespace = tesb_HUN
+
+country_event = {
+	id = tesb_HUN.100
+	title = tesb_HUN.100.t
+	desc = tesb_HUN.100.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.100.a
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_reducing_autonomy
+		}
+	}
+	option = {
+		name = tesb_HUN.100.b
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_powerful_governors
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.105
+	title = tesb_HUN.105.t
+	desc = tesb_HUN.105.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.105.a
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_regional_integration
+		}
+	}
+	option = {
+		name = tesb_HUN.105.b
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_autonomous_regions
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.110
+	title = tesb_HUN.110.t
+	desc = tesb_HUN.110.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.110.a
+		if = {
+			limit = { owns_state = 217 }
+			217 = { add_manpower = -1000000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 213 }
+			213 = { add_manpower = -500000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 214 }
+			214 = { add_manpower = -500000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.115
+	title = tesb_HUN.115.t
+	desc = tesb_HUN.115.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.115.a
+		if = {
+			limit = { owns_state = 218 }
+			218 = { add_manpower = -1000000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+			PLC = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 216 }
+			216 = { add_manpower = -1000000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+			PLC = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.120
+	title = tesb_HUN.120.t
+	desc = tesb_HUN.120.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.120.a
+	}
+	option = {
+		name = tesb_HUN.120.b
+	}
+}
+
+country_event = {
+	id = tesb_HUN.130
+	title = tesb_HUN.130.t
+	desc = tesb_HUN.130.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.130.a
+	}
+	option = {
+		name = tesb_HUN.130.b
+	}
+}
+
+country_event = {
+	id = tesb_HUN.140
+	title = tesb_HUN.140.t
+	desc = tesb_HUN.140.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.140.a
+	}
+	option = {
+		name = tesb_HUN.140.b
+	}
+}
+
+country_event = {
+	id = tesb_HUN.150
+	title = tesb_HUN.150.t
+	desc = tesb_HUN.150.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.150.a
+	}
+	option = {
+		name = tesb_HUN.150.b
+	}
+}
+
+country_event = {
+	id = tesb_HUN.210
+	title = tesb_HUN.210.t
+	desc = tesb_HUN.210.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.210.a
+	}
+	option = {
+		name = tesb_HUN.210.b
+	}
+}
+
+country_event = {
+	id = tesb_HUN.215
+	title = tesb_HUN.215.t
+	desc = tesb_HUN.215.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.215.a
+	}
+	option = {
+		name = tesb_HUN.215.b
+	}
+}
+
+country_event = {
+	id = tesb_HUN.220
+	title = tesb_HUN.220.t
+	desc = tesb_HUN.220.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.220.a
+	}
+	option = {
+		name = tesb_HUN.220.b
+	}
+}
+
+country_event = {
+	id = tesb_HUN.225
+	title = tesb_HUN.225.t
+	desc = tesb_HUN.225.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.225.a
+	}
+	option = {
+		name = tesb_HUN.225.b
+	}
+}
