@@ -959,7 +959,7 @@ focus_tree = {
 			controls_state = 354
 		}
 		prerequisite = { focus = PLC_prussian_industrializstion }
-		#prerequisite = { focus = PLC_lithuanian_industrializstion }
+		prerequisite = { focus = PLC_lithuanian_industrializstion }
 		relative_position_id = PLC_prussian_industrializstion
 		bypass = {
 			custom_trigger_tooltip = {
@@ -1049,7 +1049,7 @@ focus_tree = {
 			controls_state = 357
 			controls_state = 358
 		}
-		#prerequisite = { focus = PLC_prussian_industrializstion }
+		prerequisite = { focus = PLC_prussian_industrializstion }
 		prerequisite = { focus = PLC_lithuanian_industrializstion }
 		relative_position_id = PLC_lithuanian_industrializstion
 		bypass = {
@@ -1168,9 +1168,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-		}
-		ai_will_do = {
-			base = 2
 		}
 	}
 
@@ -1424,7 +1421,7 @@ focus_tree = {
 	focus = {
 		id = PLC_national_will
 		icon = GFX_goal_generic_demand_territory
-		x = 22
+		x = 21
 		y = 0
 		cost = 10
 		available_if_capitulated = yes
@@ -1432,15 +1429,12 @@ focus_tree = {
 			add_ideas = PLC_national_will_idea
 			add_political_power = 60
 		}
-		ai_will_do = {
-			base = 5
-		}
 	}
 
 	focus = {
 		id = PLC_german_fascists
 		icon = GFX_goal_support_fascism
-		x = -4
+		x = -2
 		y = 1
 		cost = 10
 		available_if_capitulated = yes
@@ -1450,18 +1444,12 @@ focus_tree = {
 			NOT = { has_war_with = GER }
 		}
 		bypass = {
-			OR = {
-				GER = { has_government = fascism }
-				GER = { is_in_faction_with = PLC }
-			}
+			is_in_faction_with = GER
 		}
 		completion_reward = {
 			GER = {
-				add_timed_idea = { idea = PLC_supporting_fascists days = 730 }
+				add_ideas = { PLC_supporting_fascists }
 			}
-		}
-		ai_will_do = {
-			base = 2
 		}
 	}
 
@@ -1477,25 +1465,22 @@ focus_tree = {
 		relative_position_id = PLC_german_fascists
 		available = {
 			OR = {
-				GER = { has_government = fascism is_friend_or_potential_friend_of_ROOT = yes }
-				SCA = { has_government = fascism is_friend_or_potential_friend_of_ROOT = yes }
+				GER = { has_government = fascism is_friend_or_potential_friend_of_PLC = yes }
+				SCA = { has_government = fascism is_friend_or_potential_friend_of_PLC = yes }
 			}
 		}
 		bypass = {
 			OR = {
-				GER = { is_in_faction_with = PLC }
-				SCA = { is_in_faction_with = PLC }
+				is_in_faction_with = GER
+				is_in_faction_with = SCA
 				AND = {
-					GER = { is_not_potential_friend_of_ROOT = yes }
-					SCA = { is_not_potential_friend_of_ROOT = yes }
+					GER = { is_not_potential_friend_of_PLC = yes }
+					SCA = { is_not_potential_friend_of_PLC = yes }
 				}
 			}
 		}
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = PLC_national_will_idea
-				add_idea = PLC_baltic_axis
-			}
+			add_ideas = PLC_baltic_axis
 			if = {
 				limit = {
 					is_in_faction = no
@@ -1536,64 +1521,16 @@ focus_tree = {
 				set_country_flag = invited_scandinavia
 			}
 		}
-		ai_will_do = {
-			base = 2
-			modifier = {
-				factor = 2
-				GER = { has_government = fascism }
-				SCA = { has_government = fascism }
-			}
-			modifier = {
-				factor = 0.5
-				GER = { has_government = fascism }
-				SCA = { NOT = { has_government = fascism } }
-			}
-			modifier = {
-				factor = 0.5
-				SCA = { has_government = fascism }
-				GER = { NOT = { has_government = fascism } }
-			}
-		}
 	}
 
-	focus = {
-		id = PLC_german_referendum
-		icon = GFX_goal_generic_propaganda
-		x = -1
-		y = 1
-		cost = 10
-		available_if_capitulated = yes
-		prerequisite = { focus = PLC_german_fascists }
-		relative_position_id = PLC_german_fascists
-		available = {
-			GER = { fascism > 0.4 }
-		}
-		bypass = {
-			OR = {
-				GER = { has_government = fascism }
-				GER = { is_in_faction_with = PLC }
-			}
-		}
-		completion_reward = {
-			GER = {
-				country_event = {
-					id = tesb_plc.5
-					hours = 1
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-	
+
 	focus = {
 		id = PLC_first_dresden_conference
 		icon = GFX_goal_generic_forceful_treaty
 		x = 0
 		y = 2
 		cost = 10
-		prerequisite = { focus = PLC_german_referendum }
+		prerequisite = { focus = PLC_german_fascists }
 		prerequisite = { focus = PLC_baltic_axis }
 		relative_position_id = PLC_german_fascists
 		available = {
@@ -1601,9 +1538,6 @@ focus_tree = {
 			is_in_faction_with = GER
 			NOT = { is_in_faction_with = HUN }
 			NOT = { has_war_with = HUN }
-			has_army_manpower = {
-				size > 100000
-			}
 		}
 		bypass = {
 			OR = {
@@ -1626,7 +1560,7 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						check_variable = { var = GER.GER_dresden_1 value = 0 compare = greater_than }
+						check_variable = { GER.GER_dresden_1 > 0 }
 					}
 					country_event = {
 						id = tesb_plc.106
@@ -1634,9 +1568,6 @@ focus_tree = {
 					}
 				}
 			}
-		}
-		ai_will_do = {
-			base = 2
 		}
 	}
 
@@ -1666,9 +1597,6 @@ focus_tree = {
 				}
 			}
 		}
-		ai_will_do = {
-			base = 2
-		}
 	}
 
 	focus = {
@@ -1689,14 +1617,7 @@ focus_tree = {
 		bypass = {
 			OR = {
 				has_war_with = HUN
-				is_in_faction_with = HUN
 				NOT = { country_exists = HUN }
-				AND = {
-					owns_state = 216
-					HUN = {
-						all_owned_state = { NOT = { is_core_of = BAV } }
-					}
-				}
 			}
 		}
 		select_effect = {
@@ -1717,7 +1638,7 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						check_variable = { var = GER.GER_dresden_2 value = 0 compare = greater_than }
+						check_variable = { GER.GER_dresden_2 > 0 }
 					}
 					country_event = {
 						id = tesb_plc.156
@@ -1726,15 +1647,12 @@ focus_tree = {
 				}
 			}
 		}
-		ai_will_do = {
-			base = 2
-		}
 	}
 
 	focus = {
 		id = PLC_scandiavian_fascists
 		icon = GFX_goal_support_fascism
-		x = -2
+		x = 0
 		y = 1
 		cost = 10
 		available_if_capitulated = yes
@@ -1744,49 +1662,12 @@ focus_tree = {
 			NOT = { has_war_with = SCA }
 		}
 		bypass = {
-			OR = {
-				SCA = { has_government = fascism }
-				SCA = { is_in_faction_with = PLC }
-			}
+			is_in_faction_with = SCA
 		}
 		completion_reward = {
 			SCA = {
-				add_timed_idea = { idea = PLC_supporting_fascists days = 730 }
+				add_ideas = { PLC_supporting_fascists }
 			}
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-
-	focus = {
-		id = PLC_scandiavian_referendum
-		icon = GFX_goal_generic_propaganda
-		x = 1
-		y = 1
-		cost = 10
-		available_if_capitulated = yes
-		prerequisite = { focus = PLC_scandiavian_fascists }
-		relative_position_id = PLC_scandiavian_fascists
-		available = {
-			SCA = { fascism > 0.4 }
-		}
-		bypass = {
-			OR = {
-				SCA = { has_government = fascism }
-				SCA = { is_in_faction_with = PLC }
-			}
-		}
-		completion_reward = {
-			SCA = {
-				country_event = {
-					id = tesb_plc.5
-					hours = 1
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
 		}
 	}
 
@@ -1797,61 +1678,17 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = PLC_national_will }
-		mutually_exclusive = { focus = PLC_russian_pact }
 		relative_position_id = PLC_national_will
 		available = {
 			NOT = { has_war_with = RUS }
 			NOT = { country_exists = UKR }
 		}
 		bypass = {
-			country_exists = UKR
+			is_in_faction_with = UKR
 		}
 		completion_reward = {
 			RUS = {
-				add_timed_idea = { idea = PLC_supporting_ukraine days = 730 }
-			}
-		}
-		ai_will_do = {
-			base = 2
-			modifier = {
-				RUS = { has_completed_focus = RUS_russian_primacy }
-				factor = 1.5
-			}
-			modifier = {
-				RUS = { has_completed_focus = RUS_occupy_ukraine }
-				factor = 2
-			}
-		}
-	}
-	
-	focus = {
-		id = PLC_russian_pact
-		icon = GFX_goal_molotov_ribbentrop_pact
-		x = 4
-		y = 1
-		cost = 10
-		prerequisite = { focus = PLC_national_will }
-		mutually_exclusive = { focus = PLC_ukrainian_independence }
-		relative_position_id = PLC_national_will
-		available = {
-			RUS = {
-				exists = yes
-				NOT = { has_war_with = PLC }
-				is_subject = no
-			}
-		}
-		bypass = {
-			NOT = { country_exists = RUS }
-		}
-		completion_reward = {
-			custom_effect_tooltip = PLC_russian_pact.tt
-			RUS = { country_event = { id = tesb_RUS.100 hours = 2 } }
-		}
-		ai_will_do = {
-			base = 2
-			modifier = {
-				RUS = { has_completed_focus = RUS_slavic_inclusion }
-				factor = 1.5
+				add_ideas = { PLC_supporting_ukraine }
 			}
 		}
 	}

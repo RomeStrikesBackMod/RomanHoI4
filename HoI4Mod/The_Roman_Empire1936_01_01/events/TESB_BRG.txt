@@ -131,66 +131,18 @@ country_event = {
 			FROM = {
 				NOT = { has_government = ROOT }
 			}
-			has_government = democratic
 		}
 		name = tesb_BRG.122.b
 		add_opinion_modifier = {
 			target = FROM
 			modifier = rejected_faction
 		}
-		if = {
-			limit = { has_government = democratic }
-			create_wargoal = {
-				type = topple_government
-				target = FROM
-			}
-		}
-		else = {
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = FROM
-			}
-		}
-	}
-}
-
-country_event = {
-	id = tesb_BRG.125
-	title = tesb_BRG.125.t
-	desc = tesb_BRG.125.d
-	picture = GFX_report_event_german_italian_pact
-
-	is_triggered_only = yes
-	immediate = {
-	}
-	
-	#attack BRI
-	option = {
-		name = tesb_BRG.125.a
-		trigger = {
-			OR = {
-				BRI = { NOT = { has_government = ROOT } }
-				has_government = absolutist
-			}
-		}
 		create_wargoal = {
-			target = BRI
-			type = annex_everything
+			type = topple_government
+			target = FROM
 		}
-	}
-	#Ally BRI
-	option = {
-		trigger = {
-			OR = {
-				BRI = { NOT = { has_government = ROOT } }
-				has_government = democratic
-			}
-		}
-		name = tesb_BRG.125.b
-		BRI = { country_event = { id = tesb_BRG.120 hours = 1 } }
 	}
 }
-
 
 country_event = {
 	id = tesb_BRG.130
@@ -206,7 +158,7 @@ country_event = {
 	option = {
 		name = tesb_BRG.130.a
 		effect_tooltip = {
-			BRG = { puppet = FLD transfer_state = 502 }
+			BRG = { puppet = FLD }
 		}
 		hidden_effect = {
 			BRG = { country_event = { id = tesb_BRG.131 hours = 1 } }
@@ -219,7 +171,7 @@ country_event = {
 		effect_tooltip = {
 			BRG = {
 				create_wargoal = {
-					type = puppet_wargoal_focus
+					type = topple_government
 					target = FLD
 				}
 			}
@@ -244,7 +196,6 @@ country_event = {
 	option = {
 		name = tesb_BRG.131.a
 		puppet = FLD
-		transfer_state = 502
 	}
 }
 country_event = {
@@ -284,10 +235,10 @@ country_event = {
 	}
 	#Grant FRA picardie/Keep picardie
 	option = {
-		name = tesb_BRG.132.b
+		name = tesb_BRG.132.a
 		FLD = {
 			add_opinion_modifier = {
-				modifier = BRG_broke_promise
+				opinion = BRG_broke_promise
 				target = BRG
 			}
 		}
@@ -313,6 +264,7 @@ country_event = {
 		hidden_effect = {
 			BRG = { country_event = { id = tesb_BRG.141 hours = 1 } }
 		}
+		set_country_flag = BRG_promised_picardie
 	}
 	#Resist BRG
 	option = {
@@ -365,94 +317,6 @@ country_event = {
 			type = take_core_state
 			target = FLD
 			generator = { 502 }
-		}
-	}
-}
-
-country_event = {
-	id = tesb_BRG.150
-	title = tesb_BRG.150.t
-	desc = tesb_BRG.150.d
-	picture = GFX_report_event_german_italian_pact
-
-	is_triggered_only = yes
-	immediate = {
-	}
-	
-	#Submit to BRG
-	option = {
-		name = tesb_BRG.150.a
-		effect_tooltip = {
-			BRG = {
-				set_autonomy = {
-					target = ITA
-					autonomy_state = autonomy_puppet
-				}
-			}
-		}
-		hidden_effect = {
-			BRG = {
-				country_event = {
-					id = tesb_BRG.151
-					hours = 1
-				}
-			}
-		}
-	}
-	#Resist BRG
-	option = {
-		name = tesb_BRG.150.b
-		effect_tooltip = {
-			BRG = {
-				create_wargoal = {
-					type = puppet_wargoal_focus
-					target = ITA
-				}
-			}
-		}
-		hidden_effect = {
-			BRG = {
-				country_event = {
-					id = tesb_BRG.152
-					hours = 1
-				}
-			}
-		}
-	}
-}
-
-country_event = {
-	id = tesb_BRG.151
-	title = tesb_BRG.151.t
-	desc = tesb_BRG.151.d
-	picture = GFX_report_event_german_italian_pact
-
-	is_triggered_only = yes
-	immediate = {
-	}
-	
-	#Submit BRG
-	option = {
-		name = tesb_BRG.151.a
-		puppet = ITA
-	}
-}
-country_event = {
-	id = tesb_BRG.152
-	title = tesb_BRG.152.t
-	desc = tesb_BRG.152.d
-	picture = GFX_report_event_german_italian_pact
-
-	is_triggered_only = yes
-	immediate = {
-	}
-	
-	#Resist BRG
-	option = {
-		name = tesb_BRG.152.a
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = ITA
 		}
 	}
 }

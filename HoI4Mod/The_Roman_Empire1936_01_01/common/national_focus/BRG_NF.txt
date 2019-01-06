@@ -851,16 +851,8 @@ focus_tree = {
 		ai_will_do = {
 			base = 3
 			modifier = {
-				factor = 1.75
+				factor = 1.65
 				RME = { has_government = democratic }
-			}
-			modifier = {
-				factor = 0.01
-				RME = { has_civil_war = no }
-			}
-			modifier = {
-				factor = 100
-				RME = { has_completed_focus = RME_secure_the_new_state }
 			}
 		}
 	}
@@ -900,30 +892,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = ban_communism_party_tt
 			add_stability = ban_ideology_var
-			#hidden_effect = {
-				multiply_temp_variable = { ban_ideology_var = -1 }
-				add_popularity = {
-					ideology = absolutist
-					popularity = ban_ideology_var
-				}
-				FRA = {
-					add_popularity = {
-						ideology = communism
-						popularity = ban_ideology_var
-					}
-				}
-			#}
 		}
 		ai_will_do = {
 			base = 2
-			modifier = {
-				factor = 0.8
-				communism > 0.15
-			}
-			modifier = {
-				factor = 1.2
-				communism < 0.15
-			}
 		}
 	}
 
@@ -936,7 +907,7 @@ focus_tree = {
 		prerequisite = { focus = BRG_reinforce_monarchism }
 		relative_position_id = BRG_reinforce_monarchism
 		available = {
-			democratic < 0.35
+			democratic < 0.3
 		}
 		bypass = {
 			NOT = { democratic > 0 }
@@ -962,28 +933,9 @@ focus_tree = {
 			}
 			custom_effect_tooltip = ban_democratic_party_tt
 			add_stability = ban_ideology_var
-			#hidden_effect = {
-				multiply_temp_variable = { ban_ideology_var = -1 }
-				add_popularity = {
-					ideology = absolutist
-					popularity = ban_ideology_var
-				}
-			#}
 		}
 		ai_will_do = {
 			base = 2
-			modifier = {
-				factor = 0.8
-				democratic > 0.3
-			}
-			modifier = {
-				factor = 0.8
-				democratic > 0.2
-			}
-			modifier = {
-				factor = 1.2
-				democratic < 0.2
-			}
 		}
 	}
 
@@ -1024,22 +976,6 @@ focus_tree = {
 			}
 			custom_effect_tooltip = ban_fascism_party_tt
 			add_stability = ban_ideology_var
-			#hidden_effect = {
-				multiply_temp_variable = { ban_ideology_var = -1 }
-				if = {
-					limit = { has_government = absolutist }
-					add_popularity = {
-						ideology = absolutist
-						popularity = ban_ideology_var
-					}
-				}
-				GER = {
-					add_popularity = {
-						ideology = fascism
-						popularity = ban_ideology_var
-					}
-				}
-			#}
 		}
 		ai_will_do = {
 			base = 2
@@ -1099,7 +1035,6 @@ focus_tree = {
 			base = 2
 		}
 	}
-
 	focus = {
 		id = BRG_italian_politics
 		icon = GFX_focus_generic_italy_first
@@ -1110,7 +1045,8 @@ focus_tree = {
 		prerequisite = { focus = BRG_third_roman_empire }
 		available = {
 			ITA = {
-				is_potential_friend_of_ROOT = yes
+				is_subject = no
+				exists = yes
 				NOT = { has_government = absolutist }
 			}
 		}
@@ -1123,45 +1059,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			ITA = {
-				add_timed_idea = {
-					idea = BRG_absolutist_influence
-					days = 730
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-
-	focus = {
-		id = BRG_seize_italian_throne
-		icon = GFX_focus_rom_abdicate
-		dynamic = yes
-		x = -1
-		y = 1
-		cost = 10
-		relative_position_id = BRG_italian_politics
-		prerequisite = { focus = BRG_italian_politics }
-		mutually_exclusive = { focus = BRG_win_italian_throne }
-		will_lead_to_war_with = ITA
-		available = {
-			ITA = {
-				NOT = { has_idea = BRG_absolutist_influence }
-				is_independent_country = yes
-				NOT = { has_government = absolutist }
-			}
-		}
-		bypass = {
-			OR = {
-				ITA = { is_subject_of = BRG }
-				ITA = { exists = no }
-			}
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = ITA
+				add_ideas = BRG_absolutist_influence
 			}
 		}
 		ai_will_do = {
@@ -1170,50 +1068,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = BRG_win_italian_throne
-		icon = GFX_goal_tfv_strengthen_commonwealth_ties
-		dynamic = yes
-		x = 1
-		y = 1
-		cost = 10
-		relative_position_id = BRG_italian_politics
-		prerequisite = { focus = BRG_italian_politics }
-		mutually_exclusive = { focus = BRG_seize_italian_throne }
-		will_lead_to_war_with = ITA
-		available = {
-			ITA = {
-				NOT = { has_idea = BRG_absolutist_influence }
-				is_independent_country = yes
-				has_government = absolutist
-			}
-		}
-		bypass = {
-			OR = {
-				ITA = { is_subject_of = BRG }
-				ITA = { exists = no }
-			}
-		}
-		completion_reward = {
-			ITA = {
-				country_event = {
-					id = tesb_BRG.150
-					hours = 1
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-
-	focus = {
 		id = BRG_rhine_defenses
 		icon = GFX_goal_generic_fortify_city
 		available = {
 			OR = {
-				34 = { is_owned_by = BRG }
-				36 = { is_owned_by = BRG }
-				38 = { is_owned_by = BRG }
+				34 = { is_owned_and_controlled_by = BRG }
+				36 = { is_owned_and_controlled_by = BRG }
+				38 = { is_owned_and_controlled_by = BRG }
 			}
 		}
 		cancel_if_invalid = yes
@@ -1221,6 +1082,9 @@ focus_tree = {
 		y = 2
 		relative_position_id = BRG_reinforce_monarchism
 		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
 
 		completion_reward = {
 			34 = {
@@ -1332,22 +1196,21 @@ focus_tree = {
 		relative_position_id = BRG_rhine_defenses
 		available = {
 			FLD = {
-				is_potential_friend_of_ROOT = yes
-				has_government = democratic
+				exists = yes
+				is_subject = no
+				NOT = { has_war_with = BRG }
+				is_in_faction = no
 			}
-			BRG = {
-				has_government = democratic
-				is_faction_leader = yes
-			}
+			BRG = { has_government = democratic
+			is_faction_leader = yes }
 		}
 		bypass = {
 			OR = {
-				FLD = { is_not_potential_friend_of_ROOT = yes }
+				FLD = { has_war_with = BRG }
+				FLD = { is_in_faction = yes }
+				FLD = { exists = no }
 				FLD = {
-					OR = {
-						is_in_faction_with = ROOT
-						is_subject_of = ROOT
-					}
+					is_subject = yes
 				}
 			}
 		}
@@ -1380,16 +1243,22 @@ focus_tree = {
 		prerequisite = { focus = BRG_disband_government focus = BRG_write_new_constitution }
 		mutually_exclusive = { focus = BRG_seize_zeeland focus = BRG_ally_flanders }
 		relative_position_id = BRG_rhine_defenses
-		will_lead_to_war_with = FLD
 		available = {
 			FLD = {
-				is_potential_friend_of_ROOT = yes
+				exists = yes
+				is_subject = no
+				NOT = { has_war_with = BRG }
+				is_in_faction = no
 			}
 		}
 		bypass = {
 			OR = {
-				FLD = { is_not_potential_friend_of_ROOT = yes }
-				FLD = { is_free_ally_or_subject_of_ROOT = yes }
+				FLD = { has_war_with = BRG }
+				FLD = { is_in_faction = yes }
+				FLD = { exists = no }
+				FLD = {
+					is_subject = yes
+				}
 			}
 		}
 
@@ -1422,23 +1291,22 @@ focus_tree = {
 		prerequisite = { focus = BRG_disband_government }
 		mutually_exclusive = { focus = BRG_pressure_flanders focus = BRG_ally_flanders }
 		relative_position_id = BRG_rhine_defenses
-		will_lead_to_war_with = FLD
 		available = {
 			FLD = {
-				is_independent_country = yes
+				exists = yes
+				is_subject = no
 				NOT = { has_war_with = BRG }
 				is_in_faction = no
 			}
 		}
 		bypass = {
 			OR = {
-				has_war_with = FLD
-				owns_state = 502
-				#FLD = { is_in_faction = yes }
+				FLD = { has_war_with = BRG }
+				FLD = { is_in_faction = yes }
 				FLD = { exists = no }
-				#FLD = {
-				#	is_subject = yes
-				#}
+				FLD = {
+					is_subject = yes
+				}
 			}
 		}
 		completion_reward = {
@@ -1458,10 +1326,10 @@ focus_tree = {
 		prerequisite = { focus = BRG_pressure_flanders focus = BRG_seize_zeeland }
 		mutually_exclusive = { focus = BRG_alliance_with_france }
 		relative_position_id = BRG_rhine_defenses
-		will_lead_to_war_with = FRA
 		available = {
 			FRA = {
-				is_independent_country = yes
+				exists = yes
+				is_subject = no
 				NOT = { has_war_with = BRG }
 				if = {
 					limit = {
@@ -1473,18 +1341,10 @@ focus_tree = {
 			}
 			OR = {
 				FLD = { is_subject_of = BRG }
-				502 = { is_owned_by = BRG }
-			}
-		}
-		bypass = {
-			OR = {
-				has_war_with = FRA
-				FRA = { exists = no }
+				502 = { is_owned_and_controlled_by = BRG }
 			}
 		}
 		completion_reward = {
-			add_state_claim = 139
-			add_state_claim = 141
 			create_wargoal = {
 				target = FRA
 				type = annex_everything
@@ -1506,150 +1366,24 @@ focus_tree = {
 		relative_position_id = BRG_rhine_defenses
 		available = {
 			FRA = {
-				is_potential_friend_of_ROOT = yes
+				exists = yes
+				is_subject = no
+				NOT = { has_war_with = BRG }
 				has_government = democratic
 			}
 			OR = {
-				FLD = { is_free_ally_or_subject_of_ROOT = yes }
-				502 = { is_owned_by = BRG }
+				FLD = { is_subject_of = BRG }
+				FLD = { is_in_faction_with = BRG }
+				502 = { is_owned_and_controlled_by = BRG }
 			}
 			BRG = { has_government = democratic
 			is_faction_leader = yes }
-		}
-		bypass = {
-			OR = {
-				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				FRA = { exists = no }
-			}
 		}
 		completion_reward = {
 			FRA = { country_event = { id = tesb_BRG.120 hours = 1 } }
 		}
 		ai_will_do = {
 			base = 2
-		}
-	}
-	
-	focus = {
-		id = BRG_deal_with_britanny
-		icon = GFX_goal_generic_major_alliance
-		dynamic = yes
-		x = 0
-		y = 3
-		cost = 10
-		prerequisite = { focus = BRG_alliance_with_france focus = BRG_secure_northern_france  }
-		relative_position_id = BRG_rhine_defenses
-		will_lead_to_war_with = BRI
-		available = {
-			OR = {
-				BRI = { is_potential_friend_of_ROOT = yes has_government = ROOT }
-				BRI = { NOT = { has_government = ROOT } }
-			}
-			OR = {
-				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				140 = { is_owned_by = BRG }
-			}
-		}
-		bypass = {
-			OR = {
-				has_war_with = BRI
-				BRI = { is_free_ally_or_subject_of_ROOT = yes }
-				owns_state = 44
-			}
-		}
-		completion_reward = {
-			country_event = { id = tesb_BRG.125 hours = 1 }
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-
-	focus = {
-		id = BRG_secure_southern_france
-		icon = GFX_goal_generic_occupy_start_war
-		x = 0
-		y = 2
-		cost = 10
-		prerequisite = { focus = BRG_secure_northern_france focus = BRG_alliance_with_france }
-		mutually_exclusive = { focus = BRG_alliance_with_aquitaine }
-		relative_position_id = BRG_secure_northern_france
-		will_lead_to_war_with = AQI
-		available = {
-			AQI = {
-				is_independent_country = yes
-				NOT = { has_war_with = BRG }
-				if = {
-					limit = {
-						ROOT = { has_government = democratic }
-					}
-					NOT = { has_government = democratic }
-					NOT = { has_government = communism }
-				}
-			}
-			OR = {
-				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				139 = { is_owned_by = BRG }
-			}
-		}
-		bypass = {
-			OR = {
-				has_war_with = AQI
-				AQI = { exists = no }
-			}
-		}
-		completion_reward = {
-			add_state_claim = 10
-			add_state_claim = 14
-			create_wargoal = {
-				target = AQI
-				type = annex_everything
-			}
-		}
-		ai_will_do = {
-			base = 2
-			modifier = {
-				factor = 2
-				AQI = { NOT = { has_government = ROOT } }
-			}
-		}
-	}
-
-	focus = {
-		id = BRG_alliance_with_aquitaine
-		icon = GFX_goal_generic_major_alliance
-		x = 0
-		y = 2
-		cost = 10
-		prerequisite = { focus = BRG_secure_northern_france focus = BRG_alliance_with_france }
-		mutually_exclusive = { focus = BRG_secure_southern_france }
-		relative_position_id = BRG_alliance_with_france
-		available = {
-			AQI = {
-				is_potential_friend_of_ROOT = yes
-				has_government = ROOT
-			}
-			OR = {
-				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				139 = { is_owned_by = BRG }
-			}
-			BRG = { is_faction_leader = yes }
-		}
-		bypass = {
-			OR = {
-				AQI = { is_free_ally_or_subject_of_ROOT = yes }
-				AQI = { exists = no }
-			}
-		}
-		completion_reward = {
-			AQI = { country_event = { id = tesb_BRG.120 hours = 1 } }
-		}
-		ai_will_do = {
-			base = 2
-			modifier = {
-				factor = 2
-				AQI = { has_government = ROOT }
-			}
 		}
 	}
 
@@ -1673,18 +1407,11 @@ focus_tree = {
 		ai_will_do = {
 			base = 3
 			modifier = {
-				factor = 1.75
+				factor = 1.65
 				RME = { has_government = absolutist }
 			}
-			modifier = {
-				factor = 0.01
-				RME = { has_civil_war = no }
-			}
-			modifier = {
-				factor = 100
-				RME = { has_completed_focus = RME_secure_the_new_state }
-			}
 		}
+
 	}
 
 	focus = {
@@ -1820,7 +1547,7 @@ focus_tree = {
 			set_rule = {
 				can_create_factions = yes
 			}
-			create_faction = "The Gallic Entente"
+			create_faction = "The Entente"
 			#add_ideas = BRG_strengthen_democracy
 		}
 		ai_will_do = {
@@ -1838,29 +1565,25 @@ focus_tree = {
 		prerequisite = { focus = BRG_united_front }
 		available = {
 			OR = {
-				FRA = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
-				FLD = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
-				AQI = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
-				BRI = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
+				FRA = { NOT = { has_government = democratic } }
+				FLD = { NOT = { has_government = democratic } }
+				AQI = { NOT = { has_government = democratic } }
+				BRI = { NOT = { has_government = democratic } }
 			}
 		}
 		bypass = {
-			FRA = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
-			FLD = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
-			AQI = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
-			BRI = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
+			FRA = { OR = { has_government = democratic exists = no } }
+			FLD = { OR = { has_government = democratic exists = no } }
+			AQI = { OR = { has_government = democratic exists = no } }
+			BRI = { OR = { has_government = democratic exists = no } }
 		}
 		completion_reward = {
 			every_country = {
 				limit = {
-					is_potential_friend_of_ROOT = yes
 					OR = { tag = FRA tag = FLD tag = AQI tag = BRI }
 					NOT = { has_government = democratic }
 				}
-				add_timed_idea = {
-					idea = BRG_democratic_influence
-					days = 730
-				}
+				add_ideas = BRG_democratic_influence
 			}
 		}
 		ai_will_do = {
