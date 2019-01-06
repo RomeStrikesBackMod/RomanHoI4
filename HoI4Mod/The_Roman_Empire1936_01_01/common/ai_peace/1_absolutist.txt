@@ -1,0 +1,116 @@
+﻿# Written by CaesarVincens for Idhrendur's Mega-Campaign
+# Absolutists are imperialists, they will take land from their enemies if they have a claim, core, or annex wargoal, otherwise they prefer to puppet
+
+absolutist_peace = {
+	# ROOT = Taker, FROM = Giver
+	enable = {
+		has_government = absolutist
+	}
+
+	annex_randomness = 0
+	liberate_randomness = 0
+	puppet_randomness = 0
+	take_states_randomness = 0
+	force_government_randomness = 0
+	
+	# ROOT = Taker, FROM = Giver
+	annex = {
+		base = 0
+		#has annex_everything wargoal
+		modifier = {
+			add = 1000
+			has_annex_war_goal = FROM
+		}
+		#has claims or cores on all states
+		modifier = {
+			add = 1000
+			FROM = {
+				all_owned_state = {
+					OR = {
+						is_claimed_by = ROOT
+						is_core_of = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	# ROOT = Taker, FROM = Liberated
+	liberate = {
+		base = 0
+		modifier = {
+			add = 100
+			FROM = {
+				any_owned_state = {
+					NOT = {
+						is_claimed_by = ROOT
+						is_core_of = ROOT
+						has_claimed_state_in_peace_conference = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	# ROOT = Taker, FROM = Giver
+	puppet = {
+		base = 0
+		modifier = {
+			add = 400
+			FROM = {
+				any_owned_state = {
+					NOT = {
+						is_claimed_by = ROOT
+						is_core_of = ROOT
+						has_claimed_state_in_peace_conference = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	# ROOT = Taker, FROM = State
+	take_states = {
+		base = 0
+		modifier = {
+			add = 500
+			FROM = {
+				OR = {
+					is_claimed_by = ROOT
+					is_core_of = ROOT
+				}
+			}
+		}
+		modifier = {
+			add = 500
+			FROM = {
+				owner = {
+					any_enemy_country = {
+						is_subject_of = ROOT
+						FROM = {
+							OR = {
+								is_claimed_by = PREV
+								is_core_of = PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			add = 1000
+			FROM = {
+				owner = {
+					ROOT = {
+						has_annex_war_goal = PREV
+					}
+				}
+			}
+		}
+	}
+
+	# ROOT = Taker, FROM = Giver
+	force_government = {
+		base = 0
+	}
+}
