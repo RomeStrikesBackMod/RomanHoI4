@@ -16,6 +16,11 @@ on_actions = {
 			HED = {
 				country_event = { id = tesb_misc.2 }
 			}
+			every_country = {
+				every_owned_state = {
+					set_state_flag = original_owner_@PREV
+				}
+			}
 		}
 	}
 
@@ -93,13 +98,64 @@ on_actions = {
 	#ROOT is winner #FROM gets annexed - For civil wars on_civil_war_end is also fired
 	on_annex = {
 		effect = {
+			every_owned_state = {
+				limit = { has_state_flag = original_owner_@FROM }
+				set_state_flag = old_owner_@FROM
+				set_state_flag = owner_@ROOT
+			}
+			every_owned_state = {
+				limit = { has_state_flag = owner_@FROM }
+				set_state_flag = old_owner_@FROM
+				set_state_flag = owner_@ROOT
+				clr_state_flag = owner_@FROM
+			}
+		}
+	}
+
+	#ROOT is winner #FROM is loser
+	on_peaceconference_ended = {
+		effect = {
+			every_owned_state = {
+				limit = { has_state_flag = original_owner_@FROM }
+				set_state_flag = old_owner_@FROM
+				set_state_flag = owner_@ROOT
+			}
+			every_owned_state = {
+				limit = { has_state_flag = owner_@FROM }
+				set_state_flag = old_owner_@FROM
+				set_state_flag = owner_@ROOT
+				clr_state_flag = owner_@FROM
+			}
 			if = {
 				limit = {
 					ROOT = { tag = BRG }
 					FROM = { tag = FRA }
 					FLD = { is_subject_of = BRG has_country_flag = BRG_promised_picardie }
+					OR = {
+						owns_state = 142
+						FRA = { is_subject_of = BRG owns_state = 142 }
+					}
 				}
 				BRG = { country_event = { id = tesb_BRG.135 } }
+			}
+			if = {
+				limit = { num_subjects > 0 }
+				every_country = {
+					limit = { is_subject_of = ROOT }
+					save_event_target_as = asking_subject
+					ROOT = {
+						every_owned_state = {
+							limit = { NOT = { is_core_of = ROOT } is_core_of = PREV.PREV has_state_flag = old_owner_@FROM }
+							PREV.PREV = {
+								PREV = {
+									set_state_flag = state_of_@PREV
+								}
+							}
+							save_event_target_as = subject_state
+							state_event = { id = tesb_misc.10 trigger_for = owner }
+						}
+					}
+				}
 			}
 		}
 	}

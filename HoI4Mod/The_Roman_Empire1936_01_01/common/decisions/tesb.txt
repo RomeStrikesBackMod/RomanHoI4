@@ -85,6 +85,7 @@ regaining_rome = {
 			}
 		}
 	}
+	
 	negotiate_with_territory = {
 		icon = generic_form_nation
 		available = {
@@ -96,7 +97,6 @@ regaining_rome = {
 		}
 
 		visible = {
-			original_tag = RME
 			FROM = {
 				exists = yes
 				NOT = { is_subject_of = RME }
@@ -131,6 +131,111 @@ regaining_rome = {
 			else = {
 				country_event = { id = tesb_rome.115 hours = 1 }
 			}
+		}
+	}
+	
+}
+
+rome_civil_war_decisions = {
+	prepare_black_sea_landing = {
+		available = {
+			ships_in_area = {
+				area = 30
+				size > 9 
+			}
+			any_other_country = {
+				original_tag = RME
+				ships_in_area = {
+					area = 30
+					size < 6 
+				}
+			}
+		}
+		visible = {
+			has_government = democratic
+		}
+		fixed_random_seed = no
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 384
+				state = 385
+			}
+		}
+		custom_cost_text = command_power_more_than_30
+		days_remove = 30
+		fixed_random_seed = no
+		remove_effect = {
+			hidden_effect = { country_event = { id = tesb_rome.11 } }
+			effect_tooltip = {
+				random_list = {
+					33 = { country_event = { id = tesb_rome.12 } }
+					33 = { country_event = { id = tesb_rome.13 } }
+					33 = { country_event = { id = tesb_rome.14 } }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	prepare_ionia_landing = {
+		available = {
+			ships_in_area = {
+				area = 69
+				size > 9 
+			}
+			any_other_country = {
+				original_tag = RME
+				ships_in_area = {
+					area = 69
+					size < 6 
+				}
+			}
+			NOT = {
+				controls_state = 397
+			}
+		}
+		visible = {
+			has_government = absolutist
+		}
+		fixed_random_seed = no
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 397
+				state = 391
+			}
+		}
+		custom_cost_text = command_power_more_than_30
+		days_remove = 30
+		fixed_random_seed = no
+		remove_effect = {
+			hidden_effect = { country_event = { id = tesb_rome.15 } }
+			effect_tooltip = {
+				random_list = {
+					33 = { country_event = { id = tesb_rome.16 } }
+					33 = { country_event = { id = tesb_rome.17 } }
+					33 = { country_event = { id = tesb_rome.18 } }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 }
