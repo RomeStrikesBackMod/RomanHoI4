@@ -1707,7 +1707,7 @@ focus_tree = {
 		}
 	}
 	
-		focus = {
+	focus = {
 		id = RUS_russian_diplomacy
 		icon = GFX_goal_generic_major_alliance
 		x = 0
@@ -1745,4 +1745,74 @@ focus_tree = {
 		}
 	}
 	
+	focus = {
+		id = RUS_second_northern_alliance
+		icon = GFX_goal_generic_major_alliance
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_russian_diplomacy focus = RUS_russian_expansionism }
+		relative_position_id = RUS_russian_expansionism
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			set_rule = {
+				can_create_factions = yes
+			}
+			create_faction = RUS_second_northern_alliance
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_focus_on_europe
+		icon = GFX_goal_generic_major_alliance
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_second_northern_alliance }
+		mutually_exclusive = { focus = RUS_focus_on_asia }
+		relative_position_id = RUS_second_northern_alliance
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_focus_on_asia
+		icon = GFX_goal_generic_major_alliance
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_second_northern_alliance }
+		mutually_exclusive = { focus = RUS_focus_on_europe }
+		relative_position_id = RUS_second_northern_alliance
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
 }

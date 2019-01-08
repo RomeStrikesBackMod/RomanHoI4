@@ -114,6 +114,7 @@ regaining_rome = {
 		}
 
 		cost = 50
+		days_re_enable = 180
 
 		complete_effect = {
 			if = {
@@ -130,6 +131,19 @@ regaining_rome = {
 			}
 			else = {
 				country_event = { id = tesb_rome.115 hours = 1 }
+			}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				has_completed_focus = RME_reestablish_roman_hegemony
+				check_variable = { From.puppet_willingness < 0 }
+				factor = 0.1
+			}
+			modifier = {
+				has_completed_focus = RME_restore_rome_focus
+				check_variable = { From.faction_willingness < 0 }
+				factor = 0.1
 			}
 		}
 	}

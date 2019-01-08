@@ -52,6 +52,52 @@ country_event = {
 }
 
 country_event = {
+	id = tesb_BRG.110
+	title = tesb_BRG.110.t
+	desc = tesb_BRG.110.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#FLD alliance
+	option = {
+		trigger = { is_faction_leader = yes }
+		name = tesb_BRG.110.a
+		FLD = { country_event = { id = tesb_BRG.120 hours = 1 } }
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_government = democratic
+				factor = 2
+			}
+			modifier = {
+				FLD = { NOT = { has_government = democratic } }
+				factor = 0.25
+			}
+		}
+	}
+	#FLD subject
+	option = {
+		name = tesb_BRG.110.b
+		FLD = { country_event = { id = tesb_BRG.130 hours = 1 } }
+		ai_chance = {
+			base = 5
+		}
+	}
+	#just Zeeland
+	option = {
+		name = tesb_BRG.110.c
+		trigger = { NOT = { has_government = democratic } }
+		FLD = { country_event = { id = tesb_BRG.140 hours = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
 	id = tesb_BRG.120
 	title = tesb_BRG.120.t
 	desc = tesb_BRG.120.d
@@ -65,10 +111,21 @@ country_event = {
 	option = {
 		name = tesb_BRG.120.a
 		effect_tooltip = {
-			BRG = { add_to_faction = FROM }
+			BRG = { add_to_faction = ROOT }
 		}
 		hidden_effect = {
 			BRG = { country_event = { id = tesb_BRG.121 hours = 1 } }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				NOT = { has_government = FROM }
+				factor = 0.5
+			}
+			modifier = {
+				has_government = FROM
+				factor = 2
+			}
 		}
 	}
 	#Reject BRG alliance
@@ -88,6 +145,23 @@ country_event = {
 		}
 		hidden_effect = {
 			BRG = { country_event = { id = tesb_BRG.122 hours = 1 } }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = BRG
+					ratio < 0.5
+				}
+				factor = 0.5
+			}
+			modifier = {
+				strength_ratio = {
+					tag = BRG
+					ratio > 1
+				}
+				factor = 2
+			}
 		}
 	}
 }
@@ -131,7 +205,6 @@ country_event = {
 			FROM = {
 				NOT = { has_government = ROOT }
 			}
-			has_government = democratic
 		}
 		name = tesb_BRG.122.b
 		add_opinion_modifier = {
