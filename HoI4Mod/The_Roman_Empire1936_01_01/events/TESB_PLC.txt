@@ -200,7 +200,7 @@ country_event = {
 	#Limited Demands
 	option = {
 		name = tesb_plc.100.a
-		set_variable = { PLC_dresden_1 = 1 }
+		set_variable = { GER.GER_dresden_1 = 1 = 1 }
 		add_political_power = -50
 		ai_chance = {
 			factor = 20
@@ -221,7 +221,7 @@ country_event = {
 	#Limited Demands
 	option = {
 		name = tesb_plc.101.a
-		set_variable = { GER_dresden_1 = 1 }
+		add_to_variable = { GER.GER_dresden_1 = 1 }
 		set_country_flag = attending_dresden_1
 		ai_chance = {
 			factor = 20
@@ -282,6 +282,7 @@ country_event = {
 		NOT = { tag = PLC }
 		has_country_flag = attending_dresden_1
 		NOT = { has_country_flag = decided_PLC_dresden_1 }
+		always = no
 	}
 
 	mean_time_to_happen = {
@@ -330,7 +331,7 @@ country_event = {
 			modifier = {
 				factor = 1.5
 				has_opinion = {
-					target = HUN
+					target = event_target:Galicia_Owner
 					value < 0
 				}
 			}
@@ -347,11 +348,11 @@ country_event = {
 		ai_chance = {
 			factor = 5
 			modifier = {
-				is_in_faction_with = HUN
+				is_in_faction_with = event_target:Galicia_Owner
 				factor = 2
 			}
 			modifier = {
-				HUN = { has_government = democratic }
+				event_target:Galicia_Owner = { has_government = democratic }
 				NOT = { has_government = fascism }
 				factor = 1.5
 			}
@@ -371,7 +372,7 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = HUN
+					target = event_target:Galicia_Owner
 					value > 24
 				}
 				factor = 1.5
@@ -387,18 +388,13 @@ country_event = {
 	picture = GFX_report_event_german_italian_pact
 
 	trigger = {
-		NOT = { tag = GER }
+		NOT = { tag = GER tag = PLC }
 		has_country_flag = attending_dresden_1
-		OR = {
-			has_country_flag = decided_PLC_dresden_1
-			tag = PLC
-		}
 		NOT = { has_country_flag = decided_GER_dresden_1 }
-		check_variable = { GER.GER_dresden_1 > 0 }
 	}
 
 	mean_time_to_happen = {
-		days = 10
+		days = 20
 	}
 
 	immediate = {
@@ -416,10 +412,15 @@ country_event = {
 			add_to_variable = { GER.GER_dresden_1 = 1 }
 		}
 		set_country_flag = supported_GER
+		set_country_flag = supported_PLC
 		ai_chance = {
 			factor = 10
 			modifier = {
 				is_in_faction_with = GER
+				factor = 1.5
+			}
+			modifier = {
+				is_in_faction_with = PLC
 				factor = 1.5
 			}
 			modifier = {
@@ -441,6 +442,20 @@ country_event = {
 				factor = 1.5
 			}
 			modifier = {
+				has_opinion = {
+					target = PLC
+					value > 24
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_opinion = {
+					target = PLC
+					value > 49
+				}
+				factor = 1.5
+			}
+			modifier = {
 				factor = 1.5
 				has_opinion = {
 					target = HUN
@@ -453,6 +468,7 @@ country_event = {
 	option = {
 		name = tesb_plc.104.b
 		set_country_flag = not_supported_GER
+		set_country_flag = not_supported_PLC
 		ai_chance = {
 			factor = 5
 			modifier = {
@@ -474,6 +490,20 @@ country_event = {
 			modifier = {
 				has_opinion = {
 					target = GER
+					value < 0
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_opinion = {
+					target = PLC
+					value < 25
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_opinion = {
+					target = PLC
 					value < 0
 				}
 				factor = 1.5
@@ -530,6 +560,7 @@ country_event = {
 	option = {
 		name = tesb_plc.105.a1
 		PLC = { transfer_state = 218 clear_variable = PLC_dresden_1 }
+		clear_global_event_target = Galicia_Owner
 		news_event = { id = tesb_plc.1051 }
 		ai_chance = {
 			factor = 15
@@ -571,11 +602,12 @@ country_event = {
 		PLC = {
 			create_wargoal = {
 				type = take_core_state
-				target = HUN
+				target = event_target:Galicia_Owner
 				generator = { 218 }
 			}
 			clear_variable = PLC_dresden_1 
 		}
+		clear_global_event_target = Galicia_Owner
 		news_event = { id = tesb_plc.1052 }
 		ai_chance = {
 			factor = 10
@@ -613,6 +645,32 @@ country_event = {
 	immediate = {
 		every_country = {
 			limit = {
+				has_country_flag = supported_PLC
+			}
+			reverse_add_opinion_modifier = {
+				target = HUN
+				modifier = first_dresden_conference_PLC_bad
+			}
+			reverse_add_opinion_modifier = {
+				target = PLC
+				modifier = first_dresden_conference_good
+			}
+		}
+		every_country = {
+			limit = {
+				has_country_flag = not_supported_PLC
+			}
+			reverse_add_opinion_modifier = {
+				target = HUN
+				modifier = first_dresden_conference_PLC_good
+			}
+			reverse_add_opinion_modifier = {
+				target = PLC
+				modifier = first_dresden_conference_bad
+			}
+		}
+		every_country = {
+			limit = {
 				has_country_flag = supported_GER
 			}
 			reverse_add_opinion_modifier = {
@@ -642,7 +700,7 @@ country_event = {
 	#give up Silesia
 	option = {
 		name = tesb_plc.106.a1
-		GER = { transfer_state = 215 clear_variable = GER_dresden_1 }
+		GER = { transfer_state = 215 transfer_state = 212 add_state_core = 212 clear_variable = GER_dresden_1 }
 		news_event = { id = tesb_plc.1061 }
 		ai_chance = {
 			factor = 15
@@ -683,9 +741,9 @@ country_event = {
 		name = tesb_plc.106.a2
 		GER = {
 			create_wargoal = {
-				type = take_core_state
+				type = take_state_focus
 				target = HUN
-				generator = { 215 }
+				generator = { 215 212 }
 			}
 			clear_variable = GER_dresden_1
 		}
@@ -792,22 +850,26 @@ news_event = {
 	
 	option = {
 		trigger = {
-			has_country_flag = supported_GER
+			OR = { has_country_flag = supported_GER has_country_flag = supported_PLC }
 		}
 		clr_country_flag = supported_GER
+		clr_country_flag = supported_PLC
 		name = tesb_plc.1061.a
 	}
 	option = {
 		trigger = {
-			has_country_flag = not_supported_GER
+			OR = { has_country_flag = not_supported_GER has_country_flag = not_supported_PLC }
 		}
 		clr_country_flag = not_supported_GER
+		clr_country_flag = not_supported_PLC
 		name = tesb_plc.1061.b
 	}
 	option = {
 		trigger = {
 			NOT = {	has_country_flag = supported_GER }
+			NOT = {	has_country_flag = supported_PLC }
 			NOT = {	has_country_flag = not_supported_GER }
+			NOT = {	has_country_flag = not_supported_PLC }
 		}
 		name = tesb_plc.1061.c
 	}
@@ -843,6 +905,49 @@ news_event = {
 			NOT = {	has_country_flag = not_supported_GER }
 		}
 		name = tesb_plc.1062.c
+	}
+}
+
+country_event = {
+	id = tesb_plc.107
+	title = tesb_plc.107.t
+	desc = {
+		text = tesb_plc.107.da
+		trigger = { owns_state = 215 owns_state = 212 }
+	}
+	desc = {
+		text = tesb_plc.107.db
+		trigger = { NOT = { owns_state = 215 owns_state = 212 } }
+	}
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { owns_state = 215 owns_state = 212 }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+			}
+			else = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.025
+				}
+			}
+		}
+	}
+
+	option = {
+		trigger = { owns_state = 215 owns_state = 212 }
+		name = tesb_plc.107.a
+	}
+
+	option = {
+		trigger = { NOT = { owns_state = 215 owns_state = 212 } }
+		name = tesb_plc.107.b
 	}
 }
 
@@ -903,7 +1008,7 @@ country_event = {
 	option = {
 		name = tesb_plc.121.a
 		transfer_state = 164
-		164 = { add_manpower = -100000 remove_core_of = GER }
+		164 = { add_manpower = -200000 }
 		GER = {
 			remove_state_core = 164
 			remove_state_core = 355
@@ -911,39 +1016,39 @@ country_event = {
 			remove_state_core = 216
 			random_owned_controlled_state = {
 				limit = { NOT = { has_state_flag = PLC_transfer } }
-				add_manpower = 100000
+				add_manpower = 200000
 				set_state_flag = PLC_transfer
 			}
 		}
 		if = {
 			limit = { owns_state = 355 }
-			355 = { add_manpower = -100000 remove_core_of = GER }
+			355 = { add_manpower = -200000 }
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
-					add_manpower = 100000
+					add_manpower = 200000
 					set_state_flag = PLC_transfer
 				}
 			}
 		}
 		if = {
 			limit = { owns_state = 218 }
-			218 = { add_manpower = -100000 remove_core_of = GER }
+			218 = { add_manpower = -200000 }
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
-					add_manpower = 100000
+					add_manpower = 200000
 					set_state_flag = PLC_transfer
 				}
 			}
 		}
 		if = {
 			limit = { owns_state = 216 }
-			216 = { add_manpower = -100000 remove_core_of = GER }
+			216 = { add_manpower = -200000 }
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
-					add_manpower = 100000
+					add_manpower = 200000
 					set_state_flag = PLC_transfer
 				}
 			}
@@ -974,6 +1079,22 @@ country_event = {
 country_event = {
 	id = tesb_plc.150
 	title = tesb_plc.150.t
+	desc = {
+		text = tesb_plc.150.dhb
+		trigger = { event_target:galicia_owner = { tag = HUN } event_target:bohemia_owner = { tag = HUN } }
+	}
+	desc = {
+		text = tesb_plc.150.dhp
+		trigger = { event_target:galicia_owner = { tag = POL } event_target:bohemia_owner = { tag = HUN } }
+	}
+	desc = {
+		text = tesb_plc.150.dhbn
+		trigger = { event_target:galicia_owner = { tag = HUN } NOT = { has_event_target = bohemia_owner } }
+	}
+	desc = {
+		text = tesb_plc.150.dpbn
+		trigger = { event_target:galicia_owner = { tag = POL } NOT = { has_event_target = bohemia_owner } }
+	}
 	desc = tesb_plc.150.d
 	picture = GFX_report_event_german_italian_pact
 
@@ -984,7 +1105,7 @@ country_event = {
 		hidden_effect = {
 			GER = { #1
 				country_event = {
-					id = tesb_plc.151
+					id = tesb_plc.152
 					hours = 2
 				}
 			}
@@ -1039,6 +1160,7 @@ country_event = {
 	#Limited Demands
 	option = {
 		name = tesb_plc.150.a
+		trigger = { has_event_target = bohemia_owner }
 		set_variable = { PLC_dresden_2 = 1 }
 		if = {
 			limit = {
@@ -1051,12 +1173,28 @@ country_event = {
 			factor = 20
 		}
 	}
+	option = {
+		name = tesb_plc.150.b
+		trigger = { NOT = { has_event_target = bohemia_owner } }
+		set_variable = { PLC_dresden_2 = 1 }
+		add_political_power = -50
+		ai_chance = {
+			factor = 20
+		}
+	}
 }
 
 country_event = {
 	id = tesb_plc.151
 	title = tesb_plc.151.t
-	desc = tesb_plc.151.d
+	desc = {
+		text = tesb_plc.151.dboh
+		trigger = { has_event_target = bohemia_owner }
+	}
+	desc = {
+		text = tesb_plc.151.dgal
+		trigger = { NOT = { has_event_target = bohemia_owner } }
+	}
 	picture = GFX_report_event_german_italian_pact
 
 	is_triggered_only = yes
@@ -1066,7 +1204,6 @@ country_event = {
 	#Limited Demands
 	option = {
 		name = tesb_plc.151.a
-		set_variable = { GER_dresden_2 = 1 }
 		set_country_flag = attending_dresden_2
 		ai_chance = {
 			factor = 20
@@ -1084,7 +1221,14 @@ country_event = {
 country_event = {
 	id = tesb_plc.152
 	title = tesb_plc.152.t
-	desc = tesb_plc.152.d
+	desc = {
+		text = tesb_plc.152.dboh
+		trigger = { has_event_target = bohemia_owner }
+	}
+	desc = {
+		text = tesb_plc.152.dgal
+		trigger = { NOT = { has_event_target = bohemia_owner } }
+	}
 	picture = GFX_report_event_german_italian_pact
 
 	is_triggered_only = yes
@@ -1097,6 +1241,10 @@ country_event = {
 		set_country_flag = attending_dresden_2
 		ai_chance = {
 			factor = 20
+			modifier = {
+				has_country_flag = PLC_RUS_pact
+				factor = 2
+			}
 		}
 	}
 	#don't attend
@@ -1178,7 +1326,7 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = HUN
+					target = event_target:bohemia_owner
 					value < 0
 				}
 				factor = 1.5
@@ -1196,11 +1344,11 @@ country_event = {
 		ai_chance = {
 			factor = 5
 			modifier = {
-				is_in_faction_with = HUN
+				is_in_faction_with = event_target:bohemia_owner
 				factor = 2
 			}
 			modifier = {
-				HUN = { has_government = democratic }
+				event_target:bohemia_owner = { has_government = democratic }
 				NOT = { has_government = fascism }
 				factor = 1.5
 			}
@@ -1220,7 +1368,7 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = HUN
+					target = event_target:bohemia_owner
 					value > 24
 				}
 				factor = 1.5
@@ -1290,10 +1438,14 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = HUN
+					target = event_target:galicia_owner
 					value < 0
 				}
 				factor = 1.5
+			}
+			modifier = {
+				has_country_flag = PLC_RUS_pact
+				factor = 2
 			}
 		}
 	}
@@ -1304,11 +1456,11 @@ country_event = {
 		ai_chance = {
 			factor = 5
 			modifier = {
-				is_in_faction_with = HUN
+				is_in_faction_with = event_target:galicia_owner
 				factor = 2
 			}
 			modifier = {
-				HUN = { has_government = democratic }
+				event_target:galicia_owner = { has_government = democratic }
 				NOT = { has_government = fascism }
 				factor = 1.5
 			}
@@ -1328,7 +1480,7 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = HUN
+					target = event_target:galicia_owner
 					value > 24
 				}
 				factor = 1.5
@@ -1467,7 +1619,7 @@ country_event = {
 				has_country_flag = supported_PLC
 			}
 			reverse_add_opinion_modifier = {
-				target = HUN
+				target = event_target:galicia_owner
 				modifier = second_dresden_conference_PLC_bad
 			}
 			reverse_add_opinion_modifier = {
@@ -1480,7 +1632,7 @@ country_event = {
 				has_country_flag = not_supported_PLC
 			}
 			reverse_add_opinion_modifier = {
-				target = HUN
+				target = event_target:galicia_owner
 				modifier = second_dresden_conference_PLC_good
 			}
 			reverse_add_opinion_modifier = {
@@ -1493,7 +1645,7 @@ country_event = {
 	#give up West Galicia
 	option = {
 		name = tesb_plc.155.a1
-		PLC = { transfer_state = 216 clear_variable = PLC_dresden_2 }
+		PLC = { transfer_state = 218 transfer_state = 216 clear_variable = PLC_dresden_2 }
 		news_event = { id = tesb_plc.1551 }
 		ai_chance = {
 			factor = 10
@@ -1535,8 +1687,8 @@ country_event = {
 		PLC = {
 			create_wargoal = {
 				type = take_core_state
-				target = HUN
-				generator = { 216 }
+				target = event_target:galicia_owner
+				generator = { 218 216 }
 			}
 			clear_variable = PLC_dresden_2 
 		}
@@ -1693,7 +1845,7 @@ country_event = {
 				has_country_flag = supported_BAV
 			}
 			reverse_add_opinion_modifier = {
-				target = HUN
+				target = event_target:bohemia_owner
 				modifier = second_dresden_conference_BAV_bad
 			}
 			reverse_add_opinion_modifier = {
@@ -1706,7 +1858,7 @@ country_event = {
 				has_country_flag = not_supported_BAV
 			}
 			reverse_add_opinion_modifier = {
-				target = HUN
+				target = event_target:bohemia_owner
 				modifier = second_dresden_conference_good
 			}
 			reverse_add_opinion_modifier = {
@@ -1769,7 +1921,7 @@ country_event = {
 		PLC = {
 			create_wargoal = {
 				type = liberate_wargoal
-				target = HUN
+				target = event_target:bohemia_owner
 			}
 			clear_variable = BAV_dresden_2
 		}

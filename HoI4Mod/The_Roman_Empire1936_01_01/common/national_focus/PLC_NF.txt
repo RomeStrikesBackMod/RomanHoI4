@@ -1433,7 +1433,7 @@ focus_tree = {
 			add_political_power = 60
 		}
 		ai_will_do = {
-			base = 5
+			base = 10
 		}
 	}
 
@@ -1461,7 +1461,39 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 5
+		}
+	}
+
+
+	focus = {
+		id = PLC_german_referendum
+		icon = GFX_goal_generic_propaganda
+		x = -1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = PLC_german_fascists }
+		relative_position_id = PLC_german_fascists
+		available = {
+			GER = { fascism > 0.4 }
+		}
+		bypass = {
+			OR = {
+				GER = { has_government = fascism }
+				GER = { is_in_faction_with = PLC }
+			}
+		}
+		completion_reward = {
+			GER = {
+				country_event = {
+					id = tesb_plc.5
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
 		}
 	}
 
@@ -1469,7 +1501,7 @@ focus_tree = {
 		id = PLC_baltic_axis
 		dynamic = yes
 		icon = GFX_goal_generic_alliance
-		x = 1
+		x = 3
 		y = 1
 		cost = 10
 		available_if_capitulated = yes
@@ -1537,7 +1569,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 5
 			modifier = {
 				factor = 2
 				GER = { has_government = fascism }
@@ -1555,50 +1587,19 @@ focus_tree = {
 			}
 		}
 	}
-
-	focus = {
-		id = PLC_german_referendum
-		icon = GFX_goal_generic_propaganda
-		x = -1
-		y = 1
-		cost = 10
-		available_if_capitulated = yes
-		prerequisite = { focus = PLC_german_fascists }
-		relative_position_id = PLC_german_fascists
-		available = {
-			GER = { fascism > 0.4 }
-		}
-		bypass = {
-			OR = {
-				GER = { has_government = fascism }
-				GER = { is_in_faction_with = PLC }
-			}
-		}
-		completion_reward = {
-			GER = {
-				country_event = {
-					id = tesb_plc.5
-					hours = 1
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
 	
 	focus = {
 		id = PLC_first_dresden_conference
 		icon = GFX_goal_generic_forceful_treaty
-		x = 0
-		y = 2
+		x = 1
+		y = 1
 		cost = 10
-		prerequisite = { focus = PLC_german_referendum }
-		prerequisite = { focus = PLC_baltic_axis }
+		prerequisite = { focus = PLC_german_fascists }
 		relative_position_id = PLC_german_fascists
 		available = {
 			is_puppet = no
-			is_in_faction_with = GER
+			#is_in_faction_with = GER
+			OR = { HUN = { owns_state = 215 } HUN = { owns_state = 212 } }
 			NOT = { is_in_faction_with = HUN }
 			NOT = { has_war_with = HUN }
 			has_army_manpower = {
@@ -1607,8 +1608,8 @@ focus_tree = {
 		}
 		bypass = {
 			OR = {
-				has_war_with = HUN
-				owns_state = 218
+				GER = { owns_state = 215 owns_state = 212 }
+				HUN = { NOT = { owns_state = 215 } NOT = { owns_state = 212 } }
 				NOT = { country_exists = HUN }
 			}
 		}
@@ -1621,32 +1622,27 @@ focus_tree = {
 		completion_reward = {
 			HUN = {
 				country_event = {
-					id = tesb_plc.105
+					id = tesb_plc.106
 					hours = 2
 				}
-				if = {
-					limit = {
-						check_variable = { var = GER.GER_dresden_1 value = 0 compare = greater_than }
-					}
-					country_event = {
-						id = tesb_plc.106
-						hours = 2
-					}
-				}
+			}
+			GER = {
+				country_event = { id = tesb_plc.107 hours = 6 }
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 3
 		}
 	}
 
 	focus = {
 		id = PLC_request_posen
 		icon = GFX_goal_generic_improve_relations
-		x = 0
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = PLC_first_dresden_conference }
+		prerequisite = { focus = PLC_baltic_axis }
 		relative_position_id = PLC_first_dresden_conference
 		available = {
 			NOT = { owns_state = 164 }
@@ -1656,6 +1652,7 @@ focus_tree = {
 			OR = {
 				has_war_with = GER
 				owns_state = 164
+				NOT = { country_exists = GER }
 			}
 		}
 		completion_reward = {
@@ -1667,32 +1664,74 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 3
 		}
 	}
 
 	focus = {
 		id = PLC_second_dresden_conference
 		icon = GFX_goal_generic_forceful_treaty
+		dynamic = yes
 		x = 0
 		y = 1
 		cost = 10
 		prerequisite = { focus = PLC_request_posen }
 		relative_position_id = PLC_request_posen
 		available = {
-			owns_state = 218
+			owns_state = 164
 			is_puppet = no
 			is_in_faction_with = GER
-			NOT = { is_in_faction_with = HUN }
-			NOT = { has_war_with = HUN }
+			if = {
+				limit = {
+					218 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					216 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					217 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					213 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+				}
+				NOT = { is_in_faction_with = HUN }
+				NOT = { has_war_with = HUN }
+			}
+			else_if = {
+				limit = {
+					POL = { owns_state = 218 owns_state = 216 is_subject = no }
+				}
+				NOT = { is_in_faction_with = POL }
+				NOT = { has_war_with = POL }
+			}
+			if = {
+				limit = {
+					217 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					213 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					NOT = {
+						218 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+						216 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					}
+				}
+				NOT = { is_in_faction_with = HUN }
+				NOT = { has_war_with = HUN }
+			}
 		}
 		bypass = {
+			if = {
+				limit = {
+					POL = { owns_state = 218 owns_state = 216 is_subject = no }
+				}
+				OR = {
+					has_war_with = POL
+					is_in_faction_with = POL
+					AND = {
+						owns_state = 216
+						owns_state = 218
+					}
+				}
+			}
 			OR = {
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { country_exists = HUN }
 				AND = {
 					owns_state = 216
+					owns_state = 218
 					HUN = {
 						all_owned_state = { NOT = { is_core_of = BAV } }
 					}
@@ -1700,41 +1739,73 @@ focus_tree = {
 			}
 		}
 		select_effect = {
+			if = {
+				limit = {
+					218 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					216 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+				}
+				HUN = { save_global_event_target_as = galicia_owner }
+			}
+			else_if = {
+				limit = { POL = { owns_state = 218 owns_state = 216 is_subject = no } }
+				POL = { save_global_event_target_as = galicia_owner }
+			}
+			if = {
+				limit = {
+					217 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					213 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+				}
+				HUN = { save_global_event_target_as = bohemia_owner }
+			}
 			country_event = {
 				id = tesb_plc.150
 				hours = 2
 			}
 		}
 		completion_reward = {
-			HUN = {
-				country_event = {
-					id = tesb_plc.155
-					hours = 2
+			if = {
+				limit = {
+					218 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					216 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
 				}
-				country_event = {
-					id = tesb_plc.157
-					hours = 2
-				}
-				if = {
-					limit = {
-						check_variable = { var = GER.GER_dresden_2 value = 0 compare = greater_than }
-					}
+				HUN = {
 					country_event = {
-						id = tesb_plc.156
+						id = tesb_plc.155
+						hours = 2
+					}
+				}
+			}
+			else_if = {
+				limit = { POL = { owns_state = 218 owns_state = 216 is_subject = no } }
+				POL = {
+					country_event = {
+						id = tesb_plc.155
+						hours = 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					217 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					213 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+				}
+				HUN = {
+					country_event = {
+						id = tesb_plc.157
 						hours = 2
 					}
 				}
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 3
 		}
 	}
 
 	focus = {
 		id = PLC_scandiavian_fascists
 		icon = GFX_goal_support_fascism
-		x = -2
+		x = 0
 		y = 1
 		cost = 10
 		available_if_capitulated = yes
@@ -1755,7 +1826,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 5
 		}
 	}
 
@@ -1786,7 +1857,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 3
 		}
 	}
 

@@ -46,7 +46,7 @@ on_actions = {
 						#USA = { has_war_with = FROM } Should USA enforce peace in a nation it is already at war with?
 					}
 				}
-				FROM = { country_event = { id = usa.16 days = 1 } }
+				FROM = { country_event = { id = tesb_restore_rome.30 days = 1 } }
 			}
 			if = {
 				limit = {
@@ -139,14 +139,14 @@ on_actions = {
 				BRG = { country_event = { id = tesb_BRG.135 } }
 			}
 			if = {
-				limit = { num_subjects > 0 }
+				limit = { num_subjects > 0 always = no }
 				every_country = {
 					limit = { is_subject_of = ROOT }
 					save_event_target_as = asking_subject
 					ROOT = {
 						every_owned_state = {
 							limit = { NOT = { is_core_of = ROOT } is_core_of = PREV.PREV has_state_flag = old_owner_@FROM }
-							PREV.PREV = {
+							event_target:asking_subject = {
 								PREV = {
 									set_state_flag = state_of_@PREV
 								}
