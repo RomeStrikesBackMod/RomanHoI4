@@ -38,35 +38,40 @@ transport = 1
 }
 
 # Research Bonuses
-add_tech_bonus = { name = land_doc_bonus bonus = 0.9 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = air_doc_bonus bonus = 0.9 uses = 1 category = air_doctrine }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_battlefield_support name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_grand_battle_plan name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mass_assault name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mobile_warfare name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_operational_integrity name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_strategic_destruction name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_superior_firepower name = doctrine_bonus }
 add_tech_bonus = { bonus = 0.90 uses = 1 category = naval_doctrine name = doctrine_bonus }
 set_convoys = 0
 
-add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 40 producer = SIC }
-add_equipment_to_stockpile = { type = tac_bomber_equipment_0 amount = 40 producer = SIC }
+add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 100 producer = SIC }
+add_equipment_to_stockpile = { type = tac_bomber_equipment_0 amount = 100 producer = SIC }
 
 set_politics = {
 
     parties = {
         absolutist = {
-            popularity = 6
+            popularity = 16
         }
         communism = {
-            popularity = 21
+            popularity = 1
         }
         democratic = {
-            popularity = 14
+            popularity = 54
         }
         fascism = {
-            popularity = 13
+            popularity = 23
         }
         neutrality = {
-            popularity = 46
+            popularity = 6
         }
     }
     
-    ruling_party = neutrality
+    ruling_party = absolutist
     last_election = "1836.1.1"
     election_frequency = 48
     elections_allowed = no
@@ -79,9 +84,9 @@ add_opinion_modifier = { target = ENG modifier = positive_5 }
 add_opinion_modifier = { target = ETH modifier = negative_5 }
 add_opinion_modifier = { target = KHI modifier = positive_15 }
 add_opinion_modifier = { target = MUT modifier = positive_15 }
-add_opinion_modifier = { target = RME modifier = positive_11 }
 add_opinion_modifier = { target = SOK modifier = positive_15 }
 add_opinion_modifier = { target = UTA modifier = negative_15 }
+
 
 add_ideas = {
 	RME_former_territory
@@ -93,11 +98,11 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-    name = "Giovanni Gironda"
-    desc = "POLITICS_GIOVANNI_GIRONDA_DESC"
-    picture = "gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds"
+    name = "Emmanouil Palaskas"
+    desc = "POLITICS_EMMANOUIL_PALASKAS_DESC"
+    picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
     expire = "1965.1.1"
-    ideology = absolute_monarchy_neutral
+    ideology = absolute_monarchy
     traits = {
     }
 }

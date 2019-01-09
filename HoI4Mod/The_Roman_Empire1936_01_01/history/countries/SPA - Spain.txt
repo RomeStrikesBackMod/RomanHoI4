@@ -38,13 +38,16 @@ transport = 1
 }
 
 # Research Bonuses
-add_tech_bonus = { name = land_doc_bonus bonus = 0.9 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = air_doc_bonus bonus = 0.9 uses = 1 category = air_doctrine }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_battlefield_support name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_grand_battle_plan name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mass_assault name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mobile_warfare name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_operational_integrity name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_strategic_destruction name = doctrine_bonus }
+add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_superior_firepower name = doctrine_bonus }
 add_tech_bonus = { bonus = 0.90 uses = 1 category = naval_doctrine name = doctrine_bonus }
 set_convoys = 0
 
-add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 90 producer = SPA }
-add_equipment_to_stockpile = { type = tac_bomber_equipment_0 amount = 90 producer = SPA }
 
 set_politics = {
 
@@ -57,18 +60,17 @@ set_politics = {
         }
     }
     
-    ruling_party = fascism
+    ruling_party = absolutist
     last_election = "1836.1.1"
     election_frequency = 48
     elections_allowed = no
 }
-
 add_opinion_modifier = { target = AQI modifier = positive_60 }
 add_opinion_modifier = { target = BRG modifier = positive_60 }
 add_opinion_modifier = { target = MUT modifier = positive_5 }
-add_opinion_modifier = { target = RME modifier = negative_195 }
 add_opinion_modifier = { target = SHN modifier = negative_10 }
 add_opinion_modifier = { target = UTA modifier = negative_15 }
+
 
 add_ideas = {
 	RME_former_territory
@@ -80,17 +82,27 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.65
 create_country_leader = {
-    name = "Calixto Cano"
-    desc = "POLITICS_CALIXTO_CANO_DESC"
-    picture = "GFX_POR_Francisco_Preto"
+    name = "José María Villapol"
+    desc = "POLITICS_JOSé MARíA_VILLAPOL_DESC"
+    picture = "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds"
     expire = "1965.1.1"
-    ideology = fascism_ideology
+    ideology = absolute_monarchy
     traits = {
     }
 }
+create_corps_commander = {
+	name = "Álvaro Hernández"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
 
 create_corps_commander = {
-	name = "Mateo Garcia de la Noceda"
+	name = "Mateo García de la Noceda"
 	picture = ""
 	traits = { }
 	skill = 1
