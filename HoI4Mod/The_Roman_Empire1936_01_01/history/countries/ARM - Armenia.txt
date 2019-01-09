@@ -38,38 +38,23 @@ transport = 1
 }
 
 # Research Bonuses
-add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_battlefield_support name = doctrine_bonus }
-add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_grand_battle_plan name = doctrine_bonus }
-add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mass_assault name = doctrine_bonus }
-add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_mobile_warfare name = doctrine_bonus }
-add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_operational_integrity name = doctrine_bonus }
-add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_strategic_destruction name = doctrine_bonus }
-add_tech_bonus = { bonus = 0.90 uses = 1 category = cat_superior_firepower name = doctrine_bonus }
+add_tech_bonus = { name = land_doc_bonus bonus = 0.9 uses = 1 category = land_doctrine }
+add_tech_bonus = { name = air_doc_bonus bonus = 0.9 uses = 1 category = air_doctrine }
 add_tech_bonus = { bonus = 0.90 uses = 1 category = naval_doctrine name = doctrine_bonus }
 set_convoys = 0
 
+add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 20 producer = ARM }
+add_equipment_to_stockpile = { type = tac_bomber_equipment_0 amount = 20 producer = ARM }
 
 set_politics = {
 
     parties = {
-        absolutist = {
-            popularity = 16
-        }
-        communism = {
-            popularity = 1
-        }
-        democratic = {
-            popularity = 54
-        }
-        fascism = {
-            popularity = 23
-        }
         neutrality = {
-            popularity = 6
+            popularity = 100
         }
     }
     
-    ruling_party = absolutist
+    ruling_party = neutrality
     last_election = "1836.1.1"
     election_frequency = 48
     elections_allowed = no
@@ -81,8 +66,8 @@ add_opinion_modifier = { target = ENG modifier = positive_20 }
 add_opinion_modifier = { target = ETH modifier = positive_10 }
 add_opinion_modifier = { target = KHI modifier = positive_30 }
 add_opinion_modifier = { target = MUT modifier = positive_30 }
+add_opinion_modifier = { target = RME modifier = positive_51 }
 add_opinion_modifier = { target = SOK modifier = positive_30 }
-
 
 add_ideas = {
 	RME_former_territory
@@ -94,11 +79,11 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-    name = "Theodoros Venizelos"
-    desc = "POLITICS_THEODOROS_VENIZELOS_DESC"
+    name = "Gevorg Konstanian"
+    desc = "POLITICS_GEVORG_KONSTANIAN_DESC"
     picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
     expire = "1965.1.1"
-    ideology = absolute_monarchy
+    ideology = absolute_monarchy_neutral
     traits = {
     }
 }
