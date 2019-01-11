@@ -1,11 +1,86 @@
-﻿*** D:\My Projects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\ALG - Algeria.txt	2018-12-31 19:07:15.000000000 -0800
---- D:\My Projects\RomanHoI4\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\ALG - Algeria.txt	2018-12-31 18:50:58.000000000 -0800
+﻿*** D:\My Projects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\ALG - Algeria.txt	2019-01-10 18:34:20.000000000 -0800
+--- D:\My Projects\RomanHoI4_cv_changes\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\ALG - Algeria.txt	2019-01-10 18:37:29.000000000 -0800
 ***************
-*** 161,172 ****
---- 161,173 ----
-  add_opinion_modifier = { target = TUN modifier = positive_0 }
+*** 44,74 ****
+  set_convoys = 0
+  
+  
+  set_politics = {
+  
+      parties = {
+-         absolutist = {
+-             popularity = 16
+-         }
+-         communism = {
+-             popularity = 14
+-         }
+-         democratic = {
+-             popularity = 41
+-         }
+-         fascism = {
+-             popularity = 23
+-         }
+          neutrality = {
+!             popularity = 6
+          }
+      }
+      
+!     ruling_party = absolutist
+!     last_election = "1.1.1"
+      election_frequency = 48
+      elections_allowed = no
+  }
+  add_opinion_modifier = { target = ADA modifier = negative_10 }
+  add_opinion_modifier = { target = BEN modifier = negative_20 }
+  add_opinion_modifier = { target = BIR modifier = negative_10 }
+--- 44,62 ----
+  set_convoys = 0
+  
+  
+  set_politics = {
+  
+      parties = {
+          neutrality = {
+!             popularity = 100
+          }
+      }
+      
+!     ruling_party = neutrality
+!     last_election = "1836.1.1"
+      election_frequency = 48
+      elections_allowed = no
+  }
+  add_opinion_modifier = { target = ADA modifier = negative_10 }
+  add_opinion_modifier = { target = BEN modifier = negative_20 }
+  add_opinion_modifier = { target = BIR modifier = negative_10 }
+***************
+*** 80,101 ****
+  add_opinion_modifier = { target = SHN modifier = negative_20 }
+  add_opinion_modifier = { target = SOK modifier = negative_20 }
   add_opinion_modifier = { target = UTA modifier = negative_10 }
-  add_opinion_modifier = { target = YUG modifier = positive_0 }
+  
+  
+  add_ideas = {
+  	volunteer_only
+  	civilian_economy
+  	export_focus
+  	culture_greek
+  }
+  set_stability = 0.60
+  set_war_support = 0.60
+  create_country_leader = {
+      name = "Petros Tsolakoglou"
+      desc = "POLITICS_PETROS_TSOLAKOGLOU_DESC"
+      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
+      expire = "1965.1.1"
+!     ideology = absolute_monarchy
+      traits = {
+      }
+  }
+--- 68,90 ----
+  add_opinion_modifier = { target = SHN modifier = negative_20 }
+  add_opinion_modifier = { target = SOK modifier = negative_20 }
+  add_opinion_modifier = { target = UTA modifier = negative_10 }
   
   
   add_ideas = {
@@ -16,3 +91,13 @@
   	culture_greek
   }
   set_stability = 0.60
+  set_war_support = 0.60
+  create_country_leader = {
+      name = "Petros Tsolakoglou"
+      desc = "POLITICS_PETROS_TSOLAKOGLOU_DESC"
+      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
+      expire = "1965.1.1"
+!     ideology = absolute_monarchy_neutral
+      traits = {
+      }
+  }
