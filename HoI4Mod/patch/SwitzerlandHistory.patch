@@ -1,11 +1,94 @@
-﻿*** D:\My Projects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\SWI - Switzerland.txt	2019-01-01 10:42:05.000000000 -0800
---- D:\My Projects\RomanHoI4\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\SWI - Switzerland.txt	2019-01-01 10:48:30.000000000 -0800
+﻿*** D:\My Projects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\SWI - Switzerland.txt	2019-01-10 18:20:57.000000000 -0800
+--- D:\My Projects\RomanHoI4_cv_changes\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\SWI - Switzerland.txt	2019-01-10 18:20:49.000000000 -0800
 ***************
-*** 163,174 ****
---- 163,175 ----
-  add_opinion_modifier = { target = TUN modifier = positive_0 }
+*** 45,73 ****
+  
+  
+  set_politics = {
+  
+      parties = {
+          absolutist = {
+!             popularity = 16
+          }
+          communism = {
+!             popularity = 14
+          }
+          democratic = {
+!             popularity = 41
+          }
+          fascism = {
+!             popularity = 23
+          }
+          neutrality = {
+!             popularity = 6
+          }
+      }
+      
+!     ruling_party = absolutist
+      last_election = "1836.1.1"
+      election_frequency = 48
+      elections_allowed = no
+  }
+  add_opinion_modifier = { target = ADA modifier = positive_5 }
+  add_opinion_modifier = { target = BEN modifier = positive_5 }
+--- 45,73 ----
+  
+  
+  set_politics = {
+  
+      parties = {
+          absolutist = {
+!             popularity = 6
+          }
+          communism = {
+!             popularity = 11
+          }
+          democratic = {
+!             popularity = 24
+          }
+          fascism = {
+!             popularity = 13
+          }
+          neutrality = {
+!             popularity = 46
+          }
+      }
+      
+!     ruling_party = neutrality
+      last_election = "1836.1.1"
+      election_frequency = 48
+      elections_allowed = no
+  }
+  add_opinion_modifier = { target = ADA modifier = positive_5 }
+  add_opinion_modifier = { target = BEN modifier = positive_5 }
+***************
+*** 82,103 ****
+  add_opinion_modifier = { target = SHN modifier = negative_10 }
+  add_opinion_modifier = { target = SOK modifier = positive_5 }
   add_opinion_modifier = { target = UTA modifier = negative_5 }
-  add_opinion_modifier = { target = YUG modifier = positive_0 }
+  
+  
+  add_ideas = {
+  	volunteer_only
+  	civilian_economy
+  	export_focus
+  	culture_greek
+  }
+  set_stability = 0.60
+  set_war_support = 0.60
+  create_country_leader = {
+      name = "Kyriakos Zaimis"
+      desc = "POLITICS_KYRIAKOS_ZAIMIS_DESC"
+      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
+      expire = "1965.1.1"
+!     ideology = absolute_monarchy
+      traits = {
+      }
+  }
+--- 82,104 ----
+  add_opinion_modifier = { target = SHN modifier = negative_10 }
+  add_opinion_modifier = { target = SOK modifier = positive_5 }
+  add_opinion_modifier = { target = UTA modifier = negative_5 }
   
   
   add_ideas = {
@@ -16,3 +99,13 @@
   	culture_greek
   }
   set_stability = 0.60
+  set_war_support = 0.60
+  create_country_leader = {
+      name = "Kyriakos Zaimis"
+      desc = "POLITICS_KYRIAKOS_ZAIMIS_DESC"
+      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
+      expire = "1965.1.1"
+!     ideology = absolute_monarchy_neutral
+      traits = {
+      }
+  }
