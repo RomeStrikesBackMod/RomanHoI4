@@ -9,7 +9,7 @@ mkdir results
 xcopy "output\The_Roman_Empire1936_01_01" "D:\MyProjects\RomanHoI4\results\The_Roman_Empire1936_01_01" /E /Y /I /Q
 copy "output\The_Roman_Empire1936_01_01.mod" "D:\MyProjects\RomanHoI4\results\"
 
-cd "D:\My Projects\RomanHoI4"
+cd "D:\MyProjects\RomanHoI4"
 xcopy HoI4Mod results /E /Y /I /Q
 
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/ALG - Algeria.txt" "HoI4Mod/patch/AlgeriaHistory.patch"
