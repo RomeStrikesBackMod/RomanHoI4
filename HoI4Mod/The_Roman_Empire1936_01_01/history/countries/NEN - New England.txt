@@ -1,4 +1,4 @@
-﻿capital = 638
+﻿capital = 623
 set_research_slots = 3
 
 oob = "NEN_OOB"
@@ -7,6 +7,16 @@ oob = "NEN_OOB"
 set_technology = {
 }
 
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+	}
+}
 # Research Bonuses
 set_convoys = 0
 
@@ -45,6 +55,7 @@ add_opinion_modifier = { target = SHN modifier = negative_17 }
 add_opinion_modifier = { target = SOK modifier = positive_11 }
 add_opinion_modifier = { target = UTA modifier = negative_200 }
 
+
 add_ideas = {
 	volunteer_only
 	civilian_economy
@@ -52,11 +63,15 @@ add_ideas = {
 	culture_iroquis
 }
 create_country_leader = {
-    name = "William Martin"
-    desc = "POLITICS_WILLIAM_MARTIN_DESC"
+    name = "John Lépine"
+    desc = "POLITICS_JOHN_LéPINE_DESC"
     picture = "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds"
     expire = "1965.1.1"
     ideology = prussian_const
     traits = {
     }
+}
+### VARIANTS ###
+if = {
+	limit = { has_dlc = "Man the Guns" }
 }
