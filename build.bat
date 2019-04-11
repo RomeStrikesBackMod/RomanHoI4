@@ -25,6 +25,7 @@ xcopy HoI4Mod results /E /Y /I /Q
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/CAT - Catalonia.txt" "HoI4Mod/patch/CataloniaHistory.patch"
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/CHD - Chad.txt" "HoI4Mod/patch/ChadHistory.patch"
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/CMR - Cameroon.txt" "HoI4Mod/patch/CameroonHistory.patch"
+"c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/CUB - Cuba.txt" "HoI4Mod/patch/CubaHistory.patch"
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/CRO - Pannonia.txt" "HoI4Mod/patch/PannoniaHistory.patch"
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/DAH - Dahomey.txt" "HoI4Mod/patch/DahomeyHistory.patch"
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/EGY - Egypt.txt" "HoI4Mod/patch/EgyptHistory.patch"
