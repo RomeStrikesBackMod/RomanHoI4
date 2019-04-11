@@ -1,7 +1,7 @@
-﻿capital = 260
+﻿capital = 580
 set_research_slots = 3
 
-oob = "BAS_OOB"
+oob = "SWI_OOB"
 
 # Starting tech
 set_technology = {
@@ -81,46 +81,57 @@ set_politics = {
 
     parties = {
         absolutist = {
-            popularity = 100
+            popularity = 6
+        }
+        communism = {
+            popularity = 11
+        }
+        democratic = {
+            popularity = 24
+        }
+        fascism = {
+            popularity = 13
         }
         neutrality = {
-            popularity = 0
+            popularity = 46
         }
     }
     
-    ruling_party = absolutist
-    last_election = "1878.8.13"
+    ruling_party = neutrality
+    last_election = "1836.1.1"
     election_frequency = 48
     elections_allowed = no
 }
-add_opinion_modifier = { target = ADA modifier = negative_10 }
-add_opinion_modifier = { target = BEN modifier = negative_2 }
-add_opinion_modifier = { target = BIR modifier = negative_10 }
-add_opinion_modifier = { target = CAN modifier = negative_10 }
-add_opinion_modifier = { target = ENG modifier = positive_30 }
-add_opinion_modifier = { target = ETH modifier = negative_2 }
-add_opinion_modifier = { target = KHI modifier = positive_11 }
-add_opinion_modifier = { target = LAO modifier = negative_9 }
-add_opinion_modifier = { target = MAK modifier = negative_18 }
-add_opinion_modifier = { target = MUT modifier = negative_4 }
-add_opinion_modifier = { target = RME modifier = positive_176 }
-add_opinion_modifier = { target = SHN modifier = positive_115 }
-add_opinion_modifier = { target = SOK modifier = negative_4 }
-add_opinion_modifier = { target = UTA modifier = negative_10 }
+add_opinion_modifier = { target = ADA modifier = positive_5 }
+add_opinion_modifier = { target = BEN modifier = positive_5 }
+add_opinion_modifier = { target = BIR modifier = negative_5 }
+add_opinion_modifier = { target = CAN modifier = positive_15 }
+add_opinion_modifier = { target = ENG modifier = positive_5 }
+add_opinion_modifier = { target = ETH modifier = negative_15 }
+add_opinion_modifier = { target = KHI modifier = positive_5 }
+add_opinion_modifier = { target = LAO modifier = negative_10 }
+add_opinion_modifier = { target = MAK modifier = negative_10 }
+add_opinion_modifier = { target = MUT modifier = positive_5 }
+add_opinion_modifier = { target = SHN modifier = negative_10 }
+add_opinion_modifier = { target = SOK modifier = positive_5 }
+add_opinion_modifier = { target = UTA modifier = negative_5 }
 
 
 add_ideas = {
+	RME_former_territory
 	volunteer_only
 	civilian_economy
 	export_focus
-	culture_bihari
+	culture_greek
 }
+set_stability = 0.60
+set_war_support = 0.60
 create_country_leader = {
-    name = "Vachaspati Singh"
-    desc = "POLITICS_VACHASPATI_SINGH_DESC"
-    picture = "GFX_portrait_india_generic_land_3"
+    name = "Kyriakos Zaimis"
+    desc = "POLITICS_KYRIAKOS_ZAIMIS_DESC"
+    picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
     expire = "1965.1.1"
-    ideology = absolute_monarchy
+    ideology = absolute_monarchy_neutral
     traits = {
     }
 }
@@ -130,7 +141,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Submarine"
 		type = ship_hull_submarine_2
-		name_group = BAS_SS_HISTORICAL
+		name_group = SWI_SS_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_engine_slot = sub_ship_engine_2
@@ -141,7 +152,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
-		name_group = BAS_BB_HISTORICAL
+		name_group = SWI_BB_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -160,7 +171,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Destroyer"
 		type = ship_hull_light_2
-		name_group = BAS_DD_HISTORICAL
+		name_group = SWI_DD_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_2
@@ -176,7 +187,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Heavy Cruiser"
 		type = ship_hull_cruiser_2
-		name_group = BAS_CA_HISTORICAL
+		name_group = SWI_CA_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -194,7 +205,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Light Cruiser"
 		type = ship_hull_cruiser_2
-		name_group = BAS_CL_HISTORICAL
+		name_group = SWI_CL_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
