@@ -1,105 +1,27 @@
-﻿*** D:\My Projects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\MOS - Moesia Inferior.txt	2019-01-10 19:30:02.000000000 -0800
---- D:\My Projects\RomanHoI4_cv_changes\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\MOS - Moesia Inferior.txt	2019-01-10 17:57:12.000000000 -0800
-***************
-*** 48,73 ****
-  
-      parties = {
-          absolutist = {
-              popularity = 16
-          }
-          communism = {
-!             popularity = 14
-          }
-          democratic = {
-!             popularity = 41
-          }
-          fascism = {
-!             popularity = 23
-          }
-          neutrality = {
-!             popularity = 6
-          }
-      }
-      
-!     ruling_party = absolutist
-      last_election = "1836.1.1"
-      election_frequency = 48
-      elections_allowed = no
-  }
-  add_opinion_modifier = { target = ADA modifier = positive_20 }
-  add_opinion_modifier = { target = BEN modifier = positive_30 }
---- 48,73 ----
-  
-      parties = {
-          absolutist = {
-              popularity = 16
-          }
-          communism = {
-!             popularity = 11
-          }
-          democratic = {
-!             popularity = 14
-          }
-          fascism = {
-!             popularity = 13
-          }
-          neutrality = {
-!             popularity = 36
-          }
-      }
-      
-!     ruling_party = neutrality
-      last_election = "1836.1.1"
-      election_frequency = 48
-      elections_allowed = no
-  }
-  add_opinion_modifier = { target = ADA modifier = positive_20 }
-  add_opinion_modifier = { target = BEN modifier = positive_30 }
-***************
-*** 77,98 ****
-  add_opinion_modifier = { target = KHI modifier = positive_30 }
-  add_opinion_modifier = { target = MUT modifier = positive_30 }
-  add_opinion_modifier = { target = SOK modifier = positive_30 }
-  
-  
-  add_ideas = {
-  	volunteer_only
-  	civilian_economy
-  	export_focus
-  	culture_greek
-  }
-  set_stability = 0.60
-  set_war_support = 0.60
-  create_country_leader = {
-      name = "Antonios Dousmanis"
-      desc = "POLITICS_ANTONIOS_DOUSMANIS_DESC"
-      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
-      expire = "1965.1.1"
-!     ideology = absolute_monarchy
-      traits = {
-      }
-  }
---- 77,99 ----
-  add_opinion_modifier = { target = KHI modifier = positive_30 }
-  add_opinion_modifier = { target = MUT modifier = positive_30 }
-  add_opinion_modifier = { target = SOK modifier = positive_30 }
-  
-  
-  add_ideas = {
-+ 	RME_former_territory
-  	volunteer_only
-  	civilian_economy
-  	export_focus
-  	culture_greek
-  }
-  set_stability = 0.60
-  set_war_support = 0.60
-  create_country_leader = {
-      name = "Antonios Dousmanis"
-      desc = "POLITICS_ANTONIOS_DOUSMANIS_DESC"
-      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
-      expire = "1965.1.1"
-!     ideology = absolute_monarchy_neutral
-      traits = {
-      }
-  }
+﻿diff -r D:\MyProjects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\MOS - Moesia Inferior.txt D:\MyProjects\RomanHoI4_cv_changes\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\MOS - Moesia Inferior.txt
+87c87
+<             popularity = 14
+---
+>             popularity = 11
+90c90
+<             popularity = 41
+---
+>             popularity = 14
+93c93
+<             popularity = 23
+---
+>             popularity = 13
+96c96
+<             popularity = 6
+---
+>             popularity = 36
+100c100
+<     ruling_party = absolutist
+---
+>     ruling_party = neutrality
+115a116
+> 	RME_former_territory
+128c129
+<     ideology = absolute_monarchy
+---
+>     ideology = absolute_monarchy_neutral

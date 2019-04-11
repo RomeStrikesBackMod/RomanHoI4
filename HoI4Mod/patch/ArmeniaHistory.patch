@@ -1,101 +1,28 @@
-﻿*** D:\My Projects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\ARM - Armenia.txt	2019-01-10 18:52:52.000000000 -0800
---- D:\My Projects\RomanHoI4_cv_changes\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\ARM - Armenia.txt	2019-01-10 18:46:21.000000000 -0800
-***************
-*** 44,73 ****
-  set_convoys = 0
-  
-  
-  set_politics = {
-  
-      parties = {
--         absolutist = {
--             popularity = 16
--         }
--         communism = {
--             popularity = 14
--         }
--         democratic = {
--             popularity = 41
--         }
--         fascism = {
--             popularity = 23
--         }
-          neutrality = {
-!             popularity = 6
-          }
-      }
-      
-!     ruling_party = absolutist
-      last_election = "1836.1.1"
-      election_frequency = 48
-      elections_allowed = no
-  }
-  add_opinion_modifier = { target = ADA modifier = positive_20 }
-  add_opinion_modifier = { target = BEN modifier = positive_30 }
---- 44,61 ----
-  set_convoys = 0
-  
-  
-  set_politics = {
-  
-      parties = {
-          neutrality = {
-!             popularity = 100
-          }
-      }
-      
-!     ruling_party = neutrality
-      last_election = "1836.1.1"
-      election_frequency = 48
-      elections_allowed = no
-  }
-  add_opinion_modifier = { target = ADA modifier = positive_20 }
-  add_opinion_modifier = { target = BEN modifier = positive_30 }
-***************
-*** 77,98 ****
-  add_opinion_modifier = { target = KHI modifier = positive_30 }
-  add_opinion_modifier = { target = MUT modifier = positive_30 }
-  add_opinion_modifier = { target = SOK modifier = positive_30 }
-  
-  
-  add_ideas = {
-  	volunteer_only
-  	civilian_economy
-  	export_focus
-  	culture_greek
-  }
-  set_stability = 0.60
-  set_war_support = 0.60
-  create_country_leader = {
-      name = "Aristidis Tzavelas"
-      desc = "POLITICS_ARISTIDIS_TZAVELAS_DESC"
-      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
-      expire = "1965.1.1"
-!     ideology = absolute_monarchy
-      traits = {
-      }
-  }
---- 65,87 ----
-  add_opinion_modifier = { target = KHI modifier = positive_30 }
-  add_opinion_modifier = { target = MUT modifier = positive_30 }
-  add_opinion_modifier = { target = SOK modifier = positive_30 }
-  
-  
-  add_ideas = {
-+ 	RME_former_territory
-  	volunteer_only
-  	civilian_economy
-  	export_focus
-  	culture_greek
-  }
-  set_stability = 0.60
-  set_war_support = 0.60
-  create_country_leader = {
-      name = "Aristidis Tzavelas"
-      desc = "POLITICS_ARISTIDIS_TZAVELAS_DESC"
-      picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
-      expire = "1965.1.1"
-!     ideology = absolute_monarchy_neutral
-      traits = {
-      }
-  }
+﻿diff -r D:\MyProjects\RomanHoI4\results\The_Roman_Empire1936_01_01\history\countries\ARM - Armenia.txt D:\MyProjects\RomanHoI4_cv_changes\HoI4Mod\The_Roman_Empire1936_01_01\history\countries\ARM - Armenia.txt
+83,94d82
+<         absolutist = {
+<             popularity = 16
+<         }
+<         communism = {
+<             popularity = 14
+<         }
+<         democratic = {
+<             popularity = 41
+<         }
+<         fascism = {
+<             popularity = 23
+<         }
+96c84
+<             popularity = 6
+---
+>             popularity = 100
+100c88
+<     ruling_party = absolutist
+---
+>     ruling_party = neutrality
+115a104
+> 	RME_former_territory
+128c117
+<     ideology = absolute_monarchy
+---
+>     ideology = absolute_monarchy_neutral
