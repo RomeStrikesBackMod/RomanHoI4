@@ -182,12 +182,16 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				 has_government = democratic
+				OR = {
+					has_government = democratic
+					has_government = fascism
+				}
 			}
 			removal_cost = -1
 			picture = generic_democratic_drift_bonus
 			modifier = {
 				democratic_drift = 0.1
+				fascism_drift = 0.1
 			}
 		}
 		
@@ -254,6 +258,7 @@ ideas = {
 				send_volunteers_tension = -0.2
 			}
 		}
+
 		RME_a_new_empire = {
 			allowed = {
 				always = no
@@ -268,10 +273,27 @@ ideas = {
 			picture = generic_fascism_drift_bonus
 
 			modifier = {
-				fascism_drift = 0.1
+				offensive_war_stability_factor = 0.1
+				justify_war_goal_time = -0.2
 			}
 		}
-		
+
+		RME_democratic_ideals = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				improve_relations_maintain_cost_factor = -0.5
+				guarantee_cost = -0.5
+				guarantee_tension = -0.2
+			}
+		}
+
 		RME_rebuild_the_nation = {
 			allowed = {
 				always = no

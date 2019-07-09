@@ -88,11 +88,11 @@ regaining_rome = {
 	
 	negotiate_with_territory = {
 		icon = generic_form_nation
-		available = {
+		is_valid_root = {
 			has_completed_focus = RME_restoring_the_empire
-			FROM = {
-				is_subject = no
-			}
+		}
+		available = {
+			FROM = { is_subject = no }
 			NOT = { has_war_with = FROM }
 		}
 
@@ -114,9 +114,10 @@ regaining_rome = {
 		}
 
 		cost = 50
-		days_re_enable = 180
+		days_re_enable = 120
+		days_remove = 60
 
-		complete_effect = {
+		remove_effect = {
 			if = {
 				limit = { has_completed_focus = RME_reestablish_roman_hegemony }
 				FROM = {
@@ -147,6 +148,48 @@ regaining_rome = {
 			}
 		}
 	}
+
+	negotiate_with_foederati = {
+		icon = generic_form_nation
+		is_valid_root = {
+			has_completed_focus = RME_integrate_foederati
+		}
+		available = {
+			FROM = { is_subject = no }
+		}
+
+		visible = {
+			FROM = {
+				exists = yes
+				NOT = { is_subject_of = RME }
+				is_in_faction_with = RME
+			}
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_idea = RME_former_territory
+				has_country_flag = RME_region_integration_started
+				NOT = { is_subject_of = RME }
+				is_in_faction_with = RME
+			}
+		}
+
+		cost = 50
+		days_re_enable = 120
+		days_remove = 60
+
+		remove_effect = {
+			country_event = { id = tesb_restore_rome.41 hours = 12 }
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				check_variable = { From.integrate_willingness < 0 }
+				factor = 0.1
+			}
+		}
+	}
 	
 }
 
@@ -163,6 +206,9 @@ rome_civil_war_decisions = {
 					area = 30
 					size < 6 
 				}
+			}
+			NOT = {
+				controls_state = 384
 			}
 		}
 		visible = {
@@ -259,14 +305,14 @@ burgundy_descisions = {
 		fire_only_once = yes
 		available = {
 			OR = {
-				BRG = { controls_state = 502 }
-				FLD = { controls_state = 502 is_subject_of = BRG }
+				BRG = { controls_state = 55 }
+				FLD = { controls_state = 55 is_subject_of = BRG }
 			}
 			has_completed_focus = BRG_rhine_defenses
 		}
 		visible = {
 			OR = {
-				controls_state = 502
+				controls_state = 55
 				FLD = { is_subject_of = BRG }
 			}
 		}
@@ -275,7 +321,7 @@ burgundy_descisions = {
 			political_power_gain = -0.5
 		}
 		remove_effect = {
-			502 = {
+			55 = {
 				custom_effect_tooltip = fortify_zeeland.tt
 				hidden_effect = {
 					add_building_construction = {
