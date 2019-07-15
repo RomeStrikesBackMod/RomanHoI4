@@ -44,6 +44,14 @@ regaining_rome = {
 		#cost = 50
 
 		complete_effect = {
+			FROM = {
+				custom_effect_tooltip = tvr_pup
+				TESB_check_puppet_willingness = yes
+				custom_effect_tooltip = tvr_fac
+				TESB_check_faction_willingness = yes
+				custom_effect_tooltip = tvr_int
+				TESB_check_integrate_willingness = yes
+			}
 			if = {
 				limit = {
 					has_completed_focus = RME_reestablish_roman_hegemony
@@ -88,15 +96,13 @@ regaining_rome = {
 	
 	negotiate_with_territory = {
 		icon = generic_form_nation
-		is_valid_root = {
-			has_completed_focus = RME_restoring_the_empire
-		}
 		available = {
 			FROM = { is_subject = no }
 			NOT = { has_war_with = FROM }
 		}
-
+		
 		visible = {
+			has_completed_focus = RME_restoring_the_empire
 			FROM = {
 				exists = yes
 				NOT = { is_subject_of = RME }
@@ -151,14 +157,12 @@ regaining_rome = {
 
 	negotiate_with_foederati = {
 		icon = generic_form_nation
-		is_valid_root = {
-			has_completed_focus = RME_integrate_foederati
-		}
 		available = {
 			FROM = { is_subject = no }
 		}
-
+		
 		visible = {
+			has_completed_focus = RME_integrate_foederati
 			FROM = {
 				exists = yes
 				NOT = { is_subject_of = RME }

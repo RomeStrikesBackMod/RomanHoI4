@@ -2,6 +2,24 @@
 set_research_slots = 4
 add_named_threat = { threat = 1.0472 name = infamy }
 
+declare_war_on = {
+	target = BIR
+	type = take_state
+	generator = { 419 }
+}
+ADA = {
+	add_to_war = { 
+		targeted_alliance = ENG
+		enemy = BIR
+	}
+}
+MEX = {
+	add_to_war = { 
+		targeted_alliance = BIR
+		enemy = ENG
+	}
+}
+
 oob = "ENG_OOB"
 
 # Starting tech
@@ -70,7 +88,7 @@ if = {
 add_tech_bonus = { name = air_doc_bonus bonus = 0.90 uses = 1 category = air_doctrine }
 add_tech_bonus = { name = land_doc_bonus bonus = 0.90 uses = 1 category = land_doctrine }
 add_tech_bonus = { name = naval_doc_bonus bonus = 0.90 uses = 1 category = naval_doctrine }
-set_convoys = 0
+set_convoys = 30
 
 
 set_politics = {
@@ -131,7 +149,7 @@ add_opinion_modifier = { target = UTA modifier = negative_200 }
 add_ideas = {
 	great_power
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_english
 }

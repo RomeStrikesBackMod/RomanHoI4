@@ -1442,7 +1442,7 @@ focus_tree = {
 			add_political_power = 60
 		}
 		ai_will_do = {
-			base = 10
+			base = 20
 		}
 	}
 
@@ -1471,6 +1471,12 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				GER = {
+					has_completed_focus = GER_election_1936
+				}
+			}
 		}
 	}
 
@@ -1486,6 +1492,10 @@ focus_tree = {
 		relative_position_id = PLC_german_fascists
 		available = {
 			GER = { fascism > 0.4 }
+			OR = {
+				num_divisions > 14
+				num_of_factories > 19
+			}
 		}
 		bypass = {
 			OR = {
@@ -1850,6 +1860,10 @@ focus_tree = {
 		relative_position_id = PLC_scandiavian_fascists
 		available = {
 			SCA = { fascism > 0.4 }
+			OR = {
+				num_divisions > 14
+				num_of_factories > 19
+			}
 		}
 		bypass = {
 			OR = {
