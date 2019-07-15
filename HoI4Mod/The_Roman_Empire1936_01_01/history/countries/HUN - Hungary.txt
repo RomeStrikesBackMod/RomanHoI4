@@ -1,62 +1,67 @@
-﻿capital = 207
+﻿capital = 267
 set_research_slots = 3
 
 oob = "HUN_OOB"
 
 # Starting tech
 set_technology = {
-basic_light_tank = 1
-early_battleship = 1
-early_bomber = 1
-early_destroyer = 1
-early_fighter = 1
-early_heavy_cruiser = 1
-early_light_cruiser = 1
-early_submarine = 1
-electronic_mechanical_engineering = 1
-gw_artillery = 1
-gwtank = 1
-improved_light_tank = 1
-infantry_weapons = 1
-infantry_weapons1 = 1
-interwar_antiair = 1
-motorised_infantry = 1
-support_weapons = 1
-synth_oil_experiments = 1
-tech_engineers = 1
-tech_recon = 1
-tech_support = 1
+	basic_light_tank = 1
+	early_bomber = 1
+	early_fighter = 1
+	electronic_mechanical_engineering = 1
+	fuel_refining = 1
+	fuel_silos = 1
+	gw_artillery = 1
+	gwtank = 1
+	improved_light_tank = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	interwar_antiair = 1
+	motorised_infantry = 1
+	support_weapons = 1
+	synth_oil_experiments = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_support = 1
 }
 
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_battleship = 1
+		early_destroyer = 1
+		early_heavy_cruiser = 1
+		early_light_cruiser = 1
+		early_submarine = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_battery = 1
+		basic_naval_mines = 1
+		basic_torpedo = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_light = 1
+	}
+}
 # Research Bonuses
 add_tech_bonus = { name = land_doc_bonus bonus = 0.90 uses = 1 category = land_doctrine }
 set_convoys = 0
 
 
 set_politics = {
-
-    parties = {
-        absolutist = {
-            popularity = 26
-        }
-        communism = {
-            popularity = 22
-        }
-        democratic = {
-            popularity = 33
-        }
-        fascism = {
-            popularity = 13
-        }
-        neutrality = {
-            popularity = 6
-        }
-    }
-    
     ruling_party = absolutist
     last_election = "1935.11.10"
     election_frequency = 48
     elections_allowed = no
+}
+set_popularities = {
+	absolutist = 26
+	communism = 22
+	democratic = 33
+	fascism = 13
+	neutrality = 6
 }
 add_opinion_modifier = { target = ADA modifier = negative_200 }
 add_opinion_modifier = { target = AQI modifier = negative_115 }
@@ -116,7 +121,51 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
+	name = "Dániel Frakasházi Fischer"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "László Bacher"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Benedek Österreicher"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
 	name = "Benedek Gungl"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gábor Schweidel"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -138,7 +187,40 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Jef Bothmer"
+	name = "Kelemen Reményi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Ignác Szlávic"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gábriel Joseffy"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "József Bothmer"
 	picture = ""
 	traits = { }
 	skill = 1
@@ -168,4 +250,809 @@ create_corps_commander = {
 	defense_skill = 1
 	planning_skill = 1
 	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Albert Egressy"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "László Tersztyansky"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Vilmos Bothmer"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Aurél Perczel"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Rafael Baross"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Rafael Reményi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Károly Lahner"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "György Batthyány"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Tivadar Aulich"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "László Szlávic"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Álmos Goldziher"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "János von Benedek"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Benedek Heller"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Edvárd Bacher"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Álmos Mikszáth"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "László Perczel"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Anasztáz Baross"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Arisztid Szemere"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Dániel Farkas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Alajos Kéler"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "György Tersztyansky"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gábriel Nagy-Sándor"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Lajos Egressy"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gábriel Széchenyi"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gábor Bothmer"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Krisztian Kaufman"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Béni Kaufman"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Myklós Vécsey"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "József Manes Horthy"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Vilmos Schweidel"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Kálmán Kogutowicz"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Károly Poeltenberg"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Erno Frakasházi Fischer"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Dániel Molnár"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Katalin von Benedek"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Lajos Farkas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "György Knezich"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Ödön Nagy-Sándor"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Ottó Széchenyi"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "József Manes Szemere"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gyula Rohr"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Béla Erényi Ullmann"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Kelemen Hauszmann"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Éliás Dessewffy"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gábor Kiss"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "András Tersztyansky"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Kálmán Szemere"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Aurél Farkas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Sándor Reményi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Álmos Damjanich"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Manó Ottinger"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Rafael Batthyány"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Károly Perczel"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gyula Szemere"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Imre Poeltenberg"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Katalin Beöthy"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Sándor Dessewffy"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "András Farkas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Béni Varga"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gábriel Egressy"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Ferencz Hauszmann"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Bertalan Aulich"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Virág Damjanich"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gyula Széchenyi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Péter Kéler"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Ödön Lichtenstein"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Mihály Aulich"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Anasztáz Aulich"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+### VARIANTS ###
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	create_equipment_variant = {
+		name = "Early Destroyer"
+		type = ship_hull_light_1
+		name_group = HUN_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_depth_charge_1
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Early Heavy Cruiser"
+		type = ship_hull_cruiser_1
+		name_group = HUN_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_secondaries_1
+			mid_2_custom_slot = ship_medium_battery_1
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Early Light Cruiser"
+		type = ship_hull_cruiser_1
+		name_group = HUN_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = empty
+		}
+	}
 }

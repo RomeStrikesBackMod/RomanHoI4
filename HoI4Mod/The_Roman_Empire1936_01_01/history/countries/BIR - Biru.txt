@@ -1,58 +1,65 @@
-﻿capital = 344
+﻿capital = 422
 set_research_slots = 3
 
 oob = "BIR_OOB"
 
 # Starting tech
 set_technology = {
-early_battleship = 1
-early_bomber = 1
-early_destroyer = 1
-early_fighter = 1
-early_heavy_cruiser = 1
-early_light_cruiser = 1
-early_submarine = 1
-electronic_mechanical_engineering = 1
-gw_artillery = 1
-infantry_weapons = 1
-infantry_weapons1 = 1
-marines = 1
-support_weapons = 1
-tech_engineers = 1
-tech_recon = 1
-tech_support = 1
-transport = 1
+	early_bomber = 1
+	early_fighter = 1
+	electronic_mechanical_engineering = 1
+	fuel_refining = 1
+	fuel_silos = 1
+	gw_artillery = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	marines = 1
+	support_weapons = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_support = 1
 }
 
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_battleship = 1
+		early_destroyer = 1
+		early_heavy_cruiser = 1
+		early_light_cruiser = 1
+		early_submarine = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_battery = 1
+		basic_medium_battery = 1
+		basic_naval_mines = 1
+		basic_torpedo = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_light = 1
+		mtg_transport = 1
+	}
+}
 # Research Bonuses
 add_tech_bonus = { name = naval_doc_bonus bonus = 0.90 uses = 1 category = naval_doctrine }
-set_convoys = 7
+set_convoys = 20
 
 
 set_politics = {
-
-    parties = {
-        absolutist = {
-            popularity = 6
-        }
-        communism = {
-            popularity = 34
-        }
-        democratic = {
-            popularity = 46
-        }
-        fascism = {
-            popularity = 10
-        }
-        neutrality = {
-            popularity = 4
-        }
-    }
-    
     ruling_party = democratic
     last_election = "1935.1.1"
     election_frequency = 48
     elections_allowed = yes
+}
+set_popularities = {
+	absolutist = 6
+	communism = 34
+	democratic = 46
+	fascism = 10
+	neutrality = 4
 }
 add_opinion_modifier = { target = ADA modifier = negative_193 }
 add_opinion_modifier = { target = AOT modifier = negative_15 }
@@ -101,7 +108,7 @@ add_opinion_modifier = { target = UTA modifier = negative_195 }
 
 
 add_ideas = {
-	limited_conscription
+	volunteer_only
 	low_economic_mobilisation
 	export_focus
 	culture_quechua
@@ -109,8 +116,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.53
 create_country_leader = {
-    name = "Osvaldo Quispe"
-    desc = "POLITICS_OSVALDO_QUISPE_DESC"
+    name = "Lorenzo Quispe"
+    desc = "POLITICS_LORENZO_QUISPE_DESC"
     picture = "gfx/leaders/South America/Portrait_South_America_Generic_2.dds"
     expire = "1965.1.1"
     ideology = socialism
@@ -121,6 +128,28 @@ create_corps_commander = {
 	name = "Daniel Humala"
 	picture = ""
 	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Alejandro Gutiérrez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Nicolás Iturri"
+	picture = ""
+	traits = { }
 	skill = 2
 	attack_skill = 1
 	defense_skill = 1
@@ -129,7 +158,40 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Inca Chihu"
+	name = "René Patiño"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Agustín Barrientos"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Inca Chihuán"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Simón Frisancho"
 	picture = ""
 	traits = { }
 	skill = 2
@@ -172,8 +234,723 @@ create_corps_commander = {
 	logistics_skill = 1
 }
 
+create_corps_commander = {
+	name = "José María Heredia"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Basilio Arguedas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Roberto Guaman"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "José María Guaman"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Daniel Gutiérrez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Eugenio Espejo"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Lorenzo Roncaglia"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Antonio Humala"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Isaac Palacios"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Facundo Canchata"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Simón Palacios"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Hilario Chihuán"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Osvaldo Cusurichi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Alejandro Arguedas"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Facundo Rodríguez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Agustín Melgarejo"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Víctor Guayasamín"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Daniel Iturri"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Julio Quispe"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Antonio Rodríguez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Hilario Guayasamín"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Basilio Frisancho"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Simón Lazarte"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Alejandro Ludueña"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gustavo Iturri"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Roberto Patiño"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Hilario Lazarte"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Osvaldo Chihuán"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Agustín Guaman"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Inca Frisancho"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Marcos Patiño"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Simón Ludueña"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Agustín Heredia"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Nicolás Sumac"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Nicolás Frisancho"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Víctor Sumac"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Facundo Sumac"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Lorenzo Ludueña"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Simón Zapata"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gustavo Guaman"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Hilario Humala"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Alejandro Cusurichi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Simón Gutiérrez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Inca Ludueña"
+	picture = ""
+	traits = { }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Túpac Gutiérrez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Inca Iturri"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Basilio Quispe"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Felipe Humala"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Francisco Palacios"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Inca Cusurichi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Lorenzo Guayasamín"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Daniel Iturri"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Basilio Rodríguez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Túpac Gutiérrez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Agustín Chambi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Marcos Roncaglia"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Inca Patiño"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Antauro Cajahuanca"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Daniel Zapata"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gustavo Chihuán"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Julio Ludueña"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Ulises Patiño"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Felipe Chambi"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gustavo Palacios"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Osvaldo Rodríguez"
+	picture = ""
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
 create_navy_leader = {
-	name = "Manuel Pati"
+	name = "Manuel Patiño"
 	picture = ""
 	traits = { }
 	skill = 2
@@ -193,3 +970,59 @@ create_navy_leader = {
 	skill = 1
 }
 
+### VARIANTS ###
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	create_equipment_variant = {
+		name = "Early Destroyer"
+		type = ship_hull_light_1
+		name_group = BIR_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_depth_charge_1
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Early Heavy Cruiser"
+		type = ship_hull_cruiser_1
+		name_group = BIR_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_secondaries_1
+			mid_2_custom_slot = ship_medium_battery_1
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Early Light Cruiser"
+		type = ship_hull_cruiser_1
+		name_group = BIR_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_1
+			rear_1_custom_slot = empty
+		}
+	}
+}
