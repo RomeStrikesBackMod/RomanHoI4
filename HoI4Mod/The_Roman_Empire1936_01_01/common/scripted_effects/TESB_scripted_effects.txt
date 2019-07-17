@@ -9,7 +9,7 @@ TESB_check_puppet_willingness = {
 	set_temp_variable = { RME.num_divs4 = RME.num_divisions }
 	divide_temp_variable = { RME.num_divs4 = 4 } #number of Rome's divisions/4
 	set_temp_variable = { RME.num_divs2 = RME.num_divisions }
-	divide_temp_variable = { RME.num_divs4 = 2 } #number of Rome's divisions/2
+	divide_temp_variable = { RME.num_divs2 = 2 } #number of Rome's divisions/2
 	if = {
 		limit = {
 			check_variable = { This.num_divisions < RME.num_divs8 } #more than 8 times the divs
@@ -58,7 +58,7 @@ TESB_check_puppet_willingness = {
 	set_temp_variable = { RME.num_factory4 = RME.num_of_factories }
 	divide_temp_variable = { RME.num_factory4 = 4 } #number of Rome's factories/4
 	set_temp_variable = { RME.num_factory2 = RME.num_of_factories }
-	divide_temp_variable = { RME.num_factory4 = 2 } #number of Rome's factories/2
+	divide_temp_variable = { RME.num_factory2 = 2 } #number of Rome's factories/2
 	if = {
 		limit = {
 			check_variable = { This.num_of_factories < RME.num_factory8 } #more than 8 times the facs
@@ -89,7 +89,9 @@ TESB_check_puppet_willingness = {
 	}
 	#check number of states
 	set_temp_variable = { RME.num_states2 = RME.num_of_controlled_states }
-	divide_temp_variable = { RME.num_of_controlled_states = 2 } #number of Rome's states/2
+	divide_temp_variable = { RME.num_states2 = 2 } #number of Rome's states/2
+	set_temp_variable = { RME.2num_states = RME.num_of_controlled_states }
+	multiply_temp_variable = { RME.2num_states = 2 } #number of Rome's states/2
 	if = {
 		limit = {
 			check_variable = { This.num_of_controlled_states < 2 } #1 state minor
@@ -121,14 +123,14 @@ TESB_check_puppet_willingness = {
 	}
 	else_if = {
 		limit = {
-			check_variable = { This.num_of_controlled_states > RME.num_states2 } #just less than Rome
+			check_variable = { This.num_of_controlled_states > RME.2num_states } #more than twice Rome
 		}
 		subtract_from_variable = { This.puppet_willingness = 10 } #-30
 		custom_effect_tooltip = pw.twicest
 	}
 	else_if = {
 		limit = {
-			check_variable = { This.num_of_controlled_states > RME.num_of_controlled_states } #just less than Rome
+			check_variable = { This.num_of_controlled_states > RME.num_of_controlled_states } #just more than Rome
 		}
 		subtract_from_variable = { This.puppet_willingness = 5 } #-30
 		custom_effect_tooltip = pw.morest
@@ -207,7 +209,7 @@ TESB_check_faction_willingness = {
 	set_temp_variable = { RME.num_divs4 = RME.num_divisions }
 	divide_temp_variable = { RME.num_divs4 = 4 } #number of Rome's divisions/4
 	set_temp_variable = { RME.num_divs2 = RME.num_divisions }
-	divide_temp_variable = { RME.num_divs4 = 2 } #number of Rome's divisions/2
+	divide_temp_variable = { RME.num_divs2 = 2 } #number of Rome's divisions/2
 	if = {
 		limit = {
 			check_variable = { This.num_divisions < RME.num_divs8 } #more than 8 times the divs
@@ -257,7 +259,7 @@ TESB_check_faction_willingness = {
 	set_temp_variable = { RME.num_factory4 = RME.num_of_factories }
 	divide_temp_variable = { RME.num_factory4 = 4 } #number of Rome's factories/4
 	set_temp_variable = { RME.num_factory2 = RME.num_of_factories }
-	divide_temp_variable = { RME.num_factory4 = 2 } #number of Rome's factories/2
+	divide_temp_variable = { RME.num_factory2 = 2 } #number of Rome's factories/2
 	if = {
 		limit = {
 			check_variable = { This.num_of_factories < RME.num_factory8 } #more than 8 times the facs
@@ -288,7 +290,9 @@ TESB_check_faction_willingness = {
 	}
 	#check number of states
 	set_temp_variable = { RME.num_states2 = RME.num_of_controlled_states }
-	divide_temp_variable = { RME.num_of_controlled_states = 2 } #number of Rome's states/2
+	divide_temp_variable = { RME.num_states2 = 2 } #number of Rome's states/2
+	set_temp_variable = { RME.2num_states = RME.num_of_controlled_states }
+	multiply_temp_variable = { RME.2num_states = 2 } #number of Rome's states*2
 	if = {
 		limit = {
 			check_variable = { This.num_of_controlled_states < 2 } #1 state minor
@@ -320,14 +324,14 @@ TESB_check_faction_willingness = {
 	}
 	else_if = {
 		limit = {
-			check_variable = { This.num_of_controlled_states > RME.num_states2 } #just less than Rome
+			check_variable = { This.num_of_controlled_states > RME.2num_states } #more than twice Rome
 		}
 		subtract_from_variable = { This.faction_willingness = 10 } #-30
 		custom_effect_tooltip = pw.twicest
 	}
 	else_if = {
 		limit = {
-			check_variable = { This.num_of_controlled_states > RME.num_of_controlled_states } #just less than Rome
+			check_variable = { This.num_of_controlled_states > RME.num_of_controlled_states } #just more than Rome
 		}
 		subtract_from_variable = { This.faction_willingness = 5 } #-30
 		custom_effect_tooltip = pw.morest
@@ -405,15 +409,15 @@ TESB_check_faction_willingness = {
 }
 #integrate the faction into Rome
 TESB_check_integrate_willingness = {
-	set_variable = { This.integrate_willingness = -50 } #init with -50 willingness
-	custom_effect_tooltip = pw.base
+	set_variable = { This.integrate_willingness = -75 } #init with -75 willingness
+	custom_effect_tooltip = pw.base75
 	#check ratio of divisions
 	set_temp_variable = { RME.num_divs8 = RME.num_divisions }
 	divide_temp_variable = { RME.num_divs8 = 8 } #number of Rome's divisions/8
 	set_temp_variable = { RME.num_divs4 = RME.num_divisions }
 	divide_temp_variable = { RME.num_divs4 = 4 } #number of Rome's divisions/4
 	set_temp_variable = { RME.num_divs2 = RME.num_divisions }
-	divide_temp_variable = { RME.num_divs4 = 2 } #number of Rome's divisions/2
+	divide_temp_variable = { RME.num_divs2 = 2 } #number of Rome's divisions/2
 	if = {
 		limit = {
 			check_variable = { This.num_divisions < RME.num_divs8 } #more than 8 times the divs
@@ -463,7 +467,7 @@ TESB_check_integrate_willingness = {
 	set_temp_variable = { RME.num_factory4 = RME.num_of_factories }
 	divide_temp_variable = { RME.num_factory4 = 4 } #number of Rome's factories/4
 	set_temp_variable = { RME.num_factory2 = RME.num_of_factories }
-	divide_temp_variable = { RME.num_factory4 = 2 } #number of Rome's factories/2
+	divide_temp_variable = { RME.num_factory2 = 2 } #number of Rome's factories/2
 	if = {
 		limit = {
 			check_variable = { This.num_of_factories < RME.num_factory8 } #more than 8 times the facs
@@ -494,7 +498,9 @@ TESB_check_integrate_willingness = {
 	}
 	#check number of states
 	set_temp_variable = { RME.num_states2 = RME.num_of_controlled_states }
-	divide_temp_variable = { RME.num_of_controlled_states = 2 } #number of Rome's states/2
+	divide_temp_variable = { RME.num_states2 = 2 } #number of Rome's states/2
+	set_temp_variable = { RME.2num_states = RME.num_of_controlled_states }
+	multiply_temp_variable = { RME.2num_states = 2 } #number of Rome's states/2
 	if = {
 		limit = {
 			check_variable = { This.num_of_controlled_states < 2 } #1 state minor
@@ -526,7 +532,7 @@ TESB_check_integrate_willingness = {
 	}
 	else_if = {
 		limit = {
-			check_variable = { This.num_of_controlled_states > RME.num_states2 } #twice more than Rome
+			check_variable = { This.num_of_controlled_states > RME.2num_states } #twice more than Rome
 		}
 		subtract_from_variable = { This.integrate_willingness = 10 } #-30
 		custom_effect_tooltip = pw.twicest
@@ -612,8 +618,8 @@ TESB_check_integrate_willingness = {
 		limit = {
 			is_in_faction_with = RME
 		}
-		add_to_variable = { This.integrate_willingness = 10 }
-		custom_effect_tooltip = pw.faction
+		#add_to_variable = { This.integrate_willingness = 10 }
+		#custom_effect_tooltip = pw.faction
 	}
 }
 

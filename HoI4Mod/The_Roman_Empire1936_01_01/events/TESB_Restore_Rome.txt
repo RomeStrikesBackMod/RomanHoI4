@@ -1,7 +1,7 @@
 ﻿add_namespace = tesb_restore_rome
 
 #Absolutist events
-#Rome insists on "helping"
+
 country_event = {
 	id = tesb_restore_rome.10
 	title = tesb_restore_rome.10.t
@@ -66,6 +66,11 @@ country_event = {
 		ai_chance = {
 			factor = 10
 			modifier = {
+				is_subject = yes
+				NOT = { is_subject_of = RME }
+				factor = 0
+			}
+			modifier = {
 				check_variable = { Root.puppet_willingness < 0 }
 				factor = 2
 			}
@@ -84,7 +89,7 @@ country_event = {
 		}
 	}
 }
-
+#Rome insists on "helping"
 country_event = {
 	id = tesb_restore_rome.11
 	title = tesb_restore_rome.11.t
@@ -132,7 +137,7 @@ country_event = {
 }
 
 #Democratic events
-#Bring countries into a faction after guarantee
+
 country_event = {
 	id = tesb_restore_rome.20
 	title = tesb_restore_rome.20.t
@@ -154,6 +159,12 @@ country_event = {
 			}
 			hidden_effect = { country_event = { id = tesb_restore_rome.21 hours = 12 } }
 		}
+		if = {
+			limit = { democratic > 0.3 NOT = { has_government = democratic } }
+			add_popularity = { ideology = democratic popularity = 0.1 }
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+		}
+		else = { add_popularity = { ideology = democratic popularity = 0.1 } }
 		ai_chance = {
 			factor = 10
 			modifier = {
@@ -180,7 +191,7 @@ country_event = {
 			effect_tooltip = {
 				add_opinion_modifier = {
 					target = ROOT
-					modifier = rejected_RME_faction
+					modifier = rejected_faction
 				}
 				if = {
 					limit = { ROOT = { NOT = { has_government = democratic } } }
@@ -192,8 +203,14 @@ country_event = {
 			}
 			hidden_effect = { country_event = { id = tesb_restore_rome.22 hours = 12 } }
 		}
+		add_popularity = { ideology = democratic popularity = 0.1 }
 		ai_chance = {
 			factor = 10
+			modifier = {
+				is_subject = yes
+				NOT = { is_subject_of = RME }
+				factor = 0
+			}
 			modifier = {
 				check_variable = { Root.faction_willingness < 0 }
 				factor = 2
@@ -201,7 +218,7 @@ country_event = {
 		}
 	}
 }
-
+#Bring countries into a faction after guarantee
 country_event = {
 	id = tesb_restore_rome.21
 	title = tesb_restore_rome.21.t
@@ -231,7 +248,7 @@ country_event = {
 		name = tesb_restore_rome.12.a
 		add_opinion_modifier = {
 			target = FROM
-			modifier = rejected_RME_faction
+			modifier = rejected_faction
 		}
 		if = {
 			limit = { FROM = { NOT = { has_government = democratic } } }
@@ -246,7 +263,7 @@ country_event = {
 	}
 }
 
-# Undemocratic faction member civil war aid event for Rome
+
 country_event = {
 	id = tesb_restore_rome.25
 	title = tesb_restore_rome.25.t
@@ -270,9 +287,9 @@ country_event = {
 		
 	}
 }
-
+# Undemocratic faction member civil war aid event for Rome
 # RME option to intervene in war
-# Hidden event to get scopes set up 
+
 country_event = {
 	id = tesb_restore_rome.30
 
@@ -287,8 +304,8 @@ country_event = {
 		}
 	}
 }
+# Hidden event to get scopes set up 
 
-# RME option to intervene in war 
 country_event = {
 	id = tesb_restore_rome.31
 	title = tesb_restore_rome.31.t
@@ -341,8 +358,8 @@ country_event = {
 		}
 	}
 }
+# RME option to intervene in war 
 
-# Country response to RME intervening
 country_event = {
 	id = tesb_restore_rome.32
 	title = tesb_restore_rome.32.t
@@ -417,8 +434,8 @@ country_event = {
 		}
 	}
 }
+# Country response to RME intervening
 
-#integrating the Foederati
 country_event = {
 	id = tesb_restore_rome.40
 	title = tesb_restore_rome.40.t
@@ -452,6 +469,7 @@ country_event = {
 	}
 }
 
+#integrating the Foederati
 country_event = {
 	id = tesb_restore_rome.41
 	title = tesb_restore_rome.41.t
@@ -505,7 +523,7 @@ country_event = {
 	}
 	option = {
 		name = tesb_restore_rome.41.b
-		set_country_flag = refused_d_RME_once
+		set_country_flag = refused_dem_RME_once
 		RME = {
 			hidden_effect = { country_event = { id = tesb_restore_rome.42 hours = 12 } }
 		}
@@ -517,7 +535,7 @@ country_event = {
 		name = tesb_restore_rome.41.c
 		trigger = {
 			check_variable = { Root.integrate_willingness > 30 }
-			is_subject = no
+			OR = { is_subject = no is_subject_of = RME }
 		}
 		custom_effect_tooltip = GAME_OVER_TT
 		RME = {

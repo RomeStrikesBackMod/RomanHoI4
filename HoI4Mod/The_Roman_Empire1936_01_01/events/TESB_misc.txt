@@ -100,7 +100,7 @@ country_event = {
 			load_oob = "HED_absolutist"
 			random_other_country = {
 				limit = {
-					original_tag = HDJ
+					original_tag = HED
 					has_government = fascism
 				}
 				set_stability = 0.9
@@ -133,7 +133,7 @@ country_event = {
 			load_oob = "HED_fascist"
 			random_other_country = {
 				limit = {
-					original_tag = HDJ
+					original_tag = HED
 					has_government = absolutist
 				}
 				set_stability = 0.9
@@ -146,6 +146,435 @@ country_event = {
 		add_stability = -0.25
 		ai_chance = {
 			factor = 10
+		}
+	}
+}
+
+state_event = {
+	id = tesb_misc.10
+	title = tesb_misc.10.t
+	desc = tesb_misc.10.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	#Grant FLD picardie
+	option = {
+		name = tesb_misc.10.a
+
+		event_target:asking_subject = {
+			event_target:subject_state = {
+				set_state_flag = old_owner_@ROOT
+				set_state_flag = owner_@PREV
+				clr_state_flag = owner_@ROOT
+			}
+			transfer_state = event_target:subject_state
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 9
+				}
+				factor = 1.1
+			}
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 19
+				}
+				factor = 1.1
+			}
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 29
+				}
+				factor = 1.2
+			}
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 39
+				}
+				factor = 1.2
+			}
+			modifier = {
+				ROOT = {
+					has_government = democratic
+				}
+				factor = 1.5
+			}
+		}
+	}
+	#Grant FRA picardie/Keep picardie
+	option = {
+		name = tesb_misc.10.b
+		event_target:subject_state = {
+			set_state_flag = kept_subject_state
+		}
+		event_target:asking_subject = {
+			add_opinion_modifier = {
+				modifier = overlord_kept_land
+				target = ROOT
+			}
+		}
+
+		ai_chance = {
+			base = 10
+			modifier = {
+				ROOT = {
+					num_of_controlled_states < 10
+				}
+				factor = 1.5
+			}
+			modifier = {
+				event_target:subject_state = {
+					is_claimed_by = ROOT
+				}
+				factor = 1.5
+			}
+			modifier = {
+				event_target:subject_state = {
+					is_coastal = yes
+				}
+				factor = 1.2
+			}
+			modifier = {
+				ROOT = {
+					OR = {
+						has_government = absolutist
+						has_government = fascism
+					}
+				}
+				factor = 1.5
+			}
+		}		
+	}
+}
+
+state_event = {
+	id = tesb_misc.11
+	title = tesb_misc.10.t
+	desc = tesb_misc.10.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	#Grant FLD picardie
+	option = {
+		name = tesb_misc.10.a
+		event_target:asking_subject = {
+			event_target:subject_state = {
+				set_state_flag = old_owner_@ROOT
+				set_state_flag = owner_@PREV
+				clr_state_flag = owner_@ROOT
+			}
+			transfer_state = event_target:subject_state
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 9
+				}
+				factor = 1.1
+			}
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 19
+				}
+				factor = 1.1
+			}
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 29
+				}
+				factor = 1.2
+			}
+			modifier = {
+				ROOT = {
+					num_of_controlled_states > 39
+				}
+				factor = 1.2
+			}
+			modifier = {
+				ROOT = {
+					has_government = democratic
+				}
+				factor = 1.5
+			}
+		}
+	}
+	#Grant FRA picardie/Keep picardie
+	option = {
+		name = tesb_misc.10.b
+		event_target:subject_state = {
+			set_state_flag = kept_subject_state
+		}
+		event_target:asking_subject = {
+			add_opinion_modifier = {
+				modifier = overlord_kept_land
+				target = ROOT
+			}
+		}
+
+		ai_chance = {
+			base = 10
+			modifier = {
+				ROOT = {
+					num_of_controlled_states < 10
+				}
+				factor = 1.5
+			}
+			modifier = {
+				event_target:subject_state = {
+					is_claimed_by = ROOT
+				}
+				factor = 1.5
+			}
+			modifier = {
+				event_target:subject_state = {
+					is_coastal = yes
+				}
+				factor = 1.2
+			}
+			modifier = {
+				ROOT = {
+					OR = {
+						has_government = absolutist
+						has_government = fascism
+					}
+				}
+				factor = 1.5
+			}
+		}		
+	}
+}
+
+country_event = {
+	id = tesb_misc.20
+	title = tesb_misc.20.t
+	desc = tesb_misc.20.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = asking_subject
+			OVERLORD = {
+				random_owned_state = {
+					limit = { has_state_flag = state_of_@ROOT }
+					save_event_target_as = possible_state_1
+					set_state_flag = possible_state
+				}
+				random_owned_state = {
+					limit = { has_state_flag = state_of_@ROOT NOT = { has_state_flag = possible_state } }
+					save_event_target_as = possible_state_2
+					set_state_flag = possible_state
+				}
+				random_owned_state = {
+					limit = { has_state_flag = state_of_@ROOT NOT = { has_state_flag = possible_state } }
+					save_event_target_as = possible_state_3
+					set_state_flag = possible_state
+				}
+			}
+		}
+	}
+	
+	#state_1
+	option = {
+		name = tesb_misc.20.a
+		event_target:possible_state_1 = {
+			save_event_target_as = subject_state
+			state_event = { id = tesb_misc.11 trigger_for = owner }
+		}
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#state_2
+	option = {
+		name = tesb_misc.20.b
+		trigger = {
+			has_event_target = possible_state_2
+		}
+		event_target:possible_state_2 = {
+			save_event_target_as = subject_state
+			state_event = { id = tesb_misc.11 trigger_for = owner }
+		}
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#state_3
+	option = {
+		name = tesb_misc.20.c
+		trigger = {
+			has_event_target = possible_state_3
+		}
+		event_target:possible_state_3 = {
+			save_event_target_as = subject_state
+			state_event = { id = tesb_misc.11 trigger_for = owner }
+		}
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#more states
+	option = {
+		name = tesb_misc.20.do
+		trigger = {
+			OVERLORD = {
+				any_owned_state = {
+					has_state_flag = state_of_@ROOT
+					NOT = { has_state_flag = possible_state }
+				}
+			}
+		}
+		country_event = { id = tesb_misc.21 }
+		ai_chance = {
+			base = 1
+		}
+	}
+	#nevermind
+	option = {
+		name = tesb_misc.20.e
+		add_political_power = 100
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_misc.21
+	title = tesb_misc.20.t
+	desc = tesb_misc.20.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = asking_subject
+			OVERLORD = {
+				random_owned_state = {
+					limit = { has_state_flag = state_of_@ROOT NOT = { has_state_flag = possible_state } }
+					save_event_target_as = possible_state_1
+					set_state_flag = possible_state
+				}
+				random_owned_state = {
+					limit = { has_state_flag = state_of_@ROOT NOT = { has_state_flag = possible_state } }
+					save_event_target_as = possible_state_2
+					set_state_flag = possible_state
+				}
+				random_owned_state = {
+					limit = { has_state_flag = state_of_@ROOT NOT = { has_state_flag = possible_state } }
+					save_event_target_as = possible_state_3
+					set_state_flag = possible_state
+				}
+			}
+		}
+	}
+	
+	#state_1
+	option = {
+		name = tesb_misc.20.a
+		event_target:possible_state_1 = {
+			save_event_target_as = subject_state
+			state_event = { id = tesb_misc.11 trigger_for = owner }
+		}
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#state_2
+	option = {
+		name = tesb_misc.20.b
+		trigger = {
+			has_event_target = possible_state_2
+		}
+		event_target:possible_state_2 = {
+			save_event_target_as = subject_state
+			state_event = { id = tesb_misc.11 trigger_for = owner }
+		}
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#state_3
+	option = {
+		name = tesb_misc.20.c
+		trigger = {
+			has_event_target = possible_state_3
+		}
+		event_target:possible_state_3 = {
+			save_event_target_as = subject_state
+			state_event = { id = tesb_misc.11 trigger_for = owner }
+		}
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	#more states
+	option = {
+		name = tesb_misc.20.do
+		trigger = {
+			OVERLORD = {
+				any_owned_state = {
+					has_state_flag = state_of_@ROOT
+					NOT = { has_state_flag = possible_state }
+				}
+			}
+		}
+		country_event = { id = tesb_misc.21 }
+		ai_chance = {
+			base = 1
+		}
+	}
+	#nevermind
+	option = {
+		name = tesb_misc.20.e
+		add_political_power = 100
+		OVERLORD = {
+			every_owned_state = {
+				clr_state_flag = possible_state
+			}
+		}
+		ai_chance = {
+			base = 1
 		}
 	}
 }

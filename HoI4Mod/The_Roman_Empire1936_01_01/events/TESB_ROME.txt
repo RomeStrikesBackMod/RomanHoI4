@@ -1,0 +1,51 @@
+﻿add_namespace = tesb_ROMAN
+
+country_event = {
+	id = tesb_ROMAN.100
+	title = tesb_ROMAN.100.t
+	desc = tesb_ROMAN.100.d
+	picture = GFX_report_event_german_italian_pact
+
+	trigger = {
+		has_country_flag = expelled_greek_minority
+		has_idea = RME_former_territory
+		NOT = { has_idea = culture_greek }
+		NOT = { has_country_flag = expelled_greek_minority_event }
+		NOT = { has_global_flag = RME_greeks_expelled_counter }
+	}
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	hidden = yes 
+	
+	immediate = {
+		set_country_flag = expelled_greek_minority_event
+		set_global_flag = {
+			flag = RME_greeks_expelled_counter
+			days = 60
+		}
+	}
+	
+	option = {
+		name = tesb_ROMAN.100.a
+		RME = { country_event = { id = tesb_ROMAN.101 } }
+	}
+}
+
+country_event = {
+	id = tesb_ROMAN.101
+	title = tesb_ROMAN.101.t
+	desc = tesb_ROMAN.101.d
+	picture = GFX_report_event_german_italian_pact
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_ROMAN.101.a
+	}
+}
+

@@ -1,0 +1,1953 @@
+focus_tree = {
+	id = PLC_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 10
+			tag = PLC
+		}
+	}
+
+	default = no
+
+	focus = {
+		id = army_effortPLC
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = equipment_effortPLC
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = army_effortPLC }
+		x = -1
+		y = 1
+		relative_position_id = army_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = motorization_effortPLC
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = army_effortPLC }
+		bypass = { has_tech = motorised_infantry }
+		x = 1
+		y = 1
+		relative_position_id = army_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 0.75
+				technology = motorised_infantry
+			}
+		}
+	}
+
+	focus = {
+		id = doctrine_effortPLC
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = army_effortPLC }
+		x = 0
+		y = 2
+		relative_position_id = army_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = equipment_effort_2PLC
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = equipment_effortPLC }
+		x = 0
+		y = 2
+		relative_position_id = equipment_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = mechanization_effortPLC
+		icon = GFX_goal_generic_build_tank
+		prerequisite = { focus = motorization_effortPLC }
+		x = 0
+		y = 2
+		relative_position_id = motorization_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				ahead_reduction = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = doctrine_effort_2PLC
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = doctrine_effortPLC }
+		x = 0
+		y = 2
+		relative_position_id = doctrine_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = equipment_effort_3PLC
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = equipment_effort_2PLC }
+		x = 0
+		y = 2
+		relative_position_id = equipment_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				ahead_reduction = 1
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = armor_effortPLC
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = mechanization_effortPLC }
+		x = 0
+		y = 2
+		relative_position_id = mechanization_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = special_forcesPLC
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = equipment_effort_3PLC }
+		prerequisite = { focus = doctrine_effort_2PLC }
+		prerequisite = { focus = armor_effortPLC }
+		x = 1
+		y = 1
+		relative_position_id = equipment_effort_3PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = special_forces
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.5
+				uses = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
+		}
+	}
+
+	focus = {
+		id = aviation_effortPLC
+		icon = GFX_goal_generic_build_airforce
+		x = 5
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		complete_tooltip = {
+			air_experience = 25
+			if = { limit = { has_country_flag = aviation_effort_AB }
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+		completion_reward = {
+			air_experience = 25
+
+			if = {
+				limit = {
+					capital_scope = {
+						NOT = {
+							free_building_slots = {
+								building = air_base
+								size > 1
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = fighter_focusPLC
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = aviation_effortPLC }
+		mutually_exclusive = { focus = bomber_focusPLC }
+		x = -1
+		y = 1
+		relative_position_id = aviation_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 0.5
+				uses = 2
+				technology = early_fighter
+				technology = fighter1
+				technology = fighter2
+				technology = fighter3
+				technology = heavy_fighter1
+				technology = heavy_fighter2
+				technology = heavy_fighter3
+			}
+		}
+	}
+
+	focus = {
+		id = bomber_focusPLC
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = aviation_effortPLC }
+		mutually_exclusive = { focus = fighter_focusPLC }
+		x = 1
+		y = 1
+		relative_position_id = aviation_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 0.5
+				uses = 2
+				technology = strategic_bomber1
+				technology = strategic_bomber2
+				technology = strategic_bomber3
+				category = tactical_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = aviation_effort_2PLC
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = bomber_focusPLC focus = fighter_focusPLC }
+		x = -1
+		y = 1
+		relative_position_id = bomber_focusPLC
+		cost = 10
+		available_if_capitulated = yes
+		complete_tooltip = {
+			air_experience = 25
+			if = { limit = { has_country_flag = aviation_effort_2_AB }
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+		completion_reward = {
+			air_experience = 25
+			if = {
+				limit = {
+					capital_scope = {
+						OR = {
+							NOT = { is_controlled_by = ROOT }
+							NOT = {
+								free_building_slots = {
+									building = air_base
+									size > 1
+								}
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = CAS_effortPLC
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = aviation_effort_2PLC }
+		prerequisite = { focus = motorization_effortPLC }
+		x = -1
+		y = 1
+		relative_position_id = aviation_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = rocket_effortPLC
+		icon = GFX_focus_rocketry
+		prerequisite = { focus = aviation_effort_2PLC }
+		prerequisite = { focus = infrastructure_effortPLC }
+		x = 0
+		y = 2
+		relative_position_id = aviation_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = jet_rocket_bonus
+				ahead_reduction = 0.5
+				uses = 2
+				category = rocketry
+				category = jet_technology
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.25
+				always = yes
+			}
+		}
+	}
+
+	focus = {
+		id = NAV_effortPLC
+		icon = GFX_goal_generic_air_naval_bomber
+		prerequisite = { focus = aviation_effort_2PLC }
+		prerequisite = { focus = flexible_navyPLC }
+		x = 1
+		y = 1
+		relative_position_id = aviation_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = nav_bomber_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = naval_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = naval_effortPLC
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 9
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+		complete_tooltip = {
+			navy_experience = 25
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+		}
+		completion_reward = {
+			navy_experience = 25
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					any_owned_state = {
+						is_coastal = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					any_owned_state = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						controller = { tag = ROOT }
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = flexible_navyPLC
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = naval_effortPLC }
+		mutually_exclusive = { focus = large_navyPLC }
+		x = -1
+		y = 1
+		relative_position_id = naval_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = sub_op_bonus
+				bonus = 0.5
+				uses = 2
+				technology = convoy_interdiction_ti
+				technology = unrestricted_submarine_warfare
+				technology = wolfpacks
+				technology = advanced_submarine_warfare
+				technology = combined_operations_raiding
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = large_navyPLC
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = naval_effortPLC }
+		mutually_exclusive = { focus = flexible_navyPLC }
+		x = 1
+		y = 1
+		relative_position_id = naval_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = fleet_in_being_bonus
+				bonus = 0.5
+				uses = 2
+				category = fleet_in_being_tree
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = submarine_effortPLC
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = flexible_navyPLC focus = large_navyPLC }
+		x = 0
+		y = 1
+		relative_position_id = flexible_navyPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = early_submarine
+				technology = basic_submarine
+				technology = improved_submarine
+				technology = advanced_submarine
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = cruiser_effortPLC
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = large_navyPLC focus = flexible_navyPLC }
+		x = 0
+		y = 1
+		relative_position_id = large_navyPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = improved_light_cruiser
+				technology = advanced_light_cruiser
+				technology = improved_heavy_cruiser
+				technology = advanced_heavy_cruiser
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = destroyer_effortPLC
+		icon = GFX_goal_generic_wolf_pack
+		prerequisite = { focus = submarine_effortPLC }
+		x = 0
+		y = 1
+		relative_position_id = submarine_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = early_destroyer
+				technology = basic_destroyer
+				technology = improved_destroyer
+				technology = advanced_destroyer
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = capital_ships_effortPLC
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = cruiser_effortPLC }
+		x = 0
+		y = 1
+		relative_position_id = cruiser_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = basic_battlecruiser
+				technology = basic_battleship
+				technology = improved_battleship
+				technology = advanced_battleship
+				technology = heavy_battleship
+				technology = heavy_battleship2
+				technology = early_carrier
+				technology = basic_carrier
+				technology = improved_carrier
+				technology = advanced_carrier
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	#####################
+	### Industry Tree ###
+	#####################
+
+	focus = {
+		id = PLC_prussian_industrializstion
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 13
+		y = 0
+		cost = 10
+		available = {
+			controls_state = 436
+			controls_state = 437
+		}
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = PLC_prussian_industrializstion_tt
+				436 = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}
+				}
+				437 = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			436 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			437 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = PLC_lithuanian_industrializstion
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 15
+		y = 0
+		cost = 10
+		available = {
+			controls_state = 440
+			controls_state = 441
+		}
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = PLC_lithuanian_industrializstion_tt
+				440 = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}
+				}
+				441 = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			440 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			441 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = PLC_prussian_militarization
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 0
+		y = 1
+		cost = 10
+		available = {
+			controls_state = 436
+			controls_state = 437
+		}
+		prerequisite = { focus = PLC_prussian_industrializstion }
+		#prerequisite = { focus = PLC_lithuanian_industrializstion }
+		relative_position_id = PLC_prussian_industrializstion
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = PLC_prussian_militarization_tt
+				436 = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}
+				}
+				437 = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		completion_reward = {
+			436 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			437 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = PLC_synthetic_fuel
+		icon = GFX_goal_generic_oil_refinery
+		x = -1
+		y = 1
+		cost = 10
+		available = {
+			controls_state = 437
+		}
+		prerequisite = { focus = PLC_prussian_militarization }
+		relative_position_id = PLC_prussian_militarization
+		completion_reward = {
+			if = {
+				limit = { NOT = { has_tech = synth_oil_experiments } }
+				set_technology = { synth_oil_experiments = 1 }
+			}
+			add_tech_bonus = {
+				name = PLC_synthetic_fuel
+				bonus = 0.75
+				uses = 1
+				category = synth_resources
+			}
+			437 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = PLC_lithuanian_militarization
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 0
+		y = 1
+		cost = 10
+		available = {
+			controls_state = 440
+			controls_state = 441
+		}
+		#prerequisite = { focus = PLC_prussian_industrializstion }
+		prerequisite = { focus = PLC_lithuanian_industrializstion }
+		relative_position_id = PLC_lithuanian_industrializstion
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = PLC_lithuanian_militarization_tt
+				440 = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}
+				}
+				441 = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		completion_reward = {
+			440 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			441 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = PLC_danzig_riga_highway
+		icon = GFX_goal_generic_construct_infrastructure
+		available = {
+			controls_state = 436
+			controls_state = 437
+			controls_state = 440
+			controls_state = 441
+		}
+		prerequisite = { focus = PLC_prussian_militarization }
+		prerequisite = { focus = PLC_lithuanian_militarization }
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = PLC_danzig_riga_highway_tt
+				436 = {
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+				}
+				437 = {
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+				}
+				440 = {
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+				}
+				441 = {
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+				}
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = PLC_prussian_militarization
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			436 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			437 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			440 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			441 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = infrastructure_effortPLC
+		icon = GFX_goal_generic_construct_infrastructure
+#		prerequisite = { focus = construction_effort_2PLC }
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = infrastructure_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+				}
+			}
+		}
+		x = 12
+		y = 3
+#		relative_position_id = construction_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		complete_tooltip = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 1
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = infrastructure_effort_2PLC
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = infrastructure_effortPLC }
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = infrastructure_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+				}
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = infrastructure_effortPLC
+		cost = 10
+		available_if_capitulated = yes
+		complete_tooltip = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 0
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = infrastructure
+										size > 1
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = nuclear_effortPLC
+		icon = GFX_focus_wonderweapons
+		prerequisite = { focus = infrastructure_effort_2PLC }
+		x = -2
+		y = 1
+		relative_position_id = infrastructure_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = nuclear_bonus
+				ahead_reduction = 0.5
+				category = nuclear
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.25
+				always = yes
+			}
+		}
+	}
+
+	focus = {
+		id = extra_tech_slotPLC
+		icon = GFX_focus_research
+		prerequisite = { focus = infrastructure_effort_2PLC }
+		x = 0
+		y = 1
+		relative_position_id = infrastructure_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = secret_weaponsPLC
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = infrastructure_effort_2PLC }
+		x = 2
+		y = 1
+		relative_position_id = infrastructure_effort_2PLC
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = secret_bonus
+				bonus = 0.5
+				uses = 4
+				category = electronics
+				category = nuclear
+				category = rocketry
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.25
+				always = yes
+			}
+		}
+	}
+
+
+	#####################
+	### Politics Tree ###
+	#####################
+
+	focus = {
+		id = PLC_national_will
+		icon = GFX_goal_generic_demand_territory
+		x = 22
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = PLC_national_will_idea
+			add_political_power = 60
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+
+	focus = {
+		id = PLC_german_fascists
+		icon = GFX_goal_support_fascism
+		x = -4
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = PLC_national_will }
+		relative_position_id = PLC_national_will
+		available = {
+			NOT = { has_war_with = GER }
+		}
+		bypass = {
+			OR = {
+				GER = { has_government = fascism }
+				GER = { is_in_faction_with = PLC }
+			}
+		}
+		completion_reward = {
+			GER = {
+				add_timed_idea = { idea = PLC_supporting_fascists days = 730 }
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				GER = {
+					has_completed_focus = GER_election_1936
+				}
+			}
+		}
+	}
+
+
+	focus = {
+		id = PLC_german_referendum
+		icon = GFX_goal_generic_propaganda
+		x = -1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = PLC_german_fascists }
+		relative_position_id = PLC_german_fascists
+		available = {
+			GER = { fascism > 0.4 }
+			OR = {
+				num_divisions > 14
+				num_of_factories > 19
+			}
+		}
+		bypass = {
+			OR = {
+				GER = { has_government = fascism }
+				GER = { is_in_faction_with = PLC }
+			}
+		}
+		completion_reward = {
+			GER = {
+				country_event = {
+					id = tesb_plc.5
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = PLC_baltic_axis
+		dynamic = yes
+		icon = GFX_goal_generic_alliance
+		x = 3
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = PLC_german_fascists focus = PLC_scandiavian_fascists }
+		relative_position_id = PLC_german_fascists
+		available = {
+			OR = {
+				GER = { has_government = fascism is_friend_or_potential_friend_of_ROOT = yes }
+				SCA = { has_government = fascism is_friend_or_potential_friend_of_ROOT = yes }
+			}
+		}
+		bypass = {
+			OR = {
+				GER = { is_in_faction_with = PLC }
+				SCA = { is_in_faction_with = PLC }
+				AND = {
+					GER = { is_not_potential_friend_of_ROOT = yes }
+					SCA = { is_not_potential_friend_of_ROOT = yes }
+				}
+			}
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PLC_national_will_idea
+				add_idea = PLC_baltic_axis
+			}
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				create_faction = "PLC_baltic_axis_faction"
+			}
+			if = {
+				limit = {
+					is_in_faction = yes
+					is_faction_leader = no
+				}
+				leave_faction = yes
+				create_faction = "PLC_baltic_axis_faction"
+			}
+			if = {
+				limit = {
+					NOT = { GER = { has_government = fascism } }
+					NOT = { SCA = { has_government = fascism } }
+				}
+				custom_effect_tooltip = PLC_baltic_axis_tt
+			}
+			if = {
+				limit = {
+					GER = { has_government = fascism }
+				}
+				GER = {
+					country_event = { id = tesb_plc.10 hours = 2 }
+				}
+				set_country_flag = invited_germany
+			}
+			if = {
+				limit = {
+					SCA = { has_government = fascism }
+				}
+				SCA = {
+					country_event = { id = tesb_plc.10 hours = 2 }
+				}
+				set_country_flag = invited_scandinavia
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				GER = { has_government = fascism }
+				SCA = { has_government = fascism }
+			}
+			modifier = {
+				factor = 0.5
+				GER = { has_government = fascism }
+				SCA = { NOT = { has_government = fascism } }
+			}
+			modifier = {
+				factor = 0.5
+				SCA = { has_government = fascism }
+				GER = { NOT = { has_government = fascism } }
+			}
+		}
+	}
+	
+	focus = {
+		id = PLC_first_dresden_conference
+		icon = GFX_goal_generic_forceful_treaty
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = PLC_german_fascists }
+		relative_position_id = PLC_german_fascists
+		available = {
+			is_puppet = no
+			#is_in_faction_with = GER
+			OR = { HUN = { owns_state = 276 } HUN = { owns_state = 273 } }
+			NOT = { is_in_faction_with = HUN }
+			NOT = { has_war_with = HUN }
+			has_army_manpower = {
+				size > 100000
+			}
+		}
+		bypass = {
+			OR = {
+				GER = { owns_state = 276 owns_state = 273 }
+				HUN = { NOT = { owns_state = 276 } NOT = { owns_state = 273 } }
+				NOT = { country_exists = HUN }
+			}
+		}
+		select_effect = {
+			country_event = {
+				id = tesb_plc.100
+				hours = 2
+			}
+		}
+		completion_reward = {
+			HUN = {
+				country_event = {
+					id = tesb_plc.106
+					hours = 2
+				}
+			}
+			GER = {
+				country_event = { id = tesb_plc.107 hours = 6 }
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = PLC_request_posen
+		icon = GFX_goal_generic_improve_relations
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = PLC_first_dresden_conference }
+		prerequisite = { focus = PLC_baltic_axis }
+		relative_position_id = PLC_first_dresden_conference
+		available = {
+			NOT = { owns_state = 224 }
+			is_in_faction_with = GER
+		}
+		bypass = {
+			OR = {
+				has_war_with = GER
+				owns_state = 224
+				NOT = { country_exists = GER }
+			}
+		}
+		completion_reward = {
+			GER = {
+				country_event = {
+					id = tesb_plc.120
+					hours = 2
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = PLC_second_dresden_conference
+		icon = GFX_goal_generic_forceful_treaty
+		dynamic = yes
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = PLC_request_posen }
+		relative_position_id = PLC_request_posen
+		available = {
+			owns_state = 224
+			is_puppet = no
+			is_in_faction_with = GER
+			if = {
+				limit = {
+					279 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+				}
+				NOT = { is_in_faction_with = HUN }
+				NOT = { has_war_with = HUN }
+			}
+			else_if = {
+				limit = {
+					POL = { owns_state = 279 owns_state = 277 is_subject = no }
+				}
+				NOT = { is_in_faction_with = POL }
+				NOT = { has_war_with = POL }
+			}
+			if = {
+				limit = {
+					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					NOT = {
+						279 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+						277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					}
+				}
+				NOT = { is_in_faction_with = HUN }
+				NOT = { has_war_with = HUN }
+			}
+		}
+		bypass = {
+			if = {
+				limit = {
+					POL = { owns_state = 277 owns_state = 279 is_subject = no }
+				}
+				OR = {
+					has_war_with = POL
+					is_in_faction_with = POL
+					AND = {
+						owns_state = 279
+						owns_state = 277
+					}
+				}
+			}
+			OR = {
+				has_war_with = HUN
+				is_in_faction_with = HUN
+				NOT = { country_exists = HUN }
+				AND = {
+					owns_state = 279
+					owns_state = 277
+					HUN = {
+						all_owned_state = { NOT = { is_core_of = BAV } }
+					}
+				}
+			}
+		}
+		select_effect = {
+			if = {
+				limit = {
+					279 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+				}
+				HUN = { save_global_event_target_as = galicia_owner }
+			}
+			else_if = {
+				limit = { POL = { owns_state = 279 owns_state = 277 is_subject = no } }
+				POL = { save_global_event_target_as = galicia_owner }
+			}
+			if = {
+				limit = {
+					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+				}
+				HUN = { save_global_event_target_as = bohemia_owner }
+			}
+			country_event = {
+				id = tesb_plc.150
+				hours = 2
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+				}
+				HUN = {
+					country_event = {
+						id = tesb_plc.155
+						hours = 2
+					}
+				}
+			}
+			else_if = {
+				limit = { POL = { owns_state = 279 owns_state = 279 is_subject = no } }
+				POL = {
+					country_event = {
+						id = tesb_plc.155
+						hours = 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+				}
+				HUN = {
+					country_event = {
+						id = tesb_plc.157
+						hours = 2
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = PLC_scandiavian_fascists
+		icon = GFX_goal_support_fascism
+		x = 0
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = PLC_national_will }
+		relative_position_id = PLC_national_will
+		available = {
+			NOT = { has_war_with = SCA }
+		}
+		bypass = {
+			OR = {
+				SCA = { has_government = fascism }
+				SCA = { is_in_faction_with = PLC }
+			}
+		}
+		completion_reward = {
+			SCA = {
+				add_timed_idea = { idea = PLC_supporting_fascists days = 730 }
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = PLC_scandiavian_referendum
+		icon = GFX_goal_generic_propaganda
+		x = 1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = PLC_scandiavian_fascists }
+		relative_position_id = PLC_scandiavian_fascists
+		available = {
+			SCA = { fascism > 0.4 }
+			OR = {
+				num_divisions > 14
+				num_of_factories > 19
+			}
+		}
+		bypass = {
+			OR = {
+				SCA = { has_government = fascism }
+				SCA = { is_in_faction_with = PLC }
+			}
+		}
+		completion_reward = {
+			SCA = {
+				country_event = {
+					id = tesb_plc.5
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = PLC_ukrainian_independence
+		icon = GFX_goal_generic_propaganda
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = PLC_national_will }
+		mutually_exclusive = { focus = PLC_russian_pact }
+		relative_position_id = PLC_national_will
+		available = {
+			NOT = { has_war_with = RUS }
+			NOT = { country_exists = UKR }
+		}
+		bypass = {
+			country_exists = UKR
+		}
+		completion_reward = {
+			RUS = {
+				add_timed_idea = { idea = PLC_supporting_ukraine days = 730 }
+			}
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				RUS = { has_completed_focus = RUS_russian_primacy }
+				factor = 1.5
+			}
+			modifier = {
+				RUS = { has_completed_focus = RUS_occupy_ukraine }
+				factor = 2
+			}
+		}
+	}
+	
+	focus = {
+		id = PLC_russian_pact
+		icon = GFX_goal_molotov_ribbentrop_pact
+		x = 4
+		y = 1
+		cost = 10
+		prerequisite = { focus = PLC_national_will }
+		mutually_exclusive = { focus = PLC_ukrainian_independence }
+		relative_position_id = PLC_national_will
+		available = {
+			RUS = {
+				exists = yes
+				NOT = { has_war_with = PLC }
+				is_subject = no
+			}
+		}
+		bypass = {
+			NOT = { country_exists = RUS }
+		}
+		completion_reward = {
+			custom_effect_tooltip = PLC_russian_pact.tt
+			RUS = { country_event = { id = tesb_RUS.100 hours = 2 } }
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				RUS = { has_completed_focus = RUS_slavic_inclusion }
+				factor = 1.5
+			}
+		}
+	}
+
+}
