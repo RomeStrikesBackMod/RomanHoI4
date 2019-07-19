@@ -1517,9 +1517,17 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GER_election_1936.tt
 			set_country_flag = GER_election_1936_flag
-			#country_event = {
-			#	id = tesb_GER.100
-			#}
+			hidden_effect = {
+				PLC = {
+					country_event = {
+						id = tesb_PLC.6
+					}
+				}
+				country_event = {
+					id = tesb_GER.10
+					days = 30
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 20
@@ -1538,6 +1546,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			fascism > 0.33
+			NOT = { has_country_flag = GER_election_1936_flag }
 		}
 		completion_reward = {
 			set_politics = {
@@ -1562,6 +1571,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			democratic > 0.33
+			NOT = { has_country_flag = GER_election_1936_flag }
 		}
 		completion_reward = {
 			add_political_power = 60
@@ -1583,6 +1593,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			communism > 0.33
+			NOT = { has_country_flag = GER_election_1936_flag }
 		}
 		completion_reward = {
 			set_politics = {

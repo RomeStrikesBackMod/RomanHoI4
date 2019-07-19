@@ -8,20 +8,14 @@ country_event = {
 	picture = GFX_report_event_german_italian_pact
 	fire_only_once = yes
 
-	trigger = {
-		tag = GER
-		has_country_flag = GER_election_1936_flag
-		NOT = { has_country_flag = GER_election_event }
-	}
-
-	mean_time_to_happen = {
-		days = 15
-	}
+	is_triggered_only = yes
 
 	immediate = {
-		set_country_flag = {
-			flag = GER_election_event
-			days = 15
+		hidden_effect = {
+			country_event = {
+				id = tesb_GER.11
+				days = 30
+			}
 		}
 	}
 	
@@ -58,20 +52,14 @@ country_event = {
 	picture = GFX_report_event_german_italian_pact
 	fire_only_once = yes
 
-	trigger = {
-		tag = GER
-		has_country_flag = GER_election_1936_flag
-		NOT = { has_country_flag = GER_election_event }
-	}
-
-	mean_time_to_happen = {
-		days = 15
-	}
+	is_triggered_only = yes
 
 	immediate = {
-		set_country_flag = {
-			flag = GER_election_event
-			days = 15
+		hidden_effect = {
+			country_event = {
+				id = tesb_GER.12
+				days = 30
+			}
 		}
 	}
 	
@@ -111,21 +99,14 @@ country_event = {
 	desc = tesb_GER.12.d
 	picture = GFX_report_event_german_italian_pact
 	fire_only_once = yes
-
-	trigger = {
-		tag = GER
-		has_country_flag = GER_election_1936_flag
-		NOT = { has_country_flag = GER_election_event }
-	}
-
-	mean_time_to_happen = {
-		days = 15
-	}
+	is_triggered_only = yes
 
 	immediate = {
-		set_country_flag = {
-			flag = GER_election_event
-			days = 15
+		hidden_effect = {
+			country_event = {
+				id = tesb_GER.13
+				days = 30
+			}
 		}
 	}
 	
@@ -151,6 +132,211 @@ country_event = {
 			popularity = 0.025
 		}
 		add_war_support = -0.05
+	}
+}
+
+#Polish Alliance
+country_event = {
+	id = tesb_GER.13
+	title = tesb_GER.13.t
+	desc = tesb_GER.13.d
+	picture = GFX_report_event_german_italian_pact
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = tesb_GER.14
+				days = 30
+			}
+		}
+	}
+	
+	#Poland is a natural ally
+	option = {
+		name = tesb_GER.13.a
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.025
+		}
+		add_war_support = 0.05
+	}
+	
+	#Fascists are madmen
+	option = {
+		name = tesb_GER.13.b
+		add_popularity = {
+			ideology = communism
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.025
+		}
+		add_war_support = -0.05
+	}
+}
+
+#Final Rallies
+country_event = {
+	id = tesb_GER.14
+	title = tesb_GER.14.t
+	desc = tesb_GER.14.d
+	picture = GFX_report_event_german_italian_pact
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = tesb_GER.15
+				days = 30
+			}
+		}
+	}
+	
+	#fascists
+	option = {
+		name = tesb_GER.13.a
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.025
+		}
+	}
+	
+	#communists
+	option = {
+		name = tesb_GER.13.b
+		add_popularity = {
+			ideology = communism
+			popularity = 0.025
+		}
+	}
+	#democrats
+	option = {
+		name = tesb_GER.13.c
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.025
+		}
+	}
+}
+
+#election
+country_event = {
+	id = tesb_GER.15
+	title = tesb_GER.15.t
+	desc = tesb_GER.15.d
+	picture = GFX_report_event_german_italian_pact
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		clr_country_flag = GER_election_1936_flag
+	}
+	
+	#fascists
+	option = {
+		trigger = {
+			fascism > 0.5
+		}
+		name = tesb_GER.13.a1
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		complete_national_focus = GER_rache
+	}
+	
+	#fascists
+	option = {
+		trigger = {
+			fascism > 0.35
+			NOT = { fascism < 0.5 }
+		}
+		name = tesb_GER.13.a2
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		add_stability = -0.05
+		complete_national_focus = GER_rache
+	}
+	
+	#communists
+	option = {
+		trigger = {
+			communism > 0.5
+		}
+		name = tesb_GER.13.b1
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		complete_national_focus = GER_arbeiterpartei
+	}
+	
+	#communists
+	option = {
+		trigger = {
+			communism > 0.35
+			NOT = { communism > 0.5 }
+		}
+		name = tesb_GER.13.b2
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_stability = -0.05
+		complete_national_focus = GER_arbeiterpartei
+	}
+	
+	#democrats
+	option = {
+		trigger = {
+			democratic > 0.5
+		}
+		name = tesb_GER.13.c1
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = no
+		}
+		complete_national_focus = GER_maintain_balance
+	}
+	
+	#democrats
+	option = {
+		trigger = {
+			democratic > 0.35
+			NOT = { democratic > 0.5 }
+		}
+		name = tesb_GER.13.c2
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+		add_stability = -0.05
+		complete_national_focus = GER_maintain_balance
+	}
+	
+	#democrats
+	option = {
+		trigger = {
+			NOT = { democratic > 0.35 }
+			NOT = { fascism > 0.35 }
+			NOT = { communism > 0.35 }
+		}
+		name = tesb_GER.13.c3
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+		add_stability = -0.1
+		complete_national_focus = GER_maintain_balance
 	}
 }
 
