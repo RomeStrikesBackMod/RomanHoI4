@@ -1,7 +1,7 @@
 ideas = {
 	hidden_ideas = {
 
-		idea_continuous_naval_production = {
+		continuous_naval_production = {
 			removal_cost = -1
 			allowed = {
 				always = no
@@ -14,7 +14,7 @@ ideas = {
 			}
 		}
 
-		idea_continuous_air_production = {
+		continuous_air_production = {
 			removal_cost = -1
 			allowed = {
 				always = no
@@ -87,25 +87,36 @@ ideas = {
 		}
 	}
 	country = {
-		idea_weapons_for_the_resistance = {
 
+		neutrality_influence = {
+			removal_cost = -1
 			allowed = {
 				always = no
 			}
-
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
-			
-			removal_cost = -1
-
-			picture = chi_war_of_resistance3
-			
+			picture = generic_pp_unity_bonus
 			modifier = {
-				resistance_tick_in_states_controlled_by_enemy = 0.01
-				partisan_effect = 0.25
+				neutrality_drift = 0.1
+				neutrality_acceptance = 85
 			}
-		}	
+		}
+
+		military_parade = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+			picture = generic_pp_unity_bonus
+			modifier = {
+				neutrality_drift = 0.1
+				mobilization_speed = 0.15
+			}
+		}
 
 		special_forces = {
 			removal_cost = -1
@@ -118,22 +129,6 @@ ideas = {
 			picture = FRA_scw_intervention_nationalists_focus
 			modifier = {
 				special_forces_cap = 0.02
-			}
-		}
-
-		limited_interventionism = {
-			removal_cost = -1
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			picture = FRA_scw_intervention_nationalists_focus
-			modifier = {
-				send_volunteers_tension = -0.20
-				lend_lease_tension = -0.20
-				
 			}
 		}
 
@@ -319,7 +314,7 @@ ideas = {
 				production_speed_nuclear_reactor_factor = 0.2
 			}
 			research_bonus = {
-				nuclear = 0.10
+				nuclear = 0.15
 			}
 		}
 
@@ -512,11 +507,11 @@ ideas = {
 			}
 			picture = generic_manpower_bonus
 			modifier = {
-				army_core_attack_factor = 0.25 
+				army_core_attack_factor = 0.25
 			}
 		}
 
-		liberty_ethos_focus = {
+		idea_weapons_for_the_resistance = {
 			removal_cost = -1
 			allowed = {
 				always = no
@@ -524,26 +519,78 @@ ideas = {
 			allowed_civil_war = {
 				always = yes
 			}
-			picture = generic_democratic_drift_bonus
+			picture = chi_war_of_resistance3
 			modifier = {
-				trade_opinion_factor = 0.2
+				resistance_tick_in_states_controlled_by_enemy = 0.01
+				partisan_effect = 0.25
 			}
 		}
 
-		militarism_focus = {
+		MTG_naval_treaty_adherent = {
 			removal_cost = -1
 			allowed = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				always = no
 			}
-			picture = generic_manpower_bonus
+			picture = MTG_naval_treaty_adherent
 			modifier = {
-				conscription = 0.05
-				enemy_partisan_effect = -0.1
+				production_cost_max_ship_hull_cruiser = 5300
+				production_cost_max_ship_hull_heavy = 10000
+				production_cost_max_ship_hull_carrier = 9500
 			}
 		}
+
+		MTG_naval_treaty_adherent_reduced = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			picture = MTG_naval_treaty_adherent_reduced
+			modifier = {
+				production_cost_max_ship_hull_cruiser = 6000
+				production_cost_max_ship_hull_heavy = 12000
+				production_cost_max_ship_hull_carrier = 10500
+			}
+		}
+
+		MTG_naval_treaty_cheating = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			picture = MTG_naval_treaty_adherent
+			modifier = {
+				production_cost_max_ship_hull_cruiser = 5700
+				production_cost_max_ship_hull_heavy = 11500
+				production_cost_max_ship_hull_carrier = 10250
+			}
+		}
+
+		MTG_naval_treaty_cheating_reduced = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			picture = MTG_naval_treaty_adherent_reduced
+			modifier = {
+				production_cost_max_ship_hull_cruiser = 6500
+				production_cost_max_ship_hull_heavy = 14000
+				production_cost_max_ship_hull_carrier = 10750
+			}
+		}
+	}
+	political_advisor = {
 	}
 	tank_manufacturer = {
 		designer = yes
@@ -558,7 +605,7 @@ ideas = {
 			}
 			picture = generic_tank_manufacturer_1
 			research_bonus = {
-				armor = 0.10
+				armor = 0.15
 			}
 			traits = { tank_manufacturer }
 		}
@@ -576,7 +623,7 @@ ideas = {
 			}
 			picture = generic_naval_manufacturer_1
 			research_bonus = {
-				naval_equipment = 0.10
+				naval_equipment = 0.15
 			}
 			traits = { naval_manufacturer }
 		}
@@ -594,7 +641,7 @@ ideas = {
 			}
 			picture = generic_air_manufacturer_1
 			research_bonus = {
-				air_equipment = 0.10
+				air_equipment = 0.15
 			}
 			traits = { light_aircraft_manufacturer }
 		}
@@ -609,7 +656,7 @@ ideas = {
 			}
 			picture = generic_air_manufacturer_3
 			research_bonus = {
-				air_equipment = 0.10
+				air_equipment = 0.15
 			}
 			traits = { medium_aircraft_manufacturer }
 		}
@@ -624,7 +671,7 @@ ideas = {
 			}
 			picture = generic_air_manufacturer_2
 			research_bonus = {
-				air_equipment = 0.10
+				air_equipment = 0.15
 			}
 			traits = { heavy_aircraft_manufacturer }
 		}
@@ -639,7 +686,7 @@ ideas = {
 			}
 			picture = generic_naval_manufacturer_2
 			research_bonus = {
-				air_equipment = 0.10
+				air_equipment = 0.15
 			}
 			traits = { naval_aircraft_manufacturer }
 		}
@@ -656,7 +703,7 @@ ideas = {
 			}
 			picture = generic_industrial_concern_1
 			research_bonus = {
-				industry = 0.10
+				industry = 0.15
 			}
 			traits = { industrial_concern }
 		}
@@ -671,7 +718,7 @@ ideas = {
 			}
 			picture = generic_electronics_concern_1
 			research_bonus = {
-				electronics = 0.10
+				electronics = 0.15
 			}
 			traits = { electronics_concern }
 		}
@@ -689,7 +736,7 @@ ideas = {
 			}
 			picture = generic_motorized_equipment_manufacturer_3
 			research_bonus = {
-				motorized_equipment = 0.10
+				motorized_equipment = 0.15
 			}
 			traits = { motorized_equipment_manufacturer }
 		}
@@ -704,7 +751,7 @@ ideas = {
 			}
 			picture = generic_infantry_equipment_manufacturer_2
 			research_bonus = {
-				infantry_weapons = 0.10
+				infantry_weapons = 0.15
 			}
 			traits = { infantry_equipment_manufacturer }
 		}
@@ -719,7 +766,7 @@ ideas = {
 			}
 			picture = generic_artillery_manufacturer_2
 			research_bonus = {
-				artillery = 0.10
+				artillery = 0.15
 			}
 			traits = { artillery_manufacturer }
 		}
@@ -900,7 +947,7 @@ ideas = {
 			allowed = {
 			}
 			research_bonus = {
-				land_doctrine = 0.07
+				land_doctrine = 0.10
 			}
 			traits = { military_theorist }
 		}
@@ -909,7 +956,7 @@ ideas = {
 			allowed = {
 			}
 			research_bonus = {
-				naval_doctrine = 0.07
+				naval_doctrine = 0.10
 			}
 			traits = { naval_theorist }
 		}
@@ -918,7 +965,7 @@ ideas = {
 			allowed = {
 			}
 			research_bonus = {
-				air_warfare_doctrine = 0.07
+				air_doctrine = 0.10
 			}
 			traits = { air_warfare_theorist }
 		}
