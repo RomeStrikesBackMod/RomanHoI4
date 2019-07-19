@@ -109,7 +109,7 @@ country_event = {
 	#Join PLC
 	option = {
 		name = tesb_plc.20.a
-		remove_state_core = 553
+		remove_state_core = 510
 		set_country_flag = PLC_RUS_pact
 	}
 }
@@ -200,7 +200,7 @@ country_event = {
 	#Limited Demands
 	option = {
 		name = tesb_plc.100.a
-		set_variable = { GER.GER_dresden_1 = 1 = 1 }
+		set_variable = { GER.GER_dresden_1 = 1 }
 		add_political_power = -50
 		ai_chance = {
 			factor = 20
@@ -559,7 +559,7 @@ country_event = {
 	#give up West Galicia
 	option = {
 		name = tesb_plc.105.a1
-		PLC = { transfer_state = 218 clear_variable = PLC_dresden_1 }
+		PLC = { transfer_state = 279 clear_variable = PLC_dresden_1 }
 		clear_global_event_target = Galicia_Owner
 		news_event = { id = tesb_plc.1051 }
 		ai_chance = {
@@ -603,7 +603,7 @@ country_event = {
 			create_wargoal = {
 				type = take_core_state
 				target = event_target:Galicia_Owner
-				generator = { 218 }
+				generator = { 279 }
 			}
 			clear_variable = PLC_dresden_1 
 		}
@@ -700,7 +700,7 @@ country_event = {
 	#give up Silesia
 	option = {
 		name = tesb_plc.106.a1
-		GER = { transfer_state = 215 transfer_state = 212 add_state_core = 212 clear_variable = GER_dresden_1 }
+		GER = { transfer_state = 276 transfer_state = 273 add_state_core = 273 clear_variable = GER_dresden_1 }
 		news_event = { id = tesb_plc.1061 }
 		ai_chance = {
 			factor = 15
@@ -743,7 +743,7 @@ country_event = {
 			create_wargoal = {
 				type = take_state_focus
 				target = HUN
-				generator = { 215 212 }
+				generator = { 276 273 }
 			}
 			clear_variable = GER_dresden_1
 		}
@@ -913,11 +913,11 @@ country_event = {
 	title = tesb_plc.107.t
 	desc = {
 		text = tesb_plc.107.da
-		trigger = { owns_state = 215 owns_state = 212 }
+		trigger = { owns_state = 276 owns_state = 273 }
 	}
 	desc = {
 		text = tesb_plc.107.db
-		trigger = { NOT = { owns_state = 215 owns_state = 212 } }
+		trigger = { NOT = { owns_state = 276 owns_state = 273 } }
 	}
 	picture = GFX_report_event_german_italian_pact
 
@@ -925,7 +925,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			if = {
-				limit = { owns_state = 215 owns_state = 212 }
+				limit = { owns_state = 276 owns_state = 273 }
 				add_popularity = {
 					ideology = fascism
 					popularity = 0.05
@@ -941,12 +941,12 @@ country_event = {
 	}
 
 	option = {
-		trigger = { owns_state = 215 owns_state = 212 }
+		trigger = { owns_state = 276 owns_state = 273 }
 		name = tesb_plc.107.a
 	}
 
 	option = {
-		trigger = { NOT = { owns_state = 215 owns_state = 212 } }
+		trigger = { NOT = { owns_state = 276 owns_state = 273 } }
 		name = tesb_plc.107.b
 	}
 }
@@ -965,17 +965,17 @@ country_event = {
 	option = {
 		name = tesb_plc.120.a
 		effect_tooltip = {
-			PLC = { transfer_state = 164 }
-			remove_state_core = 164
-			remove_state_core = 355
-			remove_state_core = 216
-			remove_state_core = 218
+			PLC = { transfer_state = 224 }
+			remove_state_core = 224
+			remove_state_core = 438
+			remove_state_core = 277
+			remove_state_core = 279
 		}
 		hidden_effect = {
 			PLC = { country_event = { id = tesb_plc.121 hours = 1 } }
 		}
 		ai_chance = {
-			factor = 10
+			factor = 20
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -1007,13 +1007,13 @@ country_event = {
 	#transfers
 	option = {
 		name = tesb_plc.121.a
-		transfer_state = 164
-		164 = { add_manpower = -200000 }
+		transfer_state = 224
+		224 = { add_manpower = -200000 }
 		GER = {
-			remove_state_core = 164
-			remove_state_core = 355
-			remove_state_core = 218
-			remove_state_core = 216
+			remove_state_core = 244
+			remove_state_core = 438
+			remove_state_core = 277
+			remove_state_core = 279
 			random_owned_controlled_state = {
 				limit = { NOT = { has_state_flag = PLC_transfer } }
 				add_manpower = 200000
@@ -1021,8 +1021,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 355 }
-			355 = { add_manpower = -200000 }
+			limit = { owns_state = 438 }
+			438 = { add_manpower = -200000 }
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -1032,8 +1032,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 218 }
-			218 = { add_manpower = -200000 }
+			limit = { owns_state = 279 }
+			279 = { add_manpower = -200000 }
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -1043,8 +1043,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 216 }
-			216 = { add_manpower = -200000 }
+			limit = { owns_state = 277 }
+			277 = { add_manpower = -200000 }
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -1645,7 +1645,7 @@ country_event = {
 	#give up West Galicia
 	option = {
 		name = tesb_plc.155.a1
-		PLC = { transfer_state = 218 transfer_state = 216 clear_variable = PLC_dresden_2 }
+		PLC = { transfer_state = 279 transfer_state = 277 clear_variable = PLC_dresden_2 }
 		news_event = { id = tesb_plc.1551 }
 		ai_chance = {
 			factor = 10
@@ -1688,7 +1688,7 @@ country_event = {
 			create_wargoal = {
 				type = take_core_state
 				target = event_target:galicia_owner
-				generator = { 218 216 }
+				generator = { 279 277 }
 			}
 			clear_variable = PLC_dresden_2 
 		}
@@ -1758,7 +1758,7 @@ country_event = {
 	#give up West Galicia
 	option = {
 		name = tesb_plc.156.a1
-		GER = { transfer_state = 212 clear_variable = GER_dresden_2 }
+		GER = { transfer_state = 273 clear_variable = GER_dresden_2 }
 		news_event = { id = tesb_plc.1561 }
 		ai_chance = {
 			factor = 10
@@ -1801,7 +1801,7 @@ country_event = {
 			create_wargoal = {
 				type = take_core_state
 				target = HUN
-				generator = { 212 }
+				generator = { 273 }
 			}
 			clear_variable = GER_dresden_2
 		}
@@ -2146,24 +2146,14 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			set_politics = {
-				parties = {
-					absolutist = { 
-						popularity = 25
-					}
-					democratic = { 
-						popularity = 20
-					}
-					fascism = {
-						popularity = 35
-					}
-					communism = {
-						popularity = 15
-					}
-					neutrality = { 
-						popularity = 5
-					}
-				}
 				ruling_party = fascism
+			}
+			set_popularities = {
+				communism = 15
+				democratic = 20
+				absolutist = 25
+				fascism = 35
+				neutrality = 5
 			}
 		}
 	}

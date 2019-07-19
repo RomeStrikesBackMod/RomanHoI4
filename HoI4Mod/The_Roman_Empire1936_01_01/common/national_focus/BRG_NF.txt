@@ -831,6 +831,10 @@ focus_tree = {
 			}
 		}
 	}
+
+	#####################
+	### Politcal Tree ###
+	#####################
 	
 	focus = {
 		id = BRG_reinforce_monarchism
@@ -1212,9 +1216,9 @@ focus_tree = {
 		icon = GFX_goal_generic_fortify_city
 		available = {
 			OR = {
-				34 = { is_owned_by = BRG }
-				36 = { is_owned_by = BRG }
-				38 = { is_owned_by = BRG }
+				59 = { is_owned_by = BRG }
+				61 = { is_owned_by = BRG }
+				63 = { is_owned_by = BRG }
 			}
 		}
 		cancel_if_invalid = yes
@@ -1224,10 +1228,10 @@ focus_tree = {
 		cost = 10
 
 		completion_reward = {
-			34 = {
+			59 = {
 				if = {
 					limit = { is_controlled_by = BRG }
-					custom_effect_tooltip = RME_rhine_limes_34
+					custom_effect_tooltip = RME_rhine_limes_59
 					hidden_effect = {
 						add_building_construction = {
 							type = bunker
@@ -1250,10 +1254,10 @@ focus_tree = {
 					}
 				}
 			}
-			36 = {
+			61 = {
 				if = {
 					limit = { is_controlled_by = BRG }
-					custom_effect_tooltip = RME_rhine_limes_36
+					custom_effect_tooltip = RME_rhine_limes_61
 					hidden_effect = {
 						add_building_construction = {
 							type = bunker
@@ -1282,10 +1286,10 @@ focus_tree = {
 					}
 				}
 			}
-			38 = {
+			63 = {
 				if = {
 					limit = { is_controlled_by = BRG }
-					custom_effect_tooltip = RME_rhine_limes_38
+					custom_effect_tooltip = RME_rhine_limes_63
 					hidden_effect = {
 						add_building_construction = {
 							type = bunker
@@ -1334,14 +1338,14 @@ focus_tree = {
 		available = {
 			FLD = {
 				is_potential_friend_of_ROOT = yes
-				owns_state = 502
+				owns_state = 55
 			}
 		}
 		bypass = {
 			OR = {
 				FLD = { is_not_potential_friend_of_ROOT = yes }
 				FLD = { is_free_ally_or_subject_of_ROOT = yes }
-				FLD = { NOT = { owns_state = 502 } }
+				FLD = { NOT = { owns_state = 55 } }
 			}
 		}
 
@@ -1376,7 +1380,7 @@ focus_tree = {
 			}
 			OR = {
 				FLD = { is_subject_of = BRG }
-				502 = { is_owned_by = BRG }
+				55 = { is_owned_by = BRG }
 			}
 		}
 		bypass = {
@@ -1387,8 +1391,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 139
-			add_state_claim = 141
+			add_state_claim = 196
+			add_state_claim = 198
 			create_wargoal = {
 				target = FRA
 				type = annex_everything
@@ -1415,7 +1419,7 @@ focus_tree = {
 			}
 			OR = {
 				FLD = { is_free_ally_or_subject_of_ROOT = yes }
-				502 = { is_owned_by = BRG }
+				55 = { is_owned_by = BRG }
 			}
 			BRG = {
 				has_government = democratic
@@ -1453,14 +1457,14 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				140 = { is_owned_by = BRG }
+				197 = { is_owned_by = BRG }
 			}
 		}
 		bypass = {
 			OR = {
 				has_war_with = BRI
 				BRI = { is_free_ally_or_subject_of_ROOT = yes }
-				owns_state = 44
+				owns_state = 69
 				NOT = { country_exists = BRI }
 			}
 		}
@@ -1495,7 +1499,7 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				139 = { is_owned_by = BRG }
+				196 = { is_owned_by = BRG }
 			}
 		}
 		bypass = {
@@ -1506,8 +1510,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 10
-			add_state_claim = 14
+			add_state_claim = 16
+			add_state_claim = 20
 			create_wargoal = {
 				target = AQI
 				type = annex_everything
@@ -1542,7 +1546,7 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				139 = { is_owned_by = BRG }
+				196 = { is_owned_by = BRG }
 			}
 			BRG = { is_faction_leader = yes }
 		}
