@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "AST_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "AST_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "AST_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -83,13 +90,12 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
-	absolutist = 0
 	communism = 16
-	democratic = 0
-	fascism = 0
 	neutrality = 84
 }
+
 add_opinion_modifier = { target = BEN modifier = positive_5 }
 add_opinion_modifier = { target = BIR modifier = negative_15 }
 add_opinion_modifier = { target = CAN modifier = positive_5 }
@@ -115,9 +121,9 @@ set_war_support = 0.60
 create_country_leader = {
     name = "Adamantios Dousmanis"
     desc = "POLITICS_ADAMANTIOS_DOUSMANIS_DESC"
-    picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
+    picture = "gfx/leaders/GRE/Portrait_Greece_Ioannis_Metaxas.dds"
     expire = "1965.1.1"
-    ideology = minarchism_neutral
+    ideology = absolute_monarchy_neutral
     traits = {
     }
 }
@@ -264,17 +270,6 @@ create_navy_leader = {
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {
-		name = "1936 Submarine"
-		type = ship_hull_submarine_2
-		name_group = AST_SS_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_engine_slot = sub_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_sub_2
-			rear_1_custom_slot = ship_torpedo_sub_2
-		}
-	}
-	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
 		name_group = AST_BB_HISTORICAL
@@ -343,6 +338,17 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_2
 			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "1936 Submarine"
+		type = ship_hull_submarine_2
+		name_group = AST_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_engine_slot = sub_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			rear_1_custom_slot = ship_torpedo_sub_2
 		}
 	}
 }
