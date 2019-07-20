@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "ETH_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "ETH_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "ETH_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -63,6 +70,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 7
 	communism = 30
@@ -70,6 +78,7 @@ set_popularities = {
 	fascism = 12
 	neutrality = 4
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_182 }
 add_opinion_modifier = { target = ANG modifier = positive_105 }
 add_opinion_modifier = { target = AOT modifier = positive_30 }
@@ -833,6 +842,42 @@ create_navy_leader = {
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {
+		name = "1936 Heavy Cruiser"
+		type = ship_hull_cruiser_2
+		name_group = ETH_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			mid_1_custom_slot = ship_secondaries_2
+			mid_2_custom_slot = ship_medium_battery_2
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "1936 Light Cruiser"
+		type = ship_hull_cruiser_2
+		name_group = ETH_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_battery_2
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
 		name = "1936 Submarine"
 		type = ship_hull_submarine_2
 		name_group = ETH_SS_HISTORICAL
@@ -875,42 +920,6 @@ if = {
 			fixed_ship_radar_slot = ship_sonar_1
 			fixed_ship_torpedo_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_depth_charge_1
-			rear_1_custom_slot = empty
-		}
-	}
-	create_equipment_variant = {
-		name = "1936 Heavy Cruiser"
-		type = ship_hull_cruiser_2
-		name_group = ETH_CA_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_armor_slot = ship_armor_cruiser_2
-			fixed_ship_battery_slot = ship_medium_battery_2
-			fixed_ship_engine_slot = cruiser_ship_engine_2
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_secondaries_slot = ship_secondaries_2
-			mid_1_custom_slot = ship_secondaries_2
-			mid_2_custom_slot = ship_medium_battery_2
-			rear_1_custom_slot = empty
-		}
-	}
-	create_equipment_variant = {
-		name = "1936 Light Cruiser"
-		type = ship_hull_cruiser_2
-		name_group = ETH_CL_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_armor_slot = ship_armor_cruiser_2
-			fixed_ship_battery_slot = ship_light_battery_2
-			fixed_ship_engine_slot = cruiser_ship_engine_2
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = ship_sonar_1
-			fixed_ship_secondaries_slot = ship_secondaries_2
-			mid_1_custom_slot = ship_torpedo_1
-			mid_2_custom_slot = ship_light_battery_2
 			rear_1_custom_slot = empty
 		}
 	}

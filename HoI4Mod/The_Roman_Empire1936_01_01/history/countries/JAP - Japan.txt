@@ -2,6 +2,13 @@
 set_research_slots = 4
 
 oob = "JAP_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "JAP_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "JAP_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -53,13 +60,12 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 100
-	communism = 0
-	democratic = 0
-	fascism = 0
 	neutrality = 0
 }
+
 add_opinion_modifier = { target = BIR modifier = negative_200 }
 add_opinion_modifier = { target = CAM modifier = negative_30 }
 add_opinion_modifier = { target = ENG modifier = negative_40 }

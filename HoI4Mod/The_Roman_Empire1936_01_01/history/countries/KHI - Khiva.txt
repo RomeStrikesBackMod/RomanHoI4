@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "KHI_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "KHI_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "KHI_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -50,13 +57,12 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
-	absolutist = 0
-	communism = 0
-	democratic = 0
 	fascism = 100
 	neutrality = 0
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_139 }
 add_opinion_modifier = { target = AQI modifier = negative_10 }
 add_opinion_modifier = { target = ARG modifier = positive_14 }
