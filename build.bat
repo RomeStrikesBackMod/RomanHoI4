@@ -1,4 +1,4 @@
-xcopy Converter_Files "D:\MyProjects\paradoxGameConvertersForks\Vic2ToHoI4\Release\Vic2ToHoI4" /Y /Q
+xcopy Converter_Files "D:\MyProjects\paradoxGameConvertersForks\Vic2ToHoI4\Release\Vic2ToHoI4" /Y /Q /S
 copy Saves\The_Roman_Empire1936_01_01.v2 "D:\MyProjects\paradoxGameConvertersForks\Vic2ToHoI4\Release\Vic2ToHoI4"
 cd "D:\MyProjects\paradoxGameConvertersForks\Vic2ToHoI4\Release\Vic2ToHoI4"
 V2ToHoI4Converter.exe The_Roman_Empire1936_01_01.v2
