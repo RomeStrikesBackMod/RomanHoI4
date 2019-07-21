@@ -890,7 +890,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 3
+			factor = 4
 		}
 	}
 
@@ -948,7 +948,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 3
+			factor = 4
 		}
 	}
 
@@ -1039,7 +1039,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 3
+			factor = 2
 		}
 	}
 
@@ -1181,7 +1181,7 @@ focus_tree = {
 	focus = {
 		id = infrastructure_effortPLC
 		icon = GFX_goal_generic_construct_infrastructure
-#		prerequisite = { focus = construction_effort_2PLC }
+		prerequisite = { focus = PLC_danzig_riga_highway }
 		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = infrastructure_effort_tt
@@ -1491,7 +1491,7 @@ focus_tree = {
 		prerequisite = { focus = PLC_german_fascists }
 		relative_position_id = PLC_german_fascists
 		available = {
-			GER = { fascism > 0.4 }
+			GER = { fascism > 0.4 NOT = { has_country_flag = GER_election_1936_flag } }
 			OR = {
 				num_divisions > 14
 				num_of_factories > 19
@@ -1506,7 +1506,7 @@ focus_tree = {
 		completion_reward = {
 			GER = {
 				country_event = {
-					id = tesb_plc.5
+					id = tesb_GER.25
 					hours = 1
 				}
 			}
@@ -1573,7 +1573,7 @@ focus_tree = {
 					GER = { has_government = fascism }
 				}
 				GER = {
-					country_event = { id = tesb_plc.10 hours = 2 }
+					country_event = { id = tesb_PLC.10 hours = 2 }
 				}
 				set_country_flag = invited_germany
 			}
@@ -1582,7 +1582,7 @@ focus_tree = {
 					SCA = { has_government = fascism }
 				}
 				SCA = {
-					country_event = { id = tesb_plc.10 hours = 2 }
+					country_event = { id = tesb_PLC.10 hours = 2 }
 				}
 				set_country_flag = invited_scandinavia
 			}
@@ -1634,19 +1634,19 @@ focus_tree = {
 		}
 		select_effect = {
 			country_event = {
-				id = tesb_plc.100
+				id = tesb_PLC.100
 				hours = 2
 			}
 		}
 		completion_reward = {
 			HUN = {
 				country_event = {
-					id = tesb_plc.106
+					id = tesb_PLC.106
 					hours = 2
 				}
 			}
 			GER = {
-				country_event = { id = tesb_plc.107 hours = 6 }
+				country_event = { id = tesb_PLC.107 hours = 6 }
 			}
 		}
 		ai_will_do = {
@@ -1681,7 +1681,7 @@ focus_tree = {
 		completion_reward = {
 			GER = {
 				country_event = {
-					id = tesb_plc.120
+					id = tesb_PLC.120
 					hours = 2
 				}
 			}
@@ -1781,7 +1781,7 @@ focus_tree = {
 				HUN = { save_global_event_target_as = bohemia_owner }
 			}
 			country_event = {
-				id = tesb_plc.150
+				id = tesb_PLC.150
 				hours = 2
 			}
 		}
@@ -1793,7 +1793,7 @@ focus_tree = {
 				}
 				HUN = {
 					country_event = {
-						id = tesb_plc.155
+						id = tesb_PLC.155
 						hours = 2
 					}
 				}
@@ -1802,7 +1802,7 @@ focus_tree = {
 				limit = { POL = { owns_state = 279 owns_state = 279 is_subject = no } }
 				POL = {
 					country_event = {
-						id = tesb_plc.155
+						id = tesb_PLC.155
 						hours = 2
 					}
 				}
@@ -1814,7 +1814,7 @@ focus_tree = {
 				}
 				HUN = {
 					country_event = {
-						id = tesb_plc.157
+						id = tesb_PLC.157
 						hours = 2
 					}
 				}
@@ -1878,7 +1878,7 @@ focus_tree = {
 		completion_reward = {
 			SCA = {
 				country_event = {
-					id = tesb_plc.5
+					id = tesb_PLC.5
 					hours = 1
 				}
 			}

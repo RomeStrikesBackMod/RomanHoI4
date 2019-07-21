@@ -1,5 +1,151 @@
 ﻿add_namespace = tesb_GER
 
+#democratic speech
+country_event = {
+	id = tesb_GER.1
+	title = tesb_GER.1.t
+	desc = tesb_GER.1.d
+	picture = GFX_report_event_german_italian_pact
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	#Steady as she goes, things will improve
+	option = {
+		name = tesb_GER.1.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+	}
+}
+
+#fascist speech
+country_event = {
+	id = tesb_GER.2
+	title = tesb_GER.2.t
+	desc = tesb_GER.2.d
+	picture = GFX_report_event_german_italian_pact
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	#We must support the state
+	option = {
+		name = tesb_GER.2.a
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.01
+		}
+	}
+
+}
+
+#communist speech
+country_event = {
+	id = tesb_GER.3
+	title = tesb_GER.3.t
+	desc = tesb_GER.3.d
+	picture = GFX_report_event_german_italian_pact
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+	
+	#The state must support the worker
+	option = {
+		name = tesb_GER.3.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+	}
+}
+
+#democratic speech
+country_event = {
+	id = tesb_GER.4
+	title = tesb_GER.4.t
+	desc = tesb_GER.4.d
+	picture = GFX_report_event_german_italian_pact
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	#Steady as she goes, things will improve
+	option = {
+		name = tesb_GER.4.a
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.01
+		}
+	}
+}
+
+#fascist speech
+country_event = {
+	id = tesb_GER.5
+	title = tesb_GER.5.t
+	desc = tesb_GER.5.d
+	picture = GFX_report_event_german_italian_pact
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	#We must support the state
+	option = {
+		name = tesb_GER.5.a
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.01
+		}
+	}
+
+}
+
+#communist speech
+country_event = {
+	id = tesb_GER.6
+	title = tesb_GER.6.t
+	desc = tesb_GER.6.d
+	picture = GFX_report_event_german_italian_pact
+	#fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+	
+	#The state must support the worker
+	option = {
+		name = tesb_GER.6.a
+		add_popularity = {
+			ideology = communism
+			popularity = -0.01
+		}
+	}
+}
+
 #Bohemian occupation
 country_event = {
 	id = tesb_GER.10
@@ -90,7 +236,6 @@ country_event = {
 		}
 	}
 }
-
 
 #Burgundian Land
 country_event = {
@@ -200,7 +345,7 @@ country_event = {
 	
 	#fascists
 	option = {
-		name = tesb_GER.13.a
+		name = tesb_GER.14.a
 		add_popularity = {
 			ideology = fascism
 			popularity = 0.025
@@ -209,7 +354,7 @@ country_event = {
 	
 	#communists
 	option = {
-		name = tesb_GER.13.b
+		name = tesb_GER.14.b
 		add_popularity = {
 			ideology = communism
 			popularity = 0.025
@@ -217,7 +362,7 @@ country_event = {
 	}
 	#democrats
 	option = {
-		name = tesb_GER.13.c
+		name = tesb_GER.14.c
 		add_popularity = {
 			ideology = democratic
 			popularity = 0.025
@@ -244,11 +389,12 @@ country_event = {
 		trigger = {
 			fascism > 0.5
 		}
-		name = tesb_GER.13.a1
+		name = tesb_GER.15.a1
 		set_politics = {
 			ruling_party = fascism
-			elections_allowed = no
+			elections_allowed = yes
 		}
+		add_political_power = 30
 		complete_national_focus = GER_rache
 	}
 	
@@ -256,12 +402,12 @@ country_event = {
 	option = {
 		trigger = {
 			fascism > 0.35
-			NOT = { fascism < 0.5 }
+			NOT = { fascism > 0.5 }
 		}
-		name = tesb_GER.13.a2
+		name = tesb_GER.15.a2
 		set_politics = {
 			ruling_party = fascism
-			elections_allowed = no
+			elections_allowed = yes
 		}
 		add_stability = -0.05
 		complete_national_focus = GER_rache
@@ -272,11 +418,12 @@ country_event = {
 		trigger = {
 			communism > 0.5
 		}
-		name = tesb_GER.13.b1
+		name = tesb_GER.15.b1
 		set_politics = {
 			ruling_party = communism
-			elections_allowed = no
+			elections_allowed = yes
 		}
+		add_political_power = 30
 		complete_national_focus = GER_arbeiterpartei
 	}
 	
@@ -286,10 +433,10 @@ country_event = {
 			communism > 0.35
 			NOT = { communism > 0.5 }
 		}
-		name = tesb_GER.13.b2
+		name = tesb_GER.15.b2
 		set_politics = {
 			ruling_party = communism
-			elections_allowed = no
+			elections_allowed = yes
 		}
 		add_stability = -0.05
 		complete_national_focus = GER_arbeiterpartei
@@ -300,11 +447,12 @@ country_event = {
 		trigger = {
 			democratic > 0.5
 		}
-		name = tesb_GER.13.c1
+		name = tesb_GER.15.c1
 		set_politics = {
 			ruling_party = democratic
-			elections_allowed = no
+			elections_allowed = yes
 		}
+		add_political_power = 30
 		complete_national_focus = GER_maintain_balance
 	}
 	
@@ -314,7 +462,7 @@ country_event = {
 			democratic > 0.35
 			NOT = { democratic > 0.5 }
 		}
-		name = tesb_GER.13.c2
+		name = tesb_GER.15.c2
 		set_politics = {
 			ruling_party = democratic
 			elections_allowed = yes
@@ -330,7 +478,7 @@ country_event = {
 			NOT = { fascism > 0.35 }
 			NOT = { communism > 0.35 }
 		}
-		name = tesb_GER.13.c3
+		name = tesb_GER.15.c3
 		set_politics = {
 			ruling_party = democratic
 			elections_allowed = yes
@@ -338,6 +486,31 @@ country_event = {
 		add_stability = -0.1
 		complete_national_focus = GER_maintain_balance
 	}
+}
+
+
+country_event = {
+	id = tesb_GER.25
+	title = tesb_GER.25.t
+	desc = tesb_GER.25.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = tesb_GER.25.a
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+	}
+
+	option = {
+		name = tesb_GER.25.b
+		add_political_power = -100
+		add_stability = -0.2
+	}
+
 }
 
 country_event = {
