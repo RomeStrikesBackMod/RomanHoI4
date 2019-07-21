@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "SUD_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "SUD_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "SUD_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -82,6 +89,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 4
 	communism = 14
@@ -89,6 +97,7 @@ set_popularities = {
 	fascism = 23
 	neutrality = 6
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_10 }
 add_opinion_modifier = { target = BEN modifier = negative_30 }
 add_opinion_modifier = { target = BIR modifier = negative_10 }
@@ -123,17 +132,6 @@ create_country_leader = {
 ### VARIANTS ###
 if = {
 	limit = { has_dlc = "Man the Guns" }
-	create_equipment_variant = {
-		name = "1936 Submarine"
-		type = ship_hull_submarine_2
-		name_group = SUD_SS_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_engine_slot = sub_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_sub_2
-			rear_1_custom_slot = ship_torpedo_sub_2
-		}
-	}
 	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
@@ -203,6 +201,17 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_2
 			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "1936 Submarine"
+		type = ship_hull_submarine_2
+		name_group = SUD_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_engine_slot = sub_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			rear_1_custom_slot = ship_torpedo_sub_2
 		}
 	}
 }

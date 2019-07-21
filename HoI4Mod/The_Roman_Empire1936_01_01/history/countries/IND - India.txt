@@ -2,7 +2,19 @@
 set_research_slots = 4
 add_named_threat = { threat = 0.7748 name = infamy }
 
+declare_war_on = {
+	target = TIB
+	type = annex_everything
+}
+
 oob = "IND_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "IND_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "IND_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -55,6 +67,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 7
 	communism = 28
@@ -62,6 +75,7 @@ set_popularities = {
 	fascism = 10
 	neutrality = 5
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_200 }
 add_opinion_modifier = { target = AQI modifier = positive_15 }
 add_opinion_modifier = { target = ARG modifier = positive_35 }
@@ -106,7 +120,7 @@ add_opinion_modifier = { target = UTA modifier = negative_200 }
 add_ideas = {
 	great_power
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_telegu
 }

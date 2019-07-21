@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "HED_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "HED_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "HED_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -49,13 +56,12 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 100
-	communism = 0
-	democratic = 0
-	fascism = 0
 	neutrality = 0
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_27 }
 add_opinion_modifier = { target = BIR modifier = positive_100 }
 add_opinion_modifier = { target = ETH modifier = positive_133 }
@@ -80,7 +86,7 @@ add_opinion_modifier = { target = UTA modifier = negative_200 }
 
 add_ideas = {
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_bedouin
 }

@@ -3,6 +3,13 @@ set_research_slots = 3
 add_named_threat = { threat = 0.5816 name = infamy }
 
 oob = "GER_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "GER_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "GER_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -69,6 +76,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 7
 	communism = 24
@@ -76,6 +84,7 @@ set_popularities = {
 	fascism = 32
 	neutrality = 6
 }
+
 add_opinion_modifier = { target = ADA modifier = positive_180 }
 add_opinion_modifier = { target = AQI modifier = negative_51 }
 add_opinion_modifier = { target = BEN modifier = negative_20 }

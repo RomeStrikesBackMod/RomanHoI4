@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "CAT_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "CAT_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "CAT_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -85,13 +92,12 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 100
-	communism = 0
-	democratic = 0
-	fascism = 0
 	neutrality = 0
 }
+
 add_opinion_modifier = { target = AQI modifier = positive_60 }
 add_opinion_modifier = { target = BIR modifier = negative_15 }
 add_opinion_modifier = { target = BRG modifier = positive_30 }
@@ -115,7 +121,7 @@ set_war_support = 0.60
 create_country_leader = {
     name = "Hajjaj al-Mayurqui"
     desc = "POLITICS_HAJJAJ_AL-MAYURQUI_DESC"
-    picture = "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds"
+    picture = "gfx/leaders/OC/Portrait_SPR_Alfonso_XIII.dds"
     expire = "1965.1.1"
     ideology = dictatorship
     traits = {
@@ -179,17 +185,6 @@ create_corps_commander = {
 ### VARIANTS ###
 if = {
 	limit = { has_dlc = "Man the Guns" }
-	create_equipment_variant = {
-		name = "1936 Submarine"
-		type = ship_hull_submarine_2
-		name_group = CAT_SS_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_engine_slot = sub_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_sub_2
-			rear_1_custom_slot = ship_torpedo_sub_2
-		}
-	}
 	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
@@ -259,6 +254,17 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_2
 			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "1936 Submarine"
+		type = ship_hull_submarine_2
+		name_group = CAT_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_engine_slot = sub_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			rear_1_custom_slot = ship_torpedo_sub_2
 		}
 	}
 }

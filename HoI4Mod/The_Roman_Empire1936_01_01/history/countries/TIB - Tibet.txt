@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "TIB_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "TIB_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "TIB_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -42,13 +49,13 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 36
-	communism = 0
 	democratic = 50
-	fascism = 0
 	neutrality = 14
 }
+
 add_opinion_modifier = { target = BUR modifier = negative_120 }
 add_opinion_modifier = { target = GRB modifier = negative_50 }
 add_opinion_modifier = { target = IND modifier = negative_200 }
@@ -60,7 +67,7 @@ add_opinion_modifier = { target = UTA modifier = negative_174 }
 
 add_ideas = {
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_tibetan
 }

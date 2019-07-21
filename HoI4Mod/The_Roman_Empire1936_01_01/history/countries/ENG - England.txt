@@ -8,19 +8,26 @@ declare_war_on = {
 	generator = { 419 }
 }
 ADA = {
-	add_to_war = { 
+	add_to_war = {
 		targeted_alliance = ENG
 		enemy = BIR
 	}
 }
 MEX = {
-	add_to_war = { 
+	add_to_war = {
 		targeted_alliance = BIR
 		enemy = ENG
 	}
 }
 
 oob = "ENG_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "ENG_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "ENG_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -88,7 +95,7 @@ if = {
 add_tech_bonus = { name = air_doc_bonus bonus = 0.90 uses = 1 category = air_doctrine }
 add_tech_bonus = { name = land_doc_bonus bonus = 0.90 uses = 1 category = land_doctrine }
 add_tech_bonus = { name = naval_doc_bonus bonus = 0.90 uses = 1 category = naval_doctrine }
-set_convoys = 30
+set_convoys = 0
 
 
 set_politics = {
@@ -97,6 +104,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 6
 	communism = 26
@@ -104,6 +112,7 @@ set_popularities = {
 	fascism = 12
 	neutrality = 5
 }
+
 add_opinion_modifier = { target = ADA modifier = positive_200 }
 add_opinion_modifier = { target = AQI modifier = negative_10 }
 add_opinion_modifier = { target = ARG modifier = positive_25 }
@@ -1234,17 +1243,6 @@ create_navy_leader = {
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {
-		name = "1936 Submarine"
-		type = ship_hull_submarine_2
-		name_group = ENG_SS_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_engine_slot = sub_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_sub_2
-			rear_1_custom_slot = ship_torpedo_sub_2
-		}
-	}
-	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
 		name_group = ENG_BB_HISTORICAL
@@ -1313,6 +1311,17 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_2
 			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "1936 Submarine"
+		type = ship_hull_submarine_2
+		name_group = ENG_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_engine_slot = sub_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			rear_1_custom_slot = ship_torpedo_sub_2
 		}
 	}
 }

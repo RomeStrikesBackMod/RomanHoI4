@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "AUS_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "AUS_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "AUS_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -43,13 +50,14 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 10
 	communism = 28
 	democratic = 60
-	fascism = 0
 	neutrality = 2
 }
+
 add_opinion_modifier = { target = BEN modifier = positive_32 }
 add_opinion_modifier = { target = BIR modifier = positive_185 }
 add_opinion_modifier = { target = CAN modifier = positive_198 }

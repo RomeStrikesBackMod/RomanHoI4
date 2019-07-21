@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "HAI_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "HAI_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "HAI_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -51,13 +58,12 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
-	absolutist = 0
 	communism = 100
-	democratic = 0
-	fascism = 0
 	neutrality = 0
 }
+
 add_opinion_modifier = { target = BIR modifier = negative_47 }
 add_opinion_modifier = { target = IND modifier = negative_100 }
 add_opinion_modifier = { target = KHI modifier = positive_11 }
@@ -74,7 +80,7 @@ add_opinion_modifier = { target = UTA modifier = negative_1 }
 
 add_ideas = {
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_caribeno
 }
