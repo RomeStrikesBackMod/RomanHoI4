@@ -488,6 +488,73 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = tesb_GER.20
+	title = tesb_GER.20.t
+	desc = tesb_GER.20.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Accept GER
+	option = {
+		name = tesb_GER.20.a
+		effect_tooltip = {
+			add_to_faction = GER
+		}
+		hidden_effect = {
+			GER = { country_event = { id = tesb_GER.21 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	#Reject GER
+	option = {
+		name = tesb_GER.20.b
+		hidden_effect = {
+			GER = { country_event = { id = tesb_GER.22 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_GER.21
+	title = tesb_GER.21.t
+	desc = tesb_GER.21.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Join PLC
+	option = {
+		name = tesb_GER.21.a
+		FROM = { add_to_faction = ROOT }
+	}
+}
+
+country_event = {
+	id = tesb_GER.22
+	title = tesb_GER.22.t
+	desc = tesb_GER.22.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#too bad
+	option = {
+		name = tesb_GER.22.a
+	}
+}
 
 country_event = {
 	id = tesb_GER.25
@@ -510,7 +577,140 @@ country_event = {
 		add_political_power = -100
 		add_stability = -0.2
 	}
+}
 
+country_event = {
+	id = tesb_GER.30
+	title = tesb_GER.30.t
+	desc = tesb_GER.30.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Agree to transfer
+	option = {
+		name = tesb_GER.30.a
+		effect_tooltip = {
+			transfer_state = 224 
+			GER = {
+				remove_state_core = 224
+				remove_state_core = 438
+				#remove_state_core = 277
+				remove_state_core = 279
+			}
+		}
+		hidden_effect = {
+			GER = { country_event = { id = tesb_GER.31 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 20
+		}
+	}
+	#Reject transfer
+	option = {
+		name = tesb_GER.30.b
+		hidden_effect = {
+			GER = { country_event = { id = tesb_GER.32 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_GER.31
+	title = tesb_GER.31.t
+	desc = tesb_GER.31.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#transfers
+	option = {
+		name = tesb_GER.31.a
+		PLC = { transfer_state = 224 }
+		224 = { add_manpower = -200000 }
+		GER = {
+			remove_state_core = 244
+			remove_state_core = 438
+			#remove_state_core = 277
+			remove_state_core = 279
+			random_owned_controlled_state = {
+				limit = { NOT = { has_state_flag = PLC_transfer } }
+				add_manpower = 200000
+				set_state_flag = PLC_transfer
+			}
+		}
+		if = {
+			limit = { owns_state = 438 }
+			438 = { add_manpower = -200000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = { NOT = { has_state_flag = PLC_transfer } }
+					add_manpower = 200000
+					set_state_flag = PLC_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 279 }
+			279 = { add_manpower = -200000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = { NOT = { has_state_flag = PLC_transfer } }
+					add_manpower = 200000
+					set_state_flag = PLC_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 440 }
+			440 = { add_manpower = -100000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = { NOT = { has_state_flag = PLC_transfer } }
+					add_manpower = 100000
+					set_state_flag = PLC_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 441 }
+			441 = { add_manpower = -100000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = { NOT = { has_state_flag = PLC_transfer } }
+					add_manpower = 100000
+					set_state_flag = PLC_transfer
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_GER.32
+	title = tesb_GER.32.t
+	desc = tesb_GER.32.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Refused transfer
+	option = {
+		name = tesb_GER.32.a
+		add_opinion_modifier = {
+			target = PLC
+			modifier = GER_PLC_refused_exchange
+		}
+	}
 }
 
 country_event = {
@@ -521,30 +721,169 @@ country_event = {
 
 	is_triggered_only = yes
 	immediate = {
+		hidden_effect = {
+
+		}
+		every_other_country = {
+			limit = {
+				has_government = communism
+			}
+			country_event = {
+				id = tesb_GER.101
+				hours = 2
+			}
+		}
+		every_other_country = {
+			limit = {
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+				communism > 0.3
+			}
+			country_event = {
+				id = tesb_GER.102
+				hours = 2
+			}
+		}
+		every_other_country = {
+			limit = {
+				OR = {
+					has_government = absolutist
+					has_government = fascism
+				}
+				communism > 0.3
+			}
+			country_event = {
+				id = tesb_GER.103
+				hours = 2
+			}
+		}
 	}
 	
-	#fascists
+	#Internationale
 	option = {
 		name = tesb_GER.100.a
 		add_popularity = {
-			ideology = fascism
-			popularity = 0.05
-		}
-	}
-	#communists
-	option = {
-		name = tesb_GER.100.b
-		add_popularity = {
 			ideology = communism
-			popularity = 0.1
+			popularity = 0.01
+		}
+		country_event = {
+			id = tesb_GER.105
+			hours = 24
 		}
 	}
-	#democratic
+}
+
+country_event = {
+	id = tesb_GER.101
+	title = tesb_GER.101.t
+	desc = tesb_GER.101.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	
+	#Attend
 	option = {
-		name = tesb_GER.100.c
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.05
+		name = tesb_GER.101.a
+		set_country_flag = attending_2nd_international
+	}
+	#Don't Attend
+	option = {
+		name = tesb_GER.101.b
+	}
+}
+
+country_event = {
+	id = tesb_GER.102
+	title = tesb_GER.102.t
+	desc = tesb_GER.102.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	
+	#Attend
+	option = {
+		name = tesb_GER.102.a
+		set_country_flag = attending_2nd_international
+	}
+	#Don't Attend
+	option = {
+		name = tesb_GER.102.b
+	}
+}
+
+country_event = {
+	id = tesb_GER.103
+	title = tesb_GER.103.t
+	desc = tesb_GER.103.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	
+	#Permit
+	option = {
+		name = tesb_GER.103.a
+		set_country_flag = attending_2nd_international
+	}
+	#Don't Permit
+	option = {
+		name = tesb_GER.103.b
+	}
+}
+
+country_event = {
+	id = tesb_GER.105
+	title = tesb_GER.105.t
+	desc = tesb_GER.105.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		every_other_country = {
+			limit = {
+				has_country_flag = attending_2nd_international
+			}
+			country_event = {
+				id = tesb_GER.106
+			}
 		}
+	}
+	
+	option = {
+		name = tesb_GER.105.a
+		add_ideas = GER_second_international_idea
+	}
+}
+
+country_event = {
+	id = tesb_GER.106
+	title = tesb_GER.106.t
+	desc = tesb_GER.106.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	
+	#Sign
+	option = {
+		name = tesb_GER.106.a
+		add_ideas = GER_second_international_idea
+	}
+	
+	#Don't Sign
+	option = {
+		name = tesb_GER.106.b
 	}
 }

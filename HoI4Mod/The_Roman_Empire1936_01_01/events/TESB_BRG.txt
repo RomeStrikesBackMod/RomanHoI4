@@ -352,12 +352,12 @@ country_event = {
 	
 	#Grant FLD picardie
 	option = {
-		name = tesb_BRG.132.a
+		name = tesb_BRG.135.a
 		FLD = { transfer_state = 199 }
 	}
 	#Grant FRA picardie/Keep picardie
 	option = {
-		name = tesb_BRG.132.b
+		name = tesb_BRG.135.b
 		FLD = {
 			add_opinion_modifier = {
 				modifier = BRG_broke_promise
@@ -527,5 +527,118 @@ country_event = {
 			type = puppet_wargoal_focus
 			target = ITA
 		}
+	}
+}
+
+#alliance with HUN
+country_event = {
+	id = tesb_BRG.160
+	title = tesb_BRG.160.t
+	desc = {
+		trigger = { is_faction_leader = yes }
+		text = tesb_BRG.160.da
+	}
+	desc = {
+		trigger = { is_faction_leader = no }
+		text = tesb_BRG.160.db
+	}
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_BRG.160.a
+		set_country_flag = join_BRG
+		BRG = {
+			country_event = { id = tesb_BRG.161 hours = 24 }
+		}
+		if = {
+			limit = {
+				is_faction_leader = yes
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				country_event = { id = tesb_BRG.162 }
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_BRG.160.b
+		set_country_flag = reject_BRG
+		BRG = {
+			country_event = { id = tesb_BRG.163 hours = 24 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#alliance with HUN
+country_event = {
+	id = tesb_BRG.161
+	title = tesb_BRG.161.t
+	desc = tesb_BRG.161.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_BRG.161.a
+		set_faction_name = "BRG_HUN_faction"
+		every_country = {
+			limit = {
+				has_country_flag = join_BRG
+			}
+			BRG = { add_to_faction = PREV }
+		}
+	}
+}
+
+#alliance with HUN
+country_event = {
+	id = tesb_BRG.162
+	title = tesb_BRG.162.t
+	desc = tesb_BRG.162.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_BRG.162.a
+		set_country_flag = join_BRG
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	#leave
+	option = {
+		name = tesb_BRG.162.b
+		leave_faction = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+#no alliance with HUN
+country_event = {
+	id = tesb_BRG.163
+	title = tesb_BRG.163.t
+	desc = tesb_BRG.163.desc
+	picture = GFX_goal_generic_improve_relations
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_BRG.163.a
 	}
 }

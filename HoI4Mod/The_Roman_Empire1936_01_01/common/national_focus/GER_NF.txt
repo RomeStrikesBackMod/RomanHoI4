@@ -1560,6 +1560,323 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_polish_alliance
+		icon = GFX_focus_generic_polish_deal
+		prerequisite = { focus = GER_rache }
+		mutually_exclusive = { focus = GER_germany_first }
+		relative_position_id = GER_rache
+		x = -1
+		y = 1
+		cost = 10
+		#available_if_capitulated = yes
+		available = {
+			has_government = fascism
+			can_join_faction = yes
+			PLC = { has_government = fascism is_faction_leader = yes }
+		}
+		bypass = {
+			is_in_faction_with = PLC
+		}
+		completion_reward = {
+			PLC = {
+				country_event = {
+					id = tesb_misc.30
+					hours = 2
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_population_exchange
+		icon = GFX_goal_generic_improve_relations
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = GER_polish_alliance }
+		relative_position_id = GER_polish_alliance
+		available = {
+			owns_state = 224
+			has_government = fascism
+			#is_in_faction_with = PLC
+			PLC = {
+				exists = yes
+				NOT = {
+					focus_progress = {
+						focus = PLC_request_posen
+						progress > 0
+					}
+				}
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = PLC
+				NOT = { owns_state = 224 }
+				NOT = { country_exists = PLC }
+			}
+		}
+		completion_reward = {
+			add_political_power = 50
+			PLC = {
+				country_event = {
+					id = tesb_GER.30
+					hours = 2
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GER_reclaim_bohemia
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = GER_polish_alliance }
+		relative_position_id = GER_polish_alliance
+		x = 0
+		y = 2
+		cost = 10
+		#available_if_capitulated = yes
+		available = {
+			has_government = fascism
+			is_in_faction_with = PLC
+			has_army_manpower = { size > 200000 }
+			if = {
+				limit = {
+					278 = {
+						owner = {
+							OR = {
+								tag = HUN
+								is_subject_of = HUN
+							}
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = GER_reclaim_bohemia_HUN_TT
+					PLC = {
+						has_completed_focus = PLC_second_dresden_conference
+					}
+					HUN = {
+						any_owned_state = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				HUN = { is_neutral_to_ROOT = yes }
+				else_if = {
+					limit = {
+						278 = {
+							owner = {
+								NOT = {
+									tag = HUN
+									is_subject_of = HUN
+								}
+							}
+						}
+					}
+					custom_trigger_tooltip = {
+						tooltip = GER_reclaim_bohemia_TT
+						278 = {
+							owner = {
+								is_neutral_to_ROOT = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					278 = {
+						owner = {
+							OR = {
+								tag = HUN
+								is_subject_of = HUN
+							}
+						}
+					}
+				}
+				add_state_claim = 273
+				create_wargoal = {
+					target = HUN
+					type = take_core_state
+					generator = {
+						276 278 274 275 582
+					}
+				}
+				else = {
+					278 = {
+						owner = {
+							GER = {
+								create_wargoal = {
+									target = PREV
+									type = take_core_state
+									generator = {
+										278 274 275
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_germany_first
+		icon = GFX_goal_molotov_ribbentrop_pact
+		prerequisite = { focus = GER_rache }
+		mutually_exclusive = { focus = GER_polish_alliance }
+		relative_position_id = GER_rache
+		x = 1
+		y = 1
+		cost = 10
+		#available_if_capitulated = yes
+		available = {
+			has_government = fascism
+			can_join_faction = yes
+			has_army_manpower = { size > 100000 }
+		}
+		completion_reward = {
+			add_ideas = GER_new_reich
+			create_faction = "GER_reich"
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_secure_alps
+		icon = GFX_goal_poland_goal
+		prerequisite = { focus = GER_germany_first focus = GER_polish_alliance }
+		relative_position_id = GER_germany_first
+		x = -1
+		y = 1
+		cost = 10
+		#available_if_capitulated = yes
+		available = {
+			has_government = fascism
+			has_army_manpower = { size > 150000 }
+			SWI = {
+				exists = yes
+				is_neutral_to_ROOT = yes
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = SWI
+				type = puppet_wargoal_focus
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_crossing_rhine
+		icon = GFX_goal_generic_occupy_start_war
+		prerequisite = { focus = GER_germany_first focus = GER_renew_british_alliance }
+		relative_position_id = GER_germany_first
+		x = 0
+		y = 2
+		cost = 10
+		#available_if_capitulated = yes
+		available = {
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				has_government = democratic
+				NOT = {
+					BRG = { has_government = democratic }
+				}
+				else = {
+					has_government = fascism
+				}
+			}
+			has_army_manpower = { size > 250000 }
+			BRG = {
+				exists = yes
+				is_neutral_to_ROOT = yes
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = BRG
+				type = take_claimed_state
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_lotharingia
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = GER_crossing_rhine }
+		relative_position_id = GER_crossing_rhine
+		x = 0
+		y = 1
+		cost = 20
+		#available_if_capitulated = yes
+		available = {
+			#has_government = fascism
+			has_war = no
+			OR = {
+				owns_state = 59
+				owns_state = 60
+				owns_state = 61
+				owns_state = 62
+				owns_state = 63
+				owns_state = 64
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { owns_state = 59 }
+				add_state_core = 59
+			}
+			if = {
+				limit = { owns_state = 60 }
+				add_state_core = 60
+			}
+			if = {
+				limit = { owns_state = 61 }
+				add_state_core = 61
+			}
+			if = {
+				limit = { owns_state = 62 }
+				add_state_core = 62
+			}
+			if = {
+				limit = { owns_state = 63 }
+				add_state_core = 63
+			}
+			if = {
+				limit = { owns_state = 64 }
+				add_state_core = 64
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
 		id = GER_maintain_balance
 		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = { focus = GER_election_1936 }
@@ -1585,8 +1902,201 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_rejoin_northern_alliance
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = GER_maintain_balance }
+		mutually_exclusive = { focus = GER_nord_atlantic_organization }
+		relative_position_id = GER_maintain_balance
+		x = 1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = democratic
+			can_join_faction = yes
+			RUS = { has_government = democratic is_faction_leader = yes }
+		}
+		bypass = {
+			is_in_faction_with = RUS
+		}
+		completion_reward = {
+			RUS = {
+				country_event = {
+					id = tesb_misc.30
+					hours = 2
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_partition_poland
+		icon = GFX_focus_generic_polish_deal
+		prerequisite = { focus = GER_rejoin_northern_alliance }
+		relative_position_id = GER_rejoin_northern_alliance
+		x = 0
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = democratic
+			is_in_faction_with = RUS
+			PLC = {
+				is_neutral_to_ROOT = yes
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					436 = {
+						NOT = {
+							is_claimed_by = GER
+							is_core_of = GER
+						}
+						is_owned_by = PLC
+					}
+				}
+				add_state_claim = 436
+			}
+			if = {
+				limit = {
+					437 = {
+						NOT = {
+							is_claimed_by = GER
+							is_core_of = GER
+						}
+						is_owned_by = PLC
+					}
+				}
+				add_state_claim = 437
+			}
+			if = {
+				limit = {
+					440 = {
+						NOT = {
+							is_claimed_by = RUS
+							is_core_of = RUS
+						}
+						is_owned_by = PLC
+					}
+				}
+				RUS = { add_state_claim = 440 }
+			}
+			if = {
+				limit = {
+					441 = {
+						NOT = {
+							is_claimed_by = RUS
+							is_core_of = RUS
+						}
+						is_owned_by = PLC
+					}
+				}
+				RUS = { add_state_claim = 441 }
+			}
+			if = {
+				limit = {
+					277 = {
+						NOT = {
+							is_claimed_by = RUS
+							is_core_of = RUS
+						}
+						is_owned_by = PLC
+					}
+				}
+				RUS = { add_state_claim = 277 }
+			}
+			if = {
+				limit = {
+					PLC = {
+						any_owned_state = {
+							is_core_of = GER
+						}
+					}
+				}
+				create_wargoal = {
+					target = PLC
+					type = take_core_state
+				}
+				else_if = {
+					limit = {
+						PLC = {
+							any_owned_state = {
+								is_claimed_by = GER
+							}
+						}
+					}
+					create_wargoal = {
+						target = PLC
+						type = take_claimed_state
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_nord_atlantic_organization
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = GER_maintain_balance }
+		mutually_exclusive = { focus = GER_rejoin_northern_alliance }
+		relative_position_id = GER_maintain_balance
+		x = -1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = democratic
+			can_join_faction = yes
+			num_of_factories > 49
+		}
+		completion_reward = {
+			add_ideas = GER_nord_atlantic_org
+			create_faction = "GER_NAO"
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_renew_british_alliance
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = GER_nord_atlantic_organization }
+		relative_position_id = GER_nord_atlantic_organization
+		x = 0
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = democratic
+			GRB = {
+				has_government = democratic
+				is_potential_friend_of_ROOT = yes
+			}
+		}
+		completion_reward = {
+			GRB = {
+				country_event = {
+					id = tesb_misc.40
+					hours = 2
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
 		id = GER_arbeiterpartei
-		icon = GFX_goal_support_communism
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
 		prerequisite = { focus = GER_election_1936 }
 		mutually_exclusive = { focus = GER_maintain_balance focus = GER_rache }
 		relative_position_id = GER_election_1936
@@ -1602,6 +2112,152 @@ focus_tree = {
 			set_politics = {
 				ruling_party = communism
 				elections_allowed = yes
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_spread_revolution
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = GER_arbeiterpartei }
+		relative_position_id = GER_arbeiterpartei
+		x = 1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = communism
+			num_of_factories > 49
+		}
+		completion_reward = {
+			every_neighbor_country = {
+				add_timed_idea = {
+					idea = GER_revolutionaries
+					days = 365
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_channel_socialists
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = GER_arbeiterpartei }
+		relative_position_id = GER_arbeiterpartei
+		x = -1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = communism
+			num_of_factories > 49
+		}
+		completion_reward = {
+			FRA = {
+				add_timed_idea = {
+					idea = GER_revolutionaries
+					days = 365
+				}
+			}
+			GRB = {
+				add_timed_idea = {
+					idea = GER_revolutionaries
+					days = 365
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_host_international
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = GER_spread_revolution }
+		prerequisite = { focus = GER_channel_socialists }
+		relative_position_id = GER_channel_socialists
+		x = 1
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = communism
+			num_of_factories > 49
+		}
+		completion_reward = {
+			country_event = {
+				id = tesb_GER.100
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_european_union
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = GER_host_international }
+		relative_position_id = GER_host_international
+		x = 0
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			has_government = communism
+			can_join_faction = yes
+		}
+		completion_reward = {
+			add_ideas = GER_european_union_idea
+			create_faction = "GER_eu_faction"
+			every_other_country = {
+				limit = {
+					OR = {
+						has_government = communism
+						has_idea = GER_second_international_idea
+						has_idea = GER_revolutionaries
+						communism > 0.6
+					}
+					capital_scope = {
+						is_on_continent = europe
+					}
+				}
+				country_event = {
+					id = tesb_misc.40
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	focus = {
+		id = GER_overthrow_hungarian_monarchy
+		icon = GFX_focus_rom_abdicate
+		prerequisite = { focus = GER_european_union focus = GER_partition_poland focus = GER_renew_british_alliance }
+		relative_position_id = GER_european_union
+		x = -2
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			HUN = {
+				has_government = absolutist
+				is_neutral_to_ROOT = yes
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = HUN
+				type = topple_government
 			}
 		}
 		ai_will_do = {

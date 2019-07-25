@@ -1494,6 +1494,7 @@ focus_tree = {
 			GER = { fascism > 0.4 NOT = { has_country_flag = GER_election_1936_flag } }
 			OR = {
 				num_divisions > 14
+				has_army_manpower = { size > 120000 }
 				num_of_factories > 19
 			}
 		}
@@ -1549,16 +1550,16 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					is_in_faction = no
-				}
-				create_faction = "PLC_baltic_axis_faction"
-			}
-			if = {
-				limit = {
 					is_in_faction = yes
 					is_faction_leader = no
 				}
 				leave_faction = yes
+				create_faction = "PLC_baltic_axis_faction"
+			}
+			if = {
+				limit = {
+					is_in_faction = no
+				}
 				create_faction = "PLC_baltic_axis_faction"
 			}
 			if = {
@@ -1618,18 +1619,16 @@ focus_tree = {
 		available = {
 			is_puppet = no
 			#is_in_faction_with = GER
-			OR = { HUN = { owns_state = 276 } HUN = { owns_state = 273 } }
-			NOT = { is_in_faction_with = HUN }
-			NOT = { has_war_with = HUN }
-			has_army_manpower = {
-				size > 100000
-			}
+			HUN = { is_neutral_to_ROOT = yes }
+			OR = { 276 = { is_owned_by = HUN } 273 = { is_owned_by = HUN } }
+			has_army_manpower = { size > 150000 }
 		}
 		bypass = {
 			OR = {
-				GER = { owns_state = 276 owns_state = 273 }
-				HUN = { NOT = { owns_state = 276 } NOT = { owns_state = 273 } }
-				NOT = { country_exists = HUN }
+				has_war_with = HUN
+				is_in_faction_with = HUN
+				HUN = { is_subject_of = PLC }
+				NOT = { 276 = { is_owned_by = HUN } 273 = { is_owned_by = HUN } }
 			}
 		}
 		select_effect = {
@@ -1639,6 +1638,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			custom_effect_tooltip = PLC_first_dresden_conference_TT
 			HUN = {
 				country_event = {
 					id = tesb_PLC.106
@@ -1661,7 +1661,7 @@ focus_tree = {
 	focus = {
 		id = PLC_request_posen
 		icon = GFX_goal_generic_improve_relations
-		x = 1
+		x = 0
 		y = 1
 		cost = 10
 		prerequisite = { focus = PLC_first_dresden_conference }
@@ -1711,15 +1711,22 @@ focus_tree = {
 					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
 					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
 				}
-				NOT = { is_in_faction_with = HUN }
-				NOT = { has_war_with = HUN }
+				HUN = { is_neutral_to_ROOT = yes }
+				custom_trigger_tooltip = {
+					tooltip = HUN_or_subject_owns_galicia_bohemia
+					279 = { is_owned_by_HUN_or_subject = yes }
+					277 = { is_owned_by_HUN_or_subject = yes }
+					278 = { is_owned_by_HUN_or_subject = yes }
+					274 = { is_owned_by_HUN_or_subject = yes }
+				}
 			}
 			else_if = {
 				limit = {
 					POL = { owns_state = 279 owns_state = 277 is_subject = no }
 				}
-				NOT = { is_in_faction_with = POL }
-				NOT = { has_war_with = POL }
+				POL = { is_neutral_to_ROOT = yes }
+				279 = { is_owned_by = POL }
+				277 = { is_owned_by = POL }
 			}
 			if = {
 				limit = {
@@ -1730,42 +1737,35 @@ focus_tree = {
 						277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
 					}
 				}
-				NOT = { is_in_faction_with = HUN }
-				NOT = { has_war_with = HUN }
+				HUN = { is_neutral_to_ROOT = yes }
+				custom_trigger_tooltip = {
+					tooltip = HUN_or_subject_owns_bohemia
+					278 = { is_owned_by_HUN_or_subject = yes }
+					274 = { is_owned_by_HUN_or_subject = yes }
+				}
 			}
 		}
 		bypass = {
-			if = {
-				limit = {
-					POL = { owns_state = 277 owns_state = 279 is_subject = no }
-				}
-				OR = {
-					has_war_with = POL
-					is_in_faction_with = POL
-					AND = {
+			OR = {
+				AND = {
+					PLC = {
 						owns_state = 279
 						owns_state = 277
 					}
-				}
-			}
-			OR = {
-				has_war_with = HUN
-				is_in_faction_with = HUN
-				NOT = { country_exists = HUN }
-				AND = {
-					owns_state = 279
-					owns_state = 277
-					HUN = {
-						all_owned_state = { NOT = { is_core_of = BAV } }
+					BAV = {
+						owns_state = 278
+						owns_state = 274
 					}
 				}
+				has_war_with = HUN
+				is_in_faction_with = HUN
 			}
 		}
 		select_effect = {
 			if = {
 				limit = {
 					279 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+					277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
 				}
 				HUN = { save_global_event_target_as = galicia_owner }
 			}
@@ -1786,10 +1786,11 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			custom_effect_tooltip = PLC_first_dresden_conference_TT
 			if = {
 				limit = {
 					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
 				}
 				HUN = {
 					country_event = {
@@ -1810,7 +1811,7 @@ focus_tree = {
 			if = {
 				limit = {
 					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }					
+					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
 				}
 				HUN = {
 					country_event = {
@@ -1866,6 +1867,7 @@ focus_tree = {
 			SCA = { fascism > 0.4 }
 			OR = {
 				num_divisions > 14
+				has_army_manpower = { size > 120000 }
 				num_of_factories > 19
 			}
 		}
