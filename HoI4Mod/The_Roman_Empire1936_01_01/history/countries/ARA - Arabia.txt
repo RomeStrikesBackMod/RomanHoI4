@@ -1,12 +1,18 @@
 ﻿capital = 23
 set_research_slots = 3
 
-oob = "ARA_OOB"
-
-
 declare_war_on = {
 	target = HED
-	type = annex_everything
+	type = civil_war
+}
+
+oob = "ARA_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "ARA_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "ARA_1936_naval_legacy"
+	}
 }
 
 # Starting tech
@@ -48,13 +54,12 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
-	absolutist = 0
-	communism = 0
-	democratic = 0
 	fascism = 100
 	neutrality = 0
 }
+
 add_opinion_modifier = { target = BIR modifier = negative_30 }
 add_opinion_modifier = { target = CAN modifier = negative_10 }
 add_opinion_modifier = { target = ENG modifier = negative_10 }
@@ -65,7 +70,7 @@ add_opinion_modifier = { target = UTA modifier = negative_30 }
 
 add_ideas = {
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_mashriqi
 }
@@ -74,7 +79,7 @@ set_war_support = 0.75
 create_country_leader = {
     name = "Hisham ibn Khalid"
     desc = "POLITICS_HISHAM_IBN KHALID_DESC"
-    picture = "gfx/leaders/SAU/Portrait_Saudi_arabia_Abdulazis_Ibn_Saud.dds"
+    picture = "gfx/leaders/OC/portrait_IRQ_Rashid_Ali_al_Gaylani.dds"
     expire = "1965.1.1"
     ideology = fascism_ideology
     traits = {

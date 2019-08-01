@@ -1535,7 +1535,15 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_ideas = collectivist_ethos_focus_democratic
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				add_ideas = collectivist_ethos_focus_neutral
+				else = {
+					add_ideas = collectivist_ethos_focus_democratic
+				}
+			}
 		}
 		ai_will_do = {
 			factor = 5

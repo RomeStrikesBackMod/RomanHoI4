@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "BIR_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "BIR_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "BIR_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -54,6 +61,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 6
 	communism = 34
@@ -61,6 +69,7 @@ set_popularities = {
 	fascism = 10
 	neutrality = 4
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_193 }
 add_opinion_modifier = { target = AOT modifier = negative_15 }
 add_opinion_modifier = { target = AQI modifier = negative_10 }

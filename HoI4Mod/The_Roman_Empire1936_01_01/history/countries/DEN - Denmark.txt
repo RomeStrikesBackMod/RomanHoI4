@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "DEN_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "DEN_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "DEN_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -43,11 +50,12 @@ set_convoys = 0
 
 
 set_politics = {
-    ruling_party = communism
+    ruling_party = fascism
     last_election = "1912.10.8"
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 0
 	communism = 11
@@ -55,6 +63,7 @@ set_popularities = {
 	fascism = 79
 	neutrality = 5
 }
+
 add_opinion_modifier = { target = AQI modifier = negative_50 }
 add_opinion_modifier = { target = BIR modifier = positive_82 }
 add_opinion_modifier = { target = BRG modifier = positive_98 }

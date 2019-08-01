@@ -578,3 +578,143 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = tesb_misc.30
+	title = tesb_misc.30.t
+	desc = tesb_misc.30.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Accept FROM
+	option = {
+		name = tesb_misc.30.a
+		effect_tooltip = {
+			add_to_faction = FROM
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.31 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	#Reject FROM
+	option = {
+		name = tesb_misc.30.b
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.32 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_misc.31
+	title = tesb_misc.31.t
+	desc = tesb_misc.31.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Join FROM
+	option = {
+		name = tesb_misc.31.a
+		FROM = { add_to_faction = ROOT }
+	}
+}
+
+country_event = {
+	id = tesb_misc.32
+	title = tesb_misc.32.t
+	desc = tesb_misc.32.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#too bad
+	option = {
+		name = tesb_misc.32.a
+	}
+}
+
+country_event = {
+	id = tesb_misc.40
+	title = tesb_misc.40.t
+	desc = tesb_misc.40.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Join FROM
+	option = {
+		name = tesb_misc.40.a
+		effect_tooltip = {
+			FROM = { add_to_faction = ROOT }
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.41 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { has_government = fascism }
+			}
+		}
+	}
+	#Reject FROM
+	option = {
+		name = tesb_misc.40.b
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.42 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_misc.41
+	title = tesb_misc.41.t
+	desc = tesb_misc.41.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#FROM joins
+	option = {
+		name = tesb_misc.41.a
+		add_to_faction = FROM
+	}
+}
+
+country_event = {
+	id = tesb_misc.42
+	title = tesb_misc.42.t
+	desc = tesb_misc.42.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#FROM refuses
+	option = {
+		name = tesb_misc.42.a
+	}
+}

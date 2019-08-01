@@ -2,6 +2,13 @@
 set_research_slots = 3
 
 oob = "ADA_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "ADA_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "ADA_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -49,6 +56,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 7
 	communism = 43
@@ -56,6 +64,7 @@ set_popularities = {
 	fascism = 14
 	neutrality = 7
 }
+
 add_opinion_modifier = { target = BCS modifier = negative_194 }
 add_opinion_modifier = { target = BEN modifier = negative_200 }
 add_opinion_modifier = { target = BIR modifier = negative_193 }
@@ -87,7 +96,7 @@ add_opinion_modifier = { target = UTA modifier = negative_200 }
 
 add_ideas = {
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_somali
 }

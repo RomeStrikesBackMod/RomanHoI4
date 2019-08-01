@@ -2,6 +2,13 @@
 set_research_slots = 2
 
 oob = "BEN_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "BEN_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "BEN_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -21,19 +28,18 @@ if = {
 set_convoys = 0
 
 
-set_politics = { 
+set_politics = {
     ruling_party = absolutist
     last_election = "1836.1.1"
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 100
-	communism = 0
-	democratic = 0
-	fascism = 0
 	neutrality = 0
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_200 }
 add_opinion_modifier = { target = AQI modifier = negative_30 }
 add_opinion_modifier = { target = ARG modifier = positive_26 }
@@ -61,7 +67,6 @@ add_opinion_modifier = { target = UTA modifier = positive_27 }
 
 
 add_ideas = {
-	uncivilized
 	volunteer_only
 	civilian_economy
 	export_focus
