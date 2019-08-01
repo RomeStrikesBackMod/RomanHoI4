@@ -186,3 +186,34 @@ RUS_support_ENG_war = {
 		value = -100
 	}
 }
+
+RUS_rival_RME = {
+	name = "RUS is rivals with RME"
+	desc = "Old enemies"
+
+	enable = {
+		tag = RUS
+	}
+	abort = {
+		OR = {
+			is_in_faction_with = RME
+			is_subject_of = RME
+			RME = { is_subject_of = RUS }
+		}
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "RME"
+		value = 100
+	}
+	ai_strategy = {
+		type = contain
+		id = "RME"
+		value = 100
+	}
+	ai_strategy = {
+		type = befriend
+		id = "RME"
+		value = -100
+	}
+}

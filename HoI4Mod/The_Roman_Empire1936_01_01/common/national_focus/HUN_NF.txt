@@ -831,9 +831,9 @@ focus_tree = {
 		}
 	}
 
-	#####################
-	### Politcal Tree ###
-	#####################
+	#######################
+	### Political  Tree ###
+	#######################
 
 	focus = {
 		id = HUN_reinforce_monarchism
@@ -867,6 +867,15 @@ focus_tree = {
 			modifier = {
 				factor = 100
 				RME = { has_completed_focus = RME_secure_the_new_state }
+			}
+			modifier = {
+				factor = 1.5
+				GER = {
+					OR = {
+						has_completed_focus = GER_maintain_balance
+						has_completed_focus = GER_arbeiterpartei
+					}
+				}
 			}
 		}
 	}
@@ -1482,6 +1491,8 @@ focus_tree = {
 		}
 	}
 	
+	### Democratic Branch ###
+
 	focus = {
 		id = HUN_democratize_government
 		icon = GFX_goal_support_democracy
@@ -1512,6 +1523,12 @@ focus_tree = {
 			modifier = {
 				factor = 100
 				RME = { has_completed_focus = RME_secure_the_new_state }
+			}
+			modifier = {
+				factor = 1.5
+				GER = {
+					has_completed_focus = GER_rache
+				}
 			}
 		}
 	}
@@ -1948,6 +1965,15 @@ focus_tree = {
 				GER = { has_government = fascism }
 				factor = 1.5
 			}
+			modifier = {
+				factor = 1.5
+				GER = {
+					OR = {
+						has_completed_focus = GER_rache
+						has_completed_focus = GER_arbeiterpartei
+					}
+				}
+			}
 		}
 	}
 
@@ -2033,6 +2059,15 @@ focus_tree = {
 				GER = { has_government = democratic }
 				factor = 1.5
 			}
+			modifier = {
+				factor = 1.5
+				GER = {
+					OR = {
+						has_completed_focus = GER_maintain_balance
+						has_completed_focus = GER_rache
+					}
+				}
+			}
 		}
 	}
 
@@ -2080,7 +2115,17 @@ focus_tree = {
 			
 		}
 		completion_reward = {
-			add_ideas = limited_conscription
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = HUN_local_militias_lim_cons
+						has_idea = volunteer_only
+						has_idea = disarmed_nation
+					}
+				}
+				add_ideas = limited_conscription
+				set_country_flag = HUN_local_militias_lim_cons
+			}
 			swap_ideas = {
 				remove_idea = HUN_communes
 				add_idea = HUN_communes_2
@@ -2140,7 +2185,7 @@ focus_tree = {
 		relative_position_id = HUN_looking_outward
 		prerequisite = { focus = HUN_looking_outward }
 		available = {
-			is_in_faction = no
+			can_join_faction = yes
 		}
 		bypass = {
 			is_in_faction = yes

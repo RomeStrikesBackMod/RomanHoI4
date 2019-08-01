@@ -899,132 +899,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RUS_cisural_infrastructure
-		icon = GFX_goal_generic_construct_infrastructure
-		x = -1
-		y = 1
-		cost = 10
-		prerequisite = { focus = RUS_russian_primacy }
-		relative_position_id = RUS_russian_primacy
-		available = {
-			owns_state = 477
-			owns_state = 479
-			owns_state = 480
-		}
-		completion_reward = {
-			477 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			479 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			480 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 3
-		}
-	}
-
-	focus = {
-		id = RUS_siberian_infrastructure
-		icon = GFX_goal_generic_construct_infrastructure
-		x = 1
-		y = 1
-		cost = 10
-		prerequisite = { focus = RUS_russian_primacy }
-		relative_position_id = RUS_russian_primacy
-		available = {
-			owns_state = 483
-			owns_state = 484
-			owns_state = 505
-		}
-		completion_reward = {
-			483 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			484 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			505 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 3
-		}
-	}
-
-	focus = {
-		id = RUS_occupy_ukraine
-		icon = GFX_goal_generic_political_pressure
-		x = 3
-		y = 1
-		cost = 5
-		prerequisite = { focus = RUS_russian_primacy }
-		relative_position_id = RUS_russian_primacy
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = owns_ukrainian_state
-				any_owned_state = {
-					is_ukraine_state = yes
-				}
-			}
-			NOT = { country_exists = UKR }
-			OR = {
-				NOT = { has_idea = PLC_supporting_ukraine }
-				has_political_power > 200
-			}
-		}
-		select_effect = {
-			if = {
-				limit = { has_idea = PLC_supporting_ukraine }
-				set_country_flag = RUS_occupy_ukraine_PLC
-				add_political_power = -100
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = { has_country_flag = RUS_occupy_ukraine_PLC }
-				custom_effect_tooltip = RUS_ukraine_pp_cost
-				add_political_power = -100
-			}
-			swap_ideas = {
-				remove_idea = RUS_ukrainian_separatism_1
-				add_idea = RUS_ukrainian_occupation_1
-			}
-		}
-		ai_will_do = {
-			factor = 3
-		}
-	}
-
-	focus = {
 		id = RUS_develop_heartland
 		icon = GFX_goal_generic_construct_civ_factory
 		x = 0
@@ -1058,6 +932,91 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_militarize_heartland
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_develop_heartland }
+		relative_position_id = RUS_develop_heartland
+		available = {
+			owns_state = 476
+			owns_state = 495
+			owns_state = 474
+		}
+		completion_reward = {
+			476 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			495 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			474 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_cisural_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_russian_primacy }
+		relative_position_id = RUS_russian_primacy
+		available = {
+			owns_state = 477
+			owns_state = 479
+			owns_state = 480
+		}
+		completion_reward = {
+			477 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			479 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			480 = {
+				add_building_construction = {
+					type = infrastructure
 					level = 1
 					instant_build = yes
 				}
@@ -1113,138 +1072,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RUS_develop_siberia
-		icon = GFX_goal_generic_construct_civ_factory
-		x = 0
-		y = 1
-		cost = 10
-		prerequisite = { focus = RUS_siberian_infrastructure }
-		relative_position_id = RUS_siberian_infrastructure
-		available = {
-			owns_state = 483
-			owns_state = 484
-			owns_state = 505
-		}
-		completion_reward = {
-			483 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-			484 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-			505 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 3
-		}
-	}
-
-	focus = {
-		id = RUS_educate_ukraine
-		icon = GFX_goal_generic_propaganda
-		x = 0
-		y = 1
-		cost = 15
-		prerequisite = { focus = RUS_occupy_ukraine }
-		relative_position_id = RUS_occupy_ukraine
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = owns_ukrainian_state
-				any_owned_state = {
-					is_ukraine_state = yes
-				}
-			}
-			NOT = { country_exists = UKR }
-			OR = {
-				NOT = { has_idea = PLC_supporting_ukraine }
-				has_political_power > 200
-			}
-		}
-		select_effect = {
-			if = {
-				limit = { has_idea = PLC_supporting_ukraine }
-				set_country_flag = RUS_educate_ukraine_PLC
-				add_political_power = -100
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = { has_country_flag = RUS_educate_ukraine_PLC }
-				custom_effect_tooltip = RUS_ukraine_pp_cost
-				add_political_power = -100
-			}
-			swap_ideas = {
-				remove_idea = RUS_ukrainian_occupation_1
-				add_idea = RUS_ukrainian_occupation_2
-			}
-		}
-		ai_will_do = {
-			factor = 3
-		}
-	}
-
-	focus = {
-		id = RUS_militarize_heartland
-		icon = GFX_goal_generic_construct_mil_factory
-		x = 0
-		y = 1
-		cost = 10
-		prerequisite = { focus = RUS_develop_heartland }
-		relative_position_id = RUS_develop_heartland
-		available = {
-			owns_state = 476
-			owns_state = 495
-			owns_state = 474
-		}
-		completion_reward = {
-			476 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-			495 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-			474 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 3
-		}
-	}
-
-	focus = {
 		id = RUS_militarize_cisurals
 		icon = GFX_goal_generic_construct_mil_factory
 		x = 0
@@ -1278,6 +1105,91 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_siberian_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_russian_primacy }
+		relative_position_id = RUS_russian_primacy
+		available = {
+			owns_state = 483
+			owns_state = 484
+			owns_state = 505
+		}
+		completion_reward = {
+			483 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			484 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			505 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_develop_siberia
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_siberian_infrastructure }
+		relative_position_id = RUS_siberian_infrastructure
+		available = {
+			owns_state = 483
+			owns_state = 484
+			owns_state = 505
+		}
+		completion_reward = {
+			483 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			484 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			505 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
 					level = 1
 					instant_build = yes
 				}
@@ -1325,6 +1237,94 @@ focus_tree = {
 					level = 1
 					instant_build = yes
 				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_occupy_ukraine
+		icon = GFX_goal_generic_political_pressure
+		x = 3
+		y = 1
+		cost = 5
+		prerequisite = { focus = RUS_russian_primacy }
+		relative_position_id = RUS_russian_primacy
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = owns_ukrainian_state
+				any_owned_state = {
+					is_ukraine_state = yes
+				}
+			}
+			NOT = { country_exists = UKR }
+			OR = {
+				NOT = { has_idea = PLC_supporting_ukraine }
+				has_political_power > 200
+			}
+		}
+		select_effect = {
+			if = {
+				limit = { has_idea = PLC_supporting_ukraine }
+				set_country_flag = RUS_occupy_ukraine_PLC
+				add_political_power = -100
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { has_country_flag = RUS_occupy_ukraine_PLC }
+				custom_effect_tooltip = RUS_ukraine_pp_cost
+				add_political_power = -100
+			}
+			swap_ideas = {
+				remove_idea = RUS_ukrainian_separatism_1
+				add_idea = RUS_ukrainian_occupation_1
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_educate_ukraine
+		icon = GFX_goal_generic_propaganda
+		x = 0
+		y = 1
+		cost = 15
+		prerequisite = { focus = RUS_occupy_ukraine }
+		relative_position_id = RUS_occupy_ukraine
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = owns_ukrainian_state
+				any_owned_state = {
+					is_ukraine_state = yes
+				}
+			}
+			NOT = { country_exists = UKR }
+			OR = {
+				NOT = { has_idea = PLC_supporting_ukraine }
+				has_political_power > 200
+			}
+		}
+		select_effect = {
+			if = {
+				limit = { has_idea = PLC_supporting_ukraine }
+				set_country_flag = RUS_educate_ukraine_PLC
+				add_political_power = -100
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { has_country_flag = RUS_educate_ukraine_PLC }
+				custom_effect_tooltip = RUS_ukraine_pp_cost
+				add_political_power = -100
+			}
+			swap_ideas = {
+				remove_idea = RUS_ukrainian_occupation_1
+				add_idea = RUS_ukrainian_occupation_2
 			}
 		}
 		ai_will_do = {
@@ -1616,6 +1616,7 @@ focus_tree = {
 			factor = 3
 		}
 	}
+
 	focus = {
 		id = RUS_ukrainian_integration
 		icon = GFX_goal_generic_improve_relations
@@ -1670,6 +1671,7 @@ focus_tree = {
 			factor = 3
 		}
 	}
+
 	focus = {
 		id = RUS_ukrainian_autonomy
 		icon = GFX_goal_support_democracy

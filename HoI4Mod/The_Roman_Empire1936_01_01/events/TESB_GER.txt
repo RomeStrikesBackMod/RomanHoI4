@@ -146,6 +146,45 @@ country_event = {
 	}
 }
 
+#Elections Start
+news_event = {
+	id = tesb_GER.9
+	title = tesb_GER.9.t
+	desc = tesb_GER.9.d
+	picture = GFX_report_event_german_italian_pact
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = GER
+		date > 1936.4.1
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_election_1936_flag
+			PLC = {
+				country_event = {
+					id = tesb_PLC.6
+				}
+			}
+			country_event = {
+				id = tesb_GER.10
+				days = 30
+			}
+		}
+	}
+	
+	#And they're off
+	option = {
+		name = tesb_GER.9.a
+		custom_effect_tooltip = GER_election_1936.tt
+	}
+}
+
 #Bohemian occupation
 country_event = {
 	id = tesb_GER.10
@@ -336,7 +375,7 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-			country_event = {
+			news_event = {
 				id = tesb_GER.15
 				days = 30
 			}
@@ -371,7 +410,7 @@ country_event = {
 }
 
 #election
-country_event = {
+news_event = {
 	id = tesb_GER.15
 	title = tesb_GER.15.t
 	desc = tesb_GER.15.d

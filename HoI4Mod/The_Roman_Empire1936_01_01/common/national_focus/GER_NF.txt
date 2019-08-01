@@ -451,7 +451,7 @@ focus_tree = {
 		id = rocket_effortGER
 		icon = GFX_focus_rocketry
 		prerequisite = { focus = aviation_effort_2GER }
-		prerequisite = { focus = infrastructure_effortGER }
+		#prerequisite = { focus = infrastructure_effortGER }
 		x = 0
 		y = 2
 		relative_position_id = aviation_effort_2GER
@@ -479,7 +479,7 @@ focus_tree = {
 		id = NAV_effortGER
 		icon = GFX_goal_generic_air_naval_bomber
 		prerequisite = { focus = aviation_effort_2GER }
-		prerequisite = { focus = flexible_navyGER }
+		#prerequisite = { focus = flexible_navyGER }
 		x = 1
 		y = 1
 		relative_position_id = aviation_effort_2GER
@@ -1503,9 +1503,345 @@ focus_tree = {
 		}
 	}
 
-	#####################
-	### Politcal Tree ###
-	#####################
+	#######################
+	###   Naval  Tree   ###
+	#######################
+
+	focus = {
+		id = GER_dutch_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 9
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			OR = {
+				owns_state = 203
+				owns_state = 204
+				owns_state = 225
+			}
+		}
+		completion_reward = {
+			navy_experience = 25
+			203 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			204 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			225 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.025
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.25
+				always = yes
+			}
+		}
+	}
+
+	#######################
+	### Industrial Tree ###
+	#######################
+
+	focus = {
+		id = GER_bavarian_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+		x = 12
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			any_owned_state = {
+				is_core_of = BAV
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = GER_bavarian_industry_state
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_core_of = BAV
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = BAV
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_bavarian_industry_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						NOT = { has_state_flag = GER_bavarian_industry_state }
+						NOT = {
+							owner = {
+								any_owned_state = {
+									is_core_of = BAV
+									NOT = { has_state_flag = GER_bavarian_industry_state }
+								}
+							}
+						}
+					}
+					OR = {
+						is_core_of = BAV
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = BAV
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_bavarian_industry_state
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.025
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	focus = {
+		id = GER_danish_arms
+		icon = GFX_goal_generic_construct_mil_factory
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+		x = 14
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			any_owned_state = {
+				is_core_of = DEN
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = GER_danish_arms_state
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}			
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.025
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_core_of = DEN
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = DEN
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_danish_arms_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						NOT = { has_state_flag = GER_danish_arms_state }
+						NOT = {
+							owner = {
+								any_owned_state = {
+									is_core_of = DEN
+									NOT = { has_state_flag = GER_danish_arms_state }
+								}
+							}
+						}
+					}
+					OR = {
+						is_core_of = DEN
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = DEN
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_danish_arms_state
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.025
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	#######################
+	### Political  Tree ###
+	#######################
 
 	focus = {
 		id = GER_election_1936
@@ -1514,6 +1850,12 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available_if_capitulated = yes
+		available = {
+			has_country_flag = GER_election_1936_flag
+		}
+		bypass = {
+			has_country_flag = GER_election_1936_flag
+		}
 		completion_reward = {
 			custom_effect_tooltip = GER_election_1936.tt
 			set_country_flag = GER_election_1936_flag
@@ -1534,9 +1876,13 @@ focus_tree = {
 		}
 	}
 
+	##################
+	# Fascist Branch #
+	##################
+
 	focus = {
 		id = GER_rache
-		icon = GFX_goal_support_fascism
+		icon = GFX_focus_eng_organise_the_blackshirts
 		prerequisite = { focus = GER_election_1936 }
 		mutually_exclusive = { focus = GER_maintain_balance focus = GER_arbeiterpartei }
 		relative_position_id = GER_election_1936
@@ -1645,7 +1991,7 @@ focus_tree = {
 		available = {
 			has_government = fascism
 			is_in_faction_with = PLC
-			has_army_manpower = { size > 200000 }
+			has_army_manpower = { size > 300000 }
 			if = {
 				limit = {
 					278 = {
@@ -1659,14 +2005,8 @@ focus_tree = {
 				}
 				custom_trigger_tooltip = {
 					tooltip = GER_reclaim_bohemia_HUN_TT
-					PLC = {
-						has_completed_focus = PLC_second_dresden_conference
-					}
-					HUN = {
-						any_owned_state = {
-							is_core_of = ROOT
-						}
-					}
+					PLC = { has_completed_focus = PLC_second_dresden_conference }
+					HUN = { any_owned_state = { is_core_of = ROOT } }
 				}
 				HUN = { is_neutral_to_ROOT = yes }
 				else_if = {
@@ -1683,9 +2023,7 @@ focus_tree = {
 					custom_trigger_tooltip = {
 						tooltip = GER_reclaim_bohemia_TT
 						278 = {
-							owner = {
-								is_neutral_to_ROOT = yes
-							}
+							owner = { is_neutral_to_ROOT = yes }
 						}
 					}
 				}
@@ -1707,9 +2045,6 @@ focus_tree = {
 				create_wargoal = {
 					target = HUN
 					type = take_core_state
-					generator = {
-						276 278 274 275 582
-					}
 				}
 				else = {
 					278 = {
@@ -1718,9 +2053,6 @@ focus_tree = {
 								create_wargoal = {
 									target = PREV
 									type = take_core_state
-									generator = {
-										278 274 275
-									}
 								}
 							}
 						}
@@ -1746,7 +2078,7 @@ focus_tree = {
 		available = {
 			has_government = fascism
 			can_join_faction = yes
-			has_army_manpower = { size > 100000 }
+			has_army_manpower = { size > 200000 }
 		}
 		completion_reward = {
 			add_ideas = GER_new_reich
@@ -1768,7 +2100,7 @@ focus_tree = {
 		#available_if_capitulated = yes
 		available = {
 			has_government = fascism
-			has_army_manpower = { size > 150000 }
+			has_army_manpower = { size > 250000 }
 			SWI = {
 				exists = yes
 				is_neutral_to_ROOT = yes
@@ -1796,18 +2128,12 @@ focus_tree = {
 		#available_if_capitulated = yes
 		available = {
 			if = {
-				limit = {
-					has_government = democratic
-				}
+				limit = { has_government = democratic }
 				has_government = democratic
-				NOT = {
-					BRG = { has_government = democratic }
-				}
-				else = {
-					has_government = fascism
-				}
+				NOT = { BRG = { has_government = democratic } }
+				else = { has_government = fascism }
 			}
-			has_army_manpower = { size > 250000 }
+			has_army_manpower = { size > 350000 }
 			BRG = {
 				exists = yes
 				is_neutral_to_ROOT = yes
@@ -1875,6 +2201,10 @@ focus_tree = {
 			factor = 20
 		}
 	}
+
+	#####################
+	# Democratic Branch #
+	#####################
 
 	focus = {
 		id = GER_maintain_balance
@@ -1944,18 +2274,13 @@ focus_tree = {
 		available = {
 			has_government = democratic
 			is_in_faction_with = RUS
-			PLC = {
-				is_neutral_to_ROOT = yes
-			}
+			PLC = { is_neutral_to_ROOT = yes }
 		}
 		completion_reward = {
 			if = {
 				limit = {
 					436 = {
-						NOT = {
-							is_claimed_by = GER
-							is_core_of = GER
-						}
+						NOT = { is_claimed_by = GER is_core_of = GER }
 						is_owned_by = PLC
 					}
 				}
@@ -1964,10 +2289,7 @@ focus_tree = {
 			if = {
 				limit = {
 					437 = {
-						NOT = {
-							is_claimed_by = GER
-							is_core_of = GER
-						}
+						NOT = { is_claimed_by = GER is_core_of = GER }
 						is_owned_by = PLC
 					}
 				}
@@ -1976,10 +2298,7 @@ focus_tree = {
 			if = {
 				limit = {
 					440 = {
-						NOT = {
-							is_claimed_by = RUS
-							is_core_of = RUS
-						}
+						NOT = { is_claimed_by = RUS is_core_of = RUS }
 						is_owned_by = PLC
 					}
 				}
@@ -1988,10 +2307,7 @@ focus_tree = {
 			if = {
 				limit = {
 					441 = {
-						NOT = {
-							is_claimed_by = RUS
-							is_core_of = RUS
-						}
+						NOT = { is_claimed_by = RUS is_core_of = RUS }
 						is_owned_by = PLC
 					}
 				}
@@ -2000,10 +2316,7 @@ focus_tree = {
 			if = {
 				limit = {
 					277 = {
-						NOT = {
-							is_claimed_by = RUS
-							is_core_of = RUS
-						}
+						NOT = { is_claimed_by = RUS is_core_of = RUS }
 						is_owned_by = PLC
 					}
 				}
@@ -2011,11 +2324,7 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					PLC = {
-						any_owned_state = {
-							is_core_of = GER
-						}
-					}
+					PLC = { any_owned_state = { is_core_of = GER } }
 				}
 				create_wargoal = {
 					target = PLC
@@ -2023,11 +2332,7 @@ focus_tree = {
 				}
 				else_if = {
 					limit = {
-						PLC = {
-							any_owned_state = {
-								is_claimed_by = GER
-							}
-						}
+						PLC = { any_owned_state = { is_claimed_by = GER } }
 					}
 					create_wargoal = {
 						target = PLC
@@ -2054,7 +2359,7 @@ focus_tree = {
 		available = {
 			has_government = democratic
 			can_join_faction = yes
-			num_of_factories > 49
+			num_of_factories > 74
 		}
 		completion_reward = {
 			add_ideas = GER_nord_atlantic_org
@@ -2094,6 +2399,14 @@ focus_tree = {
 		}
 	}
 
+	#FOCUS Crossing the Rhine (from GER_renew_british_alliance)
+
+	#FOCUS Overthrow Hungarian Monarchy (from GER_renew_british_alliance or GER_partition_poland)
+	
+	####################
+	# Communist Branch #
+	####################
+
 	focus = {
 		id = GER_arbeiterpartei
 		icon = GFX_focus_eng_concessions_to_the_trade_unions
@@ -2130,10 +2443,11 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			has_government = communism
-			num_of_factories > 49
+			num_of_factories > 74
 		}
 		completion_reward = {
 			every_neighbor_country = {
+				limit = { capital_scope = { is_on_continent = europe } }
 				add_timed_idea = {
 					idea = GER_revolutionaries
 					days = 365
@@ -2156,7 +2470,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			has_government = communism
-			num_of_factories > 49
+			num_of_factories > 74
 		}
 		completion_reward = {
 			FRA = {
@@ -2189,7 +2503,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			has_government = communism
-			num_of_factories > 49
+			num_of_factories > 74
 		}
 		completion_reward = {
 			country_event = {
@@ -2225,9 +2539,7 @@ focus_tree = {
 						has_idea = GER_revolutionaries
 						communism > 0.6
 					}
-					capital_scope = {
-						is_on_continent = europe
-					}
+					capital_scope = { is_on_continent = europe }
 				}
 				country_event = {
 					id = tesb_misc.40

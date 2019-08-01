@@ -1503,980 +1503,293 @@ focus_tree = {
 		}
 	}
 
+	#######################
+	### Political  Tree ###
+	#######################
+
+	### Democratic Main Branch ###
+
 	focus = {
-		id = political_effortENG
-		icon = GFX_goal_generic_demand_territory
-		x = 20
+		id = ENG_crush_dissent
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		mutually_exclusive = { focus = ENG_war_time_concessions }
+		x = 18
 		y = 0
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
-			add_political_power = 120
+			set_temp_variable = {
+				lose_stab = party_popularity@communism
+			}
+			subtract_from_temp_variable = {
+				lose_stab = 0.1
+			}
+			multiply_temp_variable = {
+				lose_stab = -0.5
+			}
+			add_stability = lose_stab
+			custom_effect_tooltip = lose_stab_communist_TT
+			add_popularity = {
+				ideology = communism
+				popularity = -0.1
+			}
+			custom_effect_tooltip = ENG_crush_dissent_TT
+		}
+		bypass = {
+			communism < 0.1
 		}
 	}
-
+	
 	focus = {
-		id = collectivist_ethosENG
-		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = political_effortENG }
-		mutually_exclusive = { focus = liberty_ethosENG}
+		id = ENG_bust_unions
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus = ENG_crush_dissent }
+		relative_position_id = ENG_crush_dissent
+		x = 0
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ENG_strong_unions
+				add_idea = ENG_union_busting
+			}
+		}
+		bypass = {
+			NOT = { has_idea = ENG_strong_unions }
+		}
+	}
+	
+	focus = {
+		id = ENG_arrest_dissenters
+		icon = GFX_focus_mex_arrest_general_cedillo
+		prerequisite = { focus = ENG_crush_dissent }
+		relative_position_id = ENG_crush_dissent
+		x = 2
+		y = 1
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ENG_communist_dissenters
+				add_idea = ENG_dissenters_arrested
+			}
+		}
+		bypass = {
+			NOT = { has_idea = ENG_communist_dissenters }
+		}
+	}
+	
+	focus = {
+		id = ENG_breakup_militias
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = { focus = ENG_crush_dissent }
+		relative_position_id = ENG_crush_dissent
 		x = -2
 		y = 1
-		relative_position_id = political_effortENG
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-			OR = {
-				has_government = absolutist
-				has_government = communism
-				has_government = fascism
-				has_government = neutrality
-			}
-		}
-		completion_reward = {
-			add_ideas = collectivist_ethos_focus_democratic
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				OR = {
-					AND = {
-						is_historical_focus_on = yes
-						has_government = neutrality
-					}
-					has_idea = neutrality_idea
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = nationalism_focusENG
-		icon = GFX_goal_support_fascism
-		prerequisite = { focus = collectivist_ethosENG }
-		mutually_exclusive = { focus = internationalism_focusENG focus = absolutism_focusENG }
-		x = -2
-		y = 1
-		relative_position_id = collectivist_ethosENG
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-			OR = {
-				has_government = fascism
-				has_government = neutrality
-			}
-		}
-		completion_reward = {
-			add_ideas = nationalism
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 2
-				any_neighbor_country = {
-					is_major = yes
-					has_government = fascism
-				}
-			}
-			modifier = {
-				factor = 0
-				AND = {
-					is_historical_focus_on = yes
-					NOT = { has_government = fascism }
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = militarismENG
-		icon = GFX_goal_generic_political_pressure
-		prerequisite = { focus = nationalism_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = nationalism_focusENG
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
-			if = {
-				limit = { has_idea = neutrality_idea }
-				remove_ideas = neutrality_idea
-			}			
-			add_ideas = militarism_focus
-			army_experience = 20
-			set_rule = { can_send_volunteers = yes }
-		}
-	}
-
-	focus = {
-		id = military_youthENG
-		icon = GFX_goal_generic_more_territorial_claims
-		prerequisite = { focus = militarismENG }
-		x = 0
-		y = 1
-		relative_position_id = militarismENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = military_youth_focus
-			if = {
-				limit = { has_government = absolutist }
-				add_popularity = {
-					ideology = absolutist
-					popularity = 0.2
-				}
-			}
-			if = {
-				limit = { has_government = communism }
-				add_popularity = {
-					ideology = communism
-					popularity = 0.2
-				}
-			}
-			if = {
-				limit = { has_government = democratic }
-				add_popularity = {
-					ideology = democratic
-					popularity = 0.2
-				}
-			}
-			if = {
-				limit = { has_government = fascism }
-				add_popularity = {
-					ideology = fascism
-					popularity = 0.2
-				}
-			}
-			if = {
-				limit = { has_government = neutrality }
-				add_popularity = {
-					ideology = neutrality
-					popularity = 0.2
-				}
+			swap_ideas = {
+				remove_idea = ENG_communist_militias
+				add_idea = ENG_conscripted_militias
 			}
 		}
-	}
-
-	focus = {
-		id = paramilitarismENG
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = military_youthENG }
-		x = 0
-		y = 1
-		relative_position_id = military_youthENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = paramilitarism_focus
-		}
-	}
-
-	focus = {
-		id = internationalism_focusENG
-		icon = GFX_goal_support_communism
-		prerequisite = { focus = collectivist_ethosENG }
-		mutually_exclusive = { focus = nationalism_focusENG focus = absolutism_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = collectivist_ethosENG
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-			OR = {
-				has_government = communism
-				has_government = neutrality
-			}
-		}
-		completion_reward = {
-			add_ideas = internationalism
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 2
-				any_neighbor_country = {
-					is_major = yes
-					has_government = communism
-				}
-			}			
-			modifier = {
-				factor = 0
-				AND = {
-					is_historical_focus_on = yes
-					NOT = { has_government = communism }
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = political_correctnessENG
-		icon = GFX_goal_generic_dangerous_deal
-		prerequisite = { focus = internationalism_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = internationalism_focusENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = { has_idea = neutrality_idea }
-				remove_ideas = neutrality_idea
-			}		
-			add_political_power = 200
-			add_ideas = idea_political_correctness
-		}
-	}
-
-	focus = {
-		id = indoctrination_focusENG
-		icon = GFX_goal_generic_propaganda
-		prerequisite = { focus = political_correctnessENG }
-		x = 0
-		y = 1
-		relative_position_id = political_correctnessENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = indoctrination_focus
-			add_political_power = 150
-		}
-	}
-
-	focus = {
-		id = political_commissarsENG
-		icon = GFX_goal_generic_forceful_treaty
-		prerequisite = { focus = indoctrination_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = indoctrination_focusENG
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-		}
-		completion_reward = {
-			add_ideas = political_commissars_focus
-			if = {
-				limit = { has_government = communism }
-				add_popularity = {
-					ideology = communism
-					popularity = 0.2
-				}
-			}
-			add_political_power = 200
-		}
-	}
-
-	focus = {
-		id = absolutism_focusENG
-		icon = GFX_focus_hun_elect_a_king
-		prerequisite = { focus = collectivist_ethosENG }
-		mutually_exclusive = { focus = nationalism_focusENG focus = internationalism_focusENG }
-		x = 2
-		y = 1
-		relative_position_id = collectivist_ethosENG
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-			OR = {
-				has_government = absolutist
-				has_government = neutrality
-			}
-		}
-		completion_reward = {
-			add_ideas = absolutism
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 2
-				any_neighbor_country = {
-					is_major = yes
-					has_government = absolutist
-				}
-			}
-			modifier = {
-				factor = 0
-				AND = {
-					is_historical_focus_on = yes
-					NOT = { has_government = absolutist }
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = royal_dictatorship_focusENG
-		icon = GFX_focus_rom_royal_dictatorship
-		prerequisite = { focus = absolutism_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = absolutism_focusENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_political_power = 200
-				add_popularity = {
-					ideology = absolutist
-					popularity = 0.2
-				}
-				add_ideas = royal_dictatorship_focus
-		}
-	}
-
-	focus = {
-		id = royal_army_tradition_focusENG
-		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = royal_dictatorship_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = royal_dictatorship_focusENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			army_experience = 40
-			# add a elite division template?
-		}
-	}
-
-	focus = {
-		id = historical_claims_focusENG
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		prerequisite = { focus = royal_army_tradition_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = royal_army_tradition_focusENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = historical_claims_focus
-		}
-	}
-
-	focus = {
-		id = ideological_fanaticismENG
-		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = paramilitarismENG focus = political_commissarsENG focus = historical_claims_focusENG }
-		x = 0
-		y = 6
-		relative_position_id = collectivist_ethosENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = ideological_fanaticism_focus
-			set_rule = {
-				can_create_factions = yes
-			}
-			hidden_effect = {
-				set_rule = { can_use_kamikaze_pilots = yes }
-			}
-			custom_effect_tooltip = kamikaze_focus_tooltip
-		}
-	}
-
-	focus = {
-		id = liberty_ethosENG
-		icon = GFX_goal_support_democracy
-		prerequisite = { focus = political_effortENG }
-		mutually_exclusive = { focus = collectivist_ethosENG }
-		x = 2
-		y = 1
-		relative_position_id = political_effortENG
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-			OR = {
-				has_government = democratic
-				has_government = neutrality
-			}
-		}
-		completion_reward = {
-			add_ideas = liberty_ethos_focus
-		}
-		ai_will_do = {
-			factor = 95
-			modifier = {
-				factor = 0.1
-				any_neighbor_country = {
-					is_major = yes
-					OR = {
-						has_government = absolutist
-						has_government = communism
-						has_government = democratic
-						has_government = fascism
-						has_government = neutrality
-					}
-				}
-				NOT = {
-					any_neighbor_country = {
-						is_major = yes
-						has_government = democratic
-					}
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = neutrality_focusENG
-		icon = GFX_goal_generic_neutrality_focus
-		prerequisite = { focus = liberty_ethosENG }
-		mutually_exclusive = { focus = interventionism_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = liberty_ethosENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = { NOT = { has_idea = neutrality_idea } }
-				add_ideas = neutrality_idea
-			}
-			add_political_power = 150
-		}
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	focus = {
-		id = deterrenceENG
-		icon = GFX_goal_generic_defence
-		prerequisite = { focus = neutrality_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = neutrality_focusENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = deterrence
-		}
-	}
-
-	focus = {
-		id = interventionism_focusENG
-		icon = GFX_goal_generic_political_pressure
-		prerequisite = { focus = liberty_ethosENG }
-		mutually_exclusive = { focus = neutrality_focusENG }
-		x = 2
-		y = 1
-		relative_position_id = liberty_ethosENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			if = {
-				limit = { has_idea = neutrality_idea }
-				remove_ideas = neutrality_idea
-			}	
-			set_rule = { can_send_volunteers = yes }
-			add_political_power = 150
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_idea = neutrality_idea
-			}
-		}
-	}
-
-	focus = {
-		id = volunteer_corpsENG
-		icon = GFX_goal_generic_allies_build_infantry
-		prerequisite = { focus = interventionism_focusENG }
-		x = 0
-		y = 1
-		relative_position_id = interventionism_focusENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = volunteer_corps_focus
-		}
-	}
-
-	focus = {
-		id = foreign_expeditionsENG
-		icon = GFX_goal_generic_more_territorial_claims
-		prerequisite = { focus = volunteer_corpsENG }
-		x = 0
-		y = 1
-		relative_position_id = volunteer_corpsENG
-		cost = 10
-		available_if_capitulated = yes
-		completion_reward = {
-			add_ideas = foreign_expeditions_focus
-		}
-	}
-
-	focus = {
-		id = why_we_fightENG
-		icon = GFX_goal_generic_propaganda
-		prerequisite = { focus = foreign_expeditionsENG focus = deterrenceENG }
-		x = -2
-		y = 1
-		relative_position_id = foreign_expeditionsENG
-		cost = 10
-		available_if_capitulated = yes
-		available = { 
-			OR = { 
-				threat > 0.75 
-				has_defensive_war = yes 
-			}
-		}
-		continue_if_invalid = yes
-		completion_reward = {
-			add_ideas = why_we_fight_focus
-			custom_effect_tooltip = why_we_fight_effect
-			hidden_effect = {
-				if = {
-					limit = { NOT = { has_idea = neutrality_idea } }
-					set_rule = { can_create_factions = yes }
-				}			
-			}
-		}
-	}
-
-	focus = {
-		id = technology_sharingENG
-		icon = GFX_goal_generic_scientific_exchange
-		prerequisite = { focus = ideological_fanaticismENG focus = why_we_fightENG }
-		x = 3
-		y = 1
-		relative_position_id = ideological_fanaticismENG
-		cost = 10
-		available_if_capitulated = yes
-		available = {
-			has_war = yes
-			is_in_faction = yes
-			OR = {
-				num_of_factories > 50
-				any_other_country = {
-					is_in_faction_with = ROOT
-					num_of_factories > 50
-				}
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = {
-					original_research_slots < 3
-				}
-				add_research_slot = 1
-			}
-			if = {
-				limit = {
-					original_research_slots > 2
-				}
-				add_tech_bonus = {
-					name = electronics_bonus
-					bonus = 0.5
-					uses = 1
-					category = electronics
-				}
-				add_tech_bonus = {
-					name = industrial_bonus
-					bonus = 0.5
-					uses = 1
-					category = industry
-				}	
-				add_tech_bonus = {
-					name = infantry_artillery_bonus #@#
-					bonus = 0.5
-					uses = 1
-					category = infantry_weapons
-					category = artillery
-				}				
-			}			
-		}
-	}
-
-	focus = {
-		id = WarPropENG
-		icon = GFX_goal_generic_propaganda
-		x = 31
-		y = 0
-		cost = 10
-		available = {
-			threat > 0.000100
-		}
-		completion_reward = {
-			add_stability = 0.05
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = PrepInterENG
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		prerequisite = { focus = WarPropENG }
-		x = 0
-		y = 1
-		relative_position_id = WarPropENG
-		cost = 10
-		available = {
-			threat > 0.000150
-		}
-		completion_reward = {
-			add_political_power = 120
-			set_rule = { can_send_volunteers = yes }
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = LimENG
-		icon = GFX_goal_generic_more_territorial_claims
-		prerequisite = { focus = PrepInterENG }
-		x = 0
-		y = 1
-		relative_position_id = PrepInterENG
-		cost = 10
-		available = {
-			threat > 0.000250
-		}
-		completion_reward = {
-			add_ideas = limited_interventionism
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = WarPlanENGRME
-		icon = GFX_goal_generic_position_armies
-		text = "War Plan The Roman Empire"
-		prerequisite = { focus = LimENG }
 		bypass = {
-			has_war_with = RME
-		}
-		x = -5
-		y = 1
-		relative_position_id = LimENG
-		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = RME
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-				}
-			}
-		}
-		completion_reward = {
-			army_experience = 20
-			add_tech_bonus = {
-				name = land_doc_bonus
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
+			NOT = { has_idea = ENG_communist_militias }
 		}
 	}
 
 	focus = {
-		id = EmbargoENGRME
-		icon = GFX_goal_generic_trade
-		text = "Embargo The Roman Empire"
-		prerequisite = { focus =  WarPlanENGRME }
-		bypass = {
-			has_war_with = RME
-		}
+		id = ENG_communists_defeated
+		icon = GFX_goal_anti_comintern_pact
+		prerequisite = { focus = ENG_bust_unions }
+		prerequisite = { focus = ENG_arrest_dissenters }
+		prerequisite = { focus = ENG_breakup_militias }
+		relative_position_id = ENG_bust_unions
 		x = 0
 		y = 1
-		relative_position_id = WarPlanENGRME
 		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = RME
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
-		}
-		completion_reward = {
-			RME = {
-				add_opinion_modifier = { target = ENG modifier = embargo }
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = WARENGRME
-		icon = GFX_goal_support_democracy
-		text = "Enact War Plan The Roman Empire"
-		prerequisite = { focus =  EmbargoENGRME }
-		prerequisite = { focus =  LimENG }
-		bypass = {
-			has_war_with = RME
-		}
-		x = 2
-		y = 1
-		relative_position_id = EmbargoENGRME
-		cost = 10
+		available_if_capitulated = yes
 		available = {
 			has_war = no
-			any_other_country = {
-				original_tag = RME
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
+			communism < 0.1
 		}
 		completion_reward = {
-			declare_war_on = {
-				type = puppet_wargoal_focus
-				target = RME
+			remove_ideas = {
+				ENG_dissenters_arrested
+				ENG_union_busting
+				ENG_conscripted_militias
 			}
 		}
-		ai_will_do = {
-			factor = 10
+		bypass = {
+			communism < 0.1
+			NOT = {
+				has_idea = ENG_dissenters_arrested
+				has_idea = ENG_union_busting
+				has_idea = ENG_conscripted_militias
+			}
+		}
+	}
+	
+	### Communist Brach ###
+
+	focus = {
+		id = ENG_war_time_concessions
+		icon = GFX_goal_support_communism
+		mutually_exclusive = { focus = ENG_crush_dissent }
+		x = 24
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_stability = -0.1
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			custom_effect_tooltip = ENG_war_time_concessions_TT
+		}
+		bypass = {
+			has_government = communism
+		}
+	}
+	
+	focus = {
+		id = ENG_support_unions
+		icon = GFX_focus_usa_union_representation_act
+		prerequisite = { focus = ENG_war_time_concessions }
+		relative_position_id = ENG_war_time_concessions
+		x = 0
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ENG_strong_unions
+				add_idea = ENG_union_support
+			}
+		}
+		bypass = {
+			NOT = { has_idea = ENG_strong_unions }
 		}
 	}
 
 	focus = {
-		id = WarPlanENGJAP
-		icon = GFX_goal_generic_position_armies
-		text = "War Plan Japan"
-		prerequisite = { focus = LimENG }
-		bypass = {
-			has_war_with = JAP
+		id = ENG_communist_coalition
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = ENG_war_time_concessions }
+		relative_position_id = ENG_war_time_concessions
+		x = 2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ENG_communist_dissenters
+				add_idea = ENG_dissenters_appeased
+			}
 		}
+		bypass = {
+			NOT = { has_idea = ENG_communist_dissenters }
+		}
+	}
+	
+	focus = {
+		id = ENG_integrate_militias
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = { focus = ENG_war_time_concessions }
+		relative_position_id = ENG_war_time_concessions
+		x = -2
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = ENG_communist_militias
+				add_idea = ENG_integrated_militias
+			}
+		}
+		bypass = {
+			NOT = { has_idea = ENG_communist_militias }
+		}
+	}
+	
+	focus = {
+		id = ENG_break_promises
+		icon = GFX_focus_usa_voter_registration_act
+		prerequisite = { focus = ENG_support_unions }
+		prerequisite = { focus = ENG_communist_coalition }
+		prerequisite = { focus = ENG_integrate_militias }
+		mutually_exclusive = { focus = ENG_continue_reforms }
+		relative_position_id = ENG_support_unions
 		x = -1
 		y = 1
-		relative_position_id = LimENG
 		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = JAP
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-				}
-			}
-		}
-		completion_reward = {
-			army_experience = 20
-			add_tech_bonus = {
-				name = land_doc_bonus
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = EmbargoENGJAP
-		icon = GFX_goal_generic_trade
-		text = "Embargo Japan"
-		prerequisite = { focus =  WarPlanENGJAP }
-		bypass = {
-			has_war_with = JAP
-		}
-		x = 0
-		y = 1
-		relative_position_id = WarPlanENGJAP
-		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = JAP
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
-		}
-		completion_reward = {
-			JAP = {
-				add_opinion_modifier = { target = ENG modifier = embargo }
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = WARENGJAP
-		icon = GFX_goal_support_democracy
-		text = "Enact War Plan Japan"
-		prerequisite = { focus =  EmbargoENGJAP }
-		prerequisite = { focus =  LimENG }
-		bypass = {
-			has_war_with = JAP
-		}
-		x = 2
-		y = 1
-		relative_position_id = EmbargoENGJAP
-		cost = 10
+		available_if_capitulated = yes
 		available = {
 			has_war = no
-			any_other_country = {
-				original_tag = JAP
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
 		}
 		completion_reward = {
-			declare_war_on = {
-				type = puppet_wargoal_focus
-				target = JAP
+			set_temp_variable = {
+				lose_stab = party_popularity@communism
 			}
+			multiply_temp_variable = {
+				lose_stab = -0.5
+			}
+			add_stability = lose_stab
+			custom_effect_tooltip = lose_stab_communist_TT
+			add_political_power = 60
+			swap_ideas = {
+				add_idea = ENG_communist_militias
+				remove_idea = ENG_integrated_militias
+			}
+			swap_ideas = {
+				add_idea = ENG_communist_dissenters
+				remove_idea = ENG_dissenters_appeased
+			}
+			swap_ideas = {
+				add_idea = ENG_strong_unions
+				remove_idea = ENG_union_support
+			}
+			custom_effect_tooltip = ENG_crush_dissent_TT
 		}
-		ai_will_do = {
-			factor = 10
+		bypass = {
+			
 		}
 	}
-
+	
 	focus = {
-		id = WarPlanENGMNG
-		icon = GFX_goal_generic_position_armies
-		text = "War Plan Ming"
-		prerequisite = { focus = LimENG }
-		bypass = {
-			has_war_with = MNG
-		}
-		x = 3
+		id = ENG_continue_reforms
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = ENG_support_unions }
+		prerequisite = { focus = ENG_communist_coalition }
+		prerequisite = { focus = ENG_integrate_militias }
+		mutually_exclusive = { focus = ENG_break_promises }
+		relative_position_id = ENG_support_unions
+		x = 1
 		y = 1
-		relative_position_id = LimENG
 		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = MNG
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-				}
-			}
-		}
-		completion_reward = {
-			army_experience = 20
-			add_tech_bonus = {
-				name = land_doc_bonus
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = EmbargoENGMNG
-		icon = GFX_goal_generic_trade
-		text = "Embargo Ming"
-		prerequisite = { focus =  WarPlanENGMNG }
-		bypass = {
-			has_war_with = MNG
-		}
-		x = 0
-		y = 1
-		relative_position_id = WarPlanENGMNG
-		cost = 10
-		available = {
-			any_other_country = {
-				original_tag = MNG
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
-		}
-		completion_reward = {
-			MNG = {
-				add_opinion_modifier = { target = ENG modifier = embargo }
-			}
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = WARENGMNG
-		icon = GFX_goal_support_democracy
-		text = "Enact War Plan Ming"
-		prerequisite = { focus =  EmbargoENGMNG }
-		prerequisite = { focus =  LimENG }
-		bypass = {
-			has_war_with = MNG
-		}
-		x = 2
-		y = 1
-		relative_position_id = EmbargoENGMNG
-		cost = 10
+		available_if_capitulated = yes
 		available = {
 			has_war = no
-			any_other_country = {
-				original_tag = MNG
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = ENG }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
-			}
 		}
 		completion_reward = {
-			declare_war_on = {
-				type = puppet_wargoal_focus
-				target = MNG
+			set_temp_variable = {
+				lose_stab = party_popularity@democratic
+			}
+			multiply_temp_variable = {
+				lose_stab = -0.5
+			}
+			add_stability = lose_stab
+			custom_effect_tooltip = lose_stab_democratic_TT
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
 			}
 		}
-		ai_will_do = {
-			factor = 10
+		bypass = {
+			has_government = communism
 		}
 	}
 
