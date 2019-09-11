@@ -1,0 +1,601 @@
+regaining_rome = {
+	test_vars_check = {
+		available = {
+			original_tag = RME
+		}
+		visible = {
+			original_tag = RME
+		}
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = RME_check_territories }
+				clr_country_flag = RME_check_territories
+			}
+			else = {
+				set_country_flag = RME_check_territories
+			}
+		}
+	}
+	test_vars_restore = {
+		icon = generic_form_nation
+		available = {
+			FROM = {
+				is_subject = no
+				NOT = { is_in_faction_with = RME }
+			}
+		}
+
+		visible = {
+			FROM = {
+				exists = yes
+			}
+			has_country_flag = RME_check_territories
+		}
+		target_trigger = {
+			FROM = {
+				has_idea = RME_former_territory
+				NOT = { is_subject_of = RME }
+				any_owned_state = {
+					#is_core_of = RME
+				}
+			}
+		}
+
+		#cost = 50
+
+		complete_effect = {
+			FROM = {
+				custom_effect_tooltip = tvr_pup
+				TESB_check_puppet_willingness = yes
+				custom_effect_tooltip = tvr_fac
+				TESB_check_faction_willingness = yes
+				custom_effect_tooltip = tvr_int
+				TESB_check_integrate_willingness = yes
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_reestablish_roman_hegemony
+				}
+				FROM = {
+					TESB_check_puppet_willingness = yes
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = RME_restore_rome_focus
+				}
+				FROM = {
+					TESB_check_faction_willingness = yes
+				}
+			}
+		}
+	}
+
+	test_rme_vars = {
+		available = { always = yes }
+		visible = { always = yes }
+		complete_effect = {
+			every_country = {
+				limit = {
+					has_idea = RME_former_territory
+					is_subject = no
+				}
+				country_event = { id = tesb_restore_rome.10 }
+			}
+			random_country = {
+				limit = {
+					has_idea = RME_former_territory
+					is_subject_of = RME
+				}
+				RME = {
+					annex_country = { target = PREV transfer_troops = yes }
+				}
+			}
+		}
+	}
+	
+	negotiate_with_territory = {
+		icon = generic_form_nation
+		available = {
+			FROM = { is_subject = no }
+			NOT = { has_war_with = FROM }
+		}
+		
+		visible = {
+			has_completed_focus = RME_restoring_the_empire
+			FROM = {
+				exists = yes
+				NOT = { is_subject_of = RME }
+				NOT = { is_in_faction_with = RME }
+			}
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_idea = RME_former_territory
+				has_country_flag = RME_region_integration_started
+				NOT = { is_subject_of = RME }
+				NOT = { is_in_faction_with = RME }
+			}
+		}
+
+		cost = 50
+		days_re_enable = 120
+		days_remove = 60
+
+		remove_effect = {
+			if = {
+				limit = { has_completed_focus = RME_reestablish_roman_hegemony }
+				FROM = {
+					country_event = { id = tesb_restore_rome.10 hours = 1 }
+				}
+			}
+			else_if = {
+				limit = { has_completed_focus = RME_restore_rome_focus }
+				FROM = {
+					country_event = { id = tesb_restore_rome.20 hours = 1 }
+				}
+			}
+			else = {
+				country_event = { id = tesb_rome.115 hours = 1 }
+			}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				has_completed_focus = RME_reestablish_roman_hegemony
+				check_variable = { From.puppet_willingness < 0 }
+				factor = 0.1
+			}
+			modifier = {
+				has_completed_focus = RME_restore_rome_focus
+				check_variable = { From.faction_willingness < 0 }
+				factor = 0.1
+			}
+		}
+	}
+
+	negotiate_with_foederati = {
+		icon = generic_form_nation
+		available = {
+			FROM = { is_subject = no }
+		}
+		
+		visible = {
+			has_completed_focus = RME_integrate_foederati
+			FROM = {
+				exists = yes
+				NOT = { is_subject_of = RME }
+				is_in_faction_with = RME
+			}
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_idea = RME_former_territory
+				has_country_flag = RME_region_integration_started
+				NOT = { is_subject_of = RME }
+				is_in_faction_with = RME
+			}
+		}
+
+		cost = 50
+		days_re_enable = 120
+		days_remove = 60
+
+		remove_effect = {
+			country_event = { id = tesb_restore_rome.41 hours = 12 }
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				check_variable = { From.integrate_willingness < 0 }
+				factor = 0.1
+			}
+		}
+	}
+	
+}
+
+rome_civil_war_decisions = {
+	prepare_black_sea_landing = {
+		available = {
+			ships_in_area = {
+				area = 30
+				size > 9 
+			}
+			any_other_country = {
+				original_tag = RME
+				ships_in_area = {
+					area = 30
+					size < 6 
+				}
+			}
+			NOT = {
+				controls_state = 384
+			}
+		}
+		visible = {
+			has_government = democratic
+		}
+		fixed_random_seed = no
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 384
+				state = 385
+			}
+		}
+		custom_cost_text = command_power_more_than_30
+		days_remove = 30
+		fixed_random_seed = no
+		remove_effect = {
+			hidden_effect = { country_event = { id = tesb_rome.11 } }
+			effect_tooltip = {
+				random_list = {
+					33 = { country_event = { id = tesb_rome.12 } }
+					33 = { country_event = { id = tesb_rome.13 } }
+					33 = { country_event = { id = tesb_rome.14 } }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	prepare_ionia_landing = {
+		available = {
+			ships_in_area = {
+				area = 69
+				size > 9 
+			}
+			any_other_country = {
+				original_tag = RME
+				ships_in_area = {
+					area = 69
+					size < 6 
+				}
+			}
+			NOT = {
+				controls_state = 397
+			}
+		}
+		visible = {
+			has_government = absolutist
+		}
+		fixed_random_seed = no
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		highlight_states = {
+			OR = {
+				state = 397
+				state = 391
+			}
+		}
+		custom_cost_text = command_power_more_than_30
+		days_remove = 30
+		fixed_random_seed = no
+		remove_effect = {
+			hidden_effect = { country_event = { id = tesb_rome.15 } }
+			effect_tooltip = {
+				random_list = {
+					33 = { country_event = { id = tesb_rome.16 } }
+					33 = { country_event = { id = tesb_rome.17 } }
+					33 = { country_event = { id = tesb_rome.18 } }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}
+
+burgundy_decisions = {
+	fortify_zeeland = {
+		fire_only_once = yes
+		available = {
+			OR = {
+				BRG = { controls_state = 55 }
+				FLD = { controls_state = 55 is_subject_of = BRG }
+			}
+			has_completed_focus = BRG_rhine_defenses
+		}
+		visible = {
+			OR = {
+				controls_state = 55
+				FLD = { is_subject_of = BRG }
+			}
+		}
+		days_remove = 70
+		modifier = {
+			political_power_gain = -0.5
+		}
+		remove_effect = {
+			55 = {
+				custom_effect_tooltip = fortify_zeeland.tt
+				hidden_effect = {
+					add_building_construction = {
+						type = bunker
+						level = 2
+						province  = {
+							all_provinces = yes
+						}
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 9431
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+germany_decisions = {
+	prepare_speech = {
+		icon = eng_propaganda_campaigns
+		available = {
+			NOT = { has_country_flag = GER_recent_speech }
+			custom_trigger_tooltip = {
+				tooltip = GER_speech_state_TT
+				all_owned_state = {
+					NOT = { has_state_flag = GER_speech_state }
+				}
+			}
+		}
+		visible = {
+			has_country_flag = GER_election_1936_flag
+			any_owned_state = {
+				NOT = { has_state_flag = GER_had_speech }
+			}
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					NOT = { has_state_flag = GER_had_speech }
+				}
+				set_state_flag = GER_speech_state
+			}
+		}
+		cost = 10
+		fixed_random_seed = no
+	}
+	democratic_speech = {
+		icon = generic_political_discourse
+		#fire_only_once = yes
+		available = {
+			#NOT = { has_country_flag = GER_recent_speech }
+		}
+		highlight_states = {
+			has_state_flag = GER_speech_state
+		}
+		visible = {
+			any_owned_state = {
+				has_state_flag = GER_speech_state
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = GER_recent_speech
+				days = 15
+				value = 1
+			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							NOT = { is_core_of = DEN is_core_of = BAV }
+						}
+					}
+					country_event = {
+						id = tesb_GER.1
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 1.5
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = DEN
+						}
+					}
+					country_event = {
+						id = tesb_GER.4
+					}
+				}
+			}
+		}
+		cost = 20
+		fixed_random_seed = no
+	}
+	communist_speech = {
+		icon = generic_nationalism
+		#fire_only_once = yes
+		available = {
+			#NOT = { has_country_flag = GER_recent_speech }
+		}
+		highlight_states = {
+			has_state_flag = GER_speech_state
+		}
+		visible = {
+			any_owned_state = {
+				has_state_flag = GER_speech_state
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = GER_recent_speech
+				days = 15
+				value = 1
+			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = BAV
+						}
+					}
+					country_event = {
+						id = tesb_GER.3
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = DEN
+						}
+					}
+					country_event = {
+						id = tesb_GER.6
+					}
+				}
+			}
+		}
+		cost = 20
+		fixed_random_seed = no
+	}
+	fascist_speech = {
+		icon = eng_blackshirt_speech
+		#fire_only_once = yes
+		available = {
+			#NOT = { has_country_flag = GER_recent_speech }
+		}
+		highlight_states = {
+			has_state_flag = GER_speech_state
+		}
+		visible = {
+			any_owned_state = {
+				has_state_flag = GER_speech_state
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = GER_recent_speech
+				days = 15
+				value = 1
+			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = DEN
+						}
+					}
+					country_event = {
+						id = tesb_GER.2
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = BAV
+						}
+					}
+					country_event = {
+						id = tesb_GER.5
+					}
+				}
+			}
+		}
+		cost = 20
+		fixed_random_seed = no
+	}
+	prevent_fascist_civil_war = {
+		fire_only_once = yes
+		is_good = no
+		available = {
+			OR = {
+				has_government = fascism
+				fascism < 0.1
+			}
+		}
+		activation = {
+			OR = {
+				has_completed_focus = GER_maintain_balance
+				has_completed_focus = GER_arbeiterpartei
+			}
+			fascism > 0.3
+			has_stability < 0.8
+		}
+		days_mission_timeout = 180
+		timeout_effect = {
+			start_civil_war = {
+				ideology = fascism
+				capital = 213
+				size = 0.5
+				states = { 205 211 212 213 214 215 216 222 223 224 }
+				states_filter = {
+					OR = { is_core_of = DEN is_core_of = PLC }
+				}
+			}
+		}
+		complete_effect = {
+			add_political_power = 50
+		}
+	}
+}
+
+england_decisions = {
+	round_up_communist_dissenters = {
+		available = {
+			has_completed_focus = ENG_arrest_dissenters
+		}
+		cost = 25
+		complete_effect = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+		}
+		days_re_enable = 60
+	}
+}

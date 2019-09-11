@@ -1,0 +1,625 @@
+#Written by CaesarVincens for Idhrendur's mega-campaign
+#check if a Roman breakaway will become a puppet of Rome
+TESB_check_puppet_willingness = {
+	set_variable = { This.puppet_willingness = -50 } #init with -50 willingness
+	custom_effect_tooltip = pw.base
+	#check ratio of divisions
+	set_temp_variable = { RME.num_divs8 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs8 = 8 } #number of Rome's divisions/8
+	set_temp_variable = { RME.num_divs4 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs4 = 4 } #number of Rome's divisions/4
+	set_temp_variable = { RME.num_divs2 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs2 = 2 } #number of Rome's divisions/2
+	if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs8 } #more than 8 times the divs
+		}
+		add_to_variable = { This.puppet_willingness = 40 } #-10
+		custom_effect_tooltip = pw.8div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs4 } #more than 4 times the divs
+		}
+		add_to_variable = { This.puppet_willingness = 20 } #-30
+		custom_effect_tooltip = pw.4div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs2 } #more than double the divs
+		}
+		add_to_variable = { This.puppet_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divisions } #more divs
+		}
+		add_to_variable = { This.puppet_willingness = 5 } #-45
+		custom_effect_tooltip = pw.div
+	}
+	#check ruling party popularity
+	set_variable = { RME.rpp@This = This.party_popularity@ruling_party }
+	subtract_from_variable = { RME.rpp@This = 50 }
+	divide_variable = { RME.rpp@This = 5 }
+	round_variable = RME.rpp@This
+	subtract_from_variable = { This.puppet_willingness = RME.rpp@This } #+-10
+		custom_effect_tooltip = pw.rp
+	#check stability
+	set_variable = { RME.stab@This = This.stability }
+	multiply_variable = { RME.stab@This = 10 }
+	subtract_from_variable = { RME.stab@This = 5 }
+	round_variable = RME.stab@This
+	subtract_from_variable = { This.puppet_willingness = RME.stab@This } #+-5
+		custom_effect_tooltip = pw.stab
+	#check factory ratio
+	set_temp_variable = { RME.num_factory8 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory8 = 8 } #number of Rome's factories/8
+	set_temp_variable = { RME.num_factory4 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory4 = 4 } #number of Rome's factories/4
+	set_temp_variable = { RME.num_factory2 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory2 = 2 } #number of Rome's factories/2
+	if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory8 } #more than 8 times the facs
+		}
+		add_to_variable = { This.puppet_willingness = 20 } #-30
+		custom_effect_tooltip = pw.8fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory4 } #more than 4 times the facs
+		}
+		add_to_variable = { This.puppet_willingness = 15 } #-35
+		custom_effect_tooltip = pw.4fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory2 } #more than double the facs
+		}
+		add_to_variable = { This.puppet_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_of_factories } #more facs
+		}
+		add_to_variable = { This.puppet_willingness = 5 } #-45
+		custom_effect_tooltip = pw.fac
+	}
+	#check number of states
+	set_temp_variable = { RME.num_states2 = RME.num_of_controlled_states }
+	divide_temp_variable = { RME.num_states2 = 2 } #number of Rome's states/2
+	set_temp_variable = { RME.2num_states = RME.num_of_controlled_states }
+	multiply_temp_variable = { RME.2num_states = 2 } #number of Rome's states/2
+	if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 2 } #1 state minor
+			RME = { num_of_controlled_states > 9 }
+		}
+		add_to_variable = { This.puppet_willingness = 20 } #-30
+		custom_effect_tooltip = pw.1st
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 5 } #up to 4 states
+			RME = { num_of_controlled_states > 19 }
+		}
+		add_to_variable = { This.puppet_willingness = 10 } #-30
+		custom_effect_tooltip = pw.minor
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < RME.num_states2 } #up to half as many as Rome
+		}
+		add_to_variable = { This.puppet_willingness = 5 } #-30
+		custom_effect_tooltip = pw.halfst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < RME.num_of_controlled_states } #just less than Rome
+		}
+		custom_effect_tooltip = pw.lessst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > RME.2num_states } #more than twice Rome
+		}
+		subtract_from_variable = { This.puppet_willingness = 10 } #-30
+		custom_effect_tooltip = pw.twicest
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > RME.num_of_controlled_states } #just more than Rome
+		}
+		subtract_from_variable = { This.puppet_willingness = 5 } #-30
+		custom_effect_tooltip = pw.morest
+	}
+
+	#opinion
+	set_variable = { RME.opin@This = This.opinion@RME }
+	divide_variable = { RME.opin@This = 10 }
+	round_variable = RME.opin@This
+	add_to_variable = { This.puppet_willingness = RME.opin@This } #+-10
+		custom_effect_tooltip = pw.opin
+
+
+	if = {
+		limit = {
+			has_government = communism
+		}
+		subtract_from_variable = { This.puppet_willingness = 10 }
+		custom_effect_tooltip = pw.comm
+	}
+	if = {
+		limit = {
+			has_government = fascism
+		}
+		subtract_from_variable = { This.puppet_willingness = 5 }
+		custom_effect_tooltip = pw.fasc
+	}
+	if = {
+		limit = {
+			has_government = democratic
+		}
+		subtract_from_variable = { This.puppet_willingness = 10 }
+		custom_effect_tooltip = pw.demo
+	}
+	if = {
+		limit = {
+			is_owner_neighbor_of = RME
+		}
+		add_to_variable = { This.puppet_willingness = 5 }
+		custom_effect_tooltip = pw.core_n
+	}
+	else_if = {
+		limit = {
+			any_neighbor_country = {
+				is_subject_of = RME
+			}
+		}
+		add_to_variable = { This.puppet_willingness = 5 }
+		custom_effect_tooltip = pw.core_pup
+	}
+	else_if = {
+		limit = {
+			is_neighbor_of = RME
+		}
+		custom_effect_tooltip = pw.n
+	}
+	else = {
+		subtract_from_variable = { This.puppet_willingness = 5 }
+		custom_effect_tooltip = pw.not_n
+	}
+	if = {
+		limit = {
+			has_idea = culture_greek
+		}
+		add_to_variable = { This.puppet_willingness = 5 }
+		custom_effect_tooltip = pw.greek		
+	}
+}
+#check if a Roman breakaway will join the faction of Rome
+TESB_check_faction_willingness = {
+	set_variable = { This.faction_willingness = -50 } #init with -50 willingness
+	custom_effect_tooltip = pw.base
+	#check ratio of divisions
+	set_temp_variable = { RME.num_divs8 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs8 = 8 } #number of Rome's divisions/8
+	set_temp_variable = { RME.num_divs4 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs4 = 4 } #number of Rome's divisions/4
+	set_temp_variable = { RME.num_divs2 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs2 = 2 } #number of Rome's divisions/2
+	if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs8 } #more than 8 times the divs
+		}
+		add_to_variable = { This.faction_willingness = 40 } #-10
+		custom_effect_tooltip = pw.8div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs4 } #more than 4 times the divs
+		}
+		add_to_variable = { This.faction_willingness = 20 } #-30
+		custom_effect_tooltip = pw.4div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs2 } #more than double the divs
+		}
+		add_to_variable = { This.faction_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divisions } #more divs
+		}
+		add_to_variable = { This.faction_willingness = 5 } #-45
+		custom_effect_tooltip = pw.div
+	}
+	#check democratic party popularity
+	set_variable = { RME.demopp@This = This.party_popularity@democratic }
+	subtract_from_variable = { RME.demopp@This = 50 }
+	divide_variable = { RME.demopp@This = 5 }
+	multiply_variable = { RME.demopp@This = 2 }
+	round_variable = RME.demopp@This
+	add_to_variable = { This.faction_willingness = RME.demopp@This } #+-20
+		custom_effect_tooltip = pw.demop
+	#check stability
+	set_variable = { RME.stab@This = This.stability }
+	multiply_variable = { RME.stab@This = 10 }
+	subtract_from_variable = { RME.stab@This = 5 }
+	round_variable = RME.stab@This
+	subtract_from_variable = { This.faction_willingness = RME.stab@This } #+-5
+		custom_effect_tooltip = pw.stab
+	#check factory ratio
+	set_temp_variable = { RME.num_factory8 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory8 = 8 } #number of Rome's factories/8
+	set_temp_variable = { RME.num_factory4 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory4 = 4 } #number of Rome's factories/4
+	set_temp_variable = { RME.num_factory2 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory2 = 2 } #number of Rome's factories/2
+	if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory8 } #more than 8 times the facs
+		}
+		add_to_variable = { This.faction_willingness = 20 } #-30
+		custom_effect_tooltip = pw.8fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory4 } #more than 4 times the facs
+		}
+		add_to_variable = { This.faction_willingness = 15 } #-35
+		custom_effect_tooltip = pw.4fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory2 } #more than double the facs
+		}
+		add_to_variable = { This.faction_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_of_factories } #more facs
+		}
+		add_to_variable = { This.faction_willingness = 5 } #-45
+		custom_effect_tooltip = pw.fac
+	}
+	#check number of states
+	set_temp_variable = { RME.num_states2 = RME.num_of_controlled_states }
+	divide_temp_variable = { RME.num_states2 = 2 } #number of Rome's states/2
+	set_temp_variable = { RME.2num_states = RME.num_of_controlled_states }
+	multiply_temp_variable = { RME.2num_states = 2 } #number of Rome's states*2
+	if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 2 } #1 state minor
+			RME = { num_of_controlled_states > 9 }
+		}
+		add_to_variable = { This.faction_willingness = 20 } #-30
+		custom_effect_tooltip = pw.1st
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 5 } #up to 4 states
+			RME = { num_of_controlled_states > 19 }
+		}
+		add_to_variable = { This.faction_willingness = 10 } #-30
+		custom_effect_tooltip = pw.minor
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < RME.num_states2 } #up to half as many as Rome
+		}
+		add_to_variable = { This.faction_willingness = 5 } #-30
+		custom_effect_tooltip = pw.halfst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < RME.num_of_controlled_states } #just less than Rome
+		}
+		custom_effect_tooltip = pw.lessst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > RME.2num_states } #more than twice Rome
+		}
+		subtract_from_variable = { This.faction_willingness = 10 } #-30
+		custom_effect_tooltip = pw.twicest
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > RME.num_of_controlled_states } #just more than Rome
+		}
+		subtract_from_variable = { This.faction_willingness = 5 } #-30
+		custom_effect_tooltip = pw.morest
+	}
+
+	#opinion
+	set_variable = { RME.opin@This = This.opinion@RME }
+	divide_variable = { RME.opin@This = 5 }
+	round_variable = RME.opin@This
+	add_to_variable = { This.faction_willingness = RME.opin@This } #+-20
+		custom_effect_tooltip = pw.opin
+
+
+	if = {
+		limit = {
+			has_government = communism
+		}
+		subtract_from_variable = { This.faction_willingness = 5 }
+		custom_effect_tooltip = pw.comm_d
+	}
+	if = {
+		limit = {
+			has_government = absolutist
+		}
+		subtract_from_variable = { This.faction_willingness = 5 }
+		custom_effect_tooltip = pw.abs_d
+	}
+	if = {
+		limit = {
+			has_government = fascism
+		}
+		subtract_from_variable = { This.faction_willingness = 10 }
+		custom_effect_tooltip = pw.fasc_d
+	}
+	if = {
+		limit = {
+			has_government = democratic
+		}
+		add_to_variable = { This.faction_willingness = 10 }
+		custom_effect_tooltip = pw.demo_d
+	}
+	if = {
+		limit = {
+			any_neighbor_country = {
+				is_in_faction_with = RME
+			}
+		}
+		add_to_variable = { This.faction_willingness = 5 }
+		custom_effect_tooltip = pw.core_faction
+	}
+	else_if = {
+		limit = {
+			is_owner_neighbor_of = RME
+		}
+		add_to_variable = { This.faction_willingness = 5 }
+		custom_effect_tooltip = pw.core_n
+	}
+	else_if = {
+		limit = {
+			is_neighbor_of = RME
+		}
+		custom_effect_tooltip = pw.n
+	}
+	else = {
+		subtract_from_variable = { This.faction_willingness = 5 }
+		custom_effect_tooltip = pw.not_n
+	}
+	if = {
+		limit = {
+			has_idea = culture_greek
+		}
+		add_to_variable = { This.faction_willingness = 10 }
+		custom_effect_tooltip = pw.greek_d		
+	}
+}
+#integrate the faction into Rome
+TESB_check_integrate_willingness = {
+	set_variable = { This.integrate_willingness = -75 } #init with -75 willingness
+	custom_effect_tooltip = pw.base75
+	#check ratio of divisions
+	set_temp_variable = { RME.num_divs8 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs8 = 8 } #number of Rome's divisions/8
+	set_temp_variable = { RME.num_divs4 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs4 = 4 } #number of Rome's divisions/4
+	set_temp_variable = { RME.num_divs2 = RME.num_divisions }
+	divide_temp_variable = { RME.num_divs2 = 2 } #number of Rome's divisions/2
+	if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs8 } #more than 8 times the divs
+		}
+		add_to_variable = { This.integrate_willingness = 40 } #-10
+		custom_effect_tooltip = pw.8div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs4 } #more than 4 times the divs
+		}
+		add_to_variable = { This.integrate_willingness = 20 } #-30
+		custom_effect_tooltip = pw.4div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divs2 } #more than double the divs
+		}
+		add_to_variable = { This.integrate_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2div
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_divisions < RME.num_divisions } #more divs
+		}
+		add_to_variable = { This.integrate_willingness = 5 } #-45
+		custom_effect_tooltip = pw.div
+	}
+	#check democratic party popularity
+	set_variable = { RME.demopp@This = This.party_popularity@democratic }
+	subtract_from_variable = { RME.demopp@This = 50 }
+	divide_variable = { RME.demopp@This = 5 }
+	multiply_variable = { RME.demopp@This = 2 }
+	round_variable = RME.demopp@This
+	add_to_variable = { This.integrate_willingness = RME.demopp@This } #+-20
+		custom_effect_tooltip = pw.demop
+	#check stability
+	set_variable = { RME.stab@This = This.stability }
+	multiply_variable = { RME.stab@This = 10 }
+	subtract_from_variable = { RME.stab@This = 5 }
+	round_variable = RME.stab@This
+	subtract_from_variable = { This.integrate_willingness = RME.stab@This } #+-5
+		custom_effect_tooltip = pw.stab
+	#check factory ratio
+	set_temp_variable = { RME.num_factory8 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory8 = 8 } #number of Rome's factories/8
+	set_temp_variable = { RME.num_factory4 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory4 = 4 } #number of Rome's factories/4
+	set_temp_variable = { RME.num_factory2 = RME.num_of_factories }
+	divide_temp_variable = { RME.num_factory2 = 2 } #number of Rome's factories/2
+	if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory8 } #more than 8 times the facs
+		}
+		add_to_variable = { This.integrate_willingness = 20 } #-30
+		custom_effect_tooltip = pw.8fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory4 } #more than 4 times the facs
+		}
+		add_to_variable = { This.integrate_willingness = 15 } #-35
+		custom_effect_tooltip = pw.4fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_factory2 } #more than double the facs
+		}
+		add_to_variable = { This.integrate_willingness = 10 } #-40
+		custom_effect_tooltip = pw.2fac
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_factories < RME.num_of_factories } #more facs
+		}
+		add_to_variable = { This.integrate_willingness = 5 } #-45
+		custom_effect_tooltip = pw.fac
+	}
+	#check number of states
+	set_temp_variable = { RME.num_states2 = RME.num_of_controlled_states }
+	divide_temp_variable = { RME.num_states2 = 2 } #number of Rome's states/2
+	set_temp_variable = { RME.2num_states = RME.num_of_controlled_states }
+	multiply_temp_variable = { RME.2num_states = 2 } #number of Rome's states/2
+	if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 2 } #1 state minor
+			RME = { num_of_controlled_states > 9 }
+		}
+		add_to_variable = { This.integrate_willingness = 20 } #-30
+		custom_effect_tooltip = pw.1st
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < 5 } #up to 4 states
+			RME = { num_of_controlled_states > 19 }
+		}
+		add_to_variable = { This.integrate_willingness = 10 } #-30
+		custom_effect_tooltip = pw.minor
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < RME.num_states2 } #up to half as many as Rome
+		}
+		add_to_variable = { This.integrate_willingness = 5 } #-30
+		custom_effect_tooltip = pw.halfst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states < RME.num_of_controlled_states } #just less than Rome
+		}
+		custom_effect_tooltip = pw.lessst
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > RME.2num_states } #twice more than Rome
+		}
+		subtract_from_variable = { This.integrate_willingness = 10 } #-30
+		custom_effect_tooltip = pw.twicest
+	}
+	else_if = {
+		limit = {
+			check_variable = { This.num_of_controlled_states > RME.num_of_controlled_states } #just more than Rome
+		}
+		subtract_from_variable = { This.integrate_willingness = 5 } #-30
+		custom_effect_tooltip = pw.morest
+	}
+
+	#opinion
+	set_variable = { RME.opin@This = This.opinion@RME }
+	divide_variable = { RME.opin@This = 5 }
+	round_variable = RME.opin@This
+	add_to_variable = { This.integrate_willingness = RME.opin@This } #+-20
+		custom_effect_tooltip = pw.opin
+
+
+	if = {
+		limit = {
+			has_government = communism
+		}
+		subtract_from_variable = { This.integrate_willingness = 5 }
+		custom_effect_tooltip = pw.comm_d
+	}
+	if = {
+		limit = {
+			has_government = absolutist
+		}
+		subtract_from_variable = { This.integrate_willingness = 5 }
+		custom_effect_tooltip = pw.abs_d
+	}
+	if = {
+		limit = {
+			has_government = fascism
+		}
+		subtract_from_variable = { This.integrate_willingness = 10 }
+		custom_effect_tooltip = pw.fasc_d
+	}
+	if = {
+		limit = {
+			has_government = democratic
+		}
+		add_to_variable = { This.integrate_willingness = 10 }
+		custom_effect_tooltip = pw.demo_d
+	}
+	if = {
+		limit = {
+			any_neighbor_country = {
+				is_in_faction_with = RME
+			}
+		}
+		add_to_variable = { This.integrate_willingness = 5 }
+		custom_effect_tooltip = pw.core_faction
+	}
+	else_if = {
+		limit = {
+			is_owner_neighbor_of = RME
+		}
+		add_to_variable = { This.integrate_willingness = 5 }
+		custom_effect_tooltip = pw.core_n
+	}
+	else_if = {
+		limit = {
+			is_neighbor_of = RME
+		}
+		custom_effect_tooltip = pw.n
+	}
+	else = {
+		subtract_from_variable = { This.integrate_willingness = 5 }
+		custom_effect_tooltip = pw.not_n
+	}
+	if = {
+		limit = {
+			has_idea = culture_greek
+		}
+		add_to_variable = { This.integrate_willingness = 10 }
+		custom_effect_tooltip = pw.greek_d		
+	}
+	if = {
+		limit = {
+			is_in_faction_with = RME
+		}
+		#add_to_variable = { This.integrate_willingness = 10 }
+		#custom_effect_tooltip = pw.faction
+	}
+}
+

@@ -1,0 +1,1830 @@
+focus_tree = {
+	id = BRG_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 10
+			tag = BRG
+		}
+	}
+
+	default = no
+
+	focus = {
+		id = army_effortBRG
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = equipment_effortBRG
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = army_effortBRG }
+		x = -1
+		y = 1
+		relative_position_id = army_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = motorization_effortBRG
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = army_effortBRG }
+		bypass = { has_tech = motorised_infantry }
+		x = 1
+		y = 1
+		relative_position_id = army_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 0.75
+				technology = motorised_infantry
+			}
+		}
+	}
+
+	focus = {
+		id = doctrine_effortBRG
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = army_effortBRG }
+		x = 0
+		y = 2
+		relative_position_id = army_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = equipment_effort_2BRG
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = equipment_effortBRG }
+		x = 0
+		y = 2
+		relative_position_id = equipment_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = mechanization_effortBRG
+		icon = GFX_goal_generic_build_tank
+		prerequisite = { focus = motorization_effortBRG }
+		x = 0
+		y = 2
+		relative_position_id = motorization_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				ahead_reduction = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = doctrine_effort_2BRG
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = doctrine_effortBRG }
+		x = 0
+		y = 2
+		relative_position_id = doctrine_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = equipment_effort_3BRG
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = equipment_effort_2BRG }
+		x = 0
+		y = 2
+		relative_position_id = equipment_effort_2BRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				ahead_reduction = 1
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = armor_effortBRG
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = mechanization_effortBRG }
+		x = 0
+		y = 2
+		relative_position_id = mechanization_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = special_forcesBRG
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = equipment_effort_3BRG }
+		prerequisite = { focus = doctrine_effort_2BRG }
+		prerequisite = { focus = armor_effortBRG }
+		x = 1
+		y = 1
+		relative_position_id = equipment_effort_3BRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = special_forces
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.5
+				uses = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
+		}
+	}
+
+	focus = {
+		id = aviation_effortBRG
+		icon = GFX_goal_generic_build_airforce
+		x = 5
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		complete_tooltip = {
+			air_experience = 25
+			if = { limit = { has_country_flag = aviation_effort_AB }
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+		completion_reward = {
+			air_experience = 25
+
+			if = {
+				limit = {
+					capital_scope = {
+						NOT = {
+							free_building_slots = {
+								building = air_base
+								size > 1
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+			add_tech_bonus = {
+				name = air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = fighter_focusBRG
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = aviation_effortBRG }
+		mutually_exclusive = { focus = bomber_focusBRG }
+		x = -1
+		y = 1
+		relative_position_id = aviation_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 0.5
+				uses = 2
+				technology = early_fighter
+				technology = fighter1
+				technology = fighter2
+				technology = fighter3
+				technology = heavy_fighter1
+				technology = heavy_fighter2
+				technology = heavy_fighter3
+			}
+		}
+	}
+
+	focus = {
+		id = bomber_focusBRG
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = aviation_effortBRG }
+		mutually_exclusive = { focus = fighter_focusBRG }
+		x = 1
+		y = 1
+		relative_position_id = aviation_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 0.5
+				uses = 2
+				technology = strategic_bomber1
+				technology = strategic_bomber2
+				technology = strategic_bomber3
+				category = tactical_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = aviation_effort_2BRG
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = bomber_focusBRG focus = fighter_focusBRG }
+		x = -1
+		y = 1
+		relative_position_id = bomber_focusBRG
+		cost = 10
+		available_if_capitulated = yes
+		complete_tooltip = {
+			air_experience = 25
+			if = { limit = { has_country_flag = aviation_effort_2_AB }
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+		completion_reward = {
+			air_experience = 25
+			if = {
+				limit = {
+					capital_scope = {
+						OR = {
+							NOT = { is_controlled_by = ROOT }
+							NOT = {
+								free_building_slots = {
+									building = air_base
+									size > 1
+								}
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			add_tech_bonus = {
+				name =  air_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = CAS_effortBRG
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = aviation_effort_2BRG }
+		prerequisite = { focus = motorization_effortBRG }
+		x = -1
+		y = 1
+		relative_position_id = aviation_effort_2BRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = rocket_effortBRG
+		icon = GFX_focus_rocketry
+		prerequisite = { focus = aviation_effort_2BRG }
+		#prerequisite = { focus = infrastructure_effortBRG }
+		x = 0
+		y = 2
+		relative_position_id = aviation_effort_2BRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = jet_rocket_bonus
+				ahead_reduction = 0.5
+				uses = 2
+				category = rocketry
+				category = jet_technology
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.25
+				always = yes
+			}
+		}
+	}
+
+	focus = {
+		id = NAV_effortBRG
+		icon = GFX_goal_generic_air_naval_bomber
+		prerequisite = { focus = aviation_effort_2BRG }
+		prerequisite = { focus = flexible_navyBRG }
+		x = 1
+		y = 1
+		relative_position_id = aviation_effort_2BRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = nav_bomber_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = naval_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = naval_effortBRG
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 9
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+		complete_tooltip = {
+			navy_experience = 25
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+		}
+		completion_reward = {
+			navy_experience = 25
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					any_owned_state = {
+						is_coastal = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					any_owned_state = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						controller = { tag = ROOT }
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = flexible_navyBRG
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = naval_effortBRG }
+		mutually_exclusive = { focus = large_navyBRG }
+		x = -1
+		y = 1
+		relative_position_id = naval_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = sub_op_bonus
+				bonus = 0.5
+				uses = 2
+				technology = convoy_interdiction_ti
+				technology = unrestricted_submarine_warfare
+				technology = wolfpacks
+				technology = advanced_submarine_warfare
+				technology = combined_operations_raiding
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = large_navyBRG
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = naval_effortBRG }
+		mutually_exclusive = { focus = flexible_navyBRG }
+		x = 1
+		y = 1
+		relative_position_id = naval_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = fleet_in_being_bonus
+				bonus = 0.5
+				uses = 2
+				category = fleet_in_being_tree
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = submarine_effortBRG
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = flexible_navyBRG focus = large_navyBRG }
+		x = 0
+		y = 1
+		relative_position_id = flexible_navyBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = early_submarine
+				technology = basic_submarine
+				technology = improved_submarine
+				technology = advanced_submarine
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = cruiser_effortBRG
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = large_navyBRG focus = flexible_navyBRG }
+		x = 0
+		y = 1
+		relative_position_id = large_navyBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = improved_light_cruiser
+				technology = advanced_light_cruiser
+				technology = improved_heavy_cruiser
+				technology = advanced_heavy_cruiser
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = destroyer_effortBRG
+		icon = GFX_goal_generic_wolf_pack
+		prerequisite = { focus = submarine_effortBRG }
+		x = 0
+		y = 1
+		relative_position_id = submarine_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = early_destroyer
+				technology = basic_destroyer
+				technology = improved_destroyer
+				technology = advanced_destroyer
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = capital_ships_effortBRG
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = cruiser_effortBRG }
+		x = 0
+		y = 1
+		relative_position_id = cruiser_effortBRG
+		cost = 10
+		available_if_capitulated = yes
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = basic_battlecruiser
+				technology = basic_battleship
+				technology = improved_battleship
+				technology = advanced_battleship
+				technology = heavy_battleship
+				technology = heavy_battleship2
+				technology = early_carrier
+				technology = basic_carrier
+				technology = improved_carrier
+				technology = advanced_carrier
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+	}
+
+	#######################
+	### Political  Tree ###
+	#######################
+	
+	focus = {
+		id = BRG_reinforce_monarchism
+		icon = GFX_focus_rom_royal_dictatorship
+		x = 16
+		y = 0
+		cost = 10
+		mutually_exclusive = { focus = BRG_democratize_government }
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = BRG_strengthen_monarch
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 1.75
+				RME = { has_government = democratic }
+			}
+			modifier = {
+				factor = 0.01
+				RME = { has_civil_war = no }
+			}
+			modifier = {
+				factor = 100
+				RME = { has_completed_focus = RME_secure_the_new_state }
+			}
+		}
+	}
+	
+	focus = {
+		id = BRG_exile_communists
+		icon = GFX_goal_anti_comintern_pact
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = BRG_reinforce_monarchism }
+		relative_position_id = BRG_reinforce_monarchism
+		available = {
+			communism < 0.2
+		}
+		bypass = {
+			NOT = { communism > 0 }
+		}
+		completion_reward = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = ban_ideology_var
+					value = party_popularity@communism
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = -1
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = ban_ideology_var
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = 0.5
+				}				
+			}
+			custom_effect_tooltip = ban_communism_party_tt
+			add_stability = ban_ideology_var
+			#hidden_effect = {
+				multiply_temp_variable = { ban_ideology_var = -1 }
+				add_popularity = {
+					ideology = absolutist
+					popularity = ban_ideology_var
+				}
+				FRA = {
+					add_popularity = {
+						ideology = communism
+						popularity = ban_ideology_var
+					}
+				}
+			#}
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0.9
+				communism > 0.15
+			}
+			modifier = {
+				factor = 1.2
+				communism < 0.15
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_imprison_democratic_leaders
+		icon = GFX_goal_generic_political_pressure
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = BRG_reinforce_monarchism }
+		relative_position_id = BRG_reinforce_monarchism
+		available = {
+			democratic < 0.35
+		}
+		bypass = {
+			NOT = { democratic > 0 }
+		}
+		completion_reward = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = ban_ideology_var
+					value = party_popularity@democratic
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = -1
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = ban_ideology_var
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = 0.66
+				}				
+			}
+			custom_effect_tooltip = ban_democratic_party_tt
+			add_stability = ban_ideology_var
+			#hidden_effect = {
+				multiply_temp_variable = { ban_ideology_var = -1 }
+				add_popularity = {
+					ideology = absolutist
+					popularity = ban_ideology_var
+				}
+			#}
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0.9
+				democratic > 0.3
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.2
+			}
+			modifier = {
+				factor = 1.2
+				democratic < 0.2
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_expel_fascists
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		dynamic = yes
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = BRG_reinforce_monarchism focus = BRG_democratize_government }
+		mutually_exclusive = { focus = BRG_allow_political_discourse }
+		relative_position_id = BRG_reinforce_monarchism
+		available = {
+			fascism < 0.2
+		}
+		bypass = {
+			NOT = { fascism > 0 }
+		}
+		completion_reward = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = ban_ideology_var
+					value = party_popularity@fascism
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = -1
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = ban_ideology_var
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = 0.5
+				}				
+			}
+			custom_effect_tooltip = ban_fascism_party_tt
+			add_stability = ban_ideology_var
+			#hidden_effect = {
+				multiply_temp_variable = { ban_ideology_var = -1 }
+				if = {
+					limit = { has_government = absolutist }
+					add_popularity = {
+						ideology = absolutist
+						popularity = ban_ideology_var
+					}
+				}
+				GER = {
+					add_popularity = {
+						ideology = fascism
+						popularity = ban_ideology_var
+					}
+				}
+			#}
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				fascism < 0.1
+			}
+		}
+	}
+	
+	focus = {
+		id = BRG_disband_government
+		icon = GFX_focus_hun_elect_a_king
+		x = 0
+		y = 2
+		relative_position_id = BRG_reinforce_monarchism
+		cost = 10
+		prerequisite = { focus = BRG_exile_communists }
+		prerequisite = { focus = BRG_expel_fascists }
+		prerequisite = { focus = BRG_imprison_democratic_leaders }
+		available = {
+			absolutist > 0.9
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = BRG_strengthen_monarch
+				add_idea = BRG_absolute_monarchy
+			}
+			add_stability = -0.1
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = BRG_italian_politics
+		icon = GFX_focus_generic_italy_first
+		x = 0
+		y = 1
+		cost = 10
+		relative_position_id = BRG_disband_government
+		prerequisite = { focus = BRG_disband_government }
+		available = {
+			ITA = {
+				is_potential_friend_of_ROOT = yes
+				NOT = { has_government = absolutist }
+			}
+		}
+		bypass = {
+			OR = {
+				ITA = { has_government = absolutist }
+				ITA = { exists = no }
+				ITA = { is_subject = yes }
+			}
+		}
+		completion_reward = {
+			ITA = {
+				add_timed_idea = {
+					idea = BRG_absolutist_influence
+					days = 730
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = BRG_third_roman_empire
+		icon = GFX_goal_support_fascism
+		x = 0
+		y = 1
+		cost = 10
+		relative_position_id = BRG_italian_politics
+		prerequisite = { focus = BRG_italian_politics }
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			set_rule = {
+				can_create_factions = yes
+			}
+			create_faction = "The Third Roman Empire"
+			#add_ideas = BRG_strengthen_democracy
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = BRG_seize_italian_throne
+		icon = GFX_focus_rom_abdicate
+		dynamic = yes
+		x = -1
+		y = 1
+		cost = 10
+		relative_position_id = BRG_third_roman_empire
+		prerequisite = { focus = BRG_third_roman_empire }
+		mutually_exclusive = { focus = BRG_win_italian_throne }
+		will_lead_to_war_with = ITA
+		available = {
+			ITA = {
+				NOT = { has_idea = BRG_absolutist_influence }
+				is_independent_country = yes
+				NOT = { has_government = absolutist }
+			}
+		}
+		bypass = {
+			OR = {
+				ITA = { is_subject_of = BRG }
+				NOT = { country_exists = ITA }
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ITA
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+	focus = {
+		id = BRG_win_italian_throne
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		dynamic = yes
+		x = 1
+		y = 1
+		cost = 10
+		relative_position_id = BRG_third_roman_empire
+		prerequisite = { focus = BRG_third_roman_empire }
+		mutually_exclusive = { focus = BRG_seize_italian_throne }
+		will_lead_to_war_with = ITA
+		available = {
+			ITA = {
+				NOT = { has_idea = BRG_absolutist_influence }
+				is_independent_country = yes
+				has_government = absolutist
+			}
+		}
+		bypass = {
+			OR = {
+				ITA = { is_subject_of = BRG }
+				NOT = { country_exists = ITA }
+			}
+		}
+		completion_reward = {
+			ITA = {
+				country_event = {
+					id = tesb_BRG.150
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = BRG_rhine_defenses
+		icon = GFX_goal_generic_fortify_city
+		available = {
+			OR = {
+				59 = { is_owned_by = BRG }
+				61 = { is_owned_by = BRG }
+				63 = { is_owned_by = BRG }
+			}
+		}
+		cancel_if_invalid = yes
+		x = 3
+		y = 2
+		relative_position_id = BRG_reinforce_monarchism
+		cost = 10
+
+		completion_reward = {
+			59 = {
+				if = {
+					limit = { is_controlled_by = BRG }
+					custom_effect_tooltip = RME_rhine_limes_59
+					hidden_effect = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3444
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 587
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3547
+							instant_build = yes
+						}
+					}
+				}
+			}
+			61 = {
+				if = {
+					limit = { is_controlled_by = BRG }
+					custom_effect_tooltip = RME_rhine_limes_61
+					hidden_effect = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 678
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 6529
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 9503
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 549
+							instant_build = yes
+						}
+					}
+				}
+			}
+			63 = {
+				if = {
+					limit = { is_controlled_by = BRG }
+					custom_effect_tooltip = RME_rhine_limes_63
+					hidden_effect = {
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3558
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11560
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 3423
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 11494
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+	focus = {
+		id = BRG_pressure_flanders
+		icon = GFX_focus_generic_diplomatic_treaty
+		dynamic = yes
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = BRG_rhine_defenses }
+		prerequisite = { focus = BRG_disband_government focus = BRG_write_new_constitution }
+		relative_position_id = BRG_rhine_defenses
+		will_lead_to_war_with = FLD
+		available = {
+			FLD = {
+				is_potential_friend_of_ROOT = yes
+				owns_state = 55
+			}
+		}
+		bypass = {
+			OR = {
+				FLD = { is_not_potential_friend_of_ROOT = yes }
+				FLD = { is_free_ally_or_subject_of_ROOT = yes }
+				FLD = { NOT = { owns_state = 55 } }
+			}
+		}
+
+		completion_reward = {
+			country_event = { id = tesb_BRG.110 hours = 1 }
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = BRG_secure_northern_france
+		icon = GFX_goal_generic_occupy_start_war
+		x = -1
+		y = 2
+		cost = 10
+		prerequisite = { focus = BRG_pressure_flanders }
+		mutually_exclusive = { focus = BRG_alliance_with_france }
+		relative_position_id = BRG_rhine_defenses
+		will_lead_to_war_with = FRA
+		available = {
+			FRA = {
+				is_independent_country = yes
+				NOT = { has_war_with = BRG }
+				if = {
+					limit = {
+						BRG = { has_government = democratic }
+					}
+					NOT = { has_government = democratic }
+				}
+			}
+			OR = {
+				FLD = { is_subject_of = BRG }
+				55 = { is_owned_by = BRG }
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = FRA
+				NOT = { country_exists = FRA }
+				FRA = { is_subject_of = BRG }
+			}
+		}
+		completion_reward = {
+			add_state_claim = 196
+			add_state_claim = 198
+			create_wargoal = {
+				target = FRA
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = BRG_alliance_with_france
+		icon = GFX_goal_generic_major_alliance
+		x = 1
+		y = 2
+		cost = 10
+		prerequisite = { focus = BRG_pressure_flanders }
+		mutually_exclusive = { focus = BRG_secure_northern_france }
+		relative_position_id = BRG_rhine_defenses
+		available = {
+			BRG = {
+				has_government = democratic
+				is_faction_leader = yes
+			}
+			FRA = {
+				is_potential_friend_of_ROOT = yes
+				has_government = democratic
+			}
+			OR = {
+				FLD = { is_free_ally_or_subject_of_ROOT = yes }
+				55 = { is_owned_by = BRG }
+			}
+		}
+		bypass = {
+			OR = {
+				FRA = { is_free_ally_or_subject_of_ROOT = yes }
+				NOT = { country_exists = FRA }
+			}
+		}
+		completion_reward = {
+			FRA = { country_event = { id = tesb_BRG.120 hours = 1 } }
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+	focus = {
+		id = BRG_deal_with_britanny
+		icon = GFX_goal_generic_major_alliance
+		dynamic = yes
+		x = 0
+		y = 3
+		cost = 10
+		prerequisite = { focus = BRG_alliance_with_france focus = BRG_secure_northern_france  }
+		relative_position_id = BRG_rhine_defenses
+		will_lead_to_war_with = BRI
+		available = {
+			OR = {
+				BRI = { is_potential_friend_of_ROOT = yes has_government = ROOT }
+				BRI = { NOT = { has_government = ROOT } }
+			}
+			OR = {
+				FRA = { is_free_ally_or_subject_of_ROOT = yes }
+				197 = { is_owned_by = BRG }
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = BRI
+				BRI = { is_free_ally_or_subject_of_ROOT = yes }
+				owns_state = 69
+				NOT = { country_exists = BRI }
+			}
+		}
+		completion_reward = {
+			country_event = { id = tesb_BRG.125 hours = 1 }
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = BRG_secure_southern_france
+		icon = GFX_goal_generic_occupy_start_war
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = BRG_secure_northern_france focus = BRG_alliance_with_france }
+		mutually_exclusive = { focus = BRG_alliance_with_aquitaine }
+		relative_position_id = BRG_secure_northern_france
+		will_lead_to_war_with = AQI
+		available = {
+			AQI = {
+				is_independent_country = yes
+				NOT = { has_war_with = BRG }
+				if = {
+					limit = {
+						BRG = { has_government = democratic }
+					}
+					NOT = { has_government = democratic }
+				}
+			}
+			OR = {
+				FRA = { is_free_ally_or_subject_of_ROOT = yes }
+				196 = { is_owned_by = BRG }
+			}
+		}
+		bypass = {
+			OR = {
+				has_war_with = AQI
+				NOT = { country_exists = AQI }
+				AQI = { is_subject_of = BRG }
+			}
+		}
+		completion_reward = {
+			add_state_claim = 16
+			add_state_claim = 20
+			create_wargoal = {
+				target = AQI
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				AQI = { NOT = { has_government = ROOT } }
+			}
+			modifier = {
+				factor = 1.2
+				has_government = absolutist
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_alliance_with_aquitaine
+		icon = GFX_goal_generic_major_alliance
+		x = 0
+		y = 2
+		cost = 10
+		prerequisite = { focus = BRG_secure_northern_france focus = BRG_alliance_with_france }
+		mutually_exclusive = { focus = BRG_secure_southern_france }
+		relative_position_id = BRG_alliance_with_france
+		available = {
+			is_faction_leader = yes
+			AQI = {
+				is_potential_friend_of_ROOT = yes
+				has_government = ROOT
+			}
+			OR = {
+				FRA = { is_free_ally_or_subject_of_ROOT = yes }
+				196 = { is_owned_by = BRG }
+			}
+		}
+		bypass = {
+			OR = {
+				AQI = { is_free_ally_or_subject_of_ROOT = yes }
+				NOT = { country_exists = AQI }
+			}
+		}
+		completion_reward = {
+			AQI = { country_event = { id = tesb_BRG.120 hours = 1 } }
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				AQI = { has_government = ROOT }
+			}
+			modifier = {
+				factor = 1.2
+				has_government = democratic
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_new_alliance_with_hungary
+		icon = GFX_goal_molotov_ribbentrop_pact
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = BRG_secure_southern_france focus = BRG_alliance_with_aquitaine }
+		relative_position_id = BRG_secure_southern_france
+		available = {
+			is_faction_leader = yes
+			HUN = {
+				is_potential_friend_of_ROOT = yes
+				has_government = ROOT
+			}
+			OR = {
+				AQI = { is_free_ally_or_subject_of_ROOT = yes }
+				20 = { is_owned_by = BRG }
+			}
+		}
+		bypass = {
+			OR = {
+				HUN = { is_free_ally_or_subject_of_ROOT = yes }
+				NOT = { country_exists = HUN }
+			}
+		}
+		completion_reward = {
+			HUN = { country_event = { id = tesb_misc.40 hours = 1 } }
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				AQI = { has_government = ROOT }
+			}
+			modifier = {
+				factor = 1.2
+				has_government = democratic
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_democratize_government
+		icon = GFX_goal_support_democracy
+		x = 6
+		y = 0
+		cost = 10
+		relative_position_id = BRG_reinforce_monarchism
+		mutually_exclusive = { focus = BRG_reinforce_monarchism }
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = BRG_strengthen_democracy
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 1.75
+				RME = { has_government = absolutist }
+			}
+			modifier = {
+				factor = 0.01
+				RME = { has_civil_war = no }
+			}
+			modifier = {
+				factor = 100
+				RME = { has_completed_focus = RME_secure_the_new_state }
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_allow_political_discourse
+		icon = GFX_goal_generic_neutrality_focus
+		x = -1
+		y = 1
+		cost = 10
+		relative_position_id = BRG_democratize_government
+		prerequisite = { focus = BRG_democratize_government }
+		mutually_exclusive = { focus = BRG_expel_fascists }
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_stability = 0.05
+			hidden_effect = {
+				random_country = {
+					set_variable = { BRG.BRG_fascist_var = has_stability }
+					random_other_country = {
+						set_variable = { BRG.BRG_communist_var = has_stability }
+						random_other_country = {
+							limit = {
+								NOT = { tag = PREV.PREV }
+							}
+							set_variable = { BRG.BRG_democratic_var = has_stability }
+						}
+					}
+				}
+			}
+			multiply_variable = { BRG_fascist_var = random }
+			set_variable = { BRG_fascist_var1 = BRG_fascist_var }
+			divide_variable = { BRG_fascist_var1 = 2 }
+			set_variable = { BRG_fascist_var2 = BRG_fascist_var1 }
+			multiply_variable = { BRG_communist_var = random }
+			set_variable = { BRG_communist_var1 = BRG_communist_var }
+			divide_variable = { BRG_communist_var1 = 2 }
+			set_variable = { BRG_communist_var2 = BRG_communist_var1 }
+			multiply_variable = { BRG_democratic_var = random }
+			clamp_variable = { var = BRG_fascist_var min = 0.05 max = 0.15 }
+			clamp_variable = { var = BRG_communist_var min = 0.05 max = 0.2 }
+			clamp_variable = { var = BRG_democratic_var min = 0.1 max = 0.2 }
+			country_event = { id = tesb_BRG.100 hours = 1 }
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				fascism > 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_secure_public_rights
+		icon = GFX_goal_support_democracy
+		x = 1
+		y = 1
+		cost = 10
+		relative_position_id = BRG_democratize_government
+		prerequisite = { focus = BRG_democratize_government }
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = BRG_strengthen_democracy
+				add_idea = BRG_strengthen_democracy_2
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = BRG_write_new_constitution
+		icon = GFX_focus_generic_treaty
+		x = 0
+		y = 2
+		cost = 10
+		relative_position_id = BRG_democratize_government
+		prerequisite = { focus = BRG_secure_public_rights }
+		prerequisite = { focus = BRG_allow_political_discourse focus = BRG_expel_fascists }
+		available = {
+			democratic > 0.45
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = BRG_strengthen_democracy_2
+				add_idea = BRG_strengthen_democracy_3
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			hold_election = ROOT
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+	}
+	
+	focus = {
+		id = BRG_gallic_politics
+		icon = GFX_focus_chi_reach_out_to_france
+		x = 0
+		y = 1
+		cost = 10
+		relative_position_id = BRG_write_new_constitution
+		prerequisite = { focus = BRG_write_new_constitution }
+		available = {
+			OR = {
+				FRA = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
+				FLD = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
+				AQI = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
+				BRI = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
+			}
+		}
+		bypass = {
+			FRA = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
+			FLD = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
+			AQI = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
+			BRI = { OR = { has_government = democratic is_not_potential_friend_of_ROOT = yes } }
+		}
+		completion_reward = {
+			every_country = {
+				limit = {
+					is_potential_friend_of_ROOT = yes
+					OR = { tag = FRA tag = FLD tag = AQI tag = BRI }
+					NOT = { has_government = democratic }
+				}
+				add_timed_idea = {
+					idea = BRG_democratic_influence
+					days = 730
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+	focus = {
+		id = BRG_united_front
+		icon = GFX_focus_generic_little_entente
+		x = 0
+		y = 1
+		cost = 10
+		relative_position_id = BRG_gallic_politics
+		prerequisite = { focus = BRG_gallic_politics }
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			set_rule = {
+				can_create_factions = yes
+			}
+			create_faction = "The Gallic Entente"
+			#add_ideas = BRG_strengthen_democracy
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+}

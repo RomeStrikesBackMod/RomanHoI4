@@ -10,7 +10,7 @@ xcopy "output\The_Roman_Empire1936_01_01" "D:\MyProjects\RomanHoI4\results\The_R
 copy "output\The_Roman_Empire1936_01_01.mod" "D:\MyProjects\RomanHoI4\results\"
 
 cd "D:\MyProjects\RomanHoI4"
-xcopy HoI4Mod results /E /Y /I /Q
+copy ExtraFiles results /E /Y /I /Q
 
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/AOT - Aoteorea.txt" "HoI4Mod/patch/AoteoreaHistory.patch"
 "c:\Program Files (x86)\Beyond Compare 4\Patch.exe" "results/The_Roman_Empire1936_01_01/history/countries/RME - The Roman Empire.txt" "HoI4Mod/patch/RomeHistory.patch"

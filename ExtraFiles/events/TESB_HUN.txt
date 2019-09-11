@@ -1,0 +1,3386 @@
+﻿add_namespace = tesb_HUN
+
+country_event = {
+	id = tesb_HUN.100
+	title = tesb_HUN.100.t
+	desc = tesb_HUN.100.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.100.a
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_reducing_autonomy
+		}
+	}
+	option = {
+		name = tesb_HUN.100.b
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_powerful_governors
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.105
+	title = tesb_HUN.105.t
+	desc = tesb_HUN.105.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.105.a
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_regional_integration
+		}
+	}
+	option = {
+		name = tesb_HUN.105.b
+		swap_ideas = {
+			remove_idea = HUN_bavarian_demostrations
+			add_idea = HUN_autonomous_regions
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.110
+	title = tesb_HUN.110.t
+	desc = tesb_HUN.110.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.110.a
+		if = {
+			limit = { owns_state = 278 }
+			278 = { add_manpower = -1000000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 274 }
+			274 = { add_manpower = -500000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 275 }
+			275 = { add_manpower = -500000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+						OR = {
+							is_core_of = BAV
+							owner = {
+								NOT = {
+									any_owned_state = {
+										is_core_of = BAV
+										NOT = { has_state_flag = HUN_transfer }
+									}
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.115
+	title = tesb_HUN.115.t
+	desc = tesb_HUN.115.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_HUN.115.a
+		if = {
+			limit = { owns_state = 279 }
+			279 = { add_manpower = -1000000 }
+			GER = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+			PLC = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+		if = {
+			limit = { owns_state = 277 }
+			277 = { add_manpower = -1000000 }
+			PLC = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+			PLC = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							NOT = { has_state_flag = HUN_transfer }
+							owner = {
+								all_owned_state = {
+									has_state_flag = HUN_transfer
+								}
+							}
+						}
+					}
+					add_manpower = 500000
+					set_state_flag = HUN_transfer
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.120
+	title = tesb_HUN.120.t
+	desc = tesb_HUN.120.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#annex CRO/Pannonia
+	option = {
+		name = tesb_HUN.120.a
+		set_country_flag = annex_CRO
+		effect_tooltip = {
+			annex_country = {
+				target = CRO
+			}
+		}
+		CRO = {
+			country_event = { id = tesb_HUN.121 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#subjugate CRO/Pannonia
+	option = {
+		name = tesb_HUN.120.b
+		set_country_flag = subject_CRO
+		effect_tooltip = {
+			set_autonomy = {
+				target = CRO
+				autonomy_state = autonomy_puppet
+			}
+		}
+		CRO = {
+			country_event = { id = tesb_HUN.121 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.121
+	title = tesb_HUN.121.t
+	desc = tesb_HUN.121.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#accept
+	option = {
+		name = tesb_HUN.121.a
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_CRO } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = CRO
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_CRO } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = CRO
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.122 hours = 2 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	#seek aid
+	option = {
+		trigger = {
+			is_in_faction = no is_subject = no
+		}
+		name = tesb_HUN.121.b
+		set_country_flag = seek_aid
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_war_with = HUN
+						has_wargoal_against = HUN
+						original_tag = RME
+						original_tag = GER
+						original_tag = RUS
+						AND = {
+							original_tag = BRG
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = PLC
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = ITA
+							is_faction_leader = yes
+						}
+					}
+					OR = {
+						is_potential_friend_of_ROOT = yes
+						is_faction_leader = yes
+					}
+				}
+				set_country_flag = CRO_potential_ally
+				country_event = { id = tesb_HUN.123 random = 24 }
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_subject = yes
+		}
+		name = tesb_HUN.121.c
+		OVERLORD = {
+			set_country_flag = CRO_potential_ally
+			country_event = { id = tesb_HUN.123 hours = 2 }		
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_in_faction = yes is_subject = no
+		}
+		name = tesb_HUN.121.da
+		random_country = {
+			limit = { is_in_faction_with = CRO is_faction_leader = yes }
+			set_country_flag = CRO_potential_ally
+			country_event = { id = tesb_HUN.123 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.122
+	title = tesb_HUN.122.t
+	desc = tesb_HUN.122.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#annex CRO/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = annex_CRO
+		}
+		name = tesb_HUN.122.a
+		annex_country = {
+			target = CRO
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#subjugate CRO/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = subject_CRO
+		}
+		name = tesb_HUN.122.b
+		set_autonomy = {
+			target = CRO
+			autonomy_state = autonomy_puppet
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.123
+	title = tesb_HUN.123.t
+	desc = tesb_HUN.123.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#don't help CRO/Pannonia
+	option = {
+		trigger = {
+			NOT = { CRO = { is_subject_of = ROOT is_in_faction_with = ROOT } }
+		}
+		name = tesb_HUN.123.b
+		set_country_flag = not_aid_CRO
+		clr_country_flag = CRO_potential_ally
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_opinion = {
+					target = CRO
+					value > 50
+				}
+				factor = 0.1
+			}
+			modifier = {
+				is_faction_leader = no
+				factor = 1.5
+			}
+		}
+	}
+
+	#help CRO/Pannonia
+	option = {
+		trigger = { has_country_flag = CRO_potential_ally }
+		name = tesb_HUN.123.a
+		set_country_flag = aid_CRO
+		clr_country_flag = CRO_potential_ally
+		give_guarantee = CRO
+		hidden_effect = {
+			every_country = {
+				limit = { has_country_flag = CRO_potential_ally }
+				clr_country_flag = CRO_potential_ally
+			}
+		}
+		CRO = { country_event = { id = tesb_HUN.125 hours = 2 } }
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_war = yes
+				NOT = { has_war_with = HUN }
+				factor = 0
+			}
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 25
+				}
+				factor = 0.4
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 75
+				}
+				factor = 0.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 2
+			}
+			modifier = {
+				has_completed_focus = RME_restoring_the_empire
+				factor = 10
+			}
+		}
+	}
+	
+}
+
+country_event = {
+	id = tesb_HUN.124
+	title = tesb_HUN.124.t
+	desc = tesb_HUN.124.d
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = CRO
+		is_in_faction = no
+		is_subject = no
+		has_country_flag = seek_aid
+		NOT = { any_country = { has_country_flag = CRO_potential_ally } }
+		NOT = { any_country = { has_country_flag = aid_CRO } }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.124.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.126 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#submit to HUN
+	option = {
+		name = tesb_HUN.124.b
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_CRO } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = CRO
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_CRO } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = CRO
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.122 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio < 0.1
+				}
+				factor = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.125
+	title =	tesb_HUN.125.t
+	desc = tesb_HUN.125.d
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.125.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.126 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.126
+	title =	tesb_HUN.126.t
+	desc = {
+		text = tesb_HUN.126.da
+		trigger = { any_country = { has_country_flag = aid_CRO } }
+	}
+	desc = {
+		text = tesb_HUN.126.db
+		trigger = { NOT = { any_country = { has_country_flag = aid_CRO } } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = { has_country_flag = aid_CRO }
+				save_event_target_as = CRO_supporter
+			}
+		}
+	}
+	
+	#fight CRO
+	option = {
+		name = tesb_HUN.126.a
+		if = {
+			limit = { has_country_flag = annex_CRO }
+			create_wargoal = {
+				type = annex_everything
+				target = CRO
+			}
+		}
+		if = {
+			limit = { has_country_flag = subject_CRO }
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CRO
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#back down
+	option = {
+		name = tesb_HUN.126.b
+		add_stability = -0.05
+		add_war_support = -0.1
+		ai_chance = {
+			base = 1
+			modifier = {
+				any_country = { has_country_flag = aid_CRO }
+				factor = 5
+			}
+			modifier = {
+				any_country = {
+					has_country_flag = aid_CRO
+					strength_ratio = {
+						tag = HUN
+						ratio > 1
+					}
+				}
+				factor = 2
+			}
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_HUN.130
+	title = tesb_HUN.130.t
+	desc = tesb_HUN.130.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#annex Karnten
+	option = {
+		name = tesb_HUN.130.a
+		set_country_flag = annex_363
+		effect_tooltip = {
+			transfer_state = 582
+		}
+		SWI = {
+			country_event = { id = tesb_HUN.131 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.131
+	title = tesb_HUN.131.t
+	desc = tesb_HUN.131.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#accept
+	option = {
+		name = tesb_HUN.131.a
+		set_country_flag = accept_HUN
+		effect_tooltip = {
+			HUN = {
+				transfer_state = 582
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.132 hours = 2 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	#seek aid
+	option = {
+		trigger = {
+			is_in_faction = no is_subject = no
+		}
+		name = tesb_HUN.131.b
+		set_country_flag = seek_aid
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_war_with = HUN
+						has_wargoal_against = HUN
+						original_tag = RME
+						original_tag = GER
+						original_tag = RUS
+						AND = {
+							original_tag = BRG
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = PLC
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = ITA
+							is_faction_leader = yes
+						}
+					}
+					OR = {
+						is_potential_friend_of_ROOT = yes
+						is_faction_leader = yes
+					}
+				}
+				set_country_flag = SWI_potential_ally
+				country_event = { id = tesb_HUN.133 random = 24 }
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_subject = yes
+		}
+		name = tesb_HUN.131.c
+		OVERLORD = {
+			set_country_flag = SWI_potential_ally
+			country_event = { id = tesb_HUN.133 hours = 2 }		
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_in_faction = yes is_subject = no
+		}
+		name = tesb_HUN.131.da
+		random_country = {
+			limit = { is_in_faction_with = SWI is_faction_leader = yes }
+			set_country_flag = SWI_potential_ally
+			country_event = { id = tesb_HUN.133 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.132
+	title = tesb_HUN.132.t
+	desc = tesb_HUN.132.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#annex karnten
+	option = {
+		name = tesb_HUN.132.a
+		transfer_state = 582
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+}
+
+country_event = {
+	id = tesb_HUN.133
+	title = tesb_HUN.133.t
+	desc = tesb_HUN.133.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#don't help SWI/Pannonia
+	option = {
+		trigger = {
+			NOT = { SWI = { is_subject_of = ROOT is_in_faction_with = ROOT } }
+		}
+		name = tesb_HUN.133.b
+		set_country_flag = not_aid_SWI
+		clr_country_flag = SWI_potential_ally
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_opinion = {
+					target = SWI
+					value > 50
+				}
+				factor = 0.1
+			}
+			modifier = {
+				is_faction_leader = no
+				factor = 1.5
+			}
+		}
+	}
+
+	#help SWI/Pannonia
+	option = {
+		trigger = { has_country_flag = SWI_potential_ally }
+		name = tesb_HUN.133.a
+		set_country_flag = aid_SWI
+		clr_country_flag = SWI_potential_ally
+		give_guarantee = SWI
+		hidden_effect = {
+			every_country = {
+				limit = { has_country_flag = SWI_potential_ally }
+				clr_country_flag = SWI_potential_ally
+			}
+		}
+		SWI = { country_event = { id = tesb_HUN.135 hours = 2 } }
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_war = yes
+				NOT = { has_war_with = HUN }
+				factor = 0
+			}
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 25
+				}
+				factor = 0.4
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 75
+				}
+				factor = 0.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 2
+			}
+			modifier = {
+				has_completed_focus = RME_restoring_the_empire
+				factor = 10
+			}
+		}
+	}
+	
+}
+
+country_event = {
+	id = tesb_HUN.134
+	title = tesb_HUN.134.t
+	desc = tesb_HUN.134.d
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SWI
+		is_in_faction = no
+		is_subject = no
+		has_country_flag = seek_aid
+		NOT = { any_country = { has_country_flag = SWI_potential_ally } }
+		NOT = { any_country = { has_country_flag = aid_SWI } }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.134.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.136 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#submit to HUN
+	option = {
+		name = tesb_HUN.134.b
+		set_country_flag = accept_HUN
+		effect_tooltip = {
+			HUN = {
+				transfer_state = 582
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.132 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio < 0.1
+				}
+				factor = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.135
+	title =	tesb_HUN.135.t
+	desc = tesb_HUN.135.d
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.135.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.136 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.136
+	title =	tesb_HUN.136.t
+	desc = {
+		text = tesb_HUN.136.da
+		trigger = { any_country = { has_country_flag = aid_SWI } }
+	}
+	desc = {
+		text = tesb_HUN.136.db
+		trigger = { NOT = { any_country = { has_country_flag = aid_SWI } } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = { has_country_flag = aid_SWI }
+				save_event_target_as = SWI_supporter
+			}
+		}
+	}
+	
+	#fight SWI
+	option = {
+		name = tesb_HUN.136.a
+		create_wargoal = {
+			type = take_core_state
+			target = SWI
+			generator = { 582 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#back down
+	option = {
+		name = tesb_HUN.136.b
+		add_stability = -0.05
+		add_war_support = -0.1
+		ai_chance = {
+			base = 1
+			modifier = {
+				any_country = { has_country_flag = aid_SWI }
+				factor = 5
+			}
+			modifier = {
+				any_country = {
+					has_country_flag = aid_SWI
+					strength_ratio = {
+						tag = HUN
+						ratio > 1
+					}
+				}
+				factor = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.140
+	title = tesb_HUN.140.t
+	desc = tesb_HUN.140.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#subjugate YUG/Pannonia
+	option = {
+		name = tesb_HUN.140.b
+		set_country_flag = subject_YUG
+		effect_tooltip = {
+			set_autonomy = {
+				target = YUG
+				autonomy_state = autonomy_puppet
+			}
+		}
+		YUG = {
+			country_event = { id = tesb_HUN.141 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#annex YUG/Pannonia
+	option = {
+		name = tesb_HUN.140.a
+		set_country_flag = annex_YUG
+		effect_tooltip = {
+			annex_country = {
+				target = YUG
+			}
+		}
+		YUG = {
+			country_event = { id = tesb_HUN.141 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.141
+	title = tesb_HUN.141.t
+	desc = tesb_HUN.141.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#accept
+	option = {
+		name = tesb_HUN.141.a
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_YUG } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = YUG
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_YUG } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = YUG
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.142 hours = 2 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	#seek aid
+	option = {
+		trigger = {
+			is_in_faction = no is_subject = no
+		}
+		name = tesb_HUN.141.b
+		set_country_flag = seek_aid
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_war_with = HUN
+						has_wargoal_against = HUN
+						original_tag = RME
+						original_tag = GER
+						original_tag = RUS
+						AND = {
+							original_tag = BRG
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = PLC
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = ITA
+							is_faction_leader = yes
+						}
+					}
+					OR = {
+						is_potential_friend_of_ROOT = yes
+						is_faction_leader = yes
+					}
+				}
+				set_country_flag = YUG_potential_ally
+				country_event = { id = tesb_HUN.143 hours = 2 random = 24 }
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_subject = yes
+		}
+		name = tesb_HUN.141.c
+		OVERLORD = {
+			set_country_flag = YUG_potential_ally
+			country_event = { id = tesb_HUN.143 hours = 2 }		
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_in_faction = yes is_subject = no
+		}
+		name = tesb_HUN.141.da
+		random_country = {
+			limit = { is_in_faction_with = YUG is_faction_leader = yes }
+			set_country_flag = YUG_potential_ally
+			country_event = { id = tesb_HUN.143 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.142
+	title = tesb_HUN.142.t
+	desc = tesb_HUN.142.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#annex YUG/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = annex_YUG
+		}
+		name = tesb_HUN.142.a
+		annex_country = {
+			target = YUG
+		}
+	}
+	
+	#subjugate YUG/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = subject_YUG
+		}
+		name = tesb_HUN.142.b
+		set_autonomy = {
+			target = YUG
+			autonomy_state = autonomy_puppet
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.143
+	title = tesb_HUN.143.t
+	desc = tesb_HUN.143.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#don't help YUG/Pannonia
+	option = {
+		trigger = {
+			NOT = { YUG = { is_subject_of = ROOT is_in_faction_with = ROOT } }
+		}
+		name = tesb_HUN.143.b
+		set_country_flag = not_aid_YUG
+		clr_country_flag = YUG_potential_ally
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_opinion = {
+					target = YUG
+					value > 50
+				}
+				factor = 0.1
+			}
+			modifier = {
+				is_faction_leader = no
+				factor = 1.5
+			}
+		}
+	}
+
+	#help YUG/Pannonia
+	option = {
+		trigger = { has_country_flag = YUG_potential_ally }
+		name = tesb_HUN.143.a
+		set_country_flag = aid_YUG
+		clr_country_flag = YUG_potential_ally
+		give_guarantee = YUG
+		hidden_effect = {
+			every_country = {
+				limit = { has_country_flag = YUG_potential_ally }
+				clr_country_flag = YUG_potential_ally
+			}
+		}
+		YUG = { country_event = { id = tesb_HUN.145 hours = 2 } }
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_war = yes
+				NOT = { has_war_with = HUN }
+				factor = 0
+			}
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 25
+				}
+				factor = 0.4
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 75
+				}
+				factor = 0.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 2
+			}
+			modifier = {
+				has_completed_focus = RME_restoring_the_empire
+				factor = 10
+			}
+		}
+	}
+	
+}
+
+country_event = {
+	id = tesb_HUN.144
+	title = tesb_HUN.144.t
+	desc = tesb_HUN.144.d
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = YUG
+		is_in_faction = no
+		is_subject = no
+		has_country_flag = seek_aid
+		NOT = { any_country = { has_country_flag = YUG_potential_ally } }
+		NOT = { any_country = { has_country_flag = aid_YUG } }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.144.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.146 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#submit to HUN
+	option = {
+		name = tesb_HUN.144.b
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_YUG } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = YUG
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_YUG } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = YUG
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.142 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio < 0.1
+				}
+				factor = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.145
+	title =	tesb_HUN.145.t
+	desc = tesb_HUN.145.d
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.145.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.146 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.146
+	title =	tesb_HUN.146.t
+	desc = {
+		text = tesb_HUN.146.da
+		trigger = { any_country = { has_country_flag = aid_YUG } }
+	}
+	desc = {
+		text = tesb_HUN.146.db
+		trigger = { NOT = { any_country = { has_country_flag = aid_YUG } } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = { has_country_flag = aid_YUG }
+				save_event_target_as = YUG_supporter
+			}
+		}
+	}
+	
+	#fight YUG
+	option = {
+		name = tesb_HUN.146.a
+		if = {
+			limit = { has_country_flag = annex_YUG }
+			create_wargoal = {
+				type = annex_everything
+				target = YUG
+			}
+		}
+		if = {
+			limit = { has_country_flag = subject_YUG }
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = YUG
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#back down
+	option = {
+		name = tesb_HUN.146.b
+		add_stability = -0.05
+		add_war_support = -0.1
+		ai_chance = {
+			base = 1
+			modifier = {
+				any_country = { has_country_flag = aid_YUG }
+				factor = 5
+			}
+			modifier = {
+				any_country = {
+					has_country_flag = aid_YUG
+					strength_ratio = {
+						tag = HUN
+						ratio > 1
+					}
+				}
+				factor = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.150
+	title = tesb_HUN.150.t
+	desc = tesb_HUN.150.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#subjugate SER/Pannonia
+	option = {
+		name = tesb_HUN.150.b
+		set_country_flag = subject_SER
+		effect_tooltip = {
+			set_autonomy = {
+				target = SER
+				autonomy_state = autonomy_puppet
+			}
+		}
+		SER = {
+			country_event = { id = tesb_HUN.151 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#annex SER/Pannonia
+	option = {
+		name = tesb_HUN.150.a
+		set_country_flag = annex_SER
+		effect_tooltip = {
+			annex_country = {
+				target = SER
+			}
+		}
+		SER = {
+			country_event = { id = tesb_HUN.151 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.151
+	title = tesb_HUN.151.t
+	desc = tesb_HUN.151.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#accept
+	option = {
+		name = tesb_HUN.151.a
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_SER } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = SER
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_SER } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = SER
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.152 hours = 2 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	#seek aid
+	option = {
+		trigger = {
+			is_in_faction = no is_subject = no
+		}
+		name = tesb_HUN.151.b
+		set_country_flag = seek_aid
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_war_with = HUN
+						has_wargoal_against = HUN
+						original_tag = RME
+						original_tag = GER
+						original_tag = RUS
+						AND = {
+							original_tag = BRG
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = PLC
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = ITA
+							is_faction_leader = yes
+						}
+					}
+					OR = {
+						is_potential_friend_of_ROOT = yes
+						is_faction_leader = yes
+					}
+				}
+				set_country_flag = SER_potential_ally
+				country_event = { id = tesb_HUN.153 hours = 2 random = 24 }
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_subject = yes
+		}
+		name = tesb_HUN.151.c
+		OVERLORD = {
+			set_country_flag = SER_potential_ally
+			country_event = { id = tesb_HUN.153 hours = 2 }		
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_in_faction = yes is_subject = no
+		}
+		name = tesb_HUN.151.da
+		random_country = {
+			limit = { is_in_faction_with = SER is_faction_leader = yes }
+			set_country_flag = SER_potential_ally
+			country_event = { id = tesb_HUN.153 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.152
+	title = tesb_HUN.152.t
+	desc = tesb_HUN.152.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#annex SER/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = annex_SER
+		}
+		name = tesb_HUN.152.a
+		annex_country = {
+			target = SER
+		}
+	}
+	
+	#subjugate SER/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = subject_SER
+		}
+		name = tesb_HUN.152.b
+		set_autonomy = {
+			target = SER
+			autonomy_state = autonomy_puppet
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.153
+	title = tesb_HUN.153.t
+	desc = tesb_HUN.153.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#don't help SER/Pannonia
+	option = {
+		trigger = {
+			NOT = { SER = { is_subject_of = ROOT is_in_faction_with = ROOT } }
+		}
+		name = tesb_HUN.153.b
+		set_country_flag = not_aid_SER
+		clr_country_flag = SER_potential_ally
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_opinion = {
+					target = SER
+					value > 50
+				}
+				factor = 0.1
+			}
+			modifier = {
+				is_faction_leader = no
+				factor = 1.5
+			}
+		}
+	}
+
+	#help SER/Pannonia
+	option = {
+		trigger = { has_country_flag = SER_potential_ally }
+		name = tesb_HUN.153.a
+		set_country_flag = aid_SER
+		clr_country_flag = SER_potential_ally
+		give_guarantee = SER
+		hidden_effect = {
+			every_country = {
+				limit = { has_country_flag = SER_potential_ally }
+				clr_country_flag = SER_potential_ally
+			}
+		}
+		SER = { country_event = { id = tesb_HUN.155 hours = 2 } }
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_war = yes
+				NOT = { has_war_with = HUN }
+				factor = 0
+			}
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 25
+				}
+				factor = 0.4
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 75
+				}
+				factor = 0.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 2
+			}
+			modifier = {
+				has_completed_focus = RME_restoring_the_empire
+				factor = 10
+			}
+		}
+	}
+	
+}
+
+country_event = {
+	id = tesb_HUN.154
+	title = tesb_HUN.154.t
+	desc = tesb_HUN.154.d
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SER
+		is_in_faction = no
+		is_subject = no
+		has_country_flag = seek_aid
+		NOT = { any_country = { has_country_flag = SER_potential_ally } }
+		NOT = { any_country = { has_country_flag = aid_SER } }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.154.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.156 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#submit to HUN
+	option = {
+		name = tesb_HUN.154.b
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_SER } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = SER
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_SER } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = SER
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.152 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio < 0.1
+				}
+				factor = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.155
+	title =	tesb_HUN.155.t
+	desc = tesb_HUN.155.d
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.155.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.156 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.156
+	title =	tesb_HUN.156.t
+	desc = {
+		text = tesb_HUN.156.da
+		trigger = { any_country = { has_country_flag = aid_SER } }
+	}
+	desc = {
+		text = tesb_HUN.156.db
+		trigger = { NOT = { any_country = { has_country_flag = aid_SER } } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = { has_country_flag = aid_SER }
+				save_event_target_as = SER_supporter
+			}
+		}
+	}
+	
+	#fight SER
+	option = {
+		name = tesb_HUN.156.a
+		if = {
+			limit = { has_country_flag = annex_SER }
+			create_wargoal = {
+				type = annex_everything
+				target = SER
+			}
+		}
+		if = {
+			limit = { has_country_flag = subject_SER }
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SER
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#back down
+	option = {
+		name = tesb_HUN.156.b
+		add_stability = -0.05
+		add_war_support = -0.1
+		ai_chance = {
+			base = 1
+			modifier = {
+				any_country = { has_country_flag = aid_SER }
+				factor = 5
+			}
+			modifier = {
+				any_country = {
+					has_country_flag = aid_SER
+					strength_ratio = {
+						tag = HUN
+						ratio > 1
+					}
+				}
+				factor = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.160
+	title = tesb_HUN.160.t
+	desc = tesb_HUN.160.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#subjugate MOS/Pannonia
+	option = {
+		name = tesb_HUN.160.b
+		set_country_flag = subject_MOS
+		effect_tooltip = {
+			set_autonomy = {
+				target = MOS
+				autonomy_state = autonomy_puppet
+			}
+		}
+		MOS = {
+			country_event = { id = tesb_HUN.161 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#annex MOS/Pannonia
+	option = {
+		name = tesb_HUN.160.a
+		set_country_flag = annex_MOS
+		effect_tooltip = {
+			annex_country = {
+				target = MOS
+			}
+		}
+		MOS = {
+			country_event = { id = tesb_HUN.161 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.161
+	title = tesb_HUN.161.t
+	desc = tesb_HUN.161.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#accept
+	option = {
+		name = tesb_HUN.161.a
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_MOS } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = MOS
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_MOS } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = MOS
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.162 hours = 2 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	#seek aid
+	option = {
+		trigger = {
+			is_in_faction = no is_subject = no
+		}
+		name = tesb_HUN.161.b
+		set_country_flag = seek_aid
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_war_with = HUN
+						has_wargoal_against = HUN
+						original_tag = RME
+						original_tag = GER
+						original_tag = RUS
+						AND = {
+							original_tag = BRG
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = PLC
+							is_faction_leader = yes
+						}
+						AND = {
+							original_tag = ITA
+							is_faction_leader = yes
+						}
+					}
+					OR = {
+						is_potential_friend_of_ROOT = yes
+						is_faction_leader = yes
+					}
+				}
+				set_country_flag = MOS_potential_ally
+				country_event = { id = tesb_HUN.163 hours = 2 random = 24 }
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_subject = yes
+		}
+		name = tesb_HUN.161.c
+		OVERLORD = {
+			set_country_flag = MOS_potential_ally
+			country_event = { id = tesb_HUN.163 hours = 2 }		
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_in_faction = yes is_subject = no
+		}
+		name = tesb_HUN.161.da
+		random_country = {
+			limit = { is_in_faction_with = MOS is_faction_leader = yes }
+			set_country_flag = MOS_potential_ally
+			country_event = { id = tesb_HUN.163 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.162
+	title = tesb_HUN.162.t
+	desc = tesb_HUN.162.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#annex MOS/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = annex_MOS
+		}
+		name = tesb_HUN.162.a
+		annex_country = {
+			target = MOS
+		}
+	}
+	
+	#subjugate MOS/Pannonia
+	option = {
+		trigger = {
+			has_country_flag = subject_MOS
+		}
+		name = tesb_HUN.162.b
+		set_autonomy = {
+			target = MOS
+			autonomy_state = autonomy_puppet
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.163
+	title = tesb_HUN.163.t
+	desc = tesb_HUN.163.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#don't help MOS/Pannonia
+	option = {
+		trigger = {
+			NOT = { MOS = { is_subject_of = ROOT is_in_faction_with = ROOT } }
+		}
+		name = tesb_HUN.163.b
+		set_country_flag = not_aid_MOS
+		clr_country_flag = MOS_potential_ally
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_opinion = {
+					target = MOS
+					value > 50
+				}
+				factor = 0.1
+			}
+			modifier = {
+				is_faction_leader = no
+				factor = 1.5
+			}
+		}
+	}
+
+	#help MOS/Pannonia
+	option = {
+		trigger = { has_country_flag = MOS_potential_ally }
+		name = tesb_HUN.163.a
+		set_country_flag = aid_MOS
+		clr_country_flag = MOS_potential_ally
+		give_guarantee = MOS
+		hidden_effect = {
+			every_country = {
+				limit = { has_country_flag = MOS_potential_ally }
+				clr_country_flag = MOS_potential_ally
+			}
+		}
+		MOS = { country_event = { id = tesb_HUN.165 hours = 2 } }
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_war = yes
+				NOT = { has_war_with = HUN }
+				factor = 0
+			}
+			modifier = {
+				is_in_faction_with = HUN
+				factor = 0
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 25
+				}
+				factor = 0.4
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value > 75
+				}
+				factor = 0.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 2
+			}
+			modifier = {
+				has_completed_focus = RME_restoring_the_empire
+				factor = 10
+			}
+		}
+	}
+	
+}
+
+country_event = {
+	id = tesb_HUN.164
+	title = tesb_HUN.164.t
+	desc = tesb_HUN.164.d
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOS
+		is_in_faction = no
+		is_subject = no
+		has_country_flag = seek_aid
+		NOT = { any_country = { has_country_flag = MOS_potential_ally } }
+		NOT = { any_country = { has_country_flag = aid_MOS } }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.164.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.166 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#submit to HUN
+	option = {
+		name = tesb_HUN.164.b
+		set_country_flag = accept_HUN
+		if = {
+			limit = { HUN = { has_country_flag = annex_MOS } }
+			effect_tooltip = {
+				HUN = {
+					annex_country = {
+						target = MOS
+					}
+				}
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		if = {
+			limit = { HUN = { has_country_flag = subject_MOS } }
+			effect_tooltip = {
+				HUN = {
+					set_autonomy = {
+						target = MOS
+						autonomy_state = autonomy_puppet
+					}
+				}
+			}
+		}
+		HUN = {
+			country_event = { id = tesb_HUN.162 hours = 2 }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio < 0.1
+				}
+				factor = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.165
+	title =	tesb_HUN.165.t
+	desc = tesb_HUN.165.d
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	#fight HUN
+	option = {
+		name = tesb_HUN.165.a
+		set_country_flag = fight_HUN
+		HUN = {
+			country_event = { id = tesb_HUN.166 hours = 2 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.166
+	title =	tesb_HUN.166.t
+	desc = {
+		text = tesb_HUN.166.da
+		trigger = { any_country = { has_country_flag = aid_MOS } }
+	}
+	desc = {
+		text = tesb_HUN.166.db
+		trigger = { NOT = { any_country = { has_country_flag = aid_MOS } } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = { has_country_flag = aid_MOS }
+				save_event_target_as = MOS_supporter
+			}
+		}
+	}
+	
+	#fight MOS
+	option = {
+		name = tesb_HUN.166.a
+		if = {
+			limit = { has_country_flag = annex_MOS }
+			create_wargoal = {
+				type = annex_everything
+				target = MOS
+			}
+		}
+		if = {
+			limit = { has_country_flag = subject_MOS }
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = MOS
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	
+	#back down
+	option = {
+		name = tesb_HUN.166.b
+		add_stability = -0.05
+		add_war_support = -0.1
+		ai_chance = {
+			base = 1
+			modifier = {
+				any_country = { has_country_flag = aid_MOS }
+				factor = 5
+			}
+			modifier = {
+				any_country = {
+					has_country_flag = aid_MOS
+					strength_ratio = {
+						tag = HUN
+						ratio > 1
+					}
+				}
+				factor = 2
+			}
+		}
+	}
+}
+
+#autonomy
+country_event = {
+	id = tesb_HUN.210
+	title = tesb_HUN.210.t
+	desc = {
+		text = tesb_HUN.210.dc
+		trigger = { has_government = communism }
+	}
+	desc = {
+		text = tesb_HUN.210.dd
+		trigger = { has_government = democratic }
+	}
+	desc = {
+		text = tesb_HUN.210.da
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.210.c
+		set_country_flag = HUN_bav_auto_comm
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.210.d
+		set_country_flag = HUN_bav_auto_demo
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.210.a
+		set_country_flag = HUN_bav_auto_other
+	}
+}
+
+#integration
+country_event = {
+	id = tesb_HUN.211
+	title = tesb_HUN.210.t
+	desc = {
+		text = tesb_HUN.211.dc
+		trigger = { has_government = communism }
+	}
+	desc = {
+		text = tesb_HUN.211.dd
+		trigger = { has_government = democratic }
+	}
+	desc = {
+		text = tesb_HUN.211.da
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.211.c
+		set_country_flag = HUN_bav_integ_comm
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.211.d
+		set_country_flag = HUN_bav_integ_demo
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.211.a
+		set_country_flag = HUN_bav_integ_other
+	}
+}
+
+#referendum
+country_event = {
+	id = tesb_HUN.215
+	title = tesb_HUN.215.t
+	desc = tesb_HUN.215.dd
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.215.o
+		if = {
+			limit = { has_country_flag = HUN_bav_integ_comm }
+			random_list = {
+				95 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				5 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = HUN_bav_auto_comm has_country_flag = HUN_bav_integ_other } }
+			random_list = {
+				75 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				25 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = HUN_bav_auto_other has_idea = HUN_regional_integration } }
+			random_list = {
+				65 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				35 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else = {
+			random_list = {
+				55 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				45 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		if = {
+			limit = { has_idea = HUN_regional_integration has_completed_focus = HUN_galician_referendum }
+			remove_ideas = HUN_regional_integration
+		}
+		if = {
+			limit = { has_idea = HUN_autonomous_regions has_completed_focus = HUN_galician_referendum }
+			remove_ideas = HUN_autonomous_regions
+		}
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.215.o
+		if = {
+			limit = { has_country_flag = HUN_bav_integ_demo }
+			random_list = {
+				75 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				25 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = HUN_bav_auto_demo }
+			random_list = {
+				70 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				30 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = HUN_bav_integ_other }
+			random_list = {
+				65 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				35 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = HUN_bav_auto_other }
+			random_list = {
+				60 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				40 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_idea = HUN_regional_integration }
+			random_list = {
+				55 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				45 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else = {
+			random_list = {
+				50 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				50 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		if = {
+			limit = { has_idea = HUN_regional_integration has_completed_focus = HUN_galician_referendum }
+			remove_ideas = HUN_regional_integration
+		}
+		if = {
+			limit = { has_idea = HUN_autonomous_regions has_completed_focus = HUN_galician_referendum }
+			remove_ideas = HUN_autonomous_regions
+		}
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.215.o
+		if = {
+			limit = { OR = { has_country_flag = HUN_bav_auto_other has_country_flag = HUN_bav_integ_other } }
+			random_list = {
+				50 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				50 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		else = {
+			random_list = {
+				40 = { country_event = { id = tesb_HUN.216 hours = 2 } }
+				60 = { country_event = { id = tesb_HUN.217 hours = 2 } }
+			}
+		}
+		if = {
+			limit = { has_idea = HUN_regional_integration has_completed_focus = HUN_galician_referendum }
+			remove_ideas = HUN_regional_integration
+		}
+		if = {
+			limit = { has_idea = HUN_autonomous_regions has_completed_focus = HUN_galician_referendum }
+			remove_ideas = HUN_autonomous_regions
+		}
+	}
+}
+
+#integrate
+country_event = {
+	id = tesb_HUN.216
+	title = tesb_HUN.216.t
+	desc = tesb_HUN.216.dd
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_state_core = 278
+			add_state_core = 274
+			add_state_core = 275
+		}
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.216.c
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.216.d
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.216.e
+	}
+}
+
+country_event = {
+	id = tesb_HUN.217
+	title = tesb_HUN.217.t
+	desc = tesb_HUN.217.dd
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_state_claim = 278
+			add_state_claim = 274
+			add_state_claim = 275
+			release = BAV
+		}
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.217.c
+		hidden_effect = {
+			BAV = {
+				set_politics = {
+					ruling_party = communism
+				}
+				set_popularities = {
+					communism = 56
+					democratic = 22
+					absolutist = 4
+					fascism = 8
+					neutrality = 10
+				}
+				country_event = { id = tesb_HUN.218 hours = 1 }
+			}
+		}
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.217.d
+		hidden_effect = {
+			BAV = {
+				set_politics = {
+					ruling_party = democratic
+				}
+				set_popularities = {
+					communism = 36
+					democratic = 42
+					absolutist = 4
+					fascism = 8
+					neutrality = 10
+				}
+				country_event = { id = tesb_HUN.218 hours = 1 }
+			}
+		}
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.217.e
+		hidden_effect = {
+			BAV = {
+				set_politics = {
+					ruling_party = neutrality
+				}
+				set_popularities = {
+					communism = 26
+					democratic = 22
+					absolutist = 14
+					fascism = 8
+					neutrality = 30
+				}
+				country_event = { id = tesb_HUN.218 hours = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.218
+	title = tesb_HUN.218.t
+	desc = tesb_HUN.218.dd
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	
+	#stay independent
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.218.ca
+	}
+	#stay independent
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.218.da
+	}
+	#stay independent
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.218.e
+	}
+}
+
+#autonomy
+country_event = {
+	id = tesb_HUN.220
+	title = tesb_HUN.220.t
+	desc = {
+		text = tesb_HUN.220.dc
+		trigger = { has_government = communism }
+	}
+	desc = {
+		text = tesb_HUN.220.dd
+		trigger = { has_government = democratic }
+	}
+	desc = {
+		text = tesb_HUN.220.da
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.220.c
+		set_country_flag = HUN_gal_auto_comm
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.220.d
+		set_country_flag = HUN_gal_auto_demo
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.220.a
+		set_country_flag = HUN_gal_auto_other
+	}
+}
+
+#integration
+country_event = {
+	id = tesb_HUN.221
+	title = tesb_HUN.220.t
+	desc = {
+		text = tesb_HUN.221.dc
+		trigger = { has_government = communism }
+	}
+	desc = {
+		text = tesb_HUN.221.dd
+		trigger = { has_government = democratic }
+	}
+	desc = {
+		text = tesb_HUN.221.da
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+	}
+
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.221.c
+		set_country_flag = HUN_gal_integ_comm
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.221.d
+		set_country_flag = HUN_gal_integ_demo
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.221.a
+		set_country_flag = HUN_gal_integ_other
+	}
+}
+
+#referendum
+country_event = {
+	id = tesb_HUN.225
+	title = tesb_HUN.225.t
+	desc = tesb_HUN.225.dd
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.225.o
+		if = {
+			limit = { has_country_flag = HUN_gal_auto_comm }
+			random_list = {
+				65 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				35 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = HUN_gal_auto_other has_country_flag = HUN_gal_integ_other } }
+			random_list = {
+				75 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				25 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = HUN_gal_integ_comm has_idea = HUN_autonomous_regions } }
+			random_list = {
+				55 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				45 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else = {
+			random_list = {
+				45 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				55 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		if = {
+			limit = { has_idea = HUN_regional_integration has_completed_focus = HUN_bohemian_referendum }
+			remove_ideas = HUN_regional_integration
+		}
+		if = {
+			limit = { has_idea = HUN_autonomous_regions has_completed_focus = HUN_bohemian_referendum }
+			remove_ideas = HUN_autonomous_regions
+		}
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.225.o
+		if = {
+			limit = { has_country_flag = HUN_gal_auto_demo }
+			random_list = {
+				75 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				25 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = HUN_gal_auto_other }
+			random_list = {
+				70 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				30 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = HUN_gal_integ_demo }
+			random_list = {
+				65 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				35 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = HUN_gal_integ_other }
+			random_list = {
+				60 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				40 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else_if = {
+			limit = { has_idea = HUN_autonomous_regions }
+			random_list = {
+				55 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				45 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else = {
+			random_list = {
+				50 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				50 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		if = {
+			limit = { has_idea = HUN_regional_integration has_completed_focus = HUN_bohemian_referendum }
+			remove_ideas = HUN_regional_integration
+		}
+		if = {
+			limit = { has_idea = HUN_autonomous_regions has_completed_focus = HUN_bohemian_referendum }
+			remove_ideas = HUN_autonomous_regions
+		}
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.225.o
+		if = {
+			limit = { OR = { has_country_flag = HUN_gal_auto_other has_country_flag = HUN_gal_integ_other } }
+			random_list = {
+				50 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				50 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		else = {
+			random_list = {
+				40 = { country_event = { id = tesb_HUN.226 hours = 2 } }
+				60 = { country_event = { id = tesb_HUN.227 hours = 2 } }
+			}
+		}
+		if = {
+			limit = { has_idea = HUN_regional_integration has_completed_focus = HUN_bohemian_referendum }
+			remove_ideas = HUN_regional_integration
+		}
+		if = {
+			limit = { has_idea = HUN_autonomous_regions has_completed_focus = HUN_bohemian_referendum }
+			remove_ideas = HUN_autonomous_regions
+		}
+	}
+}
+
+#integrate
+country_event = {
+	id = tesb_HUN.226
+	title = tesb_HUN.226.t
+	desc = tesb_HUN.226.dd
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_state_core = 279
+			add_state_core = 277
+		}
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.226.c
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.226.d
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.226.e
+	}
+}
+
+country_event = {
+	id = tesb_HUN.227
+	title = tesb_HUN.227.t
+	desc = tesb_HUN.227.dd
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_state_claim = 279
+			add_state_claim = 277
+			release = POL
+		}
+	}
+	
+	option = {
+		trigger = { has_government = communism }
+		name = tesb_HUN.227.c
+		hidden_effect = {
+			POL = {
+				set_politics = {
+					ruling_party = fascism
+				}
+				set_popularities = {
+					communism = 16
+					democratic = 22
+					absolutist = 14
+					fascism = 38
+					neutrality = 10
+				}
+				country_event = { id = tesb_HUN.228 hours = 1 }
+			}
+		}
+	}
+	option = {
+		trigger = { has_government = democratic }
+		name = tesb_HUN.227.d
+		hidden_effect = {
+			POL = {
+				set_politics = {
+					ruling_party = democratic
+				}
+				set_popularities = {
+					communism = 16
+					democratic = 42
+					absolutist = 14
+					fascism = 18
+					neutrality = 10
+				}
+				country_event = { id = tesb_HUN.228 hours = 1 }
+			}
+		}
+	}
+	option = {
+		trigger = { OR = { has_government = absolutist has_government = fascism has_government = neutrality } }
+		name = tesb_HUN.227.e
+		hidden_effect = {
+			POL = {
+				set_politics = {
+					ruling_party = absolutist
+				}
+				set_popularities = {
+					communism = 6
+					democratic = 22
+					absolutist = 24
+					fascism = 28
+					neutrality = 20
+				}
+				country_event = { id = tesb_HUN.228 hours = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.228
+	title = tesb_HUN.228.t
+	desc = tesb_HUN.228.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	
+	#stay independent
+	option = {
+		name = tesb_HUN.228.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_government = fascism
+				factor = 0.5
+			}
+			modifier = {
+				has_government = neutrality
+				factor = 0.5
+			}
+		}
+	}
+	#Join PLC
+	option = {
+		name = tesb_HUN.228.b
+		PLC = { country_event = { id = tesb_HUN.229 } }
+		custom_effect_tooltip = GAME_OVER_TT
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_government = democratic
+				factor = 0.5
+			}
+			modifier = {
+				has_government = communism
+				factor = 0.2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.229
+	title = tesb_HUN.229.t
+	desc = tesb_HUN.229.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	
+	#annex Galician/POL
+	option = {
+		name = tesb_HUN.229.a
+		annex_country = {
+			target = POL
+			transfer_troops = yes
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	#Don't
+	option = {
+		name = tesb_HUN.229.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.230
+	title = tesb_HUN.230.t
+	desc = tesb_HUN.230.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join HUN alliance
+	option = {
+		name = tesb_HUN.230.a
+		effect_tooltip = {
+			HUN = { add_to_faction = ROOT }
+		}
+		hidden_effect = {
+			HUN = { country_event = { id = tesb_HUN.231 hours = 1 } }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				NOT = { has_government = FROM }
+				factor = 0.5
+			}
+			modifier = {
+				has_government = FROM
+				factor = 2
+			}
+		}
+	}
+	#Reject HUN alliance
+	option = {
+		name = tesb_HUN.230.b
+		effect_tooltip = {
+			reverse_add_opinion_modifier = {
+				target = HUN
+				modifier = rejected_faction
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_government = FROM }
+			}
+			custom_effect_tooltip = tesb_HUN.230.tt
+		}
+		hidden_effect = {
+			HUN = { country_event = { id = tesb_HUN.232 hours = 1 } }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio < 0.5
+				}
+				factor = 0.5
+			}
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio > 1
+				}
+				factor = 2
+			}
+		}
+	}
+}
+country_event = {
+	id = tesb_HUN.231
+	title = tesb_HUN.231.t
+	desc = tesb_HUN.231.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join HUN alliance
+	option = {
+		name = tesb_HUN.231.a
+		add_to_faction = FROM
+	}
+}
+country_event = {
+	id = tesb_HUN.232
+	title = tesb_HUN.232.t
+	desc = tesb_HUN.232.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join HUN alliance
+	option = {
+		name = tesb_HUN.232.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_faction
+		}
+	}
+	#Reject HUN alliance
+	option = {
+		trigger = {
+			FROM = {
+				NOT = { has_government = ROOT }
+			}
+		}
+		name = tesb_HUN.232.b
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_faction
+		}
+		if = {
+			limit = { has_government = democratic }
+			create_wargoal = {
+				type = topple_government
+				target = FROM
+			}
+		}
+		else = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FROM
+			}
+		}
+	}
+}
