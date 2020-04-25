@@ -23,6 +23,11 @@ crisis = {
 			}
 		}
 
+		cost = 0
+		ai_will_do = {
+			factor = 1
+		}
+
 		visible = {
 			OR = {
 				has_civil_war = yes
@@ -39,14 +44,8 @@ crisis = {
 									
 		}
 
-		cost = 0
-
 		complete_effect = {
 			country_event = stability.21
-		}
-
-		ai_will_do = {
-			factor = 1
 		}
 	}
 
@@ -73,6 +72,15 @@ crisis = {
 			}
 		}
 
+		cost = 0
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_idea = strikes_3
+				factor = 500
+			}
+		}
+
 		visible = {
 			OR = {
 				has_idea = strikes_1
@@ -88,25 +96,16 @@ crisis = {
 			}
 		}
 
-		cost = 0
 
 		complete_effect = {
 			country_event = stability.22
 		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_idea = strikes_3
-				factor = 500
-			}
-		}
 	}
-
+	
 	draft_dodging_mission = {
 
 		icon = generic_civil_support
-
+		
 		available = {
 			NOT = {
 				OR = {
@@ -126,7 +125,6 @@ crisis = {
 				has_idea = draft_dodging_3
 			}
 		}
-
 		visible = {
 			OR = {
 				has_idea = draft_dodging
@@ -134,11 +132,9 @@ crisis = {
 				has_idea = draft_dodging_3
 			}
 		}
-
 		complete_effect = {
 			
 		}
-
 		timeout_effect = {
 			if = {
 				limit = {
@@ -209,11 +205,10 @@ crisis = {
 			}	
 		}
 	}
-
 	strikes_mission = {
 
 		icon = generic_civil_support
-
+		
 		available = {
 			NOT = {
 				OR = {
@@ -238,7 +233,6 @@ crisis = {
 				has_civil_war = yes
 			}
 		}
-
 		visible = {
 			OR = {
 				has_idea = strikes_1 
@@ -250,11 +244,9 @@ crisis = {
 				has_civil_war = yes
 			}
 		}
-
 		complete_effect = {
 			
 		}
-
 		timeout_effect = {
 			if = {
 				limit = {
@@ -325,7 +317,6 @@ crisis = {
 			}	
 		}
 	}
-
 	mutiny_1 = {
 
 		icon = generic_civil_support
@@ -346,6 +337,11 @@ crisis = {
 			}
 		}
 
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
 		visible = {
 			OR = {
 				has_country_flag = crisis_in_progress #needed to avoid doubling up with demob strikes
@@ -361,21 +357,14 @@ crisis = {
 			}
 		}
 
-		cost = 5
-
 		complete_effect = {
 			country_event = stability.23
 		}
-
-		ai_will_do = {
-			factor = 1
-		}
 	}
-
 	mutiny_mission = {
 
 		icon = generic_civil_support
-
+		
 		available = {
 			NOT = {
 				OR = {
@@ -400,7 +389,6 @@ crisis = {
 				has_civil_war = yes
 			} 
 		}
-
 		visible = {
 			OR = {
 				has_idea = mutiny_1 
@@ -412,11 +400,9 @@ crisis = {
 				has_civil_war = yes
 			}
 		}
-
 		complete_effect = {
 			
 		}
-
 		timeout_effect = {
 			if = {
 				limit = {
@@ -488,13 +474,11 @@ crisis = {
 		}
 	}
 }
-
 demobilization = {
-
 	demobilization_economic = {
 
 		icon = generic_industry
-
+		
 		is_good = no
 
 		available = {
@@ -506,14 +490,12 @@ demobilization = {
 			has_unsupported_economic_law = yes
 			has_war = no
 		}
+		cost = 50
 
 		visible = {
 			has_war = no
 			has_unsupported_economic_law = yes
 		}
-
-		cost = 50
-
 		complete_effect = {
 			if = {
 				limit = {
@@ -558,18 +540,12 @@ demobilization = {
 				remove_ideas = strikes_3
 			}
 		}
-
 		ai_will_do = {
 			factor = 500 #should really get on this
 		}
+		
 	}
-
 	demob_economic_mission = {
-
-		icon = revolt
-
-		is_good = no
-
 		available = {
 			OR = {
 				has_unsupported_economic_law = no
@@ -577,13 +553,13 @@ demobilization = {
 			}
 		}
 
-		days_mission_timeout = 120
-
 		activation = {
 			has_unsupported_economic_law = yes
 			has_war = no
 		}
-
+		icon = revolt
+		is_good = no
+		days_mission_timeout = 120
 		complete_effect = {
 			if = {
 				limit = {
@@ -604,7 +580,6 @@ demobilization = {
 				remove_ideas = strikes_3
 			}
 		}
-
 		timeout_effect = {
 			activate_mission = demob_economic_mission
 			if = {
@@ -688,29 +663,32 @@ demobilization = {
 			}	
 		}
 	}
-
 	demobilization_manpower = {
 
+		icon = generic_prepare_civil_war
+
 		icon = revolt
-
 		is_good = no
-
-		allowed = {
-			always = yes
-		}
 
 		available = {
 			has_unsupported_manpower_law = yes
 			has_war = no
 		}
 
+		allowed = {
+			always = yes
+		}
+
+		cost = 50
+		ai_will_do = {
+			factor = 500
+		}
+		
+
 		visible = {
 			has_unsupported_manpower_law = yes
 			has_war = no
 		}
-
-		cost = 50
-
 		complete_effect = {
 			if = {
 				limit = {
@@ -735,31 +713,24 @@ demobilization = {
 			}
 		}
 
-		ai_will_do = {
-			factor = 500
-		}
-	}
+		
 
+	}
 	demob_manpower_mission = {
 
 		icon = revolt
-
 		is_good = no
-
+		days_mission_timeout = 120
 		available = {
 			OR = {
 				has_unsupported_manpower_law = no
 				has_war = yes
 			}
 		}
-
-		days_mission_timeout = 120
-
 		activation = {
 			has_unsupported_manpower_law = yes
 			has_war = no
 		}
-
 		timeout_effect = {
 			if = {
 				limit = {
@@ -800,4 +771,3 @@ demobilization = {
 		}
 	}
 }
-

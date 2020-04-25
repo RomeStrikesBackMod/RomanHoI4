@@ -1,6 +1,8 @@
-﻿name = "Converted - Rome Strikes Back - CV Branch"
-path = "mod/The_Roman_Empire1936_01_01/"
-user_dir = "TESB_CV"
+﻿version="1.9.*"
+tags={
+	"Alternative History"
+}
+name="The Empire Strikes Back"
 replace_path="common/ai_equipment"
 replace_path="common/ai_focuses"
 replace_path="common/ai_strategy"
@@ -23,4 +25,5 @@ replace_path="history/states"
 replace_path="history/units"
 replace_path="map/strategicregions"
 replace_path="map/supplyareas"
-supported_version="1.7.*"
+supported_version="1.9.1"
+path="mod/TESB"
