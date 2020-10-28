@@ -1,0 +1,1195 @@
+﻿###########################
+# Wargoal Justification Events
+###########################
+
+add_namespace = war_justification 
+
+# Generic: Neighbor
+country_event = {
+	id = war_justification.17
+	title = war_justification.17.t
+	desc = war_justification.17.d
+	picture = GFX_report_event_riot_police_poland
+	
+	is_triggered_only = yes
+
+	trigger = {
+		is_neighbor_of = FROM
+		NOT = { has_country_flag = war_justification_last_event_neighbor }
+	}
+	
+	option = {
+		name = war_justification.17.a
+		FROM = { country_event = { id = war_justification.217 } }
+		set_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+# Generic: Mobilized Nation
+country_event = {
+	id = war_justification.18
+	title = war_justification.18.t
+	desc = war_justification.18.d
+	picture = GFX_report_event_korean_war_march
+	
+	is_triggered_only = yes
+
+	trigger = {
+		FROM = {
+			OR = {
+				has_idea = low_economic_mobilisation
+				has_idea = partial_economic_mobilisation
+				has_idea = war_economy
+				has_idea = tot_economic_mobilisation
+			}
+		}
+		NOT = { has_country_flag = war_justification_last_event_mobilized }
+	}
+	
+	option = {
+		name = war_justification.18.a
+		FROM = { country_event = { id = war_justification.218 } }
+		set_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+# Generic: Enemy Troops at the Border
+country_event = {
+	id = war_justification.19
+	title = war_justification.19.t
+	desc = war_justification.19.d
+	picture = GFX_report_event_soldiers_marching
+	
+	is_triggered_only = yes
+
+	trigger = {
+		FROM = {
+			is_neighbor_of = ROOT
+			any_owned_state = {
+				any_neighbor_state = { is_owned_by = ROOT }
+				FROM = {
+					divisions_in_state = {
+						state = PREV
+						size > 1
+					}
+				}	
+			}
+		}
+		NOT = { has_country_flag = war_justification_last_event_borderthreat }
+	}
+	
+	option = {
+		name = war_justification.19.a
+		FROM = { country_event = { id = war_justification.219 } }
+		set_country_flag = war_justification_last_event_borderthreat
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+	}
+}
+
+# Generic: Any War
+country_event = {
+	id = war_justification.20
+	title = war_justification.20.t
+	desc = war_justification.20.d
+	picture = GFX_report_event_tanks_vietnam
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = war_justification_last_event_generic
+	}
+	
+	option = {
+		name = war_justification.20.a
+		FROM = { country_event = { id = war_justification.220 } }
+		set_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_borderthreat
+		clr_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+	}
+}
+
+# Generic: Neighbor (Target)
+country_event = {
+	id = war_justification.217
+	title = war_justification.217.t
+	desc = war_justification.217.d
+	picture = GFX_report_event_riot_police_poland
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = war_justification.217.a
+	}
+}
+
+# Generic: Mobilized Nation (Target)
+country_event = {
+	id = war_justification.218
+	title = war_justification.218.t
+	desc = war_justification.218.d
+	picture = GFX_report_event_korean_war_march
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = war_justification.218.a
+	}
+}
+
+# Generic: Enemy Troops at the Border (Target)
+country_event = {
+	id = war_justification.219
+	title = war_justification.219.t
+	desc = war_justification.219.d
+	picture = GFX_report_event_soldiers_marching
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = war_justification.219.a
+	}
+}
+
+
+# Generic: Any War (Target)
+country_event = {
+	id = war_justification.220
+	title = war_justification.220.t
+	desc = war_justification.220.d
+	picture = GFX_report_event_tanks_vietnam
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = war_justification.220.a
+	}
+}
+
+# Wargoal Expired
+
+country_event = {
+	id = war_justification.21
+	title = war_justification.21.t
+	desc = war_justification.21.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = absolutist
+		FROM = { has_government = absolutist }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.21.a
+		FROM = { country_event = { id = war_justification.221 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.221
+	title = war_justification.221.t
+	desc = war_justification.221.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.221.a
+	}
+}
+
+country_event = {
+	id = war_justification.22
+	title = war_justification.22.t
+	desc = war_justification.22.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = absolutist
+		FROM = { has_government = communism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.22.a
+		FROM = { country_event = { id = war_justification.222 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.222
+	title = war_justification.222.t
+	desc = war_justification.222.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.222.a
+	}
+}
+
+country_event = {
+	id = war_justification.23
+	title = war_justification.23.t
+	desc = war_justification.23.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = absolutist
+		FROM = { has_government = democratic }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.23.a
+		FROM = { country_event = { id = war_justification.223 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.223
+	title = war_justification.223.t
+	desc = war_justification.223.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.223.a
+	}
+}
+
+country_event = {
+	id = war_justification.24
+	title = war_justification.24.t
+	desc = war_justification.24.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = absolutist
+		FROM = { has_government = fascism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.24.a
+		FROM = { country_event = { id = war_justification.224 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.224
+	title = war_justification.224.t
+	desc = war_justification.224.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.224.a
+	}
+}
+
+country_event = {
+	id = war_justification.25
+	title = war_justification.25.t
+	desc = war_justification.25.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = absolutist
+		FROM = { has_government = neutrality }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.25.a
+		FROM = { country_event = { id = war_justification.225 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.225
+	title = war_justification.225.t
+	desc = war_justification.225.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.225.a
+	}
+}
+
+country_event = {
+	id = war_justification.26
+	title = war_justification.26.t
+	desc = war_justification.26.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = communism
+		FROM = { has_government = absolutist }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.26.a
+		FROM = { country_event = { id = war_justification.226 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.226
+	title = war_justification.226.t
+	desc = war_justification.226.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.226.a
+	}
+}
+
+country_event = {
+	id = war_justification.27
+	title = war_justification.27.t
+	desc = war_justification.27.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = communism
+		FROM = { has_government = communism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.27.a
+		FROM = { country_event = { id = war_justification.227 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.227
+	title = war_justification.227.t
+	desc = war_justification.227.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.227.a
+	}
+}
+
+country_event = {
+	id = war_justification.28
+	title = war_justification.28.t
+	desc = war_justification.28.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = communism
+		FROM = { has_government = democratic }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.28.a
+		FROM = { country_event = { id = war_justification.228 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.228
+	title = war_justification.228.t
+	desc = war_justification.228.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.228.a
+	}
+}
+
+country_event = {
+	id = war_justification.29
+	title = war_justification.29.t
+	desc = war_justification.29.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = communism
+		FROM = { has_government = fascism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.29.a
+		FROM = { country_event = { id = war_justification.229 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.229
+	title = war_justification.229.t
+	desc = war_justification.229.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.229.a
+	}
+}
+
+country_event = {
+	id = war_justification.30
+	title = war_justification.30.t
+	desc = war_justification.30.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = communism
+		FROM = { has_government = neutrality }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.30.a
+		FROM = { country_event = { id = war_justification.230 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.230
+	title = war_justification.230.t
+	desc = war_justification.230.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.230.a
+	}
+}
+
+country_event = {
+	id = war_justification.31
+	title = war_justification.31.t
+	desc = war_justification.31.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		FROM = { has_government = absolutist }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.31.a
+		FROM = { country_event = { id = war_justification.231 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.231
+	title = war_justification.231.t
+	desc = war_justification.231.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.231.a
+	}
+}
+
+country_event = {
+	id = war_justification.32
+	title = war_justification.32.t
+	desc = war_justification.32.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		FROM = { has_government = communism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.32.a
+		FROM = { country_event = { id = war_justification.232 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.232
+	title = war_justification.232.t
+	desc = war_justification.232.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.232.a
+	}
+}
+
+country_event = {
+	id = war_justification.33
+	title = war_justification.33.t
+	desc = war_justification.33.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		FROM = { has_government = democratic }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.33.a
+		FROM = { country_event = { id = war_justification.233 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.233
+	title = war_justification.233.t
+	desc = war_justification.233.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.233.a
+	}
+}
+
+country_event = {
+	id = war_justification.34
+	title = war_justification.34.t
+	desc = war_justification.34.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		FROM = { has_government = fascism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.34.a
+		FROM = { country_event = { id = war_justification.234 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.234
+	title = war_justification.234.t
+	desc = war_justification.234.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.234.a
+	}
+}
+
+country_event = {
+	id = war_justification.35
+	title = war_justification.35.t
+	desc = war_justification.35.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		FROM = { has_government = neutrality }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.35.a
+		FROM = { country_event = { id = war_justification.235 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.235
+	title = war_justification.235.t
+	desc = war_justification.235.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.235.a
+	}
+}
+
+country_event = {
+	id = war_justification.36
+	title = war_justification.36.t
+	desc = war_justification.36.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = fascism
+		FROM = { has_government = absolutist }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.36.a
+		FROM = { country_event = { id = war_justification.236 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.236
+	title = war_justification.236.t
+	desc = war_justification.236.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.236.a
+	}
+}
+
+country_event = {
+	id = war_justification.37
+	title = war_justification.37.t
+	desc = war_justification.37.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = fascism
+		FROM = { has_government = communism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.37.a
+		FROM = { country_event = { id = war_justification.237 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.237
+	title = war_justification.237.t
+	desc = war_justification.237.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.237.a
+	}
+}
+
+country_event = {
+	id = war_justification.38
+	title = war_justification.38.t
+	desc = war_justification.38.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = fascism
+		FROM = { has_government = democratic }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.38.a
+		FROM = { country_event = { id = war_justification.238 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.238
+	title = war_justification.238.t
+	desc = war_justification.238.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.238.a
+	}
+}
+
+country_event = {
+	id = war_justification.39
+	title = war_justification.39.t
+	desc = war_justification.39.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = fascism
+		FROM = { has_government = fascism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.39.a
+		FROM = { country_event = { id = war_justification.239 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.239
+	title = war_justification.239.t
+	desc = war_justification.239.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.239.a
+	}
+}
+
+country_event = {
+	id = war_justification.40
+	title = war_justification.40.t
+	desc = war_justification.40.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = fascism
+		FROM = { has_government = neutrality }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.40.a
+		FROM = { country_event = { id = war_justification.240 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.240
+	title = war_justification.240.t
+	desc = war_justification.240.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.240.a
+	}
+}
+
+country_event = {
+	id = war_justification.41
+	title = war_justification.41.t
+	desc = war_justification.41.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = neutrality
+		FROM = { has_government = absolutist }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.41.a
+		FROM = { country_event = { id = war_justification.241 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.241
+	title = war_justification.241.t
+	desc = war_justification.241.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.241.a
+	}
+}
+
+country_event = {
+	id = war_justification.42
+	title = war_justification.42.t
+	desc = war_justification.42.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = neutrality
+		FROM = { has_government = communism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.42.a
+		FROM = { country_event = { id = war_justification.242 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.242
+	title = war_justification.242.t
+	desc = war_justification.242.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.242.a
+	}
+}
+
+country_event = {
+	id = war_justification.43
+	title = war_justification.43.t
+	desc = war_justification.43.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = neutrality
+		FROM = { has_government = democratic }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.43.a
+		FROM = { country_event = { id = war_justification.243 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.243
+	title = war_justification.243.t
+	desc = war_justification.243.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.243.a
+	}
+}
+
+country_event = {
+	id = war_justification.44
+	title = war_justification.44.t
+	desc = war_justification.44.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = neutrality
+		FROM = { has_government = fascism }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.44.a
+		FROM = { country_event = { id = war_justification.244 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.244
+	title = war_justification.244.t
+	desc = war_justification.244.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.244.a
+	}
+}
+
+country_event = {
+	id = war_justification.45
+	title = war_justification.45.t
+	desc = war_justification.45.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = neutrality
+		FROM = { has_government = neutrality }
+		NOT = { has_country_flag = war_justification_last_event_political }
+	}
+
+	option = {
+		name = war_justification.45.a
+		FROM = { country_event = { id = war_justification.245 } }
+		set_country_flag = war_justification_last_event_political
+		clr_country_flag = war_justification_last_event_generic
+		clr_country_flag = war_justification_last_event_neighbor
+		clr_country_flag = war_justification_last_event_mobilized
+		clr_country_flag = war_justification_last_event_borderthreat
+	}
+}
+
+country_event = {
+	id = war_justification.245
+	title = war_justification.245.t
+	desc = war_justification.245.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	option = {
+		name = war_justification.245.a
+	}
+}
+
+country_event = {
+	id = war_justification.301
+	title = war_justification.301.t
+	desc = war_justification.301.d
+	picture = GFX_report_event_iww_demonstration
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_war = no
+	}
+
+	option = {
+		name = war_justification.301.a
+		trigger = { has_government = absolutist }
+		add_political_power = -30
+		add_war_support = -0.03
+		add_popularity = {
+			ideology = absolutist
+			popularity = -0.05
+		}
+	}
+
+	option = {
+		name = war_justification.301.b
+		trigger = { has_government = communism }
+		add_political_power = -30
+		add_war_support = -0.03
+		add_popularity = {
+			ideology = communism
+			popularity = -0.05
+		}
+	}
+
+	option = {
+		name = war_justification.301.c
+		trigger = { has_government = democratic }
+		add_political_power = -30
+		add_war_support = -0.03
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.05
+		}
+	}
+
+	option = {
+		name = war_justification.301.d
+		trigger = { has_government = fascism }
+		add_political_power = -30
+		add_war_support = -0.03
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.05
+		}
+	}
+
+	option = {
+		name = war_justification.301.e
+		trigger = { has_government = neutrality }
+		add_political_power = -30
+		add_war_support = -0.03
+	}
+}

@@ -1,0 +1,7 @@
+name = "Converted - The_Roman_Empire1936_01_01"
+path = "mod/The_Roman_Empire1936_01_01/"
+user_dir = "The_Roman_Empire1936_01_01_user_dir"
+replace_path="common/ideologies"
+replace_path="history/countries"
+replace_path="history/states"
+supported_version="1.9.*"

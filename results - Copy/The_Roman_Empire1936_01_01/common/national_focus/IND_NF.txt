@@ -1,0 +1,300 @@
+focus_tree = {
+	id = IND_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = IND
+		}
+	}
+	
+	default = no
+	
+	shared_focus = army_effort
+	shared_focus = aviation_effort
+	shared_focus = naval_effort
+	shared_focus = industrial_effort
+	shared_focus = political_effort
+
+	focus = {
+		id = WarPropIND
+		icon = GFX_goal_generic_propaganda
+		text = WarProp
+		x = 27
+		y = 0
+		cost = 10
+		available = {
+			threat > 0.000050
+		}
+		completion_reward = {
+		add_stability = 0.05
+	}
+		ai_will_do = {
+		factor = 10
+	}
+	}
+
+	focus = {
+		id = PrepInterIND
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = PrepInter
+		prerequisite = { focus = WarPropIND }
+		x = 0
+		y = 1
+		relative_position_id = WarPropIND
+		cost = 10
+		available = {
+			threat > 0.000075
+		}
+		completion_reward = {
+		add_political_power = 120
+		set_rule = { can_send_volunteers = yes }
+	}
+		ai_will_do = {
+		factor = 10
+	}
+	}
+
+	focus = {
+		id = LimIND
+		icon = GFX_goal_generic_more_territorial_claims
+		text = Lim
+		prerequisite = { focus = PrepInterIND }
+		x = 0
+		y = 1
+		relative_position_id = PrepInterIND
+		cost = 10
+		available = {
+			threat > 0.000125
+		}
+		completion_reward = {
+		add_ideas = limited_interventionism
+	}
+		ai_will_do = {
+		factor = 10
+	}
+	}
+
+	focus = {
+		id = WarPlanINDJAP
+		icon = GFX_goal_generic_position_armies
+		text = WarPlanJAP
+		prerequisite = { focus = LimIND }
+		bypass = {
+			has_war_with = JAP
+		}
+		x = -1
+		y = 1
+		relative_position_id = LimIND
+		cost = 10
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = IND }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+				}
+			}
+		}
+		completion_reward = {
+		army_experience = 20
+		add_tech_bonus = {
+			name = land_doc_bonus
+			bonus = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+	}
+		ai_will_do = {
+		factor = 10
+	}
+	}
+
+	focus = {
+		id = EmbargoINDJAP
+		icon = GFX_goal_generic_trade
+		text = EmbargoJAP
+		prerequisite = { focus =  WarPlanINDJAP }
+		bypass = {
+			has_war_with = JAP
+		}
+		x = 0
+		y = 1
+		relative_position_id = WarPlanINDJAP
+		cost = 10
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = IND }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+					threat > 0.6
+				}
+			}
+		}
+		completion_reward = {
+			JAP = {
+				add_opinion_modifier = { target = IND modifier = embargo }
+			}
+		}
+		ai_will_do = {
+		factor = 10
+	}
+	}
+
+	focus = {
+		id = WARINDJAP
+		icon = GFX_goal_support_democracy
+		text = WARJAP
+		prerequisite = { focus =  EmbargoINDJAP }
+		bypass = {
+			has_war_with = JAP
+		}
+		x = 0
+		y = 1
+		relative_position_id = EmbargoINDJAP
+		cost = 10
+		available = {
+			has_war = no
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = IND }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+					threat > 0.6
+				}
+			}
+		}
+		completion_reward = {
+			declare_war_on = {
+				type = puppet_wargoal_focus
+				target = JAP
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = WarPlanINDMNG
+		icon = GFX_goal_generic_position_armies
+		text = WarPlanMNG
+		prerequisite = { focus = LimIND }
+		bypass = {
+			has_war_with = MNG
+		}
+		x = 1
+		y = 1
+		relative_position_id = LimIND
+		cost = 10
+		available = {
+			any_other_country = {
+				original_tag = MNG
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = IND }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+				}
+			}
+		}
+		completion_reward = {
+		army_experience = 20
+		add_tech_bonus = {
+			name = land_doc_bonus
+			bonus = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+	}
+		ai_will_do = {
+		factor = 10
+	}
+	}
+
+	focus = {
+		id = EmbargoINDMNG
+		icon = GFX_goal_generic_trade
+		text = EmbargoMNG
+		prerequisite = { focus =  WarPlanINDMNG }
+		bypass = {
+			has_war_with = MNG
+		}
+		x = 0
+		y = 1
+		relative_position_id = WarPlanINDMNG
+		cost = 10
+		available = {
+			any_other_country = {
+				original_tag = MNG
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = IND }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+					threat > 0.6
+				}
+			}
+		}
+		completion_reward = {
+			MNG = {
+				add_opinion_modifier = { target = IND modifier = embargo }
+			}
+		}
+		ai_will_do = {
+		factor = 10
+	}
+	}
+
+	focus = {
+		id = WARINDMNG
+		icon = GFX_goal_support_democracy
+		text = WARMNG
+		prerequisite = { focus =  EmbargoINDMNG }
+		bypass = {
+			has_war_with = MNG
+		}
+		x = 0
+		y = 1
+		relative_position_id = EmbargoINDMNG
+		cost = 10
+		available = {
+			has_war = no
+			any_other_country = {
+				original_tag = MNG
+				exists = yes
+				NOT = { has_government = democratic } 
+				NOT = { is_in_faction_with = IND }
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+					threat > 0.6
+				}
+			}
+		}
+		completion_reward = {
+			declare_war_on = {
+				type = puppet_wargoal_focus
+				target = MNG
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+}
