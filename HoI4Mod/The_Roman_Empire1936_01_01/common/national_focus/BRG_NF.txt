@@ -832,9 +832,9 @@ focus_tree = {
 		}
 	}
 
-	#####################
-	### Politcal Tree ###
-	#####################
+	#######################
+	### Political  Tree ###
+	#######################
 	
 	focus = {
 		id = BRG_reinforce_monarchism
@@ -1413,6 +1413,10 @@ focus_tree = {
 		mutually_exclusive = { focus = BRG_secure_northern_france }
 		relative_position_id = BRG_rhine_defenses
 		available = {
+			BRG = {
+				has_government = democratic
+				is_faction_leader = yes
+			}
 			FRA = {
 				is_potential_friend_of_ROOT = yes
 				has_government = democratic
@@ -1420,10 +1424,6 @@ focus_tree = {
 			OR = {
 				FLD = { is_free_ally_or_subject_of_ROOT = yes }
 				55 = { is_owned_by = BRG }
-			}
-			BRG = {
-				has_government = democratic
-				is_faction_leader = yes
 			}
 		}
 		bypass = {
@@ -1540,6 +1540,7 @@ focus_tree = {
 		mutually_exclusive = { focus = BRG_secure_southern_france }
 		relative_position_id = BRG_alliance_with_france
 		available = {
+			is_faction_leader = yes
 			AQI = {
 				is_potential_friend_of_ROOT = yes
 				has_government = ROOT
@@ -1548,7 +1549,6 @@ focus_tree = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
 				196 = { is_owned_by = BRG }
 			}
-			BRG = { is_faction_leader = yes }
 		}
 		bypass = {
 			OR = {
@@ -1558,6 +1558,47 @@ focus_tree = {
 		}
 		completion_reward = {
 			AQI = { country_event = { id = tesb_BRG.120 hours = 1 } }
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				AQI = { has_government = ROOT }
+			}
+			modifier = {
+				factor = 1.2
+				has_government = democratic
+			}
+		}
+	}
+
+	focus = {
+		id = BRG_new_alliance_with_hungary
+		icon = GFX_goal_molotov_ribbentrop_pact
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = BRG_secure_southern_france focus = BRG_alliance_with_aquitaine }
+		relative_position_id = BRG_secure_southern_france
+		available = {
+			is_faction_leader = yes
+			HUN = {
+				is_potential_friend_of_ROOT = yes
+				has_government = ROOT
+			}
+			OR = {
+				AQI = { is_free_ally_or_subject_of_ROOT = yes }
+				20 = { is_owned_by = BRG }
+			}
+		}
+		bypass = {
+			OR = {
+				HUN = { is_free_ally_or_subject_of_ROOT = yes }
+				NOT = { country_exists = HUN }
+			}
+		}
+		completion_reward = {
+			HUN = { country_event = { id = tesb_misc.40 hours = 1 } }
 		}
 		ai_will_do = {
 			base = 2

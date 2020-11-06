@@ -90,11 +90,10 @@ is_controlled_by_ROOT_or_ally = {
 
 has_naval_treaty_trigger = {
 	OR = {
-		always = no
-		#has_idea = MTG_naval_treaty_adherent
-		#has_idea = MTG_naval_treaty_cheating
-		#has_idea = MTG_naval_treaty_adherent_reduced
-		#has_idea = MTG_naval_treaty_cheating_reduced
+		has_idea = MTG_naval_treaty_adherent
+		has_idea = MTG_naval_treaty_cheating
+		has_idea = MTG_naval_treaty_adherent_reduced
+		has_idea = MTG_naval_treaty_cheating_reduced
 	}
 }
 
@@ -140,17 +139,124 @@ ai_land_doctrine_tier_2_trigger = {
 		has_tech = large_front_offensive
 	}
 }
-	
-#State scope
-is_NOT_controlled_by_ROOT_or_ally = {
-	custom_trigger_tooltip = {
-		tooltip = is_NOT_controlled_by_ROOT_or_ally
-		CONTROLLER = {
-			NOT = {
-				tag = ROOT
-				is_subject_of = ROOT
-				is_in_faction_with = ROOT
+
+anti_submarine_strategy_required_trigger = {
+	OR = {
+		AND = {
+			has_war = yes
+			any_enemy_country = {
+				has_navy_size = {
+					type = submarine
+					size > 30
+				}
 			}
 		}
+		convoy_threat > 0.3
+	}
+}
+
+enemy_has_equal_or_better_radar_tech_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = enemy_has_equal_or_better_radar_tech_trigger_tt
+		if = {
+			limit = {
+				ROOT = { 
+					has_tech = radio_detection 
+					NOT = {
+						has_tech = decimetric_radar
+					}
+				} 
+			}
+			FROM = { 
+				OR = {
+					has_tech = radio_detection 
+					has_tech = decimetric_radar
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = { 
+					has_tech = decimetric_radar 
+					NOT = {
+						has_tech = improved_decimetric_radar
+					}
+				} 
+			}
+			FROM = { 
+				OR = {
+					has_tech = decimetric_radar 
+					has_tech = improved_decimetric_radar
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = { 
+					has_tech = improved_decimetric_radar 
+					NOT = {
+						has_tech = centimetric_radar
+					}
+				} 
+			}
+			FROM = { 
+				OR = {
+					has_tech = improved_decimetric_radar 
+					has_tech = centimetric_radar
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = { 
+					has_tech = centimetric_radar 
+					NOT = {
+						has_tech = improved_centimetric_radar
+					}
+				} 
+			}
+			FROM = { 
+				OR = {
+					has_tech = centimetric_radar 
+					has_tech = improved_centimetric_radar
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = { 
+					has_tech = improved_centimetric_radar 
+					NOT = {
+						has_tech = advanced_centimetric_radar
+					}
+				} 
+			}
+			FROM = { 
+				OR = {
+					has_tech = improved_centimetric_radar 
+					has_tech = advanced_centimetric_radar
+				}
+			}
+		}
+		#no more steps needed because end of research tree is reached
+	}
+}
+
+is_available_to_collaboration_government = { # occupied_countries.1 should be updated along with this
+	NOT = {
+		any_country_with_original_tag = {
+			original_tag_to_check = FROM
+			is_puppet_of = PREV # if already created one do not create another
+			has_autonomy_state = autonomy_collaboration_government
+		}
+	}
+}
+
+has_large_ally_not_pick_closed_economy = {
+	any_of_scopes = {
+		array = faction_members
+		
+		NOT = { tag = PREV }
+		num_of_military_factories > 30
 	}
 }
