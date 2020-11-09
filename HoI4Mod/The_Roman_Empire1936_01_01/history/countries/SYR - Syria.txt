@@ -1,7 +1,14 @@
-﻿capital = 583
+﻿capital = 613
 set_research_slots = 3
 
 oob = "SYR_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "SYR_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "SYR_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -76,6 +83,7 @@ add_tech_bonus = { name = land_doc_bonus bonus = 0.90 uses = 1 category = land_d
 add_tech_bonus = { name = naval_doc_bonus bonus = 0.90 uses = 1 category = naval_doctrine }
 set_convoys = 0
 
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 168 producer = SYR }
 
 set_politics = {
     ruling_party = absolutist
@@ -83,13 +91,11 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 100
-	communism = 0
-	democratic = 0
-	fascism = 0
-	neutrality = 0
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_10 }
 add_opinion_modifier = { target = BEN modifier = negative_30 }
 add_opinion_modifier = { target = BIR modifier = negative_10 }
@@ -105,6 +111,7 @@ add_opinion_modifier = { target = SOK modifier = negative_30 }
 add_opinion_modifier = { target = UTA modifier = negative_10 }
 
 
+
 add_ideas = {
 	RME_former_territory
 	volunteer_only
@@ -115,28 +122,75 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-    name = "Viktor Kanaris"
-    desc = "POLITICS_VIKTOR_KANARIS_DESC"
-    picture = "gfx/leaders/OC/portrait_BYZ_John_VIII.dds"
-    expire = "1965.1.1"
-    ideology = absolute_monarchy
-    traits = {
-    }
+	name = "Benizelos Stanotas"
+	desc = "POLITICS_BENIZELOS_STANOTAS_DESC"
+	picture = "gfx/leaders/OC/portrait_GRE_King_George.dds"
+	expire = "1965.1.1"
+	ideology = absolute_monarchy
+	traits = {
+	}
 }
 ### VARIANTS ###
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = { not = { has_dlc = "Man the Guns" } }
 	create_equipment_variant = {
-		name = "1936 Submarine"
-		type = ship_hull_submarine_2
-		name_group = SYR_SS_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_engine_slot = sub_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_sub_2
-			rear_1_custom_slot = ship_torpedo_sub_2
+		name = "1936 Battleship"
+		type = battleship_2
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
 		}
 	}
+
+	create_equipment_variant = {
+		name = "1936 Destroyer"
+		type = destroyer_2
+		upgrades = {
+			destroyer_engine_upgrade = 1
+			ship_ASW_upgrade = 1
+			ship_anti_air_upgrade = 1
+			ship_torpedo_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "1936 Heavy Cruiser"
+		type = heavy_cruiser_2
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "1936 Light Cruiser"
+		type = light_cruiser_2
+		upgrades = {
+			ship_anti_air_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Submarine"
+		type = submarine_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
+		}
+	}
+
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
@@ -206,6 +260,17 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_2
 			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "1936 Submarine"
+		type = ship_hull_submarine_2
+		name_group = SYR_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_engine_slot = sub_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			rear_1_custom_slot = ship_torpedo_sub_2
 		}
 	}
 }

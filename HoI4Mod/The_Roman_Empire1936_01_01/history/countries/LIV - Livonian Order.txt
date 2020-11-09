@@ -1,7 +1,14 @@
-﻿capital = 510
+﻿capital = 535
 set_research_slots = 3
 
 oob = "LIV_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "LIV_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "LIV_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -42,13 +49,13 @@ set_politics = {
     election_frequency = 48
     elections_allowed = yes
 }
+
 set_popularities = {
 	absolutist = 15
-	communism = 0
 	democratic = 83
-	fascism = 0
 	neutrality = 2
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_176 }
 add_opinion_modifier = { target = BEN modifier = positive_17 }
 add_opinion_modifier = { target = BIR modifier = positive_113 }
@@ -65,22 +72,81 @@ add_opinion_modifier = { target = SOK modifier = positive_20 }
 add_opinion_modifier = { target = UTA modifier = positive_137 }
 
 
+
 add_ideas = {
-	volunteer_only
+	limited_conscription
 	civilian_economy
 	export_focus
 	culture_lithuanian
 }
 create_country_leader = {
-    name = "Steponas Brazauskas"
-    desc = "POLITICS_STEPONAS_BRAZAUSKAS_DESC"
-    picture = "GFX_POL_wincenty_witos"
-    expire = "1965.1.1"
-    ideology = conservatism
-    traits = {
-    }
+	name = "Steponas Stauaitis"
+	desc = "POLITICS_STEPONAS_STAUAITIS_DESC"
+	picture = "GFX_POL_wincenty_witos"
+	expire = "1965.1.1"
+	ideology = conservatism
+	traits = {
+	}
 }
 ### VARIANTS ###
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	create_equipment_variant = {
+		name = "Early Battleship"
+		type = battleship_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Destroyer"
+		type = destroyer_1
+		upgrades = {
+			destroyer_engine_upgrade = 1
+			ship_ASW_upgrade = 1
+			ship_anti_air_upgrade = 1
+			ship_torpedo_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Heavy Cruiser"
+		type = heavy_cruiser_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Light Cruiser"
+		type = light_cruiser_1
+		upgrades = {
+			ship_anti_air_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Submarine"
+		type = submarine_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
+		}
+	}
+
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {

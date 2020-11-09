@@ -1,7 +1,14 @@
-﻿capital = 315
+﻿capital = 331
 set_research_slots = 3
 
 oob = "KHO_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "KHO_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "KHO_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -42,13 +49,11 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 100
-	communism = 0
-	democratic = 0
-	fascism = 0
-	neutrality = 0
 }
+
 add_opinion_modifier = { target = ADA modifier = negative_200 }
 add_opinion_modifier = { target = BEN modifier = negative_8 }
 add_opinion_modifier = { target = BIR modifier = negative_98 }
@@ -65,22 +70,81 @@ add_opinion_modifier = { target = SOK modifier = negative_8 }
 add_opinion_modifier = { target = UTA modifier = negative_64 }
 
 
+
 add_ideas = {
-	volunteer_only
+	limited_conscription
 	civilian_economy
 	export_focus
 	culture_pashtun
 }
 create_country_leader = {
-    name = "Nasr Allah Khan"
-    desc = "POLITICS_NASR ALLAH_KHAN_DESC"
-    picture = "gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds"
-    expire = "1965.1.1"
-    ideology = absolute_monarchy
-    traits = {
-    }
+	name = "Inayat Allah Khan"
+	desc = "POLITICS_INAYAT ALLAH_KHAN_DESC"
+	picture = "gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds"
+	expire = "1965.1.1"
+	ideology = absolute_monarchy
+	traits = {
+	}
 }
 ### VARIANTS ###
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	create_equipment_variant = {
+		name = "Early Battleship"
+		type = battleship_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Destroyer"
+		type = destroyer_1
+		upgrades = {
+			destroyer_engine_upgrade = 1
+			ship_ASW_upgrade = 1
+			ship_anti_air_upgrade = 1
+			ship_torpedo_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Heavy Cruiser"
+		type = heavy_cruiser_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Light Cruiser"
+		type = light_cruiser_1
+		upgrades = {
+			ship_anti_air_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Submarine"
+		type = submarine_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
+		}
+	}
+
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {

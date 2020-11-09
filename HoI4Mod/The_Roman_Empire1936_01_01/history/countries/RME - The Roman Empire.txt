@@ -1,7 +1,14 @@
-﻿capital = 449
+﻿capital = 471
 set_research_slots = 4
 
 oob = "RME_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "RME_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "RME_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -76,7 +83,9 @@ add_tech_bonus = { name = land_doc_bonus bonus = 0.90 uses = 1 category = land_d
 add_tech_bonus = { name = naval_doc_bonus bonus = 0.90 uses = 1 category = naval_doctrine }
 set_convoys = 30
 
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 432 producer = RME }
 add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 400 producer = RME }
+add_equipment_to_stockpile = { type = gw_tank_equipment amount = 120 producer = RME }
 add_equipment_to_stockpile = { type = tac_bomber_equipment_0 amount = 400 producer = RME }
 
 set_politics = {
@@ -85,6 +94,7 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 16
 	communism = 14
@@ -92,6 +102,7 @@ set_popularities = {
 	fascism = 23
 	neutrality = 6
 }
+
 add_opinion_modifier = { target = AQI modifier = positive_4 }
 add_opinion_modifier = { target = ARG modifier = positive_106 }
 add_opinion_modifier = { target = BCS modifier = positive_180 }
@@ -133,670 +144,60 @@ add_opinion_modifier = { target = TIB modifier = positive_15 }
 add_opinion_modifier = { target = UTA modifier = positive_43 }
 
 
+give_guarantee = MUT
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	add_ideas = MTG_naval_treaty_adherent
+}
 add_ideas = {
 	great_power
+	michael_VII
 	volunteer_only
 	civilian_economy
 	export_focus
 	culture_greek
-	michael_VII
 }
 set_stability = 0.60
-set_war_support = 0.68
+set_war_support = 0.60
 create_country_leader = {
-    name = "Konstantinos Doukas"
-    desc = "POLITICS_KONSTANTINOS_DOUKAS_DESC"
-    picture = "gfx/leaders/ENG/Portrait_Britain_Edward_VIII.dds"
-    expire = "1965.1.1"
-    ideology = absolute_monarchy
-    traits = {
+	name = "Konstantinos Doukas"
+	desc = "POLITICS_KONSTANTINOS_DOUKAS_DESC"
+	picture = "gfx/leaders/ENG/Portrait_Britain_Edward_VIII.dds"
+	expire = "1965.1.1"
+	ideology = absolute_monarchy
+	traits = {
 		inexperienced_imperialist
-    }
+	}
 }
 create_country_leader = {
-    name = "Tiberius Julius Aurelius"
-    desc = "POLITICS_KONSTANTINOS_DOUKAS_DESC"
-    picture = "gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
-    expire = "1965.1.1"
-    ideology = fascism_ideology
-    traits = {
-    }
+	name = "Tiberius Julius Aurelius"
+	desc = "POLITICS_TIBERIUS_JULIUS_AURELIUS_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_3.dds"
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	}
 }
-create_corps_commander = {
-	name = "Diomidis Venizelos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Aristidis Metaxas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Viktor Sofoulis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Antonios Mavrovouniotis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Tharyvoulos Charalambis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Emmanouil Pangalos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Zinovios Hatzianestis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Charilaos Staikopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Sofoklis Foumis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Kyriakos Kolokotronis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Militiadis Kondylis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ilias Manos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Mikhael Tzavelas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Stylianos Tsakalotos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Tharyvoulos Hatzianestis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Epameinontas Soutsos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Eleftherios Vassos"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Aristidis Venizelos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Stylianos Kriezis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Spyros Zaimis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Kitsos Manos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Sotiris Smolenskis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Georgios Mavrocordatos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Konstantinos Kolokotronis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Nikolaos Sofoulis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ionnis Kanaris"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Theodoros Metaxas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gennaios Plastiras"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Panagiotis Kondylis"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Panagiotis Papagos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ionnis Tsolakoglou"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Sotiris Dousmanis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Dimitrios Charalambis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Spyros Mavrocordatos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gennaios Papadopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Stylianos Kallergis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Tzannis Plapoutas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Benizelos Staikopoulos"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Kyriakos Tsolakoglou"
-	picture = ""
-	traits = { }
-	skill = 3
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Anastasios Smolenskis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Athanasios Sapountzakis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Konstantinos Papadopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Kyriakos Tsolakoglou"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Epameinontas Soutsos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Odysseas Typaldos-Alfonsatos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ilias Venizelos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Evripidis Zaimis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Markos Mavrovouniotis"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Othon Christakis-Zografos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
 create_corps_commander = {
 	name = "Markos Makriyannis"
 	picture = ""
 	traits = { }
+	skill = 5
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Stefanos Christakis-Zografos"
+	picture = ""
+	traits = { }
 	skill = 4
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Kyriakoulis Voulgaris"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Charilaos Papoulas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Talbot Palaiologos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Eleftherios Hatzianestis"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Dimitrios Kallergis"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Spyridion Foumis"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Pavlos Typaldos-Alfonsatos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Kitsos Papagos"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 2
 	logistics_skill = 1
 }
 
@@ -806,88 +207,20 @@ create_corps_commander = {
 	traits = { }
 	skill = 4
 	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
+	defense_skill = 4
+	planning_skill = 3
 	logistics_skill = 1
 }
 
 create_corps_commander = {
-	name = "Stefanos Christakis-Zografos"
+	name = "Kyriakos Tsolakoglou"
 	picture = ""
 	traits = { }
-	skill = 4
-	attack_skill = 1
+	skill = 3
+	attack_skill = 2
 	defense_skill = 1
 	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Emmanouil Kondylis"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Adamantios Kanaris"
-	picture = ""
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gennaios Metaxas"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Odysseas Zymvrakakis"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Sofoklis Pangalos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Themistoklis Christakis-Zografos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Athanasios Staikopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Staikos Kondylis"
-	picture = ""
-	traits = { }
-	skill = 1
+	logistics_skill = 2
 }
 
 create_navy_leader = {
@@ -895,125 +228,10 @@ create_navy_leader = {
 	picture = ""
 	traits = { }
 	skill = 2
-}
-
-create_navy_leader = {
-	name = "Petros Typaldos-Alfonsatos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Ionnis Papadopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Diomidis Gonatas"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Kyriakos Stanotas"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Adamantios Foumis"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Kyriakoulis Tsakalotos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Ionnis Pangalos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Gennaios Spyromilios"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Augustinos Kriezis"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Dimitrios Tzavelas"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Andreas Pangalos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Benizelos Papadiamantopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Eleftherios Danglis"
-	picture = ""
-	traits = { }
-	skill = 2
-}
-
-create_navy_leader = {
-	name = "Spyros Papagos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Pavlos Kanaris"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Militiadis Kallergis"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Aristidis tes Elladas"
-	picture = ""
-	traits = { }
-	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 2
+	coordination_skill = 1
 }
 
 create_navy_leader = {
@@ -1021,120 +239,73 @@ create_navy_leader = {
 	picture = ""
 	traits = { }
 	skill = 2
-}
-
-create_navy_leader = {
-	name = "Georgios Papadopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Vasos Trikoupis"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Othon Papagos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Ilias Pangalos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Dimitrios Mavrocordatos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Theodoros Tzavelas"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Theodoros Kolokotronis"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Militiadis Stanotas"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Odysseas Papadiamantopoulos"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Epameinontas Tzavelas"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Georgios Gonatas"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Tharyvoulos Tsolakoglou"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Evripidis Sapountzakis"
-	picture = ""
-	traits = { }
-	skill = 1
-}
-
-create_navy_leader = {
-	name = "Augustinos Sofoulis"
-	picture = ""
-	traits = { }
-	skill = 1
+	attack_skill = 2
+	defense_skill = 1
+	maneuvering_skill = 4
+	coordination_skill = 1
 }
 
 ### VARIANTS ###
 if = {
-	limit = { has_dlc = "Man the Guns" }
+	limit = { not = { has_dlc = "Man the Guns" } }
 	create_equipment_variant = {
-		name = "1936 Submarine"
-		type = ship_hull_submarine_2
-		name_group = RME_SS_HISTORICAL
-		parent_version = 0
-		modules = {
-			fixed_ship_engine_slot = sub_ship_engine_2
-			fixed_ship_torpedo_slot = ship_torpedo_sub_2
-			rear_1_custom_slot = ship_torpedo_sub_2
+		name = "1936 Battleship"
+		type = battleship_2
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
 		}
 	}
+
+	create_equipment_variant = {
+		name = "1936 Destroyer"
+		type = destroyer_2
+		upgrades = {
+			destroyer_engine_upgrade = 1
+			ship_ASW_upgrade = 1
+			ship_anti_air_upgrade = 1
+			ship_torpedo_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "1936 Heavy Cruiser"
+		type = heavy_cruiser_2
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "1936 Light Cruiser"
+		type = light_cruiser_2
+		upgrades = {
+			ship_anti_air_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Submarine"
+		type = submarine_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
+		}
+	}
+
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
@@ -1204,6 +375,17 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_2
 			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "1936 Submarine"
+		type = ship_hull_submarine_2
+		name_group = RME_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_engine_slot = sub_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			rear_1_custom_slot = ship_torpedo_sub_2
 		}
 	}
 }

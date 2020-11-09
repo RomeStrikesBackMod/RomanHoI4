@@ -1,7 +1,14 @@
-﻿capital = 305
+﻿capital = 318
 set_research_slots = 3
 
 oob = "MAT_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "MAT_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "MAT_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -42,13 +49,13 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 90
-	communism = 0
 	democratic = 9
-	fascism = 0
 	neutrality = 1
 }
+
 add_opinion_modifier = { target = BIR modifier = negative_48 }
 add_opinion_modifier = { target = MAK modifier = positive_102 }
 add_opinion_modifier = { target = MUT modifier = negative_51 }
@@ -58,6 +65,7 @@ add_opinion_modifier = { target = SOK modifier = negative_10 }
 add_opinion_modifier = { target = UTA modifier = negative_67 }
 
 
+
 add_ideas = {
 	volunteer_only
 	civilian_economy
@@ -65,26 +73,84 @@ add_ideas = {
 	culture_sulawesi
 }
 create_country_leader = {
-    name = "Motilal Baharjee"
-    desc = "POLITICS_MOTILAL_BAHARJEE_DESC"
-    picture = "gfx/leaders/SIA/Portrait_Siam_Phraya_Phahon.dds"
-    expire = "1965.1.1"
-    ideology = absolute_monarchy
-    traits = {
-    }
+	name = "Aurobindo Iyengar"
+	desc = "POLITICS_AUROBINDO_IYENGAR_DESC"
+	picture = "gfx/leaders/SIA/Portrait_Siam_Phraya_Phahon.dds"
+	expire = "1965.1.1"
+	ideology = absolute_monarchy
+	traits = {
+	}
 }
 create_corps_commander = {
 	name = "Gupinath Prasad"
 	picture = ""
 	traits = { }
 	skill = 1
-	attack_skill = 1
+	attack_skill = 2
 	defense_skill = 1
-	planning_skill = 1
+	planning_skill = 3
 	logistics_skill = 1
 }
 
 ### VARIANTS ###
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	create_equipment_variant = {
+		name = "Early Battleship"
+		type = battleship_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Destroyer"
+		type = destroyer_1
+		upgrades = {
+			destroyer_engine_upgrade = 1
+			ship_ASW_upgrade = 1
+			ship_anti_air_upgrade = 1
+			ship_torpedo_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Heavy Cruiser"
+		type = heavy_cruiser_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Light Cruiser"
+		type = light_cruiser_1
+		upgrades = {
+			ship_anti_air_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Submarine"
+		type = submarine_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
+		}
+	}
+
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {

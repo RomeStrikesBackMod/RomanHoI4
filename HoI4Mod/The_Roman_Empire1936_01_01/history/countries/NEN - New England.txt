@@ -1,7 +1,14 @@
-﻿capital = 623
+﻿capital = 653
 set_research_slots = 3
 
 oob = "NEN_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "NEN_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "NEN_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -27,13 +34,13 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
 	absolutist = 63
-	communism = 0
 	democratic = 35
-	fascism = 0
 	neutrality = 2
 }
+
 add_opinion_modifier = { target = ADA modifier = positive_8 }
 add_opinion_modifier = { target = BEN modifier = positive_12 }
 add_opinion_modifier = { target = BIR modifier = positive_82 }
@@ -50,22 +57,26 @@ add_opinion_modifier = { target = SOK modifier = positive_11 }
 add_opinion_modifier = { target = UTA modifier = negative_200 }
 
 
+
 add_ideas = {
-	volunteer_only
+	limited_conscription
 	civilian_economy
 	export_focus
 	culture_iroquis
 }
 create_country_leader = {
-    name = "William Martin"
-    desc = "POLITICS_WILLIAM_MARTIN_DESC"
-    picture = "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds"
-    expire = "1965.1.1"
-    ideology = prussian_const
-    traits = {
-    }
+	name = "Louis Dumont"
+	desc = "POLITICS_LOUIS_DUMONT_DESC"
+	picture = "gfx/leaders/OC/portrait_nat_north_absolutist.dds"
+	expire = "1965.1.1"
+	ideology = prussian_const
+	traits = {
+	}
 }
 ### VARIANTS ###
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 }

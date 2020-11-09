@@ -1,7 +1,14 @@
-﻿capital = 543
+﻿capital = 571
 set_research_slots = 3
 
 oob = "FIN_OOB"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "FIN_1936_naval_mtg"
+	else = { 
+		set_naval_oob = "FIN_1936_naval_legacy"
+	}
+}
 
 # Starting tech
 set_technology = {
@@ -43,13 +50,11 @@ set_politics = {
     election_frequency = 48
     elections_allowed = no
 }
+
 set_popularities = {
-	absolutist = 0
 	communism = 100
-	democratic = 0
-	fascism = 0
-	neutrality = 0
 }
+
 add_opinion_modifier = { target = BIR modifier = positive_200 }
 add_opinion_modifier = { target = ETH modifier = positive_152 }
 add_opinion_modifier = { target = GER modifier = positive_100 }
@@ -64,44 +69,92 @@ add_opinion_modifier = { target = SOK modifier = positive_11 }
 add_opinion_modifier = { target = UTA modifier = positive_186 }
 
 
+
 add_ideas = {
-	volunteer_only
+	limited_conscription
 	civilian_economy
 	export_focus
 	culture_finnish
 }
 create_country_leader = {
-    name = "Georg Heinrichs"
-    desc = "POLITICS_GEORG_HEINRICHS_DESC"
-    picture = "GFX_DEN_Aksel_Larsen"
-    expire = "1965.1.1"
-    ideology = leninism
-    traits = {
-    }
+	name = "Petteri Alopaeus"
+	desc = "POLITICS_PETTERI_ALOPAEUS_DESC"
+	picture = "GFX_DEN_Aksel_Larsen"
+	expire = "1965.1.1"
+	ideology = leninism
+	traits = {
+	}
 }
-create_corps_commander = {
-	name = "Mikko Linder"
-	picture = ""
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
 create_corps_commander = {
 	name = "Fredrik Multamäki"
 	picture = ""
 	traits = { }
 	skill = 1
-	attack_skill = 1
-	defense_skill = 1
+	attack_skill = 6
+	defense_skill = 2
 	planning_skill = 1
-	logistics_skill = 1
+	logistics_skill = 5
 }
 
 ### VARIANTS ###
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	create_equipment_variant = {
+		name = "Early Battleship"
+		type = battleship_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Destroyer"
+		type = destroyer_1
+		upgrades = {
+			destroyer_engine_upgrade = 1
+			ship_ASW_upgrade = 1
+			ship_anti_air_upgrade = 1
+			ship_torpedo_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Heavy Cruiser"
+		type = heavy_cruiser_1
+		upgrades = {
+			ship_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Light Cruiser"
+		type = light_cruiser_1
+		upgrades = {
+			ship_anti_air_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_gun_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Early Submarine"
+		type = submarine_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
+		}
+	}
+
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	create_equipment_variant = {
