@@ -201,18 +201,18 @@ rome_civil_war_decisions = {
 	prepare_black_sea_landing = {
 		available = {
 			ships_in_area = {
-				area = 30
+				area = 1 # significant_number - contains Trabizond
 				size > 9 
 			}
 			any_other_country = {
 				original_tag = RME
 				ships_in_area = {
-					area = 30
+					area = 1 # significant_number - contains Trabizond
 					size < 6 
 				}
 			}
 			NOT = {
-				controls_state = 384
+				controls_state = 459 # significant_number - Trabizond
 			}
 		}
 		visible = {
@@ -229,8 +229,8 @@ rome_civil_war_decisions = {
 		}
 		highlight_states = {
 			OR = {
-				state = 384
-				state = 385
+				state = 481 # significant_number - Aydin
+				state = 482 # significant_number - Trabizond
 			}
 		}
 		custom_cost_text = command_power_more_than_30
@@ -253,18 +253,18 @@ rome_civil_war_decisions = {
 	prepare_ionia_landing = {
 		available = {
 			ships_in_area = {
-				area = 69
+				area = 91 # significant_number - contains Peloponnese
 				size > 9 
 			}
 			any_other_country = {
 				original_tag = RME
 				ships_in_area = {
-					area = 69
+					area = 91 # significant_number - contains Peloponnese
 					size < 6 
 				}
 			}
 			NOT = {
-				controls_state = 397
+				controls_state = 470 # significant_number - Peloponnese
 			}
 		}
 		visible = {
@@ -281,8 +281,7 @@ rome_civil_war_decisions = {
 		}
 		highlight_states = {
 			OR = {
-				state = 397
-				state = 391
+				state = 470 # significant_number - Peloponnese
 			}
 		}
 		custom_cost_text = command_power_more_than_30
@@ -304,19 +303,19 @@ rome_civil_war_decisions = {
 	}
 }
 
-burgundy_descisions = {
+burgundy_decisions = {
 	fortify_zeeland = {
 		fire_only_once = yes
 		available = {
 			OR = {
-				BRG = { controls_state = 55 }
-				FLD = { controls_state = 55 is_subject_of = BRG }
+				BRG = { controls_state = 60 } # significant_number - Zeeland
+				FLD = { controls_state = 60 is_subject_of = BRG } # significant_number - Zeeland
 			}
 			has_completed_focus = BRG_rhine_defenses
 		}
 		visible = {
 			OR = {
-				controls_state = 55
+				controls_state = 60 # significant_number - Zeeland
 				FLD = { is_subject_of = BRG }
 			}
 		}
@@ -325,7 +324,7 @@ burgundy_descisions = {
 			political_power_gain = -0.5
 		}
 		remove_effect = {
-			55 = {
+			60 = { # significant_number - Zeeland
 				custom_effect_tooltip = fortify_zeeland.tt
 				hidden_effect = {
 					add_building_construction = {
@@ -345,5 +344,257 @@ burgundy_descisions = {
 				}
 			}
 		}
+	}
+}
+
+germany_decisions = {
+	prepare_speech = {
+		icon = eng_propaganda_campaigns
+		available = {
+			NOT = { has_country_flag = GER_recent_speech }
+			custom_trigger_tooltip = {
+				tooltip = GER_speech_state_TT
+				all_owned_state = {
+					NOT = { has_state_flag = GER_speech_state }
+				}
+			}
+		}
+		visible = {
+			has_country_flag = GER_election_1936_flag
+			any_owned_state = {
+				NOT = { has_state_flag = GER_had_speech }
+			}
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					NOT = { has_state_flag = GER_had_speech }
+				}
+				set_state_flag = GER_speech_state
+			}
+		}
+		cost = 10
+		fixed_random_seed = no
+	}
+	democratic_speech = {
+		icon = generic_political_discourse
+		#fire_only_once = yes
+		available = {
+			#NOT = { has_country_flag = GER_recent_speech }
+		}
+		highlight_states = {
+			has_state_flag = GER_speech_state
+		}
+		visible = {
+			any_owned_state = {
+				has_state_flag = GER_speech_state
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = GER_recent_speech
+				days = 15
+				value = 1
+			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							NOT = { is_core_of = DEN is_core_of = BAV }
+						}
+					}
+					country_event = {
+						id = tesb_GER.1
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 1.5
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = DEN
+						}
+					}
+					country_event = {
+						id = tesb_GER.4
+					}
+				}
+			}
+		}
+		cost = 20
+		fixed_random_seed = no
+	}
+	communist_speech = {
+		icon = generic_nationalism
+		#fire_only_once = yes
+		available = {
+			#NOT = { has_country_flag = GER_recent_speech }
+		}
+		highlight_states = {
+			has_state_flag = GER_speech_state
+		}
+		visible = {
+			any_owned_state = {
+				has_state_flag = GER_speech_state
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = GER_recent_speech
+				days = 15
+				value = 1
+			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = BAV
+						}
+					}
+					country_event = {
+						id = tesb_GER.3
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = DEN
+						}
+					}
+					country_event = {
+						id = tesb_GER.6
+					}
+				}
+			}
+		}
+		cost = 20
+		fixed_random_seed = no
+	}
+	fascist_speech = {
+		icon = eng_blackshirt_speech
+		#fire_only_once = yes
+		available = {
+			#NOT = { has_country_flag = GER_recent_speech }
+		}
+		highlight_states = {
+			has_state_flag = GER_speech_state
+		}
+		visible = {
+			any_owned_state = {
+				has_state_flag = GER_speech_state
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = GER_recent_speech
+				days = 15
+				value = 1
+			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = DEN
+						}
+					}
+					country_event = {
+						id = tesb_GER.2
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 2
+						any_owned_state = {
+							has_state_flag = GER_speech_state
+							is_core_of = BAV
+						}
+					}
+					country_event = {
+						id = tesb_GER.5
+					}
+				}
+			}
+		}
+		cost = 20
+		fixed_random_seed = no
+	}
+	prevent_fascist_civil_war = {
+		fire_only_once = yes
+		is_good = no
+		available = {
+			OR = {
+				has_government = fascism
+				fascism < 0.1
+			}
+		}
+		activation = {
+			OR = {
+				has_completed_focus = GER_maintain_balance
+				has_completed_focus = GER_arbeiterpartei
+			}
+			fascism > 0.3
+			has_stability < 0.8
+		}
+		days_mission_timeout = 180
+		timeout_effect = {
+			start_civil_war = {
+				ideology = fascism
+				capital = 213
+				size = 0.5
+				states = { 214 220 221 222 223 224 225 231 232 233 } # significant_number - Anhalt, Hannover, Lower Elbe, Pommerania, Mecklenburg, Holstein, Brandenburg, Schleswig, Jylland, Posen
+				states_filter = {
+					OR = { is_core_of = DEN is_core_of = PLC }
+				}
+			}
+		}
+		complete_effect = {
+			add_political_power = 50
+		}
+	}
+}
+
+england_decisions = {
+	round_up_communist_dissenters = {
+		available = {
+			has_completed_focus = ENG_arrest_dissenters
+		}
+		cost = 25
+		complete_effect = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+		}
+		days_re_enable = 60
 	}
 }
