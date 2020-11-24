@@ -1,6 +1,3 @@
-identify significant numbers
-
-
 focus_tree = {
 	id = BRG_focus
 	
@@ -404,9 +401,9 @@ focus_tree = {
 		icon = GFX_goal_generic_fortify_city
 		available = {
 			OR = {
-				59 = { is_owned_by = BRG }
-				61 = { is_owned_by = BRG }
-				63 = { is_owned_by = BRG }
+				64 = { is_owned_by = BRG }	# significant_number - Nordrhein
+				66 = { is_owned_by = BRG }	# significant_number - Alsace-Lorraine
+				68 = { is_owned_by = BRG }	# significant_number - Palatinate
 			}
 		}
 		cancel_if_invalid = yes
@@ -416,7 +413,7 @@ focus_tree = {
 		cost = 10
 
 		completion_reward = {
-			59 = {
+			64 = {	# significant_number - Nordrhein
 				if = {
 					limit = { is_controlled_by = BRG }
 					custom_effect_tooltip = RME_rhine_limes_59
@@ -442,7 +439,7 @@ focus_tree = {
 					}
 				}
 			}
-			61 = {
+			66 = {	# significant_number - Alsace-Lorraine
 				if = {
 					limit = { is_controlled_by = BRG }
 					custom_effect_tooltip = RME_rhine_limes_61
@@ -474,7 +471,7 @@ focus_tree = {
 					}
 				}
 			}
-			63 = {
+			68 = {	# significant_number - Palatinate
 				if = {
 					limit = { is_controlled_by = BRG }
 					custom_effect_tooltip = RME_rhine_limes_63
@@ -526,14 +523,14 @@ focus_tree = {
 		available = {
 			FLD = {
 				is_potential_friend_of_ROOT = yes
-				owns_state = 55
+				owns_state = 60	# significant_number - Zeeland
 			}
 		}
 		bypass = {
 			OR = {
 				FLD = { is_not_potential_friend_of_ROOT = yes }
 				FLD = { is_free_ally_or_subject_of_ROOT = yes }
-				FLD = { NOT = { owns_state = 55 } }
+				FLD = { NOT = { owns_state = 60 } }	# significant_number - Zeeland
 			}
 		}
 
@@ -579,8 +576,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 196
-			add_state_claim = 198
+			add_state_claim = 205	# significant_number - Ile de France
+			add_state_claim = 207	# significant_number - Region Centre
 			create_wargoal = {
 				target = FRA
 				type = annex_everything
@@ -611,7 +608,7 @@ focus_tree = {
 			}
 			OR = {
 				FLD = { is_free_ally_or_subject_of_ROOT = yes }
-				55 = { is_owned_by = BRG }
+				60 = { is_owned_by = BRG }	# significant_number - Zeeland
 			}
 		}
 		bypass = {
@@ -645,14 +642,14 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				197 = { is_owned_by = BRG }
+				206 = { is_owned_by = BRG }	# significant_number - Loire
 			}
 		}
 		bypass = {
 			OR = {
 				has_war_with = BRI
 				BRI = { is_free_ally_or_subject_of_ROOT = yes }
-				owns_state = 69
+				owns_state = 74	# significant_number - Bretagne
 				NOT = { country_exists = BRI }
 			}
 		}
@@ -687,7 +684,7 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				196 = { is_owned_by = BRG }
+				205 = { is_owned_by = BRG }	# significant_number - Ile de France
 			}
 		}
 		bypass = {
@@ -698,8 +695,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 16
-			add_state_claim = 20
+			add_state_claim = 17	# significant_number - Poitou
+			add_state_claim = 21	# significant_number - Provence
 			create_wargoal = {
 				target = AQI
 				type = annex_everything
