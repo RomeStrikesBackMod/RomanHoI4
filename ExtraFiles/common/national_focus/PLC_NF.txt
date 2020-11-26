@@ -211,7 +211,10 @@ focus_tree = {
 			is_puppet = no
 			#is_in_faction_with = GER
 			HUN = { is_neutral_to_ROOT = yes }
-			OR = { 276 = { is_owned_by = HUN } 273 = { is_owned_by = HUN } }
+			OR = {
+				288 = { is_owned_by = HUN }	# significant_number - Lower Silesia
+				285 = { is_owned_by = HUN }	# significant_number - Upper Silesia
+			}
 			has_army_manpower = { size > 150000 }
 		}
 		bypass = {
@@ -219,7 +222,10 @@ focus_tree = {
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				HUN = { is_subject_of = PLC }
-				NOT = { 276 = { is_owned_by = HUN } 273 = { is_owned_by = HUN } }
+				NOT = {
+					288 = { is_owned_by = HUN }	# significant_number - Lower Silesia
+					285 = { is_owned_by = HUN }	# significant_number - Upper Silesia
+				}
 			}
 		}
 		select_effect = {
@@ -259,13 +265,13 @@ focus_tree = {
 		prerequisite = { focus = PLC_baltic_axis }
 		relative_position_id = PLC_first_dresden_conference
 		available = {
-			NOT = { owns_state = 224 }
+			NOT = { owns_state = 233 }	# significant_number - Upper Silesia
 			is_in_faction_with = GER
 		}
 		bypass = {
 			OR = {
 				has_war_with = GER
-				owns_state = 224
+				owns_state = 233	# significant_number - Upper Silesia
 				NOT = { country_exists = GER }
 			}
 		}
@@ -292,47 +298,51 @@ focus_tree = {
 		prerequisite = { focus = PLC_request_posen }
 		relative_position_id = PLC_request_posen
 		available = {
-			owns_state = 224
+			owns_state = 233	# significant_number - Upper Silesia
 			is_puppet = no
 			is_in_faction_with = GER
 			if = {
 				limit = {
-					279 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					291 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - West Galicia
+					289 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Galicia-Lodomeria
+					290 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Bohemia
+					286 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Moravia
 				}
 				HUN = { is_neutral_to_ROOT = yes }
 				custom_trigger_tooltip = {
 					tooltip = HUN_or_subject_owns_galicia_bohemia
-					279 = { is_owned_by_HUN_or_subject = yes }
-					277 = { is_owned_by_HUN_or_subject = yes }
-					278 = { is_owned_by_HUN_or_subject = yes }
-					274 = { is_owned_by_HUN_or_subject = yes }
+					291 = { is_owned_by_HUN_or_subject = yes }	# significant_number - West Galicia
+					289 = { is_owned_by_HUN_or_subject = yes }	# significant_number - Galicia-Lodomeria
+					290 = { is_owned_by_HUN_or_subject = yes }	# significant_number - Bohemia
+					286 = { is_owned_by_HUN_or_subject = yes }	# significant_number - Moravia
 				}
 			}
 			else_if = {
 				limit = {
-					POL = { owns_state = 279 owns_state = 277 is_subject = no }
+					POL = {
+						owns_state = 291	# significant_number - West Galicia
+						owns_state = 289	# significant_number - Galicia-Lodomeria
+						is_subject = no
+					}
 				}
 				POL = { is_neutral_to_ROOT = yes }
-				279 = { is_owned_by = POL }
-				277 = { is_owned_by = POL }
+				291 = { is_owned_by = POL }	# significant_number - West Galicia
+				289 = { is_owned_by = POL }	# significant_number - Galicia-Lodomeria
 			}
 			if = {
 				limit = {
-					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					290 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Bohemia
+					286 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Moravia
 					NOT = {
-						279 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-						277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+						291 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - West Galicia
+						289 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Galicia-Lodomeria
 					}
 				}
 				HUN = { is_neutral_to_ROOT = yes }
 				custom_trigger_tooltip = {
 					tooltip = HUN_or_subject_owns_bohemia
-					278 = { is_owned_by_HUN_or_subject = yes }
-					274 = { is_owned_by_HUN_or_subject = yes }
+					290 = { is_owned_by_HUN_or_subject = yes }	# significant_number - Bohemia
+					286 = { is_owned_by_HUN_or_subject = yes }	# significant_number - Moravia
 				}
 			}
 		}
@@ -340,12 +350,12 @@ focus_tree = {
 			OR = {
 				AND = {
 					PLC = {
-						owns_state = 279
-						owns_state = 277
+						owns_state = 291	# significant_number - West Galicia
+						owns_state = 289	# significant_number - Galicia-Lodomeria
 					}
 					BAV = {
-						owns_state = 278
-						owns_state = 274
+						owns_state = 290	# significant_number - Bohemia
+						owns_state = 286	# significant_number - Moravia
 					}
 				}
 				has_war_with = HUN
@@ -355,19 +365,25 @@ focus_tree = {
 		select_effect = {
 			if = {
 				limit = {
-					279 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					277 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					291 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - West Galicia
+					289 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Galicia-Lodomeria
 				}
 				HUN = { save_global_event_target_as = galicia_owner }
 			}
 			else_if = {
-				limit = { POL = { owns_state = 279 owns_state = 277 is_subject = no } }
+				limit = {
+					POL = {
+						owns_state = 291	# significant_number - West Galicia
+						owns_state = 289	# significant_number - Galicia-Lodomeria
+						is_subject = no
+					}
+				}
 				POL = { save_global_event_target_as = galicia_owner }
 			}
 			if = {
 				limit = {
-					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					290 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Bohemia
+					286 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Moravia
 				}
 				HUN = { save_global_event_target_as = bohemia_owner }
 			}
@@ -380,8 +396,8 @@ focus_tree = {
 			custom_effect_tooltip = PLC_first_dresden_conference_TT
 			if = {
 				limit = {
-					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					290 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Bohemia
+					286 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Moravia
 				}
 				HUN = {
 					country_event = {
@@ -391,7 +407,13 @@ focus_tree = {
 				}
 			}
 			else_if = {
-				limit = { POL = { owns_state = 279 owns_state = 279 is_subject = no } }
+				limit = {
+					POL = {
+						owns_state = 291	# significant_number - West Galicia
+						owns_state = 289	# significant_number - Galicia-Lodomeria
+						is_subject = no
+					}
+				}
 				POL = {
 					country_event = {
 						id = tesb_PLC.155
@@ -401,8 +423,8 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					278 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
-					274 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }
+					290 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Bohemia
+					286 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - Moravia
 				}
 				HUN = {
 					country_event = {
