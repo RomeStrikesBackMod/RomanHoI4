@@ -201,18 +201,18 @@ rome_civil_war_decisions = {
 	prepare_black_sea_landing = {
 		available = {
 			ships_in_area = {
-				area = 30 # significant_number
+				area = 1 # significant_number - contains Trabizond
 				size > 9 
 			}
 			any_other_country = {
 				original_tag = RME
 				ships_in_area = {
-					area = 30 # significant_number
+					area = 1 # significant_number - contains Trabizond
 					size < 6 
 				}
 			}
 			NOT = {
-				controls_state = 384 # significant_number
+				controls_state = 459 # significant_number - Trabizond
 			}
 		}
 		visible = {
@@ -229,8 +229,8 @@ rome_civil_war_decisions = {
 		}
 		highlight_states = {
 			OR = {
-				state = 384 # significant_number
-				state = 385 # significant_number
+				state = 481 # significant_number - Aydin
+				state = 482 # significant_number - Trabizond
 			}
 		}
 		custom_cost_text = command_power_more_than_30
@@ -253,18 +253,18 @@ rome_civil_war_decisions = {
 	prepare_ionia_landing = {
 		available = {
 			ships_in_area = {
-				area = 69 # significant_number
+				area = 91 # significant_number - contains Peloponnese
 				size > 9 
 			}
 			any_other_country = {
 				original_tag = RME
 				ships_in_area = {
-					area = 69 # significant_number
+					area = 91 # significant_number - contains Peloponnese
 					size < 6 
 				}
 			}
 			NOT = {
-				controls_state = 397 # significant_number
+				controls_state = 470 # significant_number - Peloponnese
 			}
 		}
 		visible = {
@@ -281,8 +281,7 @@ rome_civil_war_decisions = {
 		}
 		highlight_states = {
 			OR = {
-				state = 397 # significant_number
-				state = 391 # significant_number
+				state = 470 # significant_number - Peloponnese
 			}
 		}
 		custom_cost_text = command_power_more_than_30
@@ -309,14 +308,14 @@ burgundy_decisions = {
 		fire_only_once = yes
 		available = {
 			OR = {
-				BRG = { controls_state = 55 } # significant_number
-				FLD = { controls_state = 55 is_subject_of = BRG } # significant_number
+				BRG = { controls_state = 60 } # significant_number - Zeeland
+				FLD = { controls_state = 60 is_subject_of = BRG } # significant_number - Zeeland
 			}
 			has_completed_focus = BRG_rhine_defenses
 		}
 		visible = {
 			OR = {
-				controls_state = 55 # significant_number
+				controls_state = 60 # significant_number - Zeeland
 				FLD = { is_subject_of = BRG }
 			}
 		}
@@ -325,7 +324,7 @@ burgundy_decisions = {
 			political_power_gain = -0.5
 		}
 		remove_effect = {
-			55 = { # significant_number
+			60 = { # significant_number - Zeeland
 				custom_effect_tooltip = fortify_zeeland.tt
 				hidden_effect = {
 					add_building_construction = {
@@ -572,7 +571,7 @@ germany_decisions = {
 				ideology = fascism
 				capital = 213
 				size = 0.5
-				states = { 205 211 212 213 214 215 216 222 223 224 } # significant_number
+				states = { 214 220 221 222 223 224 225 231 232 233 } # significant_number - Anhalt, Hannover, Lower Elbe, Pommerania, Mecklenburg, Holstein, Brandenburg, Schleswig, Jylland, Posen
 				states_filter = {
 					OR = { is_core_of = DEN is_core_of = PLC }
 				}
