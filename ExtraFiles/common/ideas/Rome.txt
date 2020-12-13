@@ -1,0 +1,450 @@
+ideas = {
+	country = {
+		michael_VII = {
+			allowed = {
+				original_tag = RME
+				always = no
+			}
+			picture = george_vi
+			removal_cost = -1
+			traits = { popular_figurehead }
+		}
+
+		konstantinos_XXI = {
+			allowed = {
+				original_tag = RME
+				always = no
+			}
+			picture = george_vi
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.001				
+			}
+		}
+		
+		michael_VIII = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = ger_wilhelm_iii
+
+			modifier = {
+				stability_factor = 0.05
+			}
+		}
+
+		RME_rhine_limes_idea = {
+			allowed = {
+				original_tag = RME
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_wall_line
+			modifier = {
+				production_speed_bunker_factor = 0.1
+			}
+		}
+
+		RME_georgia_limes_idea = {
+			allowed = {
+				original_tag = RME
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_wall_line
+			modifier = {
+				production_speed_bunker_factor = 0.1
+			}
+		}
+
+		RME_autarky_idea = {
+			allowed = {
+				original_tag = RME
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_exploit_mines
+			modifier = {
+				production_speed_arms_factory_factor = 0.1
+				production_speed_dockyard_factor = 0.1
+				production_speed_industrial_complex_factor = 0.1
+			}
+		}
+
+		RME_greater_economy_idea = {
+			allowed = {
+				original_tag = RME
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_build_infrastructure
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+
+		RME_align_TAG_fascism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			removal_cost = -1
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				fascism_drift = 0.2
+				fascism_acceptance = 85
+			}
+		}
+
+		RME_align_TAG_communism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = communism
+			}
+			removal_cost = -1
+			picture = generic_communism_drift_bonus
+			modifier = {
+				communism_drift = 0.2
+				communism_acceptance = 85
+			}
+		}
+
+		RME_align_TAG_absolutist = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_absolutist_drift_bonus
+			modifier = {
+				absolutist_drift = 0.2
+				absolutist_acceptance = 85
+			}
+		}
+
+		RME_align_TAG_democratic = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				democratic_drift = 0.2
+				democratic_acceptance = 85
+			}
+		}
+
+		RME_align_TAG_neutral = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+			removal_cost = -1
+			picture = generic_neutrality_drift_bonus
+			modifier = {
+				neutrality_drift = 0.2
+				neutrality_acceptance = 85
+			}
+		}
+
+		RME_establish_free_elections = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				democratic_drift = 0.1
+				fascism_drift = 0.1
+			}
+		}
+		
+		RME_a_new_empire = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				 has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_neutrality_drift_bonus
+			modifier = {
+				opinion_gain_monthly_same_ideology_factor = 0.5
+				send_volunteers_tension = -0.3
+				send_volunteer_size = 5
+			}
+			rule = {
+				can_create_factions = yes
+				can_send_volunteers = yes
+			}
+		}
+		RME_restore_rome_democratic = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				 has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				drift_defence_factor = 0.25
+				opinion_gain_monthly_same_ideology_factor = 0.5
+			}
+		}
+		RME_restore_rome_other = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				 NOT = { has_government = democratic }
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				democratic_drift = 0.1
+				democratic_acceptance = 25
+				opinion_gain_monthly_same_ideology_factor = 0.5
+			}
+			rule = {
+				can_join_opposite_factions = yes
+			}
+		}		
+		RME_imperial_coronation = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 has_government = absolutist
+			}
+
+			removal_cost = -1
+
+			picture = ger_revive_the_kaiserreich
+
+			modifier = {
+				absolutist_drift = 0.1
+				drift_defence_factor = 0.1
+				join_faction_tension = -0.2
+				lend_lease_tension = -0.2
+				send_volunteers_tension = -0.2
+			}
+		}
+
+		RME_a_new_empire = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+
+			modifier = {
+				offensive_war_stability_factor = 0.1
+				justify_war_goal_time = -0.2
+			}
+		}
+
+		RME_democratic_ideals = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				improve_relations_maintain_cost_factor = -0.5
+				guarantee_cost = -0.5
+				guarantee_tension = -0.2
+			}
+		}
+
+		RME_rebuild_the_nation = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 #has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = ger_rebuild_the_nation
+
+			modifier = {
+				consumer_goods_factor = -0.20
+			}
+		}
+		
+		RME_national_revitalization = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 #has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = ger_rebuild_the_nation
+
+			modifier = {
+				industry_repair_factor = 0.20
+			}
+		}
+		
+		RME_national_revitalization2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 #has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = ger_rebuild_the_nation
+
+			modifier = {
+				industry_repair_factor = 0.20
+				training_time_factor = -0.1
+				conscription = 0.005
+			}
+		}
+
+		RME_national_revitalization3 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 #has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = ger_rebuild_the_nation
+
+			modifier = {
+				industry_repair_factor = 0.20
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+
+		RME_national_revitalization4 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 #has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = ger_rebuild_the_nation
+
+			modifier = {
+				industry_repair_factor = 0.20
+				training_time_factor = -0.1
+				conscription = 0.005
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.1
+			}
+		}
+		
+		RME_bulwark_against_barbarism = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				 #has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = ger_bulwark_against_bolshevism
+
+			modifier = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+		}
+		RME_former_dominion = {
+			allowed = { always = no }
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_neutrality_drift_bonus
+		}
+		RME_former_territory = {
+			allowed = { always = no }
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_neutrality_drift_bonus
+		}
+		RME_incorporate_clientes_idea = {
+			allowed = { always = no }
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_intel_bonus
+			modifier = {
+				subjects_autonomy_gain = -1
+			}
+		}
+	}
+}

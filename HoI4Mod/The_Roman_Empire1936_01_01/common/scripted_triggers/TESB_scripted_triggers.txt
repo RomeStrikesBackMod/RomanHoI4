@@ -24,6 +24,7 @@ is_friend_or_potential_friend_of_ROOT = {
 		OR = {
 			is_puppet_of = ROOT
 			is_puppet = no
+			is_in_faction_with = ROOT
 		}
 		OR = {
 			is_in_faction_with = ROOT
@@ -76,166 +77,186 @@ is_free_ally_or_subject_of_ROOT = {
 	}
 }
 
+is_neutral_to_ROOT = {
+	custom_trigger_tooltip = {
+		tooltip = is_neutral_to_root_tt
+		NOT = {
+			has_war_with = ROOT
+			is_in_faction_with = ROOT
+			is_subject_of = ROOT
+		}
+	}
+}
+
+can_join_faction = {
+	custom_trigger_tooltip = {
+		tooltip = can_join_faction_tt
+		is_subject = no
+		is_in_faction = no
+	}
+}
+
 is_ukraine_state = {
 	OR = {
-		state = 512
-		state = 513
-		state = 514
-		state = 515
-		state = 516
-		state = 517
-		state = 518
-		state = 519
-		state = 520
-		state = 521
+		state = 512 # significant_number
+		state = 513 # significant_number
+		state = 514 # significant_number
+		state = 515 # significant_number
+		state = 516 # significant_number
+		state = 517 # significant_number
+		state = 518 # significant_number
+		state = 519 # significant_number
+		state = 520 # significant_number
+		state = 521 # significant_number
 	}
 }
 is_caucasus_state = {
 	OR = {
-		state = 39
-		state = 52
-		state = 200
-		state = 201
-		state = 202
+		state = 39 # significant_number
+		state = 52 # significant_number
+		state = 200 # significant_number
+		state = 201 # significant_number
+		state = 202 # significant_number
 	}
 }
 
 is_levant_state = {
 	OR = {
-		state = 583
-		state = 584
-		state = 585
-		state = 283
-		state = 141
-		state = 142
-		state = 143
-		state = 144
-		state = 145
-		state = 146
-		state = 147
+		state = 583 # significant_number
+		state = 584 # significant_number
+		state = 585 # significant_number
+		state = 283 # significant_number
+		state = 141 # significant_number
+		state = 142 # significant_number
+		state = 143 # significant_number
+		state = 144 # significant_number
+		state = 145 # significant_number
+		state = 146 # significant_number
+		state = 147 # significant_number
 	}
 }
 
 is_balkan_state = {
 	OR = {
-		state = 639
-		state = 640
-		state = 641
-		state = 642
-		state = 555
-		state = 556
-		state = 643
-		state = 644
-		state = 645
-		state = 646
-		state = 647
-		state = 648
-		state = 649
-		state = 103
+		state = 639 # significant_number
+		state = 640 # significant_number
+		state = 641 # significant_number
+		state = 642 # significant_number
+		state = 555 # significant_number
+		state = 556 # significant_number
+		state = 643 # significant_number
+		state = 644 # significant_number
+		state = 645 # significant_number
+		state = 646 # significant_number
+		state = 647 # significant_number
+		state = 648 # significant_number
+		state = 649 # significant_number
+		state = 103 # significant_number
 	}
 }
 
 is_north_africa_state = {
 	OR = {
-		state = 587
-		state = 588
-		state = 589
-		state = 590
-		state = 591
-		state = 592
-		state = 593
-		state = 10
-		state = 11
-		state = 12
-		state = 13
-		state = 14
-		state = 15
+		state = 587 # significant_number
+		state = 588 # significant_number
+		state = 589 # significant_number
+		state = 590 # significant_number
+		state = 591 # significant_number
+		state = 592 # significant_number
+		state = 593 # significant_number
+		state = 10 # significant_number
+		state = 11 # significant_number
+		state = 12 # significant_number
+		state = 13 # significant_number
+		state = 14 # significant_number
+		state = 15 # significant_number
 	}
 }
 
 is_italy_state = {
 	OR = {
-		state = 560
-		state = 561
-		state = 562
-		state = 284
-		state = 285
-		state = 286
-		state = 287
-		state = 288
-		state = 289
-		state = 290
-		state = 291
-		state = 292
-		state = 293
-		state = 294
-		state = 579
-		state = 580
-		state = 581
-		state = 582
+		state = 560 # significant_number
+		state = 561 # significant_number
+		state = 562 # significant_number
+		state = 284 # significant_number
+		state = 285 # significant_number
+		state = 286 # significant_number
+		state = 287 # significant_number
+		state = 288 # significant_number
+		state = 289 # significant_number
+		state = 290 # significant_number
+		state = 291 # significant_number
+		state = 292 # significant_number
+		state = 293 # significant_number
+		state = 294 # significant_number
+		state = 579 # significant_number
+		state = 580 # significant_number
+		state = 581 # significant_number
+		state = 582 # significant_number
 	}
 }
 
 is_gaul_state = {
 	OR = {
-		state = 16
-		state = 17
-		state = 18
-		state = 19
-		state = 20
-		state = 21
-		state = 657
-		state = 59
-		state = 60
-		state = 61
-		state = 62
-		state = 63
-		state = 64
-		state = 65
-		state = 66
-		state = 67
-		state = 68
-		state = 55
-		state = 56
-		state = 195
-		state = 196
-		state = 197
-		state = 198
-		state = 199
+		state = 16 # significant_number
+		state = 17 # significant_number
+		state = 18 # significant_number
+		state = 19 # significant_number
+		state = 20 # significant_number
+		state = 21 # significant_number
+		state = 657 # significant_number
+		state = 59 # significant_number
+		state = 60 # significant_number
+		state = 61 # significant_number
+		state = 62 # significant_number
+		state = 63 # significant_number
+		state = 64 # significant_number
+		state = 65 # significant_number
+		state = 66 # significant_number
+		state = 67 # significant_number
+		state = 68 # significant_number
+		state = 55 # significant_number
+		state = 56 # significant_number
+		state = 195 # significant_number
+		state = 196 # significant_number
+		state = 197 # significant_number
+		state = 198 # significant_number
+		state = 199 # significant_number
 	}
 }
 
 is_iberia_state = {
 	OR = {
-		state = 90
-		state = 91
-		state = 92
-		state = 93
-		state = 388
-		state = 389
-		state = 390
-		state = 391
-		state = 392
-		state = 393
-		state = 568
-		state = 569
-		state = 570
-		state = 571
-		state = 572
-		state = 573
-		state = 574
+		state = 90 # significant_number
+		state = 91 # significant_number
+		state = 92 # significant_number
+		state = 93 # significant_number
+		state = 388 # significant_number
+		state = 389 # significant_number
+		state = 390 # significant_number
+		state = 391 # significant_number
+		state = 392 # significant_number
+		state = 393 # significant_number
+		state = 568 # significant_number
+		state = 569 # significant_number
+		state = 570 # significant_number
+		state = 571 # significant_number
+		state = 572 # significant_number
+		state = 573 # significant_number
+		state = 574 # significant_number
+		state = 663 # significant_number
 	}
 }
 
 is_britain_state = {
 	OR = {
-		state = 69
-		state = 148
-		state = 149
-		state = 150
-		state = 151
-		state = 152
-		state = 153
-		state = 154
+		state = 69 # significant_number
+		state = 148 # significant_number
+		state = 149 # significant_number
+		state = 150 # significant_number
+		state = 151 # significant_number
+		state = 152 # significant_number
+		state = 153 # significant_number
+		state = 154 # significant_number
 	}
 }
