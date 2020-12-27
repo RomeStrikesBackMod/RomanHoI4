@@ -1,155 +1,5 @@
 ﻿add_namespace = tesb_misc
 
-country_event = {
-	id = tesb_misc.1
-	title = tesb_misc.1.t
-	desc = tesb_misc.1.d
-	picture = GFX_report_event_ger_civil_war
-
-	is_triggered_only = yes
-	immediate = {
-	}
-	
-	#civil war starts
-	option = {
-		name = tesb_misc.1.a
-		#hidden_effect = {
-			set_capital = 167
-			set_politics = {
-				ruling_party = communism
-				elections_allowed = no
-			}
-			start_civil_war = {
-				ruling_party = communism
-				ideology = fascism
-				size = 0.5
-				states = { 166 }
-			}
-			load_oob = "HAI_communist"
-			random_other_country = {
-				limit = {
-					original_tag = HAI
-					has_government = fascism
-				}
-				set_stability = 0.9
-				set_war_support = 0.8
-				load_oob = "HAI_fascist"
-			}
-			
-			set_stability = 0.9
-			set_war_support = 0.8
-		#}
-		add_stability = -0.25
-	}
-	option = {
-		name = tesb_misc.1.b
-		#hidden_effect = {
-			set_capital = 166
-			set_politics = {
-				ruling_party = fascism
-				elections_allowed = no
-			}
-			start_civil_war = {
-				ruling_party = fascism
-				ideology = communism
-				size = 0.5
-				states = { 167 }
-			}
-			load_oob = "HAI_fascist"
-			random_other_country = {
-				limit = {
-					original_tag = HAI
-					has_government = communism
-				}
-				set_stability = 0.9
-				set_war_support = 0.8
-				load_oob = "HAI_communist"
-			}
-			set_stability = 0.9
-			set_war_support = 0.8
-		#}
-		add_stability = -0.25
-	}
-}
-
-country_event = {
-	id = tesb_misc.2
-	title = tesb_misc.1.t
-	desc = tesb_misc.1.d
-	picture = GFX_report_event_ger_civil_war
-
-	is_triggered_only = yes
-	immediate = {
-	}
-	
-	#civil war starts
-	option = {
-		name = tesb_misc.1.a
-		#hidden_effect = {
-			set_capital = 170
-			set_politics = {
-				ruling_party = absolutist
-				elections_allowed = no
-			}
-			start_civil_war = {
-				ruling_party = absolutist
-				ideology = fascism
-				size = 0.5
-				states = { 168 169 174 }
-			}
-			load_oob = "HED_absolutist"
-			random_other_country = {
-				limit = {
-					original_tag = HED
-					has_government = fascism
-				}
-				set_stability = 0.9
-				set_war_support = 0.8
-				load_oob = "HED_fascist"
-			}
-			
-			set_stability = 0.9
-			set_war_support = 0.8
-		#}
-		add_stability = -0.25
-		ai_chance = {
-			factor = 50
-		}
-	}
-	option = {
-		name = tesb_misc.1.b
-		#hidden_effect = {
-			set_capital = 169
-			set_politics = {
-				ruling_party = fascism
-				elections_allowed = no
-			}
-			start_civil_war = {
-				ruling_party = fascism
-				ideology = absolutist
-				size = 0.5
-				states = { 170 171 172 173 }
-			}
-			load_oob = "HED_fascist"
-			random_other_country = {
-				limit = {
-					original_tag = HED
-					has_government = absolutist
-				}
-				set_stability = 0.9
-				set_war_support = 0.8
-				load_oob = "HED_absolutist"
-			}
-			set_stability = 0.9
-			set_war_support = 0.8
-		#}
-		add_stability = -0.25
-		ai_chance = {
-			factor = 10
-		}
-	}
-}
-
 state_event = {
 	id = tesb_misc.10
 	title = tesb_misc.10.t
@@ -250,6 +100,7 @@ state_event = {
 	}
 }
 
+
 state_event = {
 	id = tesb_misc.11
 	title = tesb_misc.10.t
@@ -348,6 +199,7 @@ state_event = {
 		}		
 	}
 }
+
 
 country_event = {
 	id = tesb_misc.20
@@ -464,6 +316,7 @@ country_event = {
 	}
 }
 
+
 country_event = {
 	id = tesb_misc.21
 	title = tesb_misc.20.t
@@ -576,5 +429,151 @@ country_event = {
 		ai_chance = {
 			base = 1
 		}
+	}
+}
+
+
+country_event = {
+	id = tesb_misc.30
+	title = tesb_misc.30.t
+	desc = tesb_misc.30.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Accept FROM
+	option = {
+		name = tesb_misc.30.a
+		effect_tooltip = {
+			add_to_faction = FROM
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.31 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	#Reject FROM
+	option = {
+		name = tesb_misc.30.b
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.32 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_misc.31
+	title = tesb_misc.31.t
+	desc = tesb_misc.31.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Join FROM
+	option = {
+		name = tesb_misc.31.a
+		FROM = { add_to_faction = ROOT }
+	}
+}
+
+
+country_event = {
+	id = tesb_misc.32
+	title = tesb_misc.32.t
+	desc = tesb_misc.32.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#too bad
+	option = {
+		name = tesb_misc.32.a
+	}
+}
+
+
+country_event = {
+	id = tesb_misc.40
+	title = tesb_misc.40.t
+	desc = tesb_misc.40.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#Join FROM
+	option = {
+		name = tesb_misc.40.a
+		effect_tooltip = {
+			FROM = { add_to_faction = ROOT }
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.41 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { has_government = fascism }
+			}
+		}
+	}
+	#Reject FROM
+	option = {
+		name = tesb_misc.40.b
+		hidden_effect = {
+			FROM = { country_event = { id = tesb_misc.42 hours = 1 } }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_misc.41
+	title = tesb_misc.41.t
+	desc = tesb_misc.41.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#FROM joins
+	option = {
+		name = tesb_misc.41.a
+		add_to_faction = FROM
+	}
+}
+
+
+country_event = {
+	id = tesb_misc.42
+	title = tesb_misc.42.t
+	desc = tesb_misc.42.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+	immediate = {
+	}
+
+	#FROM refuses
+	option = {
+		name = tesb_misc.42.a
 	}
 }
