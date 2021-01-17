@@ -823,4 +823,34 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = War_withINDJAP
+		icon = GFX_goal_generic_major_war
+		text = War_withIND
+		bypass = {
+ 		has_war_with = IND
+ 	}
+		x = 31
+		y = 5
+		cost = 10
+		available = {
+			has_war = no
+			date > 1939.1.1
+		}
+		completion_reward = {
+			add_named_threat = { threat = 5 name = "War with India" }
+			declare_war_on = {
+				type = annex_everything
+				target = IND
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				strength_ratio = { tag = IND ratio < 0.8 }
+			}
+		}
+	}
+
 }

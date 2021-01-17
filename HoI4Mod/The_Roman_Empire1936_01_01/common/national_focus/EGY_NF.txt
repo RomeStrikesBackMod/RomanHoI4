@@ -1,12 +1,12 @@
 focus_tree = {
-	id = SAF_focus
+	id = EGY_focus
 	
 	country = {
 		factor = 0
 		
 		modifier = {
 			add = 10
-			tag = SAF
+			tag = EGY
 		}
 	}
 	
@@ -19,17 +19,17 @@ focus_tree = {
 	shared_focus = political_effort
 
 	focus = {
-		id = border_disputesSAFMUT
+		id = border_disputesEGYTRI
 		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesMUT
+		text = border_disputesTRI
 		x = 26
 		y = 0
 		cost = 10
 		available = {
 			has_war = no
 			not_in_border_conflict = yes
-			has_opinion = { target = MUT value < 0 }
-			MUT = {
+			has_opinion = { target = TRI value < 0 }
+			TRI = {
 				exists = yes
 				not_allies_or_subjects = yes
 				in_weak_faction = yes
@@ -77,22 +77,22 @@ focus_tree = {
 	}
 
 	focus = {
-		id = prepare_for_warSAFMUT
+		id = prepare_for_warEGYTRI
 		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warMUT
-		prerequisite = { focus = border_disputesSAFMUT }
+		text = prepare_for_warTRI
+		prerequisite = { focus = border_disputesEGYTRI }
 		bypass = {
-			has_war_with = MUT
+			has_war_with = TRI
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesSAFMUT
+		relative_position_id = border_disputesEGYTRI
 		cost = 4
 		available = {
 			has_war = no
 			not_in_border_conflict = yes
-			has_opinion = { target = MUT value < 0 }
-			MUT = {
+			has_opinion = { target = TRI value < 0 }
+			TRI = {
 				exists = yes
 				not_in_border_conflict = yes
 			}
@@ -100,21 +100,21 @@ focus_tree = {
 		continue_if_invalid = yes
 		select_effect = {
 			random_owned_controlled_state = {
-				limit = { any_neighbor_state = { is_fully_controlled_by = MUT } }
+				limit = { any_neighbor_state = { is_fully_controlled_by = TRI } }
 				set_variable = { ROOT.attacker_state = THIS.id }
 				set_state_flag = border_incident_active
 			}
 			var:attacker_state = {
 				random_neighbor_state = {
-					limit = { is_fully_controlled_by = MUT }
+					limit = { is_fully_controlled_by = TRI }
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
 				}
 				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = MUT } } }
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = TRI } } }
 					random_state = {
 						limit = {
-							is_fully_controlled_by = MUT
+							is_fully_controlled_by = TRI
 							is_coastal = yes
 						}
 						set_variable = { ROOT.defender_state = THIS.id }
@@ -122,9 +122,9 @@ focus_tree = {
 					}
 				}
 				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = MUT } } }
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = TRI } } }
 					random_state = {
-						limit = { is_fully_controlled_by = MUT }
+						limit = { is_fully_controlled_by = TRI }
 						set_variable = { ROOT.defender_state = THIS.id }
 						set_state_flag = border_incident_active
 					}
@@ -132,7 +132,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			MUT = {
+			TRI = {
 				add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 }
 				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = 1000 } }
 			}
@@ -163,68 +163,68 @@ focus_tree = {
 	}
 
 	focus = {
-		id = neighbor_warSAFMUT
+		id = neighbor_warEGYTRI
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warMUT
-		prerequisite = { focus = prepare_for_warSAFMUT }
+		text = neighbor_warTRI
+		prerequisite = { focus = prepare_for_warEGYTRI }
 		bypass = {
-			has_war_with = MUT
+			has_war_with = TRI
 		}
 		x = 0
 		y = 1
-		relative_position_id = prepare_for_warSAFMUT
+		relative_position_id = prepare_for_warEGYTRI
 		cost = 3
 		available = {
 			has_war = no
 			hidden_trigger = {
 				NOT = { any_owned_state = { has_border_war = yes } }
-				MUT = { NOT = { any_owned_state = { has_border_war = yes } } }
+				TRI = { NOT = { any_owned_state = { has_border_war = yes } } }
 			}
 			if = {
-				limit = { MUT = { potential_border_war_target = yes } }
+				limit = { TRI = { potential_border_war_target = yes } }
 				var:attacker_state = { is_fully_controlled_by = ROOT }
-				var:defender_state = { is_fully_controlled_by = MUT }
+				var:defender_state = { is_fully_controlled_by = TRI }
 				divisions_in_border_state = { state = var:attacker_state border_state = var:defender_state size > 0 }
 			}
 		}
 		completion_reward = {
 			if = {
-				limit = { MUT = { potential_take_core_target = yes } }
+				limit = { TRI = { potential_take_core_target = yes } }
 				declare_war_on = {
-					target = MUT
+					target = TRI
 					type = take_core_state
 					generator = core_states
 				}
 				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 			}
 			else_if = {
-				limit = { MUT = { potential_communist_puppet_target = yes } }
+				limit = { TRI = { potential_communist_puppet_target = yes } }
 				declare_war_on = {
-					target = MUT
+					target = TRI
 					type = puppet_wargoal_focus
 				}
 				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 			}
 			else_if = {
-				limit = { MUT = { potential_fascist_annex_target = yes } }
+				limit = { TRI = { potential_fascist_annex_target = yes } }
 				declare_war_on = {
-					target = MUT
+					target = TRI
 					type = annex_everything
 				}
 				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 			}
 			else_if = {
-				limit = { MUT = { potential_take_state_target = yes } }
+				limit = { TRI = { potential_take_state_target = yes } }
 				add_state_claim = var:defender_state
 				declare_war_on = {
-					target = MUT
+					target = TRI
 					type = take_state_focus
 					generator = claimed_states
 				}
 				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 			}
 			else_if = {
-				limit = { MUT = { potential_border_war_target = yes } }
+				limit = { TRI = { potential_border_war_target = yes } }
 				start_border_war = {
 					change_state_after_war = no
 					attacker = {
@@ -245,7 +245,7 @@ focus_tree = {
 				}
 				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
 			}
-			MUT = {
+			TRI = {
 				add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 }
 				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = -1000 } }
 			}
