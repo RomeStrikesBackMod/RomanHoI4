@@ -18,4 +18,1194 @@ focus_tree = {
 	shared_focus = industrial_effort
 	shared_focus = political_effort
 
+	focus = {
+		id = border_disputes_nwCROHUN
+		icon = GFX_goal_generic_more_territorial_claims
+		text = border_disputes_nwHUN
+		x = 26
+		y = 0
+		cost = 10
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = HUN value < 0 }
+			HUN = {
+				exists = yes
+				not_allies_or_subjects = yes
+				in_weak_faction = yes
+				OR = {
+					potential_take_core_target = yes
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						potential_communist_puppet_target = yes
+					}
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						potential_fascist_annex_target = yes
+					}
+					potential_take_state_target = yes
+					potential_border_war_target = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = prepare_for_war_nwCROHUN
+		icon = GFX_goal_generic_position_armies
+		text = prepare_for_war_nwHUN
+		prerequisite = { focus = border_disputes_nwCROHUN }
+		bypass = {
+			has_war_with = HUN
+		}
+		x = 0
+		y = 1
+		relative_position_id = border_disputes_nwCROHUN
+		cost = 4
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = HUN value < 0 }
+			HUN = {
+				exists = yes
+				not_in_border_conflict = yes
+			}
+		}
+		continue_if_invalid = yes
+		select_effect = {
+			random_owned_controlled_state = {
+				limit = { any_neighbor_state = { is_fully_controlled_by = HUN } }
+				set_variable = { ROOT.attacker_state = THIS.id }
+				set_state_flag = border_incident_active
+			}
+			var:attacker_state = {
+				random_neighbor_state = {
+					limit = { is_fully_controlled_by = HUN }
+					set_variable = { ROOT.defender_state = THIS.id }
+					set_state_flag = border_incident_active
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = HUN } } }
+					random_state = {
+						limit = {
+							is_fully_controlled_by = HUN
+							is_coastal = yes
+						}
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = HUN } } }
+					random_state = {
+						limit = { is_fully_controlled_by = HUN }
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+			}
+		}
+		completion_reward = {
+			HUN = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = 1000 } }
+			}
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = neighbor_war_nwCROHUN
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = neighbor_war_nwHUN
+		prerequisite = { focus = prepare_for_war_nwCROHUN }
+		bypass = {
+			has_war_with = HUN
+		}
+		x = 0
+		y = 1
+		relative_position_id = prepare_for_war_nwCROHUN
+		cost = 3
+		available = {
+			has_war = no
+			hidden_trigger = {
+				NOT = { any_owned_state = { has_border_war = yes } }
+				HUN = { NOT = { any_owned_state = { has_border_war = yes } } }
+			}
+			if = {
+				limit = { HUN = { potential_border_war_target = yes } }
+				var:attacker_state = { is_fully_controlled_by = ROOT }
+				var:defender_state = { is_fully_controlled_by = HUN }
+				divisions_in_border_state = { state = var:attacker_state border_state = var:defender_state size > 0 }
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { HUN = { potential_take_core_target = yes } }
+				declare_war_on = {
+					target = HUN
+					type = take_core_state
+					generator = core_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { HUN = { potential_communist_puppet_target = yes } }
+				declare_war_on = {
+					target = HUN
+					type = puppet_wargoal_focus
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { HUN = { potential_fascist_annex_target = yes } }
+				declare_war_on = {
+					target = HUN
+					type = annex_everything
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { HUN = { potential_take_state_target = yes } }
+				add_state_claim = var:defender_state
+				declare_war_on = {
+					target = HUN
+					type = take_state_focus
+					generator = claimed_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { HUN = { potential_border_war_target = yes } }
+				start_border_war = {
+					change_state_after_war = no
+					attacker = {
+						state = var:attacker_state
+						num_provinces = 6
+						on_win = neighbor_war.1
+						on_lose = neighbor_war.2
+						on_cancel = neighbor_war.3
+					}
+					defender = {
+						state = var:defender_state
+						num_provinces = 6
+						on_win = neighbor_war.2
+						on_lose = neighbor_war.1
+						on_cancel = neighbor_war.3
+					}
+					minimum_duration_in_days = 14
+				}
+				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
+			}
+			HUN = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = -1000 } }
+			}
+			var:attacker_state = { clr_state_flag = border_incident_active }
+			var:defender_state = { clr_state_flag = border_incident_active }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = border_disputes_nwCROITA
+		icon = GFX_goal_generic_more_territorial_claims
+		text = border_disputes_nwITA
+		x = 28
+		y = 0
+		cost = 10
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = ITA value < 0 }
+			ITA = {
+				exists = yes
+				not_allies_or_subjects = yes
+				in_weak_faction = yes
+				OR = {
+					potential_take_core_target = yes
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						potential_communist_puppet_target = yes
+					}
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						potential_fascist_annex_target = yes
+					}
+					potential_take_state_target = yes
+					potential_border_war_target = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = prepare_for_war_nwCROITA
+		icon = GFX_goal_generic_position_armies
+		text = prepare_for_war_nwITA
+		prerequisite = { focus = border_disputes_nwCROITA }
+		bypass = {
+			has_war_with = ITA
+		}
+		x = 0
+		y = 1
+		relative_position_id = border_disputes_nwCROITA
+		cost = 4
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = ITA value < 0 }
+			ITA = {
+				exists = yes
+				not_in_border_conflict = yes
+			}
+		}
+		continue_if_invalid = yes
+		select_effect = {
+			random_owned_controlled_state = {
+				limit = { any_neighbor_state = { is_fully_controlled_by = ITA } }
+				set_variable = { ROOT.attacker_state = THIS.id }
+				set_state_flag = border_incident_active
+			}
+			var:attacker_state = {
+				random_neighbor_state = {
+					limit = { is_fully_controlled_by = ITA }
+					set_variable = { ROOT.defender_state = THIS.id }
+					set_state_flag = border_incident_active
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = ITA } } }
+					random_state = {
+						limit = {
+							is_fully_controlled_by = ITA
+							is_coastal = yes
+						}
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = ITA } } }
+					random_state = {
+						limit = { is_fully_controlled_by = ITA }
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+			}
+		}
+		completion_reward = {
+			ITA = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = 1000 } }
+			}
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = neighbor_war_nwCROITA
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = neighbor_war_nwITA
+		prerequisite = { focus = prepare_for_war_nwCROITA }
+		bypass = {
+			has_war_with = ITA
+		}
+		x = 0
+		y = 1
+		relative_position_id = prepare_for_war_nwCROITA
+		cost = 3
+		available = {
+			has_war = no
+			hidden_trigger = {
+				NOT = { any_owned_state = { has_border_war = yes } }
+				ITA = { NOT = { any_owned_state = { has_border_war = yes } } }
+			}
+			if = {
+				limit = { ITA = { potential_border_war_target = yes } }
+				var:attacker_state = { is_fully_controlled_by = ROOT }
+				var:defender_state = { is_fully_controlled_by = ITA }
+				divisions_in_border_state = { state = var:attacker_state border_state = var:defender_state size > 0 }
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { ITA = { potential_take_core_target = yes } }
+				declare_war_on = {
+					target = ITA
+					type = take_core_state
+					generator = core_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { ITA = { potential_communist_puppet_target = yes } }
+				declare_war_on = {
+					target = ITA
+					type = puppet_wargoal_focus
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { ITA = { potential_fascist_annex_target = yes } }
+				declare_war_on = {
+					target = ITA
+					type = annex_everything
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { ITA = { potential_take_state_target = yes } }
+				add_state_claim = var:defender_state
+				declare_war_on = {
+					target = ITA
+					type = take_state_focus
+					generator = claimed_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { ITA = { potential_border_war_target = yes } }
+				start_border_war = {
+					change_state_after_war = no
+					attacker = {
+						state = var:attacker_state
+						num_provinces = 6
+						on_win = neighbor_war.1
+						on_lose = neighbor_war.2
+						on_cancel = neighbor_war.3
+					}
+					defender = {
+						state = var:defender_state
+						num_provinces = 6
+						on_win = neighbor_war.2
+						on_lose = neighbor_war.1
+						on_cancel = neighbor_war.3
+					}
+					minimum_duration_in_days = 14
+				}
+				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
+			}
+			ITA = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = -1000 } }
+			}
+			var:attacker_state = { clr_state_flag = border_incident_active }
+			var:defender_state = { clr_state_flag = border_incident_active }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = border_disputes_nwCROMOS
+		icon = GFX_goal_generic_more_territorial_claims
+		text = border_disputes_nwMOS
+		x = 30
+		y = 0
+		cost = 10
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = MOS value < 0 }
+			MOS = {
+				exists = yes
+				not_allies_or_subjects = yes
+				in_weak_faction = yes
+				OR = {
+					potential_take_core_target = yes
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						potential_communist_puppet_target = yes
+					}
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						potential_fascist_annex_target = yes
+					}
+					potential_take_state_target = yes
+					potential_border_war_target = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = prepare_for_war_nwCROMOS
+		icon = GFX_goal_generic_position_armies
+		text = prepare_for_war_nwMOS
+		prerequisite = { focus = border_disputes_nwCROMOS }
+		bypass = {
+			has_war_with = MOS
+		}
+		x = 0
+		y = 1
+		relative_position_id = border_disputes_nwCROMOS
+		cost = 4
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = MOS value < 0 }
+			MOS = {
+				exists = yes
+				not_in_border_conflict = yes
+			}
+		}
+		continue_if_invalid = yes
+		select_effect = {
+			random_owned_controlled_state = {
+				limit = { any_neighbor_state = { is_fully_controlled_by = MOS } }
+				set_variable = { ROOT.attacker_state = THIS.id }
+				set_state_flag = border_incident_active
+			}
+			var:attacker_state = {
+				random_neighbor_state = {
+					limit = { is_fully_controlled_by = MOS }
+					set_variable = { ROOT.defender_state = THIS.id }
+					set_state_flag = border_incident_active
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = MOS } } }
+					random_state = {
+						limit = {
+							is_fully_controlled_by = MOS
+							is_coastal = yes
+						}
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = MOS } } }
+					random_state = {
+						limit = { is_fully_controlled_by = MOS }
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+			}
+		}
+		completion_reward = {
+			MOS = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = 1000 } }
+			}
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = neighbor_war_nwCROMOS
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = neighbor_war_nwMOS
+		prerequisite = { focus = prepare_for_war_nwCROMOS }
+		bypass = {
+			has_war_with = MOS
+		}
+		x = 0
+		y = 1
+		relative_position_id = prepare_for_war_nwCROMOS
+		cost = 3
+		available = {
+			has_war = no
+			hidden_trigger = {
+				NOT = { any_owned_state = { has_border_war = yes } }
+				MOS = { NOT = { any_owned_state = { has_border_war = yes } } }
+			}
+			if = {
+				limit = { MOS = { potential_border_war_target = yes } }
+				var:attacker_state = { is_fully_controlled_by = ROOT }
+				var:defender_state = { is_fully_controlled_by = MOS }
+				divisions_in_border_state = { state = var:attacker_state border_state = var:defender_state size > 0 }
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { MOS = { potential_take_core_target = yes } }
+				declare_war_on = {
+					target = MOS
+					type = take_core_state
+					generator = core_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { MOS = { potential_communist_puppet_target = yes } }
+				declare_war_on = {
+					target = MOS
+					type = puppet_wargoal_focus
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { MOS = { potential_fascist_annex_target = yes } }
+				declare_war_on = {
+					target = MOS
+					type = annex_everything
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { MOS = { potential_take_state_target = yes } }
+				add_state_claim = var:defender_state
+				declare_war_on = {
+					target = MOS
+					type = take_state_focus
+					generator = claimed_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { MOS = { potential_border_war_target = yes } }
+				start_border_war = {
+					change_state_after_war = no
+					attacker = {
+						state = var:attacker_state
+						num_provinces = 6
+						on_win = neighbor_war.1
+						on_lose = neighbor_war.2
+						on_cancel = neighbor_war.3
+					}
+					defender = {
+						state = var:defender_state
+						num_provinces = 6
+						on_win = neighbor_war.2
+						on_lose = neighbor_war.1
+						on_cancel = neighbor_war.3
+					}
+					minimum_duration_in_days = 14
+				}
+				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
+			}
+			MOS = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = -1000 } }
+			}
+			var:attacker_state = { clr_state_flag = border_incident_active }
+			var:defender_state = { clr_state_flag = border_incident_active }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = border_disputes_nwCROPLC
+		icon = GFX_goal_generic_more_territorial_claims
+		text = border_disputes_nwPLC
+		x = 32
+		y = 0
+		cost = 10
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = PLC value < 0 }
+			PLC = {
+				exists = yes
+				not_allies_or_subjects = yes
+				in_weak_faction = yes
+				OR = {
+					potential_take_core_target = yes
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						potential_communist_puppet_target = yes
+					}
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						potential_fascist_annex_target = yes
+					}
+					potential_take_state_target = yes
+					potential_border_war_target = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = prepare_for_war_nwCROPLC
+		icon = GFX_goal_generic_position_armies
+		text = prepare_for_war_nwPLC
+		prerequisite = { focus = border_disputes_nwCROPLC }
+		bypass = {
+			has_war_with = PLC
+		}
+		x = 0
+		y = 1
+		relative_position_id = border_disputes_nwCROPLC
+		cost = 4
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = PLC value < 0 }
+			PLC = {
+				exists = yes
+				not_in_border_conflict = yes
+			}
+		}
+		continue_if_invalid = yes
+		select_effect = {
+			random_owned_controlled_state = {
+				limit = { any_neighbor_state = { is_fully_controlled_by = PLC } }
+				set_variable = { ROOT.attacker_state = THIS.id }
+				set_state_flag = border_incident_active
+			}
+			var:attacker_state = {
+				random_neighbor_state = {
+					limit = { is_fully_controlled_by = PLC }
+					set_variable = { ROOT.defender_state = THIS.id }
+					set_state_flag = border_incident_active
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = PLC } } }
+					random_state = {
+						limit = {
+							is_fully_controlled_by = PLC
+							is_coastal = yes
+						}
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = PLC } } }
+					random_state = {
+						limit = { is_fully_controlled_by = PLC }
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+			}
+		}
+		completion_reward = {
+			PLC = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = 1000 } }
+			}
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = neighbor_war_nwCROPLC
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = neighbor_war_nwPLC
+		prerequisite = { focus = prepare_for_war_nwCROPLC }
+		bypass = {
+			has_war_with = PLC
+		}
+		x = 0
+		y = 1
+		relative_position_id = prepare_for_war_nwCROPLC
+		cost = 3
+		available = {
+			has_war = no
+			hidden_trigger = {
+				NOT = { any_owned_state = { has_border_war = yes } }
+				PLC = { NOT = { any_owned_state = { has_border_war = yes } } }
+			}
+			if = {
+				limit = { PLC = { potential_border_war_target = yes } }
+				var:attacker_state = { is_fully_controlled_by = ROOT }
+				var:defender_state = { is_fully_controlled_by = PLC }
+				divisions_in_border_state = { state = var:attacker_state border_state = var:defender_state size > 0 }
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { PLC = { potential_take_core_target = yes } }
+				declare_war_on = {
+					target = PLC
+					type = take_core_state
+					generator = core_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { PLC = { potential_communist_puppet_target = yes } }
+				declare_war_on = {
+					target = PLC
+					type = puppet_wargoal_focus
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { PLC = { potential_fascist_annex_target = yes } }
+				declare_war_on = {
+					target = PLC
+					type = annex_everything
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { PLC = { potential_take_state_target = yes } }
+				add_state_claim = var:defender_state
+				declare_war_on = {
+					target = PLC
+					type = take_state_focus
+					generator = claimed_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { PLC = { potential_border_war_target = yes } }
+				start_border_war = {
+					change_state_after_war = no
+					attacker = {
+						state = var:attacker_state
+						num_provinces = 6
+						on_win = neighbor_war.1
+						on_lose = neighbor_war.2
+						on_cancel = neighbor_war.3
+					}
+					defender = {
+						state = var:defender_state
+						num_provinces = 6
+						on_win = neighbor_war.2
+						on_lose = neighbor_war.1
+						on_cancel = neighbor_war.3
+					}
+					minimum_duration_in_days = 14
+				}
+				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
+			}
+			PLC = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = -1000 } }
+			}
+			var:attacker_state = { clr_state_flag = border_incident_active }
+			var:defender_state = { clr_state_flag = border_incident_active }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = border_disputes_nwCRORME
+		icon = GFX_goal_generic_more_territorial_claims
+		text = border_disputes_nwRME
+		x = 34
+		y = 0
+		cost = 10
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = RME value < 0 }
+			RME = {
+				exists = yes
+				not_allies_or_subjects = yes
+				in_weak_faction = yes
+				OR = {
+					potential_take_core_target = yes
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						potential_communist_puppet_target = yes
+					}
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						potential_fascist_annex_target = yes
+					}
+					potential_take_state_target = yes
+					potential_border_war_target = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = prepare_for_war_nwCRORME
+		icon = GFX_goal_generic_position_armies
+		text = prepare_for_war_nwRME
+		prerequisite = { focus = border_disputes_nwCRORME }
+		bypass = {
+			has_war_with = RME
+		}
+		x = 0
+		y = 1
+		relative_position_id = border_disputes_nwCRORME
+		cost = 4
+		available = {
+			has_war = no
+			not_in_border_conflict = yes
+			has_opinion = { target = RME value < 0 }
+			RME = {
+				exists = yes
+				not_in_border_conflict = yes
+			}
+		}
+		continue_if_invalid = yes
+		select_effect = {
+			random_owned_controlled_state = {
+				limit = { any_neighbor_state = { is_fully_controlled_by = RME } }
+				set_variable = { ROOT.attacker_state = THIS.id }
+				set_state_flag = border_incident_active
+			}
+			var:attacker_state = {
+				random_neighbor_state = {
+					limit = { is_fully_controlled_by = RME }
+					set_variable = { ROOT.defender_state = THIS.id }
+					set_state_flag = border_incident_active
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = RME } } }
+					random_state = {
+						limit = {
+							is_fully_controlled_by = RME
+							is_coastal = yes
+						}
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+				if = {
+					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = RME } } }
+					random_state = {
+						limit = { is_fully_controlled_by = RME }
+						set_variable = { ROOT.defender_state = THIS.id }
+						set_state_flag = border_incident_active
+					}
+				}
+			}
+		}
+		completion_reward = {
+			RME = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = 1000 } }
+			}
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date > 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date > 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+				date > 1939.8.1
+			}
+		}
+	}
+
+	focus = {
+		id = neighbor_war_nwCRORME
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = neighbor_war_nwRME
+		prerequisite = { focus = prepare_for_war_nwCRORME }
+		bypass = {
+			has_war_with = RME
+		}
+		x = 0
+		y = 1
+		relative_position_id = prepare_for_war_nwCRORME
+		cost = 3
+		available = {
+			has_war = no
+			hidden_trigger = {
+				NOT = { any_owned_state = { has_border_war = yes } }
+				RME = { NOT = { any_owned_state = { has_border_war = yes } } }
+			}
+			if = {
+				limit = { RME = { potential_border_war_target = yes } }
+				var:attacker_state = { is_fully_controlled_by = ROOT }
+				var:defender_state = { is_fully_controlled_by = RME }
+				divisions_in_border_state = { state = var:attacker_state border_state = var:defender_state size > 0 }
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = { RME = { potential_take_core_target = yes } }
+				declare_war_on = {
+					target = RME
+					type = take_core_state
+					generator = core_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { RME = { potential_communist_puppet_target = yes } }
+				declare_war_on = {
+					target = RME
+					type = puppet_wargoal_focus
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { RME = { potential_fascist_annex_target = yes } }
+				declare_war_on = {
+					target = RME
+					type = annex_everything
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { RME = { potential_take_state_target = yes } }
+				add_state_claim = var:defender_state
+				declare_war_on = {
+					target = RME
+					type = take_state_focus
+					generator = claimed_states
+				}
+				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			}
+			else_if = {
+				limit = { RME = { potential_border_war_target = yes } }
+				start_border_war = {
+					change_state_after_war = no
+					attacker = {
+						state = var:attacker_state
+						num_provinces = 6
+						on_win = neighbor_war.1
+						on_lose = neighbor_war.2
+						on_cancel = neighbor_war.3
+					}
+					defender = {
+						state = var:defender_state
+						num_provinces = 6
+						on_win = neighbor_war.2
+						on_lose = neighbor_war.1
+						on_cancel = neighbor_war.3
+					}
+					minimum_duration_in_days = 14
+				}
+				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
+			}
+			RME = {
+				add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 }
+				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = -1000 } }
+			}
+			var:attacker_state = { clr_state_flag = border_incident_active }
+			var:defender_state = { clr_state_flag = border_incident_active }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
 }
