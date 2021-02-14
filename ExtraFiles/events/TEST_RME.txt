@@ -42,6 +42,13 @@ country_event = {
 			}
 			set_party_name = { ideology = democratic long_name = RME_democratic_party name = RME_democratic_party }
 			load_oob = "RME_republic"
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+					load_oob = "RME_republic_naval_mtg"
+				else = { 
+					load_oob = "RME_republic_naval_legacy"
+				}
+			}
 			random_other_country = {
 				limit = {
 					original_tag = RME
@@ -50,6 +57,13 @@ country_event = {
 				set_stability = 0.9
 				set_war_support = 0.8
 				load_oob = "RME_empire"
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+						load_oob = "RME_empire_naval_mtg"
+					else = { 
+						load_oob = "RME_empire_naval_legacy"
+					}
+				}
 			}
 			#hidden_effect = { news_event = { id = wtt_news.1 hours = 6 } }
 			
@@ -118,6 +132,13 @@ country_event = {
 				states = { 473 474 477 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493 494 }	# significant_number - Cyclades, Aegean Islands, Cyprus, Hudavendigar, Konya, Ankara, Aydin, Trabizond, Kastamonu, Kars, Van, Diyarbakir, Adana, Andamans, Diego Garcia, South Georgian Islands, Madeira, Kynes and Xylos, South Atlantic Islands, Mann
 			}
 			load_oob = "RME_empire"
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+					load_oob = "RME_empire_naval_mtg"
+				else = { 
+					load_oob = "RME_empire_naval_legacy"
+				}
+			}
 			random_other_country = {
 				limit = {
 					original_tag = RME
@@ -126,6 +147,13 @@ country_event = {
 				set_stability = 0.9
 				set_war_support = 0.8
 				load_oob = "RME_republic"
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+						load_oob = "RME_republic_naval_mtg"
+					else = { 
+						load_oob = "RME_republic_naval_legacy"
+					}
+				}
 				set_capital = 482	# significant_number - Trabizond
 			}
 			#hidden_effect = { news_event = { id = wtt_news.1 hours = 6 } }
