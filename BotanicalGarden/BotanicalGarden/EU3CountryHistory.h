@@ -19,7 +19,7 @@ class CountryHistory: commonItems::parser
 	[[nodiscard]] const auto& getLastDynasty() const { return lastDynasty; }
 
   private:
-	std::string lastDynasty;
+	std::optional<std::string> lastDynasty;
 };
 
 } // namespace EU3

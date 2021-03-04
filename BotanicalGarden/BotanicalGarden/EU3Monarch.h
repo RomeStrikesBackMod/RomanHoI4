@@ -18,7 +18,7 @@ class Monarch: commonItems::parser
 	[[nodiscard]] const auto& getDynasty() const { return dynasty; }
 
   private:
-	std::string dynasty;
+	std::optional<std::string> dynasty;
 };
 
 } // namespace EU3

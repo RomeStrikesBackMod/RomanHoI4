@@ -21,7 +21,7 @@ class Country: commonItems::parser
 
   private:
 	std::string government;
-	std::string lastDynasty;
+	std::optional<std::string> lastDynasty;
 };
 
 } // namespace EU3

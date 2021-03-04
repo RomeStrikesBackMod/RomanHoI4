@@ -28,7 +28,10 @@ int main()
 		if (isMonarchy(country.getGovernment()))
 		{
 			botanicalGarden << "yes\n";
-			botanicalGarden << "\tlast_dynasty = \"" << country.getLastDynasty() << "\"\n";
+			if (country.getLastDynasty())
+			{
+				botanicalGarden << "\tlast_dynasty = \"" << *country.getLastDynasty() << "\"\n";
+			}
 		}
 		else
 		{
