@@ -17,9 +17,11 @@ class Country: commonItems::parser
 	Country(std::istream& theStream);
 
 	[[nodiscard]] const auto& getGovernment() const { return government; }
+	[[nodiscard]] const auto& getLastDynasty() const { return lastDynasty; }
 
   private:
 	std::string government;
+	std::string lastDynasty;
 };
 
 } // namespace EU3

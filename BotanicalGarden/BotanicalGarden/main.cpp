@@ -4,6 +4,7 @@
 #include <set>
 
 
+
 bool isMonarchy(std::string_view government)
 {
 	return government == "feudal_monarchy" || government == "administrative_monarchy" ||
@@ -11,7 +12,6 @@ bool isMonarchy(std::string_view government)
 			 government == "despotic_monarchy" || government == "celestial_empire" ||
 			 government == "constitutional_monarchy" || government == "enlightened_despotism";
 }
-
 
 
 int main()
@@ -28,6 +28,7 @@ int main()
 		if (isMonarchy(country.getGovernment()))
 		{
 			botanicalGarden << "yes\n";
+			botanicalGarden << "\tlast_dynasty = \"" << country.getLastDynasty() << "\"\n";
 		}
 		else
 		{
