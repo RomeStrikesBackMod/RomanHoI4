@@ -67,7 +67,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = IND }
 			NOT = { has_war_with = IND }
-			IND = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -197,10 +196,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = IND }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = IND
+				IND = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = IND
+						}
 					}
 				}
 			}
@@ -408,7 +409,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = MAK }
 			NOT = { has_war_with = MAK }
-			MAK = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -538,10 +538,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = MAK }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = MAK
+				MAK = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = MAK
+						}
 					}
 				}
 			}
@@ -745,16 +747,18 @@ focus_tree = {
 			BUR = {
 				exists = yes
 				not_allies_or_subjects = yes
-				in_weak_faction = yes
 				OR = {
 					potential_take_core_target = yes
 					if = {
 						limit = { ROOT = { has_government = communism } }
 						potential_communist_puppet_target = yes
 					}
-					if = {
+					else_if = {
 						limit = { ROOT = { has_government = fascism } }
 						potential_fascist_annex_target = yes
+					}
+					else = {
+						hidden_trigger = { always = no }
 					}
 					potential_take_state_target = yes
 					potential_border_war_target = yes
@@ -768,22 +772,25 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
+				BUR = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
 				date < 1938.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.25
-				date > 1938.8.1
+				date < 1939.4.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.4
-				date > 1939.4.1
+				date < 1939.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.5
-				date > 1939.8.1
 			}
 		}
 	}
@@ -821,25 +828,6 @@ focus_tree = {
 					limit = { is_fully_controlled_by = BUR }
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = BUR } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = BUR
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = BUR } } }
-					random_state = {
-						limit = { is_fully_controlled_by = BUR }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
 				}
 			}
 		}
@@ -927,7 +915,6 @@ focus_tree = {
 			}
 			else_if = {
 				limit = { BUR = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = BUR
 					type = take_state_focus
@@ -983,16 +970,18 @@ focus_tree = {
 			SHN = {
 				exists = yes
 				not_allies_or_subjects = yes
-				in_weak_faction = yes
 				OR = {
 					potential_take_core_target = yes
 					if = {
 						limit = { ROOT = { has_government = communism } }
 						potential_communist_puppet_target = yes
 					}
-					if = {
+					else_if = {
 						limit = { ROOT = { has_government = fascism } }
 						potential_fascist_annex_target = yes
+					}
+					else = {
+						hidden_trigger = { always = no }
 					}
 					potential_take_state_target = yes
 					potential_border_war_target = yes
@@ -1006,22 +995,25 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
+				SHN = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
 				date < 1938.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.25
-				date > 1938.8.1
+				date < 1939.4.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.4
-				date > 1939.4.1
+				date < 1939.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.5
-				date > 1939.8.1
 			}
 		}
 	}
@@ -1059,25 +1051,6 @@ focus_tree = {
 					limit = { is_fully_controlled_by = SHN }
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = SHN } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = SHN
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = SHN } } }
-					random_state = {
-						limit = { is_fully_controlled_by = SHN }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
 				}
 			}
 		}
@@ -1165,7 +1138,6 @@ focus_tree = {
 			}
 			else_if = {
 				limit = { SHN = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = SHN
 					type = take_state_focus
@@ -1221,16 +1193,18 @@ focus_tree = {
 			SIA = {
 				exists = yes
 				not_allies_or_subjects = yes
-				in_weak_faction = yes
 				OR = {
 					potential_take_core_target = yes
 					if = {
 						limit = { ROOT = { has_government = communism } }
 						potential_communist_puppet_target = yes
 					}
-					if = {
+					else_if = {
 						limit = { ROOT = { has_government = fascism } }
 						potential_fascist_annex_target = yes
+					}
+					else = {
+						hidden_trigger = { always = no }
 					}
 					potential_take_state_target = yes
 					potential_border_war_target = yes
@@ -1244,22 +1218,25 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
+				SIA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
 				date < 1938.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.25
-				date > 1938.8.1
+				date < 1939.4.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.4
-				date > 1939.4.1
+				date < 1939.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.5
-				date > 1939.8.1
 			}
 		}
 	}
@@ -1297,25 +1274,6 @@ focus_tree = {
 					limit = { is_fully_controlled_by = SIA }
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = SIA } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = SIA
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = SIA } } }
-					random_state = {
-						limit = { is_fully_controlled_by = SIA }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
 				}
 			}
 		}
@@ -1403,7 +1361,6 @@ focus_tree = {
 			}
 			else_if = {
 				limit = { SIA = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = SIA
 					type = take_state_focus

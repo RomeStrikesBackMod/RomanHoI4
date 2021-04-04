@@ -610,9 +610,12 @@ shared_focus = {
 						limit = { ROOT = { has_government = communism } }
 						potential_communist_puppet_target = yes
 					}
-					if = {
+					else_if = {
 						limit = { ROOT = { has_government = fascism } }
 						potential_fascist_annex_target = yes
+					}
+					else = {
+						hidden_trigger = { always = no }
 					}
 					potential_take_state_target = yes
 					potential_border_war_target = yes
@@ -657,17 +660,16 @@ shared_focus = {
 			modifier = {
 				factor = 0
 				threat > 0.25
-				date > 1938.8.1
+				date < 1939.4.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.4
-				date > 1939.4.1
+				date < 1939.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.5
-				date > 1939.8.1
 			}
 		}
 }
@@ -686,8 +688,8 @@ shared_focus = {
 	available = {
 			has_war = no
 			not_in_border_conflict = yes
-			has_opinion = { target = var:neighbor_war_defender value < 0 }
 			var:neighbor_war_defender = {
+				ROOT = { has_opinion = { target = PREV value < 0 } }
 				exists = yes
 				not_in_border_conflict = yes
 			}
@@ -704,25 +706,6 @@ shared_focus = {
 					limit = { is_fully_controlled_by = var:ROOT.neighbor_war_defender }
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = var:ROOT.neighbor_war_defender
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = { is_fully_controlled_by = var:ROOT.neighbor_war_defender }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
 				}
 			}
 		}
@@ -809,7 +792,6 @@ shared_focus = {
 			}
 			else_if = {
 				limit = { var:neighbor_war_defender = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = var:neighbor_war_defender
 					type = take_state_focus

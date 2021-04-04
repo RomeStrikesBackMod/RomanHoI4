@@ -68,7 +68,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = GER }
 			NOT = { has_war_with = GER }
-			GER = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -198,10 +197,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = GER }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = GER
+				GER = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = GER
+						}
 					}
 				}
 			}
@@ -409,7 +410,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = HUN }
 			NOT = { has_war_with = HUN }
-			HUN = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -539,10 +539,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = HUN }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = HUN
+				HUN = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = HUN
+						}
 					}
 				}
 			}
@@ -750,7 +752,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = PLC }
 			NOT = { has_war_with = PLC }
-			PLC = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -880,10 +881,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = PLC }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = PLC
+				PLC = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = PLC
+						}
 					}
 				}
 			}
@@ -1086,16 +1089,18 @@ focus_tree = {
 			RUS = {
 				exists = yes
 				not_allies_or_subjects = yes
-				in_weak_faction = yes
 				OR = {
 					potential_take_core_target = yes
 					if = {
 						limit = { ROOT = { has_government = communism } }
 						potential_communist_puppet_target = yes
 					}
-					if = {
+					else_if = {
 						limit = { ROOT = { has_government = fascism } }
 						potential_fascist_annex_target = yes
+					}
+					else = {
+						hidden_trigger = { always = no }
 					}
 					potential_take_state_target = yes
 					potential_border_war_target = yes
@@ -1159,25 +1164,6 @@ focus_tree = {
 					limit = { is_fully_controlled_by = RUS }
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = RUS } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = RUS
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = RUS } } }
-					random_state = {
-						limit = { is_fully_controlled_by = RUS }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
 				}
 			}
 		}
@@ -1262,7 +1248,6 @@ focus_tree = {
 			}
 			else_if = {
 				limit = { RUS = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = RUS
 					type = take_state_focus
@@ -1317,16 +1302,18 @@ focus_tree = {
 			IND = {
 				exists = yes
 				not_allies_or_subjects = yes
-				in_weak_faction = yes
 				OR = {
 					potential_take_core_target = yes
 					if = {
 						limit = { ROOT = { has_government = communism } }
 						potential_communist_puppet_target = yes
 					}
-					if = {
+					else_if = {
 						limit = { ROOT = { has_government = fascism } }
 						potential_fascist_annex_target = yes
+					}
+					else = {
+						hidden_trigger = { always = no }
 					}
 					potential_take_state_target = yes
 					potential_border_war_target = yes
@@ -1390,25 +1377,6 @@ focus_tree = {
 					limit = { is_fully_controlled_by = IND }
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = IND } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = IND
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = IND } } }
-					random_state = {
-						limit = { is_fully_controlled_by = IND }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
 				}
 			}
 		}
@@ -1493,7 +1461,6 @@ focus_tree = {
 			}
 			else_if = {
 				limit = { IND = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = IND
 					type = take_state_focus

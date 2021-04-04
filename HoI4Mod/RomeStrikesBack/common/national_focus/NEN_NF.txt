@@ -66,7 +66,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = UTA }
 			NOT = { has_war_with = UTA }
-			UTA = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -196,10 +195,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = UTA }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = UTA
+				UTA = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = UTA
+						}
 					}
 				}
 			}
