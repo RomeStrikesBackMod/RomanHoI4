@@ -335,17 +335,17 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ProtectorateMNGCHG
+		id = ProtectorateMNGADA
 		icon = GFX_goal_generic_major_war
-		text = ProtectorateCHG
+		text = ProtectorateADA
 		prerequisite = { focus = ColonialArmyMNG }
 		bypass = {
 			OR = {
 				MNG = {
-					is_in_faction_with = CHG
-					has_war_with = CHG
+					is_in_faction_with = ADA
+					has_war_with = ADA
 				}
-				NOT = { country_exists = CHG }
+				NOT = { country_exists = ADA }
 			}
 		}
 		x = 0
@@ -353,55 +353,55 @@ focus_tree = {
 		relative_position_id = ColonialArmyMNG
 		cost = 10
 		available = {
-			CHG = { is_in_faction = no }
+			ADA = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = CHG
+				target = ADA
 			}
 		}
 		ai_will_do = {
 			factor = 10
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = CHG ratio < 1 }
+				strength_ratio = { tag = ADA ratio < 1 }
 			}
 		}
 	}
 
 	focus = {
-		id = ProtectorateMNGMAK
+		id = ProtectorateMNGYUG
 		icon = GFX_goal_generic_major_war
-		text = ProtectorateMAK
-		prerequisite = { focus = ProtectorateMNGCHG }
+		text = ProtectorateYUG
+		prerequisite = { focus = ProtectorateMNGADA }
 		bypass = {
 			OR = {
 				MNG = {
-					is_in_faction_with = MAK
-					has_war_with = MAK
+					is_in_faction_with = YUG
+					has_war_with = YUG
 				}
-				NOT = { country_exists = MAK }
+				NOT = { country_exists = YUG }
 			}
 		}
 		x = 0
 		y = 1
-		relative_position_id = ProtectorateMNGCHG
+		relative_position_id = ProtectorateMNGADA
 		cost = 10
 		available = {
-			MAK = { is_in_faction = no }
+			YUG = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = MAK
+				target = YUG
 			}
 		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = MAK ratio < 1 }
+				strength_ratio = { tag = YUG ratio < 1 }
 			}
 		}
 	}
@@ -752,17 +752,17 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AnnexMNGBUR
+		id = AnnexMNGARM
 		icon = GFX_goal_generic_major_war
-		text = AnnexBUR
+		text = AnnexARM
 		prerequisite = { focus = PrepTheBorderMNG }
 		bypass = {
 			OR = {
 				MNG= {
-					is_in_faction_with = BUR
-					has_war_with = BUR
+					is_in_faction_with = ARM
+					has_war_with = ARM
 				}
-				NOT = { country_exists = BUR }
+				NOT = { country_exists = ARM }
 			}
 		}
 		x = 2
@@ -770,35 +770,35 @@ focus_tree = {
 		relative_position_id = PrepTheBorderMNG
 		cost = 10
 		available = {
-			BUR = { is_in_faction = no }
+			ARM = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = BUR
+				target = ARM
 			}
 		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = BUR ratio < 1 }
+				strength_ratio = { tag = ARM ratio < 1 }
 			}
 		}
 	}
 
 	focus = {
-		id = AnnexMNGTIB
+		id = AnnexMNGWUC
 		icon = GFX_goal_generic_major_war
-		text = AnnexTIB
+		text = AnnexWUC
 		prerequisite = { focus = NatSpiritMNG }
 		bypass = {
 			OR = {
 				MNG = {
-					is_in_faction_with = TIB
-					has_war_with = TIB
+					is_in_faction_with = WUC
+					has_war_with = WUC
 				}
-				NOT = { country_exists = TIB }
+				NOT = { country_exists = WUC }
 			}
 		}
 		x = 1
@@ -806,19 +806,19 @@ focus_tree = {
 		relative_position_id = NatSpiritMNG
 		cost = 10
 		available = {
-			"TIB" = { is_in_faction = no }
+			"WUC" = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = TIB
+				target = WUC
 			}
 		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = TIB ratio < 1 }
+				strength_ratio = { tag = WUC ratio < 1 }
 			}
 		}
 	}
@@ -850,6 +850,16 @@ focus_tree = {
 				factor = 0
 				strength_ratio = { tag = JAP ratio < 0.8 }
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_war_with = IND
+					has_war_with = RUS
+					has_war_with = RME
+					has_war_with = GRB
+					has_war_with = ENG
+				}
+			}
 		}
 	}
 
@@ -879,6 +889,16 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				strength_ratio = { tag = IND ratio < 0.8 }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_war_with = JAP
+					has_war_with = RUS
+					has_war_with = RME
+					has_war_with = GRB
+					has_war_with = ENG
+				}
 			}
 		}
 	}
