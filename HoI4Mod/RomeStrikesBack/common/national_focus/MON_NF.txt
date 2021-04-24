@@ -67,7 +67,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = MAN }
 			NOT = { has_war_with = MAN }
-			MAN = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -197,10 +196,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = MAN }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = MAN
+				MAN = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = MAN
+						}
 					}
 				}
 			}
@@ -408,7 +409,6 @@ focus_tree = {
 		available = {
 			NOT = { is_in_faction_with = RUS }
 			NOT = { has_war_with = RUS }
-			RUS = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -538,10 +538,12 @@ focus_tree = {
 			NOT = { is_in_faction_with = RUS }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = RUS
+				RUS = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = RUS
+						}
 					}
 				}
 			}

@@ -19,6 +19,13 @@ country_event = {
 			ideology = democratic
 			popularity = 0.01
 		}
+		random_owned_state = {
+			limit = {
+				has_state_flag = GER_speech_state
+			}
+			set_state_flag = GER_had_speech
+			clr_state_flag = GER_speech_state
+		}
 	}
 }
 
@@ -42,6 +49,13 @@ country_event = {
 			ideology = fascism
 			popularity = 0.01
 		}
+		random_owned_state = {
+			limit = {
+				has_state_flag = GER_speech_state
+			}
+			set_state_flag = GER_had_speech
+			clr_state_flag = GER_speech_state
+		}
 	}
 }
 
@@ -64,6 +78,13 @@ country_event = {
 		add_popularity = {
 			ideology = communism
 			popularity = 0.01
+		}
+		random_owned_state = {
+			limit = {
+				has_state_flag = GER_speech_state
+			}
+			set_state_flag = GER_had_speech
+			clr_state_flag = GER_speech_state
 		}
 	}
 }
@@ -89,6 +110,13 @@ country_event = {
 			ideology = democratic
 			popularity = -0.01
 		}
+		random_owned_state = {
+			limit = {
+				has_state_flag = GER_speech_state
+			}
+			set_state_flag = GER_had_speech
+			clr_state_flag = GER_speech_state
+		}
 	}
 }
 
@@ -112,6 +140,13 @@ country_event = {
 		add_popularity = {
 			ideology = fascism
 			popularity = -0.01
+		}
+		random_owned_state = {
+			limit = {
+				has_state_flag = GER_speech_state
+			}
+			set_state_flag = GER_had_speech
+			clr_state_flag = GER_speech_state
 		}
 	}
 }
@@ -137,6 +172,13 @@ country_event = {
 			ideology = communism
 			popularity = -0.01
 		}
+		random_owned_state = {
+			limit = {
+				has_state_flag = GER_speech_state
+			}
+			set_state_flag = GER_had_speech
+			clr_state_flag = GER_speech_state
+		}
 	}
 }
 
@@ -152,7 +194,7 @@ news_event = {
 	trigger = {
 		original_tag = GER
 		date > 1936.4.1
-		NOT = { has_country_flag = GER_election_1936_flag }
+		NOT = { has_country_flag = GER_election_1936_flag has_country_flag = GER_rache has_country_flag = GER_arbeiterpartei has_country_flag = GER_maintain_balance }
 	}
 
 	mean_time_to_happen = {
@@ -609,10 +651,14 @@ country_event = {
 		PLC = { transfer_state = 233 }  # significant_number - Posen
 		233 = { add_manpower = -200000 }  # significant_number - Posen
 		GER = {
-			remove_state_core = 255	# significant_number - Central India
+			remove_state_core = 233	# significant_number - Posen
+			remove_state_claim = 233	# significant_number - Posen
 			remove_state_core = 460	# significant_number - Masovia
+			remove_state_claim = 460	# significant_number - Masovia
 			remove_state_core = 289	# significant_number - Galicia-Lodomeria
+			remove_state_claim = 289	# significant_number - Galicia-Lodomeria
 			remove_state_core = 291	# significant_number - West Galicia
+			remove_state_claim = 291	# significant_number - West Galicia
 			random_owned_controlled_state = {
 				limit = { NOT = { has_state_flag = PLC_transfer } }
 				add_manpower = 200000
@@ -764,10 +810,16 @@ country_event = {
 	option = {
 		name = tesb_GER.101.a
 		set_country_flag = attending_2nd_international
+		ai_chance = {
+			factor = 20
+		}
 	}
 	#Don't Attend
 	option = {
 		name = tesb_GER.101.b
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
 
@@ -786,10 +838,16 @@ country_event = {
 	option = {
 		name = tesb_GER.102.a
 		set_country_flag = attending_2nd_international
+		ai_chance = {
+			factor = 1
+		}
 	}
 	#Don't Attend
 	option = {
 		name = tesb_GER.102.b
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
 
@@ -808,10 +866,16 @@ country_event = {
 	option = {
 		name = tesb_GER.103.a
 		set_country_flag = attending_2nd_international
+		ai_chance = {
+			factor = 1
+		}
 	}
 	#Don't Permit
 	option = {
 		name = tesb_GER.103.b
+		ai_chance = {
+			factor = 10
+		}
 	}
 }
 
@@ -855,10 +919,31 @@ country_event = {
 	option = {
 		name = tesb_GER.106.a
 		add_ideas = GER_second_international_idea
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 10
+				limit = {
+					has_government = communism
+				}
+			}
+		}
 	}
 	
 	#Don't Sign
 	option = {
 		name = tesb_GER.106.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 10
+				limit = {
+					OR = {
+						has_government = absolutist
+						has_government = fascism
+					}
+				}
+			}
+		}
 	}
 }
