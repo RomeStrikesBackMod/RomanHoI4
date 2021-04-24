@@ -14,6 +14,7 @@ MTG_naval_treaties = {
 		visible = {
 			has_naval_treaty_trigger = yes
 			OR = {
+				has_government = democratic
 				has_government = neutrality
 			}
 		}
@@ -216,7 +217,7 @@ MTG_naval_treaties = {
 		}
 
 		ai_will_do = {
-			factor = 0
+			factor = 3
 		}
 	}
 
@@ -238,9 +239,24 @@ MTG_naval_treaties = {
 				has_naval_treaty_trigger = no
 				NOT = { has_country_flag = MTG_naval_treaty_abandoned }
 				NOT = { has_country_flag = MTG_refused_naval_treaty }
-				has_navy_size = {
-					type = capital_ship
-					size > 15
+				if = {
+					limit = { GRB = { has_naval_treaty_trigger = yes } }
+					naval_strength_comparison = {
+						other = GRB
+						ratio > 0.35
+						sub_unit_def_weights = {
+							carrier = 0.25
+							battleship = 1
+							battle_cruiser = 0.8
+							heavy_cruiser = 0.5
+						}
+					}
+				}
+				else = {
+					has_navy_size = {
+						type = capital_ship
+						size > 15
+					}
 				}
 			}
 		}
@@ -260,9 +276,15 @@ MTG_naval_treaties = {
 		}
 
 		ai_will_do = {
-			factor = 3
+			factor = 0
 			modifier = {
-				has_government = democratic
+				OR = {
+					TAG = GRB
+				}
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
 				add = 10
 			}
 		}
@@ -284,9 +306,24 @@ MTG_naval_treaties = {
 			FROM = { 
 				has_war = no
 				has_country_flag = MTG_naval_treaty_abandoned
-				has_navy_size = {
-					type = capital_ship
-					size > 20
+				if = {
+					limit = { GRB = { has_naval_treaty_trigger = yes } }
+					naval_strength_comparison = {
+						other = GRB
+						ratio > 0.8
+						sub_unit_def_weights = {
+							carrier = 0.25
+							battleship = 1
+							battle_cruiser = 0.8
+							heavy_cruiser = 0.5
+						}
+					}
+				}
+				else = {
+					has_navy_size = {
+						type = capital_ship
+						size > 20
+					}
 				}
 			}
 		}
@@ -307,6 +344,14 @@ MTG_naval_treaties = {
 
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				NOT = {
+					OR = {
+					TAG = GRB
+					}
+				}
+				factor = 0
+			}
 		}
 	}
 
@@ -330,16 +375,46 @@ MTG_naval_treaties = {
 						not = { has_country_flag = MTG_naval_treaty_abandoned }
 						NOT = { has_country_flag = MTG_refused_naval_treaty }
 						has_naval_treaty_trigger = no
-						has_navy_size = { 
-							type = capital_ship
-							size > 50
+						if = {
+							limit = { GRB = { has_naval_treaty_trigger = yes } }
+							naval_strength_comparison = {
+								other = GRB
+								ratio > 1
+								sub_unit_def_weights = {
+									carrier = 0.5
+									battleship = 1
+									battle_cruiser = 0.8
+									heavy_cruiser = 0.5
+								}
+							}
+						}
+						else = { 
+							has_navy_size = {
+								type = capital_ship
+								size > 50
+							}
 						}
 					}
 					AND = {
 						has_naval_treaty_trigger = yes
-						has_navy_size = {
-							type = capital_ship
-							size > 50
+						if = {
+							limit = { GRB = { has_naval_treaty_trigger = yes } }
+							naval_strength_comparison = {
+								other = GRB
+								ratio > 1.1
+								sub_unit_def_weights = {
+									carrier = 0.5
+									battleship = 1
+									battle_cruiser = 0.8
+									heavy_cruiser = 0.5
+								}
+							}
+						}
+						else = {
+							has_navy_size = {
+								type = capital_ship
+								size > 50
+							}
 						}
 					}
 				}
@@ -362,6 +437,14 @@ MTG_naval_treaties = {
 
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				NOT = {
+					OR = {
+					TAG = GRB
+					}
+				}
+				factor = 0
+			}
 		}
 	}
 
@@ -374,9 +457,24 @@ MTG_naval_treaties = {
 		}
 
 		available = {
-			has_navy_size = {
-				type = capital_ship
-				size < 20
+			if = {
+				limit = { GRB = { has_naval_treaty_trigger = yes } }
+				naval_strength_comparison = {
+					other = GRB
+					ratio < 0.8
+					sub_unit_def_weights = {
+						carrier = 0.25
+						battleship = 1
+						battle_cruiser = 0.8
+						heavy_cruiser = 0.5
+					}
+				}
+			}
+			else = {
+				has_navy_size = {
+					type = capital_ship
+					size < 20
+				}
 			}
 		}
 
@@ -414,9 +512,24 @@ MTG_naval_treaties = {
 		}
 
 		available = {
-			has_navy_size = {
-				type = capital_ship
-				size < 50
+			if = {
+				limit = { GRB = { has_naval_treaty_trigger = yes } }
+				naval_strength_comparison = {
+					other = GRB
+					ratio < 1
+					sub_unit_def_weights = {
+						carrier = 0.5
+						battleship = 1
+						battle_cruiser = 0.8
+						heavy_cruiser = 0.5
+					}
+				}
+			}
+			else = {
+				has_navy_size = {
+					type = capital_ship
+					size < 50
+				}
 			}
 		}
 
