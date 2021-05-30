@@ -335,78 +335,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ProtectorateJAPADA
-		icon = GFX_goal_generic_major_war
-		text = ProtectorateADA
-		prerequisite = { focus = ColonialArmyJAP }
-		bypass = {
-			OR = {
-				JAP = {
-					is_in_faction_with = ADA
-					has_war_with = ADA
-				}
-				NOT = { country_exists = ADA }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = ColonialArmyJAP
-		cost = 10
-		available = {
-			ADA = { is_in_faction = no }
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = ADA
-			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = ADA ratio < 1 }
-			}
-		}
-	}
-
-	focus = {
-		id = ProtectorateJAPYUG
-		icon = GFX_goal_generic_major_war
-		text = ProtectorateYUG
-		prerequisite = { focus = ProtectorateJAPADA }
-		bypass = {
-			OR = {
-				JAP = {
-					is_in_faction_with = YUG
-					has_war_with = YUG
-				}
-				NOT = { country_exists = YUG }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = ProtectorateJAPADA
-		cost = 10
-		available = {
-			YUG = { is_in_faction = no }
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = YUG
-			}
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = YUG ratio < 1 }
-			}
-		}
-	}
-
-	focus = {
 		id = TradeEmpireJAP
 		icon = GFX_goal_anschluss
 		text = TradeEmpire
@@ -752,17 +680,17 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AnnexJAPCAM
+		id = AnnexJAPKOR
 		icon = GFX_goal_generic_major_war
-		text = AnnexCAM
+		text = AnnexKOR
 		prerequisite = { focus = PrepTheBorderJAP }
 		bypass = {
 			OR = {
 				JAP= {
-					is_in_faction_with = CAM
-					has_war_with = CAM
+					is_in_faction_with = KOR
+					has_war_with = KOR
 				}
-				NOT = { country_exists = CAM }
+				NOT = { country_exists = KOR }
 			}
 		}
 		x = 2
@@ -770,55 +698,19 @@ focus_tree = {
 		relative_position_id = PrepTheBorderJAP
 		cost = 10
 		available = {
-			CAM = { is_in_faction = no }
+			KOR = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = CAM
+				target = KOR
 			}
 		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = CAM ratio < 1 }
-			}
-		}
-	}
-
-	focus = {
-		id = AnnexJAPWUC
-		icon = GFX_goal_generic_major_war
-		text = AnnexWUC
-		prerequisite = { focus = NatSpiritJAP }
-		bypass = {
-			OR = {
-				JAP = {
-					is_in_faction_with = WUC
-					has_war_with = WUC
-				}
-				NOT = { country_exists = WUC }
-			}
-		}
-		x = 1
-		y = 1
-		relative_position_id = NatSpiritJAP
-		cost = 10
-		available = {
-			"WUC" = { is_in_faction = no }
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = WUC
-			}
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = WUC ratio < 1 }
+				strength_ratio = { tag = KOR ratio < 1 }
 			}
 		}
 	}

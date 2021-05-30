@@ -335,78 +335,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ProtectorateMNGADA
-		icon = GFX_goal_generic_major_war
-		text = ProtectorateADA
-		prerequisite = { focus = ColonialArmyMNG }
-		bypass = {
-			OR = {
-				MNG = {
-					is_in_faction_with = ADA
-					has_war_with = ADA
-				}
-				NOT = { country_exists = ADA }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = ColonialArmyMNG
-		cost = 10
-		available = {
-			ADA = { is_in_faction = no }
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = ADA
-			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = ADA ratio < 1 }
-			}
-		}
-	}
-
-	focus = {
-		id = ProtectorateMNGYUG
-		icon = GFX_goal_generic_major_war
-		text = ProtectorateYUG
-		prerequisite = { focus = ProtectorateMNGADA }
-		bypass = {
-			OR = {
-				MNG = {
-					is_in_faction_with = YUG
-					has_war_with = YUG
-				}
-				NOT = { country_exists = YUG }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = ProtectorateMNGADA
-		cost = 10
-		available = {
-			YUG = { is_in_faction = no }
-		}
-		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = YUG
-			}
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = YUG ratio < 1 }
-			}
-		}
-	}
-
-	focus = {
 		id = TradeEmpireMNG
 		icon = GFX_goal_anschluss
 		text = TradeEmpire
@@ -752,17 +680,17 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AnnexMNGARM
+		id = AnnexMNGMAN
 		icon = GFX_goal_generic_major_war
-		text = AnnexARM
+		text = AnnexMAN
 		prerequisite = { focus = PrepTheBorderMNG }
 		bypass = {
 			OR = {
 				MNG= {
-					is_in_faction_with = ARM
-					has_war_with = ARM
+					is_in_faction_with = MAN
+					has_war_with = MAN
 				}
-				NOT = { country_exists = ARM }
+				NOT = { country_exists = MAN }
 			}
 		}
 		x = 2
@@ -770,35 +698,35 @@ focus_tree = {
 		relative_position_id = PrepTheBorderMNG
 		cost = 10
 		available = {
-			ARM = { is_in_faction = no }
+			MAN = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = ARM
+				target = MAN
 			}
 		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = ARM ratio < 1 }
+				strength_ratio = { tag = MAN ratio < 1 }
 			}
 		}
 	}
 
 	focus = {
-		id = AnnexMNGWUC
+		id = AnnexMNGMAK
 		icon = GFX_goal_generic_major_war
-		text = AnnexWUC
+		text = AnnexMAK
 		prerequisite = { focus = NatSpiritMNG }
 		bypass = {
 			OR = {
 				MNG = {
-					is_in_faction_with = WUC
-					has_war_with = WUC
+					is_in_faction_with = MAK
+					has_war_with = MAK
 				}
-				NOT = { country_exists = WUC }
+				NOT = { country_exists = MAK }
 			}
 		}
 		x = 1
@@ -806,19 +734,19 @@ focus_tree = {
 		relative_position_id = NatSpiritMNG
 		cost = 10
 		available = {
-			"WUC" = { is_in_faction = no }
+			"MAK" = { is_in_faction = no }
 		}
 		completion_reward = {
 			create_wargoal = {
 				type = annex_everything
-				target = WUC
+				target = MAK
 			}
 		}
 		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
-				strength_ratio = { tag = WUC ratio < 1 }
+				strength_ratio = { tag = MAK ratio < 1 }
 			}
 		}
 	}

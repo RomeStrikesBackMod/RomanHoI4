@@ -1,6 +1,6 @@
-﻿name = "Rome Strikes Back"
+﻿name = "Converted - RomeStrikesBack"
 path = "mod/RomeStrikesBack/"
-user_dir = "RomeStrikesBack"
+user_dir = "RomeStrikesBack_user_dir"
 replace_path="common/ideologies"
 replace_path="history/countries"
 replace_path="history/states"
