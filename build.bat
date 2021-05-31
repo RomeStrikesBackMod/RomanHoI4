@@ -10,4 +10,4 @@ xcopy "output\Rome_Strikes_Back" "C:\MyProjects\RomanHoI4\results\Rome_Strikes_B
 copy "output\Rome_Strikes_Back.mod" "C:\MyProjects\RomanHoI4\results\"
 
 cd "C:\MyProjects\RomanHoI4"
-xcopy ExtraFiles results\Rome_Strikes_Back" /E /Y /I /Q
+xcopy ExtraFiles results\Rome_Strikes_Back /E /Y /I /Q

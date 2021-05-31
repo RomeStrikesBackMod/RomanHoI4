@@ -1,4 +1,4 @@
-name = "Converted - RomeStrikesBack"
+name = "Converted - Rome_Strikes_Back"
 replace_path="common/ideologies"
 replace_path="history/countries"
 replace_path="history/states"
