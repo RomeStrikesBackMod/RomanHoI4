@@ -194,7 +194,14 @@ news_event = {
 	trigger = {
 		original_tag = GER
 		date > 1936.4.1
-		NOT = { has_country_flag = GER_election_1936_flag has_country_flag = GER_rache has_country_flag = GER_arbeiterpartei has_country_flag = GER_maintain_balance }
+		NOT = {
+			OR = { 
+				has_country_flag = GER_election_1936_flag
+				has_country_flag = GER_rache
+				has_country_flag = GER_arbeiterpartei
+				has_country_flag = GER_maintain_balance
+			}
+		}
 	}
 
 	mean_time_to_happen = {
