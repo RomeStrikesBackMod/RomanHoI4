@@ -242,6 +242,20 @@ enemy_has_equal_or_better_radar_tech_trigger = {
 	}
 }
 
+#State scope
+is_NOT_controlled_by_ROOT_or_ally = {
+	custom_trigger_tooltip = {
+		tooltip = is_NOT_controlled_by_ROOT_or_ally
+		CONTROLLER = {
+			NOT = {
+				tag = ROOT
+				is_subject_of = ROOT
+				is_in_faction_with = ROOT
+			}
+		}
+	}
+}
+
 is_available_to_collaboration_government = { # occupied_countries.1 should be updated along with this
 	NOT = {
 		any_country_with_original_tag = {

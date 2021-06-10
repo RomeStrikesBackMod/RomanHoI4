@@ -14,8 +14,344 @@ focus_tree = {
 	
 	shared_focus = army_effort
 	shared_focus = aviation_effort
-	shared_focus = naval_effort
-	shared_focus = industrial_effort
+	#shared_focus = naval_effort
+	#shared_focus = industrial_effort
+
+	#######################
+	###   Naval  Tree   ###
+	#######################
+
+	focus = {
+		id = GER_dutch_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 9
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			OR = {
+				owns_state = 212 # Holland
+				owns_state = 213 # Friesland
+				owns_state = 234 # East Friesland
+			}
+		}
+		completion_reward = {
+			navy_experience = 25
+			212 = { # Holland
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			213 = { # Friesland
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			234 = { # East Friesland
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.025
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.25
+				always = yes
+			}
+		}
+	}
+
+	#######################
+	### Industrial Tree ###
+	#######################
+
+	focus = {
+		id = GER_bavarian_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+		x = 12
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			any_owned_state = {
+				is_core_of = BAV
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = GER_bavarian_industry_state
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_core_of = BAV
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = BAV
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_bavarian_industry_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						NOT = { has_state_flag = GER_bavarian_industry_state }
+						NOT = {
+							owner = {
+								any_owned_state = {
+									is_core_of = BAV
+									NOT = { has_state_flag = GER_bavarian_industry_state }
+								}
+							}
+						}
+					}
+					OR = {
+						is_core_of = BAV
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = BAV
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_bavarian_industry_state
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.025
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	focus = {
+		id = GER_danish_arms
+		icon = GFX_goal_generic_construct_mil_factory
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+		x = 14
+		y = 0
+		cost = 10
+		available_if_capitulated = yes
+		available = {
+			any_owned_state = {
+				is_core_of = DEN
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = GER_danish_arms_state
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}			
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.025
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_core_of = DEN
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = DEN
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_danish_arms_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						NOT = { has_state_flag = GER_danish_arms_state }
+						NOT = {
+							owner = {
+								any_owned_state = {
+									is_core_of = DEN
+									NOT = { has_state_flag = GER_danish_arms_state }
+								}
+							}
+						}
+					}
+					OR = {
+						is_core_of = DEN
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_core_of = DEN
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = GER_danish_arms_state
+			}
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.025
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
 
 	#######################
 	### Political  Tree ###
@@ -28,6 +364,9 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available_if_capitulated = yes
+		available = {
+			has_country_flag = GER_election_1936_flag
+		}
 		bypass = {
 			has_country_flag = GER_election_1936_flag
 		}
@@ -347,6 +686,12 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			if = {
+				limit = { 
+					NOT = { owns_state = 64 owns_state = 65 owns_state = 66 owns_state = 67 owns_state = 68 owns_state = 69 }
+				}
+				custom_effect_tooltip = GER_lotharingia_tt
+			}
 			if = {
 				limit = { owns_state = 64 }	# significant_number - Rheinland
 				add_state_core = 64	# significant_number - Rheinland
