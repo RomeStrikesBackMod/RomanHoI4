@@ -218,7 +218,6 @@ rome_civil_war_decisions = {
 		visible = {
 			has_government = democratic
 		}
-		fixed_random_seed = no
 		custom_cost_trigger = {
 			command_power > 30
 		}
@@ -270,7 +269,6 @@ rome_civil_war_decisions = {
 		visible = {
 			has_government = absolutist
 		}
-		fixed_random_seed = no
 		custom_cost_trigger = {
 			command_power > 30
 		}
@@ -395,6 +393,13 @@ germany_decisions = {
 				flag = GER_recent_speech
 				days = 15
 				value = 1
+			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
 			}
 			random_list = {
 				50 = {
