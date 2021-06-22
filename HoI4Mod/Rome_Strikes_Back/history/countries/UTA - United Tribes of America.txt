@@ -81,21 +81,11 @@ add_equipment_to_stockpile = { type = gw_tank_equipment amount = 1 producer = UT
 add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 700 producer = UTA }
 
 # DIPLOMACY
-if = {
-	limit = {
-		OR = {
-			has_dlc = "Together for Victory"
-			has_dlc = "Man the Guns"
-		}
-	}
-	set_autonomy = {
-		target = MEX
-		autonomous_state = autonomy_sphereling
-		freedom_level = 0.009
-	}
-    else = {
-    }
+MEX = {
+	#HoI4 puppet/autonomy is too different from Vic2 spherelings to start as puppet, good focus hook though
+	set_country_flag = sphereling_UTA
 }
+give_guarantee = MEX
 
 if = {
     limit = {has_dlc = "Together for Victory" }
@@ -180,7 +170,7 @@ if = {
 add_ideas = {
 	great_power
 	volunteer_only
-	isolation
+	civilian_economy
 	export_focus
 	culture_cherokee
 }
