@@ -20,6 +20,23 @@ on_actions = {
 				every_owned_state = {
 					set_state_flag = original_owner_@PREV
 				}
+				#everyone needs a few convoys to start
+				if = {
+					limit = {
+						any_owned_state = {
+							is_coastal = yes
+						}
+						stockpile_ratio = {
+							archetype = convoy
+							ratio < 10
+						}
+					}
+					add_equipment_to_stockpile = {
+						type = convoy
+						amount = 10
+						producer = THIS
+					}
+				}
 			}
 		}
 	}
@@ -109,6 +126,17 @@ on_actions = {
 				set_state_flag = owner_@ROOT
 				clr_state_flag = owner_@FROM
 			}
+			if = {
+				limit = {
+					RUS = { owns_state = 340 }
+				}
+				340 = { set_state_name = "Vladivostok" }
+				set_province_name = { id = 957 name = "Vladivostok" } #Haishenwai
+				else = {
+					340 = { reset_state_name = yes }
+					reset_province_name = 957
+				}
+			}
 		}
 	}
 
@@ -125,6 +153,26 @@ on_actions = {
 				set_state_flag = old_owner_@FROM
 				set_state_flag = owner_@ROOT
 				clr_state_flag = owner_@FROM
+			}
+			RUS = {
+				if = {
+					limit = {
+						has_country_flag = RUS_manchu_treaty
+						FROM = { original_tag = MNG }
+					}
+					country_event = { id = tesb_RUS.145 }
+				}
+				if = {
+					limit = {
+						owns_state = 340
+					}
+					340 = { set_state_name = "Vladivostok" }
+					set_province_name = { id = 957 name = "Vladivostok" } #Haishenwai
+					else = {
+						340 = { reset_state_name = yes }
+						reset_province_name = 957
+					}
+				}
 			}
 			if = {
 				limit = {

@@ -969,22 +969,91 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RUS_focus_on_europe
+		id = RUS_caucasus
 		icon = GFX_goal_generic_major_alliance
 		x = -2
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_second_northern_alliance }
-		mutually_exclusive = { focus = RUS_focus_on_asia }
 		relative_position_id = RUS_second_northern_alliance
 		available = {
-
+			OR = {
+				GEO = { is_neutral_to_ROOT = yes }
+				AZR = { is_neutral_to_ROOT = yes }
+				ARM = { is_neutral_to_ROOT = yes }
+			}
 		}
 		bypass = {
 			
 		}
 		completion_reward = {
-
+			GEO = {
+				if = {
+					limit = {
+						is_independent_country = yes
+					}
+					country_event = { id = tesb_RUS.111 }
+					else_if = {
+						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
+						RUS = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+						}
+					}
+					else = {
+						every_owned_state = {
+							add_claim_by = RUS
+						}
+					}
+				}
+			}
+			AZR = {
+				if = {
+					limit = {
+						is_independent_country = yes
+					}
+					country_event = { id = tesb_RUS.111 }
+					else_if = {
+						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
+						RUS = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+						}
+					}
+					else = {
+						every_owned_state = {
+							add_claim_by = RUS
+						}
+					}
+				}
+			}
+			ARM = {
+				if = {
+					limit = {
+						is_independent_country = yes
+					}
+					country_event = { id = tesb_RUS.111 }
+					else_if = {
+						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
+						RUS = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+						}
+					}
+					else = {
+						every_owned_state = {
+							add_claim_by = RUS
+						}
+					}
+				}
+			}
+			#country_event = { id = tesb_RUS.110 }
 		}
 		ai_will_do = {
 			factor = 3
@@ -992,13 +1061,37 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RUS_focus_on_asia
+		id = RUS_karelia
+		icon = GFX_goal_generic_major_alliance
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_second_northern_alliance }
+		relative_position_id = RUS_second_northern_alliance
+		available = {
+			OR = {
+				NOT = { owns_state = 569 } #karelia
+				NOT = { owns_state = 411 } #kola
+			}
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_karelia_tt
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_asian_expansion
 		icon = GFX_goal_generic_major_alliance
 		x = 2
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_second_northern_alliance }
-		mutually_exclusive = { focus = RUS_focus_on_europe }
 		relative_position_id = RUS_second_northern_alliance
 		available = {
 
@@ -1007,7 +1100,38 @@ focus_tree = {
 			
 		}
 		completion_reward = {
+			custom_effect_tooltip = RUS_asian_expansion_tt
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
 
+	focus = {
+		id = RUS_restoring_manchu
+		icon = GFX_goal_generic_major_war
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_asian_expansion }
+		relative_position_id = RUS_asian_expansion
+		available = {
+			MAN = { is_subject_of = RUS }
+			NOT = { has_war_with = MNG }
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = MNG
+				type = annex_everything
+			}
+			add_ai_strategy = {
+				type = declare_war
+				id = MNG
+				value = 100
+			}
 		}
 		ai_will_do = {
 			factor = 3

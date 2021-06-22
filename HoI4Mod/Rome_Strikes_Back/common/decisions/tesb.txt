@@ -581,6 +581,9 @@ germany_decisions = {
 england_decisions = {
 	round_up_communist_dissenters = {
 		available = {
+			has_idea = ENG_dissenters_arrested
+		}
+		visible = {
 			has_completed_focus = ENG_arrest_dissenters
 		}
 		cost = 25
@@ -591,5 +594,258 @@ england_decisions = {
 			}
 		}
 		days_re_enable = 60
+	}
+}
+
+russia_decisions = {
+	negotiate_for_karelia_kola = {
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_karelia }
+			NOT = { has_country_flag = RUS_purchased_kola }
+			NOT = { owns_state = 569 }
+			any_other_country = {
+				owns_state = 569
+				owns_state = 411
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 569
+				owns_state = 411
+				has_war = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			OR = {
+				state = 569
+				state = 411
+			}
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 569
+					owns_state = 411
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 569
+					transfer_state = 411
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}	
+	negotiate_for_karelia = {
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_karelia }
+			NOT = { owns_state = 569 }
+			any_other_country = {
+				owns_state = 569
+				NOT = { owns_state = 411 }
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 569
+				NOT = { owns_state = 411 }
+				has_war = no
+			}
+		}
+		cost = 25
+		highlight_states = {
+			state = 569
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 569
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 569
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	negotiate_for_kola = {
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_kola }
+			NOT = { owns_state = 411 }
+			any_other_country = {
+				owns_state = 411
+				NOT = { owns_state = 569 }
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 411
+				NOT = { owns_state = 569 }
+				has_war = no
+			}
+		}
+		cost = 25
+		highlight_states = {
+			state = 411
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 411
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 411
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	negotiate_for_sakhalin_kurils = {
+		visible = {
+			has_completed_focus = RUS_asian_expansion
+			NOT = { has_country_flag = RUS_purchased_kurils }
+			NOT = { owns_state = 315 }
+			NOT = { owns_state = 316 }
+			JAP = {
+				owns_state = 315
+				owns_state = 316
+			}
+		}
+		available = {
+			has_war = no
+			JAP = {
+				owns_state = 315
+				owns_state = 316
+				has_war = no
+				is_subject = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			OR = {
+				state = 315
+				state = 316
+			}
+		}
+		complete_effect = {
+			JAP = {
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 315
+					transfer_state = 316
+					else = {
+						country_event = { id = tesb_RUS.130 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}	
+	negotiate_with_manchu = {
+		visible = {
+			has_completed_focus = RUS_asian_expansion
+			NOT = { has_country_flag = RUS_manchu_treaty }
+			NOT = { owns_state = 340 }
+			NOT = { owns_state = 341 }
+			MAN = {
+				owns_state = 340
+				owns_state = 341
+			}
+		}
+		available = {
+			has_war = no
+			MAN = {
+				owns_state = 340
+				owns_state = 341
+				has_war = no
+				is_subject = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			OR = {
+				state = 340
+				state = 341
+			}
+		}
+		complete_effect = {
+			MAN = {
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 340
+					transfer_state = 341
+					else = {
+						country_event = { id = tesb_RUS.140 }
+					}
+				}
+			}
+			custom_effect_tooltip = RUS_manchu_treaty_tt
+		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 }
