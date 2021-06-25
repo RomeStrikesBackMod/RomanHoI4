@@ -25,87 +25,6 @@ country_event = {
 }
 
 country_event = {
-	id = tesb_RUS.110
-	title = tesb_RUS.110.t
-	desc = tesb_RUS.110.d
-	picture = GFX_report_event_german_italian_pact #placeholder image
-
-	is_triggered_only = yes
-	immediate = {
-	}
-	
-	option = {
-		name = tesb_RUS.110.a
-		GEO = {
-			if = {
-				limit = {
-					is_independent_country = yes
-				}
-				country_event = { id = tesb_RUS.111 }
-				else_if = {
-					limit = { is_subject = yes NOT = { is_subject_of = RUS } }
-					RUS = {
-						create_wargoal = {
-							type = puppet_wargoal_focus
-							target = PREV
-						}
-					}
-				}
-				else = {
-					every_owned_state = {
-						add_claim_by = RUS
-					}
-				}
-			}
-		}
-		AZR = {
-			if = {
-				limit = {
-					is_independent_country = yes
-				}
-				country_event = { id = tesb_RUS.111 }
-				else_if = {
-					limit = { is_subject = yes NOT = { is_subject_of = RUS } }
-					RUS = {
-						create_wargoal = {
-							type = puppet_wargoal_focus
-							target = PREV
-						}
-					}
-				}
-				else = {
-					every_owned_state = {
-						add_claim_by = RUS
-					}
-				}
-			}
-		}
-		ARM = {
-			if = {
-				limit = {
-					is_independent_country = yes
-				}
-				country_event = { id = tesb_RUS.111 }
-				else_if = {
-					limit = { is_subject = yes NOT = { is_subject_of = RUS } }
-					RUS = {
-						create_wargoal = {
-							type = puppet_wargoal_focus
-							target = PREV
-						}
-					}
-				}
-				else = {
-					every_owned_state = {
-						add_claim_by = RUS
-					}
-				}
-			}
-		}
-	}
-}
-
-country_event = {
 	id = tesb_RUS.111
 	title = tesb_RUS.111.t
 	desc = tesb_RUS.111.d
@@ -200,43 +119,43 @@ country_event = {
 	id = tesb_RUS.120
 	title = {
 		trigger = {
-			569 = { is_owned_by_ROOT_or_subject = yes }
-			411 = { is_owned_by_ROOT_or_subject = yes }
+			569 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Karelia
+			411 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Kola
 		}
 		text = tesb_RUS.120.ta
 	}
 	title = {
 		trigger = {
-			569 = { is_owned_by_ROOT_or_subject = yes }
-			411 = { is_owned_by_ROOT_or_subject = no }
+			569 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Karelia
+			411 = { is_owned_by_ROOT_or_subject = no } # significant_number - Kola
 		}
 		text = tesb_RUS.120.tb
 	}
 	title = {
 		trigger = {
-			569 = { is_owned_by_ROOT_or_subject = no }
-			411 = { is_owned_by_ROOT_or_subject = yes }
+			569 = { is_owned_by_ROOT_or_subject = no } # significant_number - Karelia
+			411 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Kola
 		}
 		text = tesb_RUS.120.tc
 	}
 	desc = {
 		trigger = {
-			569 = { is_owned_by_ROOT_or_subject = yes }
-			411 = { is_owned_by_ROOT_or_subject = yes }
+			569 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Karelia
+			411 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Kola
 		}
 		text = tesb_RUS.120.da
 	}
 	desc = {
 		trigger = {
-			569 = { is_owned_by_ROOT_or_subject = yes }
-			411 = { is_owned_by_ROOT_or_subject = no }
+			569 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Karelia
+			411 = { is_owned_by_ROOT_or_subject = no } # significant_number - Kola
 		}
 		text = tesb_RUS.120.db
 	}
 	desc = {
 		trigger = {
-			569 = { is_owned_by_ROOT_or_subject = no }
-			411 = { is_owned_by_ROOT_or_subject = yes }
+			569 = { is_owned_by_ROOT_or_subject = no } # significant_number - Karelia
+			411 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Kola
 		}
 		text = tesb_RUS.120.dc
 	}
@@ -255,8 +174,8 @@ country_event = {
 				any_other_country = {
 					is_subject_of = ROOT
 					OR = {
-						owns_state = 569
-						owns_state = 411
+						owns_state = 569 # significant_number - Karelia
+						owns_state = 411 # significant_number - Kola
 					}
 					check_variable = {
 						num_owned_controlled_states < 3
@@ -266,8 +185,8 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					owns_state = 569
-					owns_state = 411
+					owns_state = 569 # significant_number - Karelia
+					owns_state = 411 # significant_number - Kola
 				}
 				check_variable = {
 					num_owned_controlled_states < 3
@@ -301,8 +220,8 @@ country_event = {
 		}
 		if = {
 			limit = {
-				569 = { is_owned_by_ROOT_or_subject = yes }
-				411 = { is_owned_by_ROOT_or_subject = yes }
+				569 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Karelia
+				411 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Kola
 			}
 			add_timed_idea = {
 				idea = RUS_sold_karelia_kola
@@ -313,13 +232,13 @@ country_event = {
 					idea = RUS_purchased_karelia_kola
 					days = 730
 				}
-				transfer_state = 569
-				transfer_state = 411
+				transfer_state = 569 # significant_number - Karelia
+				transfer_state = 411 # significant_number - Kola
 				set_country_flag = RUS_purchased_karelia
 				set_country_flag = RUS_purchased_kola
 			}
 			else_if = {
-				limit = { 569 = { is_owned_by_ROOT_or_subject = yes } }
+				limit = { 569 = { is_owned_by_ROOT_or_subject = yes } } # significant_number - Karelia
 				add_timed_idea = {
 					idea = RUS_sold_karelia
 					days = 730
@@ -329,12 +248,12 @@ country_event = {
 						idea = RUS_purchased_karelia
 						days = 730
 					}
-					transfer_state = 569
+					transfer_state = 569 # significant_number - Karelia
 					set_country_flag = RUS_purchased_karelia
 				}
 			}
 			else_if = {
-				limit = { 411 = { is_owned_by_ROOT_or_subject = yes } }
+				limit = { 411 = { is_owned_by_ROOT_or_subject = yes } } # significant_number - Kola
 				add_timed_idea = {
 					idea = RUS_sold_kola
 					days = 730
@@ -344,7 +263,7 @@ country_event = {
 						idea = RUS_purchased_kola
 						days = 730
 					}
-					transfer_state = 411
+					transfer_state = 411 # significant_number - Kola
 					set_country_flag = RUS_purchased_kola
 				}
 			}
@@ -418,17 +337,17 @@ country_event = {
 		name = tesb_RUS.122.a
 		if = {
 			limit = {
-				569 = { is_owned_by_FROM_or_subject = yes }
-				411 = { is_owned_by_FROM_or_subject = yes }
+				569 = { is_owned_by_FROM_or_subject = yes } # significant_number - Karelia
+				411 = { is_owned_by_FROM_or_subject = yes } # significant_number - Kola
 			}
 			set_country_flag = RUS_purchased_karelia
 			set_country_flag = RUS_purchased_kola
 			else_if = {
-				limit = { 569 = { is_owned_by_FROM_or_subject = yes } }
+				limit = { 569 = { is_owned_by_FROM_or_subject = yes } } # significant_number - Karelia
 				set_country_flag = RUS_purchased_karelia
 			}
 			else_if = {
-				limit = { 411 = { is_owned_by_FROM_or_subject = yes } }
+				limit = { 411 = { is_owned_by_FROM_or_subject = yes } } # significant_number - Kola
 				set_country_flag = RUS_purchased_kola
 			}
 		}
@@ -509,8 +428,8 @@ country_event = {
 				idea = RUS_purchased_sakhalin_kurils
 				days = 730
 			}
-			transfer_state = 315
-			transfer_state = 316
+			transfer_state = 315 # significant_number - Sakhalin
+			transfer_state = 316 # significant_number - Kuril Islands
 			set_country_flag = RUS_purchased_kurils
 			country_event = { id = tesb_RUS.131 }
 		}
@@ -564,8 +483,8 @@ country_event = {
 	option = {
 		name = tesb_RUS.131.a
 		effect_tooltip = {
-			transfer_state = 315
-			transfer_state = 316
+			transfer_state = 315 # significant_number - Sakhalin
+			transfer_state = 316 # significant_number - Kuril Islands
 		}
 	}
 }
