@@ -450,6 +450,7 @@ focus_tree = {
 				has_political_power > 200
 			}
 		}
+		continue_if_invalid = yes
 		select_effect = {
 			if = {
 				limit = { has_idea = PLC_supporting_ukraine }
@@ -494,6 +495,7 @@ focus_tree = {
 				has_political_power > 200
 			}
 		}
+		continue_if_invalid = yes
 		select_effect = {
 			if = {
 				limit = { has_idea = PLC_supporting_ukraine }
@@ -538,6 +540,7 @@ focus_tree = {
 				has_political_power > 200
 			}
 		}
+		continue_if_invalid = yes
 		select_effect = {
 			if = {
 				limit = { has_idea = PLC_supporting_ukraine }
@@ -735,6 +738,7 @@ focus_tree = {
 				has_political_power > 200
 			}
 		}
+		continue_if_invalid = yes
 		select_effect = {
 			if = {
 				limit = { has_idea = PLC_supporting_ukraine }
@@ -779,6 +783,7 @@ focus_tree = {
 				has_political_power > 200
 			}
 		}
+		continue_if_invalid = yes
 		select_effect = {
 			if = {
 				limit = { has_idea = PLC_supporting_ukraine }
@@ -832,6 +837,7 @@ focus_tree = {
 				add_political_power = -100
 			}
 		}
+		continue_if_invalid = yes
 		completion_reward = {
 			if = {
 				limit = { has_country_flag = RUS_ukrainian_integration_PLC }
@@ -969,100 +975,9 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RUS_caucasus
-		icon = GFX_goal_generic_major_alliance
-		x = -2
-		y = 1
-		cost = 10
-		prerequisite = { focus = RUS_second_northern_alliance }
-		relative_position_id = RUS_second_northern_alliance
-		available = {
-			OR = {
-				GEO = { is_neutral_to_ROOT = yes }
-				AZR = { is_neutral_to_ROOT = yes }
-				ARM = { is_neutral_to_ROOT = yes }
-			}
-		}
-		bypass = {
-			
-		}
-		completion_reward = {
-			GEO = {
-				if = {
-					limit = {
-						is_independent_country = yes
-					}
-					country_event = { id = tesb_RUS.111 }
-					else_if = {
-						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
-						RUS = {
-							create_wargoal = {
-								type = puppet_wargoal_focus
-								target = PREV
-							}
-						}
-					}
-					else = {
-						every_owned_state = {
-							add_claim_by = RUS
-						}
-					}
-				}
-			}
-			AZR = {
-				if = {
-					limit = {
-						is_independent_country = yes
-					}
-					country_event = { id = tesb_RUS.111 }
-					else_if = {
-						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
-						RUS = {
-							create_wargoal = {
-								type = puppet_wargoal_focus
-								target = PREV
-							}
-						}
-					}
-					else = {
-						every_owned_state = {
-							add_claim_by = RUS
-						}
-					}
-				}
-			}
-			ARM = {
-				if = {
-					limit = {
-						is_independent_country = yes
-					}
-					country_event = { id = tesb_RUS.111 }
-					else_if = {
-						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
-						RUS = {
-							create_wargoal = {
-								type = puppet_wargoal_focus
-								target = PREV
-							}
-						}
-					}
-					else = {
-						every_owned_state = {
-							add_claim_by = RUS
-						}
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 3
-		}
-	}
-
-	focus = {
 		id = RUS_karelia
-		icon = GFX_goal_generic_major_alliance
-		x = 0
+		icon = GFX_focus_generic_treaty
+		x = -2
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_second_northern_alliance }
@@ -1085,8 +1000,121 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RUS_caucasus
+		icon = GFX_goal_generic_forceful_treaty
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_second_northern_alliance }
+		relative_position_id = RUS_second_northern_alliance
+		available = {
+			OR = {
+				GEO = { is_neutral_to_ROOT = yes }
+				AZR = { is_neutral_to_ROOT = yes }
+				ARM = { is_neutral_to_ROOT = yes }
+			}
+		}
+		bypass = {
+			OR = {
+				AND = {
+					GEO = { is_subject = yes }
+					AZR = { is_subject = yes }
+					ARM = { is_subject = yes }
+				}
+				AND = {
+					209 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Ekaterinodar
+					210 = { is_owned_by_ROOT_or_subject = yes } # significant_number - North Caucasia
+					211 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Georgia
+					42 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Armenia
+					57 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Azerbaijan
+				}
+			}
+		}
+		completion_reward = {
+			GEO = {
+				if = {
+					limit = {
+						is_independent_country = yes
+					}
+					country_event = { id = tesb_RUS.111 }
+					else_if = {
+						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
+						RUS = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+						}
+					}
+					else = {
+						every_state = {
+							limit = {
+								is_core_of = GEO
+							}
+							add_claim_by = RUS
+						}
+					}
+				}
+			}
+			AZR = {
+				if = {
+					limit = {
+						is_independent_country = yes
+					}
+					country_event = { id = tesb_RUS.111 }
+					else_if = {
+						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
+						RUS = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+						}
+					}
+					else = {
+						every_state = {
+							limit = {
+								is_core_of = AZR
+							}
+							add_claim_by = RUS
+						}
+					}
+				}
+			}
+			ARM = {
+				if = {
+					limit = {
+						is_independent_country = yes
+					}
+					country_event = { id = tesb_RUS.111 }
+					else_if = {
+						limit = { is_subject = yes NOT = { is_subject_of = RUS } }
+						RUS = {
+							create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+						}
+					}
+					else = {
+						every_state = {
+							limit = {
+								is_core_of = ARM
+							}
+							add_claim_by = RUS
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
 		id = RUS_asian_expansion
-		icon = GFX_goal_generic_major_alliance
+		icon = GFX_focus_usa_focus_on_asia
 		x = 2
 		y = 1
 		cost = 10
@@ -1107,9 +1135,92 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RUS_anti_fascist_campaign
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_asian_expansion }
+		relative_position_id = RUS_asian_expansion
+		available = {
+			OR = {
+				CHG = {
+					is_neutral_to_ROOT = yes
+					is_independent_country = yes
+				}
+				KHI = {
+					is_neutral_to_ROOT = yes
+					is_independent_country = yes
+				}
+			}
+		}
+		bypass = {
+			CHG = {
+				OR = {
+					is_neutral_to_ROOT = no
+					is_independent_country = no
+				}
+			}
+			KHI = {
+				OR = {
+					is_neutral_to_ROOT = no
+					is_independent_country = no
+				}
+			}
+		}
+		completion_reward = {
+			country_event = { id = tesb_RUS.150 }
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_dealing_with_iran
+		icon = GFX_goal_generic_attack_allies
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_anti_fascist_campaign }
+		prerequisite = { focus = RUS_caucasus }
+		relative_position_id = RUS_anti_fascist_campaign
+		available = {
+			CHG = {
+				OR = {
+					exists = no
+					is_subject_of = RUS
+				}
+			}
+			KHI = {
+				OR = {
+					exists = no
+					is_subject_of = RUS
+				}
+			}
+			IRN = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = ROOT }
+			}
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = IRN
+				type = puppet_wargoal_focus
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
 		id = RUS_restoring_manchu
 		icon = GFX_goal_generic_major_war
-		x = 0
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_asian_expansion }
@@ -1125,11 +1236,6 @@ focus_tree = {
 			create_wargoal = {
 				target = MNG
 				type = annex_everything
-			}
-			add_ai_strategy = {
-				type = declare_war
-				id = MNG
-				value = 100
 			}
 		}
 		ai_will_do = {
