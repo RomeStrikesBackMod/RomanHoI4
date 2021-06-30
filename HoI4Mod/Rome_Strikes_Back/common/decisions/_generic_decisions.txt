@@ -19,6 +19,25 @@ political_actions = {
 		}
 	}
 
+	highlight_claims = {
+		allowed = {
+			always = yes
+		}
+		target_trigger = {
+			FROM = {
+				NOT = { tag = ROOT }
+				any_owned_state = {
+					is_claimed_by = ROOT
+				}
+				exists = yes
+			}
+		}
+		highlight_states = {
+			is_claimed_by = ROOT
+			is_owned_by = FROM
+		}
+	}
+
 	expel_greek_minority = {
 		visible = {
 			has_idea = RME_former_territory
@@ -812,10 +831,10 @@ operations = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 222
+			has_full_control_of_state = 231
 			NOT = {
 				any_enemy_country = {
-					controls_state = 215
+					controls_state = 224
 				}
 			}
 			num_of_civilian_factories > 10
@@ -824,12 +843,12 @@ operations = {
 		visible = {
 			NOT = { has_global_flag = KIEL_CANAL_BUILT }
 			OR = {
-				controls_state = 222
+				controls_state = 231
+				controls_state = 232
+				controls_state = 221
 				controls_state = 223
-				controls_state = 212
-				controls_state = 214
-				controls_state = 215
-				controls_state = 544
+				controls_state = 224
+				controls_state = 573
 			}
 		}
 	
@@ -846,10 +865,10 @@ operations = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_full_control_of_state = 222
+					has_full_control_of_state = 231
 					NOT = {
 						any_enemy_country = {
-							controls_state = 215
+							controls_state = 224
 						}
 					}
 				}
@@ -867,8 +886,8 @@ operations = {
 			modifier = {
 				factor = 10
 				NOT = {
-					has_full_control_of_state = 544
-					has_full_control_of_state = 223
+					has_full_control_of_state = 573
+					has_full_control_of_state = 232
 				}
 			}
 		}

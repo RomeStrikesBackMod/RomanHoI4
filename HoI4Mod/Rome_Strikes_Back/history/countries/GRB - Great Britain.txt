@@ -99,21 +99,11 @@ add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 266 produce
 add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 88 producer = GRB }
 
 # DIPLOMACY
-if = {
-	limit = {
-		OR = {
-			has_dlc = "Together for Victory"
-			has_dlc = "Man the Guns"
-		}
-	}
-	set_autonomy = {
-		target = BRI
-		autonomous_state = autonomy_sphereling
-		freedom_level = 0.009
-	}
-    else = {
-    }
+BRI = {
+	#HoI4 puppet/autonomy is too different from Vic2 spherelings to start as puppet, good focus hook though
+	set_country_flag = sphereling_GRB
 }
+give_guarantee = BRI
 
 if = {
     limit = {has_dlc = "Together for Victory" }

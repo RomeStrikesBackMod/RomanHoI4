@@ -581,6 +581,9 @@ germany_decisions = {
 england_decisions = {
 	round_up_communist_dissenters = {
 		available = {
+			has_idea = ENG_dissenters_arrested
+		}
+		visible = {
 			has_completed_focus = ENG_arrest_dissenters
 		}
 		cost = 25
@@ -591,5 +594,258 @@ england_decisions = {
 			}
 		}
 		days_re_enable = 60
+	}
+}
+
+russia_decisions = {
+	negotiate_for_karelia_kola = {
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_karelia }
+			NOT = { has_country_flag = RUS_purchased_kola }
+			NOT = { owns_state = 569 } # significant_number - Karelia
+			any_other_country = {
+				owns_state = 569 # significant_number - Karelia
+				owns_state = 411 # significant_number - Kola
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 569 # significant_number - Karelia
+				owns_state = 411 # significant_number - Kola
+				has_war = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			OR = {
+				state = 569 # significant_number - Karelia
+				state = 411 # significant_number - Kola
+			}
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 569 # significant_number - Karelia
+					owns_state = 411 # significant_number - Kola
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 569 # significant_number - Karelia
+					transfer_state = 411 # significant_number - Kola
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}	
+	negotiate_for_karelia = {
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_karelia }
+			NOT = { owns_state = 569 } # significant_number - Karelia
+			any_other_country = {
+				owns_state = 569 # significant_number - Karelia
+				NOT = { owns_state = 411 } # significant_number - Kola
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 569 # significant_number - Karelia
+				NOT = { owns_state = 411 } # significant_number - Kola
+				has_war = no
+			}
+		}
+		cost = 25
+		highlight_states = {
+			state = 569 # significant_number - Karelia
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 569 # significant_number - Karelia
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 569 # significant_number - Karelia
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	negotiate_for_kola = {
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_kola }
+			NOT = { owns_state = 411 } # significant_number - Kola
+			any_other_country = {
+				owns_state = 411 # significant_number - Kola
+				NOT = { owns_state = 569 } # significant_number - Karelia
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 411 # significant_number - Kola
+				NOT = { owns_state = 569 } # significant_number - Karelia
+				has_war = no
+			}
+		}
+		cost = 25
+		highlight_states = {
+			state = 411 # significant_number - Kola
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 411 # significant_number - Kola
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 411 # significant_number - Kola
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	negotiate_for_sakhalin_kurils = {
+		visible = {
+			has_completed_focus = RUS_asian_expansion
+			NOT = { has_country_flag = RUS_purchased_kurils }
+			NOT = { owns_state = 315 }
+			NOT = { owns_state = 316 }
+			JAP = {
+				owns_state = 315
+				owns_state = 316
+			}
+		}
+		available = {
+			has_war = no
+			JAP = {
+				owns_state = 315
+				owns_state = 316
+				has_war = no
+				is_subject = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			OR = {
+				state = 315 # significant_number - Sakhalin
+				state = 316 # significant_number - Kuril Islands
+			}
+		}
+		complete_effect = {
+			JAP = {
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 315 # significant_number - Sakhalin
+					transfer_state = 316 # significant_number - Kuril Islands
+					else = {
+						country_event = { id = tesb_RUS.130 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}	
+	negotiate_with_manchu = {
+		visible = {
+			has_completed_focus = RUS_asian_expansion
+			NOT = { has_country_flag = RUS_manchu_treaty }
+			NOT = { owns_state = 340 } # significant_number - Haishenwai
+			NOT = { owns_state = 341 } # significant_number - Eastern Mongolia
+			MAN = {
+				owns_state = 340 # significant_number - Haishenwai
+				owns_state = 341 # significant_number - Eastern Mongolia
+			}
+		}
+		available = {
+			has_war = no
+			MAN = {
+				owns_state = 340 # significant_number - Haishenwai
+				owns_state = 341 # significant_number - Eastern Mongolia
+				has_war = no
+				is_subject = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			OR = {
+				state = 340 # significant_number - Haishenwai
+				state = 341 # significant_number - Eastern Mongolia
+			}
+		}
+		complete_effect = {
+			MAN = {
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					transfer_state = 340 # significant_number - Haishenwai
+					transfer_state = 341 # significant_number - Eastern Mongolia
+					else = {
+						country_event = { id = tesb_RUS.140 } 
+					}
+				}
+			}
+			custom_effect_tooltip = RUS_manchu_treaty_tt
+		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 }

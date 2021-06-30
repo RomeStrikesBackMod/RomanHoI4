@@ -80,15 +80,16 @@ if = {
         autonomous_state = autonomy_dominion
         freedom_level = 0.4
     }
-	set_autonomy = {
-		target = PAT
-		autonomous_state = autonomy_sphereling
-		freedom_level = 0.009
-	}
     else = {
         puppet = X00
     }
 }
+
+PAT = {
+	#HoI4 puppet/autonomy is too different from Vic2 spherelings to start as puppet, good focus hook though
+	set_country_flag = sphereling_IND
+}
+give_guarantee = PAT
 
 if = {
     limit = {has_dlc = "Together for Victory" }
