@@ -107,11 +107,6 @@ country_event = {
 			type = puppet_wargoal_focus
 			target = FROM
 		}
-		add_ai_strategy = {
-			type = declare_war
-			id = FROM
-			value = 100
-		}
 	}
 }
 
@@ -217,6 +212,10 @@ country_event = {
 				factor = 2
 				is_in_faction_with = RUS
 			}
+			modifier = {
+				factor = 1.5
+				RUS = { has_completed_focus = RUS_russian_diplomacy }
+			}
 		}
 		if = {
 			limit = {
@@ -301,6 +300,10 @@ country_event = {
 					value > 50
 				}
 			}
+			modifier = {
+				factor = 1.5
+				RUS = { has_completed_focus = RUS_russian_expansionism }
+			}
 		}
 		RUS = {
 			country_event = { id = tesb_RUS.122 }
@@ -354,11 +357,6 @@ country_event = {
 		create_wargoal = {
 			type = take_core_state
 			target = FROM
-		}
-		add_ai_strategy = {
-			type = declare_war
-			id = FROM
-			value = 100
 		}
 		ai_chance = {
 			base = 10
@@ -418,6 +416,10 @@ country_event = {
 				factor = 2
 				is_in_faction_with = RUS
 			}
+			modifier = {
+				factor = 1.5
+				RUS = { has_completed_focus = RUS_russian_diplomacy }
+			}
 		}
 		add_timed_idea = {
 			idea = RUS_sold_sakhalin_kurils
@@ -463,6 +465,10 @@ country_event = {
 					value > 50
 				}
 			}
+			modifier = {
+				factor = 1.5
+				RUS = { has_completed_focus = RUS_russian_expansionism }
+			}
 		}
 		RUS = {
 			country_event = { id = tesb_RUS.132 }
@@ -507,11 +513,6 @@ country_event = {
 		create_wargoal = {
 			type = take_claimed_state
 			target = FROM
-		}
-		add_ai_strategy = {
-			type = declare_war
-			id = FROM
-			value = 100
 		}
 		ai_chance = {
 			base = 10
@@ -652,11 +653,6 @@ country_event = {
 			type = puppet_wargoal_focus
 			target = FROM
 		}
-		add_ai_strategy = {
-			type = declare_war
-			id = FROM
-			value = 100
-		}
 		ai_chance = {
 			base = 10
 		}
@@ -713,6 +709,417 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = { has_political_power > 200 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.150
+	title = tesb_RUS.150.t
+	desc = tesb_RUS.150.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_RUS.150.a
+		trigger = {
+			CHG = {
+				is_independent_country = yes
+			}
+		}
+		if = {
+			limit = {
+				CHG = { is_guaranteed_by = IND }
+			}
+			set_country_flag = RUS_puppet_CHG
+			IND = {
+				country_event = { id = tesb_RUS.155 }
+			}
+			else = {
+				create_wargoal = {
+					target = CHG
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		name = tesb_RUS.150.b
+		trigger = {
+			KHI = {
+				is_independent_country = yes
+			}
+		}
+		create_wargoal = {
+			target = KHI
+			type = puppet_wargoal_focus
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		name = tesb_RUS.150.c
+		trigger = {
+			OR = {
+				CHG = {
+					is_independent_country = yes
+				}
+				KHI = {
+					is_independent_country = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHG = { is_guaranteed_by = IND }
+			}
+			set_country_flag = RUS_annex_CHG
+			IND = {
+				country_event = { id = tesb_RUS.155 }
+			}
+			else = {
+				create_wargoal = {
+					target = CHG
+					type = annex_everything
+				}
+			}
+		}
+		create_wargoal = {
+			target = KHI
+			type = annex_everything
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		name = tesb_RUS.150.do #in case weird stuff happens
+		trigger = {
+			CHG = {
+				is_independent_country = no
+			}
+			KHI = {
+				is_independent_country = no
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.151
+	title = tesb_RUS.151.t
+	desc = tesb_RUS.151.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_RUS.151.a
+		trigger = {
+			KHI = {
+				is_independent_country = yes
+			}
+		}
+		KHI = {
+			every_owned_state = {
+				limit = { NOT = { state = 328 } } # significant_number - Shirvan
+				add_claim_by = CHG
+			}
+			328 = { # significant_number - Shirvan
+				if = {
+					limit = { is_owned_by = KHI }
+					add_claim_by = RUS
+				}
+			}
+		}
+		create_wargoal = {
+			target = KHI
+			type = annex_everything
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		name = tesb_RUS.150.do #in case weird stuff happens
+		trigger = {
+			KHI = {
+				is_independent_country = no
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.152
+	title = tesb_RUS.152.t
+	desc = tesb_RUS.152.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_RUS.152.a
+		trigger = {
+			CHG = {
+				is_independent_country = yes
+			}
+		}
+		if = {
+			limit = {
+				CHG = { is_guaranteed_by = IND }
+			}
+			set_country_flag = RUS_annex_CHG
+			IND = {
+				country_event = { id = tesb_RUS.155 }
+			}
+			else = {
+				create_wargoal = {
+					target = CHG
+					type = annex_everything
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		name = tesb_RUS.150.do #in case weird stuff happens
+		trigger = {
+			CHG = {
+				is_independent_country = no
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.155
+	title = tesb_RUS.155.t
+	desc = tesb_RUS.155.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_RUS.155.a
+		diplomatic_relation = {
+			country = CHG
+			relation = guarantee
+			active = no
+		}
+		RUS = {
+			country_event = { id = tesb_RUS.156 }
+			if = {
+				limit = {
+					has_country_flag = RUS_puppet_CHG
+				}
+				effect_tooltip = {
+					create_wargoal = {
+						target = CHG
+						type = puppet_wargoal_focus
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = RUS_annex_CHG
+				}
+				effect_tooltip = {
+					create_wargoal = {
+						target = CHG
+						type = annex_everything
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = RUS
+					value < -50
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = RUS
+					value < 0
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = RUS
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction_with = RUS
+			}
+		}
+	}
+	option = {
+		name = tesb_RUS.155.b
+		RUS = {
+			country_event = { id = tesb_RUS.157 }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				is_subject_of = RUS
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = RUS
+					value < -50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = RUS
+					value < 0
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = RUS
+					value > 50
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.156
+	title = tesb_RUS.156.t
+	desc = tesb_RUS.156.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_RUS.156.a
+		if = {
+			limit = {
+				has_country_flag = RUS_puppet_CHG
+			}
+			create_wargoal = {
+				target = CHG
+				type = puppet_wargoal_focus
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = RUS_annex_CHG
+			}
+			create_wargoal = {
+				target = CHG
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.157
+	title = tesb_RUS.157.t
+	desc = tesb_RUS.157.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_RUS.157.a
+		if = {
+			limit = {
+				has_country_flag = RUS_puppet_CHG
+			}
+			create_wargoal = {
+				target = CHG
+				type = puppet_wargoal_focus
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = RUS_annex_CHG
+			}
+			create_wargoal = {
+				target = CHG
+				type = annex_everything
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = IND
+					ratio > 1.5
+				}
+			}
+		}
+	}
+	option = {
+		name = tesb_RUS.157.b
+		trigger = {
+			has_country_flag = RUS_puppet_CHG
+		}
+		create_wargoal = {
+			target = KHI
+			type = puppet_wargoal_focus
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = IND
+					ratio < 1
+				}
+			}
+		}
+	}
+	option = {
+		name = tesb_RUS.157.c
+		trigger = {
+			has_country_flag = RUS_annex_CHG
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = IND
+					ratio < 1
+				}
 			}
 		}
 	}
