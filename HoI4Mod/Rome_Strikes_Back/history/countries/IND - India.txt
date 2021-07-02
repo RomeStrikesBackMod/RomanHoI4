@@ -69,12 +69,9 @@ add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 6270 produce
 
 # DIPLOMACY
 if = {
-	limit = {
-		OR = {
-			has_dlc = "Together for Victory"
-			has_dlc = "Man the Guns"
-		}
-	}
+    limit = {
+        has_dlc = "Together for Victory"
+    }
     set_autonomy = {
         target = X00
         autonomous_state = autonomy_dominion
@@ -84,12 +81,6 @@ if = {
         puppet = X00
     }
 }
-
-PAT = {
-	#HoI4 puppet/autonomy is too different from Vic2 spherelings to start as puppet, good focus hook though
-	set_country_flag = sphereling_IND
-}
-give_guarantee = PAT
 
 if = {
     limit = {has_dlc = "Together for Victory" }
@@ -157,20 +148,11 @@ add_opinion_modifier = { target = TIB modifier = negative_200 }
 add_opinion_modifier = { target = UTA modifier = negative_200 }
 
 
-give_guarantee = BCS
-give_guarantee = BUR
-give_guarantee = CHG
-give_guarantee = LAO
-give_guarantee = MAK
-give_guarantee = SHN
-give_guarantee = SIA
-give_guarantee = SUK
-
 add_ideas = {
 	great_power
 	IND_monarch
 	volunteer_only
-	civilian_economy
+	low_economic_mobilisation
 	export_focus
 	culture_telegu
 }
