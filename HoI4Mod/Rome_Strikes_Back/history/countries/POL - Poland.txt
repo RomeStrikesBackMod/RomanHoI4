@@ -1,4 +1,4 @@
-﻿capital = 291
+﻿capital = 288
 set_research_slots = 3
 
 oob = "POL_OOB"
@@ -127,7 +127,6 @@ add_opinion_modifier = { target = SOK modifier = positive_5 }
 add_opinion_modifier = { target = UTA modifier = negative_15 }
 
 
-
 add_ideas = {
 	POL_monarch
 	volunteer_only
@@ -136,13 +135,37 @@ add_ideas = {
 	culture_polish
 }
 create_country_leader = {
-	name = "Klemens Sowinski"
-	desc = "POLITICS_KLEMENS_SOWINSKI_DESC"
+	name = "Kazimierz Iszikowski"
+	desc = "POLITICS_KAZIMIERZ_ISZIKOWSKI_DESC"
 	picture = "GFX_POL_wincenty_witos"
 	expire = "1965.1.1"
 	ideology = conservatism
 	traits = {
 	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Zofia Chrzanowska"
+		GFX = "gfx/leaders/POL/portrait_pol_krystyna_skarbek.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { POL }
+	}
+
+	create_operative_leader = {
+		name = "Bonawentura Rola-Zymierski"
+		GFX = "gfx/leaders/POL/portrait_pol_roman_czerniawski.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { POL }
+	}
+
 }
 ### VARIANTS ###
 if = {

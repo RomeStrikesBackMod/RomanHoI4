@@ -1,4 +1,4 @@
-﻿capital = 295
+﻿capital = 292
 set_research_slots = 3
 
 oob = "ISR_OOB"
@@ -120,7 +120,6 @@ add_opinion_modifier = { target = SOK modifier = positive_20 }
 add_opinion_modifier = { target = UTA modifier = negative_20 }
 
 
-
 add_ideas = {
 	RME_former_territory
 	volunteer_only
@@ -131,8 +130,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-	name = "Heinrich Bloch"
-	desc = "POLITICS_HEINRICH_BLOCH_DESC"
+	name = "Jeremias Morgenstern"
+	desc = "POLITICS_JEREMIAS_MORGENSTERN_DESC"
 	picture = "gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds"
 	expire = "1965.1.1"
 	ideology = leninism
@@ -149,6 +148,38 @@ create_corps_commander = {
 	logistics_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Isaak Kagan"
+		GFX = "gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ISR }
+	}
+
+	create_operative_leader = {
+		name = "Isaak Israel"
+		GFX = "gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ISR }
+	}
+
+	create_operative_leader = {
+		name = "Salomon Frank"
+		GFX = "gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { ISR }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

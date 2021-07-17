@@ -1,4 +1,4 @@
-﻿capital = 340
+﻿capital = 337
 set_research_slots = 3
 
 oob = "MAN_OOB"
@@ -83,19 +83,18 @@ add_opinion_modifier = { target = SOK modifier = negative_19 }
 add_opinion_modifier = { target = UTA modifier = negative_200 }
 
 
-
 add_ideas = {
 	MAN_monarch
 	limited_conscription
-	low_economic_mobilisation
+	partial_economic_mobilisation
 	limited_exports
 	culture_manchu
 }
 set_stability = 0.60
 set_war_support = 0.77
 create_country_leader = {
-	name = "Hesehn Shangzhi"
-	desc = "POLITICS_HESEHN_SHANGZHI_DESC"
+	name = "zhao Kang'an"
+	desc = "POLITICS_ZHAO_KANG'AN_DESC"
 	picture = "GFX_CHI_Chen_Gongbo"
 	expire = "1965.1.1"
 	ideology = fascism_ideology
@@ -142,6 +141,84 @@ create_navy_leader = {
 	coordination_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Fuyuan Xingde"
+		GFX = "gfx/leaders/CHI/portrait_chi_yoshiko_kawashima.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { MAN }
+	}
+
+	create_operative_leader = {
+		name = "Sonin Kang'an"
+		GFX = "gfx/leaders/Asia/portrait_asia_generic_operative_male_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { MAN }
+	}
+
+	create_operative_leader = {
+		name = "Guan Linge"
+		GFX = "gfx/leaders/Asia/portrait_asia_generic_operative_male_2.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { MAN }
+	}
+
+	create_operative_leader = {
+		name = "Nalan Zhanshan"
+		GFX = "gfx/leaders/Asia/portrait_asia_generic_operative_male_4.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { MAN }
+	}
+
+	create_operative_leader = {
+		name = "Oboi Kang'an"
+		GFX = "gfx/leaders/Asia/portrait_asia_generic_operative_male_6.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { MAN }
+	}
+
+	create_operative_leader = {
+		name = "Tong Xiangying"
+		GFX = "gfx/leaders/Asia/portrait_asia_generic_operative_male_7.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { MAN }
+	}
+
+	create_operative_leader = {
+		name = "Ma Zhanshan"
+		GFX = "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_asia_2.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { MAN }
+	}
+
+	create_operative_leader = {
+		name = "Nalan Linge"
+		GFX = "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_asia_3.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { MAN }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

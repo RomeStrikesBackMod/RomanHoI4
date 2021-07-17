@@ -1,4 +1,4 @@
-﻿capital = 535
+﻿capital = 531
 set_research_slots = 3
 
 oob = "LIV_OOB"
@@ -75,7 +75,6 @@ add_opinion_modifier = { target = SOK modifier = positive_20 }
 add_opinion_modifier = { target = UTA modifier = positive_137 }
 
 
-
 add_ideas = {
 	LIV_monarch
 	limited_conscription
@@ -84,13 +83,37 @@ add_ideas = {
 	culture_lithuanian
 }
 create_country_leader = {
-	name = "Rolandas Schatz"
-	desc = "POLITICS_ROLANDAS_SCHATZ_DESC"
+	name = "Marijus Terleckas"
+	desc = "POLITICS_MARIJUS_TERLECKAS_DESC"
 	picture = "GFX_POL_wincenty_witos"
 	expire = "1965.1.1"
 	ideology = conservatism
 	traits = {
 	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Austėja Valeškienė"
+		GFX = "gfx/leaders/POL/portrait_pol_krystyna_skarbek.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { LIV }
+	}
+
+	create_operative_leader = {
+		name = "Henrikas Lozoraitis"
+		GFX = "gfx/leaders/POL/portrait_pol_roman_czerniawski.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { LIV }
+	}
+
 }
 ### VARIANTS ###
 if = {

@@ -610,21 +610,21 @@ operations = {
 		}
 
 		available = {
-			controls_state = 153
+			controls_state = 150
 			OR = { 
 				NOT = { 
-					owns_state = 153
+					owns_state = 150
 				}
 				any_enemy_country = { 
 					OR = { 
 						controls_state = 24
-						controls_state = 150
-						controls_state = 151
+						controls_state = 147
+						controls_state = 148
+						controls_state = 149
 						controls_state = 152
-						controls_state = 155
-						controls_state = 156
-						controls_state = 295
-						controls_state = 615
+						controls_state = 153
+						controls_state = 292
+						controls_state = 610
 					}
 				}
 			}
@@ -656,12 +656,12 @@ operations = {
 				if = { 
 					limit = { 
 						NOT = { 
-							owns_state = 153
+							owns_state = 150
 						}
 					}
 					random_country = { 
 						limit = { 
-							owns_state = 153
+							owns_state = 150
 						}
 						country_event = { id = generic.12 days = 1 }
 					}
@@ -673,7 +673,7 @@ operations = {
 			if = { 
 				limit = { 
 					OR = { 
-						has_full_control_of_state = 153
+						has_full_control_of_state = 150
 					}
 				}
 				set_country_flag = blew_up_suez
@@ -690,22 +690,22 @@ operations = {
 					any_enemy_country = { 
 						OR = { 
 							controls_state = 24
-							controls_state = 150
-							controls_state = 151
+							controls_state = 147
+							controls_state = 148
+							controls_state = 149
 							controls_state = 152
-							controls_state = 155
-							controls_state = 156
-							controls_state = 295
-							controls_state = 615
+							controls_state = 153
+							controls_state = 292
+							controls_state = 610
 							OR = { 
 								divisions_in_state = { state = 24 size > 2 }
-								divisions_in_state = { state = 150 size > 2 }
-								divisions_in_state = { state = 151 size > 2 }
+								divisions_in_state = { state = 147 size > 2 }
+								divisions_in_state = { state = 148 size > 2 }
+								divisions_in_state = { state = 149 size > 2 }
 								divisions_in_state = { state = 152 size > 2 }
-								divisions_in_state = { state = 155 size > 2 }
-								divisions_in_state = { state = 156 size > 2 }
-								divisions_in_state = { state = 295 size > 2 }
-								divisions_in_state = { state = 615 size > 2 }
+								divisions_in_state = { state = 153 size > 2 }
+								divisions_in_state = { state = 292 size > 2 }
+								divisions_in_state = { state = 610 size > 2 }
 							}
 						}
 					}
@@ -716,25 +716,25 @@ operations = {
 				any_allied_country = { 
 					NOT = { 
 						OR = { 
-							has_full_control_of_state = 155
-							has_full_control_of_state = 156
+							has_full_control_of_state = 152
+							has_full_control_of_state = 153
 						}
 					}
-					NOT = { has_full_control_of_state = 197 }
+					NOT = { has_full_control_of_state = 194 }
 					OR = { 
 						divisions_in_state = { state = 4 size > 0 }
 						divisions_in_state = { state = 5 size > 0 }
-						divisions_in_state = { state = 187 size > 0 }
-						divisions_in_state = { state = 203 size > 0 }
+						divisions_in_state = { state = 184 size > 0 }
+						divisions_in_state = { state = 200 size > 0 }
 					}
 				}
 			}
 			modifier = { 
 				factor = 200 # Try to cut the enemy off from the mediterranean if you also occupy Gibraltar
 				OR = { 
-					has_full_control_of_state = 601
+					has_full_control_of_state = 596
 					any_allied_country = { 
-						has_full_control_of_state = 601
+						has_full_control_of_state = 596
 					}
 				}
 				has_war = yes
@@ -752,7 +752,7 @@ operations = {
 		}
 
 		available = {
-			has_full_control_of_state = 182
+			has_full_control_of_state = 179
 		}
 
 		visible = {
@@ -781,12 +781,12 @@ operations = {
 				if = {
 					limit = {
 						NOT = {
-							owns_state = 182
+							owns_state = 179
 						}
 					}
 					random_country = {
 						limit = {
-							owns_state = 182
+							owns_state = 179
 						}
 						country_event = { id = generic.13 days = 1 }
 					}
@@ -798,8 +798,8 @@ operations = {
 			if = {
 				limit = {
 					OR = {
-						has_full_control_of_state = 103
-						has_full_control_of_state = 182
+						has_full_control_of_state = 100
+						has_full_control_of_state = 179
 					}
 				}
 				set_country_flag = blew_up_panama
@@ -831,10 +831,10 @@ operations = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 231
+			has_full_control_of_state = 228		# significant_number - Schleswig
 			NOT = {
 				any_enemy_country = {
-					controls_state = 224
+					controls_state = 221	# significant_number - Holstein
 				}
 			}
 			num_of_civilian_factories > 10
@@ -843,12 +843,12 @@ operations = {
 		visible = {
 			NOT = { has_global_flag = KIEL_CANAL_BUILT }
 			OR = {
-				controls_state = 231
-				controls_state = 232
-				controls_state = 221
-				controls_state = 223
-				controls_state = 224
-				controls_state = 573
+				controls_state = 228		# significant_number - Schleswig
+				controls_state = 229		# significant_number - Jylland
+				controls_state = 218		# significant_number - Lower Elbe
+				controls_state = 220		# significant_number - Mecklenburg
+				controls_state = 221		# significant_number - Holstein
+				controls_state = 568		# significant_number - Sjaelland
 			}
 		}
 	
@@ -865,10 +865,10 @@ operations = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_full_control_of_state = 231
+					has_full_control_of_state = 228		# significant_number - Schleswig
 					NOT = {
 						any_enemy_country = {
-							controls_state = 224
+							controls_state = 221	# significant_number - Holstein
 						}
 					}
 				}
@@ -886,8 +886,8 @@ operations = {
 			modifier = {
 				factor = 10
 				NOT = {
-					has_full_control_of_state = 573
-					has_full_control_of_state = 232
+					has_full_control_of_state = 568		# significant_number - Sjaelland
+					has_full_control_of_state = 229		# significant_number - Jylland
 				}
 			}
 		}
@@ -902,7 +902,7 @@ special_projects = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 153
+			has_full_control_of_state = 150
 			num_of_civilian_factories > 15
 		}
 
@@ -923,7 +923,7 @@ special_projects = {
 		remove_effect = {
 			if = {
 				limit = {
-				has_full_control_of_state = 153
+				has_full_control_of_state = 150
 				}
 				set_country_flag = rebuilt_suez
 				clr_global_flag = SUEZ_CANAL_BLOCKED
@@ -949,10 +949,10 @@ special_projects = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 182
+			has_full_control_of_state = 179
 			NOT = {
 				any_enemy_country = {
-					controls_state = 103
+					controls_state = 100
 				}
 			}
 			num_of_civilian_factories > 25
@@ -975,10 +975,10 @@ special_projects = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_full_control_of_state = 182
+					has_full_control_of_state = 179
 					NOT = {
 						any_enemy_country = {
-							controls_state = 103
+							controls_state = 100
 						}
 					}
 				}

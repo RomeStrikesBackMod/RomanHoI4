@@ -1,4 +1,4 @@
-﻿capital = 74
+﻿capital = 73
 set_research_slots = 3
 
 oob = "BRI_OOB"
@@ -121,7 +121,6 @@ add_opinion_modifier = { target = SOK modifier = negative_30 }
 add_opinion_modifier = { target = UTA modifier = negative_10 }
 
 
-
 add_ideas = {
 	RME_former_territory
 	disarmed_nation
@@ -132,8 +131,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-	name = "Gwilherm Le Corre"
-	desc = "POLITICS_GWILHERM_LE CORRE_DESC"
+	name = "Oanig Groix"
+	desc = "POLITICS_OANIG_GROIX_DESC"
 	picture = "gfx/leaders/OC/portrait_IRE_Sean_Murrey.dds"
 	expire = "1965.1.1"
 	ideology = leninism
@@ -180,6 +179,20 @@ create_navy_leader = {
 	coordination_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Houarnev Bihan"
+		GFX = "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_commonwealth_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { BRI }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

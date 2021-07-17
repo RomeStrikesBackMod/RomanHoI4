@@ -1,4 +1,4 @@
-﻿capital = 229
+﻿capital = 226
 set_research_slots = 3
 
 oob = "BAV_OOB"
@@ -78,7 +78,6 @@ add_opinion_modifier = { target = SUK modifier = negative_50 }
 add_opinion_modifier = { target = UTA modifier = negative_142 }
 
 
-
 add_ideas = {
 	BAV_monarch
 	limited_conscription
@@ -87,13 +86,45 @@ add_ideas = {
 	culture_south_german
 }
 create_country_leader = {
-	name = "Viktor Goering"
-	desc = "POLITICS_VIKTOR_GOERING_DESC"
+	name = "Gustav von Hohenhausen"
+	desc = "POLITICS_GUSTAV_VON HOHENHAUSEN_DESC"
 	picture = "gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds"
 	expire = "1965.1.1"
 	ideology = liberalism
 	traits = {
 	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Reinhold von Hortstein"
+		GFX = "gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { BAV }
+	}
+
+	create_operative_leader = {
+		name = "Gebhard von Wittelsbach"
+		GFX = "gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { BAV }
+	}
+
+	create_operative_leader = {
+		name = "Edmund von Württemberg"
+		GFX = "gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { BAV }
+	}
+
 }
 ### VARIANTS ###
 if = {

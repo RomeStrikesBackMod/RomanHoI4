@@ -1,4 +1,4 @@
-﻿capital = 348
+﻿capital = 345
 set_research_slots = 3
 
 oob = "MEX_OOB"
@@ -98,7 +98,6 @@ add_opinion_modifier = { target = SOK modifier = positive_11 }
 add_opinion_modifier = { target = UTA modifier = positive_107 }
 
 
-
 add_ideas = {
 	volunteer_only
 	low_economic_mobilisation
@@ -108,8 +107,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.59
 create_country_leader = {
-	name = "Martín Ixtlilxochitl"
-	desc = "POLITICS_MARTíN_IXTLILXOCHITL_DESC"
+	name = "Isaac Hernández"
+	desc = "POLITICS_ISAAC_HERNáNDEZ_DESC"
 	picture = "gfx/leaders/OC/portrait_nat_north_absolutist.dds"
 	expire = "1965.1.1"
 	ideology = absolute_monarchy
@@ -166,6 +165,21 @@ create_navy_leader = {
 	coordination_skill = 4
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Centehua Panecatl"
+		GFX = "gfx/leaders/USA/portrait_usa_josephine_baker.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { MEX }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

@@ -1,4 +1,4 @@
-﻿capital = 163
+﻿capital = 160
 set_research_slots = 3
 
 oob = "WAL_OOB"
@@ -65,7 +65,6 @@ add_opinion_modifier = { target = MUT modifier = negative_30 }
 add_opinion_modifier = { target = RME modifier = negative_200 }
 
 
-
 add_ideas = {
 	volunteer_only
 	civilian_economy
@@ -73,8 +72,8 @@ add_ideas = {
 	culture_welsh
 }
 create_country_leader = {
-	name = "Kane Ladd"
-	desc = "POLITICS_KANE_LADD_DESC"
+	name = "Cairn Cader"
+	desc = "POLITICS_CAIRN_CADER_DESC"
 	picture = "GFX_IRE_Eoin_Oduffy"
 	expire = "1965.1.1"
 	ideology = absolute_monarchy
@@ -91,6 +90,20 @@ create_corps_commander = {
 	logistics_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Broderick Crowther"
+		GFX = "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_commonwealth_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { WAL }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

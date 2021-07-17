@@ -1,4 +1,4 @@
-﻿capital = 64
+﻿capital = 63
 set_research_slots = 3
 add_named_threat = { threat = 0.3508 name = infamy }
 
@@ -114,7 +114,6 @@ add_opinion_modifier = { target = SOK modifier = negative_50 }
 add_opinion_modifier = { target = UTA modifier = negative_10 }
 
 
-
 add_ideas = {
 	RME_former_territory
 	volunteer_only
@@ -125,8 +124,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-	name = "Joachim Mergenthaler"
-	desc = "POLITICS_JOACHIM_MERGENTHALER_DESC"
+	name = "Edmund Hoffmann"
+	desc = "POLITICS_EDMUND_HOFFMANN_DESC"
 	picture = "GFX_portrait_ger_wilhelm_ii"
 	expire = "1965.1.1"
 	ideology = prussian_const
@@ -173,6 +172,38 @@ create_corps_commander = {
 	logistics_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Albrecht von Württemberg"
+		GFX = "gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { BRG }
+	}
+
+	create_operative_leader = {
+		name = "Joseph Haus"
+		GFX = "gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { BRG }
+	}
+
+	create_operative_leader = {
+		name = "Ludwig Held"
+		GFX = "gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { BRG }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

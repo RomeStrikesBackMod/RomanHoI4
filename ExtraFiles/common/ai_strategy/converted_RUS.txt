@@ -36,9 +36,10 @@ RUS_support_only_ENG = {
 }
 
 RUS_support_ENG = {
-
-	enable = {
+	allowed = {
 		tag = RUS
+	}
+	enable = {
 		has_idea = RUS_ENG_alliance
 		country_exists = ENG
 	}
@@ -52,5 +53,33 @@ RUS_support_ENG = {
 		type = send_volunteers_desire
 		id = "ENG"
 		value = 400
+	}
+}
+
+RUS_attack = {
+	reversed = yes
+	enable_reverse = {
+		RUS = {
+			has_wargoal_against = ROOT
+		}
+	}
+	enable = {
+		exists = yes
+		NOT = {
+			is_in_faction_with = RUS
+			is_subject_of = RUS
+			has_war_together_with = RUS
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = declare_war
+		id = RUS
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = RUS
+		value = 100
 	}
 }

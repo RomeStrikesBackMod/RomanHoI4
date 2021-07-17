@@ -64,6 +64,18 @@ is_owned_by_ROOT_or_subject = {
 	}
 }
 
+is_owned_by_FROM_or_subject = {
+	custom_trigger_tooltip = {
+		tooltip = is_owned_by_FROM_or_subject
+		OWNER = {
+			OR = {
+				tag = FROM
+				is_subject_of = FROM
+			}
+		}
+	}
+}
+
 #State scope
 is_NOT_controlled_by_ROOT_or_ally = {
 	custom_trigger_tooltip = {
@@ -98,6 +110,7 @@ is_neutral_to_ROOT = {
 			has_war_with = ROOT
 			is_in_faction_with = ROOT
 			is_subject_of = ROOT
+			has_war_together_with = ROOT
 		}
 	}
 }
@@ -112,72 +125,72 @@ can_join_faction = {
 
 is_ukraine_state = {
 	OR = {
-		state = 537 # significant_number - Brest
-		state = 538 # significant_number - Minsk
-		state = 539 # significant_number - Pinsk
-		state = 540 # significant_number - Orsha
-		state = 541 # significant_number - Kiev
-		state = 542 # significant_number - Podillia
-		state = 543 # significant_number - Kharkov
-		state = 544 # significant_number - Crimea
-		state = 545 # significant_number - Transnistria
-		state = 546 # significant_number - Zaphorizhia
+		state = 533 # significant_number - Brest
+		state = 534 # significant_number - Minsk
+		state = 535 # significant_number - Pinsk
+		state = 536 # significant_number - Orsha
+		state = 537 # significant_number - Kiev
+		state = 538 # significant_number - Podillia
+		state = 539 # significant_number - Kharkov
+		state = 540 # significant_number - Crimea
+		state = 541 # significant_number - Transnistria
+		state = 542 # significant_number - Zaphorizhia
 	}
 }
 is_caucasus_state = {
 	OR = {
 		state = 42 # significant_number - Armenia
-		state = 57 # significant_number - Azerbaijan
-		state = 209 # significant_number - Ekaterinodar
-		state = 210 # significant_number - North Caucausia
-		state = 211 # significant_number - Georgia
+		state = 56 # significant_number - Azerbaijan
+		state = 206 # significant_number - Ekaterinodar
+		state = 207 # significant_number - North Caucausia
+		state = 208 # significant_number - Georgia
 	}
 }
 
 is_levant_state = {
 	OR = {
-		state = 613 # significant_number - Aleppo
-		state = 614 # significant_number - Syria
-		state = 615 # significant_number - Lebanon
-		state = 295 # significant_number - Palestine
-		state = 150 # significant_number - Cairo
-		state = 151 # significant_number - Alexandria
-		state = 152 # significant_number - Qattara
-		state = 153 # significant_number - Sinai
-		state = 154 # significant_number - Aswan
-		state = 155 # significant_number - Middle Egypt
-		state = 156 # significant_number - Upper Egypt
+		state = 608 # significant_number - Aleppo
+		state = 609 # significant_number - Syria
+		state = 610 # significant_number - Lebanon
+		state = 292 # significant_number - Palestine
+		state = 147 # significant_number - Cairo
+		state = 148 # significant_number - Alexandria
+		state = 149 # significant_number - Qattara
+		state = 150 # significant_number - Sinai
+		state = 151 # significant_number - Aswan
+		state = 152 # significant_number - Middle Egypt
+		state = 153 # significant_number - Upper Egypt
 	}
 }
 
 is_balkan_state = {
 	OR = {
-		state = 670 # significant_number - Moldavia
-		state = 671 # significant_number - Wallachia
-		state = 672 # significant_number - Dobrudja
-		state = 673 # significant_number - Bessarabia
-		state = 584 # significant_number - Northern Serbia
-		state = 585 # significant_number - Southern Serbia
-		state = 674 # significant_number - Istria
-		state = 675 # significant_number - Slovenia
-		state = 676 # significant_number - Croatia
-		state = 677 # significant_number - Slavonia
-		state = 678 # significant_number - Dalmatia
-		state = 679 # significant_number - Bosnia
-		state = 680 # significant_number - Montenegro
-		state = 110 # significant_number - Transdanubia
+		state = 665 # significant_number - Moldavia
+		state = 666 # significant_number - Wallachia
+		state = 667 # significant_number - Dobrudja
+		state = 668 # significant_number - Bessarabia
+		state = 579 # significant_number - Northern Serbia
+		state = 580 # significant_number - Southern Serbia
+		state = 669 # significant_number - Istria
+		state = 670 # significant_number - Slovenia
+		state = 671 # significant_number - Croatia
+		state = 672 # significant_number - Slavonia
+		state = 673 # significant_number - Dalmatia
+		state = 674 # significant_number - Bosnia
+		state = 675 # significant_number - Montenegro
+		state = 107 # significant_number - Transdanubia
 	}
 }
 
 is_north_africa_state = {
 	OR = {
-		state = 617 # significant_number - Tripolitania
-		state = 618 # significant_number - Cyrenaica
-		state = 619 # significant_number - East Sahara
-		state = 620 # significant_number - Fezzan
-		state = 621 # significant_number - Sahara
-		state = 622 # significant_number - Tunisia
-		state = 623 # significant_number - Gabes
+		state = 612 # significant_number - Tripolitania
+		state = 613 # significant_number - Cyrenaica
+		state = 614 # significant_number - East Sahara
+		state = 615 # significant_number - Fezzan
+		state = 616 # significant_number - Sahara
+		state = 617 # significant_number - Tunisia
+		state = 618 # significant_number - Gabes
 		state = 11 # significant_number - Algiers
 		state = 12 # significant_number - Constantine
 		state = 13 # significant_number - Oran
@@ -189,24 +202,24 @@ is_north_africa_state = {
 
 is_italy_state = {
 	OR = {
-		state = 589 # significant_number - Puglia
-		state = 590 # significant_number - Campania
-		state = 591 # significant_number - Sicily
-		state = 296 # significant_number - Nice
-		state = 297 # significant_number - Savoie
-		state = 298 # significant_number - Sardinia & Corsica
-		state = 299 # significant_number - Piemonte
-		state = 300 # significant_number - Lombardia
-		state = 301 # significant_number - Venetia
-		state = 302 # significant_number - Emilia
-		state = 303 # significant_number - Romagna
-		state = 304 # significant_number - Toscana
-		state = 305 # significant_number - South Tirol
-		state = 306 # significant_number - Lazio
-		state = 609 # significant_number - East Switzerland
-		state = 610 # significant_number - West Switzerland
-		state = 611 # significant_number - Tirol
-		state = 612 # significant_number - Karntern-Steiermark
+		state = 584 # significant_number - Puglia
+		state = 585 # significant_number - Campania
+		state = 586 # significant_number - Sicily
+		state = 293 # significant_number - Nice
+		state = 294 # significant_number - Savoie
+		state = 295 # significant_number - Sardinia & Corsica
+		state = 296 # significant_number - Piemonte
+		state = 297 # significant_number - Lombardia
+		state = 298 # significant_number - Venetia
+		state = 299 # significant_number - Emilia
+		state = 300 # significant_number - Romagna
+		state = 301 # significant_number - Toscana
+		state = 302 # significant_number - South Tirol
+		state = 303 # significant_number - Lazio
+		state = 604 # significant_number - East Switzerland
+		state = 605 # significant_number - West Switzerland
+		state = 606 # significant_number - Tirol
+		state = 607 # significant_number - Karntern-Steiermark
 	}
 }
 
@@ -219,57 +232,57 @@ is_gaul_state = {
 		state = 21 # significant_number - Provence
 		state = 22 # significant_number - Catalonia
 		state = 23 # significant_number - Balearic Islands
-		state = 64 # significant_number - Rheinland
-		state = 65 # significant_number - Franche-Comte
-		state = 66 # significant_number - Alsace-Lorraine
-		state = 67 # significant_number - Bourgogne
-		state = 68 # significant_number - Palatinate
-		state = 69 # significant_number - Wallonia
-		state = 70 # significant_number - Rhone
-		state = 71 # significant_number - Champagne
-		state = 72 # significant_number - Auvergne
-		state = 73 # significant_number - Limousin
-		state = 60 # significant_number - Zeeland
-		state = 61 # significant_number - Flanders
-		state = 204 # significant_number - Normandie
-		state = 205 # significant_number - Ile de France
-		state = 206 # significant_number - Loire
-		state = 207 # significant_number - Region Centre
-		state = 208 # significant_number - Picardie
+		state = 63 # significant_number - Rheinland
+		state = 64 # significant_number - Franche-Comte
+		state = 65 # significant_number - Alsace-Lorraine
+		state = 66 # significant_number - Bourgogne
+		state = 67 # significant_number - Palatinate
+		state = 68 # significant_number - Wallonia
+		state = 69 # significant_number - Rhone
+		state = 70 # significant_number - Champagne
+		state = 71 # significant_number - Auvergne
+		state = 72 # significant_number - Limousin
+		state = 59 # significant_number - Zeeland
+		state = 60 # significant_number - Flanders
+		state = 201 # significant_number - Normandie
+		state = 202 # significant_number - Ile de France
+		state = 203 # significant_number - Loire
+		state = 204 # significant_number - Region Centre
+		state = 205 # significant_number - Picardie
 	}
 }
 
 is_iberia_state = {
 	OR = {
-		state = 97 # significant_number - Leon-Castilla
-		state = 98 # significant_number - Castilla la Nueva
-		state = 99 # significant_number - Valencia
-		state = 100 # significant_number - Granada
-		state = 405 # significant_number - Fez
-		state = 406 # significant_number - Taza
-		state = 407 # significant_number - al Rif
-		state = 408 # significant_number - Marrakesh
-		state = 409 # significant_number - Agadir
-		state = 410 # significant_number - West Morocco
-		state = 598 # significant_number - Galicia
-		state = 599 # significant_number - Extremadura
-		state = 600 # significant_number - Vasconia-Aragon
-		state = 601 # significant_number - Andalucia
-		state = 602 # significant_number - Douro
-		state = 603 # significant_number - Lisboa
-		state = 604 # significant_number - Alentejo
+		state = 94 # significant_number - Leon-Castilla
+		state = 95 # significant_number - Castilla la Nueva
+		state = 96 # significant_number - Valencia
+		state = 97 # significant_number - Granada
+		state = 402 # significant_number - Fez
+		state = 403 # significant_number - Taza
+		state = 404 # significant_number - al Rif
+		state = 405 # significant_number - Marrakesh
+		state = 406 # significant_number - Agadir
+		state = 407 # significant_number - West Morocco
+		state = 593 # significant_number - Galicia
+		state = 595 # significant_number - Extremadura
+		state = 595 # significant_number - Vasconia-Aragon
+		state = 596 # significant_number - Andalucia
+		state = 597 # significant_number - Douro
+		state = 598 # significant_number - Lisboa
+		state = 599 # significant_number - Alentejo
 	}
 }
 
 is_britain_state = {
 	OR = {
-		state = 157 # significant_number - North West Britain
-		state = 158 # significant_number - North East Britain
-		state = 159 # significant_number - Midlands
-		state = 160 # significant_number - Eastern Counties
-		state = 161 # significant_number - South East Britain
-		state = 162 # significant_number - South West Britain
-		state = 163 # significant_number - Wales
-		state = 74 # significant_number - Bretagne
+		state = 154 # significant_number - North West Britain
+		state = 155 # significant_number - North East Britain
+		state = 156 # significant_number - Midlands
+		state = 157 # significant_number - Eastern Counties
+		state = 158 # significant_number - South East Britain
+		state = 159 # significant_number - South West Britain
+		state = 160 # significant_number - Wales
+		state = 73 # significant_number - Bretagne
 	}
 }

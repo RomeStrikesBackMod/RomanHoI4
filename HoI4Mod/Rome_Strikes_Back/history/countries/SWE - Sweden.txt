@@ -1,4 +1,4 @@
-﻿capital = 561
+﻿capital = 556
 set_research_slots = 3
 
 oob = "SWE_OOB"
@@ -127,7 +127,6 @@ add_opinion_modifier = { target = SOK modifier = positive_5 }
 add_opinion_modifier = { target = UTA modifier = negative_15 }
 
 
-
 add_ideas = {
 	SWE_monarch
 	limited_conscription
@@ -136,13 +135,27 @@ add_ideas = {
 	culture_swedish
 }
 create_country_leader = {
-	name = "Oscar Chrsiterson"
-	desc = "POLITICS_OSCAR_CHRSITERSON_DESC"
+	name = "Gunnar von Platen"
+	desc = "POLITICS_GUNNAR_VON PLATEN_DESC"
 	picture = "gfx/leaders/FIN/Portrait_Finland_Risto_Heikki_Ryti.dds"
 	expire = "1965.1.1"
 	ideology = conservatism
 	traits = {
 	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Knut Gyllengranat"
+		GFX = "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_europe_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { SWE }
+	}
+
 }
 ### VARIANTS ###
 if = {
