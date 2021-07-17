@@ -28,9 +28,9 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			OR = {
-				owns_state = 212 # significant_number - Holland
-				owns_state = 213 # significant_number - Friesland
-				owns_state = 234 # significant_number - East Friesland
+				owns_state = 209 # significant_number - Holland
+				owns_state = 210 # significant_number - Friesland
+				owns_state = 231 # significant_number - East Friesland
 			}
 		}
 		completion_reward = {
@@ -457,7 +457,7 @@ focus_tree = {
 		prerequisite = { focus = GER_polish_alliance }
 		relative_position_id = GER_polish_alliance
 		available = {
-			owns_state = 233	# significant_number - Posen
+			owns_state = 230	# significant_number - Posen
 			has_government = fascism
 			#is_in_faction_with = PLC
 			PLC = {
@@ -473,7 +473,7 @@ focus_tree = {
 		bypass = {
 			OR = {
 				has_war_with = PLC
-				NOT = { owns_state = 233 }	# significant_number - Posen
+				NOT = { owns_state = 230 }	# significant_number - Posen
 				NOT = { country_exists = PLC }
 			}
 		}
@@ -506,7 +506,7 @@ focus_tree = {
 			has_army_manpower = { size > 300000 }
 			if = {
 				limit = {
-					290 = {	# significant_number - Bohemia
+					287 = {	# significant_number - Bohemia
 						owner = {
 							OR = {
 								tag = HUN
@@ -523,7 +523,7 @@ focus_tree = {
 				HUN = { is_neutral_to_ROOT = yes }
 				else_if = {
 					limit = {
-						290 = {	# significant_number - Bohemia
+						287 = {	# significant_number - Bohemia
 							owner = {
 								NOT = {
 									tag = HUN
@@ -534,7 +534,7 @@ focus_tree = {
 					}
 					custom_trigger_tooltip = {
 						tooltip = GER_reclaim_bohemia_TT
-						290 = {	# significant_number - Bohemia
+						287 = {	# significant_number - Bohemia
 							owner = { is_neutral_to_ROOT = yes }
 						}
 					}
@@ -544,7 +544,7 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = {
-					290 = {	# significant_number - Bohemia
+					287 = {	# significant_number - Bohemia
 						owner = {
 							OR = {
 								tag = HUN
@@ -553,13 +553,13 @@ focus_tree = {
 						}
 					}
 				}
-				add_state_claim = 285	# significant_number - Upper Silesia
+				add_state_claim = 282	# significant_number - Upper Silesia
 				create_wargoal = {
 					target = HUN
 					type = take_core_state
 				}
 				else = {
-					290 = {	# significant_number - Bohemia
+					287 = {	# significant_number - Bohemia
 						owner = {
 							GER = {
 								create_wargoal = {
@@ -675,44 +675,44 @@ focus_tree = {
 			#has_government = fascism
 			has_war = no
 			OR = {
-				owns_state = 64	# significant_number - Rheinland
-				owns_state = 65	# significant_number - Franche-Comté
-				owns_state = 66	# significant_number - Alsace-Lorraine
-				owns_state = 67	# significant_number - Bourgogne
-				owns_state = 68	# significant_number - Palatinate
-				owns_state = 69	# significant_number - Wallonia
+				owns_state = 63	# significant_number - Rheinland
+				owns_state = 64	# significant_number - Franche-Comté
+				owns_state = 65	# significant_number - Alsace-Lorraine
+				owns_state = 66	# significant_number - Bourgogne
+				owns_state = 67	# significant_number - Palatinate
+				owns_state = 68	# significant_number - Wallonia
 			}
 		}
 		completion_reward = {
 			if = {
 				limit = { 
-					NOT = { owns_state = 64 owns_state = 65 owns_state = 66 owns_state = 67 owns_state = 68 owns_state = 69 } # significant_number - Rheinland, Franche-Comté, Alsace-Lorraine, Bourgogne, Palatinate, Wallonia
+					NOT = { owns_state = 63 owns_state = 64 owns_state = 65 owns_state = 66 owns_state = 67 owns_state = 68 } # significant_number - Rheinland, Franche-Comté, Alsace-Lorraine, Bourgogne, Palatinate, Wallonia
 				}
 				custom_effect_tooltip = GER_lotharingia_tt
 			}
 			if = {
-				limit = { owns_state = 64 }	# significant_number - Rheinland
-				add_state_core = 64	# significant_number - Rheinland
+				limit = { owns_state = 63 }	# significant_number - Rheinland
+				add_state_core = 63	# significant_number - Rheinland
 			}
 			if = {
-				limit = { owns_state = 65 }	# significant_number - Franche-Comté
-				add_state_core = 65	# significant_number - Franche-Comté
+				limit = { owns_state = 64 }	# significant_number - Franche-Comté
+				add_state_core = 64	# significant_number - Franche-Comté
 			}
 			if = {
-				limit = { owns_state = 66 }	# significant_number - Alsace-Lorraine
-				add_state_core = 66	# significant_number - Alsace-Lorraine
+				limit = { owns_state = 65 }	# significant_number - Alsace-Lorraine
+				add_state_core = 65	# significant_number - Alsace-Lorraine
 			}
 			if = {
-				limit = { owns_state = 67 }	# significant_number - Bourgogne
-				add_state_core = 67	# significant_number - Bourgogne
+				limit = { owns_state = 66 }	# significant_number - Bourgogne
+				add_state_core = 66	# significant_number - Bourgogne
 			}
 			if = {
-				limit = { owns_state = 68 }	# significant_number - Palatinate
-				add_state_core = 68	# significant_number - Palatinate
+				limit = { owns_state = 67 }	# significant_number - Palatinate
+				add_state_core = 67	# significant_number - Palatinate
 			}
 			if = {
-				limit = { owns_state = 69 }	# significant_number - Wallonia
-				add_state_core = 69	# significant_number - Wallonia
+				limit = { owns_state = 68 }	# significant_number - Wallonia
+				add_state_core = 68	# significant_number - Wallonia
 			}
 		}
 		ai_will_do = {
@@ -797,57 +797,57 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = {
-					458 = {	# significant_number - Westpreußen
+					455 = {	# significant_number - Westpreußen
 						NOT = { is_claimed_by = GER is_core_of = GER }
 						is_owned_by = PLC
 					}
 				}
-				add_state_claim = 458	# significant_number - Westpreußen
+				add_state_claim = 455	# significant_number - Westpreußen
 			}
 			if = {
 				limit = {
-					459 = {	# significant_number - Ostpreußen
+					456 = {	# significant_number - Ostpreußen
 						NOT = { is_claimed_by = GER is_core_of = GER }
 						is_owned_by = PLC
 					}
 				}
-				add_state_claim = 459	# significant_number - Ostpreußen
+				add_state_claim = 456	# significant_number - Ostpreußen
 			}
 			if = {
 				limit = {
-					460 = {	# significant_number - Masovia
+					457 = {	# significant_number - Masovia
 						NOT = { is_claimed_by = GER is_core_of = GER }
 						is_owned_by = PLC
 					}
 				}
-				add_state_claim = 460	# significant_number - Masovia
+				add_state_claim = 457	# significant_number - Masovia
 			}
 			if = {
 				limit = {
-					462 = {	# significant_number - Lithuania
+					459 = {	# significant_number - Lithuania
 						NOT = { is_claimed_by = RUS is_core_of = RUS }
 						is_owned_by = PLC
 					}
 				}
-				RUS = { add_state_claim = 462 }	# significant_number - Lithuania
+				RUS = { add_state_claim = 459 }	# significant_number - Lithuania
 			}
 			if = {
 				limit = {
-					463 = {	# significant_number - Latvia
+					460 = {	# significant_number - Latvia
 						NOT = { is_claimed_by = RUS is_core_of = RUS }
 						is_owned_by = PLC
 					}
 				}
-				RUS = { add_state_claim = 463 }	# significant_number - Latvia
+				RUS = { add_state_claim = 460 }	# significant_number - Latvia
 			}
 			if = {
 				limit = {
-					289 = {	# significant_number - Galicia-Lodomeria
+					286 = {	# significant_number - Galicia-Lodomeria
 						NOT = { is_claimed_by = RUS is_core_of = RUS }
 						is_owned_by = PLC
 					}
 				}
-				RUS = { add_state_claim = 289 }	# significant_number - Galicia-Lodomeria
+				RUS = { add_state_claim = 286 }	# significant_number - Galicia-Lodomeria
 			}
 			if = {
 				limit = {

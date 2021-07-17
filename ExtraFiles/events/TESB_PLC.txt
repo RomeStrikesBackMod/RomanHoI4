@@ -126,7 +126,7 @@ country_event = {
 	#Join PLC
 	option = {
 		name = tesb_PLC.20.a
-		remove_state_core = 535 #  significant_number - Estonia
+		remove_state_core = 531 #  significant_number - Estonia
 		set_country_flag = PLC_RUS_pact
 	}
 }
@@ -535,16 +535,16 @@ country_event = {
 		GER = {
 			if = {
 				limit = {
-					HUN = { owns_state = 288 }	# significant_number - Lower Silesia
+					HUN = { owns_state = 285 }	# significant_number - Lower Silesia
 				}
-				transfer_state = 288	# significant_number - Lower Silesia
+				transfer_state = 285	# significant_number - Lower Silesia
 			}
 			if = {
 				limit = {
-					HUN = { owns_state = 285 }	# significant_number - Upper Silesia
+					HUN = { owns_state = 282 }	# significant_number - Upper Silesia
 				}
-				transfer_state = 285	# significant_number - Upper Silesia
-				add_state_core = 285	# significant_number - Upper Silesia
+				transfer_state = 282	# significant_number - Upper Silesia
+				add_state_core = 282	# significant_number - Upper Silesia
 			}
 			clear_variable = GER_dresden_1
 			set_country_flag = GER_received_silesia
@@ -591,12 +591,12 @@ country_event = {
 			create_wargoal = {
 				type = take_state_focus
 				target = HUN
-				generator = { 288 285 }	# significant_number - Lower Silesia, Upper Silesia
+				generator = { 285 282 }	# significant_number - Lower Silesia, Upper Silesia
 			}
 			clear_variable = GER_dresden_1
 			if = {
 				limit = {
-					288 = {	# significant_number - Lower Silesia
+					285 = {	# significant_number - Lower Silesia
 						is_owned_by = HUN
 						NOT = {
 							is_core_of = GER
@@ -604,11 +604,11 @@ country_event = {
 						}
 					}
 				}
-				add_state_claim = 288	# significant_number - Lower Silesia
+				add_state_claim = 285	# significant_number - Lower Silesia
 			}
 			if = {
 				limit = {
-					285 = {	# significant_number - Upper Silesia
+					282 = {	# significant_number - Upper Silesia
 						is_owned_by = HUN
 						NOT = {
 							is_core_of = GER
@@ -616,7 +616,7 @@ country_event = {
 						}
 					}
 				}
-				add_state_claim = 285	# significant_number - Upper Silesia
+				add_state_claim = 282	# significant_number - Upper Silesia
 			}
 		}
 		news_event = { id = tesb_PLC.1062 }
@@ -776,11 +776,11 @@ country_event = {
 	option = {
 		name = tesb_PLC.120.a
 		effect_tooltip = {
-			PLC = { transfer_state = 233 }	# significant_number - Posen
-			remove_state_core = 233	# significant_number - Posen
-			remove_state_core = 460	# significant_number - Posen
-			remove_state_core = 289	# significant_number - Galicia-Lodomeria
-			remove_state_core = 291	# significant_number - West Galicia
+			PLC = { transfer_state = 230 }	# significant_number - Posen
+			remove_state_core = 230	# significant_number - Posen
+			remove_state_core = 457	# significant_number - Posen
+			remove_state_core = 286	# significant_number - Galicia-Lodomeria
+			remove_state_core = 288	# significant_number - West Galicia
 		}
 		hidden_effect = {
 			PLC = { country_event = { id = tesb_PLC.121 hours = 1 } }
@@ -819,10 +819,10 @@ country_event = {
 	#transfers
 	option = {
 		name = tesb_PLC.121.a
-		transfer_state = 233	# significant_number - Posen
-		233 = { add_manpower = -200000 }	# significant_number - Posen
+		transfer_state = 230	# significant_number - Posen
+		230 = { add_manpower = -200000 }	# significant_number - Posen
 		GER = {
-			remove_state_core = 460	# significant_number - Posen
+			remove_state_core = 457	# significant_number - Posen
 			random_owned_controlled_state = {
 				limit = { NOT = { has_state_flag = PLC_transfer } }
 				add_manpower = 200000
@@ -830,8 +830,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 460 }	# significant_number - Posen
-			460 = { add_manpower = -200000 }	# significant_number - Posen
+			limit = { owns_state = 457 }	# significant_number - Posen
+			457 = { add_manpower = -200000 }	# significant_number - Posen
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -841,8 +841,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 291 }	# significant_number - West Galicia
-			291 = { add_manpower = -200000 }	# significant_number - West Galicia
+			limit = { owns_state = 288 }	# significant_number - West Galicia
+			288 = { add_manpower = -200000 }	# significant_number - West Galicia
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -852,8 +852,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 462 }	# significant_number - Lithuania
-			462 = { add_manpower = -100000 }	# significant_number - Lithuania
+			limit = { owns_state = 459 }	# significant_number - Lithuania
+			459 = { add_manpower = -100000 }	# significant_number - Lithuania
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -863,8 +863,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 463 }	# significant_number - Latvia
-			463 = { add_manpower = -100000 }	# significant_number - Latvia
+			limit = { owns_state = 460 }	# significant_number - Latvia
+			460 = { add_manpower = -100000 }	# significant_number - Latvia
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -1366,7 +1366,7 @@ country_event = {
 	#give up West Galicia
 	option = {
 		name = tesb_PLC.155.a1
-		PLC = { transfer_state = 291 transfer_state = 289 clear_variable = PLC_dresden_2 }	# significant_number - West Galicia, Galicia-Lodomeria
+		PLC = { transfer_state = 288 transfer_state = 286 clear_variable = PLC_dresden_2 }	# significant_number - West Galicia, Galicia-Lodomeria
 		news_event = { id = tesb_PLC.1551 }
 		ai_chance = {
 			factor = 10
@@ -1409,7 +1409,7 @@ country_event = {
 			create_wargoal = {
 				type = take_core_state
 				target = event_target:galicia_owner
-				generator = { 291 289 }	# significant_number - West Galicia, Galicia-Lodomeria
+				generator = { 288 286 }	# significant_number - West Galicia, Galicia-Lodomeria
 			}
 			clear_variable = PLC_dresden_2 
 		}
