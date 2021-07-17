@@ -1,4 +1,4 @@
-﻿capital = 411
+﻿capital = 408
 set_research_slots = 3
 
 oob = "NOR_OOB"
@@ -134,8 +134,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-	name = "Carl With"
-	desc = "POLITICS_CARL_WITH_DESC"
+	name = "Ogmund Balchen"
+	desc = "POLITICS_OGMUND_BALCHEN_DESC"
 	picture = "gfx/leaders/OC/portrait_SWE_Gustav_V.dds"
 	expire = "1965.1.1"
 	ideology = dictatorship
@@ -152,6 +152,20 @@ create_corps_commander = {
 	logistics_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Olav With"
+		GFX = "gfx/leaders/OC/r56_generic/r56_portrait_generic_operative_europe_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { NOR }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

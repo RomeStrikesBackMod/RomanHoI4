@@ -1,4 +1,4 @@
-﻿capital = 205
+﻿capital = 202
 set_research_slots = 3
 
 oob = "FRA_OOB"
@@ -140,8 +140,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.61
 create_country_leader = {
-	name = "Armand Caillard"
-	desc = "POLITICS_ARMAND_CAILLARD_DESC"
+	name = "Philippe Dubois"
+	desc = "POLITICS_PHILIPPE_DUBOIS_DESC"
 	picture = "gfx/leaders/OC/portrait_FRA_Albert_Francois_Lebrun.dds"
 	expire = "1965.1.1"
 	ideology = minarchism_neutral
@@ -198,6 +198,20 @@ create_navy_leader = {
 	coordination_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Adrien Anthoine"
+		GFX = "gfx/leaders/FRA/portrait_fra_gilbert_renault.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { FRA }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

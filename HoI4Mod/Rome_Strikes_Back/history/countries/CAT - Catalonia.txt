@@ -1,4 +1,4 @@
-﻿capital = 98
+﻿capital = 95
 set_research_slots = 3
 
 oob = "CAT_OOB"
@@ -133,8 +133,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-	name = "Hajjaj al-Isbili"
-	desc = "POLITICS_HAJJAJ_AL-ISBILI_DESC"
+	name = "Mujahid Ibn Tasufin"
+	desc = "POLITICS_MUJAHID_IBN TASUFIN_DESC"
 	picture = "GFX_portrait_SPA_alfonso_xiii"
 	expire = "1965.1.1"
 	ideology = dictatorship
@@ -151,6 +151,20 @@ create_corps_commander = {
 	logistics_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Asbat al-Abbas"
+		GFX = "gfx/leaders/SPA/portrait_spa_juan_pujol.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { CAT }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

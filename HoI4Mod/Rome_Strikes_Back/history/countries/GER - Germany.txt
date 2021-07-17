@@ -1,4 +1,4 @@
-﻿capital = 212
+﻿capital = 209
 set_research_slots = 3
 add_named_threat = { threat = 0.5816 name = infamy }
 
@@ -142,8 +142,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.61
 create_country_leader = {
-	name = "Adolf Buyskes"
-	desc = "POLITICS_ADOLF_BUYSKES_DESC"
+	name = "Hendrik de Grouwe"
+	desc = "POLITICS_HENDRIK_DE GROUWE_DESC"
 	picture = "gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds"
 	expire = "1965.1.1"
 	ideology = liberalism
@@ -200,6 +200,38 @@ create_navy_leader = {
 	coordination_skill = 4
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Gabriel van Braam Houckgeest"
+		GFX = "gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { GER }
+	}
+
+	create_operative_leader = {
+		name = "Hugo Röell"
+		GFX = "gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { GER }
+	}
+
+	create_operative_leader = {
+		name = "Isaac van Culemborg"
+		GFX = "gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { GER }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
