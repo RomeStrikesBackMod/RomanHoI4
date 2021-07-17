@@ -144,8 +144,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-	name = "Girolamme Faicheur"
-	desc = "POLITICS_GIROLAMME_FAICHEUR_DESC"
+	name = "Huget Bonvisy"
+	desc = "POLITICS_HUGET_BONVISY_DESC"
 	picture = "gfx/leaders/FRA/Portrait_France_Charles_De_Gaulle.dds"
 	expire = "1965.1.1"
 	ideology = prussian_const
@@ -202,6 +202,20 @@ create_navy_leader = {
 	coordination_skill = 4
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Girolamme Gally"
+		GFX = "gfx/leaders/FRA/portrait_fra_gilbert_renault.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

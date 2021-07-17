@@ -76,8 +76,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.52
 create_country_leader = {
-	name = "Andruk Shatra"
-	desc = "POLITICS_ANDRUK_SHATRA_DESC"
+	name = "Jamphel Shakabpa"
+	desc = "POLITICS_JAMPHEL_SHAKABPA_DESC"
 	picture = "gfx/leaders/TIB/Portrait_Tibet_Jamphel_Yeshe_Gyaltsen.dds"
 	expire = "1965.1.1"
 	ideology = absolute_monarchy
@@ -104,6 +104,20 @@ create_corps_commander = {
 	logistics_skill = 4
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Tsepon Wangyal"
+		GFX = "gfx/leaders/TUR/portrait_tur_ruzi_nazar.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { TIB }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

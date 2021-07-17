@@ -1,4 +1,5 @@
 ﻿capital = 641
+set_major = yes
 set_research_slots = 4
 
 oob = "UTA_OOB"
@@ -163,8 +164,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.59
 create_country_leader = {
-	name = "William Thompson"
-	desc = "POLITICS_WILLIAM_THOMPSON_DESC"
+	name = "Tahlonteeskee Wolf"
+	desc = "POLITICS_TAHLONTEESKEE_WOLF_DESC"
 	picture = "gfx/leaders/OC/portrait_nat_north_democratic.dds"
 	expire = "1965.1.1"
 	ideology = liberalism
@@ -231,6 +232,21 @@ create_navy_leader = {
 	coordination_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Yona Rogers"
+		GFX = "gfx/leaders/USA/portrait_usa_josephine_baker.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { UTA }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
