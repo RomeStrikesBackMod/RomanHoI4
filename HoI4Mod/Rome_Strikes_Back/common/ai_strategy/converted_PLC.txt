@@ -154,3 +154,29 @@ converted_diplo_strategies_PLC = {
 		value = 59
 	}
 }
+
+dresden_conference_opinion = {
+	reversed = yes
+	enable_reverse = {
+		tag = PLC
+		NOT = {
+			has_completed_focus = PLC_second_dresden_conference
+		}
+	}
+	targets = {
+		RUS RME SCA GRB ITA BRG UKR
+	}
+	enable = {
+		has_opinion = {
+			target = PLC
+			value < 25
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = befriend
+		id = "PLC"
+		value = 200
+	}
+
+}
