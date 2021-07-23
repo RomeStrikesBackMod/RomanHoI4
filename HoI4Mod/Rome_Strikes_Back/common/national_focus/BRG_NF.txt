@@ -19,6 +19,7 @@ focus_tree = {
 
 	#######################
 	### Political  Tree ###
+	## MONARCHIST BRANCH ##
 	#######################
 	
 	focus = {
@@ -36,6 +37,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = BRG_strengthen_monarch
+			add_political_power = 60
 		}
 		ai_will_do = {
 			base = 3
@@ -505,9 +507,11 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 3
 		}
 	}
+	
+	# Shared Diplo Focuses #
 	
 	focus = {
 		id = BRG_pressure_flanders
@@ -565,7 +569,7 @@ focus_tree = {
 			}
 			OR = {
 				FLD = { is_subject_of = BRG }
-				59 = { is_owned_by = BRG } # significant_number - Zeeland
+				59 = { is_controlled_by = BRG } # significant_number - Zeeland
 			}
 		}
 		bypass = {
@@ -608,7 +612,7 @@ focus_tree = {
 			}
 			OR = {
 				FLD = { is_free_ally_or_subject_of_ROOT = yes }
-				59 = { is_owned_by = BRG }	# significant_number - Zeeland
+				59 = { is_controlled_by = BRG }	# significant_number - Zeeland
 			}
 		}
 		bypass = {
@@ -642,7 +646,7 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				203 = { is_owned_by = BRG }	# significant_number - Loire
+				203 = { is_controlled_by = BRG }	# significant_number - Loire
 			}
 		}
 		bypass = {
@@ -684,7 +688,7 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				202 = { is_owned_by = BRG }	# significant_number - Ile de France
+				202 = { is_controlled_by = BRG }	# significant_number - Ile de France
 			}
 		}
 		bypass = {
@@ -732,7 +736,7 @@ focus_tree = {
 			}
 			OR = {
 				FRA = { is_free_ally_or_subject_of_ROOT = yes }
-				196 = { is_owned_by = BRG }
+				202 = { is_controlled_by = BRG }	# significant_number - Ile de France
 			}
 		}
 		bypass = {
@@ -773,7 +777,7 @@ focus_tree = {
 			}
 			OR = {
 				AQI = { is_free_ally_or_subject_of_ROOT = yes }
-				20 = { is_owned_by = BRG } # significant_number - Languedoc
+				20 = { is_controlled_by = BRG } # significant_number - Languedoc
 			}
 		}
 		bypass = {
@@ -798,6 +802,10 @@ focus_tree = {
 		}
 	}
 
+	#####################
+	# DEMOCRATIC BRANCH #
+	#####################
+
 	focus = {
 		id = BRG_democratize_government
 		icon = GFX_goal_support_democracy
@@ -814,6 +822,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = BRG_strengthen_democracy
+			add_political_power = 30
 		}
 		ai_will_do = {
 			base = 3
@@ -972,9 +981,9 @@ focus_tree = {
 		completion_reward = {
 			every_country = {
 				limit = {
-					is_potential_friend_of_ROOT = yes
 					OR = { tag = FRA tag = FLD tag = AQI tag = BRI }
 					NOT = { has_government = democratic }
+					is_potential_friend_of_ROOT = yes
 				}
 				add_timed_idea = {
 					idea = BRG_democratic_influence
@@ -1005,7 +1014,7 @@ focus_tree = {
 			set_rule = {
 				can_create_factions = yes
 			}
-			create_faction = "The Gallic Entente"
+			create_faction = "Gallic Entente"
 			#add_ideas = BRG_strengthen_democracy
 		}
 		ai_will_do = {

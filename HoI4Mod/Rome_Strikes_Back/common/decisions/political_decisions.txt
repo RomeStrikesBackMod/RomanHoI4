@@ -433,6 +433,8 @@ fascism_on_the_rise = {
 		visible = {
 			OR = {
 				has_idea_with_trait = fascism_minister
+				has_idea = PLC_supporting_fascists
+				has_idea = RME_align_TAG_fascism
 			}
 			NOT = { has_country_flag = open_up_political_discourse_fascism }
 			NOT = { has_government = fascism }
@@ -1483,6 +1485,9 @@ democratic_on_the_rise = {
 		visible = {
 			OR = {
 				has_idea_with_trait = democratic_minister
+				has_idea = BRG_democratic_influence
+				has_idea = RME_align_TAG_democratic
+				has_idea = RME_restore_rome_other
 			}
 			NOT = { has_government = democratic }
 		}
@@ -2594,7 +2599,10 @@ absolutist_on_the_rise = {
 		}
 
 		visible = {
-			has_idea_with_trait = absolutist_minister
+			OR = {
+				has_idea_with_trait = absolutist_minister
+				has_idea = RME_align_TAG_absolutist
+			}
 			NOT = { has_country_flag = open_up_political_discourse_absolutist }
 			NOT = { has_government = absolutist }
 		}

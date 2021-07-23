@@ -1,1 +1,220 @@
 # At the moment, cleaned up. May be recreated in the future.
+form_gallia_category = {
+	form_gallia = {
+		icon = generic_form_nation
+		allowed = {
+			OR = {
+				original_tag = BRG
+				original_tag = FLD
+				original_tag = FRA
+				original_tag = BRI
+				original_tag = AQI
+			}
+		}
+		visible = {
+			NOT = { has_global_flag = formed_gallia_flag }
+		}
+		available = {
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = form_gallia_req_states
+				all_state = {
+					OR = {
+						NOT = {
+							has_state_flag = original_owner_BRG
+							has_state_flag = original_owner_FLD
+							has_state_flag = original_owner_FRA
+							has_state_flag = original_owner_BRI
+							has_state_flag = original_owner_AQI
+						}
+						is_controlled_by_ROOT_or_subject = yes
+					}
+				}
+			}
+		}
+		complete_effect = {
+			set_global_flag = formed_gallia_flag
+			set_cosmetic_tag = Gallia
+			custom_effect_tooltip = form_gallia_subjects
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						OR = {
+							original_tag = BRG
+							original_tag = FLD
+							original_tag = FRA
+							original_tag = BRI
+							original_tag = AQI
+						}
+						is_subject_of = ROOT
+					}
+					ROOT = {
+						annex_country = {
+							target = PREV
+							transfer_troops = yes
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = form_gallia_core_states
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							has_state_flag = original_owner_BRG
+							has_state_flag = original_owner_FLD
+							has_state_flag = original_owner_FRA
+							has_state_flag = original_owner_BRI
+							has_state_flag = original_owner_AQI
+						}
+					}
+					add_core_of = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	form_gallia_diplomatic = {
+		icon = generic_form_nation
+		allowed = {
+			OR = {
+				original_tag = BRG
+				original_tag = FLD
+				original_tag = FRA
+				original_tag = BRI
+				original_tag = AQI
+			}
+		}
+		visible = {
+			NOT = {
+				has_global_flag = formed_gallia_flag
+			}
+		}
+		available = {
+			is_subject = no
+			is_faction_leader = yes
+			if = {
+				limit = {
+					NOT = { original_tag = BRG }
+					BRG = { exists = yes has_capitulated = no }
+				}
+				BRG = { is_free_ally_or_subject_of_ROOT = yes }
+			}
+			if = {
+				limit = {
+					NOT = { original_tag = FLD }
+					FLD = { exists = yes has_capitulated = no }
+				}
+				FLD = { is_free_ally_or_subject_of_ROOT = yes }
+			}
+			if = {
+				limit = {
+					NOT = { original_tag = FRA }
+					FRA = { exists = yes has_capitulated = no }
+				}
+				FRA = { is_free_ally_or_subject_of_ROOT = yes }
+			}
+			if = {
+				limit = {
+					NOT = { original_tag = BRI }
+					BRI = { exists = yes has_capitulated = no }
+				}
+				BRI = { is_free_ally_or_subject_of_ROOT = yes }
+			}
+			if = {
+				limit = {
+					NOT = { original_tag = AQI }
+					AQI = { exists = yes has_capitulated = no }
+				}
+				AQI = { is_free_ally_or_subject_of_ROOT = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = form_gallia_req_states_diplo
+				all_state = {
+					OR = {
+						NOT = {
+							has_state_flag = original_owner_BRG
+							has_state_flag = original_owner_FLD
+							has_state_flag = original_owner_FRA
+							has_state_flag = original_owner_BRI
+							has_state_flag = original_owner_AQI
+						}
+						AND = {
+							is_controlled_by_ROOT_or_ally = yes
+							controller = {
+								OR = {
+									original_tag = BRG
+									original_tag = FLD
+									original_tag = FRA
+									original_tag = BRI
+									original_tag = AQI
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		days_remove = 7
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = gallia_annex_BRG
+					has_country_flag = gallia_annex_FLD
+					has_country_flag = gallia_annex_FRA
+					has_country_flag = gallia_annex_BRI
+					has_country_flag = gallia_annex_AQI
+				}
+				set_cosmetic_tag = Gallia
+				set_global_flag = formed_gallia_flag
+				hidden_effect = {
+					every_state = {
+						limit = {
+							has_state_flag = original_owner_@PREV
+						}
+						add_core_of = PREV
+					}
+				}
+			}
+		}
+		complete_effect = {
+			set_country_flag = gallia_annex_@ROOT
+			custom_effect_tooltip = form_gallia_allies
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						OR = {
+							original_tag = BRG
+							original_tag = FLD
+							original_tag = FRA
+							original_tag = BRI
+							original_tag = AQI
+						}
+					}
+					if = {
+						limit = {
+							is_free_ally_or_subject_of_ROOT = yes
+						}
+						country_event = { id = tesb_BRG.10 }
+						else = {
+							ROOT = {
+								set_country_flag = gallia_annex_@PREV
+							}
+							every_state = {
+								limit = {
+									has_state_flag = original_owner_@PREV
+								}
+								add_core_of = ROOT
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}

@@ -26,7 +26,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
-			always = yes
+			is_subject = no
 		}
 		select_effect = {
 			set_variable = { unowned_cores_@GER = 4 }
@@ -45,6 +45,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				factor = 0
+				date < 1939.1.1
+			}
 		}
 	}
 
@@ -426,6 +430,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 7
+			modifier = {
+				factor = 0
+				date < 1939.1.1
+			}
 			modifier = {
 				factor = 0
 				has_opinion = { target = SCO value > 0 }

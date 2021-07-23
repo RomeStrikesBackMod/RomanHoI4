@@ -26,7 +26,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
-			always = yes
+			is_subject = no
 		}
 		select_effect = {
 			set_variable = { unowned_cores_@BRG = 30 }
@@ -45,6 +45,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				factor = 0
+				date < 1939.1.1
+			}
 		}
 	}
 
@@ -458,7 +462,7 @@ focus_tree = {
 		relative_position_id = border_disputes_conquerAQIFRA
 		cost = 4
 		available = {
-			date > 1938.1.1
+			date > 1939.1.1
 			has_war = no
 			not_in_border_conflict = yes
 			FRA = {
