@@ -69,27 +69,6 @@ set_convoys = 10
 add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 297 producer = IND }
 add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 6270 producer = IND }
 
-# DIPLOMACY
-if = {
-    limit = {
-        has_dlc = "Together for Victory"
-    }
-    set_autonomy = {
-        target = X00
-        autonomous_state = autonomy_dominion
-        freedom_level = 0.4
-    }
-    else = {
-        puppet = X00
-    }
-}
-
-if = {
-    limit = {has_dlc = "Together for Victory" }
-
-    add_to_tech_sharing_group = IND_research
-}
-
 set_politics = {
     ruling_party = democratic
     last_election = "1934.3.25"
@@ -103,6 +82,27 @@ set_popularities = {
 	democratic = 50
 	fascism = 10
 	neutrality = 5
+}
+
+# DIPLOMACY
+if = {
+    limit = {
+        has_dlc = "Together for Victory"
+    }
+    set_autonomy = {
+        target = X03
+        autonomous_state = autonomy_integrated_puppet
+        freedom_level = 0.4
+    }
+    else = {
+        puppet = X03
+    }
+}
+
+if = {
+    limit = {has_dlc = "Together for Victory" }
+
+    add_to_tech_sharing_group = IND_research
 }
 
 add_opinion_modifier = { target = ADA modifier = negative_200 }
@@ -161,9 +161,9 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.62
 create_country_leader = {
-	name = "Veerapandiya Sitaramaraju"
-	desc = "POLITICS_VEERAPANDIYA_SITARAMARAJU_DESC"
-	picture = "GFX_RAJ_pattabhi_sitaramayya"
+	name = "Venkatadri Sriramulu"
+	desc = "POLITICS_VENKATADRI_SRIRAMULU_DESC"
+	picture = "gfx/leaders/Indian/Portrait_BHC_Mohandas_Karamchand_Gandhi.tga"
 	expire = "1965.1.1"
 	ideology = conservatism
 	traits = {
@@ -229,6 +229,116 @@ create_navy_leader = {
 	coordination_skill = 1
 }
 
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_operative_leader = {
+		name = "Indira Naidu"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_female_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Indira Kattabomman"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_female_2.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Indira Sriramulu"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_female_3.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Indira Veeresalingam"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_female_4.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Indira Kattabomman"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_female_5.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Indira Deshmukh"
+		GFX = "gfx/leaders/RAJ/portrait_raj_noor_inayat_khan.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Vasireddy Veeresalingam"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_male_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Narasimha Kattabomman"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_male_2.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Keneganti Sriramulu"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_male_3.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Narasimha Naidu"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_male_4.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { IND }
+	}
+
+	create_operative_leader = {
+		name = "Vasireddy Veeresalingam"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_male_5.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { IND }
+	}
+
+}
 ### VARIANTS ###
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

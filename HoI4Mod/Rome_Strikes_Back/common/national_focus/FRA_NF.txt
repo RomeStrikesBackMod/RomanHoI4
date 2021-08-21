@@ -59,6 +59,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresFRA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = BRG
 				is_in_faction_with = BRG
 				NOT = { BRG = { any_owned_state = { is_core_of = ROOT } } }
@@ -119,6 +120,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterFRABRG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = BRG
 				is_in_faction_with = BRG
 				NOT = { BRG = { any_owned_state = { is_core_of = ROOT } } }
@@ -185,6 +187,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportFRABRG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = BRG
 				is_in_faction_with = BRG
 				NOT = { BRG = { any_owned_state = { is_core_of = ROOT } } }
@@ -254,6 +257,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warFRABRG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = BRG
 				is_in_faction_with = BRG
 				NOT = { BRG = { any_owned_state = { is_core_of = ROOT } } }
@@ -315,6 +319,7 @@ focus_tree = {
 		prerequisite = { focus = war_planFRABRG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = BRG
 				is_in_faction_with = BRG
 				NOT = { BRG = { any_owned_state = { is_core_of = ROOT } } }
@@ -332,7 +337,7 @@ focus_tree = {
 			declare_war_on = {
 				target = BRG
 				type = take_core_state
-				generator = core_states
+				generator = { 70 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -402,6 +407,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			BRI = {
@@ -462,6 +468,7 @@ focus_tree = {
 		relative_position_id = border_disputes_conquerFRABRI
 		cost = 4
 		available = {
+			is_subject = no
 			date > 1937.2.1
 			has_war = no
 			not_in_border_conflict = yes
@@ -615,6 +622,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = AQI value < 0 }
@@ -682,6 +690,7 @@ focus_tree = {
 		relative_position_id = border_disputes_nwFRAAQI
 		cost = 4
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = AQI value < 0 }
@@ -838,6 +847,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = CAT value < 0 }
@@ -905,6 +915,7 @@ focus_tree = {
 		relative_position_id = border_disputes_nwFRACAT
 		cost = 4
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = CAT value < 0 }
@@ -1061,6 +1072,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = FLD value < 0 }
@@ -1128,6 +1140,7 @@ focus_tree = {
 		relative_position_id = border_disputes_nwFRAFLD
 		cost = 4
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = FLD value < 0 }

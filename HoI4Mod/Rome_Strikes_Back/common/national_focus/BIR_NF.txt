@@ -55,6 +55,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresBIR }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = ARG
 				is_in_faction_with = ARG
 				NOT = { ARG = { any_owned_state = { is_core_of = ROOT } } }
@@ -64,6 +65,7 @@ focus_tree = {
 		y = 1
 		cost = 10
 		available = {
+			date > 1940.5.5
 			NOT = { is_in_faction_with = ARG }
 			NOT = { has_war_with = ARG }
 		}
@@ -115,6 +117,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterBIRARG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = ARG
 				is_in_faction_with = ARG
 				NOT = { ARG = { any_owned_state = { is_core_of = ROOT } } }
@@ -125,6 +128,7 @@ focus_tree = {
 		relative_position_id = raise_matterBIRARG
 		cost = 10
 		available = {
+			date > 1940.5.5
 			NOT = { is_in_faction_with = ARG }
 			NOT = { has_war_with = ARG }
 		}
@@ -181,6 +185,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportBIRARG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = ARG
 				is_in_faction_with = ARG
 				NOT = { ARG = { any_owned_state = { is_core_of = ROOT } } }
@@ -192,6 +197,7 @@ focus_tree = {
 		relative_position_id = build_public_supportBIRARG
 		cost = 3
 		available = {
+			date > 1940.5.5
 			NOT = { is_in_faction_with = ARG }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
@@ -250,6 +256,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warBIRARG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = ARG
 				is_in_faction_with = ARG
 				NOT = { ARG = { any_owned_state = { is_core_of = ROOT } } }
@@ -260,6 +267,7 @@ focus_tree = {
 		relative_position_id = territory_or_warBIRARG
 		cost = 4
 		available = {
+			date > 1940.5.5
 			NOT = { is_in_faction_with = ARG }
 			has_war = no
 		}
@@ -311,6 +319,7 @@ focus_tree = {
 		prerequisite = { focus = war_planBIRARG }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = ARG
 				is_in_faction_with = ARG
 				NOT = { ARG = { any_owned_state = { is_core_of = ROOT } } }
@@ -321,6 +330,7 @@ focus_tree = {
 		relative_position_id = war_planBIRARG
 		cost = 3
 		available = {
+			date > 1940.5.5
 			NOT = { is_in_faction_with = ARG }
 			has_war = no
 		}
@@ -328,7 +338,7 @@ focus_tree = {
 			declare_war_on = {
 				target = ARG
 				type = take_core_state
-				generator = core_states
+				generator = { 39 40 41 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}

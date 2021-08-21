@@ -59,6 +59,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresASS }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -119,6 +120,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterASSIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -185,6 +187,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportASSIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -254,6 +257,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warASSIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -315,6 +319,7 @@ focus_tree = {
 		prerequisite = { focus = war_planASSIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -332,7 +337,7 @@ focus_tree = {
 			declare_war_on = {
 				target = IND
 				type = take_core_state
-				generator = core_states
+				generator = { 270 271 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -402,6 +407,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = TIB value < 0 }
@@ -469,6 +475,7 @@ focus_tree = {
 		relative_position_id = border_disputes_nwASSTIB
 		cost = 4
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = TIB value < 0 }

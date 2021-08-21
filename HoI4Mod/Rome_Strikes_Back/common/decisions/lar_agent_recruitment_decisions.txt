@@ -695,8 +695,10 @@ lar_local_recruitment = {
 		target_trigger = {
 			FROM = {
 				is_on_continent = asia
-				NOT = {
-					has_country_flag = conv_south_asia
+				OWNER = {
+					NOT = {
+						has_country_flag = conv_south_asia
+					}
 				}
 				OR = {
 					AND = {
@@ -976,7 +978,7 @@ lar_local_recruitment = {
 
 		target_trigger = {
 			FROM = {
-				has_country_flag = conv_south_asia
+				OWNER = { has_country_flag = conv_south_asia }
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -1003,11 +1005,8 @@ lar_local_recruitment = {
 		visible = {
 			OR = {
 				has_country_flag = india_recruitment_unlocked
-				capital_scope = {
-					is_on_continent = asia
-				}
+				has_country_flag = conv_south_asia
 			}
-			has_country_flag = conv_south_asia
 			NOT = { has_country_flag = india_recruitment_in_process }
 		}
 

@@ -29,10 +29,10 @@ focus_tree = {
 			is_subject = no
 		}
 		select_effect = {
-			set_variable = { unowned_cores_@GER = 57 }
+			set_variable = { unowned_cores_@GER = 67 }
 			set_variable = { unowned_cores_@HUN = 30 }
-			set_variable = { revanchism = 0.000870 }
-			set_variable = { revanchism_stab = -0.000087 }
+			set_variable = { revanchism = 0.000970 }
+			set_variable = { revanchism_stab = -0.000097 }
 			add_dynamic_modifier = { modifier = revanchism }
 			add_dynamic_modifier = { modifier = revanchism_fasc }
 		}
@@ -60,6 +60,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresBAV }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -75,16 +76,16 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000057 }
+				add_popularity = { ideology = fascism popularity = 0.000067 }
 			}
 			else = {
-				add_popularity = { ideology = fascism popularity = -0.000057 }
+				add_popularity = { ideology = fascism popularity = -0.000067 }
 			}
 			add_political_power = 150
 			add_timed_idea = { idea = generic_military_industry days = 180 }
 		}
 		ai_will_do = {
-			factor = 5
+			factor = 6
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -120,6 +121,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterBAVGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -136,17 +138,17 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000057 }
+				add_popularity = { ideology = fascism popularity = 0.000067 }
 			}
 			else = {
-				add_popularity = { ideology = fascism popularity = -0.000057 }
+				add_popularity = { ideology = fascism popularity = -0.000067 }
 			}
-			add_war_support = 0.000570
+			add_war_support = 0.000670
 			add_political_power = 150
 			add_timed_idea = { idea = generic_recruit_centers days = 180 }
 		}
 		ai_will_do = {
-			factor = 5
+			factor = 6
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -186,6 +188,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportBAVGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -220,7 +223,7 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 5
+			factor = 6
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
@@ -255,6 +258,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warBAVGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -281,7 +285,7 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = war_plan_NF_threat }
 		}
 		ai_will_do = {
-			factor = 5
+			factor = 6
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
@@ -316,6 +320,7 @@ focus_tree = {
 		prerequisite = { focus = war_planBAVGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -333,12 +338,12 @@ focus_tree = {
 			declare_war_on = {
 				target = GER
 				type = take_core_state
-				generator = core_states
+				generator = { 212 213 214 223 224 225 226 227 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 57
+			factor = 67
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
@@ -386,8 +391,8 @@ focus_tree = {
 			add_ai_strategy = { type = prepare_for_war id = GER value = -1000 }
 			GER = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
 			custom_effect_tooltip = decrease_revanchism
-			subtract_from_variable = { revanchism = 0.000285 }
-			add_to_variable = { revanchism_stab = 0.000028 }
+			subtract_from_variable = { revanchism = 0.000335 }
+			add_to_variable = { revanchism_stab = 0.000034 }
 			add_ideas = generic_national_unification
 		}
 		ai_will_do = {
@@ -402,6 +407,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresBAV }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -462,6 +468,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterBAVHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -528,6 +535,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportBAVHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -597,6 +605,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warBAVHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -658,6 +667,7 @@ focus_tree = {
 		prerequisite = { focus = war_planBAVHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -675,7 +685,7 @@ focus_tree = {
 			declare_war_on = {
 				target = HUN
 				type = take_core_state
-				generator = core_states
+				generator = { 283 284 287 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -745,6 +755,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			BRG = {
@@ -805,6 +816,7 @@ focus_tree = {
 		relative_position_id = border_disputes_conquerBAVBRG
 		cost = 4
 		available = {
+			is_subject = no
 			date > 1938.2.1
 			has_war = no
 			not_in_border_conflict = yes
@@ -958,6 +970,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			SWI = {
@@ -1018,6 +1031,7 @@ focus_tree = {
 		relative_position_id = border_disputes_conquerBAVSWI
 		cost = 4
 		available = {
+			is_subject = no
 			date > 1938.2.1
 			has_war = no
 			not_in_border_conflict = yes
@@ -1171,6 +1185,7 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = CRO value < 0 }
@@ -1238,6 +1253,7 @@ focus_tree = {
 		relative_position_id = border_disputes_nwBAVCRO
 		cost = 4
 		available = {
+			is_subject = no
 			has_war = no
 			not_in_border_conflict = yes
 			has_opinion = { target = CRO value < 0 }
