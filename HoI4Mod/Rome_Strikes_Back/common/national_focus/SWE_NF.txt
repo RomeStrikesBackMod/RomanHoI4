@@ -29,9 +29,9 @@ focus_tree = {
 			is_subject = no
 		}
 		select_effect = {
-			set_variable = { unowned_cores_@SCA = 32 }
-			set_variable = { revanchism = 0.000320 }
-			set_variable = { revanchism_stab = -0.000032 }
+			set_variable = { unowned_cores_@SCA = 42 }
+			set_variable = { revanchism = 0.000420 }
+			set_variable = { revanchism_stab = -0.000042 }
 			add_dynamic_modifier = { modifier = revanchism }
 			add_dynamic_modifier = { modifier = revanchism_fasc }
 		}
@@ -45,10 +45,6 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 10
-			modifier = {
-				factor = 0
-				date < 1939.1.1
-			}
 		}
 	}
 
@@ -59,6 +55,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresSWE }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -74,16 +71,16 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000032 }
+				add_popularity = { ideology = fascism popularity = 0.000042 }
 			}
 			else = {
-				add_popularity = { ideology = fascism popularity = -0.000032 }
+				add_popularity = { ideology = fascism popularity = -0.000042 }
 			}
 			add_political_power = 150
 			add_timed_idea = { idea = generic_military_industry days = 180 }
 		}
 		ai_will_do = {
-			factor = 3
+			factor = 4
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -92,6 +89,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				SCA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -119,6 +123,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterSWESCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -135,17 +140,17 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000032 }
+				add_popularity = { ideology = fascism popularity = 0.000042 }
 			}
 			else = {
-				add_popularity = { ideology = fascism popularity = -0.000032 }
+				add_popularity = { ideology = fascism popularity = -0.000042 }
 			}
-			add_war_support = 0.000320
+			add_war_support = 0.000420
 			add_political_power = 150
 			add_timed_idea = { idea = generic_recruit_centers days = 180 }
 		}
 		ai_will_do = {
-			factor = 3
+			factor = 4
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -154,6 +159,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				SCA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -185,6 +197,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportSWESCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -219,10 +232,17 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 3
+			factor = 4
 			modifier = {
 				factor = 0
 				SCA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -254,6 +274,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warSWESCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -280,10 +301,17 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = war_plan_NF_threat }
 		}
 		ai_will_do = {
-			factor = 3
+			factor = 4
 			modifier = {
 				factor = 0
 				SCA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -315,6 +343,7 @@ focus_tree = {
 		prerequisite = { focus = war_planSWESCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -332,15 +361,22 @@ focus_tree = {
 			declare_war_on = {
 				target = SCA
 				type = take_core_state
-				generator = core_states
+				generator = { 555 556 557 560 561 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 32
+			factor = 42
 			modifier = {
 				factor = 0
 				SCA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -385,8 +421,8 @@ focus_tree = {
 			add_ai_strategy = { type = prepare_for_war id = SCA value = -1000 }
 			SCA = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
 			custom_effect_tooltip = decrease_revanchism
-			subtract_from_variable = { revanchism = 0.000160 }
-			add_to_variable = { revanchism_stab = 0.000016 }
+			subtract_from_variable = { revanchism = 0.000210 }
+			add_to_variable = { revanchism_stab = 0.000021 }
 			add_ideas = generic_national_unification
 		}
 		ai_will_do = {

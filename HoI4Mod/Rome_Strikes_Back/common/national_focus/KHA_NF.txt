@@ -1,12 +1,12 @@
 focus_tree = {
-	id = NEP_focus
+	id = KHA_focus
 	
 	country = {
 		factor = 0
 		
 		modifier = {
 			add = 10
-			tag = NEP
+			tag = KHA
 		}
 	}
 	
@@ -19,7 +19,7 @@ focus_tree = {
 	shared_focus = political_effort
 
 	focus = {
-		id = border_disputesNEPIND
+		id = border_disputesKHAIND
 		icon = GFX_goal_generic_more_territorial_claims
 		text = border_disputesIND
 		x = 26
@@ -80,16 +80,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = prepare_for_warNEPIND
+		id = prepare_for_warKHAIND
 		icon = GFX_goal_generic_position_armies
 		text = prepare_for_warIND
-		prerequisite = { focus = border_disputesNEPIND }
+		prerequisite = { focus = border_disputesKHAIND }
 		bypass = {
 			has_war_with = IND
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesNEPIND
+		relative_position_id = border_disputesKHAIND
 		cost = 4
 		available = {
 			date > 1938.2.1
@@ -143,16 +143,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = neighbor_warNEPIND
+		id = neighbor_warKHAIND
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		text = neighbor_warIND
-		prerequisite = { focus = prepare_for_warNEPIND }
+		prerequisite = { focus = prepare_for_warKHAIND }
 		bypass = {
 			has_war_with = IND
 		}
 		x = 0
 		y = 1
-		relative_position_id = prepare_for_warNEPIND
+		relative_position_id = prepare_for_warKHAIND
 		cost = 3
 		available = {
 			has_war = no
@@ -161,7 +161,7 @@ focus_tree = {
 			declare_war_on = {
 				target = IND
 				type = take_state_focus
-				generator = { 261 }
+				generator = { 245 252 }
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}

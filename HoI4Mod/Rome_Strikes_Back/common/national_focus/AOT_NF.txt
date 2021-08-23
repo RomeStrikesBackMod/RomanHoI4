@@ -1,12 +1,12 @@
 focus_tree = {
-	id = ADA_focus
+	id = AOT_focus
 	
 	country = {
 		factor = 0
 		
 		modifier = {
 			add = 10
-			tag = ADA
+			tag = AOT
 		}
 	}
 	
@@ -19,17 +19,16 @@ focus_tree = {
 	shared_focus = political_effort
 
 	focus = {
-		id = border_disputesADAETH
+		id = border_disputesAOTCAN
 		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesETH
+		text = border_disputesCAN
 		x = 26
 		y = 0
 		cost = 10
 		available = {
-			date > 1936.8.17
 			is_subject = no
 			has_war = no
-			ETH = {
+			CAN = {
 				exists = yes
 				not_allies_or_subjects = yes
 				potential_take_state_target = yes
@@ -42,16 +41,16 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_opinion = { target = ETH value > 0 }
+				has_opinion = { target = CAN value > 0 }
 			}
 			modifier = {
 				factor = 0
-				ETH = { in_weak_faction = no }
+				CAN = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = ETH
+					has_subject = CAN
 					in_weak_faction = no
 				}
 			}
@@ -75,28 +74,28 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 2
-				ETH = { surrender_progress > 0.2 }
+				CAN = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = prepare_for_warADAETH
+		id = prepare_for_warAOTCAN
 		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warETH
-		prerequisite = { focus = border_disputesADAETH }
+		text = prepare_for_warCAN
+		prerequisite = { focus = border_disputesAOTCAN }
 		bypass = {
-			has_war_with = ETH
+			has_war_with = CAN
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesADAETH
+		relative_position_id = border_disputesAOTCAN
 		cost = 4
 		available = {
-			date > 1936.8.17
+			date > 1938.2.1
 			is_subject = no
 			has_war = no
-			ETH = { exists = yes }
+			CAN = { exists = yes }
 		}
 		completion_reward = {
 			add_manpower = 10000
@@ -105,7 +104,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_opinion = { target = ETH value > 0 }
+				has_opinion = { target = CAN value > 0 }
 			}
 			modifier = {
 				factor = 0
@@ -127,43 +126,42 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				ETH = { in_weak_faction = no }
+				CAN = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = ETH
+					has_subject = CAN
 					in_weak_faction = no
 				}
 			}
 			modifier = {
 				factor = 2
-				ETH = { surrender_progress > 0.2 }
+				CAN = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = neighbor_warADAETH
+		id = neighbor_warAOTCAN
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warETH
-		prerequisite = { focus = prepare_for_warADAETH }
+		text = neighbor_warCAN
+		prerequisite = { focus = prepare_for_warAOTCAN }
 		bypass = {
-			has_war_with = ETH
+			has_war_with = CAN
 		}
 		x = 0
 		y = 1
-		relative_position_id = prepare_for_warADAETH
+		relative_position_id = prepare_for_warAOTCAN
 		cost = 3
 		available = {
-			date > 1936.8.17
 			has_war = no
 		}
 		completion_reward = {
 			declare_war_on = {
-				target = ETH
+				target = CAN
 				type = take_state_focus
-				generator = { 183 184 }
+				generator = claimed_states
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
@@ -173,16 +171,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = border_disputesADAJAV
+		id = border_disputesAOTUTA
 		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesJAV
+		text = border_disputesUTA
 		x = 28
 		y = 0
 		cost = 10
 		available = {
 			is_subject = no
 			has_war = no
-			JAV = {
+			UTA = {
 				exists = yes
 				not_allies_or_subjects = yes
 				potential_take_state_target = yes
@@ -195,16 +193,16 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
-				has_opinion = { target = JAV value > 0 }
+				has_opinion = { target = UTA value > 0 }
 			}
 			modifier = {
 				factor = 0
-				JAV = { in_weak_faction = no }
+				UTA = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = JAV
+					has_subject = UTA
 					in_weak_faction = no
 				}
 			}
@@ -228,28 +226,28 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 2
-				JAV = { surrender_progress > 0.2 }
+				UTA = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = prepare_for_warADAJAV
+		id = prepare_for_warAOTUTA
 		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warJAV
-		prerequisite = { focus = border_disputesADAJAV }
+		text = prepare_for_warUTA
+		prerequisite = { focus = border_disputesAOTUTA }
 		bypass = {
-			has_war_with = JAV
+			has_war_with = UTA
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesADAJAV
+		relative_position_id = border_disputesAOTUTA
 		cost = 4
 		available = {
-			date > 1938.2.1
+			date > 1937.12.1
 			is_subject = no
 			has_war = no
-			JAV = { exists = yes }
+			UTA = { exists = yes }
 		}
 		completion_reward = {
 			add_manpower = 10000
@@ -258,7 +256,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_opinion = { target = JAV value > 0 }
+				has_opinion = { target = UTA value > 0 }
 			}
 			modifier = {
 				factor = 0
@@ -280,42 +278,42 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				JAV = { in_weak_faction = no }
+				UTA = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = JAV
+					has_subject = UTA
 					in_weak_faction = no
 				}
 			}
 			modifier = {
 				factor = 2
-				JAV = { surrender_progress > 0.2 }
+				UTA = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = neighbor_warADAJAV
+		id = neighbor_warAOTUTA
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warJAV
-		prerequisite = { focus = prepare_for_warADAJAV }
+		text = neighbor_warUTA
+		prerequisite = { focus = prepare_for_warAOTUTA }
 		bypass = {
-			has_war_with = JAV
+			has_war_with = UTA
 		}
 		x = 0
 		y = 1
-		relative_position_id = prepare_for_warADAJAV
+		relative_position_id = prepare_for_warAOTUTA
 		cost = 3
 		available = {
 			has_war = no
 		}
 		completion_reward = {
 			declare_war_on = {
-				target = JAV
+				target = UTA
 				type = take_state_focus
-				generator = { 320 }
+				generator = claimed_states
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}

@@ -1,12 +1,12 @@
 focus_tree = {
-	id = CHG_focus
+	id = HAW_focus
 	
 	country = {
 		factor = 0
 		
 		modifier = {
 			add = 10
-			tag = CHG
+			tag = HAW
 		}
 	}
 	
@@ -19,16 +19,16 @@ focus_tree = {
 	shared_focus = political_effort
 
 	focus = {
-		id = border_disputesCHGMNG
+		id = border_disputesHAWIRN
 		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesMNG
+		text = border_disputesIRN
 		x = 26
 		y = 0
 		cost = 10
 		available = {
 			is_subject = no
 			has_war = no
-			MNG = {
+			IRN = {
 				exists = yes
 				not_allies_or_subjects = yes
 				potential_take_state_target = yes
@@ -41,16 +41,16 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_opinion = { target = MNG value > 0 }
+				has_opinion = { target = IRN value > 0 }
 			}
 			modifier = {
 				factor = 0
-				MNG = { in_weak_faction = no }
+				IRN = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = MNG
+					has_subject = IRN
 					in_weak_faction = no
 				}
 			}
@@ -74,28 +74,28 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 2
-				MNG = { surrender_progress > 0.2 }
+				IRN = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = prepare_for_warCHGMNG
+		id = prepare_for_warHAWIRN
 		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warMNG
-		prerequisite = { focus = border_disputesCHGMNG }
+		text = prepare_for_warIRN
+		prerequisite = { focus = border_disputesHAWIRN }
 		bypass = {
-			has_war_with = MNG
+			has_war_with = IRN
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesCHGMNG
+		relative_position_id = border_disputesHAWIRN
 		cost = 4
 		available = {
-			date > 1937.4.1
+			date > 1938.2.1
 			is_subject = no
 			has_war = no
-			MNG = { exists = yes }
+			IRN = { exists = yes }
 		}
 		completion_reward = {
 			add_manpower = 10000
@@ -104,7 +104,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_opinion = { target = MNG value > 0 }
+				has_opinion = { target = IRN value > 0 }
 			}
 			modifier = {
 				factor = 0
@@ -126,42 +126,42 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				MNG = { in_weak_faction = no }
+				IRN = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = MNG
+					has_subject = IRN
 					in_weak_faction = no
 				}
 			}
 			modifier = {
 				factor = 2
-				MNG = { surrender_progress > 0.2 }
+				IRN = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = neighbor_warCHGMNG
+		id = neighbor_warHAWIRN
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warMNG
-		prerequisite = { focus = prepare_for_warCHGMNG }
+		text = neighbor_warIRN
+		prerequisite = { focus = prepare_for_warHAWIRN }
 		bypass = {
-			has_war_with = MNG
+			has_war_with = IRN
 		}
 		x = 0
 		y = 1
-		relative_position_id = prepare_for_warCHGMNG
+		relative_position_id = prepare_for_warHAWIRN
 		cost = 3
 		available = {
 			has_war = no
 		}
 		completion_reward = {
 			declare_war_on = {
-				target = MNG
+				target = IRN
 				type = take_state_focus
-				generator = { 390 396 }
+				generator = claimed_states
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
@@ -171,16 +171,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = border_disputesCHGKHI
+		id = border_disputesHAWAST
 		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesKHI
+		text = border_disputesAST
 		x = 28
 		y = 0
 		cost = 10
 		available = {
 			is_subject = no
 			has_war = no
-			KHI = {
+			AST = {
 				exists = yes
 				not_allies_or_subjects = yes
 				potential_take_state_target = yes
@@ -190,19 +190,19 @@ focus_tree = {
 			add_manpower = 10000
 		}
 		ai_will_do = {
-			factor = 5
+			factor = 3
 			modifier = {
 				factor = 0
-				has_opinion = { target = KHI value > 0 }
+				has_opinion = { target = AST value > 0 }
 			}
 			modifier = {
 				factor = 0
-				KHI = { in_weak_faction = no }
+				AST = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = KHI
+					has_subject = AST
 					in_weak_faction = no
 				}
 			}
@@ -226,28 +226,28 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 2
-				KHI = { surrender_progress > 0.2 }
+				AST = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = prepare_for_warCHGKHI
+		id = prepare_for_warHAWAST
 		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warKHI
-		prerequisite = { focus = border_disputesCHGKHI }
+		text = prepare_for_warAST
+		prerequisite = { focus = border_disputesHAWAST }
 		bypass = {
-			has_war_with = KHI
+			has_war_with = AST
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesCHGKHI
+		relative_position_id = border_disputesHAWAST
 		cost = 4
 		available = {
-			date > 1936.3.1
+			date > 1938.2.1
 			is_subject = no
 			has_war = no
-			KHI = { exists = yes }
+			AST = { exists = yes }
 		}
 		completion_reward = {
 			add_manpower = 10000
@@ -256,7 +256,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_opinion = { target = KHI value > 0 }
+				has_opinion = { target = AST value > 0 }
 			}
 			modifier = {
 				factor = 0
@@ -278,42 +278,42 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				KHI = { in_weak_faction = no }
+				AST = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = KHI
+					has_subject = AST
 					in_weak_faction = no
 				}
 			}
 			modifier = {
 				factor = 2
-				KHI = { surrender_progress > 0.2 }
+				AST = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = neighbor_warCHGKHI
+		id = neighbor_warHAWAST
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warKHI
-		prerequisite = { focus = prepare_for_warCHGKHI }
+		text = neighbor_warAST
+		prerequisite = { focus = prepare_for_warHAWAST }
 		bypass = {
-			has_war_with = KHI
+			has_war_with = AST
 		}
 		x = 0
 		y = 1
-		relative_position_id = prepare_for_warCHGKHI
+		relative_position_id = prepare_for_warHAWAST
 		cost = 3
 		available = {
 			has_war = no
 		}
 		completion_reward = {
 			declare_war_on = {
-				target = KHI
+				target = AST
 				type = take_state_focus
-				generator = { 328 }
+				generator = claimed_states
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
@@ -323,168 +323,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = border_disputesCHGRUS
+		id = border_disputesHAWJAV
 		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesRUS
+		text = border_disputesJAV
 		x = 30
 		y = 0
 		cost = 10
 		available = {
 			is_subject = no
 			has_war = no
-			RUS = {
-				exists = yes
-				not_allies_or_subjects = yes
-				potential_take_state_target = yes
-			}
-		}
-		completion_reward = {
-			add_manpower = 10000
-		}
-		ai_will_do = {
-			factor = 4
-			modifier = {
-				factor = 0
-				has_opinion = { target = RUS value > 0 }
-			}
-			modifier = {
-				factor = 0
-				RUS = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = RUS
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 2
-				RUS = { surrender_progress > 0.2 }
-			}
-		}
-	}
-
-	focus = {
-		id = prepare_for_warCHGRUS
-		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warRUS
-		prerequisite = { focus = border_disputesCHGRUS }
-		bypass = {
-			has_war_with = RUS
-		}
-		x = 0
-		y = 1
-		relative_position_id = border_disputesCHGRUS
-		cost = 4
-		available = {
-			date > 1937.12.1
-			is_subject = no
-			has_war = no
-			RUS = { exists = yes }
-		}
-		completion_reward = {
-			add_manpower = 10000
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				has_opinion = { target = RUS value > 0 }
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 0
-				RUS = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = RUS
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 2
-				RUS = { surrender_progress > 0.2 }
-			}
-		}
-	}
-
-	focus = {
-		id = neighbor_warCHGRUS
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warRUS
-		prerequisite = { focus = prepare_for_warCHGRUS }
-		bypass = {
-			has_war_with = RUS
-		}
-		x = 0
-		y = 1
-		relative_position_id = prepare_for_warCHGRUS
-		cost = 3
-		available = {
-			has_war = no
-		}
-		completion_reward = {
-			declare_war_on = {
-				target = RUS
-				type = take_state_focus
-				generator = { 509 }
-			}
-			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = border_disputesCHGIND
-		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesIND
-		x = 32
-		y = 0
-		cost = 10
-		available = {
-			is_subject = no
-			has_war = no
-			IND = {
+			JAV = {
 				exists = yes
 				not_allies_or_subjects = yes
 				potential_take_state_target = yes
@@ -497,16 +345,16 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
-				has_opinion = { target = IND value > 0 }
+				has_opinion = { target = JAV value > 0 }
 			}
 			modifier = {
 				factor = 0
-				IND = { in_weak_faction = no }
+				JAV = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = IND
+					has_subject = JAV
 					in_weak_faction = no
 				}
 			}
@@ -530,28 +378,28 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 2
-				IND = { surrender_progress > 0.2 }
+				JAV = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = prepare_for_warCHGIND
+		id = prepare_for_warHAWJAV
 		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warIND
-		prerequisite = { focus = border_disputesCHGIND }
+		text = prepare_for_warJAV
+		prerequisite = { focus = border_disputesHAWJAV }
 		bypass = {
-			has_war_with = IND
+			has_war_with = JAV
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesCHGIND
+		relative_position_id = border_disputesHAWJAV
 		cost = 4
 		available = {
-			date > 1938.7.1
+			date > 1938.2.1
 			is_subject = no
 			has_war = no
-			IND = { exists = yes }
+			JAV = { exists = yes }
 		}
 		completion_reward = {
 			add_manpower = 10000
@@ -560,7 +408,7 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_opinion = { target = IND value > 0 }
+				has_opinion = { target = JAV value > 0 }
 			}
 			modifier = {
 				factor = 0
@@ -582,40 +430,40 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				IND = { in_weak_faction = no }
+				JAV = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
 				any_country = {
-					has_subject = IND
+					has_subject = JAV
 					in_weak_faction = no
 				}
 			}
 			modifier = {
 				factor = 2
-				IND = { surrender_progress > 0.2 }
+				JAV = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = neighbor_warCHGIND
+		id = neighbor_warHAWJAV
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warIND
-		prerequisite = { focus = prepare_for_warCHGIND }
+		text = neighbor_warJAV
+		prerequisite = { focus = prepare_for_warHAWJAV }
 		bypass = {
-			has_war_with = IND
+			has_war_with = JAV
 		}
 		x = 0
 		y = 1
-		relative_position_id = prepare_for_warCHGIND
+		relative_position_id = prepare_for_warHAWJAV
 		cost = 3
 		available = {
 			has_war = no
 		}
 		completion_reward = {
 			declare_war_on = {
-				target = IND
+				target = JAV
 				type = take_state_focus
 				generator = claimed_states
 			}
