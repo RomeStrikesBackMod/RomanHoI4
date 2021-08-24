@@ -90,6 +90,8 @@ if = {
 add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
 add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
 add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+
+set_country_flag = conv_western_europe
 set_convoys = 9
 
 add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 25 producer = AQI }
@@ -110,6 +112,7 @@ add_opinion_modifier = { target = BCS modifier = negative_30 }
 add_opinion_modifier = { target = BEN modifier = negative_30 }
 add_opinion_modifier = { target = BIR modifier = negative_10 }
 add_opinion_modifier = { target = BRG modifier = negative_198 }
+set_truce = { target = BRG days = 985 }
 add_opinion_modifier = { target = BRI modifier = negative_2 }
 add_opinion_modifier = { target = CAN modifier = negative_10 }
 add_opinion_modifier = { target = ENG modifier = negative_10 }
@@ -119,6 +122,7 @@ give_military_access = FRA
 add_opinion_modifier = { target = GER modifier = negative_51 }
 add_opinion_modifier = { target = GRB modifier = negative_5 }
 add_opinion_modifier = { target = HUN modifier = negative_115 }
+set_truce = { target = HUN days = 985 }
 add_opinion_modifier = { target = IND modifier = positive_15 }
 add_opinion_modifier = { target = ITA modifier = negative_17 }
 add_opinion_modifier = { target = KHI modifier = negative_10 }
@@ -144,9 +148,9 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.60
 create_country_leader = {
-	name = "Huget Bonvisy"
-	desc = "POLITICS_HUGET_BONVISY_DESC"
-	picture = "gfx/leaders/FRA/Portrait_France_Charles_De_Gaulle.dds"
+	name = "Esteven Monic"
+	desc = "POLITICS_ESTEVEN_MONIC_DESC"
+	picture = "gfx/leaders/Europe/Portrait_europe_generic_7.dds"
 	expire = "1965.1.1"
 	ideology = prussian_const
 	traits = {
@@ -207,8 +211,359 @@ if = {
 		has_dlc = "La Resistance"
 	}
 	create_operative_leader = {
-		name = "Girolamme Gally"
+		name = "Corneilhe Bourgade"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Jehan Stoard"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Girolamme Gombault"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Jehan Leconig"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Adrian Parenchieres"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Jehan Faicheur"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Pierre Beauperrin"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Denys Joffre"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Yvon Jourdain"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Esteven Delalo"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Kanuet Gorio"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Bertrand Chassier"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Denys Leconig"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Pierre Luceau"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Jacmes Gombault"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Loys de Caudeyran"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Adrian Beauperrin"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Laurens Joffre"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Symon Largan"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Berdot Olier"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Girolamme Faicheur"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Loys Gulden"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Olivier de Caudeyran"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Symon Stoard"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Pierre Olier"
+		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Jehan de Caudeyran"
+		GFX = "gfx/leaders/ENG/portrait_eng_patrick_fermor.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Kanuet Gorio"
+		GFX = "gfx/leaders/ENG/portrait_eng_dusko_popov.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Thierry Gulden"
+		GFX = "gfx/leaders/ENG/portrait_eng_juan_pujol.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Nycolas Joffre"
+		GFX = "gfx/leaders/ENG/portrait_eng_roman_czerniawski.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Eugramet Lorguilleulx"
+		GFX = "gfx/leaders/FRA/portrait_fra_rene_joyeuse.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Phelip Gulden"
 		GFX = "gfx/leaders/FRA/portrait_fra_gilbert_renault.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Berdot Dethoailhe"
+		GFX = "gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Bartholomé Dethoailhe"
+		GFX = "gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Nycolas Bourgade"
+		GFX = "gfx/leaders/GER/Portrait_Germany_Hilter_M.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Vidault Vezee"
+		GFX = "gfx/leaders/GER/portrait_ger_elyesa_bazna.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Eugramet Beauperrin"
+		GFX = "gfx/leaders/GER/portrait_ger_nikolaus_ritter.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Girolamme Joffre"
+		GFX = "gfx/leaders/GER/portrait_ger_otto_skorzeny.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Hanrri de Bourgues"
+		GFX = "gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Thibault Leconig"
+		GFX = "gfx/leaders/Western_European/Operatives/r56_portrait_generic_operative_europe_1.dds"
+		traits = {}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { AQI }
+	}
+
+	create_operative_leader = {
+		name = "Denys Largan"
+		GFX = "gfx/leaders/Western_European/Operatives/r56_portrait_generic_operative_commonwealth_1.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes

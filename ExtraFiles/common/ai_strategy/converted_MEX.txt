@@ -116,3 +116,90 @@ startup_front_control_MEX = {
 		manual_attack = no
 	}
 }
+
+take_out_ADA = {
+	allowed = {
+		tag = MEX
+	}
+	enable = {
+		has_war_with = ADA
+		has_war_together_with = BIR
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_unit_request
+		strategic_region = 17
+		value = 200
+	}
+}
+
+MEX_is_safe = {
+	allowed = {
+		tag = MEX
+	}
+	enable = {
+		num_divisions < 20
+		has_war_with = ENG
+		has_war_together_with = BIR
+	}
+	abort = {
+		OR = {
+			has_civil_war = yes
+			has_war_with = UTA
+			has_war_with = COL
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = garrison
+		value = -90
+	}
+}
+ignore_UTA = {
+	allowed = {
+		tag = MEX
+	}
+	enable = {
+		NOT = {
+			has_war_with = UTA
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_unit_request
+		tag = UTA
+		value = -200
+	}
+}
+ignore_COL = {
+	allowed = {
+		tag = MEX
+	}
+	enable = {
+		NOT = {
+			has_war_with = COL
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_unit_request
+		tag = COL
+		value = -200
+	}
+}
+ignore_ETH = {
+	allowed = {
+		tag = MEX
+	}
+	enable = {
+		NOT = {
+			has_war_with = ETH
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_unit_request
+		tag = ETH
+		value = -200
+	}
+}

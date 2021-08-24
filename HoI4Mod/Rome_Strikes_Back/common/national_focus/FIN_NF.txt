@@ -45,10 +45,6 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 10
-			modifier = {
-				factor = 0
-				date < 1939.1.1
-			}
 		}
 	}
 
@@ -59,6 +55,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresFIN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -95,6 +92,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -119,6 +123,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterFINSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -157,6 +162,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -185,6 +197,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportFINSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -226,6 +239,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -254,6 +274,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warFINSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -287,6 +308,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -315,6 +343,7 @@ focus_tree = {
 		prerequisite = { focus = war_planFINSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -332,7 +361,7 @@ focus_tree = {
 			declare_war_on = {
 				target = SCA
 				type = take_core_state
-				generator = core_states
+				generator = { 562 563 565 566 567 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -341,6 +370,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				SCA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0

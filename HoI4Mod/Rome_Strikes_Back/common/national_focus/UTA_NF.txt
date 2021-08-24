@@ -26,8 +26,8 @@ focus_tree = {
 		y = 0
 		cost = 10
 		available = {
-			threat > 0.000050
-		}
+		threat > 0.000050
+	}
 		completion_reward = {
 		add_stability = 0.05
 	}
@@ -46,8 +46,8 @@ focus_tree = {
 		relative_position_id = WarPropUTA
 		cost = 10
 		available = {
-			threat > 0.000075
-		}
+		threat > 0.000075
+	}
 		completion_reward = {
 		add_political_power = 120
 		set_rule = { can_send_volunteers = yes }
@@ -67,8 +67,8 @@ focus_tree = {
 		relative_position_id = PrepInterUTA
 		cost = 10
 		available = {
-			threat > 0.000125
-		}
+		threat > 0.000125
+	}
 		completion_reward = {
 		add_ideas = limited_interventionism
 	}
@@ -83,24 +83,24 @@ focus_tree = {
 		text = WarPlanMNG
 		prerequisite = { focus = LimUTA }
 		bypass = {
-			has_war_with = MNG
-		}
+		has_war_with = MNG
+	}
 		x = -1
 		y = 1
 		relative_position_id = LimUTA
 		cost = 10
 		available = {
-			any_other_country = {
-				original_tag = MNG
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = UTA }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-				}
+		any_other_country = {
+			original_tag = MNG
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
 			}
 		}
+	}
 		completion_reward = {
 		army_experience = 20
 		add_tech_bonus = {
@@ -121,30 +121,30 @@ focus_tree = {
 		text = EmbargoMNG
 		prerequisite = { focus =  WarPlanUTAMNG }
 		bypass = {
-			has_war_with = MNG
-		}
+		has_war_with = MNG
+	}
 		x = 0
 		y = 1
 		relative_position_id = WarPlanUTAMNG
 		cost = 10
 		available = {
-			any_other_country = {
-				original_tag = MNG
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = UTA }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
+		any_other_country = {
+			original_tag = MNG
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
+				threat > 0.6
 			}
 		}
+	}
 		completion_reward = {
-			MNG = {
-				add_opinion_modifier = { target = UTA modifier = embargo }
-			}
+		MNG = {
+			add_opinion_modifier = { target = ROOT modifier = embargo }
 		}
+	}
 		ai_will_do = {
 		factor = 10
 	}
@@ -156,35 +156,35 @@ focus_tree = {
 		text = WARMNG
 		prerequisite = { focus =  EmbargoUTAMNG }
 		bypass = {
-			has_war_with = MNG
-		}
+		has_war_with = MNG
+	}
 		x = 0
 		y = 1
 		relative_position_id = EmbargoUTAMNG
 		cost = 10
 		available = {
-			has_war = no
-			any_other_country = {
-				original_tag = MNG
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = UTA }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
+		has_war = no
+		any_other_country = {
+			original_tag = MNG
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
+				threat > 0.6
 			}
 		}
+	}
 		completion_reward = {
-			declare_war_on = {
-				type = puppet_wargoal_focus
-				target = MNG
-			}
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = MNG
 		}
+	}
 		ai_will_do = {
-			factor = 10
-		}
+		factor = 10
+	}
 	}
 
 	focus = {
@@ -193,24 +193,24 @@ focus_tree = {
 		text = WarPlanRME
 		prerequisite = { focus = LimUTA }
 		bypass = {
-			has_war_with = RME
-		}
+		has_war_with = RME
+	}
 		x = 1
 		y = 1
 		relative_position_id = LimUTA
 		cost = 10
 		available = {
-			any_other_country = {
-				original_tag = RME
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = UTA }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-				}
+		any_other_country = {
+			original_tag = RME
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
 			}
 		}
+	}
 		completion_reward = {
 		army_experience = 20
 		add_tech_bonus = {
@@ -231,30 +231,30 @@ focus_tree = {
 		text = EmbargoRME
 		prerequisite = { focus =  WarPlanUTARME }
 		bypass = {
-			has_war_with = RME
-		}
+		has_war_with = RME
+	}
 		x = 0
 		y = 1
 		relative_position_id = WarPlanUTARME
 		cost = 10
 		available = {
-			any_other_country = {
-				original_tag = RME
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = UTA }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
+		any_other_country = {
+			original_tag = RME
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
+				threat > 0.6
 			}
 		}
+	}
 		completion_reward = {
-			RME = {
-				add_opinion_modifier = { target = UTA modifier = embargo }
-			}
+		RME = {
+			add_opinion_modifier = { target = ROOT modifier = embargo }
 		}
+	}
 		ai_will_do = {
 		factor = 10
 	}
@@ -266,35 +266,35 @@ focus_tree = {
 		text = WARRME
 		prerequisite = { focus =  EmbargoUTARME }
 		bypass = {
-			has_war_with = RME
-		}
+		has_war_with = RME
+	}
 		x = 0
 		y = 1
 		relative_position_id = EmbargoUTARME
 		cost = 10
 		available = {
-			has_war = no
-			any_other_country = {
-				original_tag = RME
-				exists = yes
-				NOT = { has_government = democratic } 
-				NOT = { is_in_faction_with = UTA }
-				OR = {
-					has_offensive_war = yes
-					has_added_tension_amount > 30
-					threat > 0.6
-				}
+		has_war = no
+		any_other_country = {
+			original_tag = RME
+			exists = yes
+			NOT = { has_government = democratic } 
+			NOT = { is_in_faction_with = ROOT }
+			OR = {
+				has_offensive_war = yes
+				has_added_tension_amount > 30
+				threat > 0.6
 			}
 		}
+	}
 		completion_reward = {
-			declare_war_on = {
-				type = puppet_wargoal_focus
-				target = RME
-			}
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = RME
 		}
+	}
 		ai_will_do = {
-			factor = 10
-		}
+		factor = 10
+	}
 	}
 
 }
