@@ -59,6 +59,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresRJP }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -95,6 +96,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = IND
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = IND value > 0 }
 			}
 			modifier = {
@@ -119,6 +127,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterRJPIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -157,6 +166,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = IND
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = IND value > 0 }
 			}
 			modifier = {
@@ -185,6 +201,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportRJPIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -226,6 +243,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = IND
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = IND value > 0 }
 			}
 			modifier = {
@@ -254,6 +278,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warRJPIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -287,6 +312,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = IND
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = IND value > 0 }
 			}
 			modifier = {
@@ -315,6 +347,7 @@ focus_tree = {
 		prerequisite = { focus = war_planRJPIND }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = IND
 				is_in_faction_with = IND
 				NOT = { IND = { any_owned_state = { is_core_of = ROOT } } }
@@ -332,7 +365,7 @@ focus_tree = {
 			declare_war_on = {
 				target = IND
 				type = take_core_state
-				generator = core_states
+				generator = { 257 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -341,6 +374,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				IND = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = IND
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0

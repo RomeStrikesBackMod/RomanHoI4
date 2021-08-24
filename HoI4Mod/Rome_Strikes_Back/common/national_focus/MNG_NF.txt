@@ -325,8 +325,7 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 		add_ideas = militarism_focus_absolutist
-}
-
+	}
 		ai_will_do = {
 		factor = 10
 		modifier = {
@@ -685,34 +684,34 @@ focus_tree = {
 		text = AnnexMAN
 		prerequisite = { focus = PrepTheBorderMNG }
 		bypass = {
-			OR = {
-				MNG= {
-					is_in_faction_with = MAN
-					has_war_with = MAN
-				}
-				NOT = { country_exists = MAN }
+		OR = {
+			ROOT = {
+				is_in_faction_with = MAN
+				has_war_with = MAN
 			}
+			NOT = { country_exists = MAN }
 		}
+	}
 		x = 2
 		y = 1
 		relative_position_id = PrepTheBorderMNG
 		cost = 10
 		available = {
-			MAN = { is_in_faction = no }
-		}
+		MAN = { is_in_faction = no }
+	}
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = MAN
-			}
+		create_wargoal = {
+			type = annex_everything
+			target = MAN
 		}
+	}
 		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = MAN ratio < 1 }
-			}
+		factor = 5
+		modifier = {
+			factor = 0
+			strength_ratio = { tag = MAN ratio < 1 }
 		}
+	}
 	}
 
 	focus = {
@@ -721,34 +720,34 @@ focus_tree = {
 		text = AnnexMAK
 		prerequisite = { focus = NatSpiritMNG }
 		bypass = {
-			OR = {
-				MNG = {
-					is_in_faction_with = MAK
-					has_war_with = MAK
-				}
-				NOT = { country_exists = MAK }
+		OR = {
+			ROOT = {
+				is_in_faction_with = MAK
+				has_war_with = MAK
 			}
+			NOT = { country_exists = MAK }
 		}
+	}
 		x = 1
 		y = 1
 		relative_position_id = NatSpiritMNG
 		cost = 10
 		available = {
-			"MAK" = { is_in_faction = no }
-		}
+		MAK = { is_in_faction = no }
+	}
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = MAK
-			}
+		create_wargoal = {
+			type = annex_everything
+			target = MAK
 		}
+	}
 		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = MAK ratio < 1 }
-			}
+		factor = 5
+		modifier = {
+			factor = 0
+			strength_ratio = { tag = MAK ratio < 1 }
 		}
+	}
 	}
 
 	focus = {

@@ -739,13 +739,13 @@ focus_tree = {
 					is_faction_leader = no
 				}
 				leave_faction = yes
-				create_faction = "PLC_baltic_axis_faction"
+				create_faction = PLC_baltic_axis_faction
 			}
 			if = {
 				limit = {
 					is_in_faction = no
 				}
-				create_faction = "PLC_baltic_axis_faction"
+				create_faction = PLC_baltic_axis_faction
 			}
 			if = {
 				limit = {
@@ -809,7 +809,11 @@ focus_tree = {
 				285 = { is_owned_by = HUN }	# significant_number - Lower Silesia
 				282 = { is_owned_by = HUN }	# significant_number - Upper Silesia
 			}
-			has_army_manpower = { size > 150000 }
+			OR = {
+				num_divisions > 19
+				has_army_manpower = { size > 120000 }
+				num_of_factories > 24
+			}
 		}
 		bypass = {
 			OR = {
@@ -859,13 +863,21 @@ focus_tree = {
 		prerequisite = { focus = PLC_baltic_axis }
 		relative_position_id = PLC_first_dresden_conference
 		available = {
-			NOT = { owns_state = 230 }	# significant_number - Upper Silesia
+			NOT = { owns_state = 230 }	# significant_number - Posen
 			is_in_faction_with = GER
+			GER = {
+				NOT ={
+					focus_progress = {
+						focus = GER_population_exchange
+						progress > 0
+					}
+				}
+			}
 		}
 		bypass = {
 			OR = {
 				has_war_with = GER
-				owns_state = 230	# significant_number - Upper Silesia
+				owns_state = 230	# significant_number - Posen
 				NOT = { country_exists = GER }
 			}
 		}
@@ -1119,7 +1131,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			base = 2
+			base = 1
 			modifier = {
 				RUS = { has_completed_focus = RUS_russian_primacy }
 				factor = 1.5
@@ -1155,7 +1167,7 @@ focus_tree = {
 			RUS = { country_event = { id = tesb_RUS.100 hours = 2 } }
 		}
 		ai_will_do = {
-			base = 2
+			base = 1
 			modifier = {
 				RUS = { has_completed_focus = RUS_slavic_inclusion }
 				factor = 1.5

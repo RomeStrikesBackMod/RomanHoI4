@@ -4,7 +4,7 @@ country_event = {
 	id = tesb_PLC.5
 	title = tesb_PLC.5.t
 	desc = tesb_PLC.5.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	
@@ -13,6 +13,14 @@ country_event = {
 		set_politics = {
 			ruling_party = fascism
 			elections_allowed = no
+		}
+		if = {
+			limit = {
+				PLC = {
+					is_faction_leader = yes
+				}
+			}
+			country_event = { id = tesb_PLC.10 }
 		}
 	}
 
@@ -28,7 +36,7 @@ country_event = {
 	id = tesb_PLC.6
 	title = tesb_PLC.6.t
 	desc = tesb_PLC.6.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	
@@ -42,7 +50,7 @@ country_event = {
 	id = tesb_PLC.10
 	title = tesb_PLC.10.t
 	desc = tesb_PLC.10.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -82,7 +90,7 @@ country_event = {
 	id = tesb_PLC.11
 	title = tesb_PLC.11.t
 	desc = tesb_PLC.11.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -100,7 +108,7 @@ country_event = {
 	id = tesb_PLC.12
 	title = tesb_PLC.12.t
 	desc = tesb_PLC.12.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -117,7 +125,7 @@ country_event = {
 	id = tesb_PLC.20
 	title = tesb_PLC.20.t
 	desc = tesb_PLC.20.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -136,7 +144,7 @@ country_event = {
 	id = tesb_PLC.21
 	title = tesb_PLC.21.t
 	desc = tesb_PLC.21.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -154,7 +162,7 @@ country_event = {
 	id = tesb_PLC.100
 	title = tesb_PLC.100.t
 	desc = tesb_PLC.100.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -231,7 +239,7 @@ country_event = {
 	id = tesb_PLC.101
 	title = tesb_PLC.101.t
 	desc = tesb_PLC.101.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -260,7 +268,7 @@ country_event = {
 	id = tesb_PLC.102
 	title = tesb_PLC.102.t
 	desc = tesb_PLC.102.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -304,6 +312,20 @@ country_event = {
 				}
 				factor = 1.5
 			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 25
+				}
+				factor = 1.5
+			}
+			modifier = {
+				has_opinion = {
+					target = HUN
+					value < 0
+				}
+				factor = 1.5
+			}
 		}
 	}
 	#don't attend
@@ -325,7 +347,7 @@ country_event = {
 	id = tesb_PLC.104
 	title = tesb_PLC.104.t
 	desc = tesb_PLC.104.da
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	trigger = {
 		NOT = { tag = GER tag = PLC }
@@ -470,7 +492,7 @@ country_event = {
 	id = tesb_PLC.106
 	title = tesb_PLC.106.t
 	desc = tesb_PLC.106.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 
@@ -729,7 +751,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = GER_received_silesia } }
 
 	}
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -766,7 +788,7 @@ country_event = {
 	id = tesb_PLC.120
 	title = tesb_PLC.120.t
 	desc = tesb_PLC.120.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -778,7 +800,7 @@ country_event = {
 		effect_tooltip = {
 			PLC = { transfer_state = 230 }	# significant_number - Posen
 			remove_state_core = 230	# significant_number - Posen
-			remove_state_core = 457	# significant_number - Posen
+			remove_state_core = 457	# significant_number - Masovia
 			remove_state_core = 286	# significant_number - Galicia-Lodomeria
 			remove_state_core = 288	# significant_number - West Galicia
 		}
@@ -810,7 +832,7 @@ country_event = {
 	id = tesb_PLC.121
 	title = tesb_PLC.121.t
 	desc = tesb_PLC.121.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -822,7 +844,7 @@ country_event = {
 		transfer_state = 230	# significant_number - Posen
 		230 = { add_manpower = -200000 }	# significant_number - Posen
 		GER = {
-			remove_state_core = 457	# significant_number - Posen
+			remove_state_core = 457	# significant_number - Masovia
 			random_owned_controlled_state = {
 				limit = { NOT = { has_state_flag = PLC_transfer } }
 				add_manpower = 200000
@@ -830,8 +852,8 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { owns_state = 457 }	# significant_number - Posen
-			457 = { add_manpower = -200000 }	# significant_number - Posen
+			limit = { owns_state = 457 }	# significant_number - Masovia
+			457 = { add_manpower = -200000 }	# significant_number - Masovia
 			GER = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -881,7 +903,7 @@ country_event = {
 	id = tesb_PLC.122
 	title = tesb_PLC.122.t
 	desc = tesb_PLC.122.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -917,7 +939,7 @@ country_event = {
 		text = tesb_PLC.150.dpbn
 		trigger = { event_target:galicia_owner = { tag = POL } NOT = { has_event_target = bohemia_owner } }
 	}
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -1018,7 +1040,7 @@ country_event = {
 		text = tesb_PLC.151.dgal
 		trigger = { NOT = { has_event_target = bohemia_owner } }
 	}
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -1053,7 +1075,7 @@ country_event = {
 		text = tesb_PLC.152.dgal
 		trigger = { NOT = { has_event_target = bohemia_owner } }
 	}
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -1104,7 +1126,7 @@ country_event = {
 	id = tesb_PLC.1531
 	title = tesb_PLC.1531.t
 	desc = tesb_PLC.1531.da
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	trigger = {
 		NOT = { tag = PLC }
@@ -1215,7 +1237,7 @@ country_event = {
 	id = tesb_PLC.153
 	title = tesb_PLC.153.t
 	desc = tesb_PLC.153.da
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	trigger = {
 		NOT = { tag = PLC }
@@ -1330,7 +1352,7 @@ country_event = {
 	id = tesb_PLC.155
 	title = tesb_PLC.155.t
 	desc = tesb_PLC.155.da
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 
@@ -1444,7 +1466,7 @@ country_event = {
 	id = tesb_PLC.157
 	title = tesb_PLC.157.t
 	desc = tesb_PLC.157.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 
@@ -1692,7 +1714,7 @@ country_event = {
 	id = tesb_PLC.160
 	title = tesb_PLC.160.t
 	desc = tesb_PLC.160.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -1779,7 +1801,7 @@ country_event = {
 	id = tesb_PLC.161
 	title = tesb_PLC.161.t
 	desc = tesb_PLC.161.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {
@@ -1797,7 +1819,7 @@ country_event = {
 	id = tesb_PLC.162
 	title = tesb_PLC.162.t
 	desc = tesb_PLC.162.d
-	picture = GFX_report_event_german_italian_pact
+	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	is_triggered_only = yes
 	immediate = {

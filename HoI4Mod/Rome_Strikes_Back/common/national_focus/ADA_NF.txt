@@ -19,378 +19,308 @@ focus_tree = {
 	shared_focus = political_effort
 
 	focus = {
-		id = reclaim_coresADA
+		id = border_disputesADAETH
 		icon = GFX_goal_generic_more_territorial_claims
-		text = reclaim_cores
+		text = border_disputesETH
 		x = 26
 		y = 0
 		cost = 10
 		available = {
+			date > 1936.8.17
 			is_subject = no
+			has_war = no
+			ETH = {
+				exists = yes
+				not_allies_or_subjects = yes
+				potential_take_state_target = yes
+			}
 		}
-		select_effect = {
-			set_variable = { unowned_cores_@JAV = 9 }
-			set_variable = { revanchism = 0.000090 }
-			set_variable = { revanchism_stab = -0.000009 }
-			add_dynamic_modifier = { modifier = revanchism }
-			add_dynamic_modifier = { modifier = revanchism_fasc }
-		}
-
 		completion_reward = {
-			custom_effect_tooltip = revanchism_reduction
-			divide_variable = { revanchism = 2 }
-			divide_variable = { revanchism_stab = 2 }
-			add_political_power = 150
-			add_ideas = reclaim_cores_idea
+			add_manpower = 10000
 		}
 		ai_will_do = {
 			factor = 10
 			modifier = {
 				factor = 0
-				date < 1939.1.1
-			}
-		}
-	}
-
-	focus = {
-		id = raise_matterADAJAV
-		icon = GFX_focus_generic_self_management
-		text = raise_matterJAV
-		prerequisite = { focus = reclaim_coresADA }
-		bypass = {
-			OR = {
-				has_war_with = JAV
-				is_in_faction_with = JAV
-				NOT = { JAV = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 26
-		y = 1
-		cost = 10
-		available = {
-			NOT = { is_in_faction_with = JAV }
-			NOT = { has_war_with = JAV }
-		}
-		completion_reward = {
-			if = {
-				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000009 }
-			}
-			else = {
-				add_popularity = { ideology = fascism popularity = -0.000009 }
-			}
-			add_political_power = 150
-			add_timed_idea = { idea = generic_military_industry days = 180 }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				NOT = { has_government = fascism }
-				NOT = { fascism > 0.35 }
+				has_opinion = { target = ETH value > 0 }
 			}
 			modifier = {
 				factor = 0
-				JAV = { in_weak_faction = no }
+				ETH = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
-				has_opinion = { target = JAV value > 0 }
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = build_public_supportADAJAV
-		icon = GFX_goal_generic_propaganda
-		text = build_public_supportJAV
-		prerequisite = { focus = raise_matterADAJAV }
-		bypass = {
-			OR = {
-				has_war_with = JAV
-				is_in_faction_with = JAV
-				NOT = { JAV = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = raise_matterADAJAV
-		cost = 10
-		available = {
-			NOT = { is_in_faction_with = JAV }
-			NOT = { has_war_with = JAV }
-		}
-		completion_reward = {
-			if = {
-				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000009 }
-			}
-			else = {
-				add_popularity = { ideology = fascism popularity = -0.000009 }
-			}
-			add_war_support = 0.000090
-			add_political_power = 150
-			add_timed_idea = { idea = generic_recruit_centers days = 180 }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				NOT = { has_government = fascism }
-				NOT = { fascism > 0.4 }
-			}
-			modifier = {
-				factor = 0
-				JAV = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = JAV value > 0 }
-			}
-			modifier = {
-				factor = 1.5
-				has_completed_focus = raise_matterADAJAV
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = territory_or_warADAJAV
-		icon = GFX_goal_generic_territory_or_war
-		text = territory_or_warJAV
-		prerequisite = { focus = build_public_supportADAJAV }
-		bypass = {
-			OR = {
-				has_war_with = JAV
-				is_in_faction_with = JAV
-				NOT = { JAV = { any_owned_state = { is_core_of = ROOT } } }
-				NOT = { JAV = { any_owned_state = { is_capital = no } } }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = build_public_supportADAJAV
-		cost = 3
-		available = {
-			NOT = { is_in_faction_with = JAV }
-			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
-			hidden_trigger = {
-				JAV = {
-					all_owned_state = {
-						OR = {
-							NOT = { is_core_of = ROOT }
-							is_fully_controlled_by = JAV
-						}
-					}
+				any_country = {
+					has_subject = ETH
+					in_weak_faction = no
 				}
 			}
-			has_war = no
-		}
-		completion_reward = {
-			JAV = {
-				country_event = { id = reconquest_wars.1 }
-				custom_effect_tooltip = needs_approval
-			}
-			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
-			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
-		}
-		ai_will_do = {
-			factor = 1
 			modifier = {
 				factor = 0
-				JAV = { in_weak_faction = no }
+				date < 1938.8.1
 			}
 			modifier = {
 				factor = 0
-				has_opinion = { target = JAV value > 0 }
+				threat > 0.25
+				date < 1939.4.1
 			}
 			modifier = {
-				factor = 1.5
-				has_completed_focus = build_public_supportADAJAV
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
 			}
 			modifier = {
-				factor = 5
-				has_government = fascism
+				factor = 0
+				threat > 0.5
 			}
 			modifier = {
 				factor = 2
-				has_opinion = { target = JAV value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -50 }
+				ETH = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = war_planADAJAV
+		id = prepare_for_warADAETH
 		icon = GFX_goal_generic_position_armies
-		text = war_planJAV
-		prerequisite = { focus = territory_or_warADAJAV }
+		text = prepare_for_warETH
+		prerequisite = { focus = border_disputesADAETH }
 		bypass = {
-			OR = {
-				has_war_with = JAV
-				is_in_faction_with = JAV
-				NOT = { JAV = { any_owned_state = { is_core_of = ROOT } } }
-			}
+			has_war_with = ETH
 		}
 		x = 0
 		y = 1
-		relative_position_id = territory_or_warADAJAV
+		relative_position_id = border_disputesADAETH
 		cost = 4
 		available = {
-			NOT = { is_in_faction_with = JAV }
+			date > 1936.8.17
+			is_subject = no
+			has_war = no
+			ETH = { exists = yes }
+		}
+		completion_reward = {
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_opinion = { target = ETH value > 0 }
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+			}
+			modifier = {
+				factor = 0
+				ETH = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = ETH
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 2
+				ETH = { surrender_progress > 0.2 }
+			}
+		}
+	}
+
+	focus = {
+		id = neighbor_warADAETH
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = neighbor_warETH
+		prerequisite = { focus = prepare_for_warADAETH }
+		bypass = {
+			has_war_with = ETH
+		}
+		x = 0
+		y = 1
+		relative_position_id = prepare_for_warADAETH
+		cost = 3
+		available = {
+			date > 1936.8.17
 			has_war = no
 		}
 		completion_reward = {
-			add_ai_strategy = { type = prepare_for_war id = JAV value = 1000 }
-			JAV = { add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 } }
-			random_list = {
-			    25 = { add_command_power = 25 }
-			    25 = { add_manpower = 10000 }
-			    25 = { add_war_support = 0.25 }
-			    25 = { army_experience = 10 }
+			declare_war_on = {
+				target = ETH
+				type = take_state_focus
+				generator = { 183 184 }
 			}
-			add_timed_idea = { idea = generic_war_of_national_liberation days = 180 }
-			add_named_threat = { threat = 1 name = war_plan_NF_threat }
+			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = border_disputesADAJAV
+		icon = GFX_goal_generic_more_territorial_claims
+		text = border_disputesJAV
+		x = 28
+		y = 0
+		cost = 10
+		available = {
+			is_subject = no
+			has_war = no
+			JAV = {
+				exists = yes
+				not_allies_or_subjects = yes
+				potential_take_state_target = yes
+			}
+		}
+		completion_reward = {
+			add_manpower = 10000
 		}
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				has_opinion = { target = JAV value > 0 }
+			}
 			modifier = {
 				factor = 0
 				JAV = { in_weak_faction = no }
 			}
 			modifier = {
 				factor = 0
-				has_opinion = { target = JAV value > 0 }
+				any_country = {
+					has_subject = JAV
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
 			}
 			modifier = {
 				factor = 2
-				has_completed_focus = territory_or_warADAJAV
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -50 }
+				JAV = { surrender_progress > 0.2 }
 			}
 		}
 	}
 
 	focus = {
-		id = declare_warADAJAV
-		icon = GFX_goal_generic_army_tanks
-		text = declare_warJAV
-		prerequisite = { focus = war_planADAJAV }
+		id = prepare_for_warADAJAV
+		icon = GFX_goal_generic_position_armies
+		text = prepare_for_warJAV
+		prerequisite = { focus = border_disputesADAJAV }
 		bypass = {
-			OR = {
-				has_war_with = JAV
-				is_in_faction_with = JAV
-				NOT = { JAV = { any_owned_state = { is_core_of = ROOT } } }
-			}
+			has_war_with = JAV
 		}
 		x = 0
 		y = 1
-		relative_position_id = war_planADAJAV
+		relative_position_id = border_disputesADAJAV
+		cost = 4
+		available = {
+			date > 1938.2.1
+			is_subject = no
+			has_war = no
+			JAV = { exists = yes }
+		}
+		completion_reward = {
+			add_manpower = 10000
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_opinion = { target = JAV value > 0 }
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+			}
+			modifier = {
+				factor = 0
+				JAV = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = JAV
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 2
+				JAV = { surrender_progress > 0.2 }
+			}
+		}
+	}
+
+	focus = {
+		id = neighbor_warADAJAV
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		text = neighbor_warJAV
+		prerequisite = { focus = prepare_for_warADAJAV }
+		bypass = {
+			has_war_with = JAV
+		}
+		x = 0
+		y = 1
+		relative_position_id = prepare_for_warADAJAV
 		cost = 3
 		available = {
-			NOT = { is_in_faction_with = JAV }
 			has_war = no
 		}
 		completion_reward = {
 			declare_war_on = {
 				target = JAV
-				type = take_core_state
-				generator = core_states
+				type = take_state_focus
+				generator = { 320 }
 			}
-			add_named_threat = { threat = 1 name = declare_war_NF_threat }
+			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 9
-			modifier = {
-				factor = 0
-				JAV = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = JAV value > 0 }
-			}
-			modifier = {
-				factor = 2
-				has_completed_focus = war_planADAJAV
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = JAV value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = cleanup_revanchismADAJAV
-		icon = GFX_focus_generic_treaty
-		text = cleanup_revanchismJAV
-		prerequisite = { focus = declare_warADAJAV }
-		x = 0
-		y = 1
-		relative_position_id = declare_warADAJAV
-		cost = 0
-		available = {
-			OR = {
-				is_in_faction_with = JAV
-				NOT = { JAV = { any_owned_state = { is_core_of = ROOT } } }
-			}
-			NOT = { has_war_with = JAV }
-		}
-		completion_reward = {
-			add_ai_strategy = { type = prepare_for_war id = JAV value = -1000 }
-			JAV = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
-			custom_effect_tooltip = decrease_revanchism
-			subtract_from_variable = { revanchism = 0.000045 }
-			add_to_variable = { revanchism_stab = 0.000005 }
-			add_ideas = generic_national_unification
-		}
-		ai_will_do = {
-			factor = 100
+			factor = 10
 		}
 	}
 

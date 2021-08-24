@@ -29,11 +29,11 @@ focus_tree = {
 			is_subject = no
 		}
 		select_effect = {
-			set_variable = { unowned_cores_@GER = 73 }
+			set_variable = { unowned_cores_@GER = 83 }
 			set_variable = { unowned_cores_@HUN = 10 }
 			set_variable = { unowned_cores_@SCA = 7 }
-			set_variable = { revanchism = 0.000900 }
-			set_variable = { revanchism_stab = -0.000090 }
+			set_variable = { revanchism = 0.001000 }
+			set_variable = { revanchism_stab = -0.000100 }
 			add_dynamic_modifier = { modifier = revanchism }
 			add_dynamic_modifier = { modifier = revanchism_fasc }
 		}
@@ -61,6 +61,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresDEN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -76,16 +77,16 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000073 }
+				add_popularity = { ideology = fascism popularity = 0.000083 }
 			}
 			else = {
-				add_popularity = { ideology = fascism popularity = -0.000073 }
+				add_popularity = { ideology = fascism popularity = -0.000083 }
 			}
 			add_political_power = 150
 			add_timed_idea = { idea = generic_military_industry days = 180 }
 		}
 		ai_will_do = {
-			factor = 7
+			factor = 8
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -94,6 +95,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = GER
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -121,6 +129,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterDENGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -137,17 +146,17 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000073 }
+				add_popularity = { ideology = fascism popularity = 0.000083 }
 			}
 			else = {
-				add_popularity = { ideology = fascism popularity = -0.000073 }
+				add_popularity = { ideology = fascism popularity = -0.000083 }
 			}
-			add_war_support = 0.000730
+			add_war_support = 0.000830
 			add_political_power = 150
 			add_timed_idea = { idea = generic_recruit_centers days = 180 }
 		}
 		ai_will_do = {
-			factor = 7
+			factor = 8
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -156,6 +165,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = GER
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -187,6 +203,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportDENGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -221,10 +238,17 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 7
+			factor = 8
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = GER
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -256,6 +280,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warDENGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -282,10 +307,17 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = war_plan_NF_threat }
 		}
 		ai_will_do = {
-			factor = 7
+			factor = 8
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = GER
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -317,6 +349,7 @@ focus_tree = {
 		prerequisite = { focus = war_planDENGER }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = GER
 				is_in_faction_with = GER
 				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
@@ -334,15 +367,22 @@ focus_tree = {
 			declare_war_on = {
 				target = GER
 				type = take_core_state
-				generator = core_states
+				generator = { 211 215 217 218 219 220 221 222 228 231 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 73
+			factor = 83
 			modifier = {
 				factor = 0
 				GER = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = GER
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -387,8 +427,8 @@ focus_tree = {
 			add_ai_strategy = { type = prepare_for_war id = GER value = -1000 }
 			GER = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
 			custom_effect_tooltip = decrease_revanchism
-			subtract_from_variable = { revanchism = 0.000365 }
-			add_to_variable = { revanchism_stab = 0.000036 }
+			subtract_from_variable = { revanchism = 0.000415 }
+			add_to_variable = { revanchism_stab = 0.000041 }
 			add_ideas = generic_national_unification
 		}
 		ai_will_do = {
@@ -403,6 +443,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresDEN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -439,6 +480,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = HUN
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = HUN value > 0 }
 			}
 			modifier = {
@@ -463,6 +511,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterDENHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -501,6 +550,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = HUN
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = HUN value > 0 }
 			}
 			modifier = {
@@ -529,6 +585,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportDENHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -570,6 +627,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = HUN
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = HUN value > 0 }
 			}
 			modifier = {
@@ -598,6 +662,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warDENHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -631,6 +696,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = HUN
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = HUN value > 0 }
 			}
 			modifier = {
@@ -659,6 +731,7 @@ focus_tree = {
 		prerequisite = { focus = war_planDENHUN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = HUN
 				is_in_faction_with = HUN
 				NOT = { HUN = { any_owned_state = { is_core_of = ROOT } } }
@@ -676,7 +749,7 @@ focus_tree = {
 			declare_war_on = {
 				target = HUN
 				type = take_core_state
-				generator = core_states
+				generator = { 285 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -685,6 +758,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				HUN = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = HUN
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -745,6 +825,7 @@ focus_tree = {
 		prerequisite = { focus = reclaim_coresDEN }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -781,6 +862,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -805,6 +893,7 @@ focus_tree = {
 		prerequisite = { focus = raise_matterDENSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -843,6 +932,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -871,6 +967,7 @@ focus_tree = {
 		prerequisite = { focus = build_public_supportDENSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -912,6 +1009,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -940,6 +1044,7 @@ focus_tree = {
 		prerequisite = { focus = territory_or_warDENSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -973,6 +1078,13 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
 				has_opinion = { target = SCA value > 0 }
 			}
 			modifier = {
@@ -1001,6 +1113,7 @@ focus_tree = {
 		prerequisite = { focus = war_planDENSCA }
 		bypass = {
 			OR = {
+				is_subject = yes
 				has_war_with = SCA
 				is_in_faction_with = SCA
 				NOT = { SCA = { any_owned_state = { is_core_of = ROOT } } }
@@ -1018,7 +1131,7 @@ focus_tree = {
 			declare_war_on = {
 				target = SCA
 				type = take_core_state
-				generator = core_states
+				generator = { 568 }
 			}
 			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
@@ -1027,6 +1140,13 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				SCA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SCA
+					in_weak_faction = no
+				}
 			}
 			modifier = {
 				factor = 0
@@ -1077,229 +1197,6 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 100
-		}
-	}
-
-	focus = {
-		id = border_disputes_nwDENFLD
-		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputes_nwFLD
-		x = 32
-		y = 0
-		cost = 10
-		available = {
-			has_war = no
-			not_in_border_conflict = yes
-			has_opinion = { target = FLD value < 0 }
-			FLD = {
-				exists = yes
-				not_allies_or_subjects = yes
-				OR = {
-					potential_take_core_target = yes
-					if = {
-						limit = { ROOT = { has_government = communism } }
-						potential_communist_puppet_target = yes
-					}
-					else_if = {
-						limit = { ROOT = { has_government = fascism } }
-						potential_fascist_annex_target = yes
-					}
-					else = {
-						hidden_trigger = { always = no }
-					}
-					potential_take_state_target = yes
-					potential_border_war_target = yes
-				}
-			}
-		}
-		completion_reward = {
-			add_manpower = 10000
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				FLD = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-		}
-	}
-
-	focus = {
-		id = prepare_for_war_nwDENFLD
-		icon = GFX_goal_generic_position_armies
-		text = prepare_for_war_nwFLD
-		prerequisite = { focus = border_disputes_nwDENFLD }
-		bypass = {
-			has_war_with = FLD
-		}
-		x = 0
-		y = 1
-		relative_position_id = border_disputes_nwDENFLD
-		cost = 4
-		available = {
-			has_war = no
-			not_in_border_conflict = yes
-			has_opinion = { target = FLD value < 0 }
-			FLD = {
-				exists = yes
-				not_in_border_conflict = yes
-			}
-		}
-		continue_if_invalid = yes
-		select_effect = {
-			random_owned_controlled_state = {
-				limit = { any_neighbor_state = { is_fully_controlled_by = FLD } }
-				set_variable = { ROOT.attacker_state = THIS.id }
-				set_state_flag = border_incident_active
-			}
-			var:attacker_state = {
-				random_neighbor_state = {
-					limit = { is_fully_controlled_by = FLD }
-					set_variable = { ROOT.defender_state = THIS.id }
-					set_state_flag = border_incident_active
-				}
-			}
-		}
-		completion_reward = {
-			FLD = {
-				add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 }
-				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = 1000 } }
-			}
-			add_manpower = 10000
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date > 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date > 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-				date > 1939.8.1
-			}
-		}
-	}
-
-	focus = {
-		id = neighbor_war_nwDENFLD
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_war_nwFLD
-		prerequisite = { focus = prepare_for_war_nwDENFLD }
-		bypass = {
-			has_war_with = FLD
-		}
-		x = 0
-		y = 1
-		relative_position_id = prepare_for_war_nwDENFLD
-		cost = 3
-		available = {
-			has_war = no
-			hidden_trigger = {
-				NOT = { any_owned_state = { has_border_war = yes } }
-				FLD = { NOT = { any_owned_state = { has_border_war = yes } } }
-			}
-			if = {
-				limit = { FLD = { potential_border_war_target = yes } }
-				var:attacker_state = { is_fully_controlled_by = ROOT }
-				var:defender_state = { is_fully_controlled_by = FLD }
-				divisions_in_border_state = { state = var:attacker_state border_state = var:defender_state size > 0 }
-			}
-		}
-		completion_reward = {
-			if = {
-				limit = { FLD = { potential_take_core_target = yes } }
-				declare_war_on = {
-					target = FLD
-					type = take_core_state
-					generator = core_states
-				}
-				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
-			}
-			else_if = {
-				limit = { FLD = { potential_communist_puppet_target = yes } }
-				declare_war_on = {
-					target = FLD
-					type = puppet_wargoal_focus
-				}
-				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
-			}
-			else_if = {
-				limit = { FLD = { potential_fascist_annex_target = yes } }
-				declare_war_on = {
-					target = FLD
-					type = annex_everything
-				}
-				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
-			}
-			else_if = {
-				limit = { FLD = { potential_take_state_target = yes } }
-				declare_war_on = {
-					target = FLD
-					type = take_state_focus
-					generator = claimed_states
-				}
-				add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
-			}
-			else_if = {
-				limit = { FLD = { potential_border_war_target = yes } }
-				start_border_war = {
-					change_state_after_war = no
-					attacker = {
-						state = var:attacker_state
-						num_provinces = 6
-						on_win = neighbor_war.1
-						on_lose = neighbor_war.2
-						on_cancel = neighbor_war.3
-					}
-					defender = {
-						state = var:defender_state
-						num_provinces = 6
-						on_win = neighbor_war.2
-						on_lose = neighbor_war.1
-						on_cancel = neighbor_war.3
-					}
-					minimum_duration_in_days = 14
-				}
-				add_named_threat = { threat = 1 name = neighbor_war_NF_threat }
-			}
-			FLD = {
-				add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 }
-				ROOT = { add_ai_strategy = { type = prepare_for_war id = PREV value = -1000 } }
-			}
-			var:attacker_state = { clr_state_flag = border_incident_active }
-			var:defender_state = { clr_state_flag = border_incident_active }
-		}
-		ai_will_do = {
-			factor = 10
 		}
 	}
 

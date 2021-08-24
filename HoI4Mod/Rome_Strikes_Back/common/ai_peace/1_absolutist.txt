@@ -224,13 +224,9 @@ absolutist_peace = {
 			}
 		}
 	}
-	
-	# ROOT = Taker, FROM = Giver
 	puppet_all = {
 		base = 0 
 	}
-	
-	# ROOT = STATE, FROM = Taker, FROM.FROM = Giver
 	puppet_state = {
 		base = 0 
 		modifier = { #puppet state only if already puppeted
@@ -243,7 +239,6 @@ absolutist_peace = {
 			}
 		}
 	}
-
 	take_states = {
 		factor = 600 #Up from 500 #200 - vanilla
 		modifier = { # prefer not to take from humans in our own faction
@@ -577,26 +572,6 @@ absolutist_peace = {
 		}
 
 		
-		modifier = {# Italy doesn't care about Asia, but might consider taking south american colonies held by the allies.
-			factor = 0
-			OR = {
-				#For now don't take Russian or Northern European lands at all if in the same faction as germany.
-				FROM = {
-					NOT = {
-						OR = {
-							is_on_continent = africa
-							is_on_continent = europe
-							is_on_continent = middle_east
-							AND = {
-								is_on_continent = south_america
-								is_island_state = yes
-							}
-						}
-					}
-				}
-			}
-		}
-
 		modifier = { #Deter expansion outside of continent
 			factor = 0.1
 			OR = {

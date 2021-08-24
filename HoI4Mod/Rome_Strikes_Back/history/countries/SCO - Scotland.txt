@@ -54,6 +54,8 @@ if = {
 
 # Research Bonuses
 add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+
+set_country_flag = conv_northern_europe
 set_convoys = 5
 
 add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 169 producer = SCO }
@@ -70,6 +72,27 @@ set_popularities = {
 	absolutist = 100
 }
 
+# DIPLOMACY
+if = {
+    limit = {
+        has_dlc = "Together for Victory"
+    }
+    set_autonomy = {
+        target = X07
+        autonomous_state = autonomy_integrated_puppet
+        freedom_level = 0.4
+    }
+    else = {
+        puppet = X07
+    }
+}
+
+if = {
+    limit = {has_dlc = "Together for Victory" }
+
+    add_to_tech_sharing_group = SCO_research
+}
+
 add_opinion_modifier = { target = ADA modifier = positive_200 }
 add_opinion_modifier = { target = AOT modifier = positive_30 }
 add_opinion_modifier = { target = AQI modifier = negative_50 }
@@ -79,6 +102,7 @@ add_opinion_modifier = { target = CAN modifier = positive_113 }
 add_opinion_modifier = { target = CAS modifier = negative_92 }
 add_opinion_modifier = { target = ENG modifier = positive_34 }
 add_opinion_modifier = { target = ETH modifier = negative_85 }
+set_truce = { target = ETH days = 227 }
 add_opinion_modifier = { target = FRA modifier = negative_5 }
 add_opinion_modifier = { target = GER modifier = negative_43 }
 add_opinion_modifier = { target = GRB modifier = positive_200 }
@@ -96,6 +120,7 @@ add_opinion_modifier = { target = MNG modifier = negative_200 }
 add_opinion_modifier = { target = MUT modifier = negative_200 }
 add_opinion_modifier = { target = PLC modifier = negative_50 }
 add_opinion_modifier = { target = RME modifier = negative_156 }
+set_truce = { target = RME days = 227 }
 add_opinion_modifier = { target = RUS modifier = negative_24 }
 give_military_access = RUS
 add_opinion_modifier = { target = SCA modifier = negative_200 }
@@ -113,8 +138,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.61
 create_country_leader = {
-	name = "James de Robeck"
-	desc = "POLITICS_JAMES_DE ROBECK_DESC"
+	name = "James Campbell"
+	desc = "POLITICS_JAMES_CAMPBELL_DESC"
 	picture = "gfx/leaders/leader_unknown.dds"
 	expire = "1965.1.1"
 	ideology = absolute_monarchy

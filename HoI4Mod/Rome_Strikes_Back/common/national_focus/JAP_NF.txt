@@ -325,8 +325,7 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 		add_ideas = militarism_focus_absolutist
-}
-
+	}
 		ai_will_do = {
 		factor = 10
 		modifier = {
@@ -685,34 +684,34 @@ focus_tree = {
 		text = AnnexKOR
 		prerequisite = { focus = PrepTheBorderJAP }
 		bypass = {
-			OR = {
-				JAP= {
-					is_in_faction_with = KOR
-					has_war_with = KOR
-				}
-				NOT = { country_exists = KOR }
+		OR = {
+			ROOT = {
+				is_in_faction_with = KOR
+				has_war_with = KOR
 			}
+			NOT = { country_exists = KOR }
 		}
+	}
 		x = 2
 		y = 1
 		relative_position_id = PrepTheBorderJAP
 		cost = 10
 		available = {
-			KOR = { is_in_faction = no }
-		}
+		KOR = { is_in_faction = no }
+	}
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = KOR
-			}
+		create_wargoal = {
+			type = annex_everything
+			target = KOR
 		}
+	}
 		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = KOR ratio < 1 }
-			}
+		factor = 5
+		modifier = {
+			factor = 0
+			strength_ratio = { tag = KOR ratio < 1 }
 		}
+	}
 	}
 
 	focus = {
