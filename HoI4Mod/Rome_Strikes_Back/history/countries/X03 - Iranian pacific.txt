@@ -1,12 +1,12 @@
-﻿capital = 424
+﻿capital = 426
 set_research_slots = 3
 
-oob = "X05_OOB"
+oob = "X03_OOB"
 if = {
 	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "X05_1936_naval_mtg"
+		set_naval_oob = "X03_1936_naval_mtg"
 	else = { 
-		set_naval_oob = "X05_1936_naval_legacy"
+		set_naval_oob = "X03_1936_naval_legacy"
 	}
 }
 
@@ -77,7 +77,7 @@ add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doc
 add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
 add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
 
-set_country_flag = conv_eastern_africa
+set_country_flag = conv_oceania
 set_convoys = 0
 
 
@@ -110,9 +110,11 @@ add_ideas = {
 	limited_exports
 	culture_persian
 }
+set_stability = 0.60
+set_war_support = 0.64
 create_country_leader = {
-	name = "Bahram Zahedi"
-	desc = "POLITICS_BAHRAM_ZAHEDI_DESC"
+	name = "Mozzafer ed-Din Khuzai"
+	desc = "POLITICS_MOZZAFER ED-DIN_KHUZAI_DESC"
 	picture = "gfx/leaders/Generic/r56_portrait_generic_middle_east_1.dds"
 	expire = "1965.1.1"
 	ideology = fascism_ideology
@@ -124,13 +126,13 @@ if = {
 		has_dlc = "La Resistance"
 	}
 	create_operative_leader = {
-		name = "Farnaz Tabrizi"
+		name = "Farnaz Zahedi"
 		GFX = "gfx/leaders/Arabia/portrait_arabia_generic_operative_female_1.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
 		female = yes
-		nationalities = { X05 }
+		nationalities = {  }
 	}
 
 }
@@ -198,7 +200,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
-		name_group = X05_BB_HISTORICAL
+		name_group = X03_BB_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -217,7 +219,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Destroyer"
 		type = ship_hull_light_2
-		name_group = X05_DD_HISTORICAL
+		name_group = X03_DD_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_2
@@ -233,7 +235,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Heavy Cruiser"
 		type = ship_hull_cruiser_2
-		name_group = X05_CA_HISTORICAL
+		name_group = X03_CA_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -251,7 +253,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Light Cruiser"
 		type = ship_hull_cruiser_2
-		name_group = X05_CL_HISTORICAL
+		name_group = X03_CL_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -269,7 +271,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Submarine"
 		type = ship_hull_submarine_2
-		name_group = X05_SS_HISTORICAL
+		name_group = X03_SS_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_engine_slot = sub_ship_engine_2
