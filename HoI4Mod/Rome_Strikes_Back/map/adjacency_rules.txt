@@ -49,6 +49,7 @@ adjacency_rule
 
 	is_disabled = {
 		OR = {
+			has_global_flag = SUEZ_CANAL_UNBUILT
 			has_global_flag = SUEZ_CANAL_BLOCKED
 			has_country_flag = SUEZ_CANAL_BLOCKED_FOR_COUNTRY
 		}
@@ -177,6 +178,7 @@ adjacency_rule
 
 	is_disabled = {
 		OR = {
+			has_global_flag = PANAMA_CANAL_UNBUILT
 			has_global_flag = PANAMA_CANAL_BLOCKED
 			has_country_flag = PANAMA_CANAL_BLOCKED_FOR_COUNTRY
 		}
@@ -312,14 +314,12 @@ adjacency_rule
 	}
 	
 	required_provinces = { 11366 317 3231 }
-		
-	is_disabled = {
-		NOT = {
-			has_global_flag = KIEL_CANAL_BUILT
-		}
-		tooltip = build_canal_tt
-	}
 	
+	is_disabled = {
+		has_global_flag = KIEL_CANAL_UNBUILT
+		tooltip = canal_unbuilt_tt
+	}
+		
 	icon = 11366
 	offset = { 5 0 -6 }
 }

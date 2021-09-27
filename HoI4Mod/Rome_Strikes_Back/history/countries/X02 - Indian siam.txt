@@ -1,45 +1,36 @@
-﻿capital = 92
+﻿capital = 273
 set_research_slots = 3
 
-oob = "X00_OOB"
+oob = "X02_OOB"
 if = {
 	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "X00_1936_naval_mtg"
+		set_naval_oob = "X02_1936_naval_mtg"
 	else = { 
-		set_naval_oob = "X00_1936_naval_legacy"
+		set_naval_oob = "X02_1936_naval_legacy"
 	}
 }
 
 # Starting tech
 set_technology = {
-	basic_light_tank = 1
 	early_bomber = 1
 	early_fighter = 1
+	electronic_mechanical_engineering = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
-	improved_light_tank = 1
 	infantry_weapons = 1
-	interwar_antiair = 1
-	interwar_artillery = 1
-	motorised_infantry = 1
+	infantry_weapons1 = 1
+	support_weapons = 1
 	synth_oil_experiments = 1
+	tech_engineers = 1
+	tech_recon = 1
 	tech_support = 1
-}
-
-if = {
-	limit = { has_dlc = "La Resistance" }
-	set_technology = {
-		armored_car1 = 1
-	}
 }
 
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
 		basic_battery = 1
-		basic_medium_battery = 1
 		basic_naval_mines = 1
 		basic_ship_hull_submarine = 1
 		basic_torpedo = 1
@@ -62,44 +53,50 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
 
-set_country_flag = conv_western_africa
+set_country_flag = conv_siam
 set_convoys = 0
 
 
 set_politics = {
-    ruling_party = communism
-    last_election = "1849.7.1"
+    ruling_party = democratic
+    last_election = "1934.3.25"
     election_frequency = 48
-    elections_allowed = no
+    elections_allowed = yes
 }
 
 set_popularities = {
-	communism = 100
+	absolutist = 7
+	communism = 28
+	democratic = 50
+	fascism = 10
+	neutrality = 5
 }
 
 if = {
     limit = {has_dlc = "Together for Victory" }
 
-    add_to_tech_sharing_group = CAS_research
+    add_to_tech_sharing_group = IND_research
 }
 
 
 
 add_ideas = {
-	disarmed_nation
-	civilian_economy
+	IND_monarch
+	volunteer_only
+	low_economic_mobilisation
 	export_focus
-	culture_castillian
+	culture_telegu
 }
+set_stability = 0.60
+set_war_support = 0.62
 create_country_leader = {
-	name = "Jacobo Alcalá-Zamora"
-	desc = "POLITICS_JACOBO_ALCALá-ZAMORA_DESC"
-	picture = "gfx/leaders/Europe/portrait_europe_generic_8.dds"
+	name = "Venkatadri Veeresalingam"
+	desc = "POLITICS_VENKATADRI_VEERESALINGAM_DESC"
+	picture = "gfx/leaders/Indian/Portrait_BHC_Nirmal_Kumar_Bose.tga"
 	expire = "1965.1.1"
-	ideology = leninism
+	ideology = conservatism
 	traits = {
 	}
 }
@@ -108,12 +105,13 @@ if = {
 		has_dlc = "La Resistance"
 	}
 	create_operative_leader = {
-		name = "Baltasar Allendesalazar"
-		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
+		name = "Indira Naidu"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_female_1.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
-		nationalities = { X00 }
+		female = yes
+		nationalities = {  }
 	}
 
 }
@@ -181,7 +179,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Submarine"
 		type = ship_hull_submarine_2
-		name_group = X00_SS_HISTORICAL
+		name_group = X02_SS_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_engine_slot = sub_ship_engine_2
@@ -192,7 +190,7 @@ if = {
 	create_equipment_variant = {
 		name = "Early Battleship"
 		type = ship_hull_heavy_1
-		name_group = X00_BB_HISTORICAL
+		name_group = X02_BB_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -211,7 +209,7 @@ if = {
 	create_equipment_variant = {
 		name = "Early Destroyer"
 		type = ship_hull_light_1
-		name_group = X00_DD_HISTORICAL
+		name_group = X02_DD_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -227,7 +225,7 @@ if = {
 	create_equipment_variant = {
 		name = "Early Heavy Cruiser"
 		type = ship_hull_cruiser_1
-		name_group = X00_CA_HISTORICAL
+		name_group = X02_CA_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -245,7 +243,7 @@ if = {
 	create_equipment_variant = {
 		name = "Early Light Cruiser"
 		type = ship_hull_cruiser_1
-		name_group = X00_CL_HISTORICAL
+		name_group = X02_CL_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
