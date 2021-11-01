@@ -90,12 +90,18 @@ if = {
         has_dlc = "Together for Victory"
     }
     set_autonomy = {
-        target = X03
+        target = X01
+        autonomous_state = autonomy_integrated_puppet
+        freedom_level = 0.4
+    }
+    set_autonomy = {
+        target = X02
         autonomous_state = autonomy_integrated_puppet
         freedom_level = 0.4
     }
     else = {
-        puppet = X03
+        puppet = X01
+        puppet = X02
     }
 }
 
@@ -104,6 +110,9 @@ if = {
 
     add_to_tech_sharing_group = IND_research
 }
+
+give_guarantee = PAT
+diplomatic_relation = { country = PAT relation = non_aggression_pact }
 
 add_opinion_modifier = { target = ADA modifier = negative_200 }
 add_opinion_modifier = { target = AQI modifier = positive_15 }
@@ -161,8 +170,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.62
 create_country_leader = {
-	name = "Pingali Hanumathu"
-	desc = "POLITICS_PINGALI_HANUMATHU_DESC"
+	name = "Venkatadri Sriramulu"
+	desc = "POLITICS_VENKATADRI_SRIRAMULU_DESC"
 	picture = "gfx/leaders/Indian/Portrait_BHC_Mohandas_Karamchand_Gandhi.tga"
 	expire = "1965.1.1"
 	ideology = conservatism

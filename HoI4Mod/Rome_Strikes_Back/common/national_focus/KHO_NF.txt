@@ -22,7 +22,7 @@ focus_tree = {
 		id = reclaim_coresKHO
 		icon = GFX_goal_generic_more_territorial_claims
 		text = reclaim_cores
-		x = 27
+		x = 28
 		y = 0
 		cost = 10
 		available = {
@@ -31,8 +31,9 @@ focus_tree = {
 		select_effect = {
 			set_variable = { unowned_cores_@BCS = 10 }
 			set_variable = { unowned_cores_@IND = 10 }
-			set_variable = { revanchism = 0.000200 }
-			set_variable = { revanchism_stab = -0.000020 }
+			set_variable = { unowned_cores_@KHI = 10 }
+			set_variable = { revanchism = 0.000300 }
+			set_variable = { revanchism_stab = -0.000030 }
 			add_dynamic_modifier = { modifier = revanchism }
 			add_dynamic_modifier = { modifier = revanchism_fasc }
 		}
@@ -46,10 +47,6 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 10
-			modifier = {
-				factor = 0
-				date < 1939.1.1
-			}
 		}
 	}
 
@@ -818,10 +815,392 @@ focus_tree = {
 	}
 
 	focus = {
+		id = raise_matterKHOKHI
+		icon = GFX_focus_generic_self_management
+		text = raise_matterKHI
+		prerequisite = { focus = reclaim_coresKHO }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = KHI
+				is_in_faction_with = KHI
+				NOT = { KHI = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 30
+		y = 1
+		cost = 10
+		available = {
+			NOT = { is_in_faction_with = KHI }
+			NOT = { has_war_with = KHI }
+		}
+		completion_reward = {
+			if = {
+				limit = { has_government = fascism }
+				add_popularity = { ideology = fascism popularity = 0.000010 }
+			}
+			else = {
+				add_popularity = { ideology = fascism popularity = -0.000010 }
+			}
+			add_political_power = 150
+			add_timed_idea = { idea = generic_military_industry days = 180 }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { has_government = fascism }
+				NOT = { fascism > 0.35 }
+			}
+			modifier = {
+				factor = 0
+				KHI = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = KHI
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = KHI value > 0 }
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = build_public_supportKHOKHI
+		icon = GFX_goal_generic_propaganda
+		text = build_public_supportKHI
+		prerequisite = { focus = raise_matterKHOKHI }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = KHI
+				is_in_faction_with = KHI
+				NOT = { KHI = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = raise_matterKHOKHI
+		cost = 10
+		available = {
+			NOT = { is_in_faction_with = KHI }
+			NOT = { has_war_with = KHI }
+		}
+		completion_reward = {
+			if = {
+				limit = { has_government = fascism }
+				add_popularity = { ideology = fascism popularity = 0.000010 }
+			}
+			else = {
+				add_popularity = { ideology = fascism popularity = -0.000010 }
+			}
+			add_war_support = 0.000100
+			add_political_power = 150
+			add_timed_idea = { idea = generic_recruit_centers days = 180 }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { has_government = fascism }
+				NOT = { fascism > 0.4 }
+			}
+			modifier = {
+				factor = 0
+				KHI = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = KHI
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = KHI value > 0 }
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = raise_matterKHOKHI
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = territory_or_warKHOKHI
+		icon = GFX_goal_generic_territory_or_war
+		text = territory_or_warKHI
+		prerequisite = { focus = build_public_supportKHOKHI }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = KHI
+				is_in_faction_with = KHI
+				NOT = { KHI = { any_owned_state = { is_core_of = ROOT } } }
+				NOT = { KHI = { any_owned_state = { is_capital = no } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = build_public_supportKHOKHI
+		cost = 3
+		available = {
+			NOT = { is_in_faction_with = KHI }
+			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
+			hidden_trigger = {
+				KHI = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = KHI
+						}
+					}
+				}
+			}
+			has_war = no
+		}
+		completion_reward = {
+			KHI = {
+				country_event = { id = reconquest_wars.1 }
+				custom_effect_tooltip = needs_approval
+			}
+			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
+			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				KHI = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = KHI
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = KHI value > 0 }
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = build_public_supportKHOKHI
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = war_planKHOKHI
+		icon = GFX_goal_generic_position_armies
+		text = war_planKHI
+		prerequisite = { focus = territory_or_warKHOKHI }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = KHI
+				is_in_faction_with = KHI
+				NOT = { KHI = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = territory_or_warKHOKHI
+		cost = 4
+		available = {
+			NOT = { is_in_faction_with = KHI }
+			has_war = no
+		}
+		completion_reward = {
+			add_ai_strategy = { type = prepare_for_war id = KHI value = 1000 }
+			KHI = { add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 } }
+			random_list = {
+			    25 = { add_command_power = 25 }
+			    25 = { add_manpower = 10000 }
+			    25 = { add_war_support = 0.25 }
+			    25 = { army_experience = 10 }
+			}
+			add_timed_idea = { idea = generic_war_of_national_liberation days = 180 }
+			add_named_threat = { threat = 1 name = war_plan_NF_threat }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				KHI = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = KHI
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = KHI value > 0 }
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = territory_or_warKHOKHI
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = declare_warKHOKHI
+		icon = GFX_goal_generic_army_tanks
+		text = declare_warKHI
+		prerequisite = { focus = war_planKHOKHI }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = KHI
+				is_in_faction_with = KHI
+				NOT = { KHI = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = war_planKHOKHI
+		cost = 3
+		available = {
+			NOT = { is_in_faction_with = KHI }
+			has_war = no
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = KHI
+				type = take_core_state
+				generator = { 328 }
+			}
+			add_named_threat = { threat = 1 name = declare_war_NF_threat }
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				KHI = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = KHI
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = KHI value > 0 }
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = war_planKHOKHI
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = KHI value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = cleanup_revanchismKHOKHI
+		icon = GFX_focus_generic_treaty
+		text = cleanup_revanchismKHI
+		prerequisite = { focus = declare_warKHOKHI }
+		x = 0
+		y = 1
+		relative_position_id = declare_warKHOKHI
+		cost = 0
+		available = {
+			OR = {
+				is_in_faction_with = KHI
+				NOT = { KHI = { any_owned_state = { is_core_of = ROOT } } }
+			}
+			NOT = { has_war_with = KHI }
+		}
+		completion_reward = {
+			add_ai_strategy = { type = prepare_for_war id = KHI value = -1000 }
+			KHI = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
+			custom_effect_tooltip = decrease_revanchism
+			subtract_from_variable = { revanchism = 0.000050 }
+			add_to_variable = { revanchism_stab = 0.000005 }
+			add_ideas = generic_national_unification
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
 		id = border_disputesKHOIRN
 		icon = GFX_goal_generic_more_territorial_claims
 		text = border_disputesIRN
-		x = 30
+		x = 32
 		y = 0
 		cost = 10
 		available = {

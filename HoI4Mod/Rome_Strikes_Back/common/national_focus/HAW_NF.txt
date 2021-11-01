@@ -19,10 +19,422 @@ focus_tree = {
 	shared_focus = political_effort
 
 	focus = {
+		id = reclaim_coresHAW
+		icon = GFX_goal_generic_more_territorial_claims
+		text = reclaim_cores
+		x = 26
+		y = 0
+		cost = 10
+		available = {
+			is_subject = no
+		}
+		select_effect = {
+			set_variable = { unowned_cores_@UTA = 5 }
+			set_variable = { revanchism = 0.000050 }
+			set_variable = { revanchism_stab = -0.000005 }
+			add_dynamic_modifier = { modifier = revanchism }
+			add_dynamic_modifier = { modifier = revanchism_fasc }
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = revanchism_reduction
+			divide_variable = { revanchism = 2 }
+			divide_variable = { revanchism_stab = 2 }
+			add_political_power = 150
+			add_ideas = reclaim_cores_idea
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = raise_matterHAWUTA
+		icon = GFX_focus_generic_self_management
+		text = raise_matterUTA
+		prerequisite = { focus = reclaim_coresHAW }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = UTA
+				is_in_faction_with = UTA
+				NOT = { UTA = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 26
+		y = 1
+		cost = 10
+		available = {
+			NOT = { is_in_faction_with = UTA }
+			NOT = { has_war_with = UTA }
+		}
+		completion_reward = {
+			if = {
+				limit = { has_government = fascism }
+				add_popularity = { ideology = fascism popularity = 0.000005 }
+			}
+			else = {
+				add_popularity = { ideology = fascism popularity = -0.000005 }
+			}
+			add_political_power = 150
+			add_timed_idea = { idea = generic_military_industry days = 180 }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { has_government = fascism }
+				NOT = { fascism > 0.35 }
+			}
+			modifier = {
+				factor = 0
+				UTA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = UTA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = UTA value > 0 }
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = build_public_supportHAWUTA
+		icon = GFX_goal_generic_propaganda
+		text = build_public_supportUTA
+		prerequisite = { focus = raise_matterHAWUTA }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = UTA
+				is_in_faction_with = UTA
+				NOT = { UTA = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = raise_matterHAWUTA
+		cost = 10
+		available = {
+			NOT = { is_in_faction_with = UTA }
+			NOT = { has_war_with = UTA }
+		}
+		completion_reward = {
+			if = {
+				limit = { has_government = fascism }
+				add_popularity = { ideology = fascism popularity = 0.000005 }
+			}
+			else = {
+				add_popularity = { ideology = fascism popularity = -0.000005 }
+			}
+			add_war_support = 0.000050
+			add_political_power = 150
+			add_timed_idea = { idea = generic_recruit_centers days = 180 }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { has_government = fascism }
+				NOT = { fascism > 0.4 }
+			}
+			modifier = {
+				factor = 0
+				UTA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = UTA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = UTA value > 0 }
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = raise_matterHAWUTA
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = territory_or_warHAWUTA
+		icon = GFX_goal_generic_territory_or_war
+		text = territory_or_warUTA
+		prerequisite = { focus = build_public_supportHAWUTA }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = UTA
+				is_in_faction_with = UTA
+				NOT = { UTA = { any_owned_state = { is_core_of = ROOT } } }
+				NOT = { UTA = { any_owned_state = { is_capital = no } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = build_public_supportHAWUTA
+		cost = 3
+		available = {
+			NOT = { is_in_faction_with = UTA }
+			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
+			hidden_trigger = {
+				UTA = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = UTA
+						}
+					}
+				}
+			}
+			has_war = no
+		}
+		completion_reward = {
+			UTA = {
+				country_event = { id = reconquest_wars.1 }
+				custom_effect_tooltip = needs_approval
+			}
+			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
+			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				UTA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = UTA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = UTA value > 0 }
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = build_public_supportHAWUTA
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = war_planHAWUTA
+		icon = GFX_goal_generic_position_armies
+		text = war_planUTA
+		prerequisite = { focus = territory_or_warHAWUTA }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = UTA
+				is_in_faction_with = UTA
+				NOT = { UTA = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = territory_or_warHAWUTA
+		cost = 4
+		available = {
+			NOT = { is_in_faction_with = UTA }
+			has_war = no
+		}
+		completion_reward = {
+			add_ai_strategy = { type = prepare_for_war id = UTA value = 1000 }
+			UTA = { add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 } }
+			random_list = {
+			    25 = { add_command_power = 25 }
+			    25 = { add_manpower = 10000 }
+			    25 = { add_war_support = 0.25 }
+			    25 = { army_experience = 10 }
+			}
+			add_timed_idea = { idea = generic_war_of_national_liberation days = 180 }
+			add_named_threat = { threat = 1 name = war_plan_NF_threat }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				UTA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = UTA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = UTA value > 0 }
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = territory_or_warHAWUTA
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = declare_warHAWUTA
+		icon = GFX_goal_generic_army_tanks
+		text = declare_warUTA
+		prerequisite = { focus = war_planHAWUTA }
+		bypass = {
+			OR = {
+				is_subject = yes
+				has_war_with = UTA
+				is_in_faction_with = UTA
+				NOT = { UTA = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = war_planHAWUTA
+		cost = 3
+		available = {
+			NOT = { is_in_faction_with = UTA }
+			has_war = no
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = UTA
+				type = take_core_state
+				generator = { 663 }
+			}
+			add_named_threat = { threat = 1 name = declare_war_NF_threat }
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				UTA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = UTA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = UTA value > 0 }
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = war_planHAWUTA
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = UTA value < -50 }
+			}
+		}
+	}
+
+	focus = {
+		id = cleanup_revanchismHAWUTA
+		icon = GFX_focus_generic_treaty
+		text = cleanup_revanchismUTA
+		prerequisite = { focus = declare_warHAWUTA }
+		x = 0
+		y = 1
+		relative_position_id = declare_warHAWUTA
+		cost = 0
+		available = {
+			OR = {
+				is_in_faction_with = UTA
+				NOT = { UTA = { any_owned_state = { is_core_of = ROOT } } }
+			}
+			NOT = { has_war_with = UTA }
+		}
+		completion_reward = {
+			add_ai_strategy = { type = prepare_for_war id = UTA value = -1000 }
+			UTA = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
+			custom_effect_tooltip = decrease_revanchism
+			subtract_from_variable = { revanchism = 0.000025 }
+			add_to_variable = { revanchism_stab = 0.000002 }
+			add_ideas = generic_national_unification
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
 		id = border_disputesHAWIRN
 		icon = GFX_goal_generic_more_territorial_claims
 		text = border_disputesIRN
-		x = 26
+		x = 28
 		y = 0
 		cost = 10
 		available = {
@@ -174,7 +586,7 @@ focus_tree = {
 		id = border_disputesHAWAST
 		icon = GFX_goal_generic_more_territorial_claims
 		text = border_disputesAST
-		x = 28
+		x = 30
 		y = 0
 		cost = 10
 		available = {
@@ -326,7 +738,7 @@ focus_tree = {
 		id = border_disputesHAWJAV
 		icon = GFX_goal_generic_more_territorial_claims
 		text = border_disputesJAV
-		x = 30
+		x = 32
 		y = 0
 		cost = 10
 		available = {

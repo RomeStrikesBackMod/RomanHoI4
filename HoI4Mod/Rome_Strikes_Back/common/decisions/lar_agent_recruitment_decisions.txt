@@ -695,11 +695,6 @@ lar_local_recruitment = {
 		target_trigger = {
 			FROM = {
 				is_on_continent = asia
-				OWNER = {
-					NOT = {
-						has_country_flag = conv_south_asia
-					}
-				}
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -709,6 +704,7 @@ lar_local_recruitment = {
 								exists = no
 							}
 							NOT = { tag = ROOT }
+							NOT = { has_country_flag = conv_south_asia }
 						}
 					}
 					AND = {
@@ -717,6 +713,7 @@ lar_local_recruitment = {
 							NOT = {
 								tag = ROOT
 							}
+							NOT = { has_country_flag = conv_south_asia }
 						}
 					}
 				}
@@ -978,7 +975,6 @@ lar_local_recruitment = {
 
 		target_trigger = {
 			FROM = {
-				OWNER = { has_country_flag = conv_south_asia }
 				OR = {
 					AND = {
 						has_variable = historical_capital_for_country
@@ -988,6 +984,7 @@ lar_local_recruitment = {
 								exists = no
 							}
 							NOT = { tag = ROOT }
+							has_country_flag = conv_south_asia
 						}
 					}
 					AND = {
@@ -996,6 +993,7 @@ lar_local_recruitment = {
 							NOT = {
 								tag = ROOT
 							}
+							has_country_flag = conv_south_asia
 						}
 					}
 				}

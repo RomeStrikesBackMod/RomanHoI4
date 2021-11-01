@@ -77,7 +77,7 @@ add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doc
 add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
 add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
 
-set_country_flag = conv_west_asia
+set_country_flag = conv_persia
 set_convoys = 17
 
 add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 13 producer = IRN }
@@ -97,6 +97,32 @@ set_popularities = {
 	fascism = 55
 	neutrality = 2
 }
+
+# DIPLOMACY
+if = {
+    limit = {
+        has_dlc = "Together for Victory"
+    }
+    set_autonomy = {
+        target = X03
+        autonomous_state = autonomy_integrated_puppet
+    }
+    else = {
+        set_autonomy = {
+            target = X03
+            autonomous_state = autonomy_puppet
+        }
+    }
+}
+
+if = {
+    limit = {has_dlc = "Together for Victory" }
+
+    add_to_tech_sharing_group = IRN_research
+}
+
+give_guarantee = KHI
+diplomatic_relation = { country = KHI relation = non_aggression_pact }
 
 add_opinion_modifier = { target = ADA modifier = negative_17 }
 give_military_access = ADA
@@ -137,8 +163,8 @@ add_ideas = {
 set_stability = 0.60
 set_war_support = 0.64
 create_country_leader = {
-	name = "Ali Meshhedi"
-	desc = "POLITICS_ALI_MESHHEDI_DESC"
+	name = "Ali Zahedi"
+	desc = "POLITICS_ALI_ZAHEDI_DESC"
 	picture = "gfx/leaders/JOR/Portrait_Arabia_Generic_fascism1.dds"
 	expire = "1965.1.1"
 	ideology = fascism_ideology

@@ -1,4 +1,4 @@
-﻿capital = 458
+﻿capital = 273
 set_research_slots = 3
 
 oob = "X06_OOB"
@@ -12,33 +12,19 @@ if = {
 
 # Starting tech
 set_technology = {
-	basic_light_tank = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
-	fighter1 = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
-	improved_light_tank = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
-	interwar_antiair = 1
-	interwar_artillery = 1
-	motorised_infantry = 1
 	support_weapons = 1
-	tactical_bomber1 = 1
+	synth_oil_experiments = 1
 	tech_engineers = 1
 	tech_recon = 1
 	tech_support = 1
-}
-
-if = {
-	limit = { has_dlc = "La Resistance" }
-	set_technology = {
-		armored_car1 = 1
-	}
 }
 
 if = {
@@ -51,8 +37,6 @@ if = {
 		early_ship_hull_cruiser = 1
 		early_ship_hull_heavy = 1
 		early_ship_hull_light = 1
-		improved_airplane_launcher = 1
-		smoke_generator = 1
 	}
 }
 
@@ -70,21 +54,38 @@ if = {
 
 # Research Bonuses
 add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
+<<<<<<< HEAD:HoI4Mod/Rome_Strikes_Back/history/countries/X06 - Polish-Lithuanian Southeast Asia.txt
 add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
 
 set_country_flag = conv_southeast_asia
 set_convoys = 0
 
+=======
+
+set_country_flag = conv_siam
+set_convoys = 0
+
+>>>>>>> master:HoI4Mod/Rome_Strikes_Back/history/countries/X02 - Indian siam.txt
 
 set_politics = {
-    ruling_party = fascism
-    last_election = "1915.1.10"
+    ruling_party = democratic
+    last_election = "1934.3.25"
     election_frequency = 48
-    elections_allowed = no
+    elections_allowed = yes
 }
 
 set_popularities = {
-	fascism = 100
+	absolutist = 7
+	communism = 28
+	democratic = 50
+	fascism = 10
+	neutrality = 5
+}
+
+if = {
+    limit = {has_dlc = "Together for Victory" }
+
+    add_to_tech_sharing_group = IND_research
 }
 
 if = {
@@ -96,17 +97,26 @@ if = {
 
 
 add_ideas = {
-	limited_conscription
-	partial_economic_mobilisation
-	limited_exports
-	culture_polish
+	IND_monarch
+	volunteer_only
+	low_economic_mobilisation
+	export_focus
+	culture_telegu
 }
+set_stability = 0.60
+set_war_support = 0.62
 create_country_leader = {
+<<<<<<< HEAD:HoI4Mod/Rome_Strikes_Back/history/countries/X06 - Polish-Lithuanian Southeast Asia.txt
 	name = "Ludwik Fabryvy"
 	desc = "POLITICS_LUDWIK_FABRYVY_DESC"
 	picture = "gfx/leaders/POL/Portrait_POL_Boleslaw_Piasecki.dds"
+=======
+	name = "Narasimha Hanumathu"
+	desc = "POLITICS_NARASIMHA_HANUMATHU_DESC"
+	picture = "gfx/leaders/Indian/Portrait_BHC_Nirmal_Kumar_Bose.tga"
+>>>>>>> master:HoI4Mod/Rome_Strikes_Back/history/countries/X02 - Indian siam.txt
 	expire = "1965.1.1"
-	ideology = fascism_ideology
+	ideology = conservatism
 	traits = {
 	}
 }
@@ -115,13 +125,22 @@ if = {
 		has_dlc = "La Resistance"
 	}
 	create_operative_leader = {
+<<<<<<< HEAD:HoI4Mod/Rome_Strikes_Back/history/countries/X06 - Polish-Lithuanian Southeast Asia.txt
 		name = "Wiktoria Załuska"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
+=======
+		name = "Indira Naidu"
+		GFX = "gfx/leaders/India/portrait_india_generic_operative_female_1.dds"
+>>>>>>> master:HoI4Mod/Rome_Strikes_Back/history/countries/X02 - Indian siam.txt
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
 		female = yes
+<<<<<<< HEAD:HoI4Mod/Rome_Strikes_Back/history/countries/X06 - Polish-Lithuanian Southeast Asia.txt
 		nationalities = { X06 }
+=======
+		nationalities = {  }
+>>>>>>> master:HoI4Mod/Rome_Strikes_Back/history/countries/X02 - Indian siam.txt
 	}
 
 }
