@@ -679,42 +679,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AnnexJAPKOR
-		icon = GFX_goal_generic_major_war
-		text = AnnexKOR
-		prerequisite = { focus = PrepTheBorderJAP }
-		bypass = {
-		OR = {
-			ROOT = {
-				is_in_faction_with = KOR
-				has_war_with = KOR
-			}
-			NOT = { country_exists = KOR }
-		}
-	}
-		x = 2
-		y = 1
-		relative_position_id = PrepTheBorderJAP
-		cost = 10
-		available = {
-		KOR = { is_in_faction = no }
-	}
-		completion_reward = {
-		create_wargoal = {
-			type = annex_everything
-			target = KOR
-		}
-	}
-		ai_will_do = {
-		factor = 5
-		modifier = {
-			factor = 0
-			strength_ratio = { tag = KOR ratio < 1 }
-		}
-	}
-	}
-
-	focus = {
 		id = War_withINDJAP
 		icon = GFX_goal_generic_major_war
 		text = War_withIND
