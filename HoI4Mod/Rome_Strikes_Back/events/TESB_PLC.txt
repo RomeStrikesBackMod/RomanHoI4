@@ -169,7 +169,7 @@ country_event = {
 		set_global_flag = first_dresden_conf
 		set_country_flag = attending_dresden_1
 		hidden_effect = {
-			GER = { #1
+			GMR = { #1
 				country_event = {
 					id = tesb_PLC.101
 					hours = 2
@@ -226,7 +226,7 @@ country_event = {
 	#Silesia
 	option = {
 		name = tesb_PLC.100.a
-		set_variable = { GER.GER_dresden_1 = 1 }
+		set_variable = { GMR.GER_dresden_1 = 1 }
 		add_political_power = -50
 		ai_chance = {
 			factor = 20
@@ -248,7 +248,7 @@ country_event = {
 	#Silesia
 	option = {
 		name = tesb_PLC.101.a
-		add_to_variable = { GER.GER_dresden_1 = 1 }
+		add_to_variable = { GMR.GER_dresden_1 = 1 }
 		set_country_flag = attending_dresden_1
 		ai_chance = {
 			factor = 20
@@ -286,14 +286,14 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = GER
+					target = GMR
 					value > 24
 				}
 				factor = 1.5
 			}
 			modifier = {
 				has_opinion = {
-					target = GER
+					target = GMR
 					value > 49
 				}
 				factor = 1.5
@@ -350,7 +350,7 @@ country_event = {
 	picture = GFX_report_event_german_italian_pact #Placeholder image
 
 	trigger = {
-		NOT = { tag = GER tag = PLC }
+		NOT = { tag = GMR tag = PLC }
 		has_country_flag = attending_dresden_1
 		NOT = { has_country_flag = decided_GER_dresden_1 }
 	}
@@ -368,17 +368,17 @@ country_event = {
 		name = tesb_PLC.104.a
 		if = {
 			limit = { tag = RUS }
-			add_to_variable = { GER.GER_dresden_1 = 3 }
+			add_to_variable = { GMR.GER_dresden_1 = 3 }
 		}
 		else = {
-			add_to_variable = { GER.GER_dresden_1 = 1 }
+			add_to_variable = { GMR.GER_dresden_1 = 1 }
 		}
 		set_country_flag = supported_GER
 		set_country_flag = supported_PLC
 		ai_chance = {
 			factor = 10
 			modifier = {
-				is_in_faction_with = GER
+				is_in_faction_with = GMR
 				factor = 1.5
 			}
 			modifier = {
@@ -391,14 +391,14 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = GER
+					target = GMR
 					value > 24
 				}
 				factor = 1.5
 			}
 			modifier = {
 				has_opinion = {
-					target = GER
+					target = GMR
 					value > 49
 				}
 				factor = 1.5
@@ -449,14 +449,14 @@ country_event = {
 			}
 			modifier = {
 				has_opinion = {
-					target = GER
+					target = GMR
 					value < 25
 				}
 				factor = 1.5
 			}
 			modifier = {
 				has_opinion = {
-					target = GER
+					target = GMR
 					value < 0
 				}
 				factor = 1.5
@@ -532,7 +532,7 @@ country_event = {
 				modifier = first_dresden_conference_GER_bad
 			}
 			reverse_add_opinion_modifier = {
-				target = GER
+				target = GMR
 				modifier = first_dresden_conference_GER_good
 			}
 		}
@@ -545,7 +545,7 @@ country_event = {
 				modifier = first_dresden_conference_good
 			}
 			reverse_add_opinion_modifier = {
-				target = GER
+				target = GMR
 				modifier = first_dresden_conference_bad
 			}
 		}
@@ -554,7 +554,7 @@ country_event = {
 	#give up Silesia
 	option = {
 		name = tesb_PLC.106.a1
-		GER = {
+		GMR = {
 			if = {
 				limit = {
 					HUN = { owns_state = 285 }	# significant_number - Lower Silesia
@@ -575,31 +575,31 @@ country_event = {
 		ai_chance = {
 			factor = 15
 			modifier = {
-				check_variable = { GER.GER_dresden_1 > 2 }
+				check_variable = { GMR.GER_dresden_1 > 2 }
 				factor = 1.25
 			}
 			modifier = {
-				check_variable = { GER.GER_dresden_1 > 4 }
+				check_variable = { GMR.GER_dresden_1 > 4 }
 				factor = 1.25
 			}
 			modifier = {
-				check_variable = { GER.GER_dresden_1 > 5 }
+				check_variable = { GMR.GER_dresden_1 > 5 }
 				factor = 1.5
 			}
 			modifier = {
-				check_variable = { GER.GER_dresden_1 > 7 }
+				check_variable = { GMR.GER_dresden_1 > 7 }
 				factor = 1.5
 			}
 			modifier = {
 				strength_ratio = {
-					tag = GER
+					tag = GMR
 					ratio < 1
 				}
 				factor = 1.25
 			}
 			modifier = {
 				strength_ratio = {
-					tag = GER
+					tag = GMR
 					ratio < 0.75
 				}
 				factor = 1.25
@@ -609,7 +609,7 @@ country_event = {
 	#dont give up Silesia
 	option = {
 		name = tesb_PLC.106.a2
-		GER = {
+		GMR = {
 			create_wargoal = {
 				type = take_state_focus
 				target = HUN
@@ -621,8 +621,8 @@ country_event = {
 					285 = {	# significant_number - Lower Silesia
 						is_owned_by = HUN
 						NOT = {
-							is_core_of = GER
-							is_claimed_by = GER
+							is_core_of = GMR
+							is_claimed_by = GMR
 						}
 					}
 				}
@@ -633,8 +633,8 @@ country_event = {
 					282 = {	# significant_number - Upper Silesia
 						is_owned_by = HUN
 						NOT = {
-							is_core_of = GER
-							is_claimed_by = GER
+							is_core_of = GMR
+							is_claimed_by = GMR
 						}
 					}
 				}
@@ -645,19 +645,19 @@ country_event = {
 		ai_chance = {
 			factor = 10
 			modifier = {
-				check_variable = { GER.GER_dresden_1 < 3 }
+				check_variable = { GMR.GER_dresden_1 < 3 }
 				factor = 1.5
 			}
 			modifier = {
 				strength_ratio = {
-					tag = GER
+					tag = GMR
 					ratio > 1
 				}
 				factor = 1.25
 			}
 			modifier = {
 				strength_ratio = {
-					tag = GER
+					tag = GMR
 					ratio > 1.5
 				}
 				factor = 1.25
@@ -843,7 +843,7 @@ country_event = {
 		name = tesb_PLC.121.a
 		transfer_state = 230	# significant_number - Posen
 		230 = { add_manpower = -200000 }	# significant_number - Posen
-		GER = {
+		GMR = {
 			remove_state_core = 457	# significant_number - Masovia
 			random_owned_controlled_state = {
 				limit = { NOT = { has_state_flag = PLC_transfer } }
@@ -854,7 +854,7 @@ country_event = {
 		if = {
 			limit = { owns_state = 457 }	# significant_number - Masovia
 			457 = { add_manpower = -200000 }	# significant_number - Masovia
-			GER = {
+			GMR = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
 					add_manpower = 200000
@@ -865,7 +865,7 @@ country_event = {
 		if = {
 			limit = { owns_state = 288 }	# significant_number - West Galicia
 			288 = { add_manpower = -200000 }	# significant_number - West Galicia
-			GER = {
+			GMR = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
 					add_manpower = 200000
@@ -876,7 +876,7 @@ country_event = {
 		if = {
 			limit = { owns_state = 459 }	# significant_number - Lithuania
 			459 = { add_manpower = -100000 }	# significant_number - Lithuania
-			GER = {
+			GMR = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
 					add_manpower = 100000
@@ -887,7 +887,7 @@ country_event = {
 		if = {
 			limit = { owns_state = 460 }	# significant_number - Latvia
 			460 = { add_manpower = -100000 }	# significant_number - Latvia
-			GER = {
+			GMR = {
 				random_owned_controlled_state = {
 					limit = { NOT = { has_state_flag = PLC_transfer } }
 					add_manpower = 100000
@@ -913,7 +913,7 @@ country_event = {
 	option = {
 		name = tesb_PLC.122.a
 		add_opinion_modifier = {
-			target = GER
+			target = GMR
 			modifier = GER_PLC_refused_exchange
 		}
 	}
@@ -946,7 +946,7 @@ country_event = {
 		set_global_flag = second_dresden_conf
 		set_country_flag = attending_dresden_2
 		hidden_effect = {
-			GER = { #1
+			GMR = { #1
 				country_event = {
 					id = tesb_PLC.152
 					hours = 12
