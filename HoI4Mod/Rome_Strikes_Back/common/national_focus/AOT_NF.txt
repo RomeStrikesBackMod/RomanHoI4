@@ -1,0 +1,69 @@
+focus_tree = {
+	id = AOT_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = AOT
+		}
+	}
+	
+	default = no
+	
+	shared_focus = army_effort
+	shared_focus = aviation_effort
+	shared_focus = naval_effort
+	#shared_focus = industrial_effort
+	#shared_focus = political_effort
+
+	focus = {
+		id = AOT_pizetan_passing
+		icon = GFX_focus_generic_treaty #placeholder
+		cost = 10
+		x = 16
+		y = 0
+		available = {
+			has_country_flag = AOT_ol_ness_died
+		}
+		bypass = {
+			has_country_flag = AOT_ol_ness_died
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_thaddai_power_couple
+				add_idea = AOT_thaddai_heartbreak
+			}
+			custom_effect_tooltip = TT_bypass_by_event
+		}
+	}
+
+	focus = {
+		id = AOT_send_timon_to_constantiople
+		icon = GFX_focus_generic_treaty #placeholder
+		cost = 10
+		relative_position_id = AOT_pizetan_passing
+		prerequisite = { focus = AOT_pizetan_passing }
+		mutually_exclusive = { focus = AOT_keep_timon_in_aotearoa }
+		x = -1
+		y = 1
+		completion_reward = {
+			add_ideas = AOT_timon_abroad
+		}
+	}
+
+	focus = {
+		id = AOT_keep_timon_in_aotearoa
+		icon = GFX_focus_generic_treaty #placeholder
+		cost = 10
+		relative_position_id = AOT_pizetan_passing
+		prerequisite = { focus = AOT_pizetan_passing }
+		mutually_exclusive = { focus = AOT_send_timon_to_constantiople }
+		x = 1
+		y = 1
+		completion_reward = {
+			add_ideas = AOT_timon_at_home
+		}
+	}
+}
