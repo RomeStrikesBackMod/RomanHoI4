@@ -116,6 +116,12 @@ on_actions = {
 	on_civil_war_end = {
 		effect = {
 			if = {
+				limit = { original_tag = RME }
+				clr_global_flag = RME_civil_war_ongoing
+				set_global_flag = RME_civil_war_over
+				AOT = { activate_mission = AOT_reconciling_with_rome }
+			}
+			if = {
 				limit = {
 					tag = HED
 				}
