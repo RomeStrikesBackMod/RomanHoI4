@@ -48,6 +48,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				factor = 0
+				date < 1939.1.1
+			}
 		}
 	}
 
@@ -465,7 +469,7 @@ focus_tree = {
 			add_timed_idea = { idea = generic_military_industry days = 180 }
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -535,7 +539,7 @@ focus_tree = {
 			add_timed_idea = { idea = generic_recruit_centers days = 180 }
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			modifier = {
 				factor = 0
 				NOT = { has_government = fascism }
@@ -617,7 +621,7 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			modifier = {
 				factor = 0
 				PLC = { in_weak_faction = no }
@@ -686,7 +690,7 @@ focus_tree = {
 			add_named_threat = { threat = 1 name = war_plan_NF_threat }
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			modifier = {
 				factor = 0
 				PLC = { in_weak_faction = no }
@@ -1030,6 +1034,10 @@ focus_tree = {
 			modifier = {
 				factor = 2
 				has_opinion = { target = X01 value < -50 }
+			}
+			modifier = {
+				factor = 2
+				IND = { surrender_progress > 0.2 }
 			}
 		}
 	}
