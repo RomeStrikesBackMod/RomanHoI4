@@ -20,9 +20,9 @@ focus_tree = {
 
 	focus = {
 		id = AOT_pizetan_passing
-		icon = GFX_focus_generic_treaty #placeholder
+		icon = GFX_focus_generic_monarchy_2 #placeholder
 		cost = 10
-		x = 16
+		x = 15
 		y = 0
 		available = {
 			has_country_flag = AOT_ol_ness_died
@@ -41,7 +41,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_send_timon_to_constantiople
-		icon = GFX_focus_generic_treaty #placeholder
+		icon = GFX_focus_generic_military_mission
 		cost = 10
 		relative_position_id = AOT_pizetan_passing
 		prerequisite = { focus = AOT_pizetan_passing }
@@ -50,12 +50,25 @@ focus_tree = {
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_timon_abroad
+			reverse_add_opinion_modifier = {
+				target = RME
+				modifier = AOT_imperial_representative
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 10
+				RME = {
+					has_government = democratic
+				}
+			}
 		}
 	}
 
 	focus = {
 		id = AOT_keep_timon_in_aotearoa
-		icon = GFX_focus_generic_treaty #placeholder
+		icon = GFX_focus_generic_home_defense
 		cost = 10
 		relative_position_id = AOT_pizetan_passing
 		prerequisite = { focus = AOT_pizetan_passing }
@@ -64,6 +77,59 @@ focus_tree = {
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_timon_at_home
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 10
+				RME = {
+					NOT = { has_government = democratic }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_industrial_checkup
+		icon = GFX_focus_generic_industry_1
+		cost = 10
+		x = 20
+		y = 0
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				category = industry
+				bonus = 0.5
+				uses = 2
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_regional_economics
+		icon = GFX_focus_generic_industry_2
+		cost = 10
+		relative_position_id = AOT_industrial_checkup
+		prerequisite = { focus = AOT_industrial_checkup }
+		mutually_exclusive = { focus = AOT_international_economics }
+		x = -1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+	}
+
+	focus = {
+		id = AOT_international_economics
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 10
+		relative_position_id = AOT_industrial_checkup
+		prerequisite = { focus = AOT_industrial_checkup }
+		mutually_exclusive = { focus = AOT_regional_economics }
+		x = 1
+		y = 1
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
 		}
 	}
 }
