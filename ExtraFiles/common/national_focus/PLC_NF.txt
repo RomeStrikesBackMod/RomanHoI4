@@ -641,16 +641,16 @@ focus_tree = {
 		prerequisite = { focus = PLC_national_will }
 		relative_position_id = PLC_national_will
 		available = {
-			NOT = { has_war_with = GER }
+			NOT = { has_war_with = GMR }
 		}
 		bypass = {
 			OR = {
-				GER = { has_government = fascism }
-				GER = { is_in_faction_with = PLC }
+				GMR = { has_government = fascism }
+				GMR = { is_in_faction_with = PLC }
 			}
 		}
 		completion_reward = {
-			GER = {
+			GMR = {
 				add_timed_idea = { idea = PLC_supporting_fascists days = 730 }
 			}
 		}
@@ -658,7 +658,7 @@ focus_tree = {
 			base = 5
 			modifier = {
 				factor = 2
-				GER = {
+				GMR = {
 					has_completed_focus = GER_election_1936
 				}
 			}
@@ -676,7 +676,7 @@ focus_tree = {
 		prerequisite = { focus = PLC_german_fascists }
 		relative_position_id = PLC_german_fascists
 		available = {
-			GER = { fascism > 0.4 NOT = { has_country_flag = GER_election_1936_flag } }
+			GMR = { fascism > 0.4 NOT = { has_country_flag = GER_election_1936_flag } }
 			OR = {
 				num_divisions > 14
 				has_army_manpower = { size > 120000 }
@@ -685,12 +685,12 @@ focus_tree = {
 		}
 		bypass = {
 			OR = {
-				GER = { has_government = fascism }
-				GER = { is_in_faction_with = PLC }
+				GMR = { has_government = fascism }
+				GMR = { is_in_faction_with = PLC }
 			}
 		}
 		completion_reward = {
-			GER = {
+			GMR = {
 				country_event = {
 					id = tesb_GER.25
 					hours = 1
@@ -714,16 +714,16 @@ focus_tree = {
 		relative_position_id = PLC_german_fascists
 		available = {
 			OR = {
-				GER = { has_government = fascism is_friend_or_potential_friend_of_ROOT = yes }
+				GMR = { has_government = fascism is_friend_or_potential_friend_of_ROOT = yes }
 				SCA = { has_government = fascism is_friend_or_potential_friend_of_ROOT = yes }
 			}
 		}
 		bypass = {
 			OR = {
-				GER = { is_in_faction_with = PLC }
+				GMR = { is_in_faction_with = PLC }
 				SCA = { is_in_faction_with = PLC }
 				AND = {
-					GER = { is_not_potential_friend_of_ROOT = yes }
+					GMR = { is_not_potential_friend_of_ROOT = yes }
 					SCA = { is_not_potential_friend_of_ROOT = yes }
 				}
 			}
@@ -749,16 +749,16 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					NOT = { GER = { has_government = fascism } }
+					NOT = { GMR = { has_government = fascism } }
 					NOT = { SCA = { has_government = fascism } }
 				}
 				custom_effect_tooltip = PLC_baltic_axis_tt
 			}
 			if = {
 				limit = {
-					GER = { has_government = fascism }
+					GMR = { has_government = fascism }
 				}
-				GER = {
+				GMR = {
 					country_event = { id = tesb_PLC.10 hours = 2 }
 				}
 				set_country_flag = invited_germany
@@ -777,18 +777,18 @@ focus_tree = {
 			base = 5
 			modifier = {
 				factor = 2
-				GER = { has_government = fascism }
+				GMR = { has_government = fascism }
 				SCA = { has_government = fascism }
 			}
 			modifier = {
 				factor = 0.5
-				GER = { has_government = fascism }
+				GMR = { has_government = fascism }
 				SCA = { NOT = { has_government = fascism } }
 			}
 			modifier = {
 				factor = 0.5
 				SCA = { has_government = fascism }
-				GER = { NOT = { has_government = fascism } }
+				GMR = { NOT = { has_government = fascism } }
 			}
 		}
 	}
@@ -840,7 +840,7 @@ focus_tree = {
 					hours = 2
 				}
 			}
-			GER = {
+			GMR = {
 				country_event = { id = tesb_PLC.107 hours = 6 }
 			}
 		}
@@ -848,7 +848,7 @@ focus_tree = {
 			base = 3
 			modifier = {
 				factor = 2
-				is_in_faction_with = GER
+				is_in_faction_with = GMR
 			}
 		}
 	}
@@ -864,8 +864,8 @@ focus_tree = {
 		relative_position_id = PLC_first_dresden_conference
 		available = {
 			NOT = { owns_state = 230 }	# significant_number - Posen
-			is_in_faction_with = GER
-			GER = {
+			is_in_faction_with = GMR
+			GMR = {
 				NOT ={
 					focus_progress = {
 						focus = GER_population_exchange
@@ -876,13 +876,13 @@ focus_tree = {
 		}
 		bypass = {
 			OR = {
-				has_war_with = GER
+				has_war_with = GMR
 				owns_state = 230	# significant_number - Posen
-				NOT = { country_exists = GER }
+				NOT = { country_exists = GMR }
 			}
 		}
 		completion_reward = {
-			GER = {
+			GMR = {
 				country_event = {
 					id = tesb_PLC.120
 					hours = 2
@@ -906,7 +906,7 @@ focus_tree = {
 		available = {
 			owns_state = 230	# significant_number - Upper Silesia
 			is_puppet = no
-			is_in_faction_with = GER
+			is_in_faction_with = GMR
 			if = {
 				limit = {
 					288 = { OWNER = { OR = { tag = HUN is_subject_of = HUN } } }	# significant_number - West Galicia
