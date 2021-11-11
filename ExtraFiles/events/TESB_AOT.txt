@@ -1,0 +1,199 @@
+﻿add_namespace = tesb_AOT
+
+news_event = {
+	id = tesb_AOT.1
+	title = tesb_AOT.1.t
+	desc = tesb_AOT.1.d
+	picture = GFX_news_event_royal_visit #placeholder
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = AOT
+		has_idea = AOT_thaddai_power_couple
+	}
+
+	mean_time_to_happen = {
+		days = 90
+		modifier = {
+			factor = 0.5
+			date > 1936.2.1
+		}
+		modifier = {
+			factor = 0.5
+			date > 1936.4.1
+		}
+	}
+
+	immediate = {
+		set_country_flag = AOT_ol_ness_hospitalized
+	}
+
+	option = {
+		name = tesb_AOT.1.a
+	}
+}
+
+news_event = {
+	id = tesb_AOT.2
+	title = tesb_AOT.2.t
+	desc = tesb_AOT.2.d
+	picture = GFX_news_event_generic_funeral #placeholder
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = AOT
+		has_country_flag = AOT_ol_ness_hospitalized
+	}
+
+	mean_time_to_happen = {
+		days = 120
+		modifier = {
+			factor = 0.5
+			date > 1936.9.1
+		}
+		modifier = {
+			factor = 0.5
+			date > 1936.11.1
+		}
+	}
+
+	immediate = {
+		swap_ideas = {
+			remove_idea = AOT_thaddai_power_couple
+			add_idea = AOT_thaddai_heartbreak
+		}
+		set_country_flag = AOT_ol_ness_died
+	}
+
+	option = {
+		name = tesb_AOT.2.a
+	}
+}
+
+country_event = {
+	id = tesb_AOT.10
+	title = tesb_AOT.10.t
+	desc = tesb_AOT.10.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.10.a #welcome back
+		set_autonomy = {
+			target = AOT
+			autonomy_state = autonomy_dominion
+		}
+		AOT = { country_event = { id = tesb_AOT.11 } }
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.10.b #reject
+		AOT = { country_event = { id = tesb_AOT.11 } }
+	}
+}
+
+country_event = {
+	id = tesb_AOT.11
+	title = tesb_AOT.11.t
+	desc = {
+		text = tesb_AOT.11.da
+		trigger = { is_subject_of = FROM }
+	}
+	desc = {
+		text = tesb_AOT.11.db
+		trigger = { NOT = { is_subject_of = FROM } }
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.11.a #welcome back
+		trigger = { is_subject_of = FROM }
+		effect_tooltip = {
+			set_autonomy = {
+				target = AOT
+				autonomy_state = autonomy_dominion
+			}
+		}
+	}
+	option = {
+		name = tesb_AOT.11.b #reject
+		trigger = { NOT = { is_subject_of = FROM } }
+	}
+}
+
+country_event = {
+	id = tesb_AOT.12
+	title = tesb_AOT.12.t
+	desc = tesb_AOT.12.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.12.a #welcome back
+		set_autonomy = {
+			target = AOT
+			autonomy_state = autonomy_colony
+		}
+		AOT = { country_event = { id = tesb_AOT.13 } }
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.12.b #reject
+		AOT = { country_event = { id = tesb_AOT.13 } }
+	}
+}
+
+country_event = {
+	id = tesb_AOT.13
+	title = tesb_AOT.13.t
+	desc = {
+		text = tesb_AOT.13.da
+		trigger = { is_subject_of = FROM }
+	}
+	desc = {
+		text = tesb_AOT.13.db
+		trigger = { NOT = { is_subject_of = FROM } }
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.13.a #welcome back
+		trigger = { is_subject_of = FROM }
+		effect_tooltip = {
+			set_autonomy = {
+				target = AOT
+				autonomy_state = autonomy_colony
+			}
+		}
+	}
+	option = {
+		name = tesb_AOT.13.b #reject
+		trigger = { NOT = { is_subject_of = FROM } }
+	}
+}
