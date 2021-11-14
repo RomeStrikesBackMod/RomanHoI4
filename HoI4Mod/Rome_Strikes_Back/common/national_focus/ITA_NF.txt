@@ -9,13 +9,1605 @@ focus_tree = {
 			tag = ITA
 		}
 	}
-	
+	initial_show_position = {
+		x = 24
+		y = 0
+	}
 	default = no
 	
 	shared_focus = army_effort
 	shared_focus = aviation_effort
 	shared_focus = naval_effort
 	shared_focus = industrial_effort
-	shared_focus = political_effort
+	#shared_focus = political_effort
 
+	#############################
+	###Absolutist/Fascist Path###
+	#############################
+	focus = {
+		id = ITA_return_of_the_lombardi
+		icon = GFX_focus_generic_monarchy_2
+		mutually_exclusive = { focus = ITA_the_roman_republic }
+		cost = 10
+		x = 19
+		y = 0
+		completion_reward = {
+			create_country_leader = {
+				name = "Giuseppe Lombardi"
+				desc = "POLITICS_GIUSEPPE_LOMBARDI_DESC"
+				picture = "gfx/leaders/Italy/Portrait_Italy_Giuseppe_Lombardi.dds"
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					rex_italiae
+				}
+			}
+			add_popularity = {
+				ideology = absolutist
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				RME = { has_government = democratic }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_centralize_power
+		icon = GFX_focus_rom_royal_dictatorship
+		relative_position_id = ITA_return_of_the_lombardi
+		prerequisite = { focus = ITA_return_of_the_lombardi }
+		mutually_exclusive = { focus = ITA_a_populist_leader }
+		cost = 10
+		x = -2
+		y = 1
+		completion_reward = {
+			add_popularity = {
+				ideology = absolutist
+				popularity = 0.1
+			}
+			add_political_power = 30
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_restore_the_monarchy
+		icon = GFX_focus_eng_god_save_the_king
+		relative_position_id = ITA_centralize_power
+		prerequisite = { focus = ITA_centralize_power }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			absolutist > 0.4
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = ITA_restore_the_monarchy_flag
+						NOT = { has_government = absolutist }
+					}
+				}
+				set_politics = {
+					ruling_party = absolutist
+					elections_allowed = no
+				}
+				set_country_flag = ITA_restore_the_monarchy_flag
+				else = {
+					add_political_power = 60
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_our_most_holy_monarch
+		icon = GFX_focus_mex_restore_the_army_of_christ
+		relative_position_id = ITA_restore_the_monarchy
+		prerequisite = { focus = ITA_restore_the_monarchy }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			OR = {
+				BRG = { is_friend_or_potential_friend_of_ROOT = yes }
+				has_global_flag = pope_has_returned_to_rome
+				has_political_power > 250
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					BRG = { is_friend_or_potential_friend_of_ROOT = yes }
+				}
+				add_country_leader_trait = crowned_monarch
+				else_if = {
+					limit = { has_global_flag = pope_has_returned_to_rome }
+					add_country_leader_trait = crowned_monarch
+				}
+				else = {
+					add_country_leader_trait = crowned_monarch
+					add_political_power = -250
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_holy_roman_empire
+		icon = GFX_focus_ger_revive_kaiserreich
+		relative_position_id = ITA_our_most_holy_monarch
+		prerequisite = { focus = ITA_our_most_holy_monarch }
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_union_of_church_and_state
+		icon = GFX_focus_por_concordat
+		relative_position_id = ITA_holy_roman_empire
+		prerequisite = { focus = ITA_holy_roman_empire }
+		mutually_exclusive = { focus = ITA_separation_of_church_and_state }
+		cost = 10
+		x = -1
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_separation_of_church_and_state
+		icon = GFX_focus_mex_triumph_over_the_cristeros
+		relative_position_id = ITA_holy_roman_empire
+		prerequisite = { focus = ITA_holy_roman_empire }
+		mutually_exclusive = { focus = ITA_union_of_church_and_state }
+		cost = 10
+		x = 1
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_secure_raetia
+		icon = GFX_focus_attack_switzerland
+		relative_position_id = ITA_union_of_church_and_state
+		prerequisite = { focus = ITA_union_of_church_and_state focus = ITA_separation_of_church_and_state }
+		cost = 10
+		x = 1
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_eliminate_the_german_claimant
+		icon = GFX_focus_attack_germany
+		relative_position_id = ITA_secure_raetia
+		prerequisite = { focus = ITA_secure_raetia }
+		cost = 10
+		x = -1
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_there_can_only_be_one
+		icon = GFX_focus_generic_strike_at_democracy1
+		relative_position_id = ITA_secure_raetia
+		prerequisite = { focus = ITA_secure_raetia }
+		cost = 10
+		x = 1
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	#####################
+	###Fascist Subpath###
+	#####################
+	focus = {
+		id = ITA_a_populist_leader
+		icon = GFX_goal_support_fascism
+		relative_position_id = ITA_return_of_the_lombardi
+		prerequisite = { focus = ITA_return_of_the_lombardi }
+		mutually_exclusive = { focus = ITA_centralize_power }
+		cost = 10
+		x = 2
+		y = 1
+		available = {
+			has_country_leader_with_trait = rex_italiae
+		}
+		completion_reward = {
+			swap_ruler_traits = {
+				remove = rex_italiae
+				add = dictator_romani
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 2
+				BRG = { has_government = democratic }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_imprison_dissidents
+		icon = GFX_goal_generic_political_pressure
+		relative_position_id = ITA_a_populist_leader
+		prerequisite = { focus = ITA_a_populist_leader }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			fascism > 0.3
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = ITA_political_prisoners
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_raise_the_eagle_standard
+		icon = GFX_goal_support_fascism
+		relative_position_id = ITA_imprison_dissidents
+		prerequisite = { focus = ITA_imprison_dissidents }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			fascism > 0.45
+		}
+		completion_reward = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_leader = {
+							name = "Giuseppe II Lombardi"
+						}
+					}
+					set_country_leader_ideology = rexism
+					else = {
+						create_country_leader = {
+							name = "Giuseppe II Lombardi"
+							desc = "POLITICS_GIUSEPPE_LOMBARDI_DESC"
+							picture = "gfx/leaders/Italy/Portrait_Italy_Giuseppe_Lombardi.dds"
+							expire = "1965.1.1"
+							ideology = rexism
+							traits = {
+								dictator_romani
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = ITA_raise_the_eagle_standard_flag
+						NOT = { has_government = fascism }
+					}
+				}
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+				set_country_flag = ITA_raise_the_eagle_standard_flag
+				else = {
+					add_political_power = 60
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_unify_italia
+		icon = GFX_focus_generic_italy_first
+		relative_position_id = ITA_raise_the_eagle_standard
+		prerequisite = { focus = ITA_raise_the_eagle_standard }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			is_subject = no
+			has_government = fascism
+		}
+		completion_reward = {
+			add_state_claim = 584 # significant_number - Puglia
+			add_state_claim = 585 # significant_number - Campania
+			add_state_claim = 586 # significant_number - Sicily
+			add_state_claim = 587 # significant_number - Malta
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_reclaim_gallia
+		icon = GFX_focus_focus_fra_border
+		relative_position_id = ITA_unify_italia
+		prerequisite = { focus = ITA_unify_italia }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			is_subject = no
+			has_government = fascism
+			custom_trigger_tooltip = {
+				tooltip = ITA_unify_italia_done_TT
+				all_state = {
+					OR = {
+						NOT = {
+							state = 584 # significant_number - Puglia
+							state = 585 # significant_number - Campania
+							state = 586 # significant_number - Sicily
+							state = 587 # significant_number - Malta
+							state = 293 # significant_number - Nice
+							state = 294 # significant_number - Savoie
+							state = 295 # significant_number - Sardinia & Corsica
+							state = 296 # significant_number - Piemonte
+							state = 297 # significant_number - Lombardia
+							state = 298 # significant_number - Venetia
+							state = 299 # significant_number - Emilia
+							state = 300 # significant_number - Romagna
+							state = 301 # significant_number - Toscana
+							state = 302 # significant_number - South Tirol
+							state = 303 # significant_number - Lazio
+						}
+						is_owned_or_controlled_by_ROOT = yes 
+					}
+				}
+			}
+		}
+		cancel_if_invalid = no
+		completion_reward = {
+			custom_effect_tooltip = ITA_reclaim_gallia_TT
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							is_gaul_state = yes
+							state = 73 # significant_number - Bretagne
+						}
+					}
+					add_claim_by = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_reclaim_hispania
+		icon = GFX_focus_spa_strengthen_the_supreme_reality_of_spain
+		relative_position_id = ITA_reclaim_gallia
+		prerequisite = { focus = ITA_reclaim_gallia }
+		cost = 10
+		x = -1
+		y = 1
+		available = {
+			is_subject = no
+			has_government = fascism
+			custom_trigger_tooltip = {
+				tooltip = ITA_reclaim_gallia_done_TT
+				all_state = {
+					OR = {
+						NOT = {
+							is_gaul_state = yes
+							state = 73 # significant_number - Bretagne
+						}
+						is_owned_or_controlled_by_ROOT = yes 
+					}
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = ITA_reclaim_hispania_TT
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							state = 94 # significant_number - Leon-Castilla
+							state = 95 # significant_number - Castilla la Nueva
+							state = 96 # significant_number - Valencia
+							state = 97 # significant_number - Granada
+							state = 593 # significant_number - Galicia
+							state = 595 # significant_number - Extremadura
+							state = 595 # significant_number - Vasconia-Aragon
+							state = 596 # significant_number - Andalucia
+							state = 597 # significant_number - Douro
+							state = 598 # significant_number - Lisboa
+							state = 599 # significant_number - Alentejo
+						}
+					}
+					add_claim_by = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_reclaim_britannia
+		icon = GFX_focus_ger_break_anglo_french_colonial_hegemony
+		relative_position_id = ITA_reclaim_gallia
+		prerequisite = { focus = ITA_reclaim_gallia }
+		cost = 10
+		x = 1
+		y = 1
+		available = {
+			is_subject = no
+			has_government = fascism
+			custom_trigger_tooltip = {
+				tooltip = ITA_reclaim_gallia_done_TT
+				all_state = {
+					OR = {
+						NOT = {
+							is_gaul_state = yes
+							state = 73 # significant_number - Bretagne
+						}
+						is_owned_or_controlled_by_ROOT = yes 
+					}
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = ITA_reclaim_britannia_TT
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_britain_state = yes
+					}
+					add_claim_by = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_the_true_roman_empire
+		icon = GFX_focus_ger_reichskommisariats
+		relative_position_id = ITA_reclaim_hispania
+		prerequisite = { focus = ITA_reclaim_hispania }
+		prerequisite = { focus = ITA_reclaim_britannia }
+		cost = 10
+		x = 1
+		y = 1
+		will_lead_to_war_with = RME
+		available = {
+			is_subject = no
+			has_government = fascism
+			custom_trigger_tooltip = {
+				tooltip = ITA_unify_italia_done_TT
+				all_state = {
+					OR = {
+						NOT = {
+							state = 584 # significant_number - Puglia
+							state = 585 # significant_number - Campania
+							state = 586 # significant_number - Sicily
+							state = 587 # significant_number - Malta
+							state = 293 # significant_number - Nice
+							state = 294 # significant_number - Savoie
+							state = 295 # significant_number - Sardinia & Corsica
+							state = 296 # significant_number - Piemonte
+							state = 297 # significant_number - Lombardia
+							state = 298 # significant_number - Venetia
+							state = 299 # significant_number - Emilia
+							state = 300 # significant_number - Romagna
+							state = 301 # significant_number - Toscana
+							state = 302 # significant_number - South Tirol
+							state = 303 # significant_number - Lazio
+						}
+						is_owned_or_controlled_by_ROOT = yes 
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_reclaim_gallia_done_TT
+				all_state = {
+					OR = {
+						NOT = {
+							is_gaul_state = yes
+							state = 73 # significant_number - Bretagne
+						}
+						is_owned_or_controlled_by_ROOT = yes 
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_reclaim_hispania_done_TT
+				all_state = {
+					OR = {
+						NOT = {
+							state = 94 # significant_number - Leon-Castilla
+							state = 95 # significant_number - Castilla la Nueva
+							state = 96 # significant_number - Valencia
+							state = 97 # significant_number - Granada
+							state = 593 # significant_number - Galicia
+							state = 595 # significant_number - Extremadura
+							state = 595 # significant_number - Vasconia-Aragon
+							state = 596 # significant_number - Andalucia
+							state = 597 # significant_number - Douro
+							state = 598 # significant_number - Lisboa
+							state = 599 # significant_number - Alentejo
+						}
+						is_owned_or_controlled_by_ROOT = yes 
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_reclaim_britannia_done_TT
+				all_state = {
+					OR = {
+						is_britain_state = no
+						is_owned_or_controlled_by_ROOT = yes 
+					}
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = ITA_the_true_roman_empire_TT
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							is_britain_state = yes
+							is_gaul_state = yes
+							#Italy Proper
+							state = 584 # significant_number - Puglia
+							state = 585 # significant_number - Campania
+							state = 586 # significant_number - Sicily
+							state = 587 # significant_number - Malta
+							state = 293 # significant_number - Nice
+							state = 294 # significant_number - Savoie
+							state = 295 # significant_number - Sardinia & Corsica
+							state = 296 # significant_number - Piemonte
+							state = 297 # significant_number - Lombardia
+							state = 298 # significant_number - Venetia
+							state = 299 # significant_number - Emilia
+							state = 300 # significant_number - Romagna
+							state = 301 # significant_number - Toscana
+							state = 302 # significant_number - South Tirol
+							state = 303 # significant_number - Lazio
+							#Iberia
+							state = 94 # significant_number - Leon-Castilla
+							state = 95 # significant_number - Castilla la Nueva
+							state = 96 # significant_number - Valencia
+							state = 97 # significant_number - Granada
+							state = 593 # significant_number - Galicia
+							state = 595 # significant_number - Extremadura
+							state = 595 # significant_number - Vasconia-Aragon
+							state = 596 # significant_number - Andalucia
+							state = 597 # significant_number - Douro
+							state = 598 # significant_number - Lisboa
+							state = 599 # significant_number - Alentejo
+						}
+					}
+					add_core_of = ROOT
+				}
+			}
+			if = {
+				limit = { country_exists = RME }
+				create_wargoal = {
+					target = RME
+					type = annex_everything
+				}
+				else = {
+					random_other_country = {
+						limit = { original_tag = RME }
+						ROOT = {
+							create_wargoal = {
+								target = PREV
+								type = annex_everything
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_form_roman_legion
+		icon = GFX_focus_ger_reichskommisariats
+		relative_position_id = ITA_a_populist_leader
+		prerequisite = { focus = ITA_a_populist_leader }
+		cost = 10
+		x = 2
+		y = 1
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			add_ideas = ITA_new_roman_legions
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_citizenship_for_service
+		icon = GFX_goal_support_fascism
+		relative_position_id = ITA_form_roman_legion
+		prerequisite = { focus = ITA_form_roman_legion }
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			add_war_support = 0.1
+			swap_ideas = {
+				remove_idea = ITA_new_roman_legions
+				add_idea = ITA_expanded_roman_legions
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_military_industrial_complex
+		icon = GFX_goal_generic_construct_mil_factory
+		relative_position_id = ITA_citizenship_for_service
+		prerequisite = { focus = ITA_citizenship_for_service }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ITA_military_industrial_complex_TT
+				count_triggers = {
+					amount = 3
+					controls_state = 293 # significant_number - Nice
+					controls_state = 294 # significant_number - Savoie
+					controls_state = 295 # significant_number - Sardinia & Corsica
+					controls_state = 296 # significant_number - Piemonte
+					controls_state = 297 # significant_number - Lombardia
+					controls_state = 298 # significant_number - Venetia
+					controls_state = 299 # significant_number - Emilia
+					controls_state = 300 # significant_number - Romagna
+					controls_state = 301 # significant_number - Toscana
+					controls_state = 302 # significant_number - South Tirol
+					controls_state = 303 # significant_number - Lazio
+				}
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = ITA_military_industrial_complex_state
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_military_industrial_complex_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_military_industrial_complex_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_military_industrial_complex_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_military_industrial_complex_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_military_industrial_complex_state
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	#################################
+	###Common Right Infrastructure###
+
+	focus = {
+		id = ITA_fortify_rome
+		icon = GFX_goal_generic_fortify_city
+		relative_position_id = ITA_a_populist_leader
+		prerequisite = { focus = ITA_a_populist_leader focus = ITA_centralize_power }
+		cost = 10
+		x = -2
+		y = 1
+		available = {
+			controls_state = 303 # significant_number - Lazio
+			controls_province = 9904 #Rome province
+		}
+		completion_reward = {
+			custom_effect_tooltip = ITA_fortify_rome_TT
+			hidden_effect = {
+				303 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						province = 9904
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 9904
+						instant_build = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = ITA_fortify_the_alps
+		icon = GFX_goal_generic_construct_military
+		relative_position_id = ITA_fortify_rome
+		prerequisite = { focus = ITA_fortify_rome }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			controls_state = 293 # significant_number - Nice
+			controls_state = 294 # significant_number - Savoie
+			controls_state = 296 # significant_number - Piemonte
+			controls_state = 297 # significant_number - Lombardia
+			controls_state = 298 # significant_number - Venetia
+			controls_state = 302 # significant_number - South Tirol
+		}
+		completion_reward = {
+			custom_effect_tooltip = ITA_fortify_the_alps_TT
+			hidden_effect = {
+				every_controlled_state = {
+					limit = {
+						OR = {
+							state = 293 # significant_number - Nice
+							state = 294 # significant_number - Savoie
+							state = 296 # significant_number - Piemonte
+							state = 297 # significant_number - Lombardia
+							state = 298 # significant_number - Venetia
+							state = 302 # significant_number - South Tirol
+						}
+					}
+					add_building_construction = {
+						type = bunker
+						level = 2
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+						instant_build = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = ITA_mare_nostrum
+		text = ITA_mare_nostrum_tesb
+		icon = GFX_goal_generic_construct_naval_dockyard
+		relative_position_id = ITA_fortify_the_alps
+		prerequisite = { focus = ITA_fortify_the_alps }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ITA_mare_nostrum_TT
+				count_triggers = {
+					amount = 3
+					controls_state = 293 # significant_number - Nice
+					controls_state = 295 # significant_number - Sardinia & Corsica
+					controls_state = 296 # significant_number - Piemonte
+					controls_state = 298 # significant_number - Venetia
+					controls_state = 299 # significant_number - Emilia
+					controls_state = 300 # significant_number - Romagna
+					controls_state = 301 # significant_number - Toscana
+					controls_state = 303 # significant_number - Lazio
+				}
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = ITA_mare_nostrum_state
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_mare_nostrum_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_mare_nostrum_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_mare_nostrum_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_mare_nostrum_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_mare_nostrum_state
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	################################
+	### Democratic/Communist path###
+	################################
+	focus = {
+		id = ITA_the_roman_republic
+		icon = GFX_goal_support_democracy
+		mutually_exclusive = { focus = ITA_return_of_the_lombardi }
+		relative_position_id = ITA_return_of_the_lombardi
+		cost = 10
+		x = 8
+		y = 0
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_political_power = 30
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 2
+				RME = { has_government = absolutist }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_reform_the_senate
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = ITA_the_roman_republic }
+		relative_position_id = ITA_the_roman_republic
+		cost = 10
+		x = -2
+		y = 1
+		completion_reward = {
+			add_political_power = 60
+			add_stability = 0.1
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_befriend_neighbors
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ITA_reform_the_senate }
+		prerequisite = { focus = ITA_bill_of_rights }
+		relative_position_id = ITA_reform_the_senate
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			every_neighbor_country = {
+				limit = { has_idea = RME_former_territory }
+				reverse_add_opinion_modifier = {
+					target = ROOT
+					modifier = ITA_friendly_overtures
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_strength_in_numbers
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = ITA_befriend_neighbors }
+		relative_position_id = ITA_befriend_neighbors
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			create_faction = ITA_mediterranean_faction
+			every_neighbor_country = {
+				limit = { has_idea = RME_former_territory }
+				country_event = {
+					id = generic.5
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_rapprochement_with_rome
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus = ITA_strength_in_numbers }
+		mutually_exclusive = { focus = ITA_resist_rome }
+		relative_position_id = ITA_strength_in_numbers
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			if = {
+				limit = { country_exists = RMD }
+				diplomatic_relation = {
+					country = RMD
+					relation = non_aggression_pact
+				}
+				else_if = {
+					limit = { country_exists = RMA }
+					diplomatic_relation = {
+						country = RMA
+						relation = non_aggression_pact
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 2
+				RMA = { exists = no }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_resist_rome
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		prerequisite = { focus = ITA_strength_in_numbers }
+		mutually_exclusive = { focus = ITA_rapprochement_with_rome }
+		relative_position_id = ITA_strength_in_numbers
+		cost = 10
+		x = 2
+		y = 1
+		completion_reward = {
+			if = {
+				limit = { country_exists = RME }
+				create_wargoal = {
+					target = RME
+					type = liberate_wargoal
+				}
+				else = {
+					random_other_country = {
+						limit = { original_tag = RME }
+						ROOT = {
+							create_wargoal = {
+								target = PREV
+								type = liberate_wargoal
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 2
+				RMD = { exists = no }
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_bill_of_rights
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = ITA_the_roman_republic }
+		mutually_exclusive = { focus = ITA_eradicate_the_right }
+		relative_position_id = ITA_the_roman_republic
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			add_stability = 0.1
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_eradicate_the_right
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		prerequisite = { focus = ITA_the_roman_republic }
+		mutually_exclusive = { focus = ITA_bill_of_rights }
+		relative_position_id = ITA_the_roman_republic
+		cost = 10
+		x = 2
+		y = 1
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = absolutist
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_stability = -0.1
+		}
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	focus = {
+		id = ITA_power_to_the_people
+		icon = GFX_focus_por_workers_of_iberia
+		prerequisite = { focus = ITA_eradicate_the_right }
+		relative_position_id = ITA_eradicate_the_right
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			add_political_power = 60
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_the_commune_of_rome
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = ITA_power_to_the_people }
+		relative_position_id = ITA_power_to_the_people
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			communism > 0.5
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = yes
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_all_roads_lead_to_rome
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = ITA_bill_of_rights focus = ITA_eradicate_the_right }
+		prerequisite = { focus = ITA_reform_the_senate }
+		relative_position_id = ITA_bill_of_rights
+		cost = 10
+		x = 0
+		y = 1
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = ITA_all_roads_lead_to_rome_bypass_TT
+				all_owned_state = {
+					OR = {
+						NOT = {
+							state = 293 # significant_number - Nice
+							state = 294 # significant_number - Savoie
+							state = 295 # significant_number - Sardinia & Corsica
+							state = 296 # significant_number - Piemonte
+							state = 297 # significant_number - Lombardia
+							state = 298 # significant_number - Venetia
+							state = 299 # significant_number - Emilia
+							state = 300 # significant_number - Romagna
+							state = 301 # significant_number - Toscana
+							state = 302 # significant_number - South Tirol
+							state = 303 # significant_number - Lazio
+						}		
+						free_building_slots = {
+							building = infrastructure
+							size < 1
+						}
+					}
+				}
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ITA_military_industrial_complex_TT
+				count_triggers = {
+					amount = 3
+					controls_state = 293 # significant_number - Nice
+					controls_state = 294 # significant_number - Savoie
+					controls_state = 295 # significant_number - Sardinia & Corsica
+					controls_state = 296 # significant_number - Piemonte
+					controls_state = 297 # significant_number - Lombardia
+					controls_state = 298 # significant_number - Venetia
+					controls_state = 299 # significant_number - Emilia
+					controls_state = 300 # significant_number - Romagna
+					controls_state = 301 # significant_number - Toscana
+					controls_state = 302 # significant_number - South Tirol
+					controls_state = 303 # significant_number - Lazio
+				}
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = ITA_all_roads_lead_to_rome_state
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_all_roads_lead_to_rome_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_all_roads_lead_to_rome_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_all_roads_lead_to_rome_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_all_roads_lead_to_rome_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_all_roads_lead_to_rome_state
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ITA_bread_and_circuses
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = ITA_all_roads_lead_to_rome }
+		relative_position_id = ITA_all_roads_lead_to_rome
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ITA_military_industrial_complex_TT
+				count_triggers = {
+					amount = 3
+					controls_state = 293 # significant_number - Nice
+					controls_state = 294 # significant_number - Savoie
+					controls_state = 295 # significant_number - Sardinia & Corsica
+					controls_state = 296 # significant_number - Piemonte
+					controls_state = 297 # significant_number - Lombardia
+					controls_state = 298 # significant_number - Venetia
+					controls_state = 299 # significant_number - Emilia
+					controls_state = 300 # significant_number - Romagna
+					controls_state = 301 # significant_number - Toscana
+					controls_state = 302 # significant_number - South Tirol
+					controls_state = 303 # significant_number - Lazio
+				}
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = ITA_bread_and_circuses_state
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_bread_and_circuses_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_bread_and_circuses_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_bread_and_circuses_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = ITA_bread_and_circuses_state }
+					OR = {
+						state = 293 # significant_number - Nice
+						state = 294 # significant_number - Savoie
+						state = 295 # significant_number - Sardinia & Corsica
+						state = 296 # significant_number - Piemonte
+						state = 297 # significant_number - Lombardia
+						state = 298 # significant_number - Venetia
+						state = 299 # significant_number - Emilia
+						state = 300 # significant_number - Romagna
+						state = 301 # significant_number - Toscana
+						state = 302 # significant_number - South Tirol
+						state = 303 # significant_number - Lazio
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = ITA_bread_and_circuses_state
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
 }
