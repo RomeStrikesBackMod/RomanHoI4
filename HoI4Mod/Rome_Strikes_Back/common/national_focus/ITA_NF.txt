@@ -19,7 +19,6 @@ focus_tree = {
 	shared_focus = aviation_effort
 	shared_focus = naval_effort
 	shared_focus = industrial_effort
-	#shared_focus = political_effort
 
 	#############################
 	###Absolutist/Fascist Path###
@@ -156,7 +155,13 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-
+			set_rule = { can_create_factions = yes }
+			create_faction = ITA_holy_roman_empire
+			BRG = {
+				country_event = {
+					id = generic.5
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -205,8 +210,24 @@ focus_tree = {
 		cost = 10
 		x = 1
 		y = 1
+		available = {
+			is_subject = no
+		}
+		will_lead_to_war_with = SWI
 		completion_reward = {
-
+			if = {
+				limit = { country_exists = SWI }
+				create_wargoal = {
+					target = SWI
+					type = annex_everything
+				}
+				else = {
+					add_state_claim = 604 # significant_number - East Switzerland
+					add_state_claim = 605 # significant_number - West Switzerland
+					add_state_claim = 606 # significant_number - Tirol
+					add_state_claim = 607 # significant_number - Karntern-Steiermark
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -221,8 +242,29 @@ focus_tree = {
 		cost = 10
 		x = -1
 		y = 1
+		available = {
+			is_subject = no
+		}
+		will_lead_to_war_with = GER
 		completion_reward = {
-
+			if = {
+				limit = { country_exists = GER }
+				create_wargoal = {
+					target = GER
+					type = annex_everything
+				}
+				else = {
+					random_other_country = {
+						limit = { original_tag = GER }
+						ROOT = {
+							create_wargoal = {
+								target = PREV
+								type = annex_everything
+							}
+						}
+					}
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -238,10 +280,28 @@ focus_tree = {
 		x = 1
 		y = 1
 		available = {
-
+			is_subject = no
 		}
+		will_lead_to_war_with = RME
 		completion_reward = {
-
+			if = {
+				limit = { country_exists = RME }
+				create_wargoal = {
+					target = RME
+					type = annex_everything
+				}
+				else = {
+					random_other_country = {
+						limit = { original_tag = RME }
+						ROOT = {
+							create_wargoal = {
+								target = PREV
+								type = annex_everything
+							}
+						}
+					}
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
