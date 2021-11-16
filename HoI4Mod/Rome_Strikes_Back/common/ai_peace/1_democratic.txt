@@ -17,6 +17,11 @@ democratic_peace = {
 		#	}
 		#}
 
+		modifier = {
+			factor = 100
+			has_country_flag = peace_flag_annex_@FROM
+		}
+
 		modifier = { #
 			factor = 0
 			FROM = {
@@ -30,6 +35,7 @@ democratic_peace = {
 					}
 				}
 			}
+			NOT = { has_country_flag = peace_flag_annex_@FROM }
 		}		
 		#modifier = {
 		#	factor = 0
@@ -88,6 +94,10 @@ democratic_peace = {
 	}
 	puppet = {
 		factor = 800 #200
+		modifier = {
+			factor = 0
+			has_country_flag = peace_flag_annex_@FROM
+		}
 		modifier = {
 			factor = 0.25 #Strip colonies/liberate first - important vs GER and JAP
 			FROM = {
@@ -182,17 +192,18 @@ democratic_peace = {
 				NOT = { any_owned_state = { OR = { is_coastal = yes is_island_state = yes } } }
 			}
 		}
-		#modifier = { #Not if we claim anything
-		#	factor = 0
-		#	NOT = {
-		#		FROM = {
-		#			any_owned_state = { 
-		#				is_core_of = ROOT
-		#				NOT = { has_claimed_state_in_peace_conference = ROOT }
-		#			}
-		#		}
-		#	}
-		#}
+		modifier = { #Not if we claim anything, take our claims first
+			factor = 0.5
+			FROM = {
+				any_owned_state = {
+					OR = {
+						is_claimed_by = ROOT
+						is_core_of = ROOT
+					}
+					NOT = { has_claimed_state_in_peace_conference = ROOT }
+				}
+			}
+		}
 	}
 	puppet_all = {
 		base = 0 
@@ -212,6 +223,11 @@ democratic_peace = {
 	take_states = {
 		factor = 400 #50
 		
+		modifier = {
+			factor = 100
+			has_country_flag = peace_flag_take_@FROM
+		}
+
 		modifier = {
 			factor = 20 #5
 
@@ -367,8 +383,9 @@ democratic_peace = {
 
 
 		modifier = {
-			factor = 0		
-			NOT = { 
+			factor = 0
+			NOT = { has_country_flag = peace_flag_take_@FROM }
+			NOT = {
 				FROM = { 
 					OR = {
 						is_claimed_by = ROOT
@@ -402,6 +419,7 @@ democratic_peace = {
 
 		modifier = { #Only take claims - and colonial states (ie unclaimed) as well if major or if already colonial.
 			factor = 0
+			NOT = { has_country_flag = peace_flag_take_@FROM }
 			NOT = { 
 				FROM = { 
 					OR = {
@@ -432,6 +450,7 @@ democratic_peace = {
 		}
 		modifier = { #Only European states with african colonies or middle eastern states should take anything in africa
 			factor = 0
+			NOT = { has_country_flag = peace_flag_take_@FROM }
 			NOT = {
 				capital_scope = {
 					OR = {
@@ -447,6 +466,7 @@ democratic_peace = {
 		}
 		modifier = { #Only take claimed/core land if a puppet.
 			factor = 0
+			NOT = { has_country_flag = peace_flag_take_@FROM }
 			is_puppet = yes
 			FROM = {
 				NOT = {

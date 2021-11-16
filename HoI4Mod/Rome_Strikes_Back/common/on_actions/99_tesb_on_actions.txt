@@ -4,17 +4,20 @@ on_actions = {
 			RME = {
 				country_event = { id = tesb_rome.1 }
 			}
-			ENG = {
-				#country_event = { id = tesb_england.1 }
-			}
-			IND = {
-				#country_event = { id = tesb_india.1 }
-			}
-			HAI = {
-				#country_event = { id = tesb_misc.1 }
-			}
-			HED = {
-				#country_event = { id = tesb_misc.2 }
+			GER = {
+				random_list = {
+					50 = {
+						set_country_flag = GER_rache_path_flag
+					}
+					25 = {
+						set_country_flag = GER_maintain_balance_path_flag
+					}
+					15 = {
+						set_country_flag = GER_arbeiterpartei_path_flag
+					}
+					10 = {
+					}
+				}
 			}
 			every_country = {
 				every_owned_state = {
@@ -186,6 +189,20 @@ on_actions = {
 				set_state_flag = old_owner_@FROM
 				set_state_flag = owner_@ROOT
 				clr_state_flag = owner_@FROM
+			}
+			if = {
+				limit = {
+					has_country_flag = peace_flag_annex_@FROM
+					FROM = { exists = no }
+				}
+				clr_country_flag = peace_flag_annex_@FROM
+			}
+			if = {
+				limit = {
+					tag = IND
+					owns_state = 611 # significant_number - Bhutan
+				}
+				clr_country_flag = peace_flag_take_611 # significant_number - Bhutan
 			}
 			if = {
 				limit = {
