@@ -11,77 +11,45 @@ ideas = {
 				stability_factor = 0.05
 			}
 		}
-	}
-	political_advisor = {
-		ITA_absolutist_advisor = {
+		ITA_political_prisoners = {
 			allowed = {
-				original_tag = "ITA"
+				always = no
 			}
-			traits = { absolutist_minister }
-			picture = "triumphant_will"
-			do_effect = {
-				NOT = {
-					has_government = absolutist
-				}
+			allowed_civil_war = {
+				has_government = fascism
 			}
-			ai_will_do = {
-				factor = 0
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				fascism_drift = 0.01
+				democratic_drift = -0.05
+				absolutist_drift = -0.05
+				communism_drift = -0.05
+				stability_weekly = -0.01
 			}
 		}
-		ITA_communism_advisor = {
+		ITA_new_roman_legions = {
 			allowed = {
-				original_tag = "ITA"
+				always = no
 			}
-			traits = { communism_minister }
-			do_effect = {
-				NOT = {
-					has_government = communism
-				}
+			picture = generic_manpower_bonus
+			allowed_civil_war = {
+				has_government = fascism
 			}
-			ai_will_do = {
-				factor = 0
+			modifier = {
+				conscription = 0.01
 			}
 		}
-		ITA_democratic_advisor = {
+		ITA_expanded_roman_legions = {
 			allowed = {
-				original_tag = "ITA"
+				always = no
 			}
-			traits = { democratic_minister }
-			do_effect = {
-				NOT = {
-					has_government = democratic
-				}
+			picture = generic_manpower_bonus
+			allowed_civil_war = {
+				has_government = fascism
 			}
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		ITA_fascism_advisor = {
-			allowed = {
-				original_tag = "ITA"
-			}
-			traits = { fascism_minister }
-			do_effect = {
-				NOT = {
-					has_government = fascism
-				}
-			}
-			ai_will_do = {
-				factor = 0
-			}
-		}
-		ITA_neutrality_advisor = {
-			allowed = {
-				original_tag = "ITA"
-			}
-			traits = { neutrality_minister }
-			do_effect = {
-				NOT = {
-					has_government = neutrality
-				}
-			}
-			ai_will_do = {
-				factor = 0
+			modifier = {
+				conscription = 0.015
+				non_core_manpower = 0.1
 			}
 		}
 	}
