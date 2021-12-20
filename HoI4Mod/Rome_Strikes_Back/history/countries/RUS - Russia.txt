@@ -1,4 +1,4 @@
-﻿capital = 496
+﻿capital = 500
 set_major = yes
 set_research_slots = 4
 
@@ -13,7 +13,7 @@ if = {
 
 # Starting tech
 set_technology = {
-	basic_light_tank = 1
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
@@ -21,8 +21,6 @@ set_technology = {
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
-	improved_light_tank = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	interwar_antiair = 1
@@ -35,6 +33,15 @@ set_technology = {
 	tech_engineers = 1
 	tech_recon = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		basic_light_tank = 1
+		gwtank = 1
+		improved_light_tank = 1
+	}
 }
 
 if = {
@@ -75,6 +82,17 @@ if = {
 }
 
 if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		basic_heavy_tank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		gwtank_chassis = 1
+		improved_light_tank_chassis = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		basic_battleship = 1
@@ -91,9 +109,27 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
-add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+add_doctrine_cost_reduction = {
+	name = air_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = air_doctrine
+}
+add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = land_doctrine
+}
+add_doctrine_cost_reduction = {
+	name = naval_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = naval_doctrine
+}
+
+set_country_flag = conv_russia
+starting_train_buffer = 3
 set_convoys = 1
 
 add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 88 producer = RUS }
@@ -113,6 +149,12 @@ set_popularities = {
 	fascism = 13
 	neutrality = 8
 }
+
+give_guarantee = ENG
+diplomatic_relation = { country = ENG relation = non_aggression_pact }
+
+give_guarantee = HUN
+diplomatic_relation = { country = HUN relation = non_aggression_pact }
 
 add_opinion_modifier = { target = ADA modifier = positive_180 }
 add_opinion_modifier = { target = AQI modifier = negative_10 }
@@ -171,81 +213,21 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.60
-create_country_leader = {
-	name = "Lavr Konev"
-	desc = "POLITICS_LAVR_KONEV_DESC"
-	picture = "gfx/leaders/Europe/portrait_europe_generic_5.dds"
-	expire = "1965.1.1"
-	ideology = socialism
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Igor Kornilov"
-	traits = { }
-	skill = 3
-	attack_skill = 5
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Anton Voroshilov"
-	traits = { }
-	skill = 3
-	attack_skill = 1
-	defense_skill = 5
-	planning_skill = 3
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Aleksandr Ostrovsky"
-	traits = { }
-	skill = 3
-	attack_skill = 4
-	defense_skill = 2
-	planning_skill = 2
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gennady Yudenich"
-	traits = { }
-	skill = 3
-	attack_skill = 1
-	defense_skill = 5
-	planning_skill = 3
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Semyon Grishin"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 2
-	planning_skill = 3
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Fyodor Vorontsov"
-	traits = { }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 2
-	maneuvering_skill = 1
-	coordination_skill = 1
-}
+recruit_character = RUS_igor_kornilov
+recruit_character = RUS_anton_voroshilov
+recruit_character = RUS_aleksandr_ostrovsky
+recruit_character = RUS_gennady_yudenich
+recruit_character = RUS_semyon_grishin
+recruit_character = RUS_fyodor_vorontsov
+recruit_character = RUS_alexei_denikin
 
 if = {
 	limit = {
 		has_dlc = "La Resistance"
 	}
 	create_operative_leader = {
-		name = "Ludmila Grishina"
+		name = "Jelena Yudenicha"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -255,7 +237,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Golivina"
+		name = "Ludmila Nakhimova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -265,7 +247,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Badanova"
+		name = "Ludmila Brusilova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -275,7 +257,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Dragomirova"
+		name = "Ludmila Antonova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_4.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -285,7 +267,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Badanova"
+		name = "Ludmila Ivanova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_5.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -295,7 +277,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Tukhachevskaya"
+		name = "Jelena Pavlova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_6.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -305,7 +287,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Golivina"
+		name = "Ludmila Koneva"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_7.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -315,7 +297,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Gurkova"
+		name = "Jelena Kornilova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -325,7 +307,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Chibisova"
+		name = "Jelena Yudenicha"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_9.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -335,7 +317,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Konstantinova"
+		name = "Jelena Nakhimova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -355,7 +337,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Tukhachevskaya"
+		name = "Jelena Zavoyko"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_13.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -365,7 +347,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Men'shikova"
+		name = "Ludmila Nikolayevicha"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_14.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -375,7 +357,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Yudenicha"
+		name = "Ludmila Yegorova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_15.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -385,7 +367,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Budonnaya"
+		name = "Jelena Ostrovskaya"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_16.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -395,7 +377,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Konstantinova"
+		name = "Jelena Kornilova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_17.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -405,7 +387,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Voroshilova"
+		name = "Ludmila Grishina"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_18.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -415,7 +397,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Kolchakova"
+		name = "Ludmila Golivina"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_19.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -425,7 +407,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Aleksseyeva"
+		name = "Jelena Badanova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_20.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -435,7 +417,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Voroshilova"
+		name = "Ludmila Dragomirova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -445,7 +427,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Ivanova"
+		name = "Jelena Badanova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -455,7 +437,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Nakhimova"
+		name = "Jelena Tukhachevskaya"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_23.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -465,7 +447,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Romanova"
+		name = "Ludmila Golivina"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_24.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -475,7 +457,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Kornilova"
+		name = "Ludmila Gurkova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_25.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -485,7 +467,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Jelena Denikina"
+		name = "Jelena Chibisova"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -495,7 +477,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ludmila Chibisova"
+		name = "Ludmila Konstantinova"
 		GFX = "gfx/leaders/POL/portrait_pol_krystyna_skarbek.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -505,7 +487,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Grigoriy Gurko"
+		name = "Nikolai Putyatin"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -514,7 +496,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Vladimir Kolchak"
+		name = "Kirill Tukhachevsky"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -523,7 +505,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Dmitry Yegorov"
+		name = "Nikolai Menshikov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -532,7 +514,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Leonid Romanov"
+		name = "Gennady Yudenich"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -541,7 +523,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Aleksandr Grishin"
+		name = "Mikhail Budyonny"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -550,7 +532,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Boris Shuvalov"
+		name = "Lavr Konstantinov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -559,7 +541,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Sergei Voroshilov"
+		name = "Mikhail Voroshilov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -568,7 +550,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Yuri Chibisov"
+		name = "Vasily Kolchak"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -577,7 +559,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Lavr Menshikov"
+		name = "Vasily Alexseyev"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -586,7 +568,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Yevgeny Makarov"
+		name = "Roman Voroshilov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -595,7 +577,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Nikita Kolchak"
+		name = "Roman Ivanov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -604,7 +586,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Yevgeny Zavoyko"
+		name = "Lavr Nakhimov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -613,7 +595,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Dmitry Surkov"
+		name = "Valery Romanov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -622,7 +604,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Vladislav Antonov"
+		name = "Oleg Kornilov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -631,7 +613,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Valery Skobelev"
+		name = "Mikhail Denikin"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -640,7 +622,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Andrei Zavoyko"
+		name = "Oleg Chibisov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -649,7 +631,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Oleg Ivanov"
+		name = "Grigoriy Gurko"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -658,7 +640,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Sergei Voroshilov"
+		name = "Vladimir Kolchak"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -667,7 +649,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Aleksandr Badanov"
+		name = "Dmitry Yegorov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -676,7 +658,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Gennady Kolchak"
+		name = "Leonid Romanov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -685,7 +667,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Aleksandr Tukhachevsky"
+		name = "Aleksandr Grishin"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -694,7 +676,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Yegor Golivin"
+		name = "Boris Shuvalov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -703,7 +685,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Gennady Rozhestvensky"
+		name = "Sergei Voroshilov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -712,7 +694,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Mikhail Dragomirov"
+		name = "Yuri Chibisov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -721,7 +703,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Oleg Azarov"
+		name = "Lavr Menshikov"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -730,7 +712,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Yegor Badanov"
+		name = "Yevgeny Makarov"
 		GFX = "gfx/leaders/POL/portrait_pol_roman_czerniawski.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -739,7 +721,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Vladislav Nikolaevich"
+		name = "Nikita Kolchak"
 		GFX = "gfx/leaders/SOV/portrait_sov_alexander_rado.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -748,7 +730,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Roman Pavlov"
+		name = "Yevgeny Zavoyko"
 		GFX = "gfx/leaders/SOV/portrait_sov_kim_philby.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -757,7 +739,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Roman Voroshilov"
+		name = "Dmitry Surkov"
 		GFX = "gfx/leaders/SOV/portrait_sov_richard_sorge.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -907,6 +889,46 @@ if = {
 			fixed_ship_engine_slot = sub_ship_engine_2
 			fixed_ship_torpedo_slot = ship_torpedo_sub_2
 			rear_1_custom_slot = ship_torpedo_sub_2
+		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "Basic Heavy Tank"
+		type = heavy_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Medium Tank"
+		type = medium_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Improved Light Tank"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_two_man_tank_turret
 		}
 	}
 }

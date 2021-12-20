@@ -5,7 +5,7 @@ political_actions = {
 		icon = generic_research
 
 		allowed = {
-			always = no
+			always = yes
 		}
 
 		available = {
@@ -94,6 +94,7 @@ political_actions = {
 			modifier = {
 				add = 1
 				has_stability < 0.6
+				has_political_power > 155 #Spend on other things first
 			}
 		}
 	}
@@ -146,6 +147,75 @@ political_actions = {
 
 economy_decisions = {
 
+	restructure_supply_system = {
+
+		visible = { 
+			OR = {
+				is_major = no
+				AND = {
+					is_faction_leader = yes
+					num_of_factories < 51 #would be a minor if it wasn't for faction leader status
+				}
+			}
+		}
+
+		cancel_trigger = {
+			
+			 check_variable = { node_goal < num_of_supply_nodes } #if the number of supply nodes exceeds the old number by +3, immediately cancel
+		}
+
+		fire_only_once = yes
+
+		modifier = {
+			production_speed_supply_node_factor = 3
+		}
+
+		days_remove = 120
+
+		complete_effect = {
+			set_variable = { node_goal = num_of_supply_nodes }
+			add_to_variable = { node_goal = 3 } #maximum 3 additional nodes
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				num_of_factories < 30
+				factor = 0
+			}
+		}
+	}
+
+	seize_some_trains_woo = {
+
+		available = {
+			has_equipment = { train_equipment < 101 }
+			has_tech = basic_train
+		}
+
+		visible = { 
+			num_of_factories < 60
+		}
+
+		days_remove = 180
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 15
+			}
+			add_stability = -0.05
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_stability > 0.74
+			}
+		}
+	}
+
 	infrastructure_building_slot = {
 
 		icon = generic_construction
@@ -185,7 +255,6 @@ economy_decisions = {
 			random_owned_state = {
 				limit = {
 					is_fully_controlled_by = ROOT
-					is_owned_by = ROOT
 					free_building_slots = {
 						building = industrial_complex
 						size > 1
@@ -252,7 +321,7 @@ economy_decisions = {
 							include_locked = yes
 						}
 						NOT = { has_state_flag = war_building_slot_flag }
-						infrastructure > 8
+						infrastructure > 4
 					}
 				}
 				random_owned_state = {
@@ -264,7 +333,7 @@ economy_decisions = {
 							include_locked = yes
 						}
 						NOT = { has_state_flag = war_building_slot_flag }
-						infrastructure > 8
+						infrastructure > 4
 					}
 					add_extra_state_shared_building_slots = 1
 					set_state_flag = war_building_slot_flag
@@ -280,7 +349,7 @@ economy_decisions = {
 							include_locked = yes
 						}
 						NOT = { has_state_flag = war_building_slot_flag }
-						infrastructure > 5
+						infrastructure > 2
 					}
 				}
 				random_owned_state = {
@@ -292,7 +361,7 @@ economy_decisions = {
 							include_locked = yes
 						}
 						NOT = { has_state_flag = war_building_slot_flag }
-						infrastructure > 5
+						infrastructure > 2
 					}
 					add_extra_state_shared_building_slots = 1
 					set_state_flag = war_building_slot_flag
@@ -308,7 +377,7 @@ economy_decisions = {
 							include_locked = yes
 						}
 						NOT = { has_state_flag = war_building_slot_flag }
-						infrastructure > 8
+						infrastructure > 4
 					}
 					add_extra_state_shared_building_slots = 1
 					set_state_flag = war_building_slot_flag
@@ -324,7 +393,7 @@ economy_decisions = {
 			}
 			modifier = {
 				any_owned_state = {
-					infrastructure > 5
+					infrastructure > 3
 					free_building_slots = { building = industrial_complex size > 0 include_locked = no }
 				}
 				factor = 0
@@ -481,12 +550,10 @@ propaganda_efforts = {
 		cost = var:war_propaganda_cost?75
 
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision war_propaganda_against_warmonger"
-			set_country_flag = war_propaganda_campaign_running
+			set_country_flag = { flag = war_propaganda_campaign_running value = 1 days = 90 } #TODO_Manu: This is a nasty fix so that the flag gets eventually removed if the target is annexed. days = days_remove
 		}
 
 		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove war_propaganda_against_warmonger"
 			clr_country_flag = war_propaganda_campaign_running
 		}
 
@@ -507,16 +574,13 @@ operations = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 221
-			has_full_control_of_state = 228
+			has_full_control_of_state = 225
+			has_full_control_of_state = 232
 			num_of_civilian_factories > 10
 		}
 
 		visible = {
 			has_global_flag = KIEL_CANAL_UNBUILT
-			any_controlled_state = {
-				is_on_continent = europe
-			}
 		}
 
 		fire_only_once = yes
@@ -551,7 +615,7 @@ operations = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 150
+			has_full_control_of_state = 154
 			num_of_civilian_factories > 15
 		}
 
@@ -591,7 +655,7 @@ operations = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 179
+			has_full_control_of_state = 183
 			num_of_civilian_factories > 20
 		}
 
@@ -635,21 +699,21 @@ operations = {
 		}
 
 		available = {
-			controls_state = 150
+			controls_state = 154
 			OR = {
 				NOT = {
-					owns_state = 150
+					owns_state = 154
 				}
 				any_enemy_country = {
 					OR = {
 						controls_state = 24
-						controls_state = 147
-						controls_state = 148
-						controls_state = 149
+						controls_state = 151
 						controls_state = 152
 						controls_state = 153
-						controls_state = 292
-						controls_state = 610
+						controls_state = 156
+						controls_state = 157
+						controls_state = 296
+						controls_state = 614
 					}
 				}
 			}
@@ -682,12 +746,12 @@ operations = {
 				if = {
 					limit = {
 						NOT = {
-							owns_state = 150
+							owns_state = 154
 						}
 					}
 					random_country = {
 						limit = {
-							owns_state = 150
+							owns_state = 154
 						}
 						country_event = { id = generic.12 days = 1 }
 					}
@@ -699,7 +763,7 @@ operations = {
 			if = {
 				limit = {
 					OR = {
-						has_full_control_of_state = 150
+						has_full_control_of_state = 154
 					}
 				}
 				set_country_flag = blew_up_suez
@@ -716,22 +780,22 @@ operations = {
 					any_enemy_country = {
 						OR = {
 							controls_state = 24
-							controls_state = 147
-							controls_state = 148
-							controls_state = 149
+							controls_state = 151
 							controls_state = 152
 							controls_state = 153
-							controls_state = 292
-							controls_state = 610
+							controls_state = 156
+							controls_state = 157
+							controls_state = 296
+							controls_state = 614
 							OR = {
 								divisions_in_state = { state = 24 size > 2 }
-								divisions_in_state = { state = 147 size > 2 }
-								divisions_in_state = { state = 148 size > 2 }
-								divisions_in_state = { state = 149 size > 2 }
+								divisions_in_state = { state = 151 size > 2 }
 								divisions_in_state = { state = 152 size > 2 }
 								divisions_in_state = { state = 153 size > 2 }
-								divisions_in_state = { state = 292 size > 2 }
-								divisions_in_state = { state = 610 size > 2 }
+								divisions_in_state = { state = 156 size > 2 }
+								divisions_in_state = { state = 157 size > 2 }
+								divisions_in_state = { state = 296 size > 2 }
+								divisions_in_state = { state = 614 size > 2 }
 							}
 						}
 					}
@@ -742,25 +806,25 @@ operations = {
 				any_allied_country = {
 					NOT = {
 						OR = {
-							has_full_control_of_state = 152
-							has_full_control_of_state = 153
+							has_full_control_of_state = 156
+							has_full_control_of_state = 157
 						}
 					}
-					NOT = { has_full_control_of_state = 194 }
+					NOT = { has_full_control_of_state = 198 }
 					OR = {
 						divisions_in_state = { state = 4 size > 0 }
 						divisions_in_state = { state = 5 size > 0 }
-						divisions_in_state = { state = 184 size > 0 }
-						divisions_in_state = { state = 200 size > 0 }
+						divisions_in_state = { state = 188 size > 0 }
+						divisions_in_state = { state = 204 size > 0 }
 					}
 				}
 			}
 			modifier = {
 				factor = 200 # Try to cut the enemy off from the mediterranean if you also occupy Gibraltar
 				OR = {
-					has_full_control_of_state = 596
+					has_full_control_of_state = 600
 					any_allied_country = {
-						has_full_control_of_state = 596
+						has_full_control_of_state = 600
 					}
 				}
 				has_war = yes
@@ -778,7 +842,7 @@ operations = {
 		}
 
 		available = {
-			has_full_control_of_state = 179
+			has_full_control_of_state = 183
 		}
 
 		visible = {
@@ -808,12 +872,12 @@ operations = {
 				if = {
 					limit = {
 						NOT = {
-							owns_state = 179
+							owns_state = 183
 						}
 					}
 					random_country = {
 						limit = {
-							owns_state = 179
+							owns_state = 183
 						}
 						country_event = { id = generic.13 days = 1 }
 					}
@@ -825,8 +889,8 @@ operations = {
 			if = {
 				limit = {
 					OR = {
-						has_full_control_of_state = 100
-						has_full_control_of_state = 179
+						has_full_control_of_state = 104
+						has_full_control_of_state = 183
 					}
 				}
 				set_country_flag = blew_up_panama
@@ -861,7 +925,7 @@ special_projects = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 150
+			has_full_control_of_state = 154
 			num_of_civilian_factories > 15
 		}
 
@@ -882,7 +946,7 @@ special_projects = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_full_control_of_state = 150
+					has_full_control_of_state = 154
 				}
 				set_country_flag = rebuilt_suez
 				clr_global_flag = SUEZ_CANAL_BLOCKED
@@ -908,10 +972,10 @@ special_projects = {
 		icon = GFX_decision_generic_special_project
 
 		available = {
-			has_full_control_of_state = 179
+			has_full_control_of_state = 183
 			NOT = {
 				any_enemy_country = {
-					controls_state = 100
+					controls_state = 104
 				}
 			}
 			num_of_civilian_factories > 25
@@ -934,10 +998,10 @@ special_projects = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_full_control_of_state = 179
+					has_full_control_of_state = 183
 					NOT = {
 						any_enemy_country = {
-							controls_state = 100
+							controls_state = 104
 						}
 					}
 				}

@@ -1,4 +1,4 @@
-﻿capital = 93
+﻿capital = 97
 set_research_slots = 3
 
 oob = "CAS_OOB"
@@ -12,20 +12,27 @@ if = {
 
 # Starting tech
 set_technology = {
-	basic_light_tank = 1
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
-	improved_light_tank = 1
 	infantry_weapons = 1
 	interwar_antiair = 1
 	interwar_artillery = 1
 	motorised_infantry = 1
 	synth_oil_experiments = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		basic_light_tank = 1
+		gwtank = 1
+		improved_light_tank = 1
+	}
 }
 
 if = {
@@ -50,6 +57,17 @@ if = {
 }
 
 if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		basic_heavy_tank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		gwtank_chassis = 1
+		improved_light_tank_chassis = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		early_battleship = 1
@@ -62,8 +80,18 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = land_doctrine
+}
+add_doctrine_cost_reduction = {
+	name = naval_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = naval_doctrine
+}
 
 set_country_flag = conv_western_africa
 set_convoys = 2
@@ -110,64 +138,13 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.87
-create_country_leader = {
-	name = "Alejandro González"
-	desc = "POLITICS_ALEJANDRO_GONZáLEZ_DESC"
-	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
-	expire = "1965.1.1"
-	ideology = leninism
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Álvaro Argüelles-Meres"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 4
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "José María Hernández"
-	traits = { }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 1
-	planning_skill = 2
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Juan Cagigal de la Vega"
-	traits = { }
-	skill = 3
-	attack_skill = 4
-	defense_skill = 2
-	planning_skill = 2
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Santiago Herrera"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 4
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Calixto Cano"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 2
-	maneuvering_skill = 1
-	coordination_skill = 1
-}
+recruit_character = CAS_alvaro_arguelles_meres
+recruit_character = CAS_jose_maria_hernandez
+recruit_character = CAS_juan_cagigal_de_la_vega
+recruit_character = CAS_santiago_herrera
+recruit_character = CAS_calixto_cano
+recruit_character = CAS_alejandro_gonzalez
 
 if = {
 	limit = {
@@ -549,6 +526,46 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_1
 			rear_1_custom_slot = empty
+		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "Basic Heavy Tank"
+		type = heavy_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Medium Tank"
+		type = medium_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Improved Light Tank"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_two_man_tank_turret
 		}
 	}
 }

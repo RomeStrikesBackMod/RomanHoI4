@@ -1,4 +1,4 @@
-﻿capital = 73
+﻿capital = 77
 set_research_slots = 3
 
 oob = "BRI_OOB"
@@ -12,13 +12,13 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	marines = 1
@@ -27,6 +27,13 @@ set_technology = {
 	tactical_bomber1 = 1
 	tech_recon = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		gwtank = 1
+	}
 }
 
 if = {
@@ -65,6 +72,13 @@ if = {
 }
 
 if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		basic_battleship = 1
@@ -81,9 +95,24 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
-add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+add_doctrine_cost_reduction = {
+	name = air_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = air_doctrine
+}
+add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = land_doctrine
+}
+add_doctrine_cost_reduction = {
+	name = naval_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = naval_doctrine
+}
 
 set_country_flag = conv_france
 set_convoys = 1
@@ -135,54 +164,12 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.60
-create_country_leader = {
-	name = "Izikel Hoëdic"
-	desc = "POLITICS_IZIKEL_HOëDIC_DESC"
-	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_1.dds"
-	expire = "1965.1.1"
-	ideology = leninism
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Roparz Scordia"
-	traits = { }
-	skill = 2
-	attack_skill = 3
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Winog Jézéquel"
-	traits = { }
-	skill = 3
-	attack_skill = 4
-	defense_skill = 4
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Tenedor Jézéquel"
-	traits = { }
-	skill = 2
-	attack_skill = 3
-	defense_skill = 2
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Konwal Bréhat"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	maneuvering_skill = 1
-	coordination_skill = 1
-}
+recruit_character = BRI_roparz_scordia
+recruit_character = BRI_winog_jezequel
+recruit_character = BRI_tenedor_jezequel
+recruit_character = BRI_konwal_brehat
+recruit_character = BRI_izikel_hoedic
 
 if = {
 	limit = {
@@ -1001,5 +988,48 @@ if = {
 			fixed_ship_torpedo_slot = ship_torpedo_sub_2
 			rear_1_custom_slot = ship_torpedo_sub_2
 		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "GW Heavy Tank"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/ger_basic_heavy_tank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Light Tank"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/gwtank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Medium Tank"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/SOV_basic_heavy_tank.dds"
 	}
 }

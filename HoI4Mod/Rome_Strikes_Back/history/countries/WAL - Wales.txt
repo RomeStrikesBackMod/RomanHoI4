@@ -1,4 +1,4 @@
-﻿capital = 160
+﻿capital = 164
 set_research_slots = 3
 
 oob = "WAL_OOB"
@@ -12,15 +12,22 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
 	infantry_weapons = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		gwtank = 1
+	}
 }
 
 if = {
@@ -31,6 +38,13 @@ if = {
 		basic_torpedo = 1
 		early_ship_hull_cruiser = 1
 		early_ship_hull_light = 1
+	}
+}
+
+if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		gwtank_chassis = 1
 	}
 }
 
@@ -73,24 +87,9 @@ add_ideas = {
 	export_focus
 	culture_welsh
 }
-create_country_leader = {
-	name = "Keith Powell"
-	desc = "POLITICS_KEITH_POWELL_DESC"
-	picture = "gfx/leaders/Europe/Portrait_europe_generic_7.dds"
-	expire = "1965.1.1"
-	ideology = absolute_monarchy
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Cadell Aylmer"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
+
+recruit_character = WAL_cadell_aylmer
+recruit_character = WAL_keith_powell
 
 if = {
 	limit = {
@@ -879,5 +878,48 @@ if = {
 			mid_2_custom_slot = ship_light_battery_1
 			rear_1_custom_slot = empty
 		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "GW Heavy Tank"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/ger_basic_heavy_tank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Light Tank"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/gwtank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Medium Tank"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/SOV_basic_heavy_tank.dds"
 	}
 }

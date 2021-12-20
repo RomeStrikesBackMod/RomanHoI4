@@ -1,4 +1,4 @@
-﻿capital = 209
+﻿capital = 213
 set_research_slots = 3
 add_named_threat = { threat = 0.5816 name = infamy }
 
@@ -13,7 +13,7 @@ if = {
 
 # Starting tech
 set_technology = {
-	basic_light_tank = 1
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
@@ -21,8 +21,6 @@ set_technology = {
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
-	improved_light_tank = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	interwar_antiair = 1
@@ -33,6 +31,15 @@ set_technology = {
 	tech_engineers = 1
 	tech_recon = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		basic_light_tank = 1
+		gwtank = 1
+		improved_light_tank = 1
+	}
 }
 
 if = {
@@ -62,6 +69,17 @@ if = {
 }
 
 if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		basic_heavy_tank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		gwtank_chassis = 1
+		improved_light_tank_chassis = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		early_battleship = 1
@@ -74,9 +92,24 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
-add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
-add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+add_doctrine_cost_reduction = {
+	name = air_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = air_doctrine
+}
+add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = land_doctrine
+}
+add_doctrine_cost_reduction = {
+	name = naval_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = naval_doctrine
+}
 
 set_country_flag = conv_dutchland
 set_convoys = 8
@@ -149,64 +182,13 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.61
-create_country_leader = {
-	name = "Eise Fabius"
-	desc = "POLITICS_EISE_FABIUS_DESC"
-	picture = "gfx/leaders/BEL/Portrait_Belgium_Hubert_Pierlot.dds"
-	expire = "1965.1.1"
-	ideology = liberalism
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Jacob List"
-	traits = { }
-	skill = 3
-	attack_skill = 4
-	defense_skill = 4
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Erwin Janssens"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Lodewijk van Spilbergen"
-	traits = { }
-	skill = 4
-	attack_skill = 2
-	defense_skill = 1
-	planning_skill = 5
-	logistics_skill = 4
-}
-
-create_corps_commander = {
-	name = "Rogier van Raephorst"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 2
-}
-
-create_navy_leader = {
-	name = "Willem Van Utenhove"
-	traits = { }
-	skill = 3
-	attack_skill = 1
-	defense_skill = 4
-	maneuvering_skill = 1
-	coordination_skill = 4
-}
+recruit_character = GER_jacob_list
+recruit_character = GER_erwin_janssens
+recruit_character = GER_lodewijk_van_spilbergen
+recruit_character = GER_rogier_van_raephorst
+recruit_character = GER_willem_van_utenhove
+recruit_character = GER_eise_fabius
 
 if = {
 	limit = {
@@ -1024,6 +1006,46 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_1
 			rear_1_custom_slot = empty
+		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "Basic Heavy Tank"
+		type = heavy_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Medium Tank"
+		type = medium_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Improved Light Tank"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_two_man_tank_turret
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿capital = 588
+﻿capital = 592
 set_research_slots = 3
 
 oob = "SOK_OOB"
@@ -12,15 +12,22 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
 	infantry_weapons = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		gwtank = 1
+	}
 }
 
 if = {
@@ -37,6 +44,13 @@ if = {
 }
 
 if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		early_battleship = 1
@@ -49,7 +63,12 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+add_doctrine_cost_reduction = {
+	name = naval_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = naval_doctrine
+}
 
 set_country_flag = conv_nigeria
 set_convoys = 2
@@ -137,64 +156,13 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.58
-create_country_leader = {
-	name = "Mari Naluma"
-	desc = "POLITICS_MARI_NALUMA_DESC"
-	picture = "gfx/leaders/African/Portrait_SOM_Ali_Shire.tga"
-	expire = "1965.1.1"
-	ideology = absolute_monarchy
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Mamari Coulibaly"
-	traits = { }
-	skill = 2
-	attack_skill = 3
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Bina Dyara"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Mari Tonkomo"
-	traits = { }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 2
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Masala Coulibaly"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 3
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Biton Tonkomo"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	maneuvering_skill = 1
-	coordination_skill = 1
-}
+recruit_character = SOK_mamari_coulibaly
+recruit_character = SOK_bina_dyara
+recruit_character = SOK_mari_tonkomo
+recruit_character = SOK_masala_coulibaly
+recruit_character = SOK_biton_tonkomo
+recruit_character = SOK_mari_naluma
 
 if = {
 	limit = {
@@ -494,5 +462,48 @@ if = {
 			mid_2_custom_slot = ship_light_battery_1
 			rear_1_custom_slot = empty
 		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "GW Heavy Tank"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/ger_basic_heavy_tank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Light Tank"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/gwtank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Medium Tank"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/SOV_basic_heavy_tank.dds"
 	}
 }
