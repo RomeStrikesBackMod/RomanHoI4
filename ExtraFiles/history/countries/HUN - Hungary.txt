@@ -12,15 +12,13 @@ if = {
 
 # Starting tech
 set_technology = {
-	basic_light_tank = 1
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
-	improved_light_tank = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	interwar_antiair = 1
@@ -30,6 +28,15 @@ set_technology = {
 	tech_engineers = 1
 	tech_recon = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		basic_light_tank = 1
+		gwtank = 1
+		improved_light_tank = 1
+	}
 }
 
 if = {
@@ -51,6 +58,17 @@ if = {
 }
 
 if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		basic_heavy_tank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		gwtank_chassis = 1
+		improved_light_tank_chassis = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		early_battleship = 1
@@ -62,7 +80,14 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
+add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = land_doctrine
+}
+
+set_country_flag = conv_austria
 set_convoys = 0
 
 add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 1 producer = HUN }
@@ -82,6 +107,12 @@ set_popularities = {
 	fascism = 13
 	neutrality = 6
 }
+
+give_guarantee = BRG
+diplomatic_relation = { country = BRG relation = non_aggression_pact }
+
+give_guarantee = RUS
+diplomatic_relation = { country = RUS relation = non_aggression_pact }
 
 add_opinion_modifier = { target = ADA modifier = negative_200 }
 add_opinion_modifier = { target = AQI modifier = negative_115 }
@@ -125,71 +156,20 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.60
-create_country_leader = {
-	name = "Rafael Beöthy"
-	desc = "POLITICS_RAFAEL_BEöTHY_DESC"
-	picture = "gfx/leaders/Europe/Portrait_europe_generic_7.dds"
-	expire = "1965.1.1"
-	ideology = prussian_const
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Károly Perczel"
-	traits = { }
-	skill = 2
-	attack_skill = 3
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Gábriel Egressy"
-	traits = { }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "József Manes Szemere"
-	traits = { }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ottó Széchenyi"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 3
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Dániel Molnár"
-	traits = { }
-	skill = 2
-	attack_skill = 3
-	defense_skill = 1
-	planning_skill = 3
-	logistics_skill = 1
-}
+recruit_character = HUN_karoly_perczel
+recruit_character = HUN_gabriel_egressy
+recruit_character = HUN_jozsef_manes_szemere
+recruit_character = HUN_otto_szechenyi
+recruit_character = HUN_daniel_molnar
+recruit_character = HUN_gyorgy_osterreicher
 
 if = {
 	limit = {
 		has_dlc = "La Resistance"
 	}
 	create_operative_leader = {
-		name = "Éva Reményi"
+		name = "Éva Gungl"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -199,7 +179,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Adelaide Török"
+		name = "Eva Rohr"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -209,7 +189,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Eva Nagy-Sándor"
+		name = "Amelia Lahner"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -219,7 +199,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Adelaida Gungl"
+		name = "Amelia Nagy-Sándor"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_4.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -229,7 +209,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agáta Horthy"
+		name = "Agnes Bacher"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_5.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -239,7 +219,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agatha Poeltenberg"
+		name = "Angyalka Ottinger"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_6.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -249,7 +229,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Amália Schweidel"
+		name = "Agnes Török"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_7.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -259,7 +239,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Amália Frakasházi Fischer"
+		name = "Ágnes Kaufman"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_8.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -269,7 +249,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Éva Aulich"
+		name = "Eva Izsó"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_9.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -279,7 +259,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Anikó Egressy"
+		name = "Adelaide Leiningen-Westerburg"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_10.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -289,7 +269,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Amelia Österreicher"
+		name = "Eva Gungl"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_11.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -299,7 +279,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agáta Lichtenstein"
+		name = "Ágnes Vécsey"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_13.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -309,7 +289,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Eva Reményi"
+		name = "Éva Reményi"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_14.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -319,7 +299,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Éva Kaufman"
+		name = "Adelaide Török"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_15.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -329,7 +309,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agatha Heller"
+		name = "Eva Nagy-Sándor"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_16.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -339,7 +319,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Amelia Knezich"
+		name = "Adelaida Gungl"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_17.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -349,7 +329,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Angyalka Török"
+		name = "Agáta Horthy"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_18.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -359,7 +339,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agáta Bothmer"
+		name = "Agatha Poeltenberg"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_19.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -369,7 +349,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agatha Knezich"
+		name = "Amália Schweidel"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_20.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -379,7 +359,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agatha Joseffy"
+		name = "Amália Frakasházi Fischer"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_21.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -389,7 +369,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Angyalka Tersztyansky"
+		name = "Éva Aulich"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_22.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -399,7 +379,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Agnes Schweidel"
+		name = "Anikó Egressy"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_23.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -409,7 +389,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Amália Mikszáth"
+		name = "Amelia Österreicher"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_24.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -419,7 +399,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Éva Molnár"
+		name = "Agáta Lichtenstein"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_25.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -429,7 +409,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Amália Liszt"
+		name = "Eva Reményi"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_26.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -439,7 +419,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ferencz Perczel"
+		name = "Manó Kaufman"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -448,7 +428,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Vilmos Vécsey"
+		name = "Benedek Heller"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -457,7 +437,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Éliás Kiss"
+		name = "Kelemen Knezich"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_3.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -466,7 +446,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "József Manes Lahner"
+		name = "János Török"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_4.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -475,7 +455,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Benedek Österreicher"
+		name = "Albert Bothmer"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_5.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -484,7 +464,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Edvárd Heller"
+		name = "Benedek Knezich"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_6.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -493,7 +473,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Péter Kaufman"
+		name = "Béla Joseffy"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_7.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -502,7 +482,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Kelemen Varga"
+		name = "Dávid Tersztyansky"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_8.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -511,7 +491,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "József Kogutowicz"
+		name = "Ottó Schweidel"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_9.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -520,7 +500,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Simon Batthyány"
+		name = "Ignác Mikszáth"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_10.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -529,7 +509,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Zsigmond Hauszmann"
+		name = "Katalin Molnár"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_11.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -538,7 +518,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Ottó Baross"
+		name = "Gáspár Liszt"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_12.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -547,7 +527,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Benedek Tersztyansky"
+		name = "Ferencz Perczel"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_13.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -556,7 +536,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Gábriel Farkas"
+		name = "Vilmos Vécsey"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_14.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -565,7 +545,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Aurél Kaufman"
+		name = "Éliás Kiss"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_15.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -574,7 +554,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Álmos Dessewffy"
+		name = "József Manes Lahner"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_16.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -583,7 +563,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Simon Katona"
+		name = "Benedek Österreicher"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_17.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -592,7 +572,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Manó Perczel"
+		name = "Edvárd Heller"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_18.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -601,7 +581,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Katalin Baross"
+		name = "Péter Kaufman"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_19.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -610,7 +590,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "József Knezich"
+		name = "Kelemen Varga"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_20.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -619,7 +599,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Károly Goldziher"
+		name = "József Kogutowicz"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_21.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -628,7 +608,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Rafael Szemere"
+		name = "Simon Batthyány"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_22.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -637,7 +617,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Bertalan Schweidel"
+		name = "Zsigmond Hauszmann"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_23.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -646,7 +626,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Béla Kiss"
+		name = "Ottó Baross"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_24.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -655,7 +635,7 @@ if = {
 	}
 
 	create_operative_leader = {
-		name = "Bertalan Varga"
+		name = "Benedek Tersztyansky"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_25.dds"
 		traits = {}
 		bypass_recruitment = no
@@ -775,6 +755,46 @@ if = {
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_light_battery_1
 			rear_1_custom_slot = empty
+		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "Basic Heavy Tank"
+		type = heavy_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Medium Tank"
+		type = medium_tank_chassis_1
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Improved Light Tank"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_two_man_tank_turret
 		}
 	}
 }

@@ -12,6 +12,7 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
@@ -53,7 +54,12 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
+add_doctrine_cost_reduction = {
+	name = air_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = air_doctrine
+}
 
 set_country_flag = conv_siam
 set_convoys = 0
@@ -91,15 +97,9 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.62
-create_country_leader = {
-	name = "Narasimha Hanumathu"
-	desc = "POLITICS_NARASIMHA_HANUMATHU_DESC"
-	picture = "gfx/leaders/Indian/Portrait_BHC_Nirmal_Kumar_Bose.tga"
-	expire = "1965.1.1"
-	ideology = conservatism
-	traits = {
-	}
-}
+
+recruit_character = X02_narasimha_hanumathu
+
 if = {
 	limit = {
 		has_dlc = "La Resistance"
@@ -258,4 +258,8 @@ if = {
 			rear_1_custom_slot = empty
 		}
 	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
 }

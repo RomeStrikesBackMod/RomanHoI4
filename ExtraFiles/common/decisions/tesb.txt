@@ -376,6 +376,7 @@ germany_decisions = {
 		fixed_random_seed = no
 	}
 	democratic_speech = {
+		on_map_mode = map_and_decisions_view
 		icon = generic_political_discourse
 		available = {
 			NOT = { has_country_flag = GER_rache has_country_flag = GER_arbeiterpartei has_country_flag = GER_maintain_balance }
@@ -393,13 +394,6 @@ germany_decisions = {
 				flag = GER_recent_speech
 				days = 15
 				value = 1
-			}
-			random_owned_state = {
-				limit = {
-					has_state_flag = GER_speech_state
-				}
-				set_state_flag = GER_had_speech
-				clr_state_flag = GER_speech_state
 			}
 			random_list = {
 				50 = {
@@ -427,14 +421,29 @@ germany_decisions = {
 					}
 				}
 			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
 		}
 		cost = 20
 		fixed_random_seed = no
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 5
+				has_country_flag = GER_maintain_balance_path_flag
+			}
+		}
 	}
 	communist_speech = {
+		on_map_mode = map_and_decisions_view
 		icon = generic_nationalism
 		available = {
-			#NOT = { has_country_flag = GER_recent_speech }
+			NOT = { has_country_flag = GER_rache has_country_flag = GER_arbeiterpartei has_country_flag = GER_maintain_balance }
 		}
 		highlight_states = {
 			has_state_flag = GER_speech_state
@@ -449,13 +458,6 @@ germany_decisions = {
 				flag = GER_recent_speech
 				days = 15
 				value = 1
-			}
-			random_owned_state = {
-				limit = {
-					has_state_flag = GER_speech_state
-				}
-				set_state_flag = GER_had_speech
-				clr_state_flag = GER_speech_state
 			}
 			random_list = {
 				50 = {
@@ -483,14 +485,29 @@ germany_decisions = {
 					}
 				}
 			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
 		}
 		cost = 20
 		fixed_random_seed = no
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 5
+				has_country_flag = GER_arbeiterpartei_path_flag
+			}
+		}
 	}
 	fascist_speech = {
+		on_map_mode = map_and_decisions_view
 		icon = eng_blackshirt_speech
 		available = {
-			#NOT = { has_country_flag = GER_recent_speech }
+			NOT = { has_country_flag = GER_rache has_country_flag = GER_arbeiterpartei has_country_flag = GER_maintain_balance }
 		}
 		highlight_states = {
 			has_state_flag = GER_speech_state
@@ -505,13 +522,6 @@ germany_decisions = {
 				flag = GER_recent_speech
 				days = 15
 				value = 1
-			}
-			random_owned_state = {
-				limit = {
-					has_state_flag = GER_speech_state
-				}
-				set_state_flag = GER_had_speech
-				clr_state_flag = GER_speech_state
 			}
 			random_list = {
 				50 = {
@@ -539,9 +549,23 @@ germany_decisions = {
 					}
 				}
 			}
+			random_owned_state = {
+				limit = {
+					has_state_flag = GER_speech_state
+				}
+				set_state_flag = GER_had_speech
+				clr_state_flag = GER_speech_state
+			}
 		}
 		cost = 20
 		fixed_random_seed = no
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 5
+				has_country_flag = GER_rache_path_flag
+			}
+		}
 	}
 	prevent_fascist_civil_war = {
 		fire_only_once = yes
@@ -860,16 +884,31 @@ aotearoa_decisions = {
 		days_mission_timeout = 730
 		fire_only_once = yes
 		activation = {
-			always = no
-			#has_global_flag = RME_civil_war_over #activated by on_action
+			#always = no
+			has_global_flag = RME_civil_war_over #activated by on_action
 		}
 		available = {
 			has_country_flag = AOT_reconciled_rome
 		}
 		cancel_trigger = {
-			NOT = {
-				country_exists = RMA
-				country_exists = RMD
+			if = {
+				limit = { country_exists = RMA }
+				OR = {
+					is_subject = yes
+					RMA = { exists = no }
+					is_in_faction_with = RMA
+				}
+				else_if = {
+					limit = { country_exists = RMD }
+					OR = {
+						is_subject = yes
+						RMD = { exists = no }
+						is_in_faction_with = RMD
+					}
+				}
+				else = {
+					always = yes
+				}
 			}
 		}
 		is_good = no
@@ -886,7 +925,23 @@ aotearoa_decisions = {
 			
 		}
 		complete_effect = {
-			
+			set_country_flag = AOT_reconciled_rome
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				check_variable = {
+					days_mission_timeout@AOT_reconciling_with_rome < 40
+				}
+			}
+			modifier = {
+				add = 1
+				OR = {
+					has_war_with = RMD
+					has_war_with = RMA
+				}
+			}
 		}
 	}
 	AOT_ally_RMD = {
@@ -896,9 +951,14 @@ aotearoa_decisions = {
 		}
 		available = {
 			RMD = { has_government = democratic is_faction_leader = yes }
+			NOT = { has_war_with = RMD }
 		}
 		complete_effect = {
-			RMD = { country_event = { id = generic.2 } }
+			if = {
+				limit = { RMD = { is_faction_leader = yes } }
+				RMD = { country_event = { id = generic.2 } }
+				else = { custom_effect_tooltip = AOT_join_RME_faction_TT }
+			}
 			set_country_flag = AOT_reconciled_rome
 		}
 		ai_will_do = {
@@ -916,9 +976,11 @@ aotearoa_decisions = {
 		visible = {
 			has_active_mission = AOT_reconciling_with_rome
 			country_exists = RMD
+			is_independent_country = yes
 		}
 		available = {
 			RMD = { has_government = democratic }
+			NOT = { has_war_with = RMD }
 		}
 		complete_effect = {
 			RMD = { country_event = { id = tesb_AOT.10 } }
@@ -933,6 +995,13 @@ aotearoa_decisions = {
 					has_government = neutrality
 				}
 			}
+			modifier = {
+				factor = 0
+				RMD = { is_faction_leader = no }
+				check_variable = {
+					days_mission_timeout@AOT_reconciling_with_rome > 80
+				}
+			}
 		}
 	}
 	AOT_ally_RMA = {
@@ -942,9 +1011,14 @@ aotearoa_decisions = {
 		}
 		available = {
 			RMA = { has_government = absolutist is_faction_leader = yes }
+			NOT = { has_war_with = RMA }
 		}
 		complete_effect = {
-			RMA = { country_event = { id = generic.2 } }
+			if = {
+				limit = { RMA = { is_faction_leader = yes } }
+				RMA = { country_event = { id = generic.2 } }
+				else = { custom_effect_tooltip = AOT_join_RME_faction_TT }
+			}
 			set_country_flag = AOT_reconciled_rome
 		}
 		ai_will_do = {
@@ -964,7 +1038,8 @@ aotearoa_decisions = {
 			country_exists = RMA
 		}
 		available = {
-			RMA = { has_government = absolutist is_faction_leader = yes }
+			RMA = { has_government = absolutist }
+			NOT = { has_war_with = RMA }
 		}
 		complete_effect = {
 			RMA = { country_event = { id = tesb_AOT.12 } }
@@ -979,6 +1054,17 @@ aotearoa_decisions = {
 					has_government = neutrality
 				}
 			}
+			modifier = {
+				factor = 0
+				RMA = { is_faction_leader = no }
+				check_variable = {
+					days_mission_timeout@AOT_reconciling_with_rome > 80
+				}
+			}
 		}
 	}
+}
+
+italy_decisions = {
+
 }

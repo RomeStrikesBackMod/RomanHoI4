@@ -12,13 +12,13 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
-	gwtank = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	marines = 1
@@ -26,6 +26,13 @@ set_technology = {
 	tech_engineers = 1
 	tech_recon = 1
 	tech_support = 1
+}
+
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_technology = {
+		gwtank = 1
+	}
 }
 
 if = {
@@ -48,6 +55,13 @@ if = {
 }
 
 if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		basic_heavy_cruiser = 1
@@ -62,7 +76,12 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = land_doc_bonus bonus = 1000 uses = 1 category = land_doctrine }
+add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = land_doctrine
+}
 
 set_country_flag = conv_abyssinia
 set_convoys = 47
@@ -150,64 +169,13 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.60
-create_country_leader = {
-	name = "Alemayehu Mideksa"
-	desc = "POLITICS_ALEMAYEHU_MIDEKSA_DESC"
-	picture = "gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic.dds"
-	expire = "1965.1.1"
-	ideology = socialism
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Tilahun Dinsa"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Galasa Gemeda"
-	traits = { }
-	skill = 1
-	attack_skill = 2
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Ras Mideksa"
-	traits = { }
-	skill = 4
-	attack_skill = 6
-	defense_skill = 2
-	planning_skill = 1
-	logistics_skill = 5
-}
-
-create_corps_commander = {
-	name = "Galasa Makonnen"
-	traits = { }
-	skill = 3
-	attack_skill = 4
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Tsegaye Eabisa"
-	traits = { }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 1
-	maneuvering_skill = 3
-	coordination_skill = 1
-}
+recruit_character = ETH_tilahun_dinsa
+recruit_character = ETH_galasa_gemeda
+recruit_character = ETH_ras_mideksa
+recruit_character = ETH_galasa_makonnen
+recruit_character = ETH_tsegaye_eabisa
+recruit_character = ETH_alemayehu_mideksa
 
 if = {
 	limit = {
@@ -537,5 +505,48 @@ if = {
 			mid_1_custom_slot = ship_depth_charge_1
 			rear_1_custom_slot = empty
 		}
+	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
+	create_equipment_variant = {
+		name = "GW Heavy Tank"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/ger_basic_heavy_tank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Light Tank"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/gwtank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Medium Tank"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/SOV_basic_heavy_tank.dds"
 	}
 }

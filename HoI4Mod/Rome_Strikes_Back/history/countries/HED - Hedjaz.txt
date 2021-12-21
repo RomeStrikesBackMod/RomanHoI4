@@ -12,6 +12,7 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
@@ -48,7 +49,12 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = naval_doc_bonus bonus = 1000 uses = 1 category = naval_doctrine }
+add_doctrine_cost_reduction = {
+	name = naval_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = naval_doctrine
+}
 
 set_country_flag = conv_arabia
 set_convoys = 13
@@ -104,54 +110,12 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.67
-create_country_leader = {
-	name = "Abu Bakr ibn Khalid"
-	desc = "POLITICS_ABU BAKR_IBN KHALID_DESC"
-	picture = "gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
-	expire = "1965.1.1"
-	ideology = dictatorship
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Ali ibn Ja'far"
-	traits = { }
-	skill = 3
-	attack_skill = 1
-	defense_skill = 2
-	planning_skill = 5
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Hisham al-Najdi"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Muhammad ibn Ja'far"
-	traits = { }
-	skill = 2
-	attack_skill = 2
-	defense_skill = 1
-	planning_skill = 3
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Kamil ibm Kamil"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 3
-	maneuvering_skill = 1
-	coordination_skill = 1
-}
+recruit_character = HED_ali_ibn_ja'far
+recruit_character = HED_hisham_al_najdi
+recruit_character = HED_muhammad_ibn_ja'far
+recruit_character = HED_kamil_ibm_kamil
+recruit_character = HED_abu_bakr_ibn_khalid
 
 if = {
 	limit = {
@@ -385,4 +349,8 @@ if = {
 			rear_1_custom_slot = empty
 		}
 	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
 }

@@ -5,7 +5,7 @@ country_event = {
 	id = tesb_GER.1
 	title = tesb_GER.1.t
 	desc = tesb_GER.1.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_generic_rally
 
 	is_triggered_only = yes
 
@@ -35,7 +35,7 @@ country_event = {
 	id = tesb_GER.2
 	title = tesb_GER.2.t
 	desc = tesb_GER.2.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_generic_rally
 
 	is_triggered_only = yes
 
@@ -65,7 +65,7 @@ country_event = {
 	id = tesb_GER.3
 	title = tesb_GER.3.t
 	desc = tesb_GER.3.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_generic_rally
 
 	is_triggered_only = yes
 
@@ -95,7 +95,7 @@ country_event = {
 	id = tesb_GER.4
 	title = tesb_GER.4.t
 	desc = tesb_GER.4.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_worker_protests
 
 	is_triggered_only = yes
 
@@ -125,7 +125,7 @@ country_event = {
 	id = tesb_GER.5
 	title = tesb_GER.5.t
 	desc = tesb_GER.5.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_worker_protests
 
 	is_triggered_only = yes
 
@@ -155,7 +155,7 @@ country_event = {
 	id = tesb_GER.6
 	title = tesb_GER.6.t
 	desc = tesb_GER.6.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_worker_protests
 
 	is_triggered_only = yes
 
@@ -185,7 +185,7 @@ news_event = {
 	id = tesb_GER.9
 	title = tesb_GER.9.t
 	desc = tesb_GER.9.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_generic_rally2
 	fire_only_once = yes
 
 	trigger = {
@@ -233,7 +233,7 @@ country_event = {
 	id = tesb_GER.10
 	title = tesb_GER.10.t
 	desc = tesb_GER.10.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_german_politician_speech
 	fire_only_once = yes
 
 	is_triggered_only = yes
@@ -259,6 +259,16 @@ country_event = {
 			popularity = 0.025
 		}
 		add_war_support = 0.05
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				OR = {
+					has_country_flag = GER_arbeiterpartei_path_flag
+					has_country_flag = GER_rache_path_flag
+				}
+			}
+		}
 	}
 
 	#Let's not stir up tension
@@ -269,6 +279,13 @@ country_event = {
 			popularity = 0.025
 		}
 		add_stability = -0.05
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_maintain_balance_path_flag
+			}
+		}
 	}
 }
 
@@ -278,7 +295,7 @@ country_event = {
 	id = tesb_GER.11
 	title = tesb_GER.11.t
 	desc = tesb_GER.11.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_german_politician_speech
 	fire_only_once = yes
 
 	is_triggered_only = yes
@@ -299,6 +316,13 @@ country_event = {
 			ideology = communism
 			popularity = 0.025
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_arbeiterpartei_path_flag
+			}
+		}
 	}
 	
 	#We must support the state
@@ -307,6 +331,13 @@ country_event = {
 		add_popularity = {
 			ideology = fascism
 			popularity = 0.025
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_rache_path_flag
+			}
 		}
 	}
 
@@ -317,6 +348,13 @@ country_event = {
 			ideology = democratic
 			popularity = 0.025
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_maintain_balance_path_flag
+			}
+		}
 	}
 }
 
@@ -326,7 +364,7 @@ country_event = {
 	id = tesb_GER.12
 	title = tesb_GER.12.t
 	desc = tesb_GER.12.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_german_politician_speech
 	fire_only_once = yes
 	is_triggered_only = yes
 
@@ -347,6 +385,13 @@ country_event = {
 			popularity = 0.025
 		}
 		add_war_support = 0.05
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_rache_path_flag
+			}
+		}
 	}
 	
 	#We can get along
@@ -361,6 +406,16 @@ country_event = {
 			popularity = 0.025
 		}
 		add_war_support = -0.05
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				OR = {
+					has_country_flag = GER_maintain_balance_path_flag
+					has_country_flag = GER_arbeiterpartei_path_flag
+				}
+			}
+		}
 	}
 }
 
@@ -370,7 +425,7 @@ country_event = {
 	id = tesb_GER.13
 	title = tesb_GER.13.t
 	desc = tesb_GER.13.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_german_politician_speech
 	fire_only_once = yes
 
 	is_triggered_only = yes
@@ -392,6 +447,13 @@ country_event = {
 			popularity = 0.025
 		}
 		add_war_support = 0.05
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_rache_path_flag
+			}
+		}
 	}
 	
 	#Fascists are madmen
@@ -406,6 +468,16 @@ country_event = {
 			popularity = 0.025
 		}
 		add_war_support = -0.05
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				OR = {
+					has_country_flag = GER_maintain_balance_path_flag
+					has_country_flag = GER_arbeiterpartei_path_flag
+				}
+			}
+		}
 	}
 }
 
@@ -415,7 +487,7 @@ country_event = {
 	id = tesb_GER.14
 	title = tesb_GER.14.t
 	desc = tesb_GER.14.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_generic_rally
 	fire_only_once = yes
 
 	is_triggered_only = yes
@@ -436,6 +508,13 @@ country_event = {
 			ideology = fascism
 			popularity = 0.025
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_rache_path_flag
+			}
+		}
 	}
 	
 	#communists
@@ -445,6 +524,13 @@ country_event = {
 			ideology = communism
 			popularity = 0.025
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_arbeiterpartei_path_flag
+			}
+		}
 	}
 	#democrats
 	option = {
@@ -452,6 +538,13 @@ country_event = {
 		add_popularity = {
 			ideology = democratic
 			popularity = 0.025
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_maintain_balance_path_flag
+			}
 		}
 	}
 }
@@ -462,7 +555,7 @@ news_event = {
 	id = tesb_GER.15
 	title = tesb_GER.15.t
 	desc = tesb_GER.15.d
-	picture = GFX_report_event_german_italian_pact #Placeholder image
+	picture = GFX_report_event_election_vote
 	fire_only_once = yes
 
 	is_triggered_only = yes
@@ -484,6 +577,13 @@ news_event = {
 		add_political_power = 30
 		complete_national_focus = GER_rache
 		set_country_flag = GER_rache
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_rache_path_flag
+			}
+		}
 	}
 	
 	#fascists
@@ -500,6 +600,13 @@ news_event = {
 		add_stability = -0.05
 		complete_national_focus = GER_rache
 		set_country_flag = GER_rache
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_rache_path_flag
+			}
+		}
 	}
 	
 	#communists
@@ -515,6 +622,13 @@ news_event = {
 		add_political_power = 30
 		complete_national_focus = GER_arbeiterpartei
 		set_country_flag = GER_arbeiterpartei
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_arbeiterpartei_path_flag
+			}
+		}
 	}
 	
 	#communists
@@ -531,6 +645,13 @@ news_event = {
 		add_stability = -0.05
 		complete_national_focus = GER_arbeiterpartei
 		set_country_flag = GER_arbeiterpartei
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_arbeiterpartei_path_flag
+			}
+		}
 	}
 	
 	#democrats
@@ -546,6 +667,13 @@ news_event = {
 		add_political_power = 30
 		complete_national_focus = GER_maintain_balance
 		set_country_flag = GER_maintain_balance
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_maintain_balance_path_flag
+			}
+		}
 	}
 	
 	#democrats
@@ -562,6 +690,13 @@ news_event = {
 		add_stability = -0.05
 		complete_national_focus = GER_maintain_balance
 		set_country_flag = GER_maintain_balance
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_maintain_balance_path_flag
+			}
+		}
 	}
 	
 	#democrats
@@ -579,6 +714,13 @@ news_event = {
 		add_stability = -0.1
 		complete_national_focus = GER_maintain_balance
 		set_country_flag = GER_maintain_balance
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_maintain_balance_path_flag
+			}
+		}
 	}
 }
 
@@ -597,12 +739,29 @@ country_event = {
 			ruling_party = fascism
 			elections_allowed = no
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_country_flag = GER_rache_path_flag
+			}
+		}
 	}
 
 	option = {
 		name = tesb_GER.25.b
 		add_political_power = -100
 		add_stability = -0.2
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				OR = {
+					has_country_flag = GER_arbeiterpartei_path_flag
+					has_country_flag = GER_maintain_balance_path_flag
+				}
+			}
+		}
 	}
 }
 

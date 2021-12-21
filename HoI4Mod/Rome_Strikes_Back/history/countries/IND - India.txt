@@ -6,9 +6,8 @@ add_named_threat = { threat = 0.7748 name = infamy }
 declare_war_on = {
 	target = TIB
 	type = take_state
-	generator = { 611 } # significant_number - Bhutan
+	generator = { 611 }
 }
-set_country_flag = peace_flag_take_611 # significant_number - Bhutan
 
 oob = "IND_OOB"
 if = {
@@ -21,6 +20,7 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
@@ -62,7 +62,12 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
+add_doctrine_cost_reduction = {
+	name = air_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = air_doctrine
+}
 
 set_country_flag = conv_south_asia
 set_convoys = 10
@@ -170,74 +175,14 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.62
-create_country_leader = {
-	name = "Venkatadri Sriramulu"
-	desc = "POLITICS_VENKATADRI_SRIRAMULU_DESC"
-	picture = "gfx/leaders/Indian/Portrait_BHC_Mohandas_Karamchand_Gandhi.tga"
-	expire = "1965.1.1"
-	ideology = conservatism
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "Vasireddy Hanumathu"
-	traits = { }
-	skill = 3
-	attack_skill = 3
-	defense_skill = 1
-	planning_skill = 4
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "Veerapandiya Naidu"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Narasimha Naidu"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 5
-}
-
-create_corps_commander = {
-	name = "Durgabai Sitaramaraju"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 3
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Alluri Kattabomman"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Narasimha Veeresalingam"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	maneuvering_skill = 1
-	coordination_skill = 1
-}
+recruit_character = IND_vasireddy_hanumathu
+recruit_character = IND_veerapandiya_naidu
+recruit_character = IND_narasimha_naidu
+recruit_character = IND_durgabai_sitaramaraju
+recruit_character = IND_alluri_kattabomman
+recruit_character = IND_narasimha_veeresalingam
+recruit_character = IND_venkatadri_sriramulu
 
 if = {
 	limit = {
@@ -492,4 +437,8 @@ if = {
 			rear_1_custom_slot = empty
 		}
 	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
 }

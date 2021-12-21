@@ -227,6 +227,53 @@ ideas = {
 			}
 			cancel_if_invalid = no
 		}
+
+		new_economic_policy = {
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			ai_will_do = {
+   				factor = 0
+   			}
+			picture = new_economic_policy
+			modifier = {
+				consumer_goods_factor = 0.15	
+				production_speed_buildings_factor = -0.15 
+				
+			}
+			allowed_to_remove = {
+				OR = {
+					surrender_progress > 0.75
+					NOT = { has_government = communism }
+				}
+			}
+			cancel_if_invalid = no
+		}
+
+		new_economic_policy_2 = {
+			name = new_economic_policy
+			removal_cost = -1
+			allowed = {
+				always = no
+			}
+			ai_will_do = {
+   				factor = 0
+   			}
+			picture = new_economic_policy
+			modifier = {
+				consumer_goods_factor = 0.10	
+				production_speed_buildings_factor = -0.2 
+				global_building_slots_factor = 0.1
+			}
+			allowed_to_remove = {
+				OR = {
+					surrender_progress > 0.75
+					NOT = { has_government = communism }
+				}
+			}
+			cancel_if_invalid = no
+		}
 	}
 	trade_laws = {
 		law = yes

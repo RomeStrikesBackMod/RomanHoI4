@@ -12,6 +12,7 @@ if = {
 
 # Starting tech
 set_technology = {
+	basic_train = 1
 	early_bomber = 1
 	early_fighter = 1
 	electronic_mechanical_engineering = 1
@@ -54,7 +55,12 @@ if = {
 }
 
 # Research Bonuses
-add_tech_bonus = { name = air_doc_bonus bonus = 1000 uses = 1 category = air_doctrine }
+add_doctrine_cost_reduction = {
+	name = air_doc_bonus
+	cost_reduction = 0.99
+	uses = 1
+	category = air_doctrine
+}
 
 set_country_flag = conv_canada
 set_convoys = 6
@@ -125,64 +131,13 @@ add_ideas = {
 }
 set_stability = 0.60
 set_war_support = 0.59
-create_country_leader = {
-	name = "Daniel Riel"
-	desc = "POLITICS_DANIEL_RIEL_DESC"
-	picture = "gfx/leaders/Generic/r56_portrait_generic_politician_south_america_1.dds"
-	expire = "1965.1.1"
-	ideology = socialism
-	traits = {
-	}
-}
-create_corps_commander = {
-	name = "James Dumont"
-	traits = { }
-	skill = 3
-	attack_skill = 6
-	defense_skill = 3
-	planning_skill = 1
-	logistics_skill = 1
-}
 
-create_corps_commander = {
-	name = "James Martin"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Gabriel Riel"
-	traits = { }
-	skill = 1
-	attack_skill = 1
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_corps_commander = {
-	name = "Amroise-Dydime Martin"
-	traits = { }
-	skill = 1
-	attack_skill = 2
-	defense_skill = 1
-	planning_skill = 1
-	logistics_skill = 1
-}
-
-create_navy_leader = {
-	name = "Louis Clarence"
-	traits = { }
-	skill = 2
-	attack_skill = 1
-	defense_skill = 1
-	maneuvering_skill = 4
-	coordination_skill = 1
-}
+recruit_character = CAN_james_dumont
+recruit_character = CAN_james_martin
+recruit_character = CAN_gabriel_riel
+recruit_character = CAN_amroise_dydime_martin
+recruit_character = CAN_louis_clarence
+recruit_character = CAN_daniel_riel
 
 if = {
 	limit = {
@@ -413,4 +368,8 @@ if = {
 			rear_1_custom_slot = empty
 		}
 	}
+}
+### TANK DESIGNS ###
+if = {
+	limit = { has_dlc = "No Step Back" }
 }
