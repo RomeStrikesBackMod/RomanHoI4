@@ -45,6 +45,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 10
+			modifier = {
+				factor = 0
+				date < 1939.1.1
+			}
 		}
 	}
 
@@ -450,10 +454,11 @@ focus_tree = {
 			CAM = {
 				exists = yes
 				not_allies_or_subjects = yes
-				potential_take_state_target = yes
+				owns_state = 77
 			}
 		}
 		completion_reward = {
+			add_state_claim = 77
 			add_manpower = 10000
 		}
 		ai_will_do = {
@@ -587,7 +592,7 @@ focus_tree = {
 			declare_war_on = {
 				target = CAM
 				type = take_state_focus
-				generator = claimed_states
+				generator = { 77 }
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
@@ -609,10 +614,11 @@ focus_tree = {
 			LAO = {
 				exists = yes
 				not_allies_or_subjects = yes
-				potential_take_state_target = yes
+				owns_state = 335
 			}
 		}
 		completion_reward = {
+			add_state_claim = 335
 			add_manpower = 10000
 		}
 		ai_will_do = {
@@ -739,159 +745,7 @@ focus_tree = {
 			declare_war_on = {
 				target = LAO
 				type = take_state_focus
-				generator = claimed_states
-			}
-			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
-		}
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = border_disputesCHAMNG
-		icon = GFX_goal_generic_more_territorial_claims
-		text = border_disputesMNG
-		x = 32
-		y = 0
-		cost = 10
-		available = {
-			is_subject = no
-			has_war = no
-			MNG = {
-				exists = yes
-				not_allies_or_subjects = yes
-				potential_take_state_target = yes
-			}
-		}
-		completion_reward = {
-			add_manpower = 10000
-		}
-		ai_will_do = {
-			factor = 2
-			modifier = {
-				factor = 0
-				has_opinion = { target = MNG value > 0 }
-			}
-			modifier = {
-				factor = 0
-				MNG = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = MNG
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 2
-				MNG = { surrender_progress > 0.2 }
-			}
-		}
-	}
-
-	focus = {
-		id = prepare_for_warCHAMNG
-		icon = GFX_goal_generic_position_armies
-		text = prepare_for_warMNG
-		prerequisite = { focus = border_disputesCHAMNG }
-		bypass = {
-			has_war_with = MNG
-		}
-		x = 0
-		y = 1
-		relative_position_id = border_disputesCHAMNG
-		cost = 4
-		available = {
-			date > 1938.2.1
-			is_subject = no
-			has_war = no
-			MNG = { exists = yes }
-		}
-		completion_reward = {
-			add_manpower = 10000
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				has_opinion = { target = MNG value > 0 }
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 0
-				MNG = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = MNG
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 2
-				MNG = { surrender_progress > 0.2 }
-			}
-		}
-	}
-
-	focus = {
-		id = neighbor_warCHAMNG
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		text = neighbor_warMNG
-		prerequisite = { focus = prepare_for_warCHAMNG }
-		bypass = {
-			has_war_with = MNG
-		}
-		x = 0
-		y = 1
-		relative_position_id = prepare_for_warCHAMNG
-		cost = 3
-		available = {
-			has_war = no
-		}
-		completion_reward = {
-			declare_war_on = {
-				target = MNG
-				type = take_state_focus
-				generator = { 401 }
+				generator = { 335 }
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
@@ -904,7 +758,7 @@ focus_tree = {
 		id = border_disputesCHAUTA
 		icon = GFX_goal_generic_more_territorial_claims
 		text = border_disputesUTA
-		x = 34
+		x = 32
 		y = 0
 		cost = 10
 		available = {
@@ -913,10 +767,11 @@ focus_tree = {
 			UTA = {
 				exists = yes
 				not_allies_or_subjects = yes
-				potential_take_state_target = yes
+				owns_state = 665
 			}
 		}
 		completion_reward = {
+			add_state_claim = 665
 			add_manpower = 10000
 		}
 		ai_will_do = {
@@ -1043,7 +898,7 @@ focus_tree = {
 			declare_war_on = {
 				target = UTA
 				type = take_state_focus
-				generator = claimed_states
+				generator = { 665 }
 			}
 			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
