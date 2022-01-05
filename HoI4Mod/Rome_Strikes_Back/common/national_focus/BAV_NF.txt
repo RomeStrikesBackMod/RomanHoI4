@@ -232,6 +232,9 @@ focus_tree = {
 			GER = {
 				country_event = { id = reconquest_wars.1 }
 				custom_effect_tooltip = needs_approval
+				hidden_effect = {
+					country_event = { id = reconquest_news.1 }
+				}
 			}
 			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
@@ -614,6 +617,9 @@ focus_tree = {
 			HUN = {
 				country_event = { id = reconquest_wars.1 }
 				custom_effect_tooltip = needs_approval
+				hidden_effect = {
+					country_event = { id = reconquest_news.1 }
+				}
 			}
 			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
@@ -834,11 +840,92 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 67
-			add_manpower = 10000
+			add_war_support = 0.05
 		}
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = BRG value > 0 }
+			}
+			modifier = {
+				factor = 0
+				BRG = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = BRG
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+			}
+			modifier = {
+				factor = 2
+				BRG = { surrender_progress > 0.2 }
+			}
+		}
+	}
+
+	focus = {
+		id = assert_claimsBAVBRG
+		icon = GFX_goal_generic_territory_or_war
+		text = assert_claimsBRG
+		prerequisite = { focus = border_disputesBAVBRG }
+		x = 0
+		y = 1
+		relative_position_id = border_disputesBAVBRG
+		cost = 10
+		available = {
+			date > 1938.2.1
+			is_subject = no
+			has_war = no
+			BRG = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 67
+			}
+		}
+		completion_reward = {
+			add_state_claim = 67
+			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			hidden_effect = {
+				BRG = { country_event = { id = reconquest_news.1 } }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
 			modifier = {
 				factor = 0
 				has_opinion = { target = BRG value > 0 }
@@ -883,62 +970,28 @@ focus_tree = {
 		id = prepare_for_warBAVBRG
 		icon = GFX_goal_generic_position_armies
 		text = prepare_for_warBRG
-		prerequisite = { focus = border_disputesBAVBRG }
+		prerequisite = { focus = assert_claimsBAVBRG }
 		bypass = {
 			has_war_with = BRG
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesBAVBRG
-		cost = 4
+		relative_position_id = assert_claimsBAVBRG
+		cost = 10
 		available = {
-			date > 1938.2.1
 			is_subject = no
 			has_war = no
-			BRG = { exists = yes }
+			BRG = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 67
+			}
 		}
 		completion_reward = {
 			add_manpower = 10000
 		}
 		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				has_opinion = { target = BRG value > 0 }
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 0
-				BRG = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = BRG
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 2
-				BRG = { surrender_progress > 0.2 }
-			}
+			factor = 0
 		}
 	}
 
@@ -953,9 +1006,15 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = prepare_for_warBAVBRG
-		cost = 3
+		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
+			BRG = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 67
+			}
 		}
 		completion_reward = {
 			declare_war_on = {
@@ -963,10 +1022,9 @@ focus_tree = {
 				type = take_state_focus
 				generator = { 67 }
 			}
-			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 	}
 
@@ -987,11 +1045,92 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 606
-			add_manpower = 10000
+			add_war_support = 0.05
 		}
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = SWI value > 0 }
+			}
+			modifier = {
+				factor = 0
+				SWI = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = SWI
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+			}
+			modifier = {
+				factor = 2
+				SWI = { surrender_progress > 0.2 }
+			}
+		}
+	}
+
+	focus = {
+		id = assert_claimsBAVSWI
+		icon = GFX_goal_generic_territory_or_war
+		text = assert_claimsSWI
+		prerequisite = { focus = border_disputesBAVSWI }
+		x = 0
+		y = 1
+		relative_position_id = border_disputesBAVSWI
+		cost = 10
+		available = {
+			date > 1938.2.1
+			is_subject = no
+			has_war = no
+			SWI = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 606
+			}
+		}
+		completion_reward = {
+			add_state_claim = 606
+			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			hidden_effect = {
+				SWI = { country_event = { id = reconquest_news.1 } }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
 			modifier = {
 				factor = 0
 				has_opinion = { target = SWI value > 0 }
@@ -1036,62 +1175,28 @@ focus_tree = {
 		id = prepare_for_warBAVSWI
 		icon = GFX_goal_generic_position_armies
 		text = prepare_for_warSWI
-		prerequisite = { focus = border_disputesBAVSWI }
+		prerequisite = { focus = assert_claimsBAVSWI }
 		bypass = {
 			has_war_with = SWI
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesBAVSWI
-		cost = 4
+		relative_position_id = assert_claimsBAVSWI
+		cost = 10
 		available = {
-			date > 1938.2.1
 			is_subject = no
 			has_war = no
-			SWI = { exists = yes }
+			SWI = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 606
+			}
 		}
 		completion_reward = {
 			add_manpower = 10000
 		}
 		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				has_opinion = { target = SWI value > 0 }
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 0
-				SWI = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = SWI
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 2
-				SWI = { surrender_progress > 0.2 }
-			}
+			factor = 0
 		}
 	}
 
@@ -1106,9 +1211,15 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = prepare_for_warBAVSWI
-		cost = 3
+		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
+			SWI = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 606
+			}
 		}
 		completion_reward = {
 			declare_war_on = {
@@ -1116,10 +1227,9 @@ focus_tree = {
 				type = take_state_focus
 				generator = { 606 }
 			}
-			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 	}
 
