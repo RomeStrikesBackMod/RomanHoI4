@@ -232,6 +232,9 @@ focus_tree = {
 			MAK = {
 				country_event = { id = reconquest_wars.1 }
 				custom_effect_tooltip = needs_approval
+				hidden_effect = {
+					country_event = { id = reconquest_news.1 }
+				}
 			}
 			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
@@ -614,6 +617,9 @@ focus_tree = {
 			MNG = {
 				country_event = { id = reconquest_wars.1 }
 				custom_effect_tooltip = needs_approval
+				hidden_effect = {
+					country_event = { id = reconquest_news.1 }
+				}
 			}
 			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
 			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
@@ -834,11 +840,92 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 336
-			add_manpower = 10000
+			add_war_support = 0.05
 		}
 		ai_will_do = {
-			factor = 4
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = LAO value > 0 }
+			}
+			modifier = {
+				factor = 0
+				LAO = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = LAO
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+			}
+			modifier = {
+				factor = 2
+				LAO = { surrender_progress > 0.2 }
+			}
+		}
+	}
+
+	focus = {
+		id = assert_claimsVINLAO
+		icon = GFX_goal_generic_territory_or_war
+		text = assert_claimsLAO
+		prerequisite = { focus = border_disputesVINLAO }
+		x = 0
+		y = 1
+		relative_position_id = border_disputesVINLAO
+		cost = 10
+		available = {
+			date > 1938.8.1
+			is_subject = no
+			has_war = no
+			LAO = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 336
+			}
+		}
+		completion_reward = {
+			add_state_claim = 336
+			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			hidden_effect = {
+				LAO = { country_event = { id = reconquest_news.1 } }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
 			modifier = {
 				factor = 0
 				has_opinion = { target = LAO value > 0 }
@@ -883,62 +970,28 @@ focus_tree = {
 		id = prepare_for_warVINLAO
 		icon = GFX_goal_generic_position_armies
 		text = prepare_for_warLAO
-		prerequisite = { focus = border_disputesVINLAO }
+		prerequisite = { focus = assert_claimsVINLAO }
 		bypass = {
 			has_war_with = LAO
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesVINLAO
-		cost = 4
+		relative_position_id = assert_claimsVINLAO
+		cost = 10
 		available = {
-			date > 1938.8.1
 			is_subject = no
 			has_war = no
-			LAO = { exists = yes }
+			LAO = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 336
+			}
 		}
 		completion_reward = {
 			add_manpower = 10000
 		}
 		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				has_opinion = { target = LAO value > 0 }
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 0
-				LAO = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = LAO
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 2
-				LAO = { surrender_progress > 0.2 }
-			}
+			factor = 0
 		}
 	}
 
@@ -953,9 +1006,15 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = prepare_for_warVINLAO
-		cost = 3
+		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
+			LAO = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 336
+			}
 		}
 		completion_reward = {
 			declare_war_on = {
@@ -963,10 +1022,9 @@ focus_tree = {
 				type = take_state_focus
 				generator = { 336 }
 			}
-			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 	}
 
@@ -987,11 +1045,92 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_state_claim = 662
-			add_manpower = 10000
+			add_war_support = 0.05
 		}
 		ai_will_do = {
 			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = UTA value > 0 }
+			}
+			modifier = {
+				factor = 0
+				UTA = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_subject = UTA
+					in_weak_faction = no
+				}
+			}
+			modifier = {
+				factor = 0
+				date < 1938.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.25
+				date < 1939.4.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.4
+				date < 1939.8.1
+			}
+			modifier = {
+				factor = 0
+				threat > 0.5
+			}
+			modifier = {
+				factor = 2
+				UTA = { surrender_progress > 0.2 }
+			}
+		}
+	}
+
+	focus = {
+		id = assert_claimsVINUTA
+		icon = GFX_goal_generic_territory_or_war
+		text = assert_claimsUTA
+		prerequisite = { focus = border_disputesVINUTA }
+		x = 0
+		y = 1
+		relative_position_id = border_disputesVINUTA
+		cost = 10
+		available = {
+			date > 1936.1.1
+			is_subject = no
+			has_war = no
+			UTA = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 662
+			}
+		}
+		completion_reward = {
+			add_state_claim = 662
+			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
+			hidden_effect = {
+				UTA = { country_event = { id = reconquest_news.1 } }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
 			modifier = {
 				factor = 0
 				has_opinion = { target = UTA value > 0 }
@@ -1036,62 +1175,28 @@ focus_tree = {
 		id = prepare_for_warVINUTA
 		icon = GFX_goal_generic_position_armies
 		text = prepare_for_warUTA
-		prerequisite = { focus = border_disputesVINUTA }
+		prerequisite = { focus = assert_claimsVINUTA }
 		bypass = {
 			has_war_with = UTA
 		}
 		x = 0
 		y = 1
-		relative_position_id = border_disputesVINUTA
-		cost = 4
+		relative_position_id = assert_claimsVINUTA
+		cost = 10
 		available = {
-			date > 1936.1.1
 			is_subject = no
 			has_war = no
-			UTA = { exists = yes }
+			UTA = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 662
+			}
 		}
 		completion_reward = {
 			add_manpower = 10000
 		}
 		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				has_opinion = { target = UTA value > 0 }
-			}
-			modifier = {
-				factor = 0
-				date < 1938.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.25
-				date < 1939.4.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.4
-				date < 1939.8.1
-			}
-			modifier = {
-				factor = 0
-				threat > 0.5
-			}
-			modifier = {
-				factor = 0
-				UTA = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = UTA
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 2
-				UTA = { surrender_progress > 0.2 }
-			}
+			factor = 0
 		}
 	}
 
@@ -1106,9 +1211,15 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = prepare_for_warVINUTA
-		cost = 3
+		cost = 10
 		available = {
+			is_subject = no
 			has_war = no
+			UTA = {
+				exists = yes
+				not_allies_or_subjects = yes
+				owns_state = 662
+			}
 		}
 		completion_reward = {
 			declare_war_on = {
@@ -1116,10 +1227,9 @@ focus_tree = {
 				type = take_state_focus
 				generator = { 662 }
 			}
-			add_named_threat = { threat = 3 name = neighbor_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 10
+			factor = 0
 		}
 	}
 
