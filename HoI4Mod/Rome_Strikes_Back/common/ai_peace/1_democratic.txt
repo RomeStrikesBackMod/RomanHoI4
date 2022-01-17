@@ -225,7 +225,7 @@ democratic_peace = {
 		
 		modifier = {
 			factor = 100
-			has_country_flag = peace_flag_take_@FROM
+			has_variable = peace_var_take_@FROM
 		}
 
 		modifier = {
@@ -384,7 +384,7 @@ democratic_peace = {
 
 		modifier = {
 			factor = 0
-			NOT = { has_country_flag = peace_flag_take_@FROM }
+			NOT = { has_variable = peace_var_take_@FROM }
 			NOT = {
 				FROM = { 
 					OR = {
@@ -419,7 +419,7 @@ democratic_peace = {
 
 		modifier = { #Only take claims - and colonial states (ie unclaimed) as well if major or if already colonial.
 			factor = 0
-			NOT = { has_country_flag = peace_flag_take_@FROM }
+			NOT = { has_variable = peace_var_take_@FROM }
 			NOT = { 
 				FROM = { 
 					OR = {
@@ -450,7 +450,7 @@ democratic_peace = {
 		}
 		modifier = { #Only European states with african colonies or middle eastern states should take anything in africa
 			factor = 0
-			NOT = { has_country_flag = peace_flag_take_@FROM }
+			NOT = { has_variable = peace_var_take_@FROM }
 			NOT = {
 				capital_scope = {
 					OR = {
@@ -466,7 +466,7 @@ democratic_peace = {
 		}
 		modifier = { #Only take claimed/core land if a puppet.
 			factor = 0
-			NOT = { has_country_flag = peace_flag_take_@FROM }
+			NOT = { has_variable = peace_var_take_@FROM }
 			is_puppet = yes
 			FROM = {
 				NOT = {
