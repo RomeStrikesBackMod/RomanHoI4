@@ -65,3 +65,31 @@ news_event = {
 		name = tesb_news.4.a
 	}
 }
+
+news_event = {
+	id = tesb_news.5
+	title = tesb_news.5.t
+	desc = tesb_news.5.desc
+	picture = GFX_news_event_royal_visit
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			OR = {
+				has_government = absolutist
+				is_ally_with = ITA
+			}
+		}
+		name = tesb_news.5.a
+	}
+	option = {
+		trigger = {
+			NOT = {
+				has_government = absolutist
+				is_ally_with = ITA
+			}
+		}
+		name = tesb_news.5.b
+	}
+}

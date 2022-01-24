@@ -125,19 +125,38 @@ focus_tree = {
 				has_political_power > 250
 			}
 		}
+		continue_if_invalid = yes
 		completion_reward = {
 			if = {
 				limit = {
 					BRG = { is_friend_or_potential_friend_of_ROOT = yes }
 				}
-				add_country_leader_trait = crowned_monarch
+				BRG = {
+					country_event = { id = tesb_ITA.1 }
+				}
 				else_if = {
 					limit = { has_global_flag = pope_has_returned_to_rome }
+					set_country_flag = ITA_crowned_giuseppe
 					add_country_leader_trait = crowned_monarch
+					set_character_name = {
+						character = ITA_giuseppe_lombardi
+						name = ITA_giuseppe_ii_lombardi
+					}
+					hidden_effect = {
+						news_event = { id = tesb_news.5 }
+					}
 				}
 				else = {
+					set_country_flag = ITA_crowned_giuseppe
 					add_country_leader_trait = crowned_monarch
+					set_character_name = {
+						character = ITA_giuseppe_lombardi
+						name = ITA_giuseppe_ii_lombardi
+					}
 					add_political_power = -250
+					hidden_effect = {
+						news_event = { id = tesb_news.5 }
+					}
 				}
 			}
 		}
@@ -335,13 +354,50 @@ focus_tree = {
 		y = 1
 		available = {
 			is_subject = no
-			country_exists = RMD
+			if = {
+				limit = { country_exists = RMA }
+				country_exists = RMA
+				else_if = {
+					limit = { country_exists = RMD }
+					country_exists = RMD
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					country_exists = RMF
+				}
+				else = {
+					country_exists = RME
+				}
+			}
 		}
-		will_lead_to_war_with = RMD
+		will_lead_to_war_with = RME
 		completion_reward = {
-			create_wargoal = {
-				target = RMD
-				type = annex_everything
+			if = {
+				limit = { country_exists = RMA }
+				create_wargoal = {
+					target = RMA
+					type = annex_everything
+				}
+				else_if = {
+					limit = { country_exists = RMD }
+					create_wargoal = {
+						target = RMD
+						type = annex_everything
+					}
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					create_wargoal = {
+						target = RMF
+						type = annex_everything
+					}
+				}
+				else = {
+					create_wargoal = {
+						target = RME
+						type = annex_everything
+					}
+				}
 			}
 		}
 		ai_will_do = {
@@ -634,7 +690,7 @@ focus_tree = {
 		cost = 10
 		x = 1
 		y = 1
-		will_lead_to_war_with = RMD
+		will_lead_to_war_with = RME
 		available = {
 			is_subject = no
 			has_government = fascism
@@ -748,10 +804,30 @@ focus_tree = {
 				}
 			}
 			if = {
-				limit = { country_exists = RMD }
+				limit = { country_exists = RMA }
 				create_wargoal = {
-					target = RMD
+					target = RMA
 					type = annex_everything
+				}
+				else_if = {
+					limit = { country_exists = RMD }
+					create_wargoal = {
+						target = RMD
+						type = annex_everything
+					}
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					create_wargoal = {
+						target = RMF
+						type = annex_everything
+					}
+				}
+				else = {
+					create_wargoal = {
+						target = RME
+						type = annex_everything
+					}
 				}
 			}
 		}
@@ -1247,6 +1323,23 @@ focus_tree = {
 		cost = 10
 		x = 0
 		y = 1
+		available = {
+			if = {
+				limit = { country_exists = RMD }
+				country_exists = RMD
+				else_if = {
+					limit = { country_exists = RMA }
+					country_exists = RMA
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					country_exists = RMF
+				}
+				else = {
+					country_exists = RME
+				}
+			}
+		}
 		completion_reward = {
 			if = {
 				limit = { country_exists = RMD }
@@ -1261,14 +1354,29 @@ focus_tree = {
 						relation = non_aggression_pact
 					}
 				}
+				else_if = {
+					limit = { country_exists = RMF }
+					diplomatic_relation = {
+						country = RMF
+						relation = non_aggression_pact
+					}
+				}
+				else = {
+					diplomatic_relation = {
+						country = RME
+						relation = non_aggression_pact
+					}
+				}
 			}
 		}
 		ai_will_do = {
 			base = 3
 			modifier = {
 				factor = 2
-				RMD = { has_government = democratic }
-				RMA = { exists = no }
+				any_country_with_original_tag = {
+					original_tag_to_check = RME
+					has_government = democratic
+				}
 			}
 		}
 	}
@@ -1282,6 +1390,24 @@ focus_tree = {
 		cost = 10
 		x = 2
 		y = 1
+		available = {
+			if = {
+				limit = { country_exists = RMA }
+				country_exists = RMA
+				else_if = {
+					limit = { country_exists = RMF }
+					country_exists = RMF
+				}
+				else_if = {
+					limit = { country_exists = RMD }
+					country_exists = RMD
+				}
+				else = {
+					country_exists = RME
+				}
+			}
+		}
+		will_lead_to_war_with = RME
 		completion_reward = {
 			if = {
 				limit = { country_exists = RMA }
@@ -1290,9 +1416,22 @@ focus_tree = {
 					type = liberate_wargoal
 				}
 				else_if = {
+					limit = { country_exists = RMF }
+					create_wargoal = {
+						target = RMF
+						type = liberate_wargoal
+					}
+				}
+				else_if = {
 					limit = { country_exists = RMD }
 					create_wargoal = {
 						target = RMD
+						type = liberate_wargoal
+					}
+				}
+				else = {
+					create_wargoal = {
+						target = RME
 						type = liberate_wargoal
 					}
 				}
@@ -1302,13 +1441,17 @@ focus_tree = {
 			base = 3
 			modifier = {
 				factor = 2
-				RMA = { has_government = absolutist }
-				RMD = { exists = no }
+				any_country_with_original_tag = {
+					original_tag_to_check = RME
+					has_government = absolutist
+				}
 			}
 			modifier = {
 				factor = 2
-				RMF = { has_government = fascism }
-				RMD = { exists = no }
+				any_country_with_original_tag = {
+					original_tag_to_check = RME
+					has_government = fascism
+				}
 			}
 		}
 	}

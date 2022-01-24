@@ -4,12 +4,154 @@ country_event = {
 	id = tesb_ITA.1
 	title = tesb_ITA.1.t
 	desc = tesb_ITA.1.d
-	picture = GFX_report_event_ger_civil_war
+	picture = GFX_report_event_royal_parade
 
 	is_triggered_only = yes
 	
 	option = {
 		name = tesb_ITA.1.a
+		ITA = {
+			country_event = { id = tesb_ITA.2 }
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = ITA_crowned_king }
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ITA_crowned_king
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0.1
+				NOT = { has_government = absolutist }
+			}
+			modifier = {
+				factor = 0
+				has_war_with = ITA
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = ITA
+					value > 24
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = ITA
+					value > 49
+				}
+			}
+		}
+	}
+
+	option = {
+		name = tesb_ITA.1.b
+		ITA = {
+			country_event = { id = tesb_ITA.3 }
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = ITA_refused_crown }
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ITA_refused_crown
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = ITA
+					value < 0
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = ITA
+					value < -25
+				}
+			}
+			modifier = {
+				factor = 5
+				has_opinion = {
+					target = ITA
+					value < -50
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.2
+	title = tesb_ITA.2.t
+	desc = tesb_ITA.2.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.2.a
+		set_country_flag = ITA_crowned_giuseppe
+		add_country_leader_trait = crowned_monarch
+		set_character_name = {
+			character = ITA_giuseppe_lombardi
+			name = ITA_giuseppe_ii_lombardi
+		}
+		hidden_effect = {
+			news_event = { id = tesb_news.5 }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.3
+	title = tesb_ITA.3.t
+	desc = tesb_ITA.3.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.3.a
+		set_country_flag = ITA_pope_refused_coronation
+	}
+	option = {
+		trigger = {
+			has_political_power > 250
+		}
+		name = tesb_ITA.3.b
+		add_political_power = -250
+		country_event = { id = tesb_ITA.4 }
+	}
+}
+country_event = {
+	id = tesb_ITA.4
+	title = tesb_ITA.4.t
+	desc = tesb_ITA.4.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.4.a
+		set_country_flag = ITA_crowned_giuseppe
+		add_country_leader_trait = crowned_monarch
+		set_character_name = {
+			character = ITA_giuseppe_lombardi
+			name = ITA_giuseppe_ii_lombardi
+		}
+		hidden_effect = {
+			news_event = { id = tesb_news.5 }
+		}
 	}
 }
 
