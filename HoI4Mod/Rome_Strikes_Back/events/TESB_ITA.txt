@@ -12,3 +12,142 @@ country_event = {
 		name = tesb_ITA.1.a
 	}
 }
+
+country_event = {
+	id = tesb_ITA.10
+	title = tesb_ITA.10.t
+	desc = tesb_ITA.10.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			is_faction_leader = no
+		}
+		name = tesb_ITA.10.a
+		set_country_flag = join_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.11 hours = 24 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_faction_leader = yes
+		}
+		name = tesb_ITA.10.b
+		set_country_flag = join_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.11 hours = 24 }
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ROOT
+			}
+			country_event = { id = tesb_ITA.12 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_ITA.10.c
+		set_country_flag = reject_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.13 hours = 24 }
+			effect_tooltip = {
+				create_wargoal = {
+					target = ROOT
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+
+#alliance with PLC or IRAN
+country_event = {
+	id = tesb_ITA.11
+	title = tesb_ITA.11.t
+	desc = tesb_ITA.11.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.11.a
+		every_country = {
+			limit = {
+				has_country_flag = join_ITA
+			}
+			ITA = { add_to_faction = PREV }
+		}
+	}
+}
+
+
+#alliance with PLC or IRAN
+country_event = {
+	id = tesb_ITA.12
+	title = tesb_ITA.12.t
+	desc = tesb_ITA.12.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_ITA.12.a
+		set_country_flag = join_ITA
+		ai_chance = {
+			factor = 10
+			modifier = {
+				NOT = { has_government = absolutist }
+				factor = 0.1
+			}
+		}
+	}
+	
+	#leave
+	option = {
+		name = tesb_ITA.12.b
+		leave_faction = yes
+		ai_chance = {
+			factor = 1
+			modifier = {
+				has_government = democratic
+				factor = 5
+			}
+			modifier = {
+				has_government = communism
+				factor = 5
+			}
+		}
+	}
+}
+
+#no alliance with PLC or IRAN
+country_event = {
+	id = tesb_ITA.13
+	title = tesb_ITA.13.t
+	desc = tesb_ITA.13.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_ITA.13.a
+		create_wargoal = {
+			target = ROOT
+			type = puppet_wargoal_focus
+		}
+	}
+}

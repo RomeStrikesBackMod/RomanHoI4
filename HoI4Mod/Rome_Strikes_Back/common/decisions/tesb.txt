@@ -201,14 +201,12 @@ rome_civil_war_decisions = {
 	prepare_black_sea_landing = {
 		available = {
 			ships_in_area = {
-				type = screen_ship
 				area = 30 # significant_number - Black Sea
 				size > 9 
 			}
 			any_other_country = {
 				original_tag = RME
 				ships_in_area = {
-					type = screen_ship
 					area = 30 # significant_number - Black Sea
 					size < 6 
 				}
@@ -901,7 +899,7 @@ aotearoa_decisions = {
 		days_mission_timeout = 730
 		fire_only_once = yes
 		activation = {
-			#always = no
+			always = no
 			has_global_flag = RME_civil_war_over #activated by on_action
 		}
 		available = {
@@ -1078,6 +1076,26 @@ aotearoa_decisions = {
 					days_mission_timeout@AOT_reconciling_with_rome > 80
 				}
 			}
+		}
+	}
+}
+
+italy_decisions = {
+
+}
+
+ITA_hre_influence_decisions = {
+	ITA_hre_political_influence = {
+		available = {
+			has_government = absolutist
+			BRG = { has_government = absolutist }
+			is_in_faction_with = BRG
+		}
+		days_remove = 20
+		cost = 10
+		remove_effect = {
+			custom_effect_tooltip = ITA_hre_political_influence_tt
+			add_to_variable = { ITA_hre_influence = 5 }
 		}
 	}
 }

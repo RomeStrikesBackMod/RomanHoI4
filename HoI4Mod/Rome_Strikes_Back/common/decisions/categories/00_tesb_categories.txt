@@ -2,57 +2,99 @@ regaining_rome = {
 	priority = 10
 	icon = generic_political_actions
 
-	visible = {
+	allowed = {
 		original_tag = RME
 	}
 }
 
 rome_civil_war_decisions = {
 	priority = 10
-	visible = {
+	allowed = {
 		original_tag = RME
+	}
+	visible = {
 		has_civil_war = yes
 	}
 }
 
 burgundy_decisions = {
 	priority = 10
-	visible = {
+	allowed = {
 		original_tag = BRG
 	}
 }
 
 germany_decisions = {
 	priority = 10
-	visible = {
+	allowed = {
 		original_tag = GER
 	}
 }
 
 england_decisions = {
 	priority = 10
-	visible = {
+	allowed = {
 		original_tag = ENG
 	}
 }
 
 russia_decisions = {
 	priority = 10
-	visible = {
+	allowed = {
 		original_tag = RUS
 	}
 }
 
 aotearoa_decisions = {
 	priority = 10
-	visible = {
+	allowed = {
 		original_tag = AOT
 	}
 }
 
 italy_decisions = {
 	priority = 10
-	visible = {
+	allowed = {
 		original_tag = ITA
+	}
+}
+
+ITA_hre_influence_decisions = {
+	icon = power_struggle
+	picture = GFX_decision_cat_generic_hre
+
+	priority = 100
+	allowed = {
+		original_tag = ITA
+	}
+	custom_icon = {
+		tag = ITA
+		value = ITA_hre_influence_icon_value
+		desc = ITA_hre_influence_full_influence_breakdown
+
+		visible = {
+			country_exists = ITA
+		}
+	}
+	
+	custom_icon = {
+		tag = BRG
+		value = BRG_hre_influence_icon_value
+		desc = BRG_hre_influence_full_influence_breakdown
+
+		visible = {
+			country_exists = BRG
+		}
+	}
+	visible_when_empty = yes
+	visible = {
+
+	}
+}
+
+BRG_hre_influence_decisions = {
+	priority = 100
+	allowed = {
+		original_tag = BRG
 	}
 }

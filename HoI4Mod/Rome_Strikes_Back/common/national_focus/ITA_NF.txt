@@ -157,9 +157,54 @@ focus_tree = {
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
 			create_faction = ITA_holy_roman_empire
-			BRG = {
-				country_event = {
-					id = generic.5
+			if = {
+				limit = {
+					BRG = { exists = no }
+				}
+				every_state = {
+					limit = {
+						is_owned_by_ROOT_or_subject = no
+						OR = {
+							state = 63 # significant_number - Rheinland
+							state = 64 # significant_number - Franche-Comte
+							state = 65 # significant_number - Alsace-Lorraine
+							state = 66 # significant_number - Bourgogne
+							state = 67 # significant_number - Palatinate
+							state = 68 # significant_number - Wallonia
+							state = 69 # significant_number - Rhone
+							state = 70 # significant_number - Champagne
+							state = 71 # significant_number - Auvergne
+							state = 72 # significant_number - Limousin
+						}
+					}
+					add_claim_by = ROOT
+				}
+				else_if = {
+					limit = {
+						BRG = {
+							has_government = absolutist
+							is_subject = no
+						}
+					}
+					BRG = {
+						country_event = {
+							id = tesb_ITA.10
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						BRG = {
+							OR = {
+								is_subject = yes
+								NOT = { has_government = absolutist }
+							}
+						}
+					}
+					create_wargoal = {
+						target = BRG
+						type = puppet_wargoal_focus
+					}
 				}
 			}
 		}
@@ -180,6 +225,14 @@ focus_tree = {
 		completion_reward = {
 
 		}
+		bypass = {
+			BRG = {
+				OR = {
+					is_subject_of = ROOT
+					exists = no
+				}
+			}
+		}
 		ai_will_do = {
 			base = 5
 		}
@@ -197,6 +250,14 @@ focus_tree = {
 		completion_reward = {
 
 		}
+		bypass = {
+			BRG = {
+				OR = {
+					is_subject_of = ROOT
+					exists = no
+				}
+			}
+		}
 		ai_will_do = {
 			base = 5
 		}
@@ -212,6 +273,12 @@ focus_tree = {
 		y = 1
 		available = {
 			is_subject = no
+		}
+		bypass = {
+			604 = { is_owned_by_ROOT_or_subject = yes } # significant_number - East Switzerland
+			605 = { is_owned_by_ROOT_or_subject = yes } # significant_number - West Switzerland
+			606 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Tirol
+			607 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Karntern-Steiermark
 		}
 		will_lead_to_war_with = SWI
 		completion_reward = {
@@ -244,26 +311,13 @@ focus_tree = {
 		y = 1
 		available = {
 			is_subject = no
+			country_exists = GMR
 		}
-		will_lead_to_war_with = GER
+		will_lead_to_war_with = GMR
 		completion_reward = {
-			if = {
-				limit = { country_exists = GER }
-				create_wargoal = {
-					target = GER
-					type = annex_everything
-				}
-				else = {
-					random_other_country = {
-						limit = { original_tag = GER }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = annex_everything
-							}
-						}
-					}
-				}
+			create_wargoal = {
+				target = GMR
+				type = annex_everything
 			}
 		}
 		ai_will_do = {
@@ -281,26 +335,13 @@ focus_tree = {
 		y = 1
 		available = {
 			is_subject = no
+			country_exists = RMD
 		}
-		will_lead_to_war_with = RME
+		will_lead_to_war_with = RMD
 		completion_reward = {
-			if = {
-				limit = { country_exists = RME }
-				create_wargoal = {
-					target = RME
-					type = annex_everything
-				}
-				else = {
-					random_other_country = {
-						limit = { original_tag = RME }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = annex_everything
-							}
-						}
-					}
-				}
+			create_wargoal = {
+				target = RMD
+				type = annex_everything
 			}
 		}
 		ai_will_do = {
@@ -593,7 +634,7 @@ focus_tree = {
 		cost = 10
 		x = 1
 		y = 1
-		will_lead_to_war_with = RME
+		will_lead_to_war_with = RMD
 		available = {
 			is_subject = no
 			has_government = fascism
@@ -707,21 +748,10 @@ focus_tree = {
 				}
 			}
 			if = {
-				limit = { country_exists = RME }
+				limit = { country_exists = RMD }
 				create_wargoal = {
-					target = RME
+					target = RMD
 					type = annex_everything
-				}
-				else = {
-					random_other_country = {
-						limit = { original_tag = RME }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = annex_everything
-							}
-						}
-					}
 				}
 			}
 		}
@@ -908,6 +938,7 @@ focus_tree = {
 
 	#################################
 	###Common Right Infrastructure###
+	#################################
 
 	focus = {
 		id = ITA_fortify_rome
@@ -1236,6 +1267,7 @@ focus_tree = {
 			base = 3
 			modifier = {
 				factor = 2
+				RMD = { has_government = democratic }
 				RMA = { exists = no }
 			}
 		}
@@ -1252,20 +1284,16 @@ focus_tree = {
 		y = 1
 		completion_reward = {
 			if = {
-				limit = { country_exists = RME }
+				limit = { country_exists = RMA }
 				create_wargoal = {
-					target = RME
+					target = RMA
 					type = liberate_wargoal
 				}
-				else = {
-					random_other_country = {
-						limit = { original_tag = RME }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = liberate_wargoal
-							}
-						}
+				else_if = {
+					limit = { country_exists = RMD }
+					create_wargoal = {
+						target = RMD
+						type = liberate_wargoal
 					}
 				}
 			}
@@ -1274,6 +1302,12 @@ focus_tree = {
 			base = 3
 			modifier = {
 				factor = 2
+				RMA = { has_government = absolutist }
+				RMD = { exists = no }
+			}
+			modifier = {
+				factor = 2
+				RMF = { has_government = fascism }
 				RMD = { exists = no }
 			}
 		}
