@@ -1,0 +1,67 @@
+﻿add_namespace = tesb_UTA
+
+
+### Mexhican democracy events
+# Mexhico objects to UTA supporting democracy
+country_event = {
+	id = tesb_UTA.1
+	title = tesb_UTA.1.t
+	desc = tesb_UTA.1.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.1.a
+		hidden_effect = {
+			MEX = {
+				country_event = { id = tesb_UTA.2 }
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		name = tesb_UTA.1.b
+		hidden_effect = {
+			MEX = {
+				country_event = { id = tesb_UTA.3 }
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# UTA backs down
+country_event = {
+	id = tesb_UTA.2
+	title = tesb_UTA.2.t
+	desc = tesb_UTA.2.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.2.a
+		hidden_effect = {
+			remove_idea = MEX_strengthen_democracy
+		}
+	}
+}
+
+# UTA continues support
+country_event = {
+	id = tesb_UTA.3
+	title = tesb_UTA.3.t
+	desc = tesb_UTA.3.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.3.a
+		add_relation_modifier = {
+			modifier = UTA_inteference
+		}
+	}
+}

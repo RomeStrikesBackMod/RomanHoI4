@@ -1081,3 +1081,73 @@ aotearoa_decisions = {
 		}
 	}
 }
+
+mexhico_decisions = {
+	MEX_object_to_UTA_interference = {
+		visible = {
+			has_idea = MEX_strengthen_democracy
+			country_exists = UTA
+			NOT = { has_country_flag = MEX_objected_to_UTA_interference }
+		}
+		available = {
+			has_government = absolutist
+			NOT = { has_war_with = UTA }
+			democratic > 0.38
+		}
+		complete_effect = {
+			UTA = { country_event = { id = tesb_UTA.1 } }
+			set_country_flag = MEX_objected_to_UTA_interference
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					has_government = absolutist
+					has_government = neutrality
+				}
+			}
+		}
+	}
+
+	MEX_white_peace_with_england = {
+		visible = {
+			has_war_with = ENG
+			NOT = { is_in_faction_with = UTA }
+		}
+		available = {
+			OR = {
+				date > 1937.06.01
+				NOT = { has_war_with = ADA }
+			}
+		}
+		complete_effect = {
+			ENG = { country_event = { id = tesb_UTA.6 } }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+
+UTA_decisions = {
+	UTA_call_for_elections = {
+		visible = {
+			has_completed_focus = UTA_support_mexhican_democracy
+			country_exists = MEX
+			NOT = { has_country_flag = UTA_call_for_elections }
+		}
+		available = {
+			has_government = democratic
+			NOT = { has_war_with = MEX }
+			MEX = { democratic > 0.45 }
+		}
+		complete_effect = {
+			MEX = { country_event = { id = tesb_UTA.4 } }
+			set_country_flag = UTA_call_for_elections
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}

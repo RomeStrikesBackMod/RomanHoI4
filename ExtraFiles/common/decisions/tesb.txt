@@ -1081,3 +1081,33 @@ aotearoa_decisions = {
 		}
 	}
 }
+
+mexhico_decisions = {
+	MEX_object_to_UTA_interference = {
+		visible = {
+			has_idea = MEX_strengthen_democracy
+			country_exists = UTA
+			NOT = { has_flag = MEX_objected_to_UTA_interference }
+		}
+		available = {
+			has_government = absolutist
+			NOT = { has_war_with = UTA }
+		}
+		complete_effect = {
+			if = {
+				UTA = { country_event = { id = tesb_UTA.1 } }
+			}
+			set_country_flag = MEX_objected_to_UTA_interference
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					has_government = absolutist
+					has_government = neutrality
+				}
+			}
+		}
+	}
+}
