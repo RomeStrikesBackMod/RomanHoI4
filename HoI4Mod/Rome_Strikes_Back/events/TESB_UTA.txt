@@ -134,6 +134,10 @@ country_event = {
 		name = tesb_UTA.6.a
 		white_peace = MEX
 		white_peace = BIR
+		ADA = {
+			white_peace = MEX
+			white_peace = BIR
+		} 
 		MEX = { country_event = { id = tesb_UTA.7 } }
 		ai_chance = {
 			base = 1
@@ -437,7 +441,7 @@ country_event = {
 	}
 }
 
-# Colombia refused to join
+# Biru refused to join
 country_event = {
 	id = tesb_UTA.25
 	title = tesb_UTA.25.t
@@ -462,5 +466,345 @@ country_event = {
 		ai_chance = {
 			base = 1
 		}
+	}
+}
+
+# Negotiate for Biru lands
+# UTA opens negiotiation for Biru lands
+country_event = {
+	id = tesb_UTA.30
+	title = tesb_UTA.30.t
+	desc = tesb_UTA.30.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give up the lands
+	option = {
+		name = tesb_UTA.30.a
+		ai_chance = {
+			base = 0
+		}
+		UTA = { country_event = { id = tesb_UTA.31 } }
+	}
+	# negotiate for claims on England
+	option = {
+		name = tesb_UTA.30.b
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = BIR
+		}
+		ai_chance = {
+			base = 1
+		}
+		UTA = { country_event = { id = tesb_UTA.32 } }
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.30.b
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = BIR
+		}
+		ai_chance = {
+			base = 1
+		}
+		UTA = { country_event = { id = tesb_UTA.33 } }
+	}
+}
+
+# Argentina agrees to give up lands
+country_event = {
+	id = tesb_UTA.31
+	title = tesb_UTA.31.t
+	desc = tesb_UTA.31.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good
+	option = {
+		name = tesb_UTA.31.a
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+	}
+}
+
+# Argentina tries to negotiate
+country_event = {
+	id = tesb_UTA.32
+	title = tesb_UTA.32.t
+	desc = tesb_UTA.32.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to their conditions
+	option = {
+		name = tesb_UTA.32.a
+		ai_chance = {
+			base = 1
+		}
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+		ARG = {
+			add_state_claim = 170 # significant_number - Santa Catarina
+			add_state_claim = 171 # significant_number - Rio Grande do Sul
+		}
+	}
+	# refuse their conditions
+	option = {
+		name = tesb_UTA.32.b
+		ai_chance = {
+			base = 1
+		}
+		BIR = {
+			BIR = { country_event = { id = tesb_UTA.34 } }
+		 }
+	}
+}
+
+# Argentina refuses
+country_event = {
+	id = tesb_UTA.33
+	title = tesb_UTA.33.t
+	desc = tesb_UTA.33.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.33.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to give up the lands
+	option = {
+		name = tesb_UTA.33.b
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = ARG
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# UTA refuses conditions
+country_event = {
+	id = tesb_UTA.34
+	title = tesb_UTA.34.t
+	desc = tesb_UTA.34.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to give up the lands
+	option = {
+		name = tesb_UTA.34.a
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+		add_relation_modifier = {
+			modifier = UTA_inteference
+			target = FROM
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.34.b
+		UTA = { country_event = { id = tesb_UTA.35 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# Argentina refused to return the lands
+country_event = {
+	id = tesb_UTA.35
+	title = tesb_UTA.35.t
+	desc = tesb_UTA.35.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.35.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to give up the lands
+	option = {
+		name = tesb_UTA.35.b
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = ARG
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# South Andes forcibly returned
+country_event = {
+	id = tesb_UTA.40
+	title = tesb_UTA.40.t
+	desc = tesb_UTA.40.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.40.a
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+	}
+}
+
+### Argentina joining faction events
+# Invite Argentina to faction
+country_event = {
+	id = tesb_UTA.50
+	title = tesb_UTA.50.t
+	desc = tesb_UTA.50.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.50.a
+		UTA = { country_event = { id = tesb_UTA.51 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_relation_modifier = {
+					target = THIS
+					modifier = UTA_inteference
+				}
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.50.b
+		UTA = { country_event = { id = tesb_UTA.52 } }
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 10
+				has_relation_modifier = {
+					target = THIS
+					modifier = UTA_inteference
+				}
+			}
+		}
+	}
+}
+
+# Argentina accepts
+country_event = {
+	id = tesb_UTA.51
+	title = tesb_UTA.51.t
+	desc = tesb_UTA.51.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.51.a
+		add_to_faction = ARG
+	}
+}
+
+# Colombia refused to join
+country_event = {
+	id = tesb_UTA.52
+	title = tesb_UTA.52.t
+	desc = tesb_UTA.52.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.52.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.52.b
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = ARG
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+### England destroyed events
+# Colombian lands forcibly returned
+country_event = {
+	id = tesb_UTA.60
+	title = tesb_UTA.60.t
+	desc = tesb_UTA.60.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.60.a
+		COL = {
+			transfer_state = 176 # significant_number - Bolívar
+			transfer_state = 177 # significant_number - Guaviare
+			transfer_state = 179 # significant_number - Panama Canal
+		}
+	}
+}
+
+
+# Argentine claims forcibly taken
+country_event = {
+	id = tesb_UTA.70
+	title = tesb_UTA.70.t
+	desc = tesb_UTA.70.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.70.a
+		ARG = {
+			transfer_state = 170 # significant_number - Santa Catarina
+			transfer_state = 171 # significant_number - Rio Grande do Sul
+		}
+	}
+}
+
+
+### Rome events
+country_event = {
+	id = tesb_UTA.80
+	title = tesb_UTA.80.t
+	desc = tesb_UTA.80.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.80.a
 	}
 }

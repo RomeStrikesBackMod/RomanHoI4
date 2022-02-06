@@ -1099,7 +1099,7 @@ mexhico_decisions = {
 			set_country_flag = MEX_objected_to_UTA_interference
 		}
 		ai_will_do = {
-			base = 1
+			base = 100
 			modifier = {
 				factor = 0
 				NOT = {
@@ -1125,7 +1125,7 @@ mexhico_decisions = {
 			ENG = { country_event = { id = tesb_UTA.6 } }
 		}
 		ai_will_do = {
-			base = 10
+			base = 100
 		}
 	}
 }
@@ -1142,12 +1142,122 @@ UTA_decisions = {
 			NOT = { has_war_with = MEX }
 			MEX = { democratic > 0.45 }
 		}
+		cost = 50
 		complete_effect = {
 			MEX = { country_event = { id = tesb_UTA.4 } }
 			set_country_flag = UTA_call_for_elections
 		}
 		ai_will_do = {
-			base = 1
+			base = 100
+		}
+	}
+
+	UTA_negotiate_for_biru_lands = {
+		visible = {
+			NOT = {
+				BIR = { controls_state = 39 } # significant_number - Araucania
+				BIR = { controls_state = 40 } # significant_number - Los Rios
+				ARG = { is_puppet_of = UTA }
+			}
+			is_in_faction_with = BIR
+		}
+		available = {
+			NOT = { has_war_with = ARG }
+			has_completed_focus = UTA_focus_on_south_america
+			NOT = { has_country_flag = UTA_negotiated_for_biru_lands }
+		}
+		cost = 50
+		complete_effect = {
+			ARG = { country_event = { id = tesb_UTA.30 } }
+			set_country_flag = UTA_negotiated_for_biru_lands
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_forcibly_return_biru_lands = {
+		visible = {
+			NOT = {
+				BIR = { controls_state = 39 } # significant_number - Araucania
+				BIR = { controls_state = 40 } # significant_number - Los Rios
+			}
+			is_in_faction_with = BIR
+		}
+		available = {
+			ARG = { is_puppet_of = UTA }
+			has_completed_focus = UTA_focus_on_south_america
+		}
+		cost = 50
+		complete_effect = {
+			ARG = { country_event = { id = tesb_UTA.40 } }
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+
+	UTA_forcibly_return_colombian_lands = {
+		visible = {
+			NOT = {
+				COL = { controls_state = 176 } # Significant number - Bolívar
+				COL = { controls_state = 177 } # Significant number - Guaviare
+				COL = { controls_state = 179 } # Significant number - Panama Canal
+			}
+			176 = { is_core_of = COL } # Significant number - Bolívar
+			177 = { is_core_of = COL } # Significant number - Guaviare
+			179 = { is_core_of = COL } # Significant number - Panama Canal
+			is_in_faction_with = COL
+		}
+		available = {
+			ENG = { is_puppet_of = UTA }
+			has_completed_focus = UTA_focus_on_south_america
+		}
+		cost = 50
+		complete_effect = {
+			ENG = { country_event = { id = tesb_UTA.60 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_forcibly_take_argentine_claims = {
+		visible = {
+			NOT = {
+				ARG = { controls_state = 170 } # Significant number - Santa Catarina
+				ARG = { controls_state = 171 } # Significant number - Rio Grande do Sul
+			}
+			170 = { is_claimed_by = ARG } # Significant number - Santa Catarina
+			171 = { is_claimed_by = ARG } # Significant number - Rio Grande do Sul
+			is_in_faction_with = ARG
+		}
+		available = {
+			ENG = { is_puppet_of = UTA }
+			has_completed_focus = UTA_focus_on_south_america
+		}
+		cost = 50
+		complete_effect = {
+			ENG = { country_event = { id = tesb_UTA.70 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_remove_english_from_power = {
+		visible = {
+			has_completed_focus = UTA_freedom_for_brazil
+		}
+		available = {
+			ENG = { is_puppet_of = UTA }
+		}
+		cost = 100
+		complete_effect = {
+			ENG = { set_cosmetic_tag = BRA }
+		}
+		ai_will_do = {
+			base = 50
 		}
 	}
 }

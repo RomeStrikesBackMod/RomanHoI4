@@ -19,17 +19,16 @@ focus_tree = {
 
 	focus = {
 		id = UTA_the_yona_doctrine
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_focus_generic_diplomatic_treaty
 		x = 21
 		y = 0
 		cost = 10
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		available = {
 			NOT = { has_war = yes }
-			
 		}
 		completion_reward = {
 			create_faction = native_americans
@@ -39,7 +38,7 @@ focus_tree = {
 	#Support Mexhican Democracy
 	focus = {
 		id = UTA_support_mexhican_democracy
-		icon = GFX_UTA_support_mexhican_democracy-427
+		icon = GFX_focus_generic_support_the_left_right
 		x = -3
 		y = 1
 		relative_position_id = UTA_the_yona_doctrine
@@ -48,20 +47,19 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_the_yona_doctrine  }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		bypass = {
 			MEX = { has_government = democratic }
-			
 		}
 		completion_reward = {
 			MEX = { add_ideas = MEX_strengthen_democracy }
 		}
 	}
 
-	#Call for Elections
+	#Invite Mexhico
 	focus = {
-		id = UTA_call_for_elections
-		icon = GFX_UTA_call_for_elections-427
+		id = UTA_invite_mexhico
+		icon = GFX_goal_generic_improve_relations
 		x = 0
 		y = 1
 		relative_position_id = UTA_support_mexhican_democracy
@@ -70,33 +68,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_support_mexhican_democracy  }
-		available = { MEX = { democratic > 0.5 } }
-	}
-
-	#Invite Mexhico
-	focus = {
-		id = UTA_invite_mexhico
-		icon = GFX_goal_generic_major_alliance
-		x = 0
-		y = 1
-		relative_position_id = UTA_call_for_elections
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = UTA_call_for_elections  }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		available = {
 			NOT = { has_war_with = MEX }
-			
+			MEX = { has_government = democratic }
 		}
 		bypass = {
 			is_in_faction_with = MEX
-			
 		}
 		completion_reward = {
 			add_to_faction = MEX
-			
 		}
 	}
 
@@ -105,21 +86,19 @@ focus_tree = {
 		id = UTA_invite_kanata
 		icon = GFX_goal_generic_improve_relations
 		x = 3
-		y = 3
+		y = 2
 		relative_position_id = UTA_the_yona_doctrine
 		cost = 10
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_the_yona_doctrine  }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 90 }
 		bypass = {
 			is_in_faction_with = CAN
-			
 		}
 		completion_reward = {
 			add_to_faction = CAN
-			
 		}
 	}
 
@@ -134,13 +113,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = UTA_invite_kanata  } prerequisite = { focus = UTA_invite_mexhico  }
+		prerequisite = { focus = UTA_invite_kanata }
+		prerequisite = { focus = UTA_invite_mexhico }
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			add_war_support = 0.05
+		}
 	}
 
 	#Invite Colombia
 	focus = {
 		id = UTA_invite_colombia
-		icon = GFX_UTA_invite_colombia-445
+		icon = GFX_focus_por_latin_american_communism
 		x = -2
 		y = 1
 		relative_position_id = UTA_focus_on_south_america
@@ -149,12 +133,22 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
+		available = {
+			NOT = { has_war_with = COL }
+		}
+		bypass = {
+			is_in_faction_with = COL
+		}
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			COL = { country_event = { id = tesb_UTA.10 } }
+		}
 	}
 
 	#Invite Biru
 	focus = {
 		id = UTA_invite_biru
-		icon = GFX_UTA_invite_biru-445
+		icon = GFX_focus_por_latin_american_communism
 		x = 0
 		y = 1
 		relative_position_id = UTA_focus_on_south_america
@@ -163,12 +157,22 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
+		available = {
+			NOT = { has_war_with = BIR }
+		}
+		bypass = {
+			is_in_faction_with = BIR
+		}
+		ai_will_do = { factor = 90 }
+		completion_reward = {
+			BIR = { country_event = { id = tesb_UTA.20 } }
+		}
 	}
 
 	#Invite Argentina
 	focus = {
 		id = UTA_invite_argentina
-		icon = GFX_UTA_invite_argentina-445
+		icon = GFX_focus_por_latin_american_communism
 		x = 2
 		y = 1
 		cost = 10
@@ -177,12 +181,22 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
+		available = {
+			NOT = { has_war_with = ARG }
+		}
+		bypass = {
+			is_in_faction_with = ARG
+		}
+		ai_will_do = { factor = 80 }
+		completion_reward = {
+			ARG = { country_event = { id = tesb_UTA.50 } }
+		}
 	}
 
 	#Freedom for Brazil
 	focus = {
 		id = UTA_freedom_for_brazil
-		icon = GFX_UTA_freedom_for_brazil-445
+		icon =GFX_focus_por_recover_latin_america
 		x = 0
 		y = 1
 		relative_position_id = UTA_invite_biru
@@ -191,12 +205,22 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_invite_biru  } prerequisite = { focus = UTA_invite_colombia  } prerequisite = { focus = UTA_invite_argentina  }
+		ai_will_do = { factor = 100 }
+		available = {
+			NOT = { has_war = yes }
+		}
+		completion_reward = {
+			declare_war_on = {
+				type = puppet_wargoal_focus
+				target = ENG
+			}
+		}
 	}
 	
 	#Focus on the Caribbean
 	focus = {
 		id = UTA_focus_on_the_caribbean
-		icon = GFX_UTA_focus_on_the_caribbean-445
+		icon = GFX_focus_por_luso_tropicalism
 		x = 0
 		y = 1
 		relative_position_id = UTA_invite_kanata
@@ -205,12 +229,19 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_invite_kanata  } prerequisite = { focus = UTA_invite_mexhico  }
+		available = {
+			NOT = { has_war = yes }
+		}
+		ai_will_do = { factor = 90 }
+		completion_reward = {
+			add_war_support = 0.05
+		}
 	}
 
 	#Haitian Democracy
 	focus = {
 		id = UTA_haitian_democracy
-		icon = GFX_UTA_haitian_democracy-445
+		icon = GFX_goal_generic_major_war
 		x = -1
 		y = 1
 		relative_position_id = UTA_focus_on_the_caribbean
@@ -219,12 +250,23 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_the_caribbean  }
+		bypass = {
+			is_in_faction_with = HAI
+			HAI = { has_government = democratic }
+		}
+		ai_will_do = { factor = 90 }
+		completion_reward = {
+			declare_war_on = {
+				type = topple_government
+				target = HAI
+			}
+		}
 	}
 
 	#Cuban democracy
 	focus = {
 		id = UTA_cuban_democracy
-		icon = GFX_UTA_cuban_democracy-445
+		icon = GFX_goal_generic_major_war
 		x = 1
 		y = 1
 		relative_position_id = UTA_focus_on_the_caribbean
@@ -233,12 +275,23 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_the_caribbean  }
+		bypass = {
+			is_in_faction_with = CUB
+			CUB = { has_government = democratic }
+		}
+		ai_will_do = { factor = 90 }
+		completion_reward = {
+			declare_war_on = {
+				type = topple_government
+				target = CUB
+			}
+		}
 	}
 
 	#Remove Rome
 	focus = {
 		id = UTA_remove_rome
-		icon = GFX_UTA_remove_rome-445
+		icon = GFX_focus_GRE_byzantine_themata
 		x = 3
 		y = 1
 		relative_position_id = UTA_freedom_for_brazil
@@ -247,6 +300,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_freedom_for_brazil  } prerequisite = { focus = UTA_haitian_democracy  } prerequisite = { focus = UTA_cuban_democracy  }
+		available = {
+			NOT = { has_war = yes }
+		}
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			add_to_faction = GUY
+			RME = { country_event = { id = tesb_UTA.80 } }
+		}
 	}
-
 }

@@ -26,7 +26,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		available = {
 			NOT = { has_war = yes }
 		}
@@ -47,10 +47,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_the_yona_doctrine  }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		bypass = {
 			MEX = { has_government = democratic }
-			
 		}
 		completion_reward = {
 			MEX = { add_ideas = MEX_strengthen_democracy }
@@ -69,7 +68,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_support_mexhican_democracy  }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 100 }
 		available = {
 			NOT = { has_war_with = MEX }
 			MEX = { has_government = democratic }
@@ -94,10 +93,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_the_yona_doctrine  }
-		ai_will_do = { factor = 10 }
+		ai_will_do = { factor = 90 }
 		bypass = {
 			is_in_faction_with = CAN
-			
 		}
 		completion_reward = {
 			add_to_faction = CAN
@@ -117,9 +115,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = UTA_invite_kanata }
 		prerequisite = { focus = UTA_invite_mexhico }
-		available = {
-			NOT = { has_war = yes }
-		}
+		ai_will_do = { factor = 100 }
 		completion_reward = {
 			add_war_support = 0.05
 		}
@@ -137,6 +133,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
+		available = {
+			NOT = { has_war_with = COL }
+		}
+		bypass = {
+			is_in_faction_with = COL
+		}
+		ai_will_do = { factor = 100 }
 		completion_reward = {
 			COL = { country_event = { id = tesb_UTA.10 } }
 		}
@@ -154,6 +157,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
+		available = {
+			NOT = { has_war_with = BIR }
+		}
+		bypass = {
+			is_in_faction_with = BIR
+		}
+		ai_will_do = { factor = 90 }
 		completion_reward = {
 			BIR = { country_event = { id = tesb_UTA.20 } }
 		}
@@ -171,6 +181,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
+		available = {
+			NOT = { has_war_with = ARG }
+		}
+		bypass = {
+			is_in_faction_with = ARG
+		}
+		ai_will_do = { factor = 80 }
+		completion_reward = {
+			ARG = { country_event = { id = tesb_UTA.50 } }
+		}
 	}
 
 	#Freedom for Brazil
@@ -185,6 +205,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_invite_biru  } prerequisite = { focus = UTA_invite_colombia  } prerequisite = { focus = UTA_invite_argentina  }
+		ai_will_do = { factor = 100 }
+		available = {
+			NOT = { has_war = yes }
+		}
+		completion_reward = {
+			declare_war_on = {
+				type = puppet_wargoal_focus
+				target = ENG
+			}
+		}
 	}
 	
 	#Focus on the Caribbean
@@ -202,6 +232,7 @@ focus_tree = {
 		available = {
 			NOT = { has_war = yes }
 		}
+		ai_will_do = { factor = 90 }
 		completion_reward = {
 			add_war_support = 0.05
 		}
@@ -219,9 +250,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_the_caribbean  }
+		bypass = {
+			is_in_faction_with = HAI
+			HAI = { has_government = democratic }
+		}
+		ai_will_do = { factor = 90 }
 		completion_reward = {
 			declare_war_on = {
-				type = puppet_wargoal_focus
+				type = topple_government
 				target = HAI
 			}
 		}
@@ -239,9 +275,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_focus_on_the_caribbean  }
+		bypass = {
+			is_in_faction_with = CUB
+			CUB = { has_government = democratic }
+		}
+		ai_will_do = { factor = 90 }
 		completion_reward = {
 			declare_war_on = {
-				type = puppet_wargoal_focus
+				type = topple_government
 				target = CUB
 			}
 		}
@@ -262,6 +303,10 @@ focus_tree = {
 		available = {
 			NOT = { has_war = yes }
 		}
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			add_to_faction = GUY
+			RME = { country_event = { id = tesb_UTA.80 } }
+		}
 	}
-
 }
