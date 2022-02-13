@@ -1084,10 +1084,10 @@ aotearoa_decisions = {
 
 mexhico_decisions = {
 	MEX_object_to_UTA_interference = {
+		fire_only_once = yes
 		visible = {
 			has_idea = MEX_strengthen_democracy
 			country_exists = UTA
-			NOT = { has_country_flag = MEX_objected_to_UTA_interference }
 		}
 		available = {
 			has_government = absolutist
@@ -1096,7 +1096,6 @@ mexhico_decisions = {
 		}
 		complete_effect = {
 			UTA = { country_event = { id = tesb_UTA.1 } }
-			set_country_flag = MEX_objected_to_UTA_interference
 		}
 		ai_will_do = {
 			base = 100
@@ -1118,8 +1117,8 @@ mexhico_decisions = {
 		available = {
 			OR = {
 				date > 1937.06.01
-				NOT = { has_war_with = ADA }
 			}
+			NOT = { is_in_faction_with = UTA }
 		}
 		complete_effect = {
 			ENG = { country_event = { id = tesb_UTA.6 } }
@@ -1132,10 +1131,11 @@ mexhico_decisions = {
 
 UTA_decisions = {
 	UTA_call_for_elections = {
+		fire_only_once = yes
 		visible = {
 			has_completed_focus = UTA_support_mexhican_democracy
 			country_exists = MEX
-			NOT = { has_country_flag = UTA_call_for_elections }
+			MEX = { NOT = { has_government = democratic } }
 		}
 		available = {
 			has_government = democratic
@@ -1145,7 +1145,6 @@ UTA_decisions = {
 		cost = 50
 		complete_effect = {
 			MEX = { country_event = { id = tesb_UTA.4 } }
-			set_country_flag = UTA_call_for_elections
 		}
 		ai_will_do = {
 			base = 100
@@ -1194,6 +1193,22 @@ UTA_decisions = {
 		}
 		ai_will_do = {
 			base = 50
+		}
+	}
+
+	UTA_white_peace_with_adal = {
+		visible = {
+			has_war_with = ADA
+		}
+		available = {
+			NOT = { has_war_with = MEX }
+			NOT = { has_war_with = ENG }
+		}
+		complete_effect = {
+			ADA = { country_event = { id = tesb_UTA.90 } }
+		}
+		ai_will_do = {
+			base = 100
 		}
 	}
 

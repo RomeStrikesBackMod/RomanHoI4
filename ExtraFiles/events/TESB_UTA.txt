@@ -133,10 +133,8 @@ country_event = {
 	option = {
 		name = tesb_UTA.6.a
 		white_peace = MEX
-		white_peace = BIR
 		ADA = {
 			white_peace = MEX
-			white_peace = BIR
 		} 
 		MEX = { country_event = { id = tesb_UTA.7 } }
 		ai_chance = {
@@ -200,7 +198,7 @@ country_event = {
 		name = tesb_UTA.10.b
 		UTA = { country_event = { id = tesb_UTA.12 } }
 		ai_chance = {
-			base = 1
+			base = 100
 		}
 	}
 	# refuse
@@ -347,7 +345,7 @@ country_event = {
 		name = tesb_UTA.20.b
 		UTA = { country_event = { id = tesb_UTA.22 } }
 		ai_chance = {
-			base = 1
+			base = 100
 		}
 	}
 	# refuse
@@ -388,7 +386,7 @@ country_event = {
 		add_to_faction = BIR
 		BIR = { country_event = { id = tesb_UTA.23 } }
 		ai_chance = {
-			base = 1
+			base = 100
 		}
 	}
 	# refuse their conditions
@@ -428,7 +426,7 @@ country_event = {
 		name = tesb_UTA.24.a
 		UTA = { add_to_faction = BIR }
 		ai_chance = {
-			base = 0
+			base = 100
 		}
 	}
 	# refuse to join
@@ -436,7 +434,7 @@ country_event = {
 		name = tesb_UTA.24.b
 		UTA = { country_event = { id = tesb_UTA.25 } }
 		ai_chance = {
-			base = 1
+			base = 0
 		}
 	}
 }
@@ -464,7 +462,7 @@ country_event = {
 			target = BIR
 		}
 		ai_chance = {
-			base = 1
+			base = 100
 		}
 	}
 }
@@ -489,12 +487,8 @@ country_event = {
 	# negotiate for claims on England
 	option = {
 		name = tesb_UTA.30.b
-		declare_war_on = {
-			type = puppet_wargoal_focus
-			target = BIR
-		}
 		ai_chance = {
-			base = 1
+			base = 100
 		}
 		UTA = { country_event = { id = tesb_UTA.32 } }
 	}
@@ -506,7 +500,7 @@ country_event = {
 			target = BIR
 		}
 		ai_chance = {
-			base = 1
+			base = 50
 		}
 		UTA = { country_event = { id = tesb_UTA.33 } }
 	}
@@ -542,7 +536,7 @@ country_event = {
 	option = {
 		name = tesb_UTA.32.a
 		ai_chance = {
-			base = 1
+			base = 100
 		}
 		BIR = {
 			transfer_state = 39 # significant_number - Araucania
@@ -557,7 +551,7 @@ country_event = {
 	option = {
 		name = tesb_UTA.32.b
 		ai_chance = {
-			base = 1
+			base = 0
 		}
 		BIR = {
 			BIR = { country_event = { id = tesb_UTA.34 } }
@@ -588,7 +582,7 @@ country_event = {
 			target = ARG
 		}
 		ai_chance = {
-			base = 1
+			base = 100
 		}
 	}
 }
@@ -806,5 +800,56 @@ country_event = {
 	# no choice in the matter
 	option = {
 		name = tesb_UTA.80.a
+	}
+}
+
+### Peace with Adal
+country_event = {
+	id = tesb_UTA.90
+	title = tesb_UTA.90.t
+	desc = tesb_UTA.90.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.90.a
+		white_peace = UTA
+		UTA = { country_event = { id = tesb_UTA.91 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = tesb_UTA.90.b
+		UTA = { country_event = { id = tesb_UTA.92 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Adal agreed to peace
+country_event = {
+	id = tesb_UTA.91
+	title = tesb_UTA.91.t
+	desc = tesb_UTA.91.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.91.a
+	}
+}
+
+# Adal refuses peace
+country_event = {
+	id = tesb_UTA.92
+	title = tesb_UTA.92.t
+	desc = tesb_UTA.92.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.92.a
 	}
 }

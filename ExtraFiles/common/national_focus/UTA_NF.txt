@@ -56,44 +56,19 @@ focus_tree = {
 		}
 	}
 
-	#Invite Mexhico
-	focus = {
-		id = UTA_invite_mexhico
-		icon = GFX_goal_generic_improve_relations
-		x = 0
-		y = 1
-		relative_position_id = UTA_support_mexhican_democracy
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = UTA_support_mexhican_democracy  }
-		ai_will_do = { factor = 100 }
-		available = {
-			NOT = { has_war_with = MEX }
-			MEX = { has_government = democratic }
-		}
-		bypass = {
-			is_in_faction_with = MEX
-		}
-		completion_reward = {
-			add_to_faction = MEX
-		}
-	}
-
 	#Invite Kanata
 	focus = {
 		id = UTA_invite_kanata
 		icon = GFX_goal_generic_improve_relations
 		x = 3
-		y = 2
+		y = 1
 		relative_position_id = UTA_the_yona_doctrine
 		cost = 10
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = UTA_the_yona_doctrine  }
-		ai_will_do = { factor = 90 }
+		ai_will_do = { factor = 80 }
 		bypass = {
 			is_in_faction_with = CAN
 		}
@@ -108,13 +83,14 @@ focus_tree = {
 		icon = GFX_focus_por_latin_american_communism
 		x = 0
 		y = 1
-		relative_position_id = UTA_invite_mexhico
+		relative_position_id = UTA_support_mexhican_democracy
 		cost = 10
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		prerequisite = { focus = UTA_support_mexhican_democracy }
 		prerequisite = { focus = UTA_invite_kanata }
-		prerequisite = { focus = UTA_invite_mexhico }
+		available = { is_in_faction_with = MEX }
 		ai_will_do = { factor = 100 }
 		completion_reward = {
 			add_war_support = 0.05
@@ -139,7 +115,7 @@ focus_tree = {
 		bypass = {
 			is_in_faction_with = COL
 		}
-		ai_will_do = { factor = 100 }
+		ai_will_do = { factor = 90 }
 		completion_reward = {
 			COL = { country_event = { id = tesb_UTA.10 } }
 		}
@@ -163,7 +139,7 @@ focus_tree = {
 		bypass = {
 			is_in_faction_with = BIR
 		}
-		ai_will_do = { factor = 90 }
+		ai_will_do = { factor = 1000 }
 		completion_reward = {
 			BIR = { country_event = { id = tesb_UTA.20 } }
 		}
@@ -209,6 +185,9 @@ focus_tree = {
 		available = {
 			NOT = { has_war = yes }
 		}
+		bypass = {
+			is_in_faction_with = ENG
+		}
 		completion_reward = {
 			declare_war_on = {
 				type = puppet_wargoal_focus
@@ -232,7 +211,7 @@ focus_tree = {
 		available = {
 			NOT = { has_war = yes }
 		}
-		ai_will_do = { factor = 90 }
+		ai_will_do = { factor = 70 }
 		completion_reward = {
 			add_war_support = 0.05
 		}
@@ -254,7 +233,7 @@ focus_tree = {
 			is_in_faction_with = HAI
 			HAI = { has_government = democratic }
 		}
-		ai_will_do = { factor = 90 }
+		ai_will_do = { factor = 70 }
 		completion_reward = {
 			declare_war_on = {
 				type = topple_government
@@ -279,7 +258,7 @@ focus_tree = {
 			is_in_faction_with = CUB
 			CUB = { has_government = democratic }
 		}
-		ai_will_do = { factor = 90 }
+		ai_will_do = { factor = 70 }
 		completion_reward = {
 			declare_war_on = {
 				type = topple_government
