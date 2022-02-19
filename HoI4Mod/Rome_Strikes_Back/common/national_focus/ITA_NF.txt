@@ -124,6 +124,9 @@ focus_tree = {
 				has_global_flag = pope_has_returned_to_rome
 				has_political_power > 250
 			}
+			has_country_leader = {
+				character = ITA_giuseppe_lombardi
+			}
 		}
 		continue_if_invalid = yes
 		completion_reward = {
@@ -241,14 +244,37 @@ focus_tree = {
 		cost = 10
 		x = -1
 		y = 1
+		available = {
+			BRG = {
+				is_in_faction_with = ITA
+				is_subject = no
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_union_of_church_and_state_TT
+				check_variable = {
+					ITA.ITA_hre_influence > 20
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_union_of_church_and_state_TT_2
+				check_variable = {
+					var = ITA.hre_influence_diff
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
 		completion_reward = {
-
+			BRG = {
+				country_event = { id = tesb_ITA.20 }
+			}
 		}
 		bypass = {
 			BRG = {
 				OR = {
 					is_subject_of = ROOT
 					exists = no
+					has_war_with = ITA
 				}
 			}
 		}
@@ -266,14 +292,37 @@ focus_tree = {
 		cost = 10
 		x = 1
 		y = 1
+		available = {
+			OR = {
+				NOT = {
+					BRG = { is_in_faction_with = ITA }
+				}
+				NOT = {	
+					BRG = { has_government = absolutist }
+				}
+				custom_trigger_tooltip = {
+					tooltip = ITA_separation_of_church_and_state_TT_2
+					check_variable = {
+						var = ITA.hre_influence_diff
+						value = -10
+						compare = less_than_or_equals
+					}
+				}
+			}
+		}
+		will_lead_to_war_with = BRG
 		completion_reward = {
-
+			create_wargoal = {
+				target = BRG
+				type = puppet_wargoal_focus
+			}
 		}
 		bypass = {
 			BRG = {
 				OR = {
 					is_subject_of = ROOT
 					exists = no
+					has_war_with = ITA
 				}
 			}
 		}

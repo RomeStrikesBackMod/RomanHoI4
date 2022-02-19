@@ -213,8 +213,6 @@ country_event = {
 	}
 }
 
-
-#alliance with PLC or IRAN
 country_event = {
 	id = tesb_ITA.11
 	title = tesb_ITA.11.t
@@ -234,8 +232,6 @@ country_event = {
 	}
 }
 
-
-#alliance with PLC or IRAN
 country_event = {
 	id = tesb_ITA.12
 	title = tesb_ITA.12.t
@@ -275,7 +271,6 @@ country_event = {
 	}
 }
 
-#no alliance with PLC or IRAN
 country_event = {
 	id = tesb_ITA.13
 	title = tesb_ITA.13.t
@@ -291,5 +286,131 @@ country_event = {
 			target = ROOT
 			type = puppet_wargoal_focus
 		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.20
+	title = tesb_ITA.20.t
+	desc = tesb_ITA.20.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#integrate
+	option = {
+		name = tesb_ITA.20.a
+		custom_effect_tooltip = GAME_OVER_TT
+		effect_tooltip = {
+			FROM = {
+				annex_country = {
+					target = PREV
+				}
+			}
+			every_state = {
+				limit = {
+					has_state_flag = original_owner_@PREV
+				}
+				add_core_of = FROM
+			}
+		}
+		FROM = {
+			country_event = { id = tesb_ITA.21 }
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+		}
+	}
+	option = {
+		name = tesb_ITA.20.b
+		effect_tooltip = {
+			FROM = {
+				create_wargoal = {
+					target = PREV
+					type = annex_everything
+				}
+				remove_from_faction = PREV
+			}
+		}
+		FROM = {
+			country_event = { id = tesb_ITA.22 }
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_subject_of = FROM
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio < 1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.21
+	title = tesb_ITA.21.t
+	desc = tesb_ITA.21.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+
+	#integrate
+	option = {
+		name = tesb_ITA.21.a
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+		hidden_effect = {
+			FROM = {
+				every_character = {
+					limit = {
+						OR = {
+							is_unit_leader = yes
+							is_navy_leader = yes
+						}
+					}
+					set_nationality = ROOT
+				}
+			}
+		}
+		every_state = {
+			limit = {
+				has_state_flag = original_owner_@FROM
+			}
+			add_core_of = PREV
+		}
+		set_cosmetic_tag = HRE_UNIFIED
+	}
+}
+
+country_event = {
+	id = tesb_ITA.22
+	title = tesb_ITA.22.t
+	desc = tesb_ITA.22.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.22.a
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+		remove_from_faction = FROM
 	}
 }
