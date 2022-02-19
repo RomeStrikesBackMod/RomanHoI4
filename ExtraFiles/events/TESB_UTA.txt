@@ -790,6 +790,7 @@ country_event = {
 
 
 ### Rome events
+# Guyana chose to join Native Americans
 country_event = {
 	id = tesb_UTA.80
 	title = tesb_UTA.80.t
@@ -851,5 +852,154 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_UTA.92.a
+	}
+}
+
+
+### Invite Kanata to faction events
+# Invite Kanata to faction
+country_event = {
+	id = tesb_UTA.100
+	title = tesb_UTA.100.t
+	desc = tesb_UTA.100.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.100.a
+		UTA = { country_event = { id = tesb_UTA.101 } }
+		trigger = {
+			NOT = { has_war_with = UTA }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.100.b
+		UTA = { country_event = { id = tesb_UTA.102 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Kanata accepts
+country_event = {
+	id = tesb_UTA.101
+	title = tesb_UTA.101.t
+	desc = tesb_UTA.101.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.101.a
+		add_to_faction = CAN
+	}
+}
+
+# Kanata refused to join
+country_event = {
+	id = tesb_UTA.102
+	title = tesb_UTA.102.t
+	desc = tesb_UTA.102.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.102.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.102.b
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = CAN
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+
+### Invite Guyana to faction events
+# Invite Guyana to faction
+country_event = {
+	id = tesb_UTA.110
+	title = tesb_UTA.110.t
+	desc = tesb_UTA.110.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.110.a
+		UTA = { country_event = { id = tesb_UTA.111 } }
+		trigger = {
+			NOT = { has_war_with = UTA }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.110.b
+		UTA = { country_event = { id = tesb_UTA.112 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Guyana accepts
+country_event = {
+	id = tesb_UTA.111
+	title = tesb_UTA.111.t
+	desc = tesb_UTA.111.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.111.a
+		add_to_faction = GUY
+		RME = { country_event = { id = tesb_UTA.80 } }
+	}
+}
+
+# Guyana refused to join
+country_event = {
+	id = tesb_UTA.112
+	title = tesb_UTA.112.t
+	desc = tesb_UTA.112.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.112.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.112.b
+		declare_war_on = {
+			type = puppet_wargoal_focus
+			target = GUY
+		}
+		ai_chance = {
+			base = 1
+		}
 	}
 }
