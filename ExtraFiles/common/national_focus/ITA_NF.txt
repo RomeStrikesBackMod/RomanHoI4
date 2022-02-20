@@ -124,20 +124,42 @@ focus_tree = {
 				has_global_flag = pope_has_returned_to_rome
 				has_political_power > 250
 			}
+			has_country_leader = {
+				character = ITA_giuseppe_lombardi
+			}
 		}
+		continue_if_invalid = yes
 		completion_reward = {
 			if = {
 				limit = {
 					BRG = { is_friend_or_potential_friend_of_ROOT = yes }
 				}
-				add_country_leader_trait = crowned_monarch
+				BRG = {
+					country_event = { id = tesb_ITA.1 }
+				}
 				else_if = {
 					limit = { has_global_flag = pope_has_returned_to_rome }
+					set_country_flag = ITA_crowned_giuseppe
 					add_country_leader_trait = crowned_monarch
+					set_character_name = {
+						character = ITA_giuseppe_lombardi
+						name = ITA_giuseppe_ii_lombardi
+					}
+					hidden_effect = {
+						news_event = { id = tesb_news.5 }
+					}
 				}
 				else = {
+					set_country_flag = ITA_crowned_giuseppe
 					add_country_leader_trait = crowned_monarch
+					set_character_name = {
+						character = ITA_giuseppe_lombardi
+						name = ITA_giuseppe_ii_lombardi
+					}
 					add_political_power = -250
+					hidden_effect = {
+						news_event = { id = tesb_news.5 }
+					}
 				}
 			}
 		}
@@ -157,9 +179,54 @@ focus_tree = {
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
 			create_faction = ITA_holy_roman_empire
-			BRG = {
-				country_event = {
-					id = generic.5
+			if = {
+				limit = {
+					BRG = { exists = no }
+				}
+				every_state = {
+					limit = {
+						is_owned_by_ROOT_or_subject = no
+						OR = {
+							state = 63 # significant_number - Rheinland
+							state = 64 # significant_number - Franche-Comte
+							state = 65 # significant_number - Alsace-Lorraine
+							state = 66 # significant_number - Bourgogne
+							state = 67 # significant_number - Palatinate
+							state = 68 # significant_number - Wallonia
+							state = 69 # significant_number - Rhone
+							state = 70 # significant_number - Champagne
+							state = 71 # significant_number - Auvergne
+							state = 72 # significant_number - Limousin
+						}
+					}
+					add_claim_by = ROOT
+				}
+				else_if = {
+					limit = {
+						BRG = {
+							has_government = absolutist
+							is_subject = no
+						}
+					}
+					BRG = {
+						country_event = {
+							id = tesb_ITA.10
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						BRG = {
+							OR = {
+								is_subject = yes
+								NOT = { has_government = absolutist }
+							}
+						}
+					}
+					create_wargoal = {
+						target = BRG
+						type = puppet_wargoal_focus
+					}
 				}
 			}
 		}
@@ -177,8 +244,39 @@ focus_tree = {
 		cost = 10
 		x = -1
 		y = 1
+		available = {
+			BRG = {
+				is_in_faction_with = ITA
+				is_subject = no
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_union_of_church_and_state_TT
+				check_variable = {
+					ITA.ITA_hre_influence > 20
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = ITA_union_of_church_and_state_TT_2
+				check_variable = {
+					var = ITA.hre_influence_diff
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+		}
 		completion_reward = {
-
+			BRG = {
+				country_event = { id = tesb_ITA.20 }
+			}
+		}
+		bypass = {
+			BRG = {
+				OR = {
+					is_subject_of = ROOT
+					exists = no
+					has_war_with = ITA
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -194,8 +292,39 @@ focus_tree = {
 		cost = 10
 		x = 1
 		y = 1
+		available = {
+			OR = {
+				NOT = {
+					BRG = { is_in_faction_with = ITA }
+				}
+				NOT = {	
+					BRG = { has_government = absolutist }
+				}
+				custom_trigger_tooltip = {
+					tooltip = ITA_separation_of_church_and_state_TT_2
+					check_variable = {
+						var = ITA.hre_influence_diff
+						value = -10
+						compare = less_than_or_equals
+					}
+				}
+			}
+		}
+		will_lead_to_war_with = BRG
 		completion_reward = {
-
+			create_wargoal = {
+				target = BRG
+				type = puppet_wargoal_focus
+			}
+		}
+		bypass = {
+			BRG = {
+				OR = {
+					is_subject_of = ROOT
+					exists = no
+					has_war_with = ITA
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -212,6 +341,12 @@ focus_tree = {
 		y = 1
 		available = {
 			is_subject = no
+		}
+		bypass = {
+			604 = { is_owned_by_ROOT_or_subject = yes } # significant_number - East Switzerland
+			605 = { is_owned_by_ROOT_or_subject = yes } # significant_number - West Switzerland
+			606 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Tirol
+			607 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Karntern-Steiermark
 		}
 		will_lead_to_war_with = SWI
 		completion_reward = {
@@ -244,26 +379,13 @@ focus_tree = {
 		y = 1
 		available = {
 			is_subject = no
+			country_exists = GMR
 		}
-		will_lead_to_war_with = GER
+		will_lead_to_war_with = GMR
 		completion_reward = {
-			if = {
-				limit = { country_exists = GER }
-				create_wargoal = {
-					target = GER
-					type = annex_everything
-				}
-				else = {
-					random_other_country = {
-						limit = { original_tag = GER }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = annex_everything
-							}
-						}
-					}
-				}
+			create_wargoal = {
+				target = GMR
+				type = annex_everything
 			}
 		}
 		ai_will_do = {
@@ -281,24 +403,48 @@ focus_tree = {
 		y = 1
 		available = {
 			is_subject = no
+			if = {
+				limit = { country_exists = RMA }
+				country_exists = RMA
+				else_if = {
+					limit = { country_exists = RMD }
+					country_exists = RMD
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					country_exists = RMF
+				}
+				else = {
+					country_exists = RME
+				}
+			}
 		}
 		will_lead_to_war_with = RME
 		completion_reward = {
 			if = {
-				limit = { country_exists = RME }
+				limit = { country_exists = RMA }
 				create_wargoal = {
-					target = RME
+					target = RMA
 					type = annex_everything
 				}
+				else_if = {
+					limit = { country_exists = RMD }
+					create_wargoal = {
+						target = RMD
+						type = annex_everything
+					}
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					create_wargoal = {
+						target = RMF
+						type = annex_everything
+					}
+				}
 				else = {
-					random_other_country = {
-						limit = { original_tag = RME }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = annex_everything
-							}
-						}
+					create_wargoal = {
+						target = RME
+						type = annex_everything
 					}
 				}
 			}
@@ -707,20 +853,29 @@ focus_tree = {
 				}
 			}
 			if = {
-				limit = { country_exists = RME }
+				limit = { country_exists = RMA }
 				create_wargoal = {
-					target = RME
+					target = RMA
 					type = annex_everything
 				}
+				else_if = {
+					limit = { country_exists = RMD }
+					create_wargoal = {
+						target = RMD
+						type = annex_everything
+					}
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					create_wargoal = {
+						target = RMF
+						type = annex_everything
+					}
+				}
 				else = {
-					random_other_country = {
-						limit = { original_tag = RME }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = annex_everything
-							}
-						}
+					create_wargoal = {
+						target = RME
+						type = annex_everything
 					}
 				}
 			}
@@ -908,6 +1063,7 @@ focus_tree = {
 
 	#################################
 	###Common Right Infrastructure###
+	#################################
 
 	focus = {
 		id = ITA_fortify_rome
@@ -1216,6 +1372,23 @@ focus_tree = {
 		cost = 10
 		x = 0
 		y = 1
+		available = {
+			if = {
+				limit = { country_exists = RMD }
+				country_exists = RMD
+				else_if = {
+					limit = { country_exists = RMA }
+					country_exists = RMA
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					country_exists = RMF
+				}
+				else = {
+					country_exists = RME
+				}
+			}
+		}
 		completion_reward = {
 			if = {
 				limit = { country_exists = RMD }
@@ -1230,13 +1403,29 @@ focus_tree = {
 						relation = non_aggression_pact
 					}
 				}
+				else_if = {
+					limit = { country_exists = RMF }
+					diplomatic_relation = {
+						country = RMF
+						relation = non_aggression_pact
+					}
+				}
+				else = {
+					diplomatic_relation = {
+						country = RME
+						relation = non_aggression_pact
+					}
+				}
 			}
 		}
 		ai_will_do = {
 			base = 3
 			modifier = {
 				factor = 2
-				RMA = { exists = no }
+				any_country_with_original_tag = {
+					original_tag_to_check = RME
+					has_government = democratic
+				}
 			}
 		}
 	}
@@ -1250,22 +1439,49 @@ focus_tree = {
 		cost = 10
 		x = 2
 		y = 1
-		completion_reward = {
+		available = {
 			if = {
-				limit = { country_exists = RME }
-				create_wargoal = {
-					target = RME
-					type = liberate_wargoal
+				limit = { country_exists = RMA }
+				country_exists = RMA
+				else_if = {
+					limit = { country_exists = RMF }
+					country_exists = RMF
+				}
+				else_if = {
+					limit = { country_exists = RMD }
+					country_exists = RMD
 				}
 				else = {
-					random_other_country = {
-						limit = { original_tag = RME }
-						ROOT = {
-							create_wargoal = {
-								target = PREV
-								type = liberate_wargoal
-							}
-						}
+					country_exists = RME
+				}
+			}
+		}
+		will_lead_to_war_with = RME
+		completion_reward = {
+			if = {
+				limit = { country_exists = RMA }
+				create_wargoal = {
+					target = RMA
+					type = liberate_wargoal
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					create_wargoal = {
+						target = RMF
+						type = liberate_wargoal
+					}
+				}
+				else_if = {
+					limit = { country_exists = RMD }
+					create_wargoal = {
+						target = RMD
+						type = liberate_wargoal
+					}
+				}
+				else = {
+					create_wargoal = {
+						target = RME
+						type = liberate_wargoal
 					}
 				}
 			}
@@ -1274,7 +1490,17 @@ focus_tree = {
 			base = 3
 			modifier = {
 				factor = 2
-				RMD = { exists = no }
+				any_country_with_original_tag = {
+					original_tag_to_check = RME
+					has_government = absolutist
+				}
+			}
+			modifier = {
+				factor = 2
+				any_country_with_original_tag = {
+					original_tag_to_check = RME
+					has_government = fascism
+				}
 			}
 		}
 	}
