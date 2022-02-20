@@ -1,3 +1,6 @@
+#TODO: write localisations
+#TODO: write ai directives on order to take these - maybe also add those for UTA
+#TODO: replace icons
 focus_tree = {
 	id = MNG_focus
 	
@@ -19,811 +22,461 @@ focus_tree = {
 	shared_focus = political_effort
 
 	focus = {
-		id = EmpireGloryMNG
+		id = MNG_GACPS
 		icon = GFX_goal_anschluss
-		text = EmpireGlory
-		x = 31
+		x = 33
 		y = 0
 		cost = 10
 		completion_reward = {
-		add_stability = 0.05
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0
-			date < 1937.6.6
+			create_faction = GACPS
 		}
-	}
+		ai_will_do = {
+			factor = 100
+		}
 	}
 
 	focus = {
-		id = StrengthenColoniesMNG
-		icon = GFX_goal_generic_position_armies
-		text = StrengthenColonies
-		prerequisite = { focus = EmpireGloryMNG }
-		mutually_exclusive = { focus = StrengthenHomeMNG }
+		id = MNG_look_west
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_GACPS
+		x = -6
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_GACPS }
+		ai_will_do = {
+			factor = 90
+		}
+		#TODO: add a completion award
+	}
+
+	focus = {
+		id = MNG_khiva
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_look_west
 		x = -1
 		y = 1
-		relative_position_id = EmpireGloryMNG
 		cost = 10
+		prerequisite = { focus = MNG_look_west }
+		available = {
+			NOT = { has_war = yes }
+		}
 		completion_reward = {
-		navy_experience = 25
-	}
-		ai_will_do = { factor = 0 }
-	}
-
-	focus = {
-		id = StrengthenHomeMNG
-		icon = GFX_goal_generic_national_unity
-		text = StrengthenHome
-		prerequisite = { focus = EmpireGloryMNG }
-		mutually_exclusive = { focus = StrengthenColoniesMNG }
-		x = 1
-		y = 1
-		relative_position_id = EmpireGloryMNG
-		cost = 10
-		completion_reward = {
-		army_experience = 25
-	}
+			create_wargoal = {
+				target = KHI
+				type = puppet_wargoal_focus
+			}
+		}
 		ai_will_do = {
-		factor = 10
-		modifier = {
+			factor = 90
 		}
 	}
+
+	focus = {
+		id = MNG_tibet
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_look_west
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_look_west }
+		available = {
+			NOT = { has_war = yes }
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = TIB
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			factor = 90
+		}
 	}
 
 	focus = {
-		id = ColonialIndMNG
-		icon = GFX_goal_generic_construct_civ_factory
-		text = ColonialInd
-		prerequisite = { focus = StrengthenColoniesMNG }
+		id = MNG_central_asia
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_khiva
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_khiva }
+		prerequisite = { focus = MNG_tibet }
+		available = {
+			KHI = { is_puppet = yes }
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = CHA
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = RUS
+				type = take_state
+				generator = { 508 509 522 }
+			}
+		}
+	}
+
+	focus = {
+		id = MNG_look_north
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_GACPS
 		x = -2
 		y = 1
-		relative_position_id = StrengthenColoniesMNG
 		cost = 10
-		completion_reward = {
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = no
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = industrial_complex
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = no
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = arms_factory
-				level = 1
-				instant_build = yes
-			}
-		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = no
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = industrial_complex
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = no
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = arms_factory
-				level = 1
-				instant_build = yes
-			}
-		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = no
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = industrial_complex
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = no
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = arms_factory
-				level = 1
-				instant_build = yes
-			}
-		}
-	}
+		prerequisite = { focus = MNG_GACPS }
 		ai_will_do = {
-		factor = 10
-		modifier = {
+			factor = 80
 		}
-	}
+		#TODO: add a completion award
 	}
 
 	focus = {
-		id = ColonialHwyMNG
-		icon = GFX_goal_generic_construct_infrastructure
-		text = ColonialHwy
-		prerequisite = { focus = ColonialIndMNG }
-		mutually_exclusive = { focus = ResourceFacMNG }
-		x = -2
-		y = 1
-		relative_position_id = ColonialIndMNG
-		cost = 10
-		completion_reward = {
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = infrastructure
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = no
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = infrastructure
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = no
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = infrastructure
-				level = 1
-				instant_build = yes
-			}
-		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = infrastructure
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = no
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = infrastructure
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = no
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = infrastructure
-				level = 1
-				instant_build = yes
-			}
-		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = infrastructure
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = no
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = infrastructure
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = no
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = infrastructure
-				level = 1
-				instant_build = yes
-			}
-		}
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
-		}
-	}
-	}
-
-	focus = {
-		id = ResourceFacMNG
-		icon = GFX_goal_generic_oil_refinery
-		text = ResourceFac
-		prerequisite = { focus = ColonialIndMNG }
-		mutually_exclusive = { focus = ColonialHwyMNG }
-		x = 0
-		y = 1
-		relative_position_id = ColonialIndMNG
-		cost = 10
-		completion_reward = {
-		add_ideas = improved_resource_industry
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
-		}
-	}
-	}
-
-	focus = {
-		id = ColonialArmyMNG
-		icon = GFX_goal_generic_allies_build_infantry
-		text = ColonialArmy
-		prerequisite = { focus = StrengthenColoniesMNG }
-		x = 0
-		y = 1
-		relative_position_id = StrengthenColoniesMNG
-		cost = 10
-		completion_reward = {
-		add_ideas = militarism_focus_absolutist
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
-		}
-	}
-	}
-
-	focus = {
-		id = TradeEmpireMNG
+		id = MNG_russian_mongolia
 		icon = GFX_goal_anschluss
-		text = TradeEmpire
-		prerequisite = { focus = ColonialHwyMNG focus = ResourceFacMNG }
-		x = -1
-		y = 2
-		relative_position_id = ColonialIndMNG
-		cost = 10
-		completion_reward = {
-		add_ideas = established_traders
-		set_country_flag = established_traders
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = infrastructure
-					size > 0
-					include_locked = yes
-				}
-					is_coastal = yes
-				OR = {
-					is_in_home_area = no
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = infrastructure
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = no
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 2
-			add_building_construction = {
-				type = dockyard
-				level = 2
-				instant_build = yes
-			}
-		}
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
-		}
-	}
-	}
-
-	focus = {
-		id = IndHomeMNG
-		icon = GFX_goal_generic_production
-		text = IndHome
-		prerequisite = { focus = StrengthenHomeMNG }
-		x = 1
-		y = 1
-		relative_position_id = StrengthenHomeMNG
-		cost = 10
-		completion_reward = {
-		add_tech_bonus = {
-			name = industrial_bonus
-			bonus = 0.5
-			uses = 1
-			category = industry
-		}
-	}
-		ai_will_do = {
-		factor = 10
-	}
-	}
-
-	focus = {
-		id = NationalHwyMNG
-		icon = GFX_goal_generic_construct_infrastructure
-		text = NationalHwy
-		prerequisite = { focus = IndHomeMNG }
+		relative_position_id = MNG_look_north
 		x = -1
 		y = 1
-		relative_position_id = IndHomeMNG
 		cost = 10
+		prerequisite = { focus = MNG_look_north }
+		available = {
+			NOT = { has_war = yes }
+		}
 		completion_reward = {
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = infrastructure
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = infrastructure
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = infrastructure
-				level = 1
-				instant_build = yes
-			}
+			RUS = { country_event = { id = tesb_MNG.20 } }
 		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = infrastructure
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = infrastructure
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = infrastructure
-				level = 1
-				instant_build = yes
-			}
-		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = infrastructure
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = infrastructure
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = infrastructure
-				level = 1
-				instant_build = yes
-			}
-		}
-	}
 		ai_will_do = {
-		factor = 10
-		modifier = {
+			factor = 70
 		}
-	}
 	}
 
 	focus = {
-		id = NatCollegeMNG
+		id = MNG_manchu
 		icon = GFX_goal_anschluss
-		text = NatCollege
-		prerequisite = { focus = IndHomeMNG }
+		relative_position_id = MNG_look_north
 		x = 1
 		y = 1
-		relative_position_id = IndHomeMNG
 		cost = 10
+		prerequisite = { focus = MNG_look_north }
+		available = {
+			NOT = { has_war = yes }
+		}
 		completion_reward = {
-		add_ideas = national_college
-	}
+			create_wargoal = {
+				target = MAN
+				type = annex_everything
+			}
+		}
 		ai_will_do = {
-		factor = 10
-	}
+			factor = 100
+		}
 	}
 
 	focus = {
-		id = MilitaryBuildupMNG
-		icon = GFX_goal_generic_construct_mil_factory
-		text = MilitaryBuildup
-		prerequisite = { focus = NatCollegeMNG }
-		prerequisite = { focus = NationalHwyMNG }
-		x = 2
-		y = 2
-		relative_position_id = IndHomeMNG
-		cost = 10
-		completion_reward = {
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = arms_factory
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = arms_factory
-				level = 1
-				instant_build = yes
-			}
-		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = arms_factory
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = arms_factory
-				level = 1
-				instant_build = yes
-			}
-		}
-		random_owned_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = arms_factory
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = arms_factory
-				level = 1
-				instant_build = yes
-			}
-		}
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
-		}
-	}
-	}
-
-	focus = {
-		id = PrepTheBorderMNG
-		icon = GFX_goal_generic_defence
-		text = PrepTheBorder
-		prerequisite = { focus = StrengthenHomeMNG }
-		x = 4
+		id = MNG_mongolia
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_russian_mongolia
+		x = 1
 		y = 1
-		relative_position_id = StrengthenHomeMNG
 		cost = 10
-		completion_reward = {
-		add_ideas = border_buildup
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
+		prerequisite = { focus = MNG_russian_mongolia }
+		prerequisite = { focus = MNG_manchu }
+		available = {
+			owns_state = 338
+			owns_state = 510
 		}
-	}
+		completion_reward = {
+			release_puppet = MON
+		}
+		ai_will_do = {
+			factor = 100
+		}
 	}
 
 	focus = {
-		id = NatSpiritMNG
-		icon = GFX_goal_generic_political_pressure
-		text = NatSpirit
-		prerequisite = { focus = PrepTheBorderMNG }
+		id = MNG_look_south
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_GACPS
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_GACPS }
+		#TODO: add a completion award
+	}
+
+	focus = {
+		id = MNG_invite_shan
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_look_south
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_look_south }
+		completion_reward = {
+			SHN = { country_event = { id = tesb_MNG.30 } }
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_invite_burma
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_invite_shan
 		x = 0
 		y = 1
-		relative_position_id = PrepTheBorderMNG
 		cost = 10
+		prerequisite = { focus = MNG_invite_shan }
 		completion_reward = {
-		add_ideas = paramilitarism_focus
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
+			BUR = { country_event = { id = tesb_MNG.40 } }
+			#TODO: add decision to ask India for Burma's territory back - events are 50s
 		}
-	}
+		ai_will_do = {
+			factor = 100
+		}
 	}
 
 	focus = {
-		id = AnnexMNGMAN
-		icon = GFX_goal_generic_major_war
-		text = AnnexMAN
-		prerequisite = { focus = PrepTheBorderMNG }
-		bypass = {
-		OR = {
-			ROOT = {
-				is_in_faction_with = MAN
-				has_war_with = MAN
-			}
-			NOT = { country_exists = MAN }
-		}
-	}
-		x = 2
+		id = MNG_free_pegu
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_invite_burma
+		x = 0
 		y = 1
-		relative_position_id = PrepTheBorderMNG
 		cost = 10
-		available = {
-		MAN = { is_in_faction = no }
-	}
+		prerequisite = { focus = MNG_invite_burma }
 		completion_reward = {
-		create_wargoal = {
-			type = annex_everything
-			target = MAN
-		}
-	}
-		ai_will_do = {
-		factor = 5
-		modifier = {
-			factor = 0
-			strength_ratio = { tag = MAN ratio < 1 }
-		}
-	}
-	}
-
-	focus = {
-		id = AnnexMNGMAK
-		icon = GFX_goal_generic_major_war
-		text = AnnexMAK
-		prerequisite = { focus = NatSpiritMNG }
-		bypass = {
-		OR = {
-			ROOT = {
-				is_in_faction_with = MAK
-				has_war_with = MAK
+			#TODO: replace these with event chains to negotiate, 60s, 70s, 80s
+			#TODO: add ai_will_do to release Pegu
+			create_wargoal = {
+				target = PLC
+				type = take_state
+				generator = { 458 }
 			}
-			NOT = { country_exists = MAK }
-		}
-	}
-		x = 1
-		y = 1
-		relative_position_id = NatSpiritMNG
-		cost = 10
-		available = {
-		MAK = { is_in_faction = no }
-	}
-		completion_reward = {
-		create_wargoal = {
-			type = annex_everything
-			target = MAK
-		}
-	}
-		ai_will_do = {
-		factor = 5
-		modifier = {
-			factor = 0
-			strength_ratio = { tag = MAK ratio < 1 }
-		}
-	}
-	}
-
-	focus = {
-		id = War_withJAPMNG
-		icon = GFX_goal_generic_major_war
-		text = War_withJAP
-		bypass = {
- 		has_war_with = JAP
- 	}
-		x = 31
-		y = 5
-		cost = 10
-		available = {
-			has_war = no
-			date > 1939.1.1
-		}
-		completion_reward = {
-			add_named_threat = { threat = 5 name = "War with Japan" }
-			declare_war_on = {
-				type = annex_everything
-				target = JAP
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 363 364 }
 			}
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = JAP ratio < 0.8 }
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_war_with = IND
-					has_war_with = RUS
-					has_war_with = RME
-					has_war_with = GRB
-					has_war_with = ENG
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = War_withINDMNG
-		icon = GFX_goal_generic_major_war
-		text = War_withIND
-		bypass = {
- 		has_war_with = IND
- 	}
-		x = 33
-		y = 5
-		cost = 10
-		available = {
-			has_war = no
-			date > 1939.1.1
-		}
-		completion_reward = {
-			add_named_threat = { threat = 5 name = "War with India" }
-			declare_war_on = {
-				type = annex_everything
+			create_wargoal = {
 				target = IND
+				type = take_state
+				generator = { 274 275 }
 			}
 		}
 		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				strength_ratio = { tag = IND ratio < 0.8 }
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_war_with = JAP
-					has_war_with = RUS
-					has_war_with = RME
-					has_war_with = GRB
-					has_war_with = ENG
-				}
-			}
+			factor = 100
 		}
 	}
 
+	focus = {
+		id = MNG_invite_pattani
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_free_pegu
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_free_pegu }
+		completion_reward = {
+			PAT = { country_event = { id = tesb_MNG.90 } } # TODO: Write events
+			#TODO: add decision to ask Makassar for Pattani's territory back - events are 100s
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_invite_luang_prabang
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_look_south
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_look_south }
+		completion_reward = {
+			LAO = { country_event = { id = tesb_MNG.110 } } # TODO: write events
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_invite_cambodia
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_invite_luang_prabang
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_invite_luang_prabang }
+		completion_reward = {
+			CAM = { country_event = { id = tesb_MNG.120 } } # TODO: write events
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_siam_and_sukhothai
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_invite_cambodia
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_invite_cambodia }
+		completion_reward = {
+			SIA = { country_event = { id = tesb_MNG.130 } } # TODO: write event chain - Siam gets their territory back
+			# TODO: write decision to ask India for Sukhothia's state back once they're in the faction - events are 140s
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_free_dai_nam
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_siam_and_sukhothai
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_siam_and_sukhothai }
+		completion_reward = {
+			#TODO: replace this with event chains to negotiate, 150s
+			#TODO: add ai_will_do to release Dai Nam
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 75 }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_south_china_sea
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_invite_pattani
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_invite_pattani }
+		prerequisite = { focus = MNG_free_dai_nam }
+		#TODO: add a completion award
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_makassar
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_south_china_sea
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_south_china_sea }
+		completion_reward = {
+			MAK = { country_event = { id = tesb_MNG.160 } } # TODO: write events
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_java
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_makassar
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_makassar }
+		completion_reward = {
+			JAV = { country_event = { id = tesb_MNG.170 } } # TODO: write events
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_philippines
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_south_china_sea
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_south_china_sea }
+		completion_reward = {
+			JAV = { country_event = { id = tesb_MNG.180 } } # TODO: write events
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_pacific_islands
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_philippines
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_philippines }
+		completion_reward = {
+			X01 = { country_event = { id = tesb_MNG.190 } } # TODO: write events
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_look_east
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_GACPS
+		x = 6
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_GACPS }
+		#TODO: add a completion award
+	}
+
+	focus = {
+		id = MNG_invite_korea
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_look_east
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_look_east }
+		completion_reward = {
+			KOR = { country_event = { id = tesb_MNG.1 } }
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	focus = {
+		id = MNG_invite_japan
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_look_east
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_look_east }
+		completion_reward = {
+			JAP = { country_event = { id = tesb_MNG.10 } }
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
 }
