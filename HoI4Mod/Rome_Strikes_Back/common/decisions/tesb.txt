@@ -201,14 +201,12 @@ rome_civil_war_decisions = {
 	prepare_black_sea_landing = {
 		available = {
 			ships_in_area = {
-				type = screen_ship
 				area = 30 # significant_number - Black Sea
 				size > 9 
 			}
 			any_other_country = {
 				original_tag = RME
 				ships_in_area = {
-					type = screen_ship
 					area = 30 # significant_number - Black Sea
 					size < 6 
 				}
@@ -229,6 +227,7 @@ rome_civil_war_decisions = {
 			}
 		}
 		on_map_mode = map_and_decisions_view
+		state_target = yes
 		highlight_states = {
 			highlight_state_targets = {
 				state = 463 # significant_number - Eastern Rumelia
@@ -255,14 +254,12 @@ rome_civil_war_decisions = {
 	prepare_ionia_landing = {
 		available = {
 			ships_in_area = {
-				type = screen_ship
 				area = 202 # significant_number - aegean sea
 				size > 9 
 			}
 			any_other_country = {
 				original_tag = RME
 				ships_in_area = {
-					type = screen_ship
 					area = 202 # significant_number - aegean sea
 					size < 6 
 				}
@@ -283,6 +280,7 @@ rome_civil_war_decisions = {
 			}
 		}
 		on_map_mode = map_and_decisions_view
+		state_target = yes
 		highlight_states = {
 			highlight_state_targets = {
 				state = 477 # significant_number - Aydin
@@ -347,6 +345,64 @@ burgundy_decisions = {
 						instant_build = yes
 					}
 				}
+			}
+		}
+	}
+	BRG_integrate_state = {
+		state_target = yes
+		targets = {
+			68 70 71 72 # significant_number - Wallonia, Champagne, Auvergne, Limousin
+		}
+		target_root_trigger = {
+			#has_completed_focus = BRG_territorial_integration
+		}
+		available = {
+			NOT = {
+				has_country_flag = BRG_integrate_state_one_per
+			}
+			all_of_scopes = {
+				array = FROM.core_countries
+				tooltip = BRG_integrate_state_peace_TT
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		target_trigger = {
+			FROM = {
+				is_owned_and_controlled_by = ROOT
+				NOT = { is_core_of = ROOT }
+			}
+		}
+		cost = 50
+		days_remove = 180
+		cancel_trigger = {
+			any_of_scopes = {
+				array = FROM.core_countries
+				tooltip = BRG_integrate_state_war_TT
+				has_war_with = ROOT
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = BRG_integrate_state_one_per
+		}
+		complete_effect = {
+			set_country_flag = BRG_integrate_state_one_per
+		}
+		remove_effect = {
+			FROM = { add_core_of = ROOT }
+			clr_country_flag = BRG_integrate_state_one_per
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { state = 68 } } # significant_number - Wallonia
+				68 = { NOT = { is_core_of = ROOT } } # significant_number - Wallonia
+			}
+			modifier = {
+				factor = 0.5
+				68 = { is_core_of = ROOT } # significant_number - Wallonia
+				FROM = { NOT = { state = 70 } } # significant_number - Champagne
+				70 = { NOT = { is_core_of = ROOT } } # significant_number - Champagne
 			}
 		}
 	}
@@ -901,7 +957,7 @@ aotearoa_decisions = {
 		days_mission_timeout = 730
 		fire_only_once = yes
 		activation = {
-			#always = no
+			always = no
 			has_global_flag = RME_civil_war_over #activated by on_action
 		}
 		available = {
@@ -1076,6 +1132,224 @@ aotearoa_decisions = {
 				RMA = { is_faction_leader = no }
 				check_variable = {
 					days_mission_timeout@AOT_reconciling_with_rome > 80
+				}
+			}
+		}
+	}
+}
+
+italy_decisions = {
+	ITA_ask_pope_again = {
+		fire_only_once = yes
+		visible = {
+			NOT = { has_country_flag = ITA_crowned_giuseppe }
+			has_country_flag = ITA_pope_refused_coronation
+		}
+		available = {
+			BRG = { is_friend_or_potential_friend_of_ROOT = yes }
+			has_country_leader = {
+				character = ITA_giuseppe_lombardi
+			}
+		}
+		days_remove = 10
+		remove_effect = {
+			BRG = {
+				country_event = { id = tesb_ITA.1 }
+			}
+		}
+		cost = 50
+	}
+	ITA_self_coronation = {
+		fire_only_once = yes
+		visible = {
+			NOT = { has_country_flag = ITA_crowned_giuseppe }
+			has_country_flag = ITA_pope_refused_coronation
+		}
+		available = {
+			has_country_leader = {
+				character = ITA_giuseppe_lombardi
+			}
+		}
+		complete_effect = {
+			country_event = { id = tesb_ITA.4 }
+		}
+		cost = 250
+	}
+}
+
+ITA_hre_influence_decisions = {
+	ITA_hre_political_influence = {
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = ITA
+		}
+		available = {
+			has_government = absolutist
+			BRG = { has_government = absolutist }
+			is_in_faction_with = BRG
+		}
+		targets = { BRG }
+		target_trigger = {
+			FROM = {
+				tag = BRG
+			}
+		}
+
+		days_remove = 20
+		cost = 10
+		remove_effect = {
+			custom_effect_tooltip = ITA_hre_political_influence_tt
+			add_to_variable = { ITA_hre_influence = 5 }
+			set_variable = { ITA.hre_influence_diff = ITA.ITA_hre_influence }
+			subtract_from_variable = { ITA.hre_influence_diff = BRG.BRG_hre_influence }
+			hidden_effect = {
+				if = {
+					limit = {
+						date < 1939.08.01
+					}
+					random_list = {
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 50 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 55 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 60 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 65 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 70 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 75 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 80 }
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 5
+				check_variable = { ITA_hre_influence < 20 }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = hre_influence_decisions_ai_timer_flag
+				NOT = { date > 1940.01.01 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { ITA_hre_influence > 20 }
+				check_variable = {
+					var = ITA.hre_influence_diff
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+			modifier = {
+				factor = 2
+				check_variable = { ITA_hre_influence > 20 }
+				check_variable = {
+					var = ITA.hre_influence_diff
+					value = -10
+					compare = less_than_or_equals
+				}
+			}
+		}
+	}
+}
+
+BRG_hre_influence_decisions = {
+	BRG_hre_political_influence = {
+		icon = generic_political_discourse
+
+		allowed = {
+			tag = BRG
+		}
+		available = {
+			has_government = absolutist
+			ITA = { has_government = absolutist }
+			is_in_faction_with = ITA
+		}
+		targets = { ITA }
+		target_trigger = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		days_remove = 20
+		cost = 10
+		remove_effect = {
+			custom_effect_tooltip = BRG_hre_political_influence_tt
+			add_to_variable = { BRG_hre_influence = 5 }
+			set_variable = { ITA.hre_influence_diff = ITA.ITA_hre_influence }
+			subtract_from_variable = { ITA.hre_influence_diff = BRG.BRG_hre_influence }
+			hidden_effect = {
+				if = {
+					limit = {
+						date < 1939.08.01
+					}
+					random_list = {
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 50 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 55 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 60 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 65 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 70 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 75 }
+						}
+						10 = {
+							set_country_flag = { flag = hre_influence_decisions_ai_timer_flag value = 1 days = 80 }
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 5
+				check_variable = { BRG_hre_influence < 20 }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = hre_influence_decisions_ai_timer_flag
+				NOT = { date > 1940.01.01 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { BRG_hre_influence > 20 }
+				check_variable = {
+					var = ITA.hre_influence_diff
+					value = -10
+					compare = less_than_or_equals
+				}
+			}
+			modifier = {
+				factor = 2
+				check_variable = { BRG_hre_influence > 20 }
+				check_variable = {
+					var = ITA.hre_influence_diff
+					value = 10
+					compare = greater_than_or_equals
 				}
 			}
 		}

@@ -338,10 +338,20 @@ focus_tree = {
 		mutually_exclusive = { focus = BRG_win_italian_throne }
 		will_lead_to_war_with = ITA
 		available = {
-			ITA = {
-				NOT = { has_idea = BRG_absolutist_influence }
-				is_independent_country = yes
-				NOT = { has_government = absolutist }
+			OR = {
+				ITA = {
+					NOT = { has_idea = BRG_absolutist_influence }
+					is_independent_country = yes
+					NOT = { has_government = absolutist }
+				}
+				custom_trigger_tooltip = {
+					tooltip = BRG_seize_italian_throne_TT_2
+					check_variable = {
+						var = ITA.hre_influence_diff
+						value = 10
+						compare = greater_than_or_equals
+					}
+				}
 			}
 		}
 		bypass = {
@@ -377,6 +387,21 @@ focus_tree = {
 				NOT = { has_idea = BRG_absolutist_influence }
 				is_independent_country = yes
 				has_government = absolutist
+				is_in_faction_with = BRG
+			}
+			custom_trigger_tooltip = {
+				tooltip = BRG_win_italian_throne_TT
+				check_variable = {
+					BRG.BRG_hre_influence > 20
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = BRG_win_italian_throne_TT_2
+				check_variable = {
+					var = ITA.hre_influence_diff
+					value = -10
+					compare = less_than_or_equals
+				}
 			}
 		}
 		bypass = {
@@ -399,6 +424,22 @@ focus_tree = {
 	}
 
 	focus = {
+		id = BRG_territorial_integration
+		icon = GFX_goal_generic_national_unity
+		x = 4
+		y = 2
+		relative_position_id = BRG_reinforce_monarchism
+		cost = 5
+
+		completion_reward = {
+			custom_effect_tooltip = BRG_territorial_integration_TT
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	focus = {
 		id = BRG_rhine_defenses
 		icon = GFX_goal_generic_fortify_city
 		available = {
@@ -408,8 +449,7 @@ focus_tree = {
 				67 = { is_owned_by = BRG }	# significant_number - Palatinate
 			}
 		}
-		cancel_if_invalid = yes
-		x = 3
+		x = 2
 		y = 2
 		relative_position_id = BRG_reinforce_monarchism
 		cost = 10
@@ -517,10 +557,11 @@ focus_tree = {
 		id = BRG_pressure_flanders
 		icon = GFX_focus_generic_diplomatic_treaty
 		dynamic = yes
-		x = 0
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = BRG_rhine_defenses }
+		prerequisite = { focus = BRG_territorial_integration }
 		prerequisite = { focus = BRG_disband_government focus = BRG_write_new_constitution }
 		relative_position_id = BRG_rhine_defenses
 		will_lead_to_war_with = FLD
@@ -550,11 +591,11 @@ focus_tree = {
 		id = BRG_secure_northern_france
 		icon = GFX_goal_generic_occupy_start_war
 		x = -1
-		y = 2
+		y = 1
 		cost = 10
 		prerequisite = { focus = BRG_pressure_flanders }
 		mutually_exclusive = { focus = BRG_alliance_with_france }
-		relative_position_id = BRG_rhine_defenses
+		relative_position_id = BRG_pressure_flanders
 		will_lead_to_war_with = FRA
 		available = {
 			FRA = {
@@ -596,11 +637,11 @@ focus_tree = {
 		id = BRG_alliance_with_france
 		icon = GFX_goal_generic_major_alliance
 		x = 1
-		y = 2
+		y = 1
 		cost = 10
 		prerequisite = { focus = BRG_pressure_flanders }
 		mutually_exclusive = { focus = BRG_secure_northern_france }
-		relative_position_id = BRG_rhine_defenses
+		relative_position_id = BRG_pressure_flanders
 		available = {
 			BRG = {
 				has_government = democratic
@@ -633,11 +674,11 @@ focus_tree = {
 		id = BRG_deal_with_britanny
 		icon = GFX_goal_generic_major_alliance
 		dynamic = yes
-		x = 0
-		y = 3
+		x = 1
+		y = 1
 		cost = 10
 		prerequisite = { focus = BRG_alliance_with_france focus = BRG_secure_northern_france  }
-		relative_position_id = BRG_rhine_defenses
+		relative_position_id = BRG_secure_northern_france
 		will_lead_to_war_with = BRI
 		available = {
 			OR = {

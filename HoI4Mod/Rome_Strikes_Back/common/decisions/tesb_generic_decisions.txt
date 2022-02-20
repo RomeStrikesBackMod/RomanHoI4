@@ -1,22 +1,46 @@
 political_actions = {
 	#TEMP
+	revoke_mutual_guarantee = {
+		visible = {
+			
+		}
+		available = {
+			
+		}
+		target_root_trigger = {
+
+		}
+		target_trigger = {
+			has_guaranteed = FROM
+			FROM = { has_guaranteed = ROOT }
+		}
+		cost = 25
+		complete_effect = {
+			diplomatic_relation = {
+				country = FROM
+				relation = guarantee
+				active = no
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
 	highlight_cores = {
 		allowed = {
 			always = yes
 		}
+		state_target = yes
 		target_trigger = {
 			FROM = {
-				NOT = { tag = ROOT }
-				any_owned_state = {
-					is_core_of = ROOT
-				}
-				exists = yes
+				is_core_of = ROOT
+				NOT = { is_owned_by = ROOT }
 			}
 		}
 		highlight_states = {
 			highlight_states_trigger = {
 				is_core_of = ROOT
-				is_owned_by = FROM
+				NOT = { is_owned_by = ROOT }
 			}
 		}
 	}
@@ -25,19 +49,17 @@ political_actions = {
 		allowed = {
 			always = yes
 		}
+		state_target = yes
 		target_trigger = {
 			FROM = {
-				NOT = { tag = ROOT }
-				any_owned_state = {
-					is_claimed_by = ROOT
-				}
-				exists = yes
+				is_claimed_by = ROOT
+				NOT = { is_owned_by = ROOT }
 			}
 		}
 		highlight_states = {
 			highlight_states_trigger = {
 				is_claimed_by = ROOT
-				is_owned_by = FROM
+				NOT = { is_owned_by = ROOT }
 			}
 		}
 	}
