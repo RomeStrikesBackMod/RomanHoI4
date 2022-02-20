@@ -1,0 +1,999 @@
+﻿add_namespace = tesb_UTA
+
+### Mexhican democracy events
+# Mexhico objects to UTA supporting democracy
+country_event = {
+	id = tesb_UTA.1
+	title = tesb_UTA.1.t
+	desc = tesb_UTA.1.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.1.a
+		hidden_effect = {
+			MEX = {
+				country_event = { id = tesb_UTA.2 }
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		name = tesb_UTA.1.b
+		hidden_effect = {
+			MEX = {
+				country_event = { id = tesb_UTA.3 }
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# UTA backs down
+country_event = {
+	id = tesb_UTA.2
+	title = tesb_UTA.2.t
+	desc = tesb_UTA.2.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.2.a
+		remove_ideas = MEX_strengthen_democracy
+	}
+}
+
+# UTA continues support
+country_event = {
+	id = tesb_UTA.3
+	title = tesb_UTA.3.t
+	desc = tesb_UTA.3.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.3.a
+		add_opinion_modifier = {
+			modifier = UTA_inteference
+			target = FROM
+		}
+	}
+}
+
+# Call for elections
+country_event = {
+	id = tesb_UTA.4
+	title = tesb_UTA.4.t
+	desc = tesb_UTA.4.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.4.a
+		set_politics = {
+			ruling_party = democratic
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		name = tesb_UTA.4.b
+		hidden_effect = {
+			UTA = {
+				country_event = { id = tesb_UTA.5 }
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# Mexhico refused elections
+country_event = {
+	id = tesb_UTA.5
+	title = tesb_UTA.5.t
+	desc = tesb_UTA.5.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.5.a
+		create_wargoal = {
+			type = topple_government
+			target = MEX
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_UTA.4.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Mexhico initiated white peace
+country_event = {
+	id = tesb_UTA.6
+	title = tesb_UTA.6.t
+	desc = tesb_UTA.6.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.6.a
+		white_peace = MEX
+		ADA = {
+			white_peace = MEX
+		} 
+		MEX = { country_event = { id = tesb_UTA.7 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_UTA.6.b
+		MEX = { country_event = { id = tesb_UTA.8 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# England agreed to peace
+country_event = {
+	id = tesb_UTA.7
+	title = tesb_UTA.7.t
+	desc = tesb_UTA.7.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.7.a
+	}
+}
+
+# England refuses peace
+country_event = {
+	id = tesb_UTA.8
+	title = tesb_UTA.8.t
+	desc = tesb_UTA.8.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.8.a
+	}
+}
+
+### Colombia joining faction events
+# Invite Colombia to faction
+country_event = {
+	id = tesb_UTA.10
+	title = tesb_UTA.10.t
+	desc = tesb_UTA.10.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.10.a
+		UTA = { country_event = { id = tesb_UTA.11 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_UTA.10.b
+		UTA = { country_event = { id = tesb_UTA.12 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.10.c
+		UTA = { country_event = { id = tesb_UTA.15 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Colombia accepts
+country_event = {
+	id = tesb_UTA.11
+	title = tesb_UTA.11.t
+	desc = tesb_UTA.11.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.11.a
+		add_to_faction = COL
+	}
+}
+
+# Colombia negotiates
+country_event = {
+	id = tesb_UTA.12
+	title = tesb_UTA.12.t
+	desc = tesb_UTA.12.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to their conditions
+	option = {
+		name = tesb_UTA.12.a
+		COL = { add_state_core = 176 } # Significant number - Bolívar
+		COL = { add_state_core = 177 } # Significant number - Guaviare
+		COL = { add_state_core = 179 } # Significant number - Panama Canal
+		add_to_faction = COL
+		COL = { country_event = { id = tesb_UTA.13 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+	# refuse their conditions
+	option = {
+		name = tesb_UTA.12.b
+		COL = { country_event = { id = tesb_UTA.14 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# UTA accepts conditions
+country_event = {
+	id = tesb_UTA.13
+	title = tesb_UTA.13.t
+	desc = tesb_UTA.13.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to join the faction
+	option = {
+		name = tesb_UTA.13.a
+	}
+}
+
+# UTA refuses conditions
+country_event = {
+	id = tesb_UTA.14
+	title = tesb_UTA.14.t
+	desc = tesb_UTA.14.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to join the faction
+	option = {
+		name = tesb_UTA.14.a
+		UTA = { add_to_faction = COL }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse to join
+	option = {
+		name = tesb_UTA.14.b
+		UTA = { country_event = { id = tesb_UTA.15 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# Colombia refused to join
+country_event = {
+	id = tesb_UTA.15
+	title = tesb_UTA.15.t
+	desc = tesb_UTA.15.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.15.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.15.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = COL
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+### Biru joining faction events
+# Invite Biru to faction
+country_event = {
+	id = tesb_UTA.20
+	title = tesb_UTA.20.t
+	desc = tesb_UTA.20.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.20.a
+		UTA = { country_event = { id = tesb_UTA.21 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_UTA.20.b
+		UTA = { country_event = { id = tesb_UTA.22 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.20.c
+		UTA = { country_event = { id = tesb_UTA.25 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Biru accepts
+country_event = {
+	id = tesb_UTA.21
+	title = tesb_UTA.21.t
+	desc = tesb_UTA.21.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.21.a
+		add_to_faction = BIR
+	}
+}
+
+# Biru negotiates
+country_event = {
+	id = tesb_UTA.22
+	title = tesb_UTA.22.t
+	desc = tesb_UTA.22.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to their conditions
+	option = {
+		name = tesb_UTA.22.a
+		add_to_faction = BIR
+		BIR = { country_event = { id = tesb_UTA.23 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse their conditions
+	option = {
+		name = tesb_UTA.22.b
+		BIR = { country_event = { id = tesb_UTA.24 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# UTA accepts conditions
+country_event = {
+	id = tesb_UTA.23
+	title = tesb_UTA.23.t
+	desc = tesb_UTA.23.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to join the faction
+	option = {
+		name = tesb_UTA.23.a
+	}
+}
+
+# UTA refuses conditions
+country_event = {
+	id = tesb_UTA.24
+	title = tesb_UTA.24.t
+	desc = tesb_UTA.24.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to join the faction
+	option = {
+		name = tesb_UTA.24.a
+		UTA = { add_to_faction = BIR }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse to join
+	option = {
+		name = tesb_UTA.24.b
+		UTA = { country_event = { id = tesb_UTA.25 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Biru refused to join
+country_event = {
+	id = tesb_UTA.25
+	title = tesb_UTA.25.t
+	desc = tesb_UTA.25.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.25.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.25.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BIR
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Negotiate for Biru lands
+# UTA opens negiotiation for Biru lands
+country_event = {
+	id = tesb_UTA.30
+	title = tesb_UTA.30.t
+	desc = tesb_UTA.30.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give up the lands
+	option = {
+		name = tesb_UTA.30.a
+		ai_chance = {
+			base = 0
+		}
+		UTA = { country_event = { id = tesb_UTA.31 } }
+	}
+	# negotiate for claims on England
+	option = {
+		name = tesb_UTA.30.b
+		ai_chance = {
+			base = 100
+		}
+		UTA = { country_event = { id = tesb_UTA.32 } }
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.30.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BIR
+		}
+		ai_chance = {
+			base = 50
+		}
+		UTA = { country_event = { id = tesb_UTA.33 } }
+	}
+}
+
+# Argentina agrees to give up lands
+country_event = {
+	id = tesb_UTA.31
+	title = tesb_UTA.31.t
+	desc = tesb_UTA.31.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good
+	option = {
+		name = tesb_UTA.31.a
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+	}
+}
+
+# Argentina tries to negotiate
+country_event = {
+	id = tesb_UTA.32
+	title = tesb_UTA.32.t
+	desc = tesb_UTA.32.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to their conditions
+	option = {
+		name = tesb_UTA.32.a
+		ai_chance = {
+			base = 100
+		}
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+		ARG = {
+			add_state_claim = 170 # significant_number - Santa Catarina
+			add_state_claim = 171 # significant_number - Rio Grande do Sul
+		}
+	}
+	# refuse their conditions
+	option = {
+		name = tesb_UTA.32.b
+		ai_chance = {
+			base = 0
+		}
+		BIR = {
+			BIR = { country_event = { id = tesb_UTA.34 } }
+		 }
+	}
+}
+
+# Argentina refuses
+country_event = {
+	id = tesb_UTA.33
+	title = tesb_UTA.33.t
+	desc = tesb_UTA.33.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.33.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to give up the lands
+	option = {
+		name = tesb_UTA.33.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = ARG
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# UTA refuses conditions
+country_event = {
+	id = tesb_UTA.34
+	title = tesb_UTA.34.t
+	desc = tesb_UTA.34.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree to give up the lands
+	option = {
+		name = tesb_UTA.34.a
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+		add_opinion_modifier = {
+			modifier = UTA_inteference
+			target = FROM
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.34.b
+		UTA = { country_event = { id = tesb_UTA.35 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# Argentina refused to return the lands
+country_event = {
+	id = tesb_UTA.35
+	title = tesb_UTA.35.t
+	desc = tesb_UTA.35.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.35.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to give up the lands
+	option = {
+		name = tesb_UTA.35.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = ARG
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# South Andes forcibly returned
+country_event = {
+	id = tesb_UTA.40
+	title = tesb_UTA.40.t
+	desc = tesb_UTA.40.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.40.a
+		BIR = {
+			transfer_state = 39 # significant_number - Araucania
+			transfer_state = 40 # significant_number - Los Rios
+		}
+	}
+}
+
+### Argentina joining faction events
+# Invite Argentina to faction
+country_event = {
+	id = tesb_UTA.50
+	title = tesb_UTA.50.t
+	desc = tesb_UTA.50.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.50.a
+		UTA = { country_event = { id = tesb_UTA.51 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_opinion_modifier = UTA_inteference
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.50.b
+		UTA = { country_event = { id = tesb_UTA.52 } }
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 10
+				has_opinion_modifier = UTA_inteference
+			}
+		}
+	}
+}
+
+# Argentina accepts
+country_event = {
+	id = tesb_UTA.51
+	title = tesb_UTA.51.t
+	desc = tesb_UTA.51.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.51.a
+		add_to_faction = ARG
+	}
+}
+
+# Argentina refused to join
+country_event = {
+	id = tesb_UTA.52
+	title = tesb_UTA.52.t
+	desc = tesb_UTA.52.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.52.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.52.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = ARG
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+### England destroyed events
+# Colombian lands forcibly returned
+country_event = {
+	id = tesb_UTA.60
+	title = tesb_UTA.60.t
+	desc = tesb_UTA.60.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.60.a
+		COL = {
+			transfer_state = 176 # significant_number - Bolívar
+			transfer_state = 177 # significant_number - Guaviare
+			transfer_state = 179 # significant_number - Panama Canal
+		}
+	}
+}
+
+
+# Argentine claims forcibly taken
+country_event = {
+	id = tesb_UTA.70
+	title = tesb_UTA.70.t
+	desc = tesb_UTA.70.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.70.a
+		ARG = {
+			transfer_state = 170 # significant_number - Santa Catarina
+			transfer_state = 171 # significant_number - Rio Grande do Sul
+		}
+	}
+}
+
+
+### Rome events
+# Guyana chose to join Native Americans
+country_event = {
+	id = tesb_UTA.80
+	title = tesb_UTA.80.t
+	desc = tesb_UTA.80.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# no choice in the matter
+	option = {
+		name = tesb_UTA.80.a
+	}
+}
+
+### Peace with Adal
+country_event = {
+	id = tesb_UTA.90
+	title = tesb_UTA.90.t
+	desc = tesb_UTA.90.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.90.a
+		white_peace = UTA
+		UTA = { country_event = { id = tesb_UTA.91 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = tesb_UTA.90.b
+		UTA = { country_event = { id = tesb_UTA.92 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Adal agreed to peace
+country_event = {
+	id = tesb_UTA.91
+	title = tesb_UTA.91.t
+	desc = tesb_UTA.91.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.91.a
+	}
+}
+
+# Adal refuses peace
+country_event = {
+	id = tesb_UTA.92
+	title = tesb_UTA.92.t
+	desc = tesb_UTA.92.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.92.a
+	}
+}
+
+
+### Invite Kanata to faction events
+# Invite Kanata to faction
+country_event = {
+	id = tesb_UTA.100
+	title = tesb_UTA.100.t
+	desc = tesb_UTA.100.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.100.a
+		UTA = { country_event = { id = tesb_UTA.101 } }
+		trigger = {
+			NOT = { has_war_with = UTA }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.100.b
+		UTA = { country_event = { id = tesb_UTA.102 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Kanata accepts
+country_event = {
+	id = tesb_UTA.101
+	title = tesb_UTA.101.t
+	desc = tesb_UTA.101.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.101.a
+		add_to_faction = CAN
+	}
+}
+
+# Kanata refused to join
+country_event = {
+	id = tesb_UTA.102
+	title = tesb_UTA.102.t
+	desc = tesb_UTA.102.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.102.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.102.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CAN
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+
+### Invite Guyana to faction events
+# Invite Guyana to faction
+country_event = {
+	id = tesb_UTA.110
+	title = tesb_UTA.110.t
+	desc = tesb_UTA.110.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_UTA.110.a
+		UTA = { country_event = { id = tesb_UTA.111 } }
+		trigger = {
+			NOT = { has_war_with = UTA }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_UTA.110.b
+		UTA = { country_event = { id = tesb_UTA.112 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Guyana accepts
+country_event = {
+	id = tesb_UTA.111
+	title = tesb_UTA.111.t
+	desc = tesb_UTA.111.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_UTA.111.a
+		add_to_faction = GUY
+		RME = { country_event = { id = tesb_UTA.80 } }
+	}
+}
+
+# Guyana refused to join
+country_event = {
+	id = tesb_UTA.112
+	title = tesb_UTA.112.t
+	desc = tesb_UTA.112.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_UTA.112.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_UTA.112.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GUY
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}

@@ -119,3 +119,138 @@ ADA_help_ENG = { #Don't leave the Foederati if joined
 		value = 100
 	}
 }
+
+UTA_allies = {
+	name = "Don't ally UTA"
+	desc = "Don't ally UTA if not native to the Americas"
+
+	enable = {
+		has_government = democratic
+		is_in_faction = no
+		UTA = {
+			has_government = democratic
+		}
+		NOT = {
+			original_tag = CAN
+			original_tag = MEX
+			original_tag = BIR
+			original_tag = COL
+			original_tag = ARG
+			original_tag = GUY
+			original_tag = HAI
+			original_tag = CUB
+		}
+	}
+	abort = {
+		UTA = {
+			NOT = {
+				has_government = democratic
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "UTA"
+		value = -500
+	}
+}
+
+UTA_silly_wars = {
+	name = "UTA focus on the Americas"
+	desc = "UTA should stay focused on the Americas"
+
+	enable = {
+		tag = UTA
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = "IRN"
+		value = -500
+	}
+}
+
+caribbean_is_alone = {
+	name = "Caribbean is alone"
+	desc = "The UTA is invading our enemy but they aren't our friend."
+
+	enable = {
+		OR = {
+			tag = HAI
+			tag = CUB
+		}
+	}
+	abort = {
+		has_government = democratic
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "UTA"
+		value = -500
+	}
+}
+
+prepare_to_fight_mexico = {
+	name = "Prepare to fight Mexico"
+	desc = "Mexico's dictator may not choose to give up power."
+
+	enable = {
+		tag = UTA
+		has_completed_focus = UTA_support_mexhican_democracy
+	}
+	abort = {
+		is_in_faction_with = MEX
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "MEX"
+		value = 100
+	}
+}
+
+prepare_to_fight_caribbean = {
+	name = "Prepare to fight Caribbean"
+	desc = "The Caribbean people must be given power over their own nations."
+
+	enable = {
+		tag = UTA
+		has_completed_focus = UTA_focus_on_the_caribbean
+	}
+	abort = {
+		is_in_faction_with = HAI
+		is_in_faction_with = CUB
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "HAI"
+		value = 100
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = "CUB"
+		value = 100
+	}
+}
+
+prepare_to_fight_england = {
+	name = "Prepare to fight England"
+	desc = "The English peoples' reign of terror must come to an end."
+
+	enable = {
+		tag = UTA
+		has_completed_focus = UTA_support_mexhican_democracy
+	}
+	abort = {
+		is_in_faction_with = ENG
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = "ENG"
+		value = 100
+	}
+}

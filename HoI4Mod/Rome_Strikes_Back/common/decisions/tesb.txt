@@ -1138,6 +1138,201 @@ aotearoa_decisions = {
 	}
 }
 
+mexhico_decisions = {
+	MEX_object_to_UTA_interference = {
+		fire_only_once = yes
+		visible = {
+			has_idea = MEX_strengthen_democracy
+			country_exists = UTA
+		}
+		available = {
+			has_government = absolutist
+			NOT = { has_war_with = UTA }
+			democratic > 0.38
+		}
+		complete_effect = {
+			UTA = { country_event = { id = tesb_UTA.1 } }
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = {
+					has_government = absolutist
+					has_government = neutrality
+				}
+			}
+		}
+	}
+
+	MEX_white_peace_with_england = {
+		visible = {
+			has_war_with = ENG
+			NOT = { is_in_faction_with = UTA }
+		}
+		available = {
+			OR = {
+				date > 1937.06.01
+			}
+			NOT = { is_in_faction_with = UTA }
+		}
+		complete_effect = {
+			ENG = { country_event = { id = tesb_UTA.6 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+UTA_decisions = {
+	UTA_call_for_elections = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = UTA_support_mexhican_democracy
+			country_exists = MEX
+			MEX = { NOT = { has_government = democratic } }
+		}
+		available = {
+			has_government = democratic
+			NOT = { has_war_with = MEX }
+			MEX = { democratic > 0.45 }
+		}
+		cost = 50
+		complete_effect = {
+			MEX = { country_event = { id = tesb_UTA.4 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_negotiate_for_biru_lands = {
+		visible = {
+			NOT = {
+				BIR = { controls_state = 39 } # significant_number - Araucania
+				BIR = { controls_state = 40 } # significant_number - Los Rios
+				ARG = { is_puppet_of = UTA }
+			}
+			is_in_faction_with = BIR
+		}
+		available = {
+			NOT = { has_war_with = ARG }
+			has_completed_focus = UTA_focus_on_south_america
+			NOT = { has_country_flag = UTA_negotiated_for_biru_lands }
+		}
+		cost = 50
+		complete_effect = {
+			ARG = { country_event = { id = tesb_UTA.30 } }
+			set_country_flag = UTA_negotiated_for_biru_lands
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_forcibly_return_biru_lands = {
+		visible = {
+			NOT = {
+				BIR = { controls_state = 39 } # significant_number - Araucania
+				BIR = { controls_state = 40 } # significant_number - Los Rios
+			}
+			is_in_faction_with = BIR
+		}
+		available = {
+			ARG = { is_puppet_of = UTA }
+			has_completed_focus = UTA_focus_on_south_america
+		}
+		cost = 50
+		complete_effect = {
+			ARG = { country_event = { id = tesb_UTA.40 } }
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+
+	UTA_white_peace_with_adal = {
+		visible = {
+			has_war_with = ADA
+		}
+		available = {
+			NOT = { has_war_with = MEX }
+			NOT = { has_war_with = ENG }
+		}
+		complete_effect = {
+			ADA = { country_event = { id = tesb_UTA.90 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_forcibly_return_colombian_lands = {
+		visible = {
+			NOT = {
+				COL = { controls_state = 176 } # Significant number - Bolívar
+				COL = { controls_state = 177 } # Significant number - Guaviare
+				COL = { controls_state = 179 } # Significant number - Panama Canal
+			}
+			176 = { is_core_of = COL } # Significant number - Bolívar
+			177 = { is_core_of = COL } # Significant number - Guaviare
+			179 = { is_core_of = COL } # Significant number - Panama Canal
+			is_in_faction_with = COL
+		}
+		available = {
+			ENG = { is_puppet_of = UTA }
+			has_completed_focus = UTA_focus_on_south_america
+		}
+		cost = 50
+		complete_effect = {
+			ENG = { country_event = { id = tesb_UTA.60 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_forcibly_take_argentine_claims = {
+		visible = {
+			NOT = {
+				ARG = { controls_state = 170 } # Significant number - Santa Catarina
+				ARG = { controls_state = 171 } # Significant number - Rio Grande do Sul
+			}
+			170 = { is_claimed_by = ARG } # Significant number - Santa Catarina
+			171 = { is_claimed_by = ARG } # Significant number - Rio Grande do Sul
+			is_in_faction_with = ARG
+		}
+		available = {
+			ENG = { is_puppet_of = UTA }
+			has_completed_focus = UTA_focus_on_south_america
+		}
+		cost = 50
+		complete_effect = {
+			ENG = { country_event = { id = tesb_UTA.70 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	UTA_remove_english_from_power = {
+		visible = {
+			has_completed_focus = UTA_freedom_for_brazil
+		}
+		available = {
+			ENG = { is_puppet_of = UTA }
+		}
+		cost = 100
+		complete_effect = {
+			ENG = { set_cosmetic_tag = BRA }
+		}
+		ai_will_do = {
+			base = 50
+    }
+  }
+}
+
 italy_decisions = {
 	ITA_ask_pope_again = {
 		fire_only_once = yes
