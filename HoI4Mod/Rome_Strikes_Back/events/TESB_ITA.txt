@@ -4,11 +4,413 @@ country_event = {
 	id = tesb_ITA.1
 	title = tesb_ITA.1.t
 	desc = tesb_ITA.1.d
-	picture = GFX_report_event_ger_civil_war
+	picture = GFX_report_event_royal_parade
 
 	is_triggered_only = yes
 	
 	option = {
 		name = tesb_ITA.1.a
+		ITA = {
+			country_event = { id = tesb_ITA.2 }
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = ITA_crowned_king }
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ITA_crowned_king
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0.1
+				NOT = { has_government = absolutist }
+			}
+			modifier = {
+				factor = 0
+				has_war_with = ITA
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = ITA
+					value > 24
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = ITA
+					value > 49
+				}
+			}
+		}
+	}
+
+	option = {
+		name = tesb_ITA.1.b
+		ITA = {
+			country_event = { id = tesb_ITA.3 }
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = ITA_refused_crown }
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = ITA_refused_crown
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = ITA
+					value < 0
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = ITA
+					value < -25
+				}
+			}
+			modifier = {
+				factor = 5
+				has_opinion = {
+					target = ITA
+					value < -50
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.2
+	title = tesb_ITA.2.t
+	desc = tesb_ITA.2.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.2.a
+		set_country_flag = ITA_crowned_giuseppe
+		add_country_leader_trait = crowned_monarch
+		set_character_name = {
+			character = ITA_giuseppe_lombardi
+			name = ITA_giuseppe_ii_lombardi
+		}
+		hidden_effect = {
+			news_event = { id = tesb_news.5 }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.3
+	title = tesb_ITA.3.t
+	desc = tesb_ITA.3.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.3.a
+		set_country_flag = ITA_pope_refused_coronation
+	}
+	option = {
+		trigger = {
+			has_political_power > 250
+		}
+		name = tesb_ITA.3.b
+		add_political_power = -250
+		country_event = { id = tesb_ITA.4 }
+	}
+}
+country_event = {
+	id = tesb_ITA.4
+	title = tesb_ITA.4.t
+	desc = tesb_ITA.4.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.4.a
+		set_country_flag = ITA_crowned_giuseppe
+		add_country_leader_trait = crowned_monarch
+		set_character_name = {
+			character = ITA_giuseppe_lombardi
+			name = ITA_giuseppe_ii_lombardi
+		}
+		hidden_effect = {
+			news_event = { id = tesb_news.5 }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.10
+	title = tesb_ITA.10.t
+	desc = tesb_ITA.10.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			is_faction_leader = no
+		}
+		name = tesb_ITA.10.a
+		set_country_flag = join_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.11 hours = 24 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_faction_leader = yes
+		}
+		name = tesb_ITA.10.b
+		set_country_flag = join_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.11 hours = 24 }
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ROOT
+			}
+			country_event = { id = tesb_ITA.12 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_ITA.10.c
+		set_country_flag = reject_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.13 hours = 24 }
+			effect_tooltip = {
+				create_wargoal = {
+					target = ROOT
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.11
+	title = tesb_ITA.11.t
+	desc = tesb_ITA.11.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.11.a
+		every_country = {
+			limit = {
+				has_country_flag = join_ITA
+			}
+			ITA = { add_to_faction = PREV }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.12
+	title = tesb_ITA.12.t
+	desc = tesb_ITA.12.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_ITA.12.a
+		set_country_flag = join_ITA
+		ai_chance = {
+			factor = 10
+			modifier = {
+				NOT = { has_government = absolutist }
+				factor = 0.1
+			}
+		}
+	}
+	
+	#leave
+	option = {
+		name = tesb_ITA.12.b
+		leave_faction = yes
+		ai_chance = {
+			factor = 1
+			modifier = {
+				has_government = democratic
+				factor = 5
+			}
+			modifier = {
+				has_government = communism
+				factor = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.13
+	title = tesb_ITA.13.t
+	desc = tesb_ITA.13.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_ITA.13.a
+		create_wargoal = {
+			target = ROOT
+			type = puppet_wargoal_focus
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.20
+	title = tesb_ITA.20.t
+	desc = tesb_ITA.20.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#integrate
+	option = {
+		name = tesb_ITA.20.a
+		custom_effect_tooltip = GAME_OVER_TT
+		effect_tooltip = {
+			FROM = {
+				annex_country = {
+					target = PREV
+				}
+			}
+			every_state = {
+				limit = {
+					has_state_flag = original_owner_@PREV
+				}
+				add_core_of = FROM
+			}
+		}
+		FROM = {
+			country_event = { id = tesb_ITA.21 }
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+		}
+	}
+	option = {
+		name = tesb_ITA.20.b
+		effect_tooltip = {
+			FROM = {
+				create_wargoal = {
+					target = PREV
+					type = annex_everything
+				}
+				remove_from_faction = PREV
+			}
+		}
+		FROM = {
+			country_event = { id = tesb_ITA.22 }
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_subject_of = FROM
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio < 1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.21
+	title = tesb_ITA.21.t
+	desc = tesb_ITA.21.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+
+	#integrate
+	option = {
+		name = tesb_ITA.21.a
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+		hidden_effect = {
+			FROM = {
+				every_character = {
+					limit = {
+						OR = {
+							is_unit_leader = yes
+							is_navy_leader = yes
+						}
+					}
+					set_nationality = ROOT
+				}
+			}
+		}
+		every_state = {
+			limit = {
+				has_state_flag = original_owner_@FROM
+			}
+			add_core_of = PREV
+		}
+		set_cosmetic_tag = HRE_UNIFIED
+	}
+}
+
+country_event = {
+	id = tesb_ITA.22
+	title = tesb_ITA.22.t
+	desc = tesb_ITA.22.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.22.a
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+		remove_from_faction = FROM
 	}
 }
