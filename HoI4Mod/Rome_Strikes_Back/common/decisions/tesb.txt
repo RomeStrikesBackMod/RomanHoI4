@@ -1550,3 +1550,75 @@ BRG_hre_influence_decisions = {
 		}
 	}
 }
+
+MNG_decisions = {
+	MNG_negotiate_for_burma_IND = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_burma
+			country_exists = IND
+			BUR = { 
+				OR = {
+					NOT = { owns_state = 272 }
+					NOT = { owns_state = 274 }
+				}
+			}
+		}
+		available = {
+			NOT = { has_war_with = IND }
+			is_in_faction_with = BUR
+		}
+		cost = 50
+		complete_effect = {
+			IND = { country_event = { id = tesb_MNG.50 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+MNG_decisions = {
+	MNG_negotiate_for_burma_PLC = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_burma
+			country_exists = PLC
+			BUR = { NOT = { owns_state = 458 } }
+		}
+		available = {
+			NOT = { has_war_with = PLC }
+			is_in_faction_with = BUR
+		}
+		cost = 50
+		complete_effect = {
+			PLC = { country_event = { id = tesb_MNG.60 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+
+MNG_decisions = {
+	MNG_negotiate_for_burma_MAK = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_burma
+			country_exists = MAK
+			BUR = { NOT = { owns_state = 363 } }
+		}
+		available = {
+			NOT = { has_war_with = MAK }
+			is_in_faction_with = BUR
+		}
+		cost = 50
+		complete_effect = {
+			MAK = { country_event = { id = tesb_MNG.70 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
