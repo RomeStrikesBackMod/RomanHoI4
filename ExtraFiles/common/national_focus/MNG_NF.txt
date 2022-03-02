@@ -19,12 +19,11 @@ focus_tree = {
 	shared_focus = aviation_effort
 	shared_focus = naval_effort
 	shared_focus = industrial_effort
-	shared_focus = political_effort
 
 	focus = {
 		id = MNG_GACPS
 		icon = GFX_goal_anschluss
-		x = 33
+		x = 23
 		y = 0
 		cost = 10
 		completion_reward = {
@@ -44,7 +43,7 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = MNG_GACPS }
 		ai_will_do = {
-			factor = 90
+			factor = 900
 		}
 		completion_reward = {
 			add_stability = 0.05
@@ -52,15 +51,43 @@ focus_tree = {
 	}
 
 	focus = {
-		id = MNG_khiva
+		id = MNG_chagatai
 		icon = GFX_goal_anschluss
 		relative_position_id = MNG_look_west
 		x = -1
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_west }
+		will_lead_to_war_with = CHG
 		available = {
 			NOT = { has_war = yes }
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = CHG
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			factor = 900
+		}
+	}
+
+	focus = {
+		id = MNG_khiva
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_chagatai
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_chagatai }
+		prerequisite = { focus = MNG_tibet }
+		will_lead_to_war_with = KHI
+		available = {
+			NOT = { has_war = yes }
+		}
+		bypass = {
+			is_in_faction_with = KHI
 		}
 		completion_reward = {
 			create_wargoal = {
@@ -69,7 +96,31 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 90
+			factor = 900
+		}
+	}
+
+	focus = {
+		id = MNG_central_asia
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_khiva
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_khiva }
+		available = {
+			KHI = { is_puppet = yes }
+		}
+		will_lead_to_war_with = RUS
+		completion_reward = {
+			create_wargoal = {
+				target = RUS
+				type = take_state
+				generator = { 508 509 522 }
+			}
+		}
+		ai_will_do = {
+			factor = 900
 		}
 	}
 
@@ -83,7 +134,9 @@ focus_tree = {
 		prerequisite = { focus = MNG_look_west }
 		available = {
 			NOT = { has_war = yes }
+			date > 1940.1.1
 		}
+		will_lead_to_war_with = TIB
 		completion_reward = {
 			create_wargoal = {
 				target = TIB
@@ -91,32 +144,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 90
-		}
-	}
-
-	focus = {
-		id = MNG_central_asia
-		icon = GFX_goal_anschluss
-		relative_position_id = MNG_khiva
-		x = 1
-		y = 1
-		cost = 10
-		prerequisite = { focus = MNG_khiva }
-		prerequisite = { focus = MNG_tibet }
-		available = {
-			KHI = { is_puppet = yes }
-		}
-		completion_reward = {
-			create_wargoal = {
-				target = CHA
-				type = annex_everything
-			}
-			create_wargoal = {
-				target = RUS
-				type = take_state
-				generator = { 508 509 522 }
-			}
+			factor = 900
 		}
 	}
 
@@ -129,7 +157,7 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = MNG_GACPS }
 		ai_will_do = {
-			factor = 80
+			factor = 800
 		}
 		completion_reward = {
 			add_stability = 0.05
@@ -151,7 +179,7 @@ focus_tree = {
 			RUS = { country_event = { id = tesb_MNG.20 } }
 		}
 		ai_will_do = {
-			factor = 70
+			factor = 650
 		}
 	}
 
@@ -166,6 +194,7 @@ focus_tree = {
 		available = {
 			NOT = { has_war = yes }
 		}
+		will_lead_to_war_with = MAN
 		completion_reward = {
 			create_wargoal = {
 				target = MAN
@@ -173,7 +202,7 @@ focus_tree = {
 			}
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 750
 		}
 	}
 
@@ -194,7 +223,7 @@ focus_tree = {
 			release_puppet = MON
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 900
 		}
 	}
 
@@ -209,6 +238,9 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.05
 		}
+		ai_will_do = {
+			factor = 600
+		}
 	}
 
 	focus = {
@@ -219,11 +251,14 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_south }
+		bypass = {
+			is_in_faction_with = SHN
+		}
 		completion_reward = {
 			SHN = { country_event = { id = tesb_MNG.30 } }
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 600
 		}
 	}
 
@@ -235,11 +270,14 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_invite_shan }
+		bypass = {
+			is_in_faction_with = BUR
+		}
 		completion_reward = {
 			BUR = { country_event = { id = tesb_MNG.40 } }
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 600
 		}
 	}
 
@@ -251,11 +289,17 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_south }
+		bypass = {
+			is_in_faction_with = LAO
+		}
 		completion_reward = {
-			LAO = { country_event = { id = tesb_MNG.80 } } # TODO: write events
+			LAO = { country_event = { id = tesb_MNG.80 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 600
 		}
 	}
 
@@ -267,11 +311,17 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_invite_luang_prabang }
+		bypass = {
+			is_in_faction_with = CAM
+		}
 		completion_reward = {
-			CAM = { country_event = { id = tesb_MNG.90 } } # TODO: write events
+			CAM = { country_event = { id = tesb_MNG.90 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 600
 		}
 	}
 
@@ -283,22 +333,20 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_invite_luang_prabang }
+		will_lead_to_war_with = MAK
 		completion_reward = {
-			#TODO: replace this with event chains to negotiate, 100s
-			#TODO: add ai_will_do to release Dai Nam
-			create_wargoal = {
-				target = MAK
-				type = take_state
-				generator = { 75 }
-			}
+			MAK = { country_event = { id = tesb_MNG.100 } }
 		}
 		ai_will_do = {
 			factor = 100
 		}
+		ai_will_do = {
+			factor = 600
+		}
 	}
 
 	focus = {
-		id = MNG_create_kingdom_of_siam
+		id = MNG_invite_siam
 		icon = GFX_goal_anschluss
 		relative_position_id = MNG_invite_burma
 		x = 1
@@ -306,56 +354,60 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = MNG_invite_burma }
 		prerequisite = { focus = MNG_free_dai_nam }
+		will_lead_to_war_with = SUK
+		will_lead_to_war_with = MAK
+		bypass = {
+			is_in_faction_with = SIA
+		}
 		completion_reward = {
-			#TODO: make this create thai cores
-			#TODO: replace these with event chains to negotiate, 60s, 70s, 80s
-			#TODO: add ai_will_do to release Pegu
-			create_wargoal = {
-				target = MAK
-				type = take_state
-				generator = { 363 364 }
-			}
-			create_wargoal = {
-				target = IND
-				type = take_state
-				generator = { 274 275 }
-			}
+			SIA = { country_event = { id = tesb_MNG.110 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 600
 		}
 	}
 
 	focus = {
 		id = MNG_invite_pattani
 		icon = GFX_goal_anschluss
-		relative_position_id = MNG_create_kingdom_of_siam
+		relative_position_id = MNG_invite_siam
 		x = -1
 		y = 1
 		cost = 10
-		prerequisite = { focus = MNG_create_kingdom_of_siam }
+		prerequisite = { focus = MNG_invite_siam }
+		bypass = {
+			is_in_faction_with = PAT
+		}
 		completion_reward = {
-			PAT = { country_event = { id = tesb_MNG.90 } } # TODO: Write events
-			#TODO: add decision to ask Makassar for Pattani's territory back - events are 100s
+			PAT = { country_event = { id = tesb_MNG.150 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 600
 		}
 	}
 
 	focus = {
 		id = MNG_south_china_sea
 		icon = GFX_goal_anschluss
-		relative_position_id = MNG_create_thailand
+		relative_position_id = MNG_invite_siam
 		x = 1
 		y = 1
 		cost = 10
-		prerequisite = { focus = MNG_create_thailand }
+		prerequisite = { focus = MNG_invite_siam }
 		completion_reward = {
 			add_stability = 0.05
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 500
 		}
 	}
 
@@ -367,11 +419,18 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_south_china_sea }
+		bypass = {
+			is_in_faction_with = MAK
+		}
+		will_lead_to_war_with = MAK
 		completion_reward = {
-			MAK = { country_event = { id = tesb_MNG.160 } } # TODO: write events
+			MAK = { country_event = { id = tesb_MNG.170 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 500
 		}
 	}
 
@@ -383,11 +442,18 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_makassar }
+		will_lead_to_war_with = JAV
+		bypass = {
+			is_in_faction_with = JAV
+		}
 		completion_reward = {
-			JAV = { country_event = { id = tesb_MNG.170 } } # TODO: write events
+			JAV = { country_event = { id = tesb_MNG.180 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 500
 		}
 	}
 
@@ -399,11 +465,18 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_south_china_sea }
+		will_lead_to_war_with = PHI
+		bypass = {
+			is_in_faction_with = PHI
+		}
 		completion_reward = {
-			JAV = { country_event = { id = tesb_MNG.180 } } # TODO: write events
+			JAV = { country_event = { id = tesb_MNG.190 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 500
 		}
 	}
 
@@ -415,11 +488,18 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_philippines }
+		will_lead_to_war_with = X01
+		bypass = {
+			is_in_faction_with = X01
+		}
 		completion_reward = {
-			X01 = { country_event = { id = tesb_MNG.190 } } # TODO: write events
+			X01 = { country_event = { id = tesb_MNG.200 } }
 		}
 		ai_will_do = {
 			factor = 100
+		}
+		ai_will_do = {
+			factor = 500
 		}
 	}
 
@@ -434,6 +514,9 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.05
 		}
+		ai_will_do = {
+			factor = 1000
+		}
 	}
 
 	focus = {
@@ -444,11 +527,14 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_east }
+		bypass = {
+			is_in_faction_with = KOR
+		}
 		completion_reward = {
 			KOR = { country_event = { id = tesb_MNG.1 } }
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 1000
 		}
 	}
 
@@ -460,11 +546,14 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_east }
+		bypass = {
+			is_in_faction_with = JAP
+		}
 		completion_reward = {
 			JAP = { country_event = { id = tesb_MNG.10 } }
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 1000
 		}
 	}
 }

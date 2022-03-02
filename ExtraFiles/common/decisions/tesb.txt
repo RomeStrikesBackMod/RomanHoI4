@@ -1576,9 +1576,7 @@ MNG_decisions = {
 			base = 100
 		}
 	}
-}
 
-MNG_decisions = {
 	MNG_negotiate_for_burma_PLC = {
 		fire_only_once = yes
 		visible = {
@@ -1598,10 +1596,7 @@ MNG_decisions = {
 			base = 100
 		}
 	}
-}
 
-
-MNG_decisions = {
 	MNG_negotiate_for_burma_MAK = {
 		fire_only_once = yes
 		visible = {
@@ -1616,6 +1611,138 @@ MNG_decisions = {
 		cost = 50
 		complete_effect = {
 			MAK = { country_event = { id = tesb_MNG.70 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	MNG_negotiate_for_dai_name_MAK = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_free_dai_nam
+			country_exists = MAK
+			MAK = {  owns_state = 362 }
+		}
+		available = {
+			NOT = { has_war_with = MAK }
+		}
+		cost = 50
+		complete_effect = {
+			MAK = { country_event = { id = tesb_MNG.100 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	MNG_release_dai_name = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_free_dai_nam
+			NOT = { country_exists = VIN }
+			OR = {
+				owns_state = 362
+				owns_state = 401
+			}
+		}
+		available = {
+			owns_state = 362
+			owns_state = 401
+		}
+		complete_effect = {
+			release_puppet = VIN
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	MNG_force_sukothai_into_siam = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_siam
+			SIA = {
+				is_puppet_of = MNG
+				NOT = { owns_state = 602 }
+				NOT = { owns_state = 603 }
+			}
+		}
+		available = {
+			SUK = {
+				OR = {
+					owns_state = 602
+					owns_state = 603
+				}
+			}
+		}
+		complete_effect = {
+			SUK = { country_event = { id = tesb_MNG.120 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	MNG_negotiate_for_siam_IND = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_siam
+			country_exists = IND
+			SIA = { 
+				OR = {
+					NOT = { owns_state = 273 }
+					NOT = { owns_state = 275 }
+				}
+			}
+		}
+		available = {
+			NOT = { has_war_with = IND }
+			is_in_faction_with = SIA
+		}
+		cost = 50
+		complete_effect = {
+			IND = { country_event = { id = tesb_MNG.130 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	MNG_negotiate_for_siam_MAK = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_siam
+			country_exists = MAK
+			SIA = { NOT = { owns_state = 364 } }
+		}
+		available = {
+			NOT = { has_war_with = MAK }
+			is_in_faction_with = SIA
+		}
+		cost = 50
+		complete_effect = {
+			MAK = { country_event = { id = tesb_MNG.140 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	MNG_negotiate_for_pattani_MAK = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_pattani
+			country_exists = MAK
+			PAT = { NOT = { owns_state = 354 } }
+		}
+		available = {
+			NOT = { has_war_with = MAK }
+			is_in_faction_with = PAT
+		}
+		cost = 50
+		complete_effect = {
+			MAK = { country_event = { id = tesb_MNG.160 } }
 		}
 		ai_will_do = {
 			base = 100
