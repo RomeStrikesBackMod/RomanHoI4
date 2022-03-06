@@ -254,3 +254,86 @@ prepare_to_fight_england = {
 		value = 100
 	}
 }
+
+MNG_allies = {
+	name = "Don't ally China"
+	desc = "Don't ally China if not native to Asia"
+
+	enable = {
+		has_government = absolutist
+		is_in_faction = no
+		MNG = {
+			has_government = absolutist
+		}
+		NOT = {
+			original_tag = JAP
+			original_tag = KOR
+			original_tag = MON
+			original_tag = MAN
+			original_tag = CHG
+			original_tag = KHI
+			original_tag = SHN
+			original_tag = BUR
+			original_tag = LAO
+			original_tag = CAM
+			original_tag = MAK
+			original_tag = SIA
+			original_tag = PAT
+			original_tag = MAK
+			original_tag = JAV
+			original_tag = PHI
+			original_tag = X01
+		}
+	}
+	abort = {
+		MNG = {
+			NOT = {
+				has_government = absolutist
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "MNG"
+		value = -500
+	}
+}
+
+IND_no_war = {
+	name = "Don't declare wars"
+	desc = "After conquering Tibet, India should be inward focused"
+
+	enable = {
+		has_government = democratic
+		tag = IND
+	}
+	abort = {
+		IND = {
+			NOT = {
+				has_government = democratic
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = "MNG"
+		value = -500
+	}
+	ai_strategy = {
+		type = declare_war
+		id = "RUS"
+		value = -500
+	}
+	ai_strategy = {
+		type = declare_war
+		id = "BCS"
+		value = -500
+	}
+	ai_strategy = {
+		type = declare_war
+		id = "BUR"
+		value = -500
+	}
+}
