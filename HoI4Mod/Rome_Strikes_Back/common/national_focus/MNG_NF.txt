@@ -77,11 +77,10 @@ focus_tree = {
 		id = MNG_khiva
 		icon = GFX_goal_anschluss
 		relative_position_id = MNG_chagatai
-		x = 1
+		x = 0
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_chagatai }
-		prerequisite = { focus = MNG_tibet }
 		will_lead_to_war_with = KHI
 		available = {
 			NOT = { has_war = yes }
@@ -101,13 +100,38 @@ focus_tree = {
 	}
 
 	focus = {
+		id = MNG_tibet
+		icon = GFX_goal_anschluss
+		relative_position_id = MNG_look_west
+		x = 1
+		y = 2
+		cost = 10
+		prerequisite = { focus = MNG_look_west }
+		available = {
+			NOT = { has_war = yes }
+			date > 1940.3.21
+		}
+		will_lead_to_war_with = TIB
+		completion_reward = {
+			create_wargoal = {
+				target = TIB
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			factor = 900
+		}
+	}
+
+	focus = {
 		id = MNG_central_asia
 		icon = GFX_goal_anschluss
 		relative_position_id = MNG_khiva
-		x = 0
+		x = 1
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_khiva }
+		prerequisite = { focus = MNG_tibet }
 		available = {
 			KHI = { is_puppet = yes }
 		}
@@ -117,30 +141,6 @@ focus_tree = {
 				target = RUS
 				type = take_state
 				generator = { 508 509 522 }
-			}
-		}
-		ai_will_do = {
-			factor = 900
-		}
-	}
-
-	focus = {
-		id = MNG_tibet
-		icon = GFX_goal_anschluss
-		relative_position_id = MNG_look_west
-		x = 1
-		y = 1
-		cost = 10
-		prerequisite = { focus = MNG_look_west }
-		available = {
-			NOT = { has_war = yes }
-			date > 1940.1.1
-		}
-		will_lead_to_war_with = TIB
-		completion_reward = {
-			create_wargoal = {
-				target = TIB
-				type = annex_everything
 			}
 		}
 		ai_will_do = {
@@ -296,9 +296,6 @@ focus_tree = {
 			LAO = { country_event = { id = tesb_MNG.80 } }
 		}
 		ai_will_do = {
-			factor = 100
-		}
-		ai_will_do = {
 			factor = 600
 		}
 	}
@@ -318,9 +315,6 @@ focus_tree = {
 			CAM = { country_event = { id = tesb_MNG.90 } }
 		}
 		ai_will_do = {
-			factor = 100
-		}
-		ai_will_do = {
 			factor = 600
 		}
 	}
@@ -336,9 +330,6 @@ focus_tree = {
 		will_lead_to_war_with = MAK
 		completion_reward = {
 			MAK = { country_event = { id = tesb_MNG.100 } }
-		}
-		ai_will_do = {
-			factor = 100
 		}
 		ai_will_do = {
 			factor = 600
@@ -363,9 +354,6 @@ focus_tree = {
 			SIA = { country_event = { id = tesb_MNG.110 } }
 		}
 		ai_will_do = {
-			factor = 100
-		}
-		ai_will_do = {
 			factor = 600
 		}
 	}
@@ -385,9 +373,6 @@ focus_tree = {
 			PAT = { country_event = { id = tesb_MNG.150 } }
 		}
 		ai_will_do = {
-			factor = 100
-		}
-		ai_will_do = {
 			factor = 600
 		}
 	}
@@ -402,9 +387,6 @@ focus_tree = {
 		prerequisite = { focus = MNG_invite_siam }
 		completion_reward = {
 			add_stability = 0.05
-		}
-		ai_will_do = {
-			factor = 100
 		}
 		ai_will_do = {
 			factor = 500
@@ -427,9 +409,6 @@ focus_tree = {
 			MAK = { country_event = { id = tesb_MNG.170 } }
 		}
 		ai_will_do = {
-			factor = 100
-		}
-		ai_will_do = {
 			factor = 500
 		}
 	}
@@ -450,9 +429,6 @@ focus_tree = {
 			JAV = { country_event = { id = tesb_MNG.180 } }
 		}
 		ai_will_do = {
-			factor = 100
-		}
-		ai_will_do = {
 			factor = 500
 		}
 	}
@@ -470,10 +446,7 @@ focus_tree = {
 			is_in_faction_with = PHI
 		}
 		completion_reward = {
-			JAV = { country_event = { id = tesb_MNG.190 } }
-		}
-		ai_will_do = {
-			factor = 100
+			PHI = { country_event = { id = tesb_MNG.190 } }
 		}
 		ai_will_do = {
 			factor = 500
@@ -494,9 +467,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			X01 = { country_event = { id = tesb_MNG.200 } }
-		}
-		ai_will_do = {
-			factor = 100
 		}
 		ai_will_do = {
 			factor = 500
