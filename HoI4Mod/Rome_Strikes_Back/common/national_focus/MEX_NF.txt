@@ -33,7 +33,7 @@ focus_tree = {
 		id = MEX_collectivist_ethos
 		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = political_effort }
-		mutually_exclusive = { focus = liberty_ethos }
+		mutually_exclusive = { focus = MEX_liberty_ethos }
 		x = -2
 		y = 1
 		relative_position_id = MEX_political_effort
@@ -63,7 +63,7 @@ focus_tree = {
 		id = MEX_nationalism_focus
 		icon = GFX_goal_support_fascism
 		prerequisite = { focus = collectivist_ethos }
-		mutually_exclusive = { focus = absolutism_focus focus = internationalism_focus }
+		mutually_exclusive = { focus = MEX_absolutism_focus focus = MEX_internationalism_focus }
 		x = -2
 		y = 1
 		relative_position_id = MEX_collectivist_ethos
@@ -187,7 +187,7 @@ focus_tree = {
 		id = MEX_internationalism_focus
 		icon = GFX_goal_support_communism
 		prerequisite = { focus = collectivist_ethos }
-		mutually_exclusive = { focus = absolutism_focus focus = nationalism_focus }
+		mutually_exclusive = { focus = MEX_absolutism_focus focus = MEX_nationalism_focus }
 		x = 0
 		y = 1
 		relative_position_id = MEX_collectivist_ethos
@@ -286,7 +286,7 @@ focus_tree = {
 		id = MEX_absolutism_focus
 		icon = GFX_focus_hun_elect_a_king
 		prerequisite = { focus = collectivist_ethos }
-		mutually_exclusive = { focus = internationalism_focus focus = nationalism_focus }
+		mutually_exclusive = { focus = MEX_internationalism_focus focus = MEX_nationalism_focus }
 		x = 2
 		y = 1
 		relative_position_id = MEX_collectivist_ethos
@@ -396,7 +396,7 @@ focus_tree = {
 		id = MEX_liberty_ethos
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = political_effort }
-		mutually_exclusive = { focus = collectivist_ethos }
+		mutually_exclusive = { focus = MEX_collectivist_ethos }
 		x = 2
 		y = 1
 		relative_position_id = MEX_political_effort
@@ -441,7 +441,7 @@ focus_tree = {
 		id = MEX_neutrality_focus
 		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = { focus = liberty_ethos }
-		mutually_exclusive = { focus = interventionism_focus }
+		mutually_exclusive = { focus = MEX_interventionism_focus }
 		x = 0
 		y = 1
 		relative_position_id = MEX_liberty_ethos
@@ -477,7 +477,7 @@ focus_tree = {
 		id = MEX_interventionism_focus
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = liberty_ethos }
-		mutually_exclusive = { focus = neutrality_focus }
+		mutually_exclusive = { focus = MEX_neutrality_focus }
 		x = 2
 		y = 1
 		relative_position_id = MEX_liberty_ethos
@@ -543,7 +543,7 @@ focus_tree = {
 				has_defensive_war = yes
 			}
 		}
-		continue_if_invalid = MEX_yes
+		continue_if_invalid = yes
 		completion_reward = {
 			add_ideas = why_we_fight_focus
 			custom_effect_tooltip = why_we_fight_effect

@@ -18,7 +18,7 @@ focus_tree = {
 	shared_focus = industrial_effort
 	
 	focus = {
-		id = political_effort
+		id = MEX_political_effort
 		icon = GFX_goal_generic_demand_territory
 		x = 20
 		y = 0
@@ -30,13 +30,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = collectivist_ethos
+		id = MEX_collectivist_ethos
 		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = political_effort }
-		mutually_exclusive = { focus = liberty_ethos }
+		mutually_exclusive = { focus = MEX_liberty_ethos }
 		x = -2
 		y = 1
-		relative_position_id = political_effort
+		relative_position_id = MEX_political_effort
 		cost = 10
 		available_if_capitulated = yes
 		available = {
@@ -60,13 +60,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = nationalism_focus
+		id = MEX_nationalism_focus
 		icon = GFX_goal_support_fascism
 		prerequisite = { focus = collectivist_ethos }
-		mutually_exclusive = { focus = absolutism_focus focus = internationalism_focus }
+		mutually_exclusive = { focus = MEX_absolutism_focus focus = MEX_internationalism_focus }
 		x = -2
 		y = 1
-		relative_position_id = collectivist_ethos
+		relative_position_id = MEX_collectivist_ethos
 		cost = 10
 		available_if_capitulated = yes
 		available = {
@@ -101,12 +101,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = militarism
+		id = MEX_militarism
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = nationalism_focus }
 		x = 0
 		y = 1
-		relative_position_id = nationalism_focus
+		relative_position_id = MEX_nationalism_focus
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -121,12 +121,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = military_youth
+		id = MEX_military_youth
 		icon = GFX_goal_generic_more_territorial_claims
 		prerequisite = { focus = militarism }
 		x = 0
 		y = 1
-		relative_position_id = militarism
+		relative_position_id = MEX_militarism
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -170,12 +170,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = paramilitarism
+		id = MEX_paramilitarism
 		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = military_youth }
 		x = 0
 		y = 1
-		relative_position_id = military_youth
+		relative_position_id = MEX_military_youth
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -184,13 +184,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = internationalism_focus
+		id = MEX_internationalism_focus
 		icon = GFX_goal_support_communism
 		prerequisite = { focus = collectivist_ethos }
-		mutually_exclusive = { focus = absolutism_focus focus = nationalism_focus }
+		mutually_exclusive = { focus = MEX_absolutism_focus focus = MEX_nationalism_focus }
 		x = 0
 		y = 1
-		relative_position_id = collectivist_ethos
+		relative_position_id = MEX_collectivist_ethos
 		cost = 10
 		available_if_capitulated = yes
 		available = {
@@ -225,12 +225,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = political_correctness
+		id = MEX_political_correctness
 		icon = GFX_goal_generic_dangerous_deal
 		prerequisite = { focus = internationalism_focus }
 		x = 0
 		y = 1
-		relative_position_id = internationalism_focus
+		relative_position_id = MEX_internationalism_focus
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -244,12 +244,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = indoctrination_focus
+		id = MEX_indoctrination_focus
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = political_correctness }
 		x = 0
 		y = 1
-		relative_position_id = political_correctness
+		relative_position_id = MEX_political_correctness
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -259,12 +259,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = political_commissars
+		id = MEX_political_commissars
 		icon = GFX_goal_generic_forceful_treaty
 		prerequisite = { focus = indoctrination_focus }
 		x = 0
 		y = 1
-		relative_position_id = indoctrination_focus
+		relative_position_id = MEX_indoctrination_focus
 		cost = 10
 		available_if_capitulated = yes
 		available = {
@@ -283,13 +283,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = absolutism_focus
+		id = MEX_absolutism_focus
 		icon = GFX_focus_hun_elect_a_king
 		prerequisite = { focus = collectivist_ethos }
-		mutually_exclusive = { focus = internationalism_focus focus = nationalism_focus }
+		mutually_exclusive = { focus = MEX_internationalism_focus focus = MEX_nationalism_focus }
 		x = 2
 		y = 1
-		relative_position_id = collectivist_ethos
+		relative_position_id = MEX_collectivist_ethos
 		cost = 10
 		available_if_capitulated = yes
 		available = {
@@ -324,12 +324,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = royal_dictatorship_focus
+		id = MEX_royal_dictatorship_focus
 		icon = GFX_focus_rom_royal_dictatorship
 		prerequisite = { focus = absolutism_focus }
 		x = 0
 		y = 1
-		relative_position_id = absolutism_focus
+		relative_position_id = MEX_absolutism_focus
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -343,12 +343,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = royal_army_tradition_focus
+		id = MEX_royal_army_tradition_focus
 		icon = GFX_goal_generic_special_forces
 		prerequisite = { focus = royal_dictatorship_focus }
 		x = 0
 		y = 1
-		relative_position_id = royal_dictatorship_focus
+		relative_position_id = MEX_royal_dictatorship_focus
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -358,12 +358,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = historical_claims_focus
+		id = MEX_historical_claims_focus
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		prerequisite = { focus = royal_army_tradition_focus }
 		x = 0
 		y = 1
-		relative_position_id = royal_army_tradition_focus
+		relative_position_id = MEX_royal_army_tradition_focus
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -372,12 +372,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = ideological_fanaticism
+		id = MEX_ideological_fanaticism
 		icon = GFX_goal_generic_demand_territory
 		prerequisite = { focus = paramilitarism focus = political_commissars focus = historical_claims_focus }
 		x = 0
 		y = 5
-		relative_position_id = collectivist_ethos
+		relative_position_id = MEX_collectivist_ethos
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -393,13 +393,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = liberty_ethos
+		id = MEX_liberty_ethos
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = political_effort }
-		mutually_exclusive = { focus = collectivist_ethos }
+		mutually_exclusive = { focus = MEX_collectivist_ethos }
 		x = 2
 		y = 1
-		relative_position_id = political_effort
+		relative_position_id = MEX_political_effort
 		cost = 10
 		available_if_capitulated = yes
 		available = {
@@ -438,13 +438,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = neutrality_focus
+		id = MEX_neutrality_focus
 		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = { focus = liberty_ethos }
-		mutually_exclusive = { focus = interventionism_focus }
+		mutually_exclusive = { focus = MEX_interventionism_focus }
 		x = 0
 		y = 1
-		relative_position_id = liberty_ethos
+		relative_position_id = MEX_liberty_ethos
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -460,12 +460,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = deterrence
+		id = MEX_deterrence
 		icon = GFX_goal_generic_defence
 		prerequisite = { focus = neutrality_focus }
 		x = 0
 		y = 1
-		relative_position_id = neutrality_focus
+		relative_position_id = MEX_neutrality_focus
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -474,13 +474,13 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = interventionism_focus
+		id = MEX_interventionism_focus
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = liberty_ethos }
-		mutually_exclusive = { focus = neutrality_focus }
+		mutually_exclusive = { focus = MEX_neutrality_focus }
 		x = 2
 		y = 1
-		relative_position_id = liberty_ethos
+		relative_position_id = MEX_liberty_ethos
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -501,12 +501,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = volunteer_corps
+		id = MEX_volunteer_corps
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = interventionism_focus }
 		x = 0
 		y = 1
-		relative_position_id = interventionism_focus
+		relative_position_id = MEX_interventionism_focus
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -515,12 +515,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = foreign_expeditions
+		id = MEX_foreign_expeditions
 		icon = GFX_goal_generic_more_territorial_claims
 		prerequisite = { focus = volunteer_corps }
 		x = 0
 		y = 1
-		relative_position_id = volunteer_corps
+		relative_position_id = MEX_volunteer_corps
 		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
@@ -529,12 +529,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = why_we_fight
+		id = MEX_why_we_fight
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = foreign_expeditions focus = deterrence }
 		x = -2
 		y = 1
-		relative_position_id = foreign_expeditions
+		relative_position_id = MEX_foreign_expeditions
 		cost = 10
 		available_if_capitulated = yes
 		available = {
@@ -557,12 +557,12 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = technology_sharing
+		id = MEX_technology_sharing
 		icon = GFX_goal_generic_scientific_exchange
 		prerequisite = { focus = ideological_fanaticism focus = why_we_fight }
 		x = 3
 		y = 1
-		relative_position_id = ideological_fanaticism
+		relative_position_id = MEX_ideological_fanaticism
 		cost = 10
 		available_if_capitulated = yes
 		available = {

@@ -163,7 +163,10 @@ country_event = {
 		MNG = { country_event = { id = tesb_MNG.21 } }
 		trigger = {
 			NOT = { has_war_with = MNG }
-			is_in_faction = no
+			OR = {
+				is_in_faction = no
+				is_in_faction_with = MNG
+			}
 		}
 		ai_chance = {
 			base = 0
@@ -172,6 +175,9 @@ country_event = {
 	# refuse
 	option = {
 		name = tesb_MNG.20.b
+		trigger = {
+			NOT = { is_in_faction_with = MNG }
+		}
 		MNG = { country_event = { id = tesb_MNG.22 } }
 		ai_chance = {
 			base = 0
