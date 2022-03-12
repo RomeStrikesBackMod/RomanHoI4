@@ -495,7 +495,7 @@ MNG_decisions = {
 			IND = { country_event = { id = tesb_MNG.50 } }
 		}
 		ai_will_do = {
-			base = 100
+			base = 500
 		}
 	}
 
@@ -701,12 +701,15 @@ MNG_decisions = {
 		visible = {
 			has_completed_focus = MNG_invite_siam
 			SIA = {
-				is_puppet_of = MNG
-				NOT = { owns_state = 602 }
-				NOT = { owns_state = 603 }
+				is_in_faction_with = MNG
+				OR = {
+					NOT = { owns_state = 602 }
+					NOT = { owns_state = 603 }
+				}
 			}
 		}
 		available = {
+			NOT = { has_war_with = SUK }
 			SUK = {
 				OR = {
 					owns_state = 602
@@ -714,6 +717,7 @@ MNG_decisions = {
 				}
 			}
 		}
+		cost = 50
 		complete_effect = {
 			SUK = { country_event = { id = tesb_MNG.120 } }
 		}
@@ -733,6 +737,12 @@ MNG_decisions = {
 					NOT = { owns_state = 275 }
 				}
 			}
+			IND = { 
+				OR = {
+					owns_state = 273
+					owns_state = 275
+				}
+			}
 		}
 		available = {
 			OR = {
@@ -746,7 +756,7 @@ MNG_decisions = {
 			IND = { country_event = { id = tesb_MNG.130 } }
 		}
 		ai_will_do = {
-			base = 100
+			base = 500
 		}
 	}
 
