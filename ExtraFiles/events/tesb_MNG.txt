@@ -1,0 +1,2698 @@
+add_namespace = tesb_MNG
+
+### Invite Korea to faction events
+# Invite Korea to faction
+country_event = {
+	id = tesb_MNG.1
+	title = tesb_MNG.1.t
+	desc = tesb_MNG.1.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.1.a
+		MNG = { country_event = { id = tesb_MNG.2 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.1.b
+		MNG = { country_event = { id = tesb_MNG.3 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Korea accepts
+country_event = {
+	id = tesb_MNG.2
+	title = tesb_MNG.2.t
+	desc = tesb_MNG.2.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.2.a
+		add_to_faction = KOR
+	}
+}
+
+# Korea refused to join
+country_event = {
+	id = tesb_MNG.3
+	title = tesb_MNG.3.t
+	desc = tesb_MNG.3.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.3.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.3.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = KOR
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Japan to faction events
+# Invite Japan to faction
+country_event = {
+	id = tesb_MNG.10
+	title = tesb_MNG.10.t
+	desc = tesb_MNG.10.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.10.a
+		MNG = { country_event = { id = tesb_MNG.11 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.10.b
+		MNG = { country_event = { id = tesb_MNG.12 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Japan accepts
+country_event = {
+	id = tesb_MNG.11
+	title = tesb_MNG.11.t
+	desc = tesb_MNG.11.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.11.a
+		add_to_faction = JAP
+	}
+}
+
+# Japan refused to join
+country_event = {
+	id = tesb_MNG.12
+	title = tesb_MNG.12.t
+	desc = tesb_MNG.12.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.12.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.12.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Nogotiate with Russia for Mongolia events
+# Begin negotiations
+country_event = {
+	id = tesb_MNG.20
+	title = tesb_MNG.20.t
+	desc = tesb_MNG.20.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.20.a
+		MNG = { country_event = { id = tesb_MNG.21 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			OR = {
+				is_in_faction = no
+				is_in_faction_with = MNG
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.20.b
+		trigger = {
+			NOT = { is_in_faction_with = MNG }
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.22 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_MNG.20.c
+		trigger = {
+			NOT = { has_war_with = MNG }
+			MNG = {
+				owns_state = 337
+			}
+		}
+		MNG = { country_event = { id = tesb_MNG.23 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Russia accepts
+country_event = {
+	id = tesb_MNG.21
+	title = tesb_MNG.21.t
+	desc = tesb_MNG.21.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.21.a
+		MNG = {
+			transfer_state = 510
+		}
+		RUS = { remove_state_core = 510 }
+	}
+}
+
+# Russia refuses
+country_event = {
+	id = tesb_MNG.22
+	title = tesb_MNG.22.t
+	desc = tesb_MNG.22.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.22.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to give up Mongolia
+	option = {
+		name = tesb_MNG.22.b
+		create_wargoal = {
+			type = take_state
+			target = RUS
+			generator = { 510 }
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Russia negotiates
+country_event = {
+	id = tesb_MNG.23
+	title = tesb_MNG.23.t
+	desc = tesb_MNG.23.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_MNG.23.a
+		MNG = {
+			transfer_state = 510
+		}
+		RUS = {
+			transfer_state = 337
+		}
+		RUS = { remove_state_core = 510 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.23.b
+		RUS = { country_event = { id = tesb_MNG.24 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# China refused deal
+country_event = {
+	id = tesb_MNG.24
+	title = tesb_MNG.24.t
+	desc = tesb_MNG.24.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# back down
+	option = {
+		name = tesb_MNG.24.a
+		MNG = { country_event = { id = tesb_MNG.21 } }
+	}
+	# stand strong
+	option = {
+		name = tesb_MNG.24.b
+		MNG = { country_event = { id = tesb_MNG.22 } }
+	}
+}
+
+
+### Invite Shan to faction events
+# Invite Shan to faction
+country_event = {
+	id = tesb_MNG.30
+	title = tesb_MNG.30.t
+	desc = tesb_MNG.30.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.30.a
+		MNG = { country_event = { id = tesb_MNG.31 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.30.b
+		MNG = { country_event = { id = tesb_MNG.32 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Shan accepts
+country_event = {
+	id = tesb_MNG.31
+	title = tesb_MNG.31.t
+	desc = tesb_MNG.31.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.31.a
+		add_to_faction = SHN
+	}
+}
+
+# Shan refused to join
+country_event = {
+	id = tesb_MNG.32
+	title = tesb_MNG.32.t
+	desc = tesb_MNG.32.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.32.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.32.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SHN
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Burma to faction events
+# Invite Burma to faction
+country_event = {
+	id = tesb_MNG.40
+	title = tesb_MNG.40.t
+	desc = tesb_MNG.40.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.40.a
+		MNG = { country_event = { id = tesb_MNG.41 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.40.b
+		MNG = { country_event = { id = tesb_MNG.42 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Burma accepts
+country_event = {
+	id = tesb_MNG.41
+	title = tesb_MNG.41.t
+	desc = tesb_MNG.41.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.41.a
+		add_to_faction = BUR
+	}
+}
+
+# Burma refused to join
+country_event = {
+	id = tesb_MNG.42
+	title = tesb_MNG.42.t
+	desc = tesb_MNG.42.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.42.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# annex them and give their lands to Shan
+	option = {
+		name = tesb_MNG.42.b
+		create_wargoal = {
+			type = annex_everything
+			target = BUR
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Negotiate for Burma/Shan events
+# China asks India to return Irrawaddy
+country_event = {
+	id = tesb_MNG.50
+	title = tesb_MNG.50.t
+	desc = tesb_MNG.50.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.50.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.51 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.50.b
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.52 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_MNG.50.c
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.53 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# India agrees
+country_event = {
+	id = tesb_MNG.51
+	title = tesb_MNG.51.t
+	desc = tesb_MNG.51.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - Burma
+	option = {
+		name = tesb_MNG.51.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 272 }
+		BUR = { transfer_state = 274 }
+		BUR = { add_state_core = 274 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - Shan
+	option = {
+		name = tesb_MNG.51.b
+		trigger = {
+			country_exists = SHN
+			NOT = { country_exists = BUR }
+		}
+		SHN = { transfer_state = 272 }
+		SHN = { add_state_core = 272 }
+		SHN = { transfer_state = 274 }
+		SHN = { add_state_core = 274 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - neither
+	option = {
+		name = tesb_MNG.51.c
+		trigger = {
+			NOT = { country_exists = SHN }
+			NOT = { country_exists = BUR }
+		}
+		MNG = { transfer_state = 272 }
+		MNG = { transfer_state = 274 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# India refuses
+country_event = {
+	id = tesb_MNG.52
+	title = tesb_MNG.52.t
+	desc = tesb_MNG.52.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.52.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.52.b
+		MNG = {
+			create_wargoal = {
+				target = IND
+				type = take_state
+				generator = { 272 274 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# India negotiates
+country_event = {
+	id = tesb_MNG.53
+	title = tesb_MNG.53.t
+	desc = tesb_MNG.53.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.53.a
+		IND = { country_event = { id = tesb_MNG.54 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.53.b
+		IND = { country_event = { id = tesb_MNG.55 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# China agrees
+country_event = {
+	id = tesb_MNG.54
+	title = tesb_MNG.54.t
+	desc = tesb_MNG.54.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree - Burma
+	option = {
+		name = tesb_MNG.54.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 272 }
+		BUR = { transfer_state = 274 }
+		BUR = { add_state_core = 274 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# agree - Shan
+	option = {
+		name = tesb_MNG.54.b
+		trigger = {
+			country_exists = SHN
+			NOT = { country_exists = BUR }
+		}
+		SHN = { transfer_state = 272 }
+		SHN = { add_state_core = 272 }
+		SHN = { transfer_state = 274 }
+		SHN = { add_state_core = 274 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# agree - neither
+	option = {
+		name = tesb_MNG.54.c
+		trigger = {
+			NOT = { country_exists = SHN }
+			NOT = { country_exists = BUR }
+		}
+		MNG = { transfer_state = 272 }
+		MNG = { transfer_state = 274 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+}
+
+# China refuses
+country_event = {
+	id = tesb_MNG.55
+	title = tesb_MNG.55.t
+	desc = tesb_MNG.55.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give in - Burma
+	option = {
+		name = tesb_MNG.55.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 272 }
+		BUR = { transfer_state = 274 }
+		BUR = { add_state_core = 274 }
+		ai_chance = {
+			base = 0
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# give in - Shan
+	option = {
+		name = tesb_MNG.55.b
+		trigger = {
+			country_exists = SHN
+			NOT = { country_exists = BUR }
+		}
+		SHN = { transfer_state = 272 }
+		SHN = { add_state_core = 272 }
+		SHN = { transfer_state = 274 }
+		SHN = { add_state_core = 274 }
+		ai_chance = {
+			base = 0
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# give in - neither
+	option = {
+		name = tesb_MNG.55.c
+		trigger = {
+			NOT = { country_exists = SHN }
+			NOT = { country_exists = BUR }
+		}
+		MNG = { transfer_state = 272 }
+		MNG = { transfer_state = 274 }
+		ai_chance = {
+			base = 0
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.55.e
+		MNG = {
+			create_wargoal = {
+				target = IND
+				type = take_state
+				generator = { 272 274 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Negotiate with Poland-Lithuania for Burma/Shan
+# Start negotiations
+country_event = {
+	id = tesb_MNG.60
+	title = tesb_MNG.60.t
+	desc = tesb_MNG.60.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.60.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.61 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.60.b
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.62 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_MNG.60.c
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.63 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Poland-Lithuania agrees
+country_event = {
+	id = tesb_MNG.61
+	title = tesb_MNG.61.t
+	desc = tesb_MNG.61.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - Burma
+	option = {
+		name = tesb_MNG.61.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 458 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - Shan
+	option = {
+		name = tesb_MNG.61.b
+		trigger = {
+			NOT = { country_exists = BUR }
+			country_exists = SHN
+		}
+		SHN = { transfer_state = 458 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - neither
+	option = {
+		name = tesb_MNG.61.c
+		trigger = {
+			NOT = { country_exists = BUR }
+			NOT = { country_exists = SHN }
+		}
+		MNG = { transfer_state = 458 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Poland-Lithuania refuses
+country_event = {
+	id = tesb_MNG.62
+	title = tesb_MNG.62.t
+	desc = tesb_MNG.62.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.62.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.62.b
+		MNG = {
+			create_wargoal = {
+				target = PLC
+				type = take_state
+				generator = { 458 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# PLC negotiates
+country_event = {
+	id = tesb_MNG.63
+	title = tesb_MNG.63.t
+	desc = tesb_MNG.63.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.63.a
+		PLC = { country_event = { id = tesb_MNG.64 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.63.b
+		PLC = { country_event = { id = tesb_MNG.65 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# China agrees
+country_event = {
+	id = tesb_MNG.64
+	title = tesb_MNG.64.t
+	desc = tesb_MNG.64.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - Burma
+	option = {
+		name = tesb_MNG.64.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 458 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# good - Shan
+	option = {
+		name = tesb_MNG.64.b
+		trigger = {
+			NOT = { country_exists = BUR }
+			country_exists = SHN
+		}
+		SHN = { transfer_state = 458 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# good - neither
+	option = {
+		name = tesb_MNG.64.c
+		trigger = {
+			NOT = { country_exists = BUR }
+			NOT = { country_exists = SHN }
+		}
+		MNG = { transfer_state = 458 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+}
+
+# China refuses
+country_event = {
+	id = tesb_MNG.65
+	title = tesb_MNG.65.t
+	desc = tesb_MNG.65.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give in - Burma
+	option = {
+		name = tesb_MNG.65.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 458 }
+		ai_chance = {
+			base = 0
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# give in - Shan
+	option = {
+		name = tesb_MNG.65.b
+		trigger = {
+			country_exists = SHN
+			NOT = { country_exists = BUR }
+		}
+		SHN = { transfer_state = 458 }
+		ai_chance = {
+			base = 0
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# give in - neither
+	option = {
+		name = tesb_MNG.65.c
+		trigger = {
+			NOT = { country_exists = SHN }
+			NOT = { country_exists = BUR }
+		}
+		MNG = { transfer_state = 458 }
+		ai_chance = {
+			base = 0
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.65.e
+		MNG = {
+			create_wargoal = {
+				target = PLC
+				type = take_state
+				generator = { 458 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Negotiate with Makassar for Burma/Shan
+# Start negotiations
+country_event = {
+	id = tesb_MNG.70
+	title = tesb_MNG.70.t
+	desc = tesb_MNG.70.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.70.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.71 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.70.b
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.72 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_MNG.70.c
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.73 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar agrees
+country_event = {
+	id = tesb_MNG.71
+	title = tesb_MNG.71.t
+	desc = tesb_MNG.71.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - Burma
+	option = {
+		name = tesb_MNG.71.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - Shan
+	option = {
+		name = tesb_MNG.71.b
+		trigger = {
+			NOT = { country_exists = BUR }
+			country_exists = SHN
+		}
+		SHN = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - neither
+	option = {
+		name = tesb_MNG.71.c
+		trigger = {
+			NOT = { country_exists = BUR }
+			NOT = { country_exists = SHN }
+		}
+		MNG = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar refuses
+country_event = {
+	id = tesb_MNG.72
+	title = tesb_MNG.72.t
+	desc = tesb_MNG.72.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.72.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.72.b
+		MNG = {
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 363 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar negotiates
+country_event = {
+	id = tesb_MNG.73
+	title = tesb_MNG.73.t
+	desc = tesb_MNG.73.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.73.a
+		MAK = { country_event = { id = tesb_MNG.74 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.73.b
+		MAK = { country_event = { id = tesb_MNG.75 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# China agrees
+country_event = {
+	id = tesb_MNG.74
+	title = tesb_MNG.74.t
+	desc = tesb_MNG.74.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - Burma
+	option = {
+		name = tesb_MNG.74.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# good - Shan
+	option = {
+		name = tesb_MNG.74.b
+		trigger = {
+			NOT = { country_exists = BUR }
+			country_exists = SHN
+		}
+		SHN = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# good - neither
+	option = {
+		name = tesb_MNG.74.c
+		trigger = {
+			NOT = { country_exists = BUR }
+			NOT = { country_exists = SHN }
+		}
+		MNG = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+}
+
+# China refuses
+country_event = {
+	id = tesb_MNG.75
+	title = tesb_MNG.75.t
+	desc = tesb_MNG.75.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give in - Burma
+	option = {
+		name = tesb_MNG.75.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# give in - Shan
+	option = {
+		name = tesb_MNG.75.b
+		trigger = {
+			country_exists = SHN
+			NOT = { country_exists = BUR }
+		}
+		SHN = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# give in - neither
+	option = {
+		name = tesb_MNG.75.c
+		trigger = {
+			NOT = { country_exists = SHN }
+			NOT = { country_exists = BUR }
+		}
+		MNG = { transfer_state = 363 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.75.e
+		MNG = {
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 363 }
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+### Invite Luang-Prabang to faction events
+# Invite Luang-Prabang to faction
+country_event = {
+	id = tesb_MNG.80
+	title = tesb_MNG.80.t
+	desc = tesb_MNG.80.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.80.a
+		MNG = { country_event = { id = tesb_MNG.81 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.80.b
+		MNG = { country_event = { id = tesb_MNG.82 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Luang-Prabang accepts
+country_event = {
+	id = tesb_MNG.81
+	title = tesb_MNG.81.t
+	desc = tesb_MNG.81.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.81.a
+		add_to_faction = LAO
+	}
+}
+
+# Luang-Prabang refused to join
+country_event = {
+	id = tesb_MNG.82
+	title = tesb_MNG.82.t
+	desc = tesb_MNG.82.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.82.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.82.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = LAO
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Cambodia to faction events
+# Invite Cambodia to faction
+country_event = {
+	id = tesb_MNG.90
+	title = tesb_MNG.90.t
+	desc = tesb_MNG.90.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.90.a
+		MNG = { country_event = { id = tesb_MNG.91 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.90.b
+		MNG = { country_event = { id = tesb_MNG.92 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Cambodia accepts
+country_event = {
+	id = tesb_MNG.91
+	title = tesb_MNG.91.t
+	desc = tesb_MNG.91.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.91.a
+		add_to_faction = CAM
+	}
+}
+
+# Cambodia refused to join
+country_event = {
+	id = tesb_MNG.92
+	title = tesb_MNG.92.t
+	desc = tesb_MNG.92.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.92.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.92.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CAM
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Negotiate with Makassar for Dai Nam
+# Start negotiations
+country_event = {
+	id = tesb_MNG.100
+	title = tesb_MNG.100.t
+	desc = tesb_MNG.100.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.100.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.101 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.100.b
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.102 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_MNG.100.c
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.103 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar agrees
+country_event = {
+	id = tesb_MNG.101
+	title = tesb_MNG.101.t
+	desc = tesb_MNG.101.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - Dai Nam
+	option = {
+		name = tesb_MNG.101.a
+		trigger = { country_exists = VIN }
+		VIN = { transfer_state = 362 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - China
+	option = {
+		name = tesb_MNG.101.a
+		trigger = { NOT = { country_exists = VIN } }
+		MNG = { transfer_state = 362 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar refuses
+country_event = {
+	id = tesb_MNG.102
+	title = tesb_MNG.102.t
+	desc = tesb_MNG.102.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.102.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.102.b
+		MNG = {
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 362 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar negotiates
+country_event = {
+	id = tesb_MNG.103
+	title = tesb_MNG.103.t
+	desc = tesb_MNG.103.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.103.a
+		MAK = { country_event = { id = tesb_MNG.104 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.103.b
+		MAK = { country_event = { id = tesb_MNG.105 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# China agrees
+country_event = {
+	id = tesb_MNG.104
+	title = tesb_MNG.104.t
+	desc = tesb_MNG.104.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - Burma
+	option = {
+		name = tesb_MNG.104.a
+		trigger = { country_exists = BUR }
+		BUR = { transfer_state = 362 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# good - Shan
+	option = {
+		name = tesb_MNG.104.b
+		trigger = {
+			NOT = { country_exists = BUR }
+			country_exists = SHN
+		}
+		SHN = { transfer_state = 362 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+	# good - neither
+	option = {
+		name = tesb_MNG.104.c
+		trigger = {
+			NOT = { country_exists = BUR }
+			NOT = { country_exists = SHN }
+		}
+		MNG = { transfer_state = 362 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+}
+
+# China refuses
+country_event = {
+	id = tesb_MNG.105
+	title = tesb_MNG.105.t
+	desc = tesb_MNG.105.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give in
+	option = {
+		name = tesb_MNG.105.a
+		MNG = { transfer_state = 362 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.105.e
+		MNG = {
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 362 }
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+### Invite Siam to faction events
+# Invite Siam to faction
+country_event = {
+	id = tesb_MNG.110
+	title = tesb_MNG.110.t
+	desc = tesb_MNG.110.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.110.a
+		MNG = { country_event = { id = tesb_MNG.111 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.100.b
+		MNG = { country_event = { id = tesb_MNG.112 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Siam accepts
+country_event = {
+	id = tesb_MNG.111
+	title = tesb_MNG.111.t
+	desc = tesb_MNG.111.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.111.a
+		add_to_faction = SIA
+	}
+}
+
+# Siam refused to join
+country_event = {
+	id = tesb_MNG.112
+	title = tesb_MNG.112.t
+	desc = tesb_MNG.112.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.112.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.112.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SIA
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Force Sukhothai to join Siam
+# Start negotiations
+country_event = {
+	id = tesb_MNG.120
+	title = tesb_MNG.120.t
+	desc = tesb_MNG.120.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.120.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.121 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.120.b
+		trigger = {
+			NOT = { is_in_faction_with = MNG }
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.122 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Sukhothai agrees
+country_event = {
+	id = tesb_MNG.121
+	title = tesb_MNG.121.t
+	desc = tesb_MNG.121.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good - both states
+	option = {
+		name = tesb_MNG.121.a
+		trigger = {
+			SUK = { owns_state = 602 }
+			SUK = { owns_state = 603 }
+		}
+		SIA = { transfer_state = 602 }
+		SIA = { transfer_state = 603 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - Sukhothai
+	option = {
+		name = tesb_MNG.121.b
+		trigger = {
+			SUK = { owns_state = 602 }
+			NOT = { SUK = { owns_state = 603 } }
+		}
+		SIA = { transfer_state = 602 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# good - Nan
+	option = {
+		name = tesb_MNG.121.c
+		trigger = {
+			SUK = { owns_state = 603 }
+			NOT = { SUK = { owns_state = 602 } }
+		}
+		SIA = { transfer_state = 603 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Sukhothai refuses
+country_event = {
+	id = tesb_MNG.122
+	title = tesb_MNG.122.t
+	desc = tesb_MNG.122.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.122.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.122.b
+		MNG = {
+			create_wargoal = {
+				target = SUK
+				type = take_state
+				generator = { 602 603 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Negotiate for Siam events
+# China asks India to return Siam lands
+country_event = {
+	id = tesb_MNG.130
+	title = tesb_MNG.130.t
+	desc = tesb_MNG.130.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.130.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.131 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.130.b
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.132 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_MNG.130.c
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.133 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# India agrees
+country_event = {
+	id = tesb_MNG.131
+	title = tesb_MNG.131.t
+	desc = tesb_MNG.131.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good
+	option = {
+		name = tesb_MNG.131.a
+		SIA = { transfer_state = 273 }
+		SIA = { transfer_state = 275 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# India refuses
+country_event = {
+	id = tesb_MNG.132
+	title = tesb_MNG.132.t
+	desc = tesb_MNG.132.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.132.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.132.b
+		MNG = {
+			create_wargoal = {
+				target = IND
+				type = take_state
+				generator = { 273 275 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# India negotiates
+country_event = {
+	id = tesb_MNG.133
+	title = tesb_MNG.133.t
+	desc = tesb_MNG.133.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.133.a
+		MNG = { country_event = { id = tesb_MNG.134 } }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = IND
+			relation = guarantee
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.133.b
+		MNG = { country_event = { id = tesb_MNG.135 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# China agrees
+country_event = {
+	id = tesb_MNG.134
+	title = tesb_MNG.134.t
+	desc = tesb_MNG.134.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.134.a
+		SIA = { transfer_state = 273 }
+		SIA = { transfer_state = 275 }
+		diplomatic_relation = {
+			country = MNG
+			relation = guarantee
+		}
+	}
+}
+
+# China refuses
+country_event = {
+	id = tesb_MNG.135
+	title = tesb_MNG.135.t
+	desc = tesb_MNG.135.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give in
+	option = {
+		name = tesb_MNG.135.a
+		BUR = { transfer_state = 273 }
+		BUR = { transfer_state = 275 }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.135.b
+		MNG = {
+			create_wargoal = {
+				target = IND
+				type = take_state
+				generator = { 273 275 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Negotiate with Makassar for Siam
+# Start negotiations
+country_event = {
+	id = tesb_MNG.140
+	title = tesb_MNG.140.t
+	desc = tesb_MNG.140.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.140.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.141 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.140.b
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.142 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_MNG.140.c
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.143 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar agrees
+country_event = {
+	id = tesb_MNG.141
+	title = tesb_MNG.141.t
+	desc = tesb_MNG.141.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good
+	option = {
+		name = tesb_MNG.141.a
+		SIA = { transfer_state = 364 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar refuses
+country_event = {
+	id = tesb_MNG.142
+	title = tesb_MNG.142.t
+	desc = tesb_MNG.142.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.142.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.142.b
+		MNG = {
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 364 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Makassar negotiates
+country_event = {
+	id = tesb_MNG.143
+	title = tesb_MNG.143.t
+	desc = tesb_MNG.143.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.143.a
+		MAK = { country_event = { id = tesb_MNG.144 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.143.b
+		MAK = { country_event = { id = tesb_MNG.145 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# China agrees
+country_event = {
+	id = tesb_MNG.144
+	title = tesb_MNG.144.t
+	desc = tesb_MNG.144.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good
+	option = {
+		name = tesb_MNG.144.a
+		SIA = { transfer_state = 364 }
+		ai_chance = {
+			base = 100
+		}
+		diplomatic_relation = {
+			country = MNG
+			relation = non_aggression_pact
+		}
+	}
+}
+
+# China refuses
+country_event = {
+	id = tesb_MNG.145
+	title = tesb_MNG.145.t
+	desc = tesb_MNG.145.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# give in
+	option = {
+		name = tesb_MNG.105.a
+		SIA = { transfer_state = 364 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.145.b
+		MNG = {
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 364 }
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+### Invite Pattani to faction events
+# Invite Pattani to faction
+country_event = {
+	id = tesb_MNG.150
+	title = tesb_MNG.150.t
+	desc = tesb_MNG.150.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.150.a
+		MNG = { country_event = { id = tesb_MNG.151 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.150.b
+		MNG = { country_event = { id = tesb_MNG.152 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Pattani accepts
+country_event = {
+	id = tesb_MNG.151
+	title = tesb_MNG.151.t
+	desc = tesb_MNG.151.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.151.a
+		add_to_faction = PAT
+	}
+}
+
+# Pattani refused to join
+country_event = {
+	id = tesb_MNG.152
+	title = tesb_MNG.152.t
+	desc = tesb_MNG.152.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.152.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.152.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PAT
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+
+### Negotiate with Makassar for Pattani
+# Start negotiations
+country_event = {
+	id = tesb_MNG.160
+	title = tesb_MNG.160.t
+	desc = tesb_MNG.160.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_MNG.160.a
+		trigger = {
+			NOT = { has_war_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.161 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.160.b
+		trigger = {
+			NOT = { is_puppet_of = MNG }
+			NOT = { is_in_faction_with = MNG }
+		}
+		MNG = { country_event = { id = tesb_MNG.162 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar agrees
+country_event = {
+	id = tesb_MNG.161
+	title = tesb_MNG.161.t
+	desc = tesb_MNG.161.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# good
+	option = {
+		name = tesb_MNG.161.a
+		PAT = { transfer_state = 354 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Makassar refuses
+country_event = {
+	id = tesb_MNG.162
+	title = tesb_MNG.162.t
+	desc = tesb_MNG.162.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# let them refuse
+	option = {
+		name = tesb_MNG.162.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them
+	option = {
+		name = tesb_MNG.162.b
+		MNG = {
+			create_wargoal = {
+				target = MAK
+				type = take_state
+				generator = { 354 }
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Makassar to faction events
+# Invite Makassar to faction
+country_event = {
+	id = tesb_MNG.170
+	title = tesb_MNG.170.t
+	desc = tesb_MNG.170.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.170.a
+		MNG = { country_event = { id = tesb_MNG.171 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.170.b
+		MNG = { country_event = { id = tesb_MNG.172 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Makassar accepts
+country_event = {
+	id = tesb_MNG.171
+	title = tesb_MNG.171.t
+	desc = tesb_MNG.171.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.171.a
+		add_to_faction = MAK
+	}
+}
+
+# Makassar refused to join
+country_event = {
+	id = tesb_MNG.172
+	title = tesb_MNG.172.t
+	desc = tesb_MNG.172.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.172.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.172.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = MAK
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Java to faction events
+# Invite Java to faction
+country_event = {
+	id = tesb_MNG.180
+	title = tesb_MNG.180.t
+	desc = tesb_MNG.180.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.180.a
+		MNG = { country_event = { id = tesb_MNG.181 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.180.b
+		MNG = { country_event = { id = tesb_MNG.182 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Java accepts
+country_event = {
+	id = tesb_MNG.181
+	title = tesb_MNG.181.t
+	desc = tesb_MNG.181.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.181.a
+		add_to_faction = JAV
+	}
+}
+
+# Java refused to join
+country_event = {
+	id = tesb_MNG.182
+	title = tesb_MNG.182.t
+	desc = tesb_MNG.182.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.182.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.182.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = JAV
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Philippines to faction events
+# Invite Philippines to faction
+country_event = {
+	id = tesb_MNG.190
+	title = tesb_MNG.190.t
+	desc = tesb_MNG.190.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.190.a
+		MNG = { country_event = { id = tesb_MNG.191 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.190.b
+		MNG = { country_event = { id = tesb_MNG.192 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Philippines accepts
+country_event = {
+	id = tesb_MNG.191
+	title = tesb_MNG.191.t
+	desc = tesb_MNG.191.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.191.a
+		add_to_faction = PHI
+	}
+}
+
+# Philippines refused to join
+country_event = {
+	id = tesb_MNG.192
+	title = tesb_MNG.192.t
+	desc = tesb_MNG.192.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.192.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.192.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PHI
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Iranian Pacific to faction events
+# Invite Iranian Pacific to faction
+country_event = {
+	id = tesb_MNG.200
+	title = tesb_MNG.200.t
+	desc = tesb_MNG.200.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_MNG.200.a
+		MNG = { country_event = { id = tesb_MNG.201 } }
+		trigger = {
+			NOT = { has_war_with = MNG }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = absolutist }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_MNG.200.b
+		MNG = { country_event = { id = tesb_MNG.202 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+# Iranian Pacific accepts
+country_event = {
+	id = tesb_MNG.201
+	title = tesb_MNG.201.t
+	desc = tesb_MNG.201.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_MNG.201.a
+		add_to_faction = X01
+	}
+}
+
+# Iranian Pacific refused to join
+country_event = {
+	id = tesb_MNG.202
+	title = tesb_MNG.202.t
+	desc = tesb_MNG.202.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_MNG.202.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_MNG.202.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = X01
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
