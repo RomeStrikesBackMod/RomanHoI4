@@ -1,0 +1,2324 @@
+add_namespace = tesb_ETH
+
+
+### Invite Niger to faction events
+# Invite Niger to faction
+country_event = {
+	id = tesb_ETH.10
+	title = tesb_ETH.10.t
+	desc = tesb_ETH.10.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.10.a
+		ETH = { country_event = { id = tesb_ETH.11 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.10.b
+		ETH = { country_event = { id = tesb_ETH.12 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Niger accepts
+country_event = {
+	id = tesb_ETH.11
+	title = tesb_ETH.11.t
+	desc = tesb_ETH.11.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.11.a
+		add_to_faction = NGR
+	}
+}
+
+# Niger refused to join
+country_event = {
+	id = tesb_ETH.12
+	title = tesb_ETH.12.t
+	desc = tesb_ETH.12.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.12.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.12.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = NGR
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Burkina Faso to faction events
+# Invite Burkina Faso to faction
+country_event = {
+	id = tesb_ETH.20
+	title = tesb_ETH.20.t
+	desc = tesb_ETH.20.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.20.a
+		ETH = { country_event = { id = tesb_ETH.21 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.20.b
+		ETH = { country_event = { id = tesb_ETH.22 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Burkina Faso accepts
+country_event = {
+	id = tesb_ETH.21
+	title = tesb_ETH.21.t
+	desc = tesb_ETH.21.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.21.a
+		add_to_faction = BRK
+	}
+}
+
+# Burkina Faso refused to join
+country_event = {
+	id = tesb_ETH.22
+	title = tesb_ETH.22.t
+	desc = tesb_ETH.22.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.22.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.22.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BRK
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Mali to faction events
+# Invite Mali to faction
+country_event = {
+	id = tesb_ETH.30
+	title = tesb_ETH.30.t
+	desc = tesb_ETH.30.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.30.a
+		ETH = { country_event = { id = tesb_ETH.31 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.30.b
+		ETH = { country_event = { id = tesb_ETH.32 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Mali accepts
+country_event = {
+	id = tesb_ETH.31
+	title = tesb_ETH.31.t
+	desc = tesb_ETH.31.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.31.a
+		add_to_faction = MAU
+	}
+}
+
+# Mali refused to join
+country_event = {
+	id = tesb_ETH.32
+	title = tesb_ETH.32.t
+	desc = tesb_ETH.32.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.32.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.32.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = MAU
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Mauritania to faction events
+# Invite Mauritania to faction
+country_event = {
+	id = tesb_ETH.40
+	title = tesb_ETH.40.t
+	desc = tesb_ETH.40.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.40.a
+		ETH = { country_event = { id = tesb_ETH.41 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.40.b
+		ETH = { country_event = { id = tesb_ETH.42 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Mauritania accepts
+country_event = {
+	id = tesb_ETH.41
+	title = tesb_ETH.41.t
+	desc = tesb_ETH.41.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.41.a
+		add_to_faction = MAU
+	}
+}
+
+# Mauritania refused to join
+country_event = {
+	id = tesb_ETH.42
+	title = tesb_ETH.42.t
+	desc = tesb_ETH.42.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.42.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.42.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = MAU
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Senegal to faction events
+# Invite Senegal to faction
+country_event = {
+	id = tesb_ETH.50
+	title = tesb_ETH.50.t
+	desc = tesb_ETH.50.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.50.a
+		ETH = { country_event = { id = tesb_ETH.51 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.50.b
+		ETH = { country_event = { id = tesb_ETH.52 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Senegal accepts
+country_event = {
+	id = tesb_ETH.51
+	title = tesb_ETH.51.t
+	desc = tesb_ETH.51.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.51.a
+		add_to_faction = SEN
+	}
+}
+
+# Senegal refused to join
+country_event = {
+	id = tesb_ETH.52
+	title = tesb_ETH.52.t
+	desc = tesb_ETH.52.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.52.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.52.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SEN
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Sokoto to faction events
+# Invite Sokoto to faction
+country_event = {
+	id = tesb_ETH.60
+	title = tesb_ETH.60.t
+	desc = tesb_ETH.60.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.60.a
+		ETH = { country_event = { id = tesb_ETH.61 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.60.b
+		ETH = { country_event = { id = tesb_ETH.62 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Sokoto accepts
+country_event = {
+	id = tesb_ETH.61
+	title = tesb_ETH.61.t
+	desc = tesb_ETH.61.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.61.a
+		add_to_faction = SOK
+	}
+}
+
+# Sokoto refused to join
+country_event = {
+	id = tesb_ETH.62
+	title = tesb_ETH.62.t
+	desc = tesb_ETH.62.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.62.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.62.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SOK
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Benin to faction events
+# Invite Benin to faction
+country_event = {
+	id = tesb_ETH.70
+	title = tesb_ETH.70.t
+	desc = tesb_ETH.70.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.70.a
+		ETH = { country_event = { id = tesb_ETH.71 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.70.b
+		ETH = { country_event = { id = tesb_ETH.72 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Benin accepts
+country_event = {
+	id = tesb_ETH.71
+	title = tesb_ETH.71.t
+	desc = tesb_ETH.71.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.71.a
+		puppet = BEN
+	}
+}
+
+# Benin refused to join
+country_event = {
+	id = tesb_ETH.72
+	title = tesb_ETH.72.t
+	desc = tesb_ETH.72.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.72.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.72.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BEN
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Dahomey to faction events
+# Invite Dahomey to faction
+country_event = {
+	id = tesb_ETH.80
+	title = tesb_ETH.80.t
+	desc = tesb_ETH.80.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.80.a
+		ETH = { country_event = { id = tesb_ETH.81 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.80.b
+		ETH = { country_event = { id = tesb_ETH.82 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Dahomey accepts
+country_event = {
+	id = tesb_ETH.81
+	title = tesb_ETH.81.t
+	desc = tesb_ETH.81.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.81.a
+		add_to_faction = DAH
+	}
+}
+
+# Dahomey refused to join
+country_event = {
+	id = tesb_ETH.82
+	title = tesb_ETH.82.t
+	desc = tesb_ETH.82.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.82.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.82.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = DAH
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite GUIo to faction events
+# Invite GUIo to faction
+country_event = {
+	id = tesb_ETH.90
+	title = tesb_ETH.90.t
+	desc = tesb_ETH.90.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.90.a
+		ETH = { country_event = { id = tesb_ETH.91 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.90.b
+		ETH = { country_event = { id = tesb_ETH.92 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# GUIo accepts
+country_event = {
+	id = tesb_ETH.91
+	title = tesb_ETH.91.t
+	desc = tesb_ETH.91.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.91.a
+		add_to_faction = GUI
+	}
+}
+
+# GUIo refused to join
+country_event = {
+	id = tesb_ETH.92
+	title = tesb_ETH.92.t
+	desc = tesb_ETH.92.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.92.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.92.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GUI
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Guinea to faction events
+# Invite Guinea to faction
+country_event = {
+	id = tesb_ETH.100
+	title = tesb_ETH.100.t
+	desc = tesb_ETH.100.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.100.a
+		ETH = { country_event = { id = tesb_ETH.101 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.100.b
+		ETH = { country_event = { id = tesb_ETH.102 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Guinea accepts
+country_event = {
+	id = tesb_ETH.101
+	title = tesb_ETH.101.t
+	desc = tesb_ETH.101.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.101.a
+		add_to_faction = GUI
+	}
+}
+
+# Guinea refused to join
+country_event = {
+	id = tesb_ETH.102
+	title = tesb_ETH.102.t
+	desc = tesb_ETH.102.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.102.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.102.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GUI
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Chad to faction events
+# Invite Chad to faction
+country_event = {
+	id = tesb_ETH.110
+	title = tesb_ETH.110.t
+	desc = tesb_ETH.110.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.110.a
+		ETH = { country_event = { id = tesb_ETH.111 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.110.b
+		ETH = { country_event = { id = tesb_ETH.112 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Chad accepts
+country_event = {
+	id = tesb_ETH.111
+	title = tesb_ETH.111.t
+	desc = tesb_ETH.111.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.111.a
+		add_to_faction = CHD
+	}
+}
+
+# Chad refused to join
+country_event = {
+	id = tesb_ETH.112
+	title = tesb_ETH.112.t
+	desc = tesb_ETH.112.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.112.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.112.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CHD
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Cameroon to faction events
+# Invite Cameroon to faction
+country_event = {
+	id = tesb_ETH.120
+	title = tesb_ETH.120.t
+	desc = tesb_ETH.120.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.120.a
+		ETH = { country_event = { id = tesb_ETH.121 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.120.b
+		ETH = { country_event = { id = tesb_ETH.122 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Cameroon accepts
+country_event = {
+	id = tesb_ETH.121
+	title = tesb_ETH.121.t
+	desc = tesb_ETH.121.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.121.a
+		add_to_faction = CMR
+	}
+}
+
+# Cameroon refused to join
+country_event = {
+	id = tesb_ETH.122
+	title = tesb_ETH.122.t
+	desc = tesb_ETH.122.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.122.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.122.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CMR
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Gabon to faction events
+# Invite Gabon to faction
+country_event = {
+	id = tesb_ETH.130
+	title = tesb_ETH.130.t
+	desc = tesb_ETH.130.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.130.a
+		ETH = { country_event = { id = tesb_ETH.131 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.130.b
+		ETH = { country_event = { id = tesb_ETH.132 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Gabon accepts
+country_event = {
+	id = tesb_ETH.131
+	title = tesb_ETH.131.t
+	desc = tesb_ETH.131.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.131.a
+		add_to_faction = GAB
+	}
+}
+
+# Gabon refused to join
+country_event = {
+	id = tesb_ETH.132
+	title = tesb_ETH.132.t
+	desc = tesb_ETH.132.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.132.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.132.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GAB
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Congo to faction events
+# Invite Congo to faction
+country_event = {
+	id = tesb_ETH.140
+	title = tesb_ETH.140.t
+	desc = tesb_ETH.140.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.140.a
+		ETH = { country_event = { id = tesb_ETH.141 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.140.b
+		ETH = { country_event = { id = tesb_ETH.142 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Congo accepts
+country_event = {
+	id = tesb_ETH.141
+	title = tesb_ETH.141.t
+	desc = tesb_ETH.141.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.141.a
+		add_to_faction = COG
+	}
+}
+
+# Congo refused to join
+country_event = {
+	id = tesb_ETH.142
+	title = tesb_ETH.142.t
+	desc = tesb_ETH.142.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.142.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.142.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = COG
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Angola to faction events
+# Invite Angola to faction
+country_event = {
+	id = tesb_ETH.150
+	title = tesb_ETH.150.t
+	desc = tesb_ETH.150.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.150.a
+		ETH = { country_event = { id = tesb_ETH.151 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.150.b
+		ETH = { country_event = { id = tesb_ETH.152 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Angola accepts
+country_event = {
+	id = tesb_ETH.151
+	title = tesb_ETH.151.t
+	desc = tesb_ETH.151.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.151.a
+		add_to_faction = ANG
+	}
+}
+
+# Angola refused to join
+country_event = {
+	id = tesb_ETH.152
+	title = tesb_ETH.152.t
+	desc = tesb_ETH.152.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.152.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.152.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = ANG
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Namibia to faction events
+# Invite Namibia to faction
+country_event = {
+	id = tesb_ETH.160
+	title = tesb_ETH.160.t
+	desc = tesb_ETH.160.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.160.a
+		ETH = { country_event = { id = tesb_ETH.161 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.160.b
+		ETH = { country_event = { id = tesb_ETH.162 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Namibia accepts
+country_event = {
+	id = tesb_ETH.161
+	title = tesb_ETH.161.t
+	desc = tesb_ETH.161.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.161.a
+		add_to_faction = NMB
+	}
+}
+
+# Namibia refused to join
+country_event = {
+	id = tesb_ETH.162
+	title = tesb_ETH.162.t
+	desc = tesb_ETH.162.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.162.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.162.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = NMB
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite South Africa to faction events
+# Invite South Africa to faction
+country_event = {
+	id = tesb_ETH.170
+	title = tesb_ETH.170.t
+	desc = tesb_ETH.170.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.170.a
+		ETH = { country_event = { id = tesb_ETH.171 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.170.b
+		ETH = { country_event = { id = tesb_ETH.172 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# South Africa accepts
+country_event = {
+	id = tesb_ETH.171
+	title = tesb_ETH.171.t
+	desc = tesb_ETH.171.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.171.a
+		add_to_faction = SAF
+	}
+}
+
+# South Africa refused to join
+country_event = {
+	id = tesb_ETH.172
+	title = tesb_ETH.172.t
+	desc = tesb_ETH.172.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.172.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.172.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SAF
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Invite Mutapa to faction events
+# Invite Mutapa to faction
+country_event = {
+	id = tesb_ETH.180
+	title = tesb_ETH.180.t
+	desc = tesb_ETH.180.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.180.a
+		ETH = { country_event = { id = tesb_ETH.181 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.180.b
+		ETH = { country_event = { id = tesb_ETH.182 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+	#negotiate
+	option = {
+		name = tesb_ETH.180.c
+		ETH = { country_event = { id = tesb_ETH.183 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+}
+
+# Mutapa accepts
+country_event = {
+	id = tesb_ETH.181
+	title = tesb_ETH.181.t
+	desc = tesb_ETH.181.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.181.a
+		add_to_faction = MUT
+	}
+}
+
+# Mutapa refused to join
+country_event = {
+	id = tesb_ETH.182
+	title = tesb_ETH.182.t
+	desc = tesb_ETH.182.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.182.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.182.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = MUT
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Mutapa negotiates
+country_event = {
+	id = tesb_ETH.183
+	title = tesb_ETH.183.t
+	desc = tesb_ETH.183.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.183.a
+		add_to_faction = MUT
+		MUT = { transfer_state = 195 }
+		MUT = { transfer_state = 188 }
+		MUT = { add_state_core = 187 }
+		MUT = { add_state_core = 186 }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.183.b
+		MUT = { country_event = { id = tesb_ETH.184 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+	# counter-negotiate
+	option = {
+		name = tesb_ETH.183.c
+		MUT = { country_event = { id = tesb_ETH.185 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Rome refuses
+country_event = {
+	id = tesb_ETH.184
+	title = tesb_ETH.184.t
+	desc = tesb_ETH.184.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# stand defiant
+	option = {
+		name = tesb_ETH.184.a
+		RME = { country_event = { id = tesb_ETH.182 } }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# back down
+	option = {
+		name = tesb_ETH.184.b
+		RME = { country_event = { id = tesb_ETH.181 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Rome counter-negotiates
+country_event = {
+	id = tesb_ETH.185
+	title = tesb_ETH.185.t
+	desc = tesb_ETH.185.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# agree
+	option = {
+		name = tesb_ETH.185.a
+		RME = { add_to_faction = MUT }
+		MUT = { transfer_state = 195 }
+		MUT = { transfer_state = 188 }
+		ai_chance = {
+			base = 100
+		}
+	}
+	# stand defiant
+	option = {
+		name = tesb_ETH.185.a
+		RME = { country_event = { id = tesb_ETH.182 } }
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+### Invite Adal to faction events
+# Invite Adal to faction
+country_event = {
+	id = tesb_ETH.190
+	title = tesb_ETH.190.t
+	desc = tesb_ETH.190.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_ETH.190.a
+		ETH = { country_event = { id = tesb_ETH.191 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.190.b
+		ETH = { country_event = { id = tesb_ETH.192 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Adal accepts
+country_event = {
+	id = tesb_ETH.191
+	title = tesb_ETH.191.t
+	desc = tesb_ETH.191.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.191.a
+		add_to_faction = ADA
+	}
+}
+
+# Adal refused to join
+country_event = {
+	id = tesb_ETH.192
+	title = tesb_ETH.192.t
+	desc = tesb_ETH.192.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.192.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_ETH.192.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = ADA
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Negotiate for Adal freedom events
+# Open negotiations
+country_event = {
+	id = tesb_ETH.200
+	title = tesb_ETH.200.t
+	desc = tesb_ETH.200.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.200.a
+		ETH = { country_event = { id = tesb_ETH.201 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+		end_puppet = ADA
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.200.b
+		ETH = { country_event = { id = tesb_ETH.202 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Master accepts
+country_event = {
+	id = tesb_ETH.201
+	title = tesb_ETH.201.t
+	desc = tesb_ETH.201.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.201.a
+	}
+}
+
+# Master refuses
+country_event = {
+	id = tesb_ETH.202
+	title = tesb_ETH.202.t
+	desc = tesb_ETH.202.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.202.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free Adal
+	option = {
+		name = tesb_ETH.202.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = ADA
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### English colony
+# Open negotiations
+country_event = {
+	id = tesb_ETH.210
+	title = tesb_ETH.210.t
+	desc = tesb_ETH.210.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.210.a
+		ETH = { country_event = { id = tesb_ETH.211 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+		end_puppet = X00
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.210.b
+		ETH = { country_event = { id = tesb_ETH.212 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Master accepts
+country_event = {
+	id = tesb_ETH.211
+	title = tesb_ETH.211.t
+	desc = tesb_ETH.211.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.211.a
+	}
+}
+
+# Master refuses
+country_event = {
+	id = tesb_ETH.212
+	title = tesb_ETH.212.t
+	desc = tesb_ETH.212.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.212.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free English Africa
+	option = {
+		name = tesb_ETH.212.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = X00
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### End English Africa
+# Open negotiations
+country_event = {
+	id = tesb_ETH.220
+	title = tesb_ETH.220.t
+	desc = tesb_ETH.220.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.220.a
+		ETH = { country_event = { id = tesb_ETH.221 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.220.b
+		ETH = { country_event = { id = tesb_ETH.222 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# English Africa accepts
+country_event = {
+	id = tesb_ETH.221
+	title = tesb_ETH.221.t
+	desc = tesb_ETH.221.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.221.a
+		LIB = { transfer_state = 172 }
+		LIB = { transfer_state = 175 }
+		LIB = { add_state_core = 178 }
+	}
+}
+
+# English Africa refuses
+country_event = {
+	id = tesb_ETH.222
+	title = tesb_ETH.222.t
+	desc = tesb_ETH.222.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.222.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free Liberia
+	option = {
+		name = tesb_ETH.222.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = X00
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Scottish colony
+# Open negotiations
+country_event = {
+	id = tesb_ETH.230
+	title = tesb_ETH.230.t
+	desc = tesb_ETH.230.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.230.a
+		ETH = { country_event = { id = tesb_ETH.231 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+		end_puppet = ADA
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.230.b
+		ETH = { country_event = { id = tesb_ETH.232 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Master accepts
+country_event = {
+	id = tesb_ETH.231
+	title = tesb_ETH.231.t
+	desc = tesb_ETH.231.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.231.a
+	}
+}
+
+# Master refuses
+country_event = {
+	id = tesb_ETH.232
+	title = tesb_ETH.232.t
+	desc = tesb_ETH.232.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.232.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free Scottish Africa
+	option = {
+		name = tesb_ETH.232.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = X02
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Free Gambia
+# Open negotiations
+country_event = {
+	id = tesb_ETH.240
+	title = tesb_ETH.240.t
+	desc = tesb_ETH.240.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.240.a
+		ETH = { country_event = { id = tesb_ETH.241 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.240.b
+		ETH = { country_event = { id = tesb_ETH.242 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Scottish Africa accepts
+country_event = {
+	id = tesb_ETH.241
+	title = tesb_ETH.241.t
+	desc = tesb_ETH.241.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.241.a
+		GAM = { transfer_state = 578 }
+	}
+}
+
+# Scottish Africa refuses
+country_event = {
+	id = tesb_ETH.242
+	title = tesb_ETH.242.t
+	desc = tesb_ETH.242.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.242.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free Gambia
+	option = {
+		name = tesb_ETH.242.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = X02
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Free Ghana from Scottish Africa
+# Open negotiations
+country_event = {
+	id = tesb_ETH.250
+	title = tesb_ETH.250.t
+	desc = tesb_ETH.250.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.250.a
+		ETH = { country_event = { id = tesb_ETH.251 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+			is_in_faction = no
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.250.b
+		ETH = { country_event = { id = tesb_ETH.252 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Scottish Africa accepts
+country_event = {
+	id = tesb_ETH.251
+	title = tesb_ETH.251.t
+	desc = tesb_ETH.251.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.251.a
+		GHA = { transfer_state = 576 }
+		GHA = { transfer_state = 577 }
+	}
+}
+
+# Scottish Africa refuses
+country_event = {
+	id = tesb_ETH.252
+	title = tesb_ETH.252.t
+	desc = tesb_ETH.252.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.252.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free Ghana
+	option = {
+		name = tesb_ETH.252.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = X02
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Free Ghana from Germany
+# Open negotiations
+country_event = {
+	id = tesb_ETH.260
+	title = tesb_ETH.260.t
+	desc = tesb_ETH.260.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.260.a
+		ETH = { country_event = { id = tesb_ETH.261 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.260.b
+		ETH = { country_event = { id = tesb_ETH.262 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Scottish Africa accepts
+country_event = {
+	id = tesb_ETH.261
+	title = tesb_ETH.261.t
+	desc = tesb_ETH.261.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.261.a
+		GHA = { transfer_state = 216 }
+	}
+}
+
+# Scottish Africa refuses
+country_event = {
+	id = tesb_ETH.262
+	title = tesb_ETH.262.t
+	desc = tesb_ETH.262.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.262.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free Ghana
+	option = {
+		name = tesb_ETH.262.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = GER
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+### Free Mutapa from Iran
+# Open negotiations
+country_event = {
+	id = tesb_ETH.270
+	title = tesb_ETH.270.t
+	desc = tesb_ETH.270.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept
+	option = {
+		name = tesb_ETH.270.a
+		ETH = { country_event = { id = tesb_ETH.271 } }
+		trigger = {
+			NOT = { has_war_with = ETH }
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_ETH.270.b
+		ETH = { country_event = { id = tesb_ETH.272 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# Scottish Africa accepts
+country_event = {
+	id = tesb_ETH.271
+	title = tesb_ETH.271.t
+	desc = tesb_ETH.271.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_ETH.271.a
+		MUT = { transfer_state = 424 }
+	}
+}
+
+# Scottish Africa refuses
+country_event = {
+	id = tesb_ETH.272
+	title = tesb_ETH.272.t
+	desc = tesb_ETH.272.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_ETH.272.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to free Ghana
+	option = {
+		name = tesb_ETH.272.b
+		create_wargoal = {
+			type = liberate_wargoal
+			target = IRN
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
