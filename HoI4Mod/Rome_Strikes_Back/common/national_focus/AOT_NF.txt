@@ -90,6 +90,29 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AOT_establish_transitional_council
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_send_timon_to_constantiople
+		prerequisite = { focus = AOT_send_timon_to_constantiople focus = AOT_keep_timon_in_aotearoa }
+		x = 1
+		y = 1
+		available = {
+			NOT = {
+				has_country_leader = {
+					character = AOT_kyrene_thaddas
+				}
+			}
+		}
+		completion_reward = {
+			promote_character = AOT_transitional_council
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
 		id = AOT_industrial_checkup
 		icon = GFX_focus_generic_industry_1
 		cost = 10
@@ -115,7 +138,177 @@ focus_tree = {
 		x = -1
 		y = 1
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			swap_ideas = {
+				remove_idea = AOT_trauma_of_black_thursday
+				add_idea = AOT_regional_focus_idea
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_protect_local_industry
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10
+		relative_position_id = AOT_regional_economics
+		prerequisite = { focus = AOT_regional_economics }
+		x = -1
+		y = 1
+		complete_tooltip = {
+			swap_ideas = {
+				remove_idea = AOT_regional_focus_idea
+				add_idea = AOT_protectionism_idea
+			}
+			random_state = {
+				limit = { has_state_flag = AOT_protect_local_industry_state }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_regional_focus_idea
+				add_idea = AOT_protectionism_idea
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = AOT_protect_local_industry_state
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_encourge_redevolpment
+		icon = GFX_focus_generic_industry_3
+		cost = 10
+		relative_position_id = AOT_regional_economics
+		prerequisite = { focus = AOT_regional_economics focus = AOT_international_economics }
+		x = 1
+		y = 1
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = production_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+	
+		complete_tooltip = {
+			random_state = {
+				limit = { has_state_flag = AOT_encourge_redevolpment_state }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}		
+	
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 1
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = AOT_encourge_redevolpment_state
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_expand_resource_extraction
+		icon = GFX_goal_generic_construction2
+		cost = 10
+		relative_position_id = AOT_encourge_redevolpment
+		prerequisite = { focus = AOT_encourge_redevolpment }
+		x = 0
+		y = 1
+
+		available = {
+			has_full_control_of_state = 409 # significant_number - North Island
+			has_full_control_of_state = 410 # significant_number - South Island
+		}
+		completion_reward = {
+			409 = { # significant_number - North Island
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+			410 = { # significant_number - South Island
+				add_resource = {
+					type = tungsten
+					amount = 10
+				}
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
 		}
 	}
 
@@ -128,8 +321,118 @@ focus_tree = {
 		mutually_exclusive = { focus = AOT_regional_economics }
 		x = 1
 		y = 1
+		complete_tooltip = {
+			add_ideas = free_trade
+			swap_ideas = {
+				remove_idea = AOT_trauma_of_black_thursday
+				add_idea = AOT_international_focus_idea
+			}
+		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			swap_ideas = {
+				remove_idea = AOT_trauma_of_black_thursday
+				add_idea = AOT_international_focus_idea
+			}
+			if = {
+				limit = {
+					has_idea = free_trade
+				}
+				add_political_power = 150
+				else_if = {
+					limit = { has_idea = export_focus }
+					swap_ideas = {
+						remove_idea = export_focus
+						add_idea = free_trade
+					}
+				}
+				else_if = {
+					limit = { has_idea = limited_exports }
+					swap_ideas = {
+						remove_idea = limited_exports
+						add_idea = free_trade
+					}
+				}
+				else_if = {
+					limit = { has_idea = closed_economy }
+					swap_ideas = {
+						remove_idea = closed_economy
+						add_idea = free_trade
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_seek_outside_investment
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		relative_position_id = AOT_international_economics
+		prerequisite = { focus = AOT_international_economics }
+		x = 1
+		y = 1
+		complete_tooltip = {
+			swap_ideas = {
+				remove_idea = AOT_international_focus_idea
+				add_idea = AOT_international_investments_idea
+			}
+			random_state = {
+				limit = { has_state_flag = AOT_seek_outside_investment_state }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_international_focus_idea
+				add_idea = AOT_international_investments_idea
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 1
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = AOT_seek_outside_investment_state
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_vunerable_peace
+		icon = GFX_focus_hol_war_on_pacifism
+		cost = 10
+		x = 25
+		y = 0
+		completion_reward = {
+
 		}
 	}
 }
