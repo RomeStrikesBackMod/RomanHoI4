@@ -233,8 +233,6 @@ african_decisions = {
 		visible = {
 			has_completed_focus = ETH_decolonization
 			country_exists = X00
-		}
-		allowed = {
 			X00 = { has_war = no }
 			X00 = { is_subject = no }
 		}
@@ -253,10 +251,13 @@ african_decisions = {
 			has_completed_focus = ETH_decolonization
 			country_exists = X02
 			X02 = { owns_state = 578 }
-		}
-		allowed = {
 			X02 = { has_war = no }
-			X02 = { is_subject = no }
+			X02 = { 
+				OR = {
+					is_subject = no
+					overlord = THIS
+				}
+			}
 		}
 		cost = 25
 		complete_effect = {
@@ -270,16 +271,21 @@ african_decisions = {
 	ETH_free_ghana = {
 		fire_only_once = yes
 		visible = {
-			has_completed_focus = ETH_decolonization
+			ETH = { has_completed_focus = ETH_decolonization }
 			country_exists = X02
 			OR = {
 				X02 = { owns_state = 576 }
 				X02 = { owns_state = 577 }
 			}
-		}
-		allowed = {
 			X02 = { has_war = no }
-			X02 = { is_subject = no }
+			X02 = {
+				OR = {
+					is_subject = no
+					overlord = {
+						THIS = FROMFROM
+					}
+				}
+			}
 		}
 		cost = 25
 		complete_effect = {

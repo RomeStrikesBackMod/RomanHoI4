@@ -214,7 +214,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_ETH.31.a
-		add_to_faction = MAU
+		add_to_faction = MLI
 	}
 }
 
@@ -512,10 +512,6 @@ country_event = {
 		}
 		ai_chance = {
 			base = 100
-			modifier = {
-				factor = 0
-				NOT = { has_government = democratic }
-			}
 		}
 	}
 	# refuse
@@ -523,7 +519,7 @@ country_event = {
 		name = tesb_ETH.70.b
 		ETH = { country_event = { id = tesb_ETH.72 } }
 		ai_chance = {
-			base = 100
+			base = 0
 			modifier = {
 				factor = 0
 				has_government = democratic
@@ -565,7 +561,7 @@ country_event = {
 	option = {
 		name = tesb_ETH.72.b
 		create_wargoal = {
-			type = puppet_wargoal_focus
+			type = topple_government
 			target = BEN
 		}
 		ai_chance = {
@@ -1764,7 +1760,6 @@ country_event = {
 		ETH = { country_event = { id = tesb_ETH.211 } }
 		trigger = {
 			NOT = { has_war_with = ETH }
-			is_in_faction = no
 		}
 		ai_chance = {
 			base = 100
@@ -1844,15 +1839,12 @@ country_event = {
 	option = {
 		name = tesb_ETH.220.a
 		ETH = { country_event = { id = tesb_ETH.221 } }
-		trigger = {
-			NOT = { has_war_with = ETH }
-			is_in_faction = no
-		}
 		ai_chance = {
-			base = 100
+			base = 0
 			modifier = {
-				factor = 0
-				NOT = { has_government = democratic }
+				factor = 100
+				has_government = democratic
+				is_subject = yes
 			}
 		}
 	}
@@ -1865,6 +1857,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				has_government = democratic
+				is_subject = yes
 			}
 		}
 	}
@@ -1930,27 +1923,18 @@ country_event = {
 		ETH = { country_event = { id = tesb_ETH.231 } }
 		trigger = {
 			NOT = { has_war_with = ETH }
-			is_in_faction = no
 		}
 		ai_chance = {
 			base = 100
-			modifier = {
-				factor = 0
-				NOT = { has_government = democratic }
-			}
 		}
-		end_puppet = ADA
+		end_puppet = X02
 	}
 	# refuse
 	option = {
 		name = tesb_ETH.230.b
 		ETH = { country_event = { id = tesb_ETH.232 } }
 		ai_chance = {
-			base = 100
-			modifier = {
-				factor = 0
-				has_government = democratic
-			}
+			base = 0
 		}
 	}
 }
@@ -2010,10 +1994,6 @@ country_event = {
 	option = {
 		name = tesb_ETH.240.a
 		ETH = { country_event = { id = tesb_ETH.241 } }
-		trigger = {
-			NOT = { has_war_with = ETH }
-			is_in_faction = no
-		}
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -2031,6 +2011,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				has_government = democratic
+				is_subject = yes
 			}
 		}
 	}
@@ -2091,11 +2072,7 @@ country_event = {
 	# accept
 	option = {
 		name = tesb_ETH.250.a
-		ETH = { country_event = { id = tesb_ETH.251 } }
-		trigger = {
-			NOT = { has_war_with = ETH }
-			is_in_faction = no
-		}
+		FROM = { country_event = { id = tesb_ETH.251 } }
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -2107,12 +2084,13 @@ country_event = {
 	# refuse
 	option = {
 		name = tesb_ETH.250.b
-		ETH = { country_event = { id = tesb_ETH.252 } }
+		FROM = { country_event = { id = tesb_ETH.252 } }
 		ai_chance = {
 			base = 100
 			modifier = {
 				factor = 0
 				has_government = democratic
+				is_subject = yes
 			}
 		}
 	}
@@ -2175,9 +2153,6 @@ country_event = {
 	option = {
 		name = tesb_ETH.260.a
 		ETH = { country_event = { id = tesb_ETH.261 } }
-		trigger = {
-			NOT = { has_war_with = ETH }
-		}
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -2200,7 +2175,7 @@ country_event = {
 	}
 }
 
-# Scottish Africa accepts
+# Germany accepts
 country_event = {
 	id = tesb_ETH.261
 	title = tesb_ETH.261.t
@@ -2214,7 +2189,7 @@ country_event = {
 	}
 }
 
-# Scottish Africa refuses
+# Germany refuses
 country_event = {
 	id = tesb_ETH.262
 	title = tesb_ETH.262.t
