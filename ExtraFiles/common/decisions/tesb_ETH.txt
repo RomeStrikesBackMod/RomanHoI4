@@ -124,16 +124,57 @@ african_decisions = {
 			ADA = { is_subject = yes }
 		}
 		available = {
-			has_war = no
-			ADA = { has_war = no }
+			OR = {
+				has_war_together_with = ADA
+				AND = {
+					has_war = no
+					ADA = { has_war = no }
+				}
+			}
 		}
 		cost = 50
 		complete_effect = {
 			ADA = { overlord = { country_event = { id = tesb_ETH.200 } } }
 		}
+		ai_will_do = {
+			base = 100
+		}
 	}
 
-	#todo: invest in Benin decisions
+	benin_protectorate = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ETH_benin_protectorate
+			BEN = { has_capitulated = yes }
+		}
+		available = {
+		}
+		cost = 100
+		complete_effect = {
+			puppet = BEN
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	invest_in_benin_government = {
+		fire_only_once = yes
+		visible = {
+			ETH = { has_completed_focus = ETH_benin_protectorate }
+			BEN = { has_idea = uncivilized }
+		}
+		available = {
+			BEN = { is_puppet_of = FROM }
+		}
+		cost = 200
+		complete_effect = {
+			BEN = { remove_ideas = uncivilized }
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
 
 	return_zabezia = {
 		fire_only_once = yes
@@ -152,7 +193,7 @@ african_decisions = {
 			}
 		}
 		ai_will_do = {
-			base = 100
+			base = 150
 		}
 	}
 
@@ -173,7 +214,7 @@ african_decisions = {
 			}
 		}
 		ai_will_do = {
-			base = 100
+			base = 150
 		}
 	}
 
@@ -197,7 +238,7 @@ african_decisions = {
 			release_puppet = KEN
 		}
 		ai_will_do = {
-			base = 100
+			base = 150
 		}
 	}
 
@@ -224,7 +265,7 @@ african_decisions = {
 			puppet = SUD
 		}
 		ai_will_do = {
-			base = 100
+			base = 150
 		}
 	}
 

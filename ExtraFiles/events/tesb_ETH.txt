@@ -16,7 +16,6 @@ country_event = {
 		ETH = { country_event = { id = tesb_ETH.11 } }
 		trigger = {
 			NOT = { has_war_with = ETH }
-			is_in_faction = no
 		}
 		ai_chance = {
 			base = 100
@@ -50,6 +49,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_ETH.11.a
+		FROM = { leave_faction = yes }
 		add_to_faction = FROM
 	}
 }
@@ -102,6 +102,10 @@ country_event = {
 		}
 		ai_chance = {
 			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
 		}
 	}
 	# refuse
@@ -109,7 +113,7 @@ country_event = {
 		name = tesb_ETH.70.b
 		ETH = { country_event = { id = tesb_ETH.72 } }
 		ai_chance = {
-			base = 0
+			base = 100
 			modifier = {
 				factor = 0
 				has_government = democratic
@@ -324,7 +328,6 @@ country_event = {
 		ETH = { country_event = { id = tesb_ETH.201 } }
 		trigger = {
 			NOT = { has_war_with = ETH }
-			is_in_faction = no
 		}
 		ai_chance = {
 			base = 100
@@ -334,6 +337,7 @@ country_event = {
 			}
 		}
 		end_puppet = ADA
+
 	}
 	# refuse
 	option = {
@@ -413,6 +417,10 @@ country_event = {
 				factor = 0
 				NOT = { has_government = democratic }
 			}
+			modifier = {
+				factor = 0
+				tag = ENG
+			}
 		}
 		end_puppet = X00
 	}
@@ -425,6 +433,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				has_government = democratic
+				NOT = { tag = ENG }
 			}
 		}
 	}
@@ -572,6 +581,14 @@ country_event = {
 		}
 		ai_chance = {
 			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+			modifier = {
+				factor = 0
+				tag = SCO
+			}
 		}
 		end_puppet = X02
 	}
@@ -581,6 +598,11 @@ country_event = {
 		ETH = { country_event = { id = tesb_ETH.232 } }
 		ai_chance = {
 			base = 0
+			modifier = {
+				factor = 0
+				has_government = democratic
+				NOT = { tag = SCO }
+			}
 		}
 	}
 }
@@ -831,7 +853,15 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_ETH.261.a
-		GHA = { transfer_state = 216 }
+		GHA = {
+			transfer_state = 216
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			add_ideas = african_democratic_support
+		}
 	}
 }
 
@@ -902,7 +932,7 @@ country_event = {
 	}
 }
 
-# Scottish Africa accepts
+# Persia accepts
 country_event = {
 	id = tesb_ETH.271
 	title = tesb_ETH.271.t
@@ -916,7 +946,7 @@ country_event = {
 	}
 }
 
-# Scottish Africa refuses
+# Persia refuses
 country_event = {
 	id = tesb_ETH.272
 	title = tesb_ETH.272.t
@@ -931,7 +961,7 @@ country_event = {
 			base = 0
 		}
 	}
-	# force them to free Ghana
+	# force them to return Inhambane
 	option = {
 		name = tesb_ETH.272.b
 		create_wargoal = {

@@ -40,16 +40,16 @@ focus_tree = {
 		available = {
 		}
 		completion_reward = {
-			NGR = { add_ideas = african_democracratic_support }
-			SOK = { add_ideas = african_democracratic_support }
-			BEN = { add_ideas = african_democracratic_support }
-			DAH = { add_ideas = african_democracratic_support }
-			TOG = { add_ideas = african_democracratic_support }
-			BRK = { add_ideas = african_democracratic_support }
-			MLI = { add_ideas = african_democracratic_support }
-			GUI = { add_ideas = african_democracratic_support }
-			MAU = { add_ideas = african_democracratic_support }
-			SEN = { add_ideas = african_democracratic_support }
+			NGR = { add_ideas = african_democratic_support }
+			SOK = { add_ideas = african_democratic_support }
+			BEN = { add_ideas = african_democratic_support }
+			DAH = { add_ideas = african_democratic_support }
+			TOG = { add_ideas = african_democratic_support }
+			BRK = { add_ideas = african_democratic_support }
+			MLI = { add_ideas = african_democratic_support }
+			GUI = { add_ideas = african_democratic_support }
+			MAU = { add_ideas = african_democratic_support }
+			SEN = { add_ideas = african_democratic_support }
 		}
 	}
 
@@ -61,8 +61,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_west_africa }
+		available = {
+			NOT = { has_war_with = NGR }
+		}
 		bypass = {
-			NGR = { is_in_faction = yes }
+			NGR = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			NGR = { country_event = { id = tesb_ETH.10 } }
@@ -77,8 +80,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_niger }
+		available = {
+			NOT = { has_war_with = BRK }
+		}
 		bypass = {
-			BRK = { is_in_faction = yes }
+			BRK = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			BRK = { country_event = { id = tesb_ETH.10 } }
@@ -93,8 +99,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_burkina_faso }
+		available = {
+			NOT = { has_war_with = MLI }
+		}
 		bypass = {
-			MLI = { is_in_faction = yes }
+			MLI = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			MLI = { country_event = { id = tesb_ETH.10 } }
@@ -109,8 +118,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_mali }
+		available = {
+			NOT = { has_war_with = MAU }
+		}
 		bypass = {
-			MAU = { is_in_faction = yes }
+			MAU = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			MAU = { country_event = { id = tesb_ETH.10 } }
@@ -125,8 +137,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_mauritania }
+		available = {
+			NOT = { has_war_with = SEN }
+		}
 		bypass = {
-			SEN = { is_in_faction = yes }
+			SEN = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			SEN = { country_event = { id = tesb_ETH.10 } }
@@ -141,8 +156,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_west_africa }
+		available = {
+			NOT = { has_war_with = SOK }
+		}
 		bypass = {
-			SOK = { is_in_faction = yes }
+			SOK = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			SOK = { country_event = { id = tesb_ETH.10 } }
@@ -150,15 +168,35 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ETH_invite_dahomey
+		id = ETH_benin_protectorate
 		icon = GFX_goal_generic_more_territorial_claims
 		relative_position_id = ETH_invite_sokoto
 		x = 0
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_sokoto }
+		will_lead_to_war_with = BEN
 		bypass = {
-			DAH = { is_in_faction = yes }
+			BEN = { is_in_faction_with = ETH }
+		}
+		completion_reward = {
+			BEN = { country_event = { id = tesb_ETH.70 } }
+		}
+	}
+
+	focus = {
+		id = ETH_invite_dahomey
+		icon = GFX_goal_generic_more_territorial_claims
+		relative_position_id = ETH_benin_protectorate
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = ETH_benin_protectorate }
+		available = {
+			NOT = { has_war_with = DAH }
+		}
+		bypass = {
+			DAH = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			DAH = { country_event = { id = tesb_ETH.10 } }
@@ -173,8 +211,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_dahomey }
+		available = {
+			NOT = { has_war_with = TOG }
+		}
 		bypass = {
-			TOG = { is_in_faction = yes }
+			TOG = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			TOG = { country_event = { id = tesb_ETH.10 } }
@@ -189,8 +230,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_togo }
+		available = {
+			NOT = { has_war_with = GUI }
+		}
 		bypass = {
-			GUI = { is_in_faction = yes }
+			GUI = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			GUI = { country_event = { id = tesb_ETH.10 } }
@@ -206,9 +250,9 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = ETH_african_union }
 		completion_reward = {
-			CHD = { add_ideas = african_democracratic_support }
-			CMR = { add_ideas = african_democracratic_support }
-			GAB = { add_ideas = african_democracratic_support }
+			CHD = { add_ideas = african_democratic_support }
+			CMR = { add_ideas = african_democratic_support }
+			GAB = { add_ideas = african_democratic_support }
 		}
 	}
 
@@ -220,8 +264,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_central_africa }
+		available = {
+			NOT = { has_war_with = CHD }
+		}
 		bypass = {
-			CHD = { is_in_faction = yes }
+			CHD = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			CHD = { country_event = { id = tesb_ETH.10 } }
@@ -236,8 +283,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_chad }
+		available = {
+			NOT = { has_war_with = CMR }
+		}
 		bypass = {
-			CMR = { is_in_faction = yes }
+			CMR = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			CMR = { country_event = { id = tesb_ETH.10 } }
@@ -252,8 +302,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_cameroon }
+		available = {
+			NOT = { has_war_with = GAB }
+		}
 		bypass = {
-			GAB = { is_in_faction = yes }
+			GAB = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			GAB = { country_event = { id = tesb_ETH.10 } }
@@ -268,8 +321,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_central_africa }
+		available = {
+			NOT = { has_war_with = COG }
+		}
 		bypass = {
-			COG = { is_in_faction = yes }
+			COG = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			COG = { country_event = { id = tesb_ETH.10 } }
@@ -284,8 +340,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_invite_congo }
+		available = {
+			NOT = { has_war_with = ANG }
+		}
 		bypass = {
-			ANG = { is_in_faction = yes }
+			ANG = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			ANG = { country_event = { id = tesb_ETH.10 } }
@@ -313,8 +372,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_southern_africa }
+		available = {
+			NOT = { has_war_with = NMB }
+		}
 		bypass = {
-			NMB = { is_in_faction = yes }
+			NMB = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			NMB = { country_event = { id = tesb_ETH.10 } }
@@ -329,8 +391,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_southern_africa }
+		available = {
+			NOT = { has_war_with = SAF }
+		}
 		bypass = {
-			SAF = { is_in_faction = yes }
+			SAF = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			SAF = { country_event = { id = tesb_ETH.10 } }
@@ -346,8 +411,8 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = ETH_african_union }
 		completion_reward = {
-			MUT = { add_ideas = african_democracratic_support }
-			ADA = { add_ideas = african_democracratic_support }
+			MUT = { add_ideas = african_democratic_support }
+			ADA = { add_ideas = african_democratic_support }
 		}
 	}
 
@@ -359,8 +424,11 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_eastern_africa }
+		available = {
+			NOT = { has_war_with = MUT }
+		}
 		bypass = {
-			MUT = { is_in_faction = yes }
+			MUT = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			MUT = { country_event = { id = tesb_ETH.180 } }
@@ -376,11 +444,14 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = ETH_eastern_africa }
 		available = {
-			ADA = { has_war = no }
+			OR = {
+				has_war_together_with = ADA
+				ADA = { has_war = no }
+			}
 			ADA = { is_subject = no }
 		}
 		bypass = {
-			ADA = { is_in_faction = yes }
+			ADA = { is_in_faction_with = ETH }
 		}
 		completion_reward = {
 			ADA = { country_event = { id = tesb_ETH.10 } }
@@ -394,6 +465,9 @@ focus_tree = {
 		x = 5
 		y = 2
 		cost = 10
+		available = {
+			has_war = no
+		}
 		prerequisite = { focus = ETH_invite_senegal }
 		prerequisite = { focus = ETH_invite_guinea }
 		prerequisite = { focus = ETH_invite_gabon }
@@ -414,8 +488,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_decolonization }
+		will_lead_to_war_with = X00
 		available = {
-			X00 = { overlord = { has_war = no } }
+			has_war = no
 		}
 		completion_reward = {
 			X00 = { overlord = { country_event = { id = tesb_ETH.210 } } }
@@ -430,8 +505,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_decolonization }
+		will_lead_to_war_with = X02
 		available = {
-			X02 = { overlord = { has_war = no } }
+			has_war = no
 		}
 		completion_reward = {
 			X02 = { overlord = { country_event = { id = tesb_ETH.230 } } }
@@ -446,8 +522,10 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_decolonization }
+		will_lead_to_war_with = GER
 		bypass = {
 			GHA = { owns_state = 216 }
+			has_war = no
 		}
 		completion_reward = {
 			GER = { country_event = { id = tesb_ETH.260 } }
@@ -462,30 +540,12 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_decolonization }
+		will_lead_to_war_with = IRN
 		bypass = {
 			MUT = { owns_state = 424 }
 		}
 		completion_reward = {
 			IRN = { country_event = { id = tesb_ETH.270 } }
-		}
-	}
-
-	focus = {
-		id = ETH_benin_protectorate
-		icon = GFX_goal_generic_more_territorial_claims
-		relative_position_id = ETH_scottish_colonies
-		x = 1
-		y = 1
-		cost = 10
-		prerequisite = { focus = ETH_english_colony }
-		prerequisite = { focus = ETH_scottish_colonies }
-		prerequisite = { focus = ETH_german_colony }
-		prerequisite = { focus = ETH_iranian_colony }
-		bypass = {
-			BEN = { is_in_faction = yes }
-		}
-		completion_reward = {
-			BEN = { country_event = { id = tesb_ETH.70 } }
 		}
 	}
 }
