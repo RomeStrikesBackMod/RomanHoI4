@@ -1,0 +1,339 @@
+african_decisions = {
+	convert_to_constitutional_monarchy = {
+		fire_only_once = yes
+		visible = {
+			has_idea = RME_former_territory
+			has_government = absolutist
+			OR = {
+				AND = {
+					ETH = { has_completed_focus = ETH_west_africa }
+					OR = {
+						original_tag = NGR
+						original_tag = DAH
+						original_tag = TOG
+						original_tag = BRK
+						original_tag = MLI
+						original_tag = GUI
+						original_tag = MAU
+						original_tag = SEN
+					}
+				}
+				AND = {
+					ETH = { has_completed_focus = ETH_central_africa }
+					OR = {
+						original_tag = CHD
+						original_tag = CMR
+					}
+				}
+			}
+		}
+		available = {
+		}
+		cost = 50
+		complete_effect = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.5
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			hold_election = THIS
+			remove_ideas = RME_former_territory
+			add_ideas = { african_monarch }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	convert_to_constitutional_monarchy_2 = {
+		fire_only_once = yes
+		visible = {
+			has_idea = RME_former_dominion
+			has_government = absolutist
+			OR = {
+				AND = {
+					ETH = { has_completed_focus = ETH_central_africa }
+					OR = {
+						original_tag = GAB
+						original_tag = COG
+						original_tag = ANG
+					}
+				}
+				AND = {
+					ETH = { has_completed_focus = ETH_southern_africa }
+					OR = {
+						original_tag = NMB
+						original_tag = SAF
+					}
+				}
+			}
+		}
+		available = {
+		}
+		cost = 50
+		complete_effect = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.5
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			hold_election = THIS
+			remove_ideas = RME_former_dominion
+			add_ideas = { african_monarch }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	convert_to_constitutional_monarchy_mutapa = {
+		fire_only_once = yes
+		visible = {
+			original_tag = MUT
+			has_government = absolutist
+		}
+		available = {
+		}
+		cost = 50
+		complete_effect = {
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			hold_election = THIS
+			add_ideas = { african_monarch }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	negotiate_for_adal_freedom = {
+		visible = {
+			original_tag = ETH
+			ETH = { has_completed_focus = ETH_eastern_africa }
+			ADA = { is_subject = yes }
+		}
+		available = {
+			OR = {
+				has_war_together_with = ADA
+				AND = {
+					has_war = no
+					ADA = { has_war = no }
+				}
+			}
+		}
+		cost = 50
+		complete_effect = {
+			ADA = { overlord = { country_event = { id = tesb_ETH.200 } } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	benin_protectorate = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ETH_benin_protectorate
+			BEN = { has_capitulated = yes }
+		}
+		available = {
+		}
+		cost = 100
+		complete_effect = {
+			puppet = BEN
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	invest_in_benin_government = {
+		fire_only_once = yes
+		visible = {
+			ETH = { has_completed_focus = ETH_benin_protectorate }
+			BEN = { has_idea = uncivilized }
+		}
+		available = {
+			BEN = { is_puppet_of = FROM }
+		}
+		cost = 200
+		complete_effect = {
+			BEN = { remove_ideas = uncivilized }
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	return_zabezia = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ETH_decolonization
+			owns_state = 195
+		}
+		available = {
+			is_in_faction_with = MUT
+			owns_state = 195
+		}
+		cost = 25
+		complete_effect = {
+			MUT = {
+				transfer_state = 195
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+
+	return_mocambique = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ETH_decolonization
+			owns_state = 188
+		}
+		available = {
+			is_in_faction_with = MUT
+			owns_state = 188
+		}
+		cost = 25
+		complete_effect = {
+			MUT = {
+				transfer_state = 188
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+
+	ETH_release_kenya = {
+		fire_only_once = yes
+		visible = {
+			NOT = { country_exists = KEN }
+			has_completed_focus = ETH_decolonization
+			OR = {
+				owns_state = 185
+				owns_state = 186
+				owns_state = 187
+				owns_state = 196
+				owns_state = 197
+				owns_state = 198
+				owns_state = 199
+			}
+		}
+		cost = 25
+		complete_effect = {
+			release_puppet = KEN
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+
+	ETH_release_sudan = {
+		fire_only_once = yes
+		visible = {
+			NOT = { country_exists = SUD }
+			has_completed_focus = ETH_decolonization
+			OR = {
+				owns_state = 190
+				owns_state = 191
+				owns_state = 192
+				owns_state = 193
+			}
+		}
+		cost = 25
+		complete_effect = {
+			SUD = {
+				transfer_state = 190
+				transfer_state = 191
+				transfer_state = 192
+				transfer_state = 193
+			}
+			puppet = SUD
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+
+	ETH_end_english_africa = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ETH_decolonization
+			country_exists = X00
+			X00 = { has_war = no }
+			X00 = { is_subject = no }
+		}
+		cost = 25
+		complete_effect = {
+			X00 = { country_event = { id = tesb_ETH.220 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	ETH_free_gambia = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ETH_decolonization
+			country_exists = X02
+			X02 = { owns_state = 578 }
+			X02 = { has_war = no }
+			X02 = { 
+				OR = {
+					is_subject = no
+					overlord = THIS
+				}
+			}
+		}
+		cost = 25
+		complete_effect = {
+			X02 = { country_event = { id = tesb_ETH.240 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	ETH_free_ghana = {
+		fire_only_once = yes
+		visible = {
+			ETH = { has_completed_focus = ETH_decolonization }
+			country_exists = X02
+			OR = {
+				X02 = { owns_state = 576 }
+				X02 = { owns_state = 577 }
+			}
+			X02 = { has_war = no }
+			X02 = {
+				OR = {
+					is_subject = no
+					overlord = {
+						THIS = FROMFROM
+					}
+				}
+			}
+		}
+		cost = 25
+		complete_effect = {
+			X02 = { country_event = { id = tesb_ETH.250 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
