@@ -35,7 +35,7 @@ focus_tree = {
 				remove_idea = AOT_thaddai_power_couple
 				add_idea = AOT_thaddai_heartbreak
 			}
-			custom_effect_tooltip = TT_bypass_by_event
+			custom_effect_tooltip = TT_complete_by_event
 		}
 	}
 
@@ -90,11 +90,41 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AOT_strengthen_mesazon
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		relative_position_id = AOT_send_timon_to_constantiople
+		prerequisite = { focus = AOT_send_timon_to_constantiople }
+		mutually_exclusive = {
+			focus = AOT_establish_transitional_council
+		}
+		x = -1
+		y = 1
+		available = {
+			NOT = {
+				has_country_leader = {
+					character = AOT_kyrene_thaddas
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = TT_complete_by_event
+			#promote_character = AOT_transitional_council
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
 		id = AOT_establish_transitional_council
 		icon = GFX_focus_generic_self_management
 		cost = 10
 		relative_position_id = AOT_send_timon_to_constantiople
 		prerequisite = { focus = AOT_send_timon_to_constantiople focus = AOT_keep_timon_in_aotearoa }
+		mutually_exclusive = {
+			focus = AOT_elect_timon_as_exarch focus = AOT_strengthen_mesazon
+		}
 		x = 1
 		y = 1
 		available = {
@@ -105,7 +135,35 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			custom_effect_tooltip = TT_complete_by_event
 			promote_character = AOT_transitional_council
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_elect_timon_as_exarch
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_keep_timon_in_aotearoa
+		prerequisite = { focus = AOT_keep_timon_in_aotearoa }
+		mutually_exclusive = {
+			focus = AOT_establish_transitional_council
+		}
+		x = 1
+		y = 1
+		available = {
+			NOT = {
+				has_country_leader = {
+					character = AOT_kyrene_thaddas
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = TT_complete_by_event
+			promote_character = AOT_timon_thaddas
 		}
 		ai_will_do = {
 			base = 5
@@ -116,7 +174,7 @@ focus_tree = {
 		id = AOT_industrial_checkup
 		icon = GFX_focus_generic_industry_1
 		cost = 10
-		x = 20
+		x = 21
 		y = 0
 		completion_reward = {
 			add_tech_bonus = {
@@ -125,6 +183,9 @@ focus_tree = {
 				bonus = 0.5
 				uses = 2
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 
@@ -142,6 +203,9 @@ focus_tree = {
 				remove_idea = AOT_trauma_of_black_thursday
 				add_idea = AOT_regional_focus_idea
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 
@@ -204,6 +268,9 @@ focus_tree = {
 				}
 				set_state_flag = AOT_protect_local_industry_state
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 
@@ -273,6 +340,9 @@ focus_tree = {
 				set_state_flag = AOT_encourge_redevolpment_state
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 
 	focus = {
@@ -310,6 +380,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 
 	focus = {
@@ -333,6 +406,7 @@ focus_tree = {
 				remove_idea = AOT_trauma_of_black_thursday
 				add_idea = AOT_international_focus_idea
 			}
+			custom_effect_tooltip = AOT_international_economics_locked_free_trade
 			if = {
 				limit = {
 					has_idea = free_trade
@@ -360,6 +434,9 @@ focus_tree = {
 					}
 				}
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 
@@ -423,16 +500,100 @@ focus_tree = {
 				set_state_flag = AOT_seek_outside_investment_state
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 
 	focus = {
 		id = AOT_vunerable_peace
 		icon = GFX_focus_hol_war_on_pacifism
 		cost = 10
-		x = 25
+		x = 28
 		y = 0
 		completion_reward = {
+			add_political_power = 30
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
 
+	focus = {
+		id = AOT_commit_to_pacifism
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = {
+			focus = AOT_vunerable_peace
+		}
+		mutually_exclusive = {
+			focus = AOT_protect_the_islands focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_vunerable_peace
+		cost = 10
+		x = -2
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_committed_pacifists
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_protect_the_islands
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = {
+			focus = AOT_vunerable_peace
+		}
+		mutually_exclusive = {
+			focus = AOT_commit_to_pacifism focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_vunerable_peace
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_protective_measures
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_preemptive_action
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = {
+			focus = AOT_vunerable_peace
+		}
+		mutually_exclusive = {
+			focus = AOT_commit_to_pacifism focus = AOT_protect_the_islands
+		}
+		available = {
+			OR = {
+				NOT = { has_government = democratic }
+				has_war_support > 0.4
+			}
+		}
+		relative_position_id = AOT_vunerable_peace
+		cost = 10
+		x = 2
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_preparing_for_conflict
+			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 }
