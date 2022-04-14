@@ -3541,7 +3541,7 @@ focus_tree = {
 		id = RME_plan_z
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = RME_naval_effort2 }
-		mutually_exclusive = { focus = RME_u_boat_effort focus = RME_rebuild_the_high_seas_fleet focus = RME_accept_british_naval_dominance }
+		mutually_exclusive = { focus = RME_u_boat_effort focus = RME_rebuild_the_high_seas_fleet }
 		x = -2
 		y = 1
 		relative_position_id = RME_naval_effort2
@@ -3629,7 +3629,7 @@ focus_tree = {
 		id = RME_u_boat_effort
 		icon = GFX_goal_generic_navy_submarine
 		prerequisite = { focus = RME_naval_effort2 }
-		mutually_exclusive = { focus = RME_plan_z focus = RME_rebuild_the_high_seas_fleet focus = RME_accept_british_naval_dominance }
+		mutually_exclusive = { focus = RME_plan_z focus = RME_rebuild_the_high_seas_fleet }
 		x = 0
 		y = 1
 		relative_position_id = RME_naval_effort2
@@ -3747,7 +3747,7 @@ focus_tree = {
 		id = RME_rebuild_the_high_seas_fleet
 		icon = GFX_goal_generic_navy_cruiser
 		prerequisite = { focus = RME_naval_effort2 }
-		mutually_exclusive = { focus = RME_plan_z focus = RME_u_boat_effort focus = RME_accept_british_naval_dominance }
+		mutually_exclusive = { focus = RME_plan_z focus = RME_u_boat_effort }
 		available = {
 			is_subject = no
 		}
@@ -3823,7 +3823,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_pride_of_the_modern_germany
+		id = RME_pride_of_the_modern_rome
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = RME_rebuild_the_high_seas_fleet }
 		available = {
@@ -3849,7 +3849,7 @@ focus_tree = {
 				}
 			}
 			add_tech_bonus = {
-				name = RME_pride_of_the_modern_germany
+				name = RME_pride_of_the_modern_rome
 				bonus = 1.0
 				ahead_reduction = 2
 				uses = 1
@@ -3876,7 +3876,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = RME_pride_of_the_modern_germany_dockyards
+				set_state_flag = RME_pride_of_the_modern_rome_dockyards
 			}
 			random_owned_controlled_state = {
 				limit = {
@@ -3886,7 +3886,7 @@ focus_tree = {
 						size > 2
 						include_locked = yes
 					}
-					NOT = { has_state_flag = RME_pride_of_the_modern_germany_dockyards }
+					NOT = { has_state_flag = RME_pride_of_the_modern_rome_dockyards }
 				}
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -3894,10 +3894,10 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = RME_pride_of_the_modern_germany_dockyards
+				set_state_flag = RME_pride_of_the_modern_rome_dockyards
 			}
 			add_tech_bonus = {
-				name = RME_pride_of_the_modern_germany
+				name = RME_pride_of_the_modern_rome
 				bonus = 1.0
 				ahead_reduction = 2
 				uses = 1
@@ -3911,23 +3911,15 @@ focus_tree = {
 	focus = {
 		id = RME_crossing_the_atlantic
 		icon = GFX_goal_generic_build_navy
-		prerequisite = { focus = RME_modular_construction focus = RME_trade_interdiction focus = RME_pride_of_the_modern_germany }
+		prerequisite = { focus = RME_modular_construction focus = RME_trade_interdiction focus = RME_pride_of_the_modern_rome }
 		available = {
 			is_subject = no
-			has_war_with = USA
-			OR = {
-				AND = {
-					has_war_with = SOV
-					SOV = { has_capitulated = yes }
-				}
-				SOV = { exists = no }
-				SOV = { is_puppet = yes }
-			}
+			has_war_with = UTA
 			NOT = {
 				any_country = {
-					NOT = { tag = ENG }
-					has_war_with = GER
-					is_in_faction_with = USA
+					NOT = { tag = SCO }
+					has_war_with = RME
+					is_in_faction_with = UTA
 					any_owned_state = { is_on_continent = europe }
 					has_capitulated = no
 				}
