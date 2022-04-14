@@ -3312,7 +3312,7 @@ focus_tree = {
 	focus = {
 		id = RME_naval_rearmament
 		icon = GFX_goal_generic_build_navy
-		x = 25
+		x = 24
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -3401,7 +3401,7 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_doctrines_tactics
 		prerequisite = { focus = RME_naval_rearmament }
 		x = 0
-		y = 3
+		y = 1
 		relative_position_id = RME_naval_rearmament
 		cost = 5
 		ai_will_do = {
@@ -3536,6 +3536,497 @@ focus_tree = {
 			}
 		}
 	}
+	
+	focus = {
+		id = RME_plan_z
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = RME_naval_effort2 }
+		mutually_exclusive = { focus = RME_u_boat_effort focus = RME_rebuild_the_high_seas_fleet focus = RME_accept_british_naval_dominance }
+		x = -2
+		y = 1
+		relative_position_id = RME_naval_effort2
+		cost = 10
+		ai_will_do = {
+			factor = 0.25
+		}	
+
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+			navy_experience = 50
+			every_state = {
+				limit = { has_state_flag = plan_z_dockyards }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = bc_bonus
+				bonus = 1.0
+				uses = 1
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				name = bb_bonus
+				bonus = 1.0
+				uses = 1
+				category = bb_tech
+				category = shbb_tech
+			}
+			add_tech_bonus = {
+				name = cv_bonus
+				bonus = 1.0
+				uses = 1
+				category = cv_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = RME_plan_z_dockyards
+			}
+			add_tech_bonus = {
+				name = bc_bonus
+				bonus = 1.0
+				uses = 1
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				name = bb_bonus
+				bonus = 1.0
+				uses = 1
+				category = bb_tech
+				category = shbb_tech
+			}
+			add_tech_bonus = {
+				name = cv_bonus
+				bonus = 1.0
+				uses = 1
+				category = cv_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = RME_u_boat_effort
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = RME_naval_effort2 }
+		mutually_exclusive = { focus = RME_plan_z focus = RME_rebuild_the_high_seas_fleet focus = RME_accept_british_naval_dominance }
+		x = 0
+		y = 1
+		relative_position_id = RME_naval_effort2
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		complete_tooltip = {
+			navy_experience = 25
+			every_state = {
+				limit = { has_state_flag = RME_u_boat_effort_2dockyards }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = RME_u_boat_effort
+				bonus = 1.0
+				uses = 1
+				category = ss_tech
+			}
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				set_technology = { cruiser_submarines = 1 }
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			navy_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = RME_u_boat_effort_2dockyards
+			}
+			add_tech_bonus = {
+				name = RME_u_boat_effort
+				bonus = 1.0
+				uses = 1
+				category = ss_tech
+			}
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				set_technology = { cruiser_submarines = 1 }
+			}
+		}
+	}
+
+	focus = {
+		id = RME_trade_interdiction
+		icon = GFX_goal_generic_wolf_pack
+		prerequisite = { focus = RME_u_boat_effort }
+		x = 0
+		y = 1
+		relative_position_id = RME_u_boat_effort
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+			
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = ti_bonus
+				name = RME_trade_interdiction
+				cost_reduction = 0.25
+				uses = 2
+				category = trade_interdiction_tree
+			}
+		}
+	}
+
+	focus = {
+		id = RME_modular_construction
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = RME_plan_z }
+		x = 0
+		y = 1
+		relative_position_id = RME_plan_z
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+			
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = RME_modular_construction
+		}
+	}
+	
+	focus = {
+		id = RME_rebuild_the_high_seas_fleet
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = RME_naval_effort2 }
+		mutually_exclusive = { focus = RME_plan_z focus = RME_u_boat_effort focus = RME_accept_british_naval_dominance }
+		available = {
+			is_subject = no
+		}
+		x = 2
+		y = 1
+		relative_position_id = RME_naval_effort2
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		complete_tooltip = {
+			navy_experience = 50
+			every_state = {
+				limit = { has_state_flag = RME_rebuild_the_high_seas_fleet_dockyards }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = bc_bonus
+				bonus = 1.0
+				uses = 1
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				name = bb_bonus
+				bonus = 1.0
+				uses = 1
+				category = bb_tech
+				category = shbb_tech
+			}
+			add_ideas = RME_rebuild_the_high_seas_fleet
+		}
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = RME_rebuild_the_high_seas_fleet_dockyards
+			}
+			add_tech_bonus = {
+				name = bc_bonus
+				bonus = 1.0
+				uses = 1
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				name = bb_bonus
+				bonus = 1.0
+				uses = 1
+				category = bb_tech
+				category = shbb_tech
+			}
+			add_ideas = RME_rebuild_the_high_seas_fleet
+		}
+	}
+
+	focus = {
+		id = RME_pride_of_the_modern_germany
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = RME_rebuild_the_high_seas_fleet }
+		available = {
+			is_subject = no
+		}
+		x = 0
+		y = 1
+		relative_position_id = RME_rebuild_the_high_seas_fleet
+		cost = 10
+		ai_will_do = {
+			factor = 9
+		}
+		
+		complete_tooltip = {
+			navy_experience = 50
+			every_state = {
+				limit = { has_state_flag = RME_rebuild_the_high_seas_fleet_dockyards }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = RME_pride_of_the_modern_germany
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = bc_tech
+				category = bb_tech
+				category = shbb_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = RME_pride_of_the_modern_germany_dockyards
+			}
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+					NOT = { has_state_flag = RME_pride_of_the_modern_germany_dockyards }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = RME_pride_of_the_modern_germany_dockyards
+			}
+			add_tech_bonus = {
+				name = RME_pride_of_the_modern_germany
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = bc_tech
+				category = bb_tech
+				category = shbb_tech
+			}
+		}
+	}
+
+	focus = {
+		id = RME_crossing_the_atlantic
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = RME_modular_construction focus = RME_trade_interdiction focus = RME_pride_of_the_modern_germany }
+		available = {
+			is_subject = no
+			has_war_with = USA
+			OR = {
+				AND = {
+					has_war_with = SOV
+					SOV = { has_capitulated = yes }
+				}
+				SOV = { exists = no }
+				SOV = { is_puppet = yes }
+			}
+			NOT = {
+				any_country = {
+					NOT = { tag = ENG }
+					has_war_with = GER
+					is_in_faction_with = USA
+					any_owned_state = { is_on_continent = europe }
+					has_capitulated = no
+				}
+			}
+		}
+		cancel_if_invalid = yes
+		x = 0
+		y = 1
+		relative_position_id = RME_trade_interdiction
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_on_continent = europe
+					is_coastal = yes
+					arms_factory < 1
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				custom_effect_tooltip = RME_crossing_the_atlantic_2_factories_tt
+				hidden_effect = {
+					random_state = {
+						limit = {
+							is_fully_controlled_by = ROOT
+							is_on_continent = europe
+							NOT = { is_coastal = yes }
+							arms_factory > 1
+						}
+						remove_building = {
+							type = arms_factory
+							level = 2
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_on_continent = europe
+					is_coastal = yes
+					AND = {
+						arms_factory < 2
+						arms_factory > 0
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				remove_building = {
+						type = arms_factory
+						level = 1
+					}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				custom_effect_tooltip = RME_crossing_the_atlantic_1_factory_tt
+				hidden_effect = {
+					random_state = {
+						limit = {
+							is_fully_controlled_by = ROOT
+							is_on_continent = europe
+							NOT = { is_coastal = yes }
+							arms_factory > 0
+						}
+						remove_building = {
+							type = arms_factory
+							level = 1
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_on_continent = europe
+					is_coastal = yes
+					arms_factory > 1
+				}
+				remove_building = {
+						type = arms_factory
+						level = 2
+					}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
 
 	focus = {
 		id = RME_secure_the_new_state
@@ -3544,7 +4035,7 @@ focus_tree = {
 			is_puppet = no
 			has_war = no
 		}
-		x = 38
+		x = 32
 		y = 0
 		cost = 10
 		ai_will_do = {
