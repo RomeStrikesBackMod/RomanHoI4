@@ -1,9 +1,9 @@
 african_decisions = {
 	convert_to_constitutional_monarchy = {
-		fire_only_once = yes
 		visible = {
-			has_idea = RME_former_territory
+			OR = { has_idea = RME_former_territory has_idea = RME_former_dominion }
 			has_government = absolutist
+			NOT = { has_country_flag = AFR_turned_constitutional }
 			OR = {
 				AND = {
 					ETH = { has_completed_focus = ETH_west_africa }
@@ -23,6 +23,16 @@ african_decisions = {
 					OR = {
 						original_tag = CHD
 						original_tag = CMR
+						original_tag = GAB
+						original_tag = COG
+						original_tag = ANG
+					}
+				}
+				AND = {
+					ETH = { has_completed_focus = ETH_southern_africa }
+					OR = {
+						original_tag = NMB
+						original_tag = SAF
 					}
 				}
 			}
@@ -41,17 +51,31 @@ african_decisions = {
 				election_frequency = 48
 			}
 			hold_election = THIS
-			remove_ideas = RME_former_territory
+			if = {
+				limit = {
+					has_idea = RME_former_territory
+				}
+				remove_ideas = RME_former_territory
+			}
+			if = {
+				limit = {
+					has_idea = RME_former_dominion
+				}
+				remove_ideas = RME_former_dominion
+			}
 			add_ideas = { african_monarch }
+			set_country_flag = AFR_turned_constitutional
 		}
 		ai_will_do = {
 			base = 100
 		}
 	}
 
+	#delete after testing changes above
 	convert_to_constitutional_monarchy_2 = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing
 			has_idea = RME_former_dominion
 			has_government = absolutist
 			OR = {
@@ -296,7 +320,7 @@ african_decisions = {
 			X02 = { 
 				OR = {
 					is_subject = no
-					overlord = THIS
+					is_subject_of = ROOT
 				}
 			}
 		}
@@ -322,9 +346,7 @@ african_decisions = {
 			X02 = {
 				OR = {
 					is_subject = no
-					overlord = {
-						THIS = FROMFROM
-					}
+					is_subject_of = ROOT
 				}
 			}
 		}

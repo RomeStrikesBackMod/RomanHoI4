@@ -26,9 +26,54 @@ MNG_decisions = {
 		}
 	}
 
+	MNG_give_FROM_to_KHI = {
+		state_target = yes
+		target_root_trigger = {
+			is_in_faction_with = KHI
+		}
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_KHI }
+			}
+		}
+		available = {
+			owns_state = FROM
+		}
+		targets = {
+			325
+			326
+			327
+			328
+			98
+			99
+			522
+			508
+			509
+		}
+		complete_effect = {
+			KHI = {
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
+			}
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_KHI }
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	#don't delete specific decisions until dynamic one is tested
 	MNG_give_shirvan_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 325
 		}
@@ -48,6 +93,7 @@ MNG_decisions = {
 	MNG_give_uzbekia_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 326
 		}
@@ -67,6 +113,7 @@ MNG_decisions = {
 	MNG_give_kyzylorda_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 327
 		}
@@ -86,6 +133,7 @@ MNG_decisions = {
 	MNG_give_bandakshan_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 328
 		}
@@ -105,6 +153,7 @@ MNG_decisions = {
 	MNG_give_semireche_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 98
 		}
@@ -124,6 +173,7 @@ MNG_decisions = {
 	MNG_give_kirghizia_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 99
 		}
@@ -143,6 +193,7 @@ MNG_decisions = {
 	MNG_give_turkmenia_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 522
 		}
@@ -162,6 +213,7 @@ MNG_decisions = {
 	MNG_give_uralsk_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 508
 		}
@@ -181,6 +233,7 @@ MNG_decisions = {
 	MNG_give_balkash_to_khiva = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = KHI
 			owns_state = 509
 		}
@@ -221,9 +274,53 @@ MNG_decisions = {
 		}
 	}
 
+	#don't delete specific decisions until dynamic one is tested
+	MNG_give_FROM_to_SHN = {
+		state_target = yes
+		target_root_trigger = {
+			is_in_faction_with = SHN
+			NOT = { country_exists = BUR }
+		}
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_SHN }
+			}
+		}
+		available = {
+			owns_state = FROM
+		}
+		targets = {
+			75
+			74
+			458
+			272
+			363
+			274
+		}
+		complete_effect = {
+			SHN = {
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
+			}
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_SHN }
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	#don't delete specific decisions until dynamic one is tested
 	MNG_give_kachin_to_shan = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SHN
 			NOT = { country_exists = BUR }
 			owns_state = 75
@@ -245,6 +342,7 @@ MNG_decisions = {
 	MNG_give_magwe_to_shan = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SHN
 			NOT = { country_exists = BUR }
 			owns_state = 74
@@ -266,6 +364,7 @@ MNG_decisions = {
 	MNG_give_sittwe_to_shan = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SHN
 			NOT = { country_exists = BUR }
 			owns_state = 458
@@ -287,6 +386,7 @@ MNG_decisions = {
 	MNG_give_irrawaddy_to_shan = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SHN
 			NOT = { country_exists = BUR }
 			owns_state = 272
@@ -308,6 +408,7 @@ MNG_decisions = {
 	MNG_give_pegu_to_shan = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SHN
 			NOT = { country_exists = BUR }
 			owns_state = 363
@@ -329,6 +430,7 @@ MNG_decisions = {
 	MNG_give_tenasserim_to_shan = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SHN
 			NOT = { country_exists = BUR }
 			owns_state = 274
@@ -347,9 +449,52 @@ MNG_decisions = {
 		}
 	}
 
+	MNG_give_FROM_to_BUR = {
+		state_target = yes
+		target_root_trigger = {
+			is_in_faction_with = BUR
+			country_exists = BUR
+		}
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_BUR }
+			}
+		}
+		available = {
+			owns_state = FROM
+		}
+		targets = {
+			75
+			74
+			458
+			272
+			363
+			274
+		}
+		complete_effect = {
+			BUR = {
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
+			}
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_BUR }
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	
+	#don't delete specific decisions until dynamic one is tested
 	MNG_give_kachin_to_burma = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = BUR
 			country_exists = BUR
 			owns_state = 75
@@ -370,6 +515,7 @@ MNG_decisions = {
 	MNG_give_magwe_to_burma = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = BUR
 			country_exists = BUR
 			owns_state = 74
@@ -390,6 +536,7 @@ MNG_decisions = {
 	MNG_give_sittwe_to_burma = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = BUR
 			country_exists = BUR
 			owns_state = 458
@@ -411,6 +558,7 @@ MNG_decisions = {
 	MNG_give_irrawaddy_to_burma = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = BUR
 			country_exists = BUR
 			owns_state = 272
@@ -431,6 +579,7 @@ MNG_decisions = {
 	MNG_give_pegu_to_burma = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = BUR
 			country_exists = BUR
 			owns_state = 363
@@ -452,6 +601,7 @@ MNG_decisions = {
 	MNG_give_tenasserim_to_burma = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = BUR
 			country_exists = BUR
 			owns_state = 274
@@ -594,7 +744,7 @@ MNG_decisions = {
 			owns_state = 336
 		}
 		complete_effect = {
-			BUR = {
+			LAO = {
 				transfer_state = 336
 				add_state_core = 336
 			}
@@ -615,7 +765,7 @@ MNG_decisions = {
 			owns_state = 335
 		}
 		complete_effect = {
-			BUR = {
+			LAO = {
 				transfer_state = 335
 				add_state_core = 335
 			}
@@ -783,9 +933,54 @@ MNG_decisions = {
 		}
 	}
 
+	MNG_give_FROM_to_SIA = {
+		state_target = yes
+		target_root_trigger = {
+			is_in_faction_with = SIA
+			country_exists = SIA
+		}
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_SIA }
+			}
+		}
+		available = {
+			owns_state = FROM
+		}
+		targets = {
+			273
+			603
+			602
+			581
+			582
+			364
+			583
+			275
+		}
+		complete_effect = {
+			SIA = {
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
+			}
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_SIA }
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	#don't delete specific decisions until dynamic one is tested
 	MNG_give_chiang_mai_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 273
@@ -807,6 +1002,7 @@ MNG_decisions = {
 	MNG_give_nan_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 603
@@ -828,6 +1024,7 @@ MNG_decisions = {
 	MNG_give_sukhothai_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 602
@@ -848,6 +1045,7 @@ MNG_decisions = {
 	MNG_give_nakhon_sawan_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 581
@@ -869,6 +1067,7 @@ MNG_decisions = {
 	MNG_give_nakhon_ratchasima_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 582
@@ -890,6 +1089,7 @@ MNG_decisions = {
 	MNG_give_ayutthaya_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 364
@@ -911,6 +1111,7 @@ MNG_decisions = {
 	MNG_give_rayong_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 583
@@ -931,6 +1132,7 @@ MNG_decisions = {
 	MNG_give_phuket_to_siam = {
 		fire_only_once = yes
 		visible = {
+			always = no #for testing dynamic version
 			is_in_faction_with = SIA
 			country_exists = SIA
 			owns_state = 275
