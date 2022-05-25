@@ -26,170 +26,45 @@ MNG_decisions = {
 		}
 	}
 
-	MNG_give_shirvan_to_khiva = {
-		fire_only_once = yes
-		visible = {
+	MNG_give_FROM_to_KHI = {
+		state_target = yes
+		target_root_trigger = {
 			is_in_faction_with = KHI
-			owns_state = 325
 		}
-		available = {
-			owns_state = 325
-		}
-		complete_effect = {
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_KHI }
+			}
 			KHI = {
-				transfer_state = 325
+				NOT = { owns_state = FROM }
 			}
 		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_uzbekia_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 326
-		}
 		available = {
-			owns_state = 326
+			owns_state = FROM
+		}
+		targets = {
+			325 # significant number - Shirvan
+			326 # significant number - Uzbekia
+			327 # significant number - Kyzylorda
+			328 # significant number - Bandaksham
+			98  # significant number - Semireche
+			99 # significant number - Kirghizia
+			522 # significant number - Turkmenia
+			508 # significant number - Uralsk
+			509 # significant number - Balkash
 		}
 		complete_effect = {
 			KHI = {
-				transfer_state = 326
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
 			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_kyzylorda_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 327
-		}
-		available = {
-			owns_state = 327
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 327
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_bandakshan_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 328
-		}
-		available = {
-			owns_state = 328
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 328
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_semireche_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 98
-		}
-		available = {
-			owns_state = 98
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 98
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_kirghizia_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 99
-		}
-		available = {
-			owns_state = 99
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 99
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_turkmenia_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 522
-		}
-		available = {
-			owns_state = 522
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 522
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_uralsk_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 508
-		}
-		available = {
-			owns_state = 508
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 508
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_balkash_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 509
-		}
-		available = {
-			owns_state = 509
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 509
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_KHI }
 			}
 		}
 		ai_will_do = {
