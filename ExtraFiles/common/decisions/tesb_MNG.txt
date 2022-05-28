@@ -4,18 +4,18 @@ MNG_decisions = {
 		visible = {
 			NOT = { country_exists = KHI }
 			OR = {
-				owns_state = 325
-				owns_state = 326
-				owns_state = 327
-				owns_state = 328
+				owns_state = 325 # significant number - Shirvan
+				owns_state = 326 # significant number - Uzbekia
+				owns_state = 327 # significant number - Kyzylorda
+				owns_state = 328 # significant number - Bandaksham
 			}
 		}
 		available = {
 			OR = {
-				owns_state = 325
-				owns_state = 326
-				owns_state = 327
-				owns_state = 328
+				owns_state = 325 # significant number - Shirvan
+				owns_state = 326 # significant number - Uzbekia
+				owns_state = 327 # significant number - Kyzylorda
+				owns_state = 328 # significant number - Bandaksham
 			}
 		}
 		complete_effect = {
@@ -26,170 +26,45 @@ MNG_decisions = {
 		}
 	}
 
-	MNG_give_shirvan_to_khiva = {
-		fire_only_once = yes
-		visible = {
+	MNG_give_FROM_to_KHI = {
+		state_target = yes
+		target_root_trigger = {
 			is_in_faction_with = KHI
-			owns_state = 325
 		}
-		available = {
-			owns_state = 325
-		}
-		complete_effect = {
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_KHI }
+			}
 			KHI = {
-				transfer_state = 325
+				NOT = { owns_state = FROM }
 			}
 		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_uzbekia_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 326
-		}
 		available = {
-			owns_state = 326
+			owns_state = FROM
+		}
+		targets = {
+			325 # significant number - Shirvan
+			326 # significant number - Uzbekia
+			327 # significant number - Kyzylorda
+			328 # significant number - Bandaksham
+			98  # significant number - Semireche
+			99 # significant number - Kirghizia
+			522 # significant number - Turkmenia
+			508 # significant number - Uralsk
+			509 # significant number - Balkash
 		}
 		complete_effect = {
 			KHI = {
-				transfer_state = 326
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
 			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_kyzylorda_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 327
-		}
-		available = {
-			owns_state = 327
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 327
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_bandakshan_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 328
-		}
-		available = {
-			owns_state = 328
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 328
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_semireche_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 98
-		}
-		available = {
-			owns_state = 98
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 98
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_kirghizia_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 99
-		}
-		available = {
-			owns_state = 99
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 99
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_turkmenia_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 522
-		}
-		available = {
-			owns_state = 522
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 522
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_uralsk_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 508
-		}
-		available = {
-			owns_state = 508
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 508
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_balkash_to_khiva = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = KHI
-			owns_state = 509
-		}
-		available = {
-			owns_state = 509
-		}
-		complete_effect = {
-			KHI = {
-				transfer_state = 509
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_KHI }
 			}
 		}
 		ai_will_do = {
@@ -203,14 +78,14 @@ MNG_decisions = {
 			NOT = { country_exists = SHN }
 			NOT = { country_exists = BUR }
 			OR = {
-				owns_state = 600
-				owns_state = 601
+				owns_state = 600 # significant number - Ava
+				owns_state = 601 # significant number - Shan
 			}
 		}
 		available = {
 			OR = {
-				owns_state = 600
-				owns_state = 601
+				owns_state = 600 # significant number - Ava
+				owns_state = 601 # significant number - Shan
 			}
 		}
 		complete_effect = {
@@ -221,20 +96,43 @@ MNG_decisions = {
 		}
 	}
 
-	MNG_give_kachin_to_shan = {
-		fire_only_once = yes
-		visible = {
+	MNG_give_FROM_to_SHN = {
+		state_target = yes
+		target_root_trigger = {
 			is_in_faction_with = SHN
 			NOT = { country_exists = BUR }
-			owns_state = 75
+		}
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_SHN }
+			}
+			SHN = {
+				NOT = { owns_state = FROM }
+			}
 		}
 		available = {
-			owns_state = 75
+			owns_state = FROM
+		}
+		targets = {
+			75 # significant number - Kachin
+			74 # significant number - Magwe
+			458 # significant number - Sittwe
+			272 # significant number - Irrawaddy
+			363 # significant number - Pegu
+			274 # significant number - Tenasserim
 		}
 		complete_effect = {
 			SHN = {
-				transfer_state = 75
-				add_state_core = 75
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
+			}
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_SHN }
 			}
 		}
 		ai_will_do = {
@@ -242,242 +140,58 @@ MNG_decisions = {
 		}
 	}
 
-	MNG_give_magwe_to_shan = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SHN
-			NOT = { country_exists = BUR }
-			owns_state = 74
-		}
-		available = {
-			owns_state = 74
-		}
-		complete_effect = {
-			SHN = {
-				transfer_state = 74
-				add_state_core = 74
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_sittwe_to_shan = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SHN
-			NOT = { country_exists = BUR }
-			owns_state = 458
-		}
-		available = {
-			owns_state = 458
-		}
-		complete_effect = {
-			SHN = {
-				transfer_state = 458
-				add_state_core = 458
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_irrawaddy_to_shan = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SHN
-			NOT = { country_exists = BUR }
-			owns_state = 272
-		}
-		available = {
-			owns_state = 272
-		}
-		complete_effect = {
-			SHN = {
-				transfer_state = 272
-				add_state_core = 272
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_pegu_to_shan = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SHN
-			NOT = { country_exists = BUR }
-			owns_state = 363
-		}
-		available = {
-			owns_state = 363
-		}
-		complete_effect = {
-			SHN = {
-				transfer_state = 363
-				add_state_core = 363
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_tenasserim_to_shan = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SHN
-			NOT = { country_exists = BUR }
-			owns_state = 274
-		}
-		available = {
-			owns_state = 274
-		}
-		complete_effect = {
-			SHN = {
-				transfer_state = 274
-				add_state_core = 274
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_kachin_to_burma = {
-		fire_only_once = yes
-		visible = {
+	MNG_give_FROM_to_BUR = {
+		state_target = yes
+		target_root_trigger = {
 			is_in_faction_with = BUR
 			country_exists = BUR
-			owns_state = 75
+		}
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_BUR }
+			}
+			BUR = {
+				NOT = { owns_state = FROM }
+			}
 		}
 		available = {
-			owns_state = 75
+			owns_state = FROM
+		}
+		targets = {
+			75 # significant number - Kachin
+			74 # significant number - Magwe
+			458 # significant number - Sittwe
+			272 # significant number - Irrawaddy
+			363 # significant number - Pegu
+			274 # significant number - Tenasserim
 		}
 		complete_effect = {
 			BUR = {
-				transfer_state = 75
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
+			}
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_BUR }
 			}
 		}
 		ai_will_do = {
 			base = 100
 		}
 	}
-
-	MNG_give_magwe_to_burma = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = BUR
-			country_exists = BUR
-			owns_state = 74
-		}
-		available = {
-			owns_state = 74
-		}
-		complete_effect = {
-			SHN = {
-				transfer_state = 74
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_sittwe_to_burma = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = BUR
-			country_exists = BUR
-			owns_state = 458
-		}
-		available = {
-			owns_state = 458
-		}
-		complete_effect = {
-			BUR = {
-				transfer_state = 458
-				add_state_core = 458
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_irrawaddy_to_burma = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = BUR
-			country_exists = BUR
-			owns_state = 272
-		}
-		available = {
-			owns_state = 272
-		}
-		complete_effect = {
-			BUR = {
-				transfer_state = 272
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_pegu_to_burma = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = BUR
-			country_exists = BUR
-			owns_state = 363
-		}
-		available = {
-			owns_state = 363
-		}
-		complete_effect = {
-			BUR = {
-				transfer_state = 363
-				add_state_core = 363
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_tenasserim_to_burma = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = BUR
-			country_exists = BUR
-			owns_state = 274
-		}
-		available = {
-			owns_state = 274
-		}
-		complete_effect = {
-			BUR = {
-				transfer_state = 274
-				add_state_core = 274
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
+	
 	MNG_negotiate_for_burma_IND = {
 		fire_only_once = yes
 		visible = {
 			has_completed_focus = MNG_invite_burma
 			country_exists = IND
 			IND = { 
-				owns_state = 272
-				owns_state = 274
+				owns_state = 272 # significant number - Irrawaddy
+				owns_state = 274 # significant number - Tenasserim
 			}
 		}
 		available = {
@@ -504,7 +218,7 @@ MNG_decisions = {
 		visible = {
 			has_completed_focus = MNG_invite_burma
 			country_exists = PLC
-			PLC = { owns_state = 458 }
+			PLC = { owns_state = 458 } # significant number - Sittwe
 		}
 		available = {
 			OR = {
@@ -534,8 +248,8 @@ MNG_decisions = {
 			has_completed_focus = MNG_invite_burma
 			country_exists = MAK
 			OR = {
-				MAK = { owns_state = 363 }
-				PEG = { owns_state = 363 }
+				MAK = { owns_state = 363 } # significant number - Pegu
+				PEG = { owns_state = 363 } # significant number - Pegu
 			}
 		}
 		available = {
@@ -565,14 +279,14 @@ MNG_decisions = {
 		visible = {
 			NOT = { country_exists = LAO }
 			OR = {
-				owns_state = 335
-				owns_state = 336
+				owns_state = 335 # significant number - Laos
+				owns_state = 336 # significant number - Northern Laos
 			}
 		}
 		available = {
 			OR = {
-				owns_state = 335
-				owns_state = 336
+				owns_state = 335 # significant number - Laos
+				owns_state = 336 # significant number - Northern Laos
 			}
 		}
 		complete_effect = {
@@ -594,9 +308,9 @@ MNG_decisions = {
 			owns_state = 336
 		}
 		complete_effect = {
-			BUR = {
-				transfer_state = 336
-				add_state_core = 336
+			LAO = {
+				transfer_state = 336 # significant number - Northern Laos
+				add_state_core = 336 # significant number - Northern Laos
 			}
 		}
 		ai_will_do = {
@@ -615,9 +329,9 @@ MNG_decisions = {
 			owns_state = 335
 		}
 		complete_effect = {
-			BUR = {
-				transfer_state = 335
-				add_state_core = 335
+			LAO = {
+				transfer_state = 335 # significant number - Laos
+				add_state_core = 335 # significant number - Laos
 			}
 		}
 		ai_will_do = {
@@ -630,7 +344,7 @@ MNG_decisions = {
 		visible = {
 			has_completed_focus = MNG_free_dai_nam
 			country_exists = MAK
-			MAK = { owns_state = 362 }
+			MAK = { owns_state = 362 } # significant number - Annam
 		}
 		available = {
 			OR = {
@@ -653,13 +367,13 @@ MNG_decisions = {
 			has_completed_focus = MNG_free_dai_nam
 			NOT = { country_exists = VIN }
 			OR = {
-				owns_state = 362
-				owns_state = 401
+				owns_state = 362 # significant number - Annam
+				owns_state = 401 # significant number - Tonkin
 			}
 		}
 		available = {
-			owns_state = 362
-			owns_state = 401
+			owns_state = 362 # significant number - Annam
+			owns_state = 401 # significant number - Tonkin
 		}
 		complete_effect = {
 			release_puppet = VIN
@@ -674,18 +388,18 @@ MNG_decisions = {
 		visible = {
 			NOT = { country_exists = SIA }
 			OR = {
-				owns_state = 581
-				owns_state = 582
-				owns_state = 583
-				owns_state = 602
+				owns_state = 581 # significant number - Nakhon Sawan
+				owns_state = 582 # significant number - Nakhon Ratchasima
+				owns_state = 583 # significant number - Rayong
+				owns_state = 602 # significant number - Sukhothai
 			}
 		}
 		available = {
 			OR = {
-				owns_state = 581
-				owns_state = 582
-				owns_state = 583
-				owns_state = 602
+				owns_state = 581 # significant number - Nakhon Sawan
+				owns_state = 582 # significant number - Nakhon Ratchasima
+				owns_state = 583 # significant number - Rayong
+				owns_state = 602 # significant number - Sukhothai
 			}
 		}
 		complete_effect = {
@@ -703,8 +417,8 @@ MNG_decisions = {
 			SIA = {
 				is_in_faction_with = MNG
 				OR = {
-					NOT = { owns_state = 602 }
-					NOT = { owns_state = 603 }
+					NOT = { owns_state = 602 } # significant number - Sukhothai
+					NOT = { owns_state = 603 } # significant number - Nan
 				}
 			}
 		}
@@ -712,8 +426,8 @@ MNG_decisions = {
 			NOT = { has_war_with = SUK }
 			SUK = {
 				OR = {
-					owns_state = 602
-					owns_state = 603
+					owns_state = 602 # significant number - Sukhothai
+					owns_state = 603 # significant number - Nan
 				}
 			}
 		}
@@ -733,14 +447,14 @@ MNG_decisions = {
 			country_exists = IND
 			SIA = { 
 				OR = {
-					NOT = { owns_state = 273 }
-					NOT = { owns_state = 275 }
+					NOT = { owns_state = 273 } # significant number - Chiang Mai
+					NOT = { owns_state = 275 } # significant number - Phuket
 				}
 			}
 			IND = { 
 				OR = {
-					owns_state = 273
-					owns_state = 275
+					owns_state = 273 # significant number - Chiang Mai
+					owns_state = 275 # significant number - Phuket
 				}
 			}
 		}
@@ -765,7 +479,7 @@ MNG_decisions = {
 		visible = {
 			has_completed_focus = MNG_invite_siam
 			country_exists = MAK
-			SIA = { NOT = { owns_state = 364 } }
+			SIA = { NOT = { owns_state = 364 } } # significant number - Ayutthaya
 		}
 		available = {
 			OR = {
@@ -783,165 +497,45 @@ MNG_decisions = {
 		}
 	}
 
-	MNG_give_chiang_mai_to_siam = {
-		fire_only_once = yes
-		visible = {
+	MNG_give_FROM_to_SIA = {
+		state_target = yes
+		target_root_trigger = {
 			is_in_faction_with = SIA
 			country_exists = SIA
-			owns_state = 273
 		}
-		available = {
-			owns_state = 273
-		}
-		complete_effect = {
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = MNG_gave_SIA }
+			}
 			SIA = {
-				transfer_state = 273
-				add_state_core = 273
+				NOT = { owns_state = FROM }
 			}
 		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_nan_to_siam = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SIA
-			country_exists = SIA
-			owns_state = 603
-		}
 		available = {
-			owns_state = 603
+			owns_state = FROM
+		}
+		targets = {
+			273
+			603
+			602
+			581
+			582
+			364
+			583
+			275
 		}
 		complete_effect = {
 			SIA = {
-				transfer_state = 603
-				add_state_core = 603
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
 			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_sukhothai_to_siam = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SIA
-			country_exists = SIA
-			owns_state = 602
-		}
-		available = {
-			owns_state = 602
-		}
-		complete_effect = {
-			SIA = {
-				transfer_state = 602
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_nakhon_sawan_to_siam = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SIA
-			country_exists = SIA
-			owns_state = 581
-		}
-		available = {
-			owns_state = 581
-		}
-		complete_effect = {
-			SIA = {
-				transfer_state = 581
-				add_state_core = 581
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_nakhon_ratchasima_to_siam = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SIA
-			country_exists = SIA
-			owns_state = 582
-		}
-		available = {
-			owns_state = 582
-		}
-		complete_effect = {
-			SIA = {
-				transfer_state = 582
-				add_state_core = 582
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_ayutthaya_to_siam = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SIA
-			country_exists = SIA
-			owns_state = 364
-		}
-		available = {
-			owns_state = 364
-		}
-		complete_effect = {
-			SIA = {
-				transfer_state = 364
-				add_state_core = 364
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_rayong_to_siam = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SIA
-			country_exists = SIA
-			owns_state = 583
-		}
-		available = {
-			owns_state = 583
-		}
-		complete_effect = {
-			SIA = {
-				transfer_state = 583
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-	}
-
-	MNG_give_phuket_to_siam = {
-		fire_only_once = yes
-		visible = {
-			is_in_faction_with = SIA
-			country_exists = SIA
-			owns_state = 275
-		}
-		available = {
-			owns_state = 275
-		}
-		complete_effect = {
-			SIA = {
-				transfer_state = 275
-				add_state_core = 275
+			hidden_effect = {
+				FROM = { set_state_flag = MNG_gave_SIA }
 			}
 		}
 		ai_will_do = {
