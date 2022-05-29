@@ -38,11 +38,18 @@ news_event = {
 	title = tesb_AOT.2.t
 	desc = tesb_AOT.2.d
 	picture = GFX_news_event_generic_funeral #placeholder
-	fire_only_once = yes
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = AOT
+			original_tag = RME
+		}
+	}
 
 	trigger = {
 		original_tag = AOT
 		has_country_flag = AOT_ol_ness_hospitalized
+		NOT = { has_country_flag = AOT_ol_ness_died }
 	}
 
 	mean_time_to_happen = {
@@ -58,15 +65,217 @@ news_event = {
 	}
 
 	immediate = {
-		swap_ideas = {
-			remove_idea = AOT_thaddai_power_couple
-			add_idea = AOT_thaddai_heartbreak
+		hidden_effect = {
+			AOT = {
+				swap_ideas = {
+					remove_idea = AOT_thaddai_power_couple
+					add_idea = AOT_thaddai_heartbreak
+				}
+				set_country_flag = AOT_ol_ness_died
+			}
 		}
-		set_country_flag = AOT_ol_ness_died
 	}
 
 	option = {
+		trigger = {
+			original_tag = AOT
+		}
 		name = tesb_AOT.2.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = AOT_thaddai_power_couple
+				add_idea = AOT_thaddai_heartbreak
+			}
+		}
+	}
+	option = {
+		trigger = {
+			original_tag = RME
+		}
+		name = tesb_AOT.2.b
+	}
+}
+
+news_event = {
+	id = tesb_AOT.3
+	title = tesb_AOT.3.t
+	desc = tesb_AOT.3.d
+	picture = GFX_news_event_royal_visit #placeholder
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = AOT
+		has_country_flag = AOT_ol_ness_died
+		date > 1938.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			date > 1938.7.1
+			has_idea = AOT_timon_abroad
+		}
+		modifier = {
+			factor = 0.5
+			date > 1939.1.1
+			has_idea = AOT_timon_abroad
+		}
+		modifier = {
+			factor = 2
+			has_idea = AOT_timon_at_home
+		}
+		modifier = {
+			factor = 0.5
+			date > 1939.7.1
+		}
+		modifier = {
+			factor = 0.5
+			date > 1940.1.1
+		}
+	}
+
+	immediate = {
+		set_country_flag = AOT_kyrene_dying
+	}
+
+	option = {
+		trigger = {
+			has_idea = AOT_timon_abroad
+		}
+		name = tesb_AOT.3.a
+	}
+	option = {
+		trigger = {
+			NOT = { has_idea = AOT_timon_abroad }
+		}
+		name = tesb_AOT.3.b
+	}
+}
+
+country_event = {
+	id = tesb_AOT.4
+	title = tesb_AOT.4.t
+	desc = tesb_AOT.4.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.4.a #give leave
+		AOT = { set_country_flag = AOT_timon_returning }
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.4.b #give temporary leave
+		AOT = { set_country_flag = AOT_timon_visit }
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		name = tesb_AOT.4.c #prevent
+		AOT = { set_country_flag = AOT_timon_stay_rome }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_AOT.5
+	title = tesb_AOT.5.t
+	desc = tesb_AOT.5.d
+	picture = GFX_news_event_generic_funeral #placeholder
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = AOT
+			original_tag = RME
+		}
+	}
+
+	trigger = {
+		original_tag = AOT
+		has_country_flag = AOT_kyrene_dying
+		NOT = { has_country_flag = AOT_kyrene_died }
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = AOT_timon_stay_rome
+		}
+		modifier = {
+			factor = 0.5
+			date > 1939.1.1
+			has_idea = AOT_timon_abroad
+			NOT = {
+				has_country_flag = AOT_timon_visit
+			}
+		}
+		modifier = {
+			factor = 0.5
+			date > 1939.7.1
+			has_idea = AOT_timon_abroad
+		}
+		modifier = {
+			factor = 2
+			has_idea = AOT_timon_at_home
+		}
+		modifier = {
+			factor = 0.5
+			date > 1939.7.1
+		}
+		modifier = {
+			factor = 0.5
+			date > 1940.1.1
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			AOT = {
+				swap_ideas = {
+					remove_idea = AOT_thaddai_heartbreak
+					add_idea = AOT_thaddai_hope
+				}
+				set_country_flag = AOT_kyrene_died
+				promote_character = {
+					character = AOT_transitional_council
+					ideology = conservatism
+				}
+				retire_character = AOT_kyrene_thaddas
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			original_tag = AOT
+		}
+		name = tesb_AOT.5.a
+		effect_tooltip = {
+			retire_character = AOT_kyrene_thaddas
+			promote_character = AOT_transitional_council
+			swap_ideas = {
+				remove_idea = AOT_thaddai_heartbreak
+				add_idea = AOT_thaddai_hope
+			}
+		}
+	}
+	option = {
+		trigger = {
+			original_tag = RME
+		}
+		name = tesb_AOT.5.b
 	}
 }
 

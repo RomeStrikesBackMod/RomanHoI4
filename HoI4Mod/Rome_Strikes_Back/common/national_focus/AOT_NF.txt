@@ -89,6 +89,9 @@ focus_tree = {
 		}
 	}
 
+	#############################
+	### Mesazon dictatorship? ###
+	#############################
 	focus = {
 		id = AOT_strengthen_mesazon
 		icon = GFX_goal_generic_intelligence_exchange
@@ -117,6 +120,85 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AOT_mesazon_leads
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		relative_position_id = AOT_strengthen_mesazon
+		prerequisite = { focus = AOT_strengthen_mesazon }
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_build_support
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		relative_position_id = AOT_mesazon_leads
+		prerequisite = { focus = AOT_mesazon_leads }
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_dismiss_transition_council
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		relative_position_id = AOT_build_support
+		prerequisite = { focus = AOT_build_support }
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_silence_opposition
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		relative_position_id = AOT_dismiss_transition_council
+		prerequisite = { focus = AOT_dismiss_transition_council }
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	####################
+	### Council path ###
+	####################
+	focus = {
 		id = AOT_establish_transitional_council
 		icon = GFX_focus_generic_self_management
 		cost = 10
@@ -143,6 +225,86 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = AOT_empty_seat
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_establish_transitional_council
+		prerequisite = { focus = AOT_establish_transitional_council }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_constituion_for_future
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_empty_seat
+		prerequisite = { focus = AOT_empty_seat focus = AOT_reluctant_leader }
+		x = 1
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_prepare_for_elections
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_constituion_for_future
+		prerequisite = { focus = AOT_constituion_for_future }
+		prerequisite = { focus = AOT_empty_seat }
+		x = -1
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_new_exarch
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_prepare_for_elections
+		prerequisite = { focus = AOT_prepare_for_elections }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	##################
+	### Timon path ###
+	##################
 	focus = {
 		id = AOT_elect_timon_as_exarch
 		icon = GFX_focus_generic_military_mission
@@ -171,10 +333,147 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AOT_reluctant_leader
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_elect_timon_as_exarch
+		prerequisite = { focus = AOT_elect_timon_as_exarch }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_eka_ideals
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_reluctant_leader
+		prerequisite = { focus = AOT_reluctant_leader }
+		prerequisite = { focus = AOT_constituion_for_future }
+		x = 0
+		y = 2
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_honary_post
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_eka_ideals
+		prerequisite = { focus = AOT_eka_ideals }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	#####################
+	### Neo-Tane path ###
+	#####################
+	focus = {
+		id = AOT_taneist_tendrils
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_elect_timon_as_exarch
+		prerequisite = { focus = AOT_elect_timon_as_exarch }
+		x = 2
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_new_tane
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_taneist_tendrils
+		prerequisite = { focus = AOT_taneist_tendrils }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_consolidate_power
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_new_tane
+		prerequisite = { focus = AOT_new_tane }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_restart_safety_patrols
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_consolidate_power
+		prerequisite = { focus = AOT_consolidate_power }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
 		id = AOT_industrial_checkup
 		icon = GFX_focus_generic_industry_1
 		cost = 10
-		x = 21
+		x = 22
 		y = 0
 		completion_reward = {
 			add_tech_bonus = {

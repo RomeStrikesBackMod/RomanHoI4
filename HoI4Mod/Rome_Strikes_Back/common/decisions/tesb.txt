@@ -967,6 +967,52 @@ russia_decisions = {
 }
 
 aotearoa_decisions = {
+	AOT_recall_timon = {
+		visible = {
+			has_country_leader = {
+				character = AOT_kyrene_thaddas
+			}
+			has_country_flag = AOT_kyrene_dying
+			has_idea = AOT_timon_abroad
+		}
+		fire_only_once = yes
+		days_remove = 60
+		complete_effect = {
+			hidden_effect = {
+				RME = {
+					country_event = { id = tesb_AOT.4 hours = 12 }
+				}
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = AOT_timon_returning
+				}
+				custom_effect_tooltip = AOT_recall_timon_return_TT
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = AOT_timon_abroad
+						add_idea = AOT_timon_at_home
+					}
+				}
+				else_if = {
+					limit = { has_country_flag = AOT_timon_visit }
+					custom_effect_tooltip = AOT_recall_timon_vist_TT
+				}
+				else_if = {
+					limit = { has_country_flag = AOT_timon_stay_rome }
+					custom_effect_tooltip = AOT_recall_timon_stay_TT
+				}
+				else = {
+					custom_effect_tooltip = AOT_recall_timon_TT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
 	AOT_reconciling_with_rome = {
 		days_mission_timeout = 730
 		fire_only_once = yes
