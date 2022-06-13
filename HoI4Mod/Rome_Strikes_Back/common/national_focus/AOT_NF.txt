@@ -93,13 +93,13 @@ focus_tree = {
 	### Mesazon dictatorship? ###
 	#############################
 	focus = {
-		id = AOT_strengthen_mesazon
-		icon = GFX_goal_generic_intelligence_exchange
+		id = AOT_rely_on_mesazon
+		icon = GFX_focus_generic_concessions
 		cost = 10
 		relative_position_id = AOT_send_timon_to_constantiople
 		prerequisite = { focus = AOT_send_timon_to_constantiople }
 		mutually_exclusive = {
-			focus = AOT_establish_transitional_council
+			focus = AOT_maintain_transitional_council
 		}
 		x = -1
 		y = 1
@@ -111,8 +111,22 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			hidden_effect = {
+				random_character = {
+					limit = {
+						can_be_country_leader = yes
+						has_ideology_group = absolutist
+					}
+					save_global_event_target_as = AOT_absolutist_leader
+					promote_character = yes
+				}
+			}
+			custom_effect_tooltip = AOT_absolutist_leader_promote
+			set_politics = {
+				ruling_party = absolutist
+				elections_allowed = yes
+			}
 			custom_effect_tooltip = TT_complete_by_event
-			#promote_character = AOT_transitional_council
 		}
 		ai_will_do = {
 			base = 5
@@ -120,18 +134,24 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_mesazon_leads
+		id = AOT_mesazon_leadership
 		icon = GFX_goal_generic_intelligence_exchange
 		cost = 10
-		relative_position_id = AOT_strengthen_mesazon
-		prerequisite = { focus = AOT_strengthen_mesazon }
+		relative_position_id = AOT_rely_on_mesazon
+		prerequisite = { focus = AOT_rely_on_mesazon }
 		x = 0
 		y = 1
 		available = {
-			
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			add_ideas = AOT_mesazon_leadership_idea
+			if = {
+				limit = { has_active_mission = AOT_mesazon_power_struggle }
+				add_days_mission_timeout = {
+					mission = AOT_mesazon_power_struggle
+					days = 35
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -140,17 +160,27 @@ focus_tree = {
 
 	focus = {
 		id = AOT_build_support
-		icon = GFX_goal_generic_intelligence_exchange
+		icon = GFX_goal_generic_propaganda
 		cost = 10
-		relative_position_id = AOT_mesazon_leads
-		prerequisite = { focus = AOT_mesazon_leads }
+		relative_position_id = AOT_mesazon_leadership
+		prerequisite = { focus = AOT_mesazon_leadership }
 		x = 0
 		y = 1
 		available = {
 			
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			add_timed_idea = {
+				idea = AOT_nationalist_zeal
+				days = 365
+			}
+			if = {
+				limit = { has_active_mission = AOT_mesazon_power_struggle }
+				add_days_mission_timeout = {
+					mission = AOT_mesazon_power_struggle
+					days = 35
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -158,18 +188,40 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_dismiss_transition_council
-		icon = GFX_goal_generic_intelligence_exchange
+		id = AOT_dismiss_transitional_council
+		icon = GFX_focus_generic_military_dictatorship
 		cost = 10
 		relative_position_id = AOT_build_support
 		prerequisite = { focus = AOT_build_support }
 		x = 0
 		y = 1
 		available = {
-			
+			absolutist > 0.6
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			if = {
+				limit = { has_active_mission = AOT_mesazon_power_struggle }
+				add_days_mission_timeout = {
+					mission = AOT_mesazon_power_struggle
+					days = 35
+				}
+			}
+			set_temp_variable = { AOT_democratic_var = party_popularity@democratic }
+			set_temp_variable = { AOT_socialist_var = party_popularity@communism }
+			multiply_temp_variable = { AOT_democratic_var = -0.5 }
+			set_temp_variable = { AOT_stab = AOT_democratic_var }
+			multiply_temp_variable = { AOT_stab = 2 }
+			multiply_temp_variable = { AOT_socialist_var = -0.75 }
+			add_to_temp_variable = { AOT_stab = AOT_socialist_var }
+			add_popularity = {
+				ideology = democratic
+				popularity = AOT_democratic_var
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = AOT_socialist_var
+			}
+			add_stability = AOT_stab
 		}
 		ai_will_do = {
 			base = 5
@@ -178,17 +230,22 @@ focus_tree = {
 
 	focus = {
 		id = AOT_silence_opposition
-		icon = GFX_goal_generic_intelligence_exchange
+		icon = GFX_focus_usa_voter_registration_act
 		cost = 10
-		relative_position_id = AOT_dismiss_transition_council
-		prerequisite = { focus = AOT_dismiss_transition_council }
+		relative_position_id = AOT_dismiss_transitional_council
+		prerequisite = { focus = AOT_dismiss_transitional_council }
 		x = 0
 		y = 1
 		available = {
 			
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			custom_effect_tooltip = AOT_silence_opposition_TT
+			effect_tooltip = {
+				add_stability = 0.2
+				add_war_support = 0.2
+				add_political_power = 60
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -199,13 +256,13 @@ focus_tree = {
 	### Council path ###
 	####################
 	focus = {
-		id = AOT_establish_transitional_council
+		id = AOT_maintain_transitional_council
 		icon = GFX_focus_generic_self_management
 		cost = 10
 		relative_position_id = AOT_send_timon_to_constantiople
 		prerequisite = { focus = AOT_send_timon_to_constantiople focus = AOT_keep_timon_in_aotearoa }
 		mutually_exclusive = {
-			focus = AOT_elect_timon_as_exarch focus = AOT_strengthen_mesazon
+			focus = AOT_appoint_timon_as_exarch focus = AOT_rely_on_mesazon
 		}
 		x = 1
 		y = 1
@@ -217,8 +274,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			custom_effect_tooltip = TT_complete_by_event
 			promote_character = AOT_transitional_council
+			custom_effect_tooltip = TT_complete_by_event
 		}
 		ai_will_do = {
 			base = 10
@@ -229,8 +286,8 @@ focus_tree = {
 		id = AOT_empty_seat
 		icon = GFX_focus_generic_self_management
 		cost = 10
-		relative_position_id = AOT_establish_transitional_council
-		prerequisite = { focus = AOT_establish_transitional_council }
+		relative_position_id = AOT_maintain_transitional_council
+		prerequisite = { focus = AOT_maintain_transitional_council }
 		x = 0
 		y = 1
 		available = {
@@ -246,7 +303,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_constituion_for_future
-		icon = GFX_focus_generic_self_management
+		icon = GFX_focus_generic_treaty
 		cost = 10
 		relative_position_id = AOT_empty_seat
 		prerequisite = { focus = AOT_empty_seat focus = AOT_reluctant_leader }
@@ -265,7 +322,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_prepare_for_elections
-		icon = GFX_focus_generic_self_management
+		icon = GFX_goal_support_democracy
 		cost = 10
 		relative_position_id = AOT_constituion_for_future
 		prerequisite = { focus = AOT_constituion_for_future }
@@ -285,7 +342,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_new_exarch
-		icon = GFX_focus_generic_self_management
+		icon = GFX_goal_generic_improve_relations
 		cost = 10
 		relative_position_id = AOT_prepare_for_elections
 		prerequisite = { focus = AOT_prepare_for_elections }
@@ -306,13 +363,13 @@ focus_tree = {
 	### Timon path ###
 	##################
 	focus = {
-		id = AOT_elect_timon_as_exarch
+		id = AOT_appoint_timon_as_exarch
 		icon = GFX_focus_generic_military_mission
 		cost = 10
 		relative_position_id = AOT_keep_timon_in_aotearoa
 		prerequisite = { focus = AOT_keep_timon_in_aotearoa }
 		mutually_exclusive = {
-			focus = AOT_establish_transitional_council
+			focus = AOT_maintain_transitional_council
 		}
 		x = 1
 		y = 1
@@ -324,8 +381,8 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			custom_effect_tooltip = TT_complete_by_event
 			promote_character = AOT_timon_thaddas
+			custom_effect_tooltip = TT_complete_by_event
 		}
 		ai_will_do = {
 			base = 5
@@ -334,14 +391,18 @@ focus_tree = {
 
 	focus = {
 		id = AOT_reluctant_leader
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_focus_CZE_german_puppet
 		cost = 10
-		relative_position_id = AOT_elect_timon_as_exarch
-		prerequisite = { focus = AOT_elect_timon_as_exarch }
+		relative_position_id = AOT_appoint_timon_as_exarch
+		prerequisite = { focus = AOT_appoint_timon_as_exarch }
+		mutually_exclusive = { focus = AOT_taneist_tendrils }
 		x = 0
 		y = 1
 		available = {
-
+			has_country_leader = {
+				character = AOT_timon_thaddas
+				ruling_only = yes
+			}
 		}
 		completion_reward = {
 			custom_effect_tooltip = effect_WIP_TT
@@ -353,7 +414,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_eka_ideals
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_focus_usa_union_representation_act
 		cost = 10
 		relative_position_id = AOT_reluctant_leader
 		prerequisite = { focus = AOT_reluctant_leader }
@@ -372,7 +433,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_honary_post
+		id = AOT_honorary_post
 		icon = GFX_focus_generic_military_mission
 		cost = 10
 		relative_position_id = AOT_eka_ideals
@@ -395,17 +456,48 @@ focus_tree = {
 	#####################
 	focus = {
 		id = AOT_taneist_tendrils
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_goal_support_fascism
 		cost = 10
-		relative_position_id = AOT_elect_timon_as_exarch
-		prerequisite = { focus = AOT_elect_timon_as_exarch }
+		relative_position_id = AOT_appoint_timon_as_exarch
+		prerequisite = { focus = AOT_appoint_timon_as_exarch }
+		mutually_exclusive = { focus = AOT_reluctant_leader }
 		x = 2
 		y = 1
 		available = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			if = {
+				limit = {
+					has_active_mission = AOT_neo-taneist_plot
+				}
+				if = {
+					limit = {
+						check_variable = { var:days_mission_timeout@AOT_neo-taneist_plot > 70 }
+					}
+					add_days_mission_timeout = {
+						mission = AOT_neo-taneist_plot
+						days = -70
+					}
+					else = {
+						set_temp_variable = {
+							AOT_taneist_plot_days = days_mission_timeout@AOT_neo-taneist_plot
+						}
+						multiply_temp_variable = {
+							AOT_taneist_plot_days = -0.5
+						}
+						round_temp_variable = AOT_taneist_plot_days
+						add_days_mission_timeout = {
+							mission = AOT_neo-taneist_plot
+							days = AOT_taneist_plot_days
+						}
+					}
+				}
+			}
+			add_timed_idea = {
+				idea = AOT_taneist_tendrils_idea
+				days = 365
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -414,17 +506,21 @@ focus_tree = {
 
 	focus = {
 		id = AOT_new_tane
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_focus_generic_military_dictatorship
 		cost = 10
 		relative_position_id = AOT_taneist_tendrils
 		prerequisite = { focus = AOT_taneist_tendrils }
 		x = 0
 		y = 1
 		available = {
-
+			NOT = { has_character = AOT_timon_thaddas }
+			fascism > 0.4
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			set_politics = {
+				ruling_party = fascism
+			}
+			add_stability = -0.2
 		}
 		ai_will_do = {
 			base = 5
@@ -433,7 +529,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_consolidate_power
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_goal_generic_political_pressure
 		cost = 10
 		relative_position_id = AOT_new_tane
 		prerequisite = { focus = AOT_new_tane }
@@ -443,7 +539,10 @@ focus_tree = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			add_timed_idea = {
+				idea = AOT_neo-taneist_consolidation
+				days = 365
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -452,7 +551,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_restart_safety_patrols
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_goal_support_fascism
 		cost = 10
 		relative_position_id = AOT_consolidate_power
 		prerequisite = { focus = AOT_consolidate_power }
@@ -469,6 +568,9 @@ focus_tree = {
 		}
 	}
 
+	#####################
+	### Industry Path ###
+	#####################
 	focus = {
 		id = AOT_industrial_checkup
 		icon = GFX_focus_generic_industry_1
@@ -804,6 +906,9 @@ focus_tree = {
 		}
 	}
 
+	#######################
+	### Militarism path ###
+	#######################
 	focus = {
 		id = AOT_vunerable_peace
 		icon = GFX_focus_hol_war_on_pacifism

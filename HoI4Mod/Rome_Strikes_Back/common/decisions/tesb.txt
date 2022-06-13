@@ -967,6 +967,14 @@ russia_decisions = {
 }
 
 aotearoa_decisions = {
+	AOT_testing = {
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			activate_mission = AOT_neo-taneist_plot
+		}
+	}
 	AOT_recall_timon = {
 		visible = {
 			has_country_leader = {
@@ -1194,6 +1202,46 @@ aotearoa_decisions = {
 					days_mission_timeout@AOT_reconciling_with_rome > 80
 				}
 			}
+		}
+	}
+	AOT_mesazon_power_struggle = {
+		days_mission_timeout = 350
+		available = {
+			has_completed_focus = AOT_silence_opposition
+		}
+		complete_effect = {
+			add_stability = 0.2
+			add_war_support = 0.2
+			add_political_power = 60
+		}
+		timeout_effect = {
+			start_civil_war = {
+				ideology = democratic
+				ruling_party = absolutist
+			}
+		}
+		is_good = no
+		fire_only_once = yes
+		activation = {
+			always = no
+		}
+	}
+	AOT_neo-taneist_plot = {
+		days_mission_timeout = 140
+		available = {
+			OR = {
+				has_country_flag = AOT_neo-taneist_plot_countered
+				fascism < 0.1
+			}
+		}
+		timeout_effect = {
+			retire_character = AOT_timon_thaddas
+			kill_country_leader = yes
+		}
+		is_good = no
+		fire_only_once = yes
+		activation = {
+			always = no
 		}
 	}
 }

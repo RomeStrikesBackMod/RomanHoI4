@@ -248,11 +248,7 @@ news_event = {
 					add_idea = AOT_thaddai_hope
 				}
 				set_country_flag = AOT_kyrene_died
-				promote_character = {
-					character = AOT_transitional_council
-					ideology = conservatism
-				}
-				retire_character = AOT_kyrene_thaddas
+				country_event = { id = tesb_AOT.6 hours = 1 }
 			}
 		}
 	}
@@ -264,7 +260,6 @@ news_event = {
 		name = tesb_AOT.5.a
 		effect_tooltip = {
 			retire_character = AOT_kyrene_thaddas
-			promote_character = AOT_transitional_council
 			swap_ideas = {
 				remove_idea = AOT_thaddai_heartbreak
 				add_idea = AOT_thaddai_hope
@@ -278,6 +273,77 @@ news_event = {
 		name = tesb_AOT.5.b
 	}
 }
+
+country_event = {
+	id = tesb_AOT.6
+	title = tesb_AOT.6.t
+	desc = tesb_AOT.6.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			AOT = {
+				promote_character = {
+					character = AOT_transitional_council
+					ideology = conservatism
+				}
+				retire_character = AOT_kyrene_thaddas
+			}
+		}
+	}
+
+	option = {
+		name = tesb_AOT.6.a
+		unlock_national_focus = AOT_maintain_transitional_council
+		effect_tooltip = { retire_character = AOT_kyrene_thaddas }
+		hidden_effect = {
+			promote_character = {
+				character = AOT_transitional_council
+				ideology = conservatism
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_completed_focus = AOT_keep_timon_in_aotearoa
+				factor = 0.5
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_completed_focus = AOT_send_timon_to_constantiople
+		}
+		name = tesb_AOT.6.b
+		complete_national_focus = AOT_rely_on_mesazon
+		activate_mission = AOT_mesazon_power_struggle
+		effect_tooltip = { retire_character = AOT_kyrene_thaddas }
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		trigger = {
+			has_completed_focus = AOT_keep_timon_in_aotearoa
+		}
+		name = tesb_AOT.6.c
+		unlock_national_focus = AOT_appoint_timon_as_exarch
+		activate_mission = AOT_neo-taneist_plot
+		hidden_effect = {
+			promote_character = {
+				character = AOT_timon_thaddas
+				ideology = socialism
+			}
+		}
+		effect_tooltip = { retire_character = AOT_kyrene_thaddas }
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
 
 country_event = {
 	id = tesb_AOT.10
