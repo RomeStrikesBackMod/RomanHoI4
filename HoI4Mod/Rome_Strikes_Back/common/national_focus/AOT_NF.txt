@@ -313,7 +313,9 @@ focus_tree = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			country_event = {
+				id = tesb_AOT.20
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -333,7 +335,10 @@ focus_tree = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			add_timed_idea = {
+				idea = AOT_election_preparations
+				days = 365
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -349,10 +354,29 @@ focus_tree = {
 		x = 0
 		y = 1
 		available = {
-
+			if = {
+				limit = { is_ai = yes }
+				NOT = { has_idea = AOT_election_preparations }
+			}
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			if = {
+				limit = {
+					has_idea = AOT_election_preparations
+				}
+				remove_ideas = AOT_election_preparations
+			}
+			hidden_effect = {
+				remove_country_leader_role = {
+					character = AOT_transitional_council
+					ideology = conservatism
+				}
+				remove_country_leader_role = {
+					character = AOT_timon_thaddas
+					ideology = socialism
+				}
+			}
+			hold_election = AOT
 		}
 		ai_will_do = {
 			base = 10
@@ -405,7 +429,16 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			if = {
+				limit = {
+					has_active_mission = AOT_neo_taneist_plot
+				}
+				add_days_mission_timeout = {
+					mission = AOT_neo_taneist_plot
+					days = 35
+				}
+			}
+			add_political_power = 35
 		}
 		ai_will_do = {
 			base = 5
@@ -425,7 +458,10 @@ focus_tree = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			TESB_AOT_socialist_support = yes
+			add_dynamic_modifier = {
+				modifier = AOT_socialism_support
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -444,7 +480,7 @@ focus_tree = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			add_political_power = 120
 		}
 		ai_will_do = {
 			base = 5
@@ -469,29 +505,29 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = {
-					has_active_mission = AOT_neo-taneist_plot
+					has_active_mission = AOT_neo_taneist_plot
+					check_variable = { var:days_mission_timeout@AOT_neo_taneist_plot < 71 }
 				}
-				if = {
-					limit = {
-						check_variable = { var:days_mission_timeout@AOT_neo-taneist_plot > 70 }
-					}
-					add_days_mission_timeout = {
-						mission = AOT_neo-taneist_plot
-						days = -70
-					}
-					else = {
-						set_temp_variable = {
-							AOT_taneist_plot_days = days_mission_timeout@AOT_neo-taneist_plot
-						}
-						multiply_temp_variable = {
-							AOT_taneist_plot_days = -0.5
-						}
-						round_temp_variable = AOT_taneist_plot_days
-						add_days_mission_timeout = {
-							mission = AOT_neo-taneist_plot
-							days = AOT_taneist_plot_days
-						}
-					}
+				set_temp_variable = {
+					AOT_taneist_plot_days = days_mission_timeout@AOT_neo_taneist_plot
+				}
+				multiply_temp_variable = {
+					AOT_taneist_plot_days = -0.5
+				}
+				round_temp_variable = AOT_taneist_plot_days
+				add_days_mission_timeout = {
+					mission = AOT_neo_taneist_plot
+					days = AOT_taneist_plot_days
+				}
+			}
+			else_if = {
+				limit = {
+					has_active_mission = AOT_neo_taneist_plot
+					check_variable = { var:days_mission_timeout@AOT_neo_taneist_plot > 70 }
+				}
+				add_days_mission_timeout = {
+					mission = AOT_neo_taneist_plot
+					days = -70
 				}
 			}
 			add_timed_idea = {
@@ -540,7 +576,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = {
-				idea = AOT_neo-taneist_consolidation
+				idea = AOT_neo_taneist_consolidation
 				days = 365
 			}
 		}
@@ -561,7 +597,7 @@ focus_tree = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			add_ideas = AOT_neo_taneist_patrols
 		}
 		ai_will_do = {
 			base = 5

@@ -206,6 +206,54 @@ ideas = {
 				stability_factor = 0.1
 			}
 		}
+		AOT_conservative_constituion = {
+			name = AOT_new_constitution
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_constitutional_guarantees
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.05
+			}
+		}
+		AOT_election_preparations = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				democratic_drift = 0.1
+				party_popularity_stability_factor = 1
+			}
+		}
+		AOT_socialist_constituion = {
+			name = AOT_new_constitution
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = democratic
+					has_government = communism
+				}
+			}
+			removal_cost = -1
+			picture = generic_constitutional_guarantees
+			modifier = {
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.05
+				communism_acceptance = 50
+			}
+		}
 		AOT_mesazon_leadership_idea = {
 			name = AOT_mesazon_leadership
 			allowed = {
@@ -253,7 +301,7 @@ ideas = {
 				fascism_drift = 0.1
 			}
 		}
-		AOT_neo-taneist_consolidation = {
+		AOT_neo_taneist_consolidation = {
 			allowed = {
 				always = no
 			}
@@ -264,7 +312,21 @@ ideas = {
 			picture = generic_fascism_drift_2
 			modifier = {
 				fascism_drift = 0.1
-				stability_weekly = 0.05
+				war_support_weekly = 0.005
+			}
+		}
+		AOT_neo_taneist_patrols = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			removal_cost = -1
+			picture = generic_oppression
+			modifier = {
+				stability_factor = 0.05
+				resistance_damage_to_garrison = -0.05
 			}
 		}
 	}
