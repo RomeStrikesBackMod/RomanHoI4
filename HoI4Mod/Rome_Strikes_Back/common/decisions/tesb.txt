@@ -119,7 +119,6 @@ regaining_rome = {
 			}
 		}
 
-		cost = 50
 		days_re_enable = 120
 		days_remove = 60
 
@@ -141,16 +140,16 @@ regaining_rome = {
 			}
 		}
 		ai_will_do = {
-			base = 1
+			base = 100
 			modifier = {
 				has_completed_focus = RME_reestablish_roman_hegemony
 				check_variable = { From.puppet_willingness < 0 }
-				factor = 0.1
+				factor = 0.001
 			}
 			modifier = {
 				has_completed_focus = RME_restore_rome_focus
 				check_variable = { From.faction_willingness < 0 }
-				factor = 0.1
+				factor = 0.001
 			}
 		}
 	}
@@ -179,18 +178,17 @@ regaining_rome = {
 			}
 		}
 
-		cost = 50
 		days_re_enable = 120
 		days_remove = 60
 
 		remove_effect = {
-			country_event = { id = tesb_restore_rome.41 hours = 12 }
+			FROM = { country_event = { id = tesb_restore_rome.41 hours = 12 } }
 		}
 		ai_will_do = {
-			base = 1
+			base = 100
 			modifier = {
 				check_variable = { From.integrate_willingness < 0 }
-				factor = 0.1
+				factor = 0.001
 			}
 		}
 	}
