@@ -314,7 +314,10 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_completed_focus = AOT_send_timon_to_constantiople
+			OR = {
+				has_completed_focus = AOT_send_timon_to_constantiople
+				has_idea = AOT_timon_abroad
+			}
 		}
 		name = tesb_AOT.6.b
 		complete_national_focus = AOT_rely_on_mesazon
@@ -326,7 +329,10 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			has_completed_focus = AOT_keep_timon_in_aotearoa
+			OR = {
+				has_completed_focus = AOT_keep_timon_in_aotearoa
+				has_idea = AOT_timon_at_home
+			}
 		}
 		name = tesb_AOT.6.c
 		unlock_national_focus = AOT_appoint_timon_as_exarch
@@ -344,6 +350,38 @@ country_event = {
 	}
 }
 
+news_event = {
+	id = tesb_AOT.7
+	title = tesb_AOT.7.t
+	desc = tesb_AOT.7.d
+	picture = GFX_news_event_generic_funeral #placeholder
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = AOT
+			original_tag = RME
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		trigger = {
+			original_tag = AOT
+		}
+		name = tesb_AOT.7.a
+	}
+	option = {
+		trigger = {
+			original_tag = RME
+		}
+		name = tesb_AOT.7.b
+	}
+}
 
 country_event = {
 	id = tesb_AOT.10

@@ -177,6 +177,35 @@ recruit_character = AOT_kyrene_thaddas
 recruit_character = AOT_timon_thaddas
 recruit_character = AOT_transitional_council
 
+#Pacific islands array for decisions
+X01 = {
+	every_owned_state = {
+		AOT = {
+			add_to_array = {
+				array = AOT_pacific_islands
+				value = PREV
+			}
+		}
+	}
+}
+AST = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				is_island_state = yes
+				state = 45
+				state = 44
+				state = 54
+			}
+		}
+		AOT = {
+			add_to_array = {
+				array = AOT_pacific_islands
+				value = PREV
+			}
+		}
+	}
+}
 if = {
 	limit = {
 		has_dlc = "La Resistance"
