@@ -225,7 +225,6 @@ rome_civil_war_decisions = {
 			}
 		}
 		on_map_mode = map_and_decisions_view
-		state_target = yes
 		highlight_states = {
 			highlight_state_targets = {
 				state = 463 # significant_number - Eastern Rumelia
@@ -278,7 +277,6 @@ rome_civil_war_decisions = {
 			}
 		}
 		on_map_mode = map_and_decisions_view
-		state_target = yes
 		highlight_states = {
 			highlight_state_targets = {
 				state = 477 # significant_number - Aydin
@@ -967,6 +965,63 @@ russia_decisions = {
 }
 
 aotearoa_decisions = {
+	AOT_testing = {
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			TESB_AOT_socialist_support = yes
+			add_dynamic_modifier = {
+				modifier = AOT_socialism_support
+			}
+		}
+	}
+	AOT_recall_timon = {
+		visible = {
+			has_country_leader = {
+				character = AOT_kyrene_thaddas
+			}
+			has_country_flag = AOT_kyrene_dying
+			has_idea = AOT_timon_abroad
+		}
+		fire_only_once = yes
+		days_remove = 60
+		complete_effect = {
+			hidden_effect = {
+				RME = {
+					country_event = { id = tesb_AOT.4 hours = 12 }
+				}
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = AOT_timon_returning
+				}
+				custom_effect_tooltip = AOT_recall_timon_return_TT
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = AOT_timon_abroad
+						add_idea = AOT_timon_at_home
+					}
+				}
+				else_if = {
+					limit = { has_country_flag = AOT_timon_visit }
+					custom_effect_tooltip = AOT_recall_timon_vist_TT
+				}
+				else_if = {
+					limit = { has_country_flag = AOT_timon_stay_rome }
+					custom_effect_tooltip = AOT_recall_timon_stay_TT
+				}
+				else = {
+					custom_effect_tooltip = AOT_recall_timon_TT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
 	AOT_reconciling_with_rome = {
 		days_mission_timeout = 730
 		fire_only_once = yes
@@ -1146,6 +1201,109 @@ aotearoa_decisions = {
 				RMA = { is_faction_leader = no }
 				check_variable = {
 					days_mission_timeout@AOT_reconciling_with_rome > 80
+				}
+			}
+		}
+	}
+	AOT_mesazon_power_struggle = {
+		days_mission_timeout = 350
+		available = {
+			has_completed_focus = AOT_silence_opposition
+		}
+		complete_effect = {
+			add_stability = 0.2
+			add_war_support = 0.2
+			add_political_power = 60
+		}
+		timeout_effect = {
+			start_civil_war = {
+				ideology = democratic
+				ruling_party = absolutist
+			}
+		}
+		is_good = no
+		fire_only_once = yes
+		activation = {
+			always = no
+		}
+	}
+	AOT_neo_taneist_plot = {
+		days_mission_timeout = 140
+		available = {
+			OR = {
+				has_country_flag = AOT_neo_taneist_plot_countered
+				fascism < 0.1
+			}
+		}
+		timeout_effect = {
+			add_stability = -0.05
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_timon_thaddas
+						ruling_only = yes
+					}
+				}
+				kill_country_leader = yes
+			}
+			else = {
+				custom_effect_tooltip = AOT_neo_taneist_plot_timeout_TT
+			}
+			hidden_effect = {
+				retire_character = AOT_timon_thaddas
+			}
+			if = {
+				limit = {
+					has_completed_focus = AOT_reluctant_leader
+				}
+				uncomplete_national_focus = {
+					focus = AOT_reluctant_leader
+					uncomplete_children = yes
+				}
+				complete_national_focus = AOT_taneist_tendrils
+			}
+		}
+		complete_effect = {
+			add_stability = 0.05
+			if = {
+				limit = {
+					has_completed_focus = AOT_taneist_tendrils
+				}
+				uncomplete_national_focus = {
+					focus = AOT_taneist_tendrils
+					uncomplete_children = yes
+				}
+				complete_national_focus = AOT_reluctant_leader
+			}
+		}
+		is_good = no
+		fire_only_once = yes
+		activation = {
+			always = no
+		}
+	}
+	AOT_investigate_neo_taneists = {
+		visible = {
+			has_active_mission = AOT_neo_taneist_plot
+		}
+		available = {
+			focus_progress = {
+				focus = AOT_reluctant_leader
+				progress > 0
+			}
+		}
+		cost = 70
+		days_remove = 70
+		remove_effect = {
+			set_country_flag = AOT_neo_taneist_plot_countered
+			custom_effect_tooltip = AOT_neo_taneist_plot_countered
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				check_variable = {
+					days_mission_timeout@AOT_neo_taneist_plot < 80
 				}
 			}
 		}
