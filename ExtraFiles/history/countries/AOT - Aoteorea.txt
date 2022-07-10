@@ -1,13 +1,12 @@
-﻿capital = 468
-set_major = yes
-set_research_slots = 4
+﻿capital = 409
+set_research_slots = 3
 
-oob = "RME_OOB"
+oob = "AOT_OOB"
 if = {
 	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "RME_1936_naval_mtg"
+		set_naval_oob = "AOT_1936_naval_mtg"
 	else = { 
-		set_naval_oob = "RME_1936_naval_legacy"
+		set_naval_oob = "AOT_1936_naval_legacy"
 	}
 }
 
@@ -40,7 +39,6 @@ if = {
 	set_technology = {
 		basic_light_tank = 1
 		gwtank = 1
-		improved_light_tank = 1
 	}
 }
 
@@ -84,11 +82,8 @@ if = {
 if = {
 	limit = { has_dlc = "No Step Back" }
 	set_technology = {
-		basic_heavy_tank_chassis = 1
 		basic_light_tank_chassis = 1
-		basic_medium_tank_chassis = 1
 		gwtank_chassis = 1
-		improved_light_tank_chassis = 1
 	}
 }
 
@@ -128,153 +123,110 @@ add_doctrine_cost_reduction = {
 	category = naval_doctrine
 }
 
-set_country_flag = conv_greece
-starting_train_buffer = 5
-set_convoys = 30
+set_country_flag = conv_australia
+set_convoys = 3
 
-add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 620 producer = RME }
-add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 400 producer = RME }
-add_equipment_to_stockpile = { type = gw_tank_equipment amount = 152 producer = RME }
-add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 705 producer = RME }
-add_equipment_to_stockpile = { type = tac_bomber_equipment_0 amount = 400 producer = RME }
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 1 producer = AOT }
+add_equipment_to_stockpile = { type = gw_tank_equipment amount = 1 producer = AOT }
+add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 1 producer = AOT }
 
 set_politics = {
-    ruling_party = absolutist
-    last_election = "1836.1.1"
+    ruling_party = democratic
+    last_election = "1931.7.2"
     election_frequency = 48
-    elections_allowed = no
+    elections_allowed = yes
 }
 
 set_popularities = {
-	absolutist = 16
-	communism = 14
-	democratic = 41
-	fascism = 23
-	neutrality = 6
+	absolutist = 5
+	communism = 32
+	democratic = 31
+	fascism = 27
+	neutrality = 5
 }
 
-set_truce = { target = ADA days = 227 }
-add_opinion_modifier = { target = AQI modifier = positive_4 }
-add_opinion_modifier = { target = ARG modifier = positive_106 }
-add_opinion_modifier = { target = BCS modifier = positive_180 }
-add_opinion_modifier = { target = BIR modifier = positive_99 }
-add_opinion_modifier = { target = BRG modifier = positive_10 }
-add_opinion_modifier = { target = BRI modifier = negative_130 }
-add_opinion_modifier = { target = BUR modifier = positive_176 }
-add_opinion_modifier = { target = CAN modifier = positive_49 }
-set_truce = { target = CAN days = 227 }
-add_opinion_modifier = { target = CAS modifier = positive_7 }
-add_opinion_modifier = { target = CHG modifier = positive_74 }
-add_opinion_modifier = { target = COL modifier = positive_43 }
-add_opinion_modifier = { target = ENG modifier = negative_95 }
-set_truce = { target = ENG days = 227 }
-add_opinion_modifier = { target = FRA modifier = negative_1 }
-add_opinion_modifier = { target = GER modifier = negative_105 }
-add_opinion_modifier = { target = GRB modifier = negative_12 }
-add_opinion_modifier = { target = HAI modifier = positive_200 }
-add_opinion_modifier = { target = HUN modifier = positive_198 }
-add_opinion_modifier = { target = IND modifier = positive_180 }
-add_opinion_modifier = { target = IRN modifier = negative_90 }
-add_opinion_modifier = { target = ITA modifier = negative_90 }
-add_opinion_modifier = { target = JAP modifier = positive_150 }
-add_opinion_modifier = { target = KHI modifier = negative_10 }
-add_opinion_modifier = { target = LAO modifier = positive_70 }
-add_opinion_modifier = { target = MAK modifier = negative_178 }
-add_opinion_modifier = { target = MAN modifier = positive_102 }
-add_opinion_modifier = { target = MEX modifier = positive_191 }
-add_opinion_modifier = { target = MNG modifier = positive_200 }
-add_opinion_modifier = { target = MUT modifier = positive_199 }
-give_military_access = MUT
-add_opinion_modifier = { target = NOR modifier = positive_1 }
-add_opinion_modifier = { target = PAT modifier = positive_73 }
-add_opinion_modifier = { target = PLC modifier = negative_16 }
-add_opinion_modifier = { target = RUS modifier = negative_200 }
-add_opinion_modifier = { target = SCA modifier = positive_190 }
-give_military_access = SCA
-add_opinion_modifier = { target = SCO modifier = negative_156 }
-set_truce = { target = SCO days = 227 }
-add_opinion_modifier = { target = SHN modifier = positive_101 }
-add_opinion_modifier = { target = SIA modifier = negative_5 }
-add_opinion_modifier = { target = SUK modifier = positive_111 }
-add_opinion_modifier = { target = TIB modifier = positive_15 }
-add_opinion_modifier = { target = UTA modifier = positive_43 }
-give_military_access = UTA
+add_opinion_modifier = { target = BIR modifier = negative_15 }
+add_opinion_modifier = { target = ETH modifier = positive_30 }
+add_opinion_modifier = { target = MUT modifier = positive_5 }
+add_opinion_modifier = { target = RME modifier = positive_197 }
+add_opinion_modifier = { target = SCO modifier = positive_30 }
+add_opinion_modifier = { target = SHN modifier = negative_10 }
+add_opinion_modifier = { target = SOK modifier = positive_5 }
+add_opinion_modifier = { target = UTA modifier = negative_15 }
 
 
-set_global_flag = KIEL_CANAL_UNBUILT
 add_ideas = {
-	great_power
-	michael_VII
+	AOT_staunch_anti_militarists
+	AOT_thaddai_power_couple
+	AOT_trauma_of_black_thursday
+	RME_former_dominion
 	volunteer_only
 	civilian_economy
 	export_focus
 	culture_greek
 }
 set_stability = 0.60
-set_war_support = 0.60
+set_war_support = 0.56
 
-recruit_character = RME_markos_makriyannis
-recruit_character = RME_stefanos_christakis_zografos
-recruit_character = RME_spyros_soutsos
-recruit_character = RME_kyriakos_tsolakoglou
-recruit_character = RME_adamantios_mavrocordatos
-recruit_character = RME_konstantinos_mouskos
-recruit_character = RME_konstantinos_doukas
-recruit_character = RME_tiberius_julius_aurelius
-recruit_character = RME_marco_shelepov
-set_country_flag = RME_hide_niketas
-recruit_character = RME_niketas_doukas
+recruit_character = AOT_ionnis_zaimis
+recruit_character = AOT_kyriakoulis_kriezis
+recruit_character = AOT_makarios_tsakalotos
+recruit_character = AOT_charilaos_sarafis
+recruit_character = AOT_adamantios_kanaris
+recruit_character = AOT_kyrene_thaddas
+recruit_character = AOT_timon_thaddas
+recruit_character = AOT_transitional_council
 
 if = {
 	limit = {
 		has_dlc = "La Resistance"
 	}
 	create_operative_leader = {
-		name = "Evangelia Zymvrakáki"
+		name = "Despoina Papadópoulo"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_1.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
 		female = yes
-		nationalities = { RME }
+		nationalities = { AOT }
 	}
 
 	create_operative_leader = {
-		name = "Georgia Staïkópoulo"
+		name = "Konstantina Sofoúli"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_2.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
 		female = yes
-		nationalities = { RME }
+		nationalities = { AOT }
 	}
 
 	create_operative_leader = {
-		name = "Eleni Voúlgari"
+		name = "Anna Metaxá"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_female_3.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
 		female = yes
-		nationalities = { RME }
+		nationalities = { AOT }
 	}
 
 	create_operative_leader = {
-		name = "Sofoklis Pangalos"
+		name = "Vasos Mavrovouniotis"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_1.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
-		nationalities = { RME }
+		nationalities = { AOT }
 	}
 
 	create_operative_leader = {
-		name = "Gennaios Tsakalotos"
+		name = "Panagiotis Papadiamantopoulos"
 		GFX = "gfx/leaders/Europe/portrait_europe_generic_operative_male_2.dds"
 		traits = {}
 		bypass_recruitment = no
 		available_to_spy_master = yes
-		nationalities = { RME }
+		nationalities = { AOT }
 	}
 
 }
@@ -342,7 +294,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Battleship"
 		type = ship_hull_heavy_2
-		name_group = RME_BB_HISTORICAL
+		name_group = AOT_BB_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -361,7 +313,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Destroyer"
 		type = ship_hull_light_2
-		name_group = RME_DD_HISTORICAL
+		name_group = AOT_DD_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_2
@@ -377,7 +329,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Heavy Cruiser"
 		type = ship_hull_cruiser_2
-		name_group = RME_CA_HISTORICAL
+		name_group = AOT_CA_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -395,7 +347,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Light Cruiser"
 		type = ship_hull_cruiser_2
-		name_group = RME_CL_HISTORICAL
+		name_group = AOT_CL_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -413,7 +365,7 @@ if = {
 	create_equipment_variant = {
 		name = "1936 Submarine"
 		type = ship_hull_submarine_2
-		name_group = RME_SS_HISTORICAL
+		name_group = AOT_SS_HISTORICAL
 		parent_version = 0
 		modules = {
 			fixed_ship_engine_slot = sub_ship_engine_2
@@ -426,32 +378,8 @@ if = {
 if = {
 	limit = { has_dlc = "No Step Back" }
 	create_equipment_variant = {
-		name = "Basic Heavy Tank"
-		type = heavy_tank_chassis_1
-		parent_version = 0
-		modules = {
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_gasoline_engine
-			main_armament_slot = tank_small_cannon
-			suspension_type_slot = tank_bogie_suspension
-			turret_type_slot = tank_heavy_three_man_tank_turret
-		}
-	}
-	create_equipment_variant = {
-		name = "Basic Medium Tank"
-		type = medium_tank_chassis_1
-		parent_version = 0
-		modules = {
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_gasoline_engine
-			main_armament_slot = tank_small_cannon
-			suspension_type_slot = tank_bogie_suspension
-			turret_type_slot = tank_medium_one_man_tank_turret
-		}
-	}
-	create_equipment_variant = {
-		name = "Improved Light Tank"
-		type = light_tank_chassis_2
+		name = "Basic Light Tank"
+		type = light_tank_chassis_1
 		parent_version = 0
 		modules = {
 			armor_type_slot = tank_riveted_armor
@@ -460,5 +388,31 @@ if = {
 			suspension_type_slot = tank_bogie_suspension
 			turret_type_slot = tank_light_two_man_tank_turret
 		}
+	}
+	create_equipment_variant = {
+		name = "GW Heavy Tank"
+		type = heavy_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_heavy_three_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/ger_basic_heavy_tank.dds"
+	}
+	create_equipment_variant = {
+		name = "GW Medium Tank"
+		type = medium_tank_chassis_0
+		parent_version = 0
+		modules = {
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			turret_type_slot = tank_medium_one_man_tank_turret
+		}
+		icon = "gfx/interface/technologies/SOV_basic_heavy_tank.dds"
 	}
 }

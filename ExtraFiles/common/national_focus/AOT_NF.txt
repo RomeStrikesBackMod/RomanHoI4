@@ -35,7 +35,7 @@ focus_tree = {
 				remove_idea = AOT_thaddai_power_couple
 				add_idea = AOT_thaddai_heartbreak
 			}
-			custom_effect_tooltip = TT_bypass_by_event
+			custom_effect_tooltip = TT_complete_by_event
 		}
 	}
 
@@ -89,11 +89,529 @@ focus_tree = {
 		}
 	}
 
+	#############################
+	### Mesazon dictatorship? ###
+	#############################
+	focus = {
+		id = AOT_rely_on_mesazon
+		icon = GFX_focus_generic_concessions
+		cost = 10
+		relative_position_id = AOT_send_timon_to_constantiople
+		prerequisite = { focus = AOT_send_timon_to_constantiople }
+		mutually_exclusive = {
+			focus = AOT_maintain_transitional_council
+		}
+		x = -1
+		y = 1
+		available = {
+			NOT = {
+				has_country_leader = {
+					character = AOT_kyrene_thaddas
+				}
+			}
+		}
+		completion_reward = {
+			hidden_effect = {
+				random_character = {
+					limit = {
+						can_be_country_leader = yes
+						has_ideology_group = absolutist
+					}
+					save_global_event_target_as = AOT_absolutist_leader
+					promote_character = yes
+				}
+			}
+			custom_effect_tooltip = AOT_absolutist_leader_promote
+			set_politics = {
+				ruling_party = absolutist
+				elections_allowed = yes
+			}
+			custom_effect_tooltip = TT_complete_by_event
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_mesazon_leadership
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		relative_position_id = AOT_rely_on_mesazon
+		prerequisite = { focus = AOT_rely_on_mesazon }
+		x = 0
+		y = 1
+		available = {
+		}
+		completion_reward = {
+			add_ideas = AOT_mesazon_leadership_idea
+			if = {
+				limit = { has_active_mission = AOT_mesazon_power_struggle }
+				add_days_mission_timeout = {
+					mission = AOT_mesazon_power_struggle
+					days = 35
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_build_support
+		icon = GFX_goal_generic_propaganda
+		cost = 10
+		relative_position_id = AOT_mesazon_leadership
+		prerequisite = { focus = AOT_mesazon_leadership }
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = AOT_nationalist_zeal
+				days = 365
+			}
+			if = {
+				limit = { has_active_mission = AOT_mesazon_power_struggle }
+				add_days_mission_timeout = {
+					mission = AOT_mesazon_power_struggle
+					days = 35
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_dismiss_transitional_council
+		icon = GFX_focus_generic_military_dictatorship
+		cost = 10
+		relative_position_id = AOT_build_support
+		prerequisite = { focus = AOT_build_support }
+		x = 0
+		y = 1
+		available = {
+			absolutist > 0.6
+		}
+		completion_reward = {
+			if = {
+				limit = { has_active_mission = AOT_mesazon_power_struggle }
+				add_days_mission_timeout = {
+					mission = AOT_mesazon_power_struggle
+					days = 35
+				}
+			}
+			set_temp_variable = { AOT_democratic_var = party_popularity@democratic }
+			set_temp_variable = { AOT_socialist_var = party_popularity@communism }
+			multiply_temp_variable = { AOT_democratic_var = -0.5 }
+			set_temp_variable = { AOT_stab = AOT_democratic_var }
+			multiply_temp_variable = { AOT_stab = 2 }
+			multiply_temp_variable = { AOT_socialist_var = -0.75 }
+			add_to_temp_variable = { AOT_stab = AOT_socialist_var }
+			add_popularity = {
+				ideology = democratic
+				popularity = AOT_democratic_var
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = AOT_socialist_var
+			}
+			add_stability = AOT_stab
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_silence_opposition
+		icon = GFX_focus_usa_voter_registration_act
+		cost = 10
+		relative_position_id = AOT_dismiss_transitional_council
+		prerequisite = { focus = AOT_dismiss_transitional_council }
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOT_silence_opposition_TT
+			effect_tooltip = {
+				add_stability = 0.2
+				add_war_support = 0.2
+				add_political_power = 60
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	####################
+	### Council path ###
+	####################
+	focus = {
+		id = AOT_maintain_transitional_council
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_send_timon_to_constantiople
+		prerequisite = { focus = AOT_send_timon_to_constantiople focus = AOT_keep_timon_in_aotearoa }
+		mutually_exclusive = {
+			focus = AOT_appoint_timon_as_exarch focus = AOT_rely_on_mesazon
+		}
+		x = 1
+		y = 1
+		available = {
+			NOT = {
+				has_country_leader = {
+					character = AOT_kyrene_thaddas
+				}
+			}
+		}
+		completion_reward = {
+			promote_character = AOT_transitional_council
+			custom_effect_tooltip = TT_complete_by_event
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_empty_seat
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_maintain_transitional_council
+		prerequisite = { focus = AOT_maintain_transitional_council }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_constituion_for_future
+		icon = GFX_focus_generic_treaty
+		cost = 10
+		relative_position_id = AOT_empty_seat
+		prerequisite = { focus = AOT_empty_seat focus = AOT_reluctant_leader }
+		x = 1
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			country_event = {
+				id = tesb_AOT.20
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_prepare_for_elections
+		icon = GFX_goal_support_democracy
+		cost = 10
+		relative_position_id = AOT_constituion_for_future
+		prerequisite = { focus = AOT_constituion_for_future }
+		prerequisite = { focus = AOT_empty_seat }
+		x = -1
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = AOT_election_preparations
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_new_exarch
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		relative_position_id = AOT_prepare_for_elections
+		prerequisite = { focus = AOT_prepare_for_elections }
+		x = 0
+		y = 1
+		available = {
+			if = {
+				limit = { is_ai = yes }
+				NOT = { has_idea = AOT_election_preparations }
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = AOT_election_preparations
+				}
+				remove_ideas = AOT_election_preparations
+			}
+			hidden_effect = {
+				remove_country_leader_role = {
+					character = AOT_transitional_council
+					ideology = conservatism
+				}
+				remove_country_leader_role = {
+					character = AOT_timon_thaddas
+					ideology = socialism
+				}
+			}
+			hold_election = AOT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	##################
+	### Timon path ###
+	##################
+	focus = {
+		id = AOT_appoint_timon_as_exarch
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_keep_timon_in_aotearoa
+		prerequisite = { focus = AOT_keep_timon_in_aotearoa }
+		mutually_exclusive = {
+			focus = AOT_maintain_transitional_council
+		}
+		x = 1
+		y = 1
+		available = {
+			NOT = {
+				has_country_leader = {
+					character = AOT_kyrene_thaddas
+				}
+			}
+		}
+		completion_reward = {
+			promote_character = AOT_timon_thaddas
+			custom_effect_tooltip = TT_complete_by_event
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_reluctant_leader
+		icon = GFX_focus_CZE_german_puppet
+		cost = 10
+		relative_position_id = AOT_appoint_timon_as_exarch
+		prerequisite = { focus = AOT_appoint_timon_as_exarch }
+		mutually_exclusive = { focus = AOT_taneist_tendrils }
+		x = 0
+		y = 1
+		available = {
+			has_country_leader = {
+				character = AOT_timon_thaddas
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_active_mission = AOT_neo_taneist_plot
+				}
+				add_days_mission_timeout = {
+					mission = AOT_neo_taneist_plot
+					days = 35
+				}
+			}
+			add_political_power = 35
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_eka_ideals
+		icon = GFX_focus_usa_union_representation_act
+		cost = 10
+		relative_position_id = AOT_reluctant_leader
+		prerequisite = { focus = AOT_reluctant_leader }
+		prerequisite = { focus = AOT_constituion_for_future }
+		x = 0
+		y = 2
+		available = {
+
+		}
+		completion_reward = {
+			TESB_AOT_socialist_support = yes
+			add_dynamic_modifier = {
+				modifier = AOT_socialism_support
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_honorary_post
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		relative_position_id = AOT_eka_ideals
+		prerequisite = { focus = AOT_eka_ideals }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			add_political_power = 120
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	#####################
+	### Neo-Tane path ###
+	#####################
+	focus = {
+		id = AOT_taneist_tendrils
+		icon = GFX_goal_support_fascism
+		cost = 10
+		relative_position_id = AOT_appoint_timon_as_exarch
+		prerequisite = { focus = AOT_appoint_timon_as_exarch }
+		mutually_exclusive = { focus = AOT_reluctant_leader }
+		x = 2
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_active_mission = AOT_neo_taneist_plot
+					check_variable = { var:days_mission_timeout@AOT_neo_taneist_plot < 71 }
+				}
+				set_temp_variable = {
+					AOT_taneist_plot_days = days_mission_timeout@AOT_neo_taneist_plot
+				}
+				multiply_temp_variable = {
+					AOT_taneist_plot_days = -0.5
+				}
+				round_temp_variable = AOT_taneist_plot_days
+				add_days_mission_timeout = {
+					mission = AOT_neo_taneist_plot
+					days = AOT_taneist_plot_days
+				}
+			}
+			else_if = {
+				limit = {
+					has_active_mission = AOT_neo_taneist_plot
+					check_variable = { var:days_mission_timeout@AOT_neo_taneist_plot > 70 }
+				}
+				add_days_mission_timeout = {
+					mission = AOT_neo_taneist_plot
+					days = -70
+				}
+			}
+			add_timed_idea = {
+				idea = AOT_taneist_tendrils_idea
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_new_tane
+		icon = GFX_focus_generic_military_dictatorship
+		cost = 10
+		relative_position_id = AOT_taneist_tendrils
+		prerequisite = { focus = AOT_taneist_tendrils }
+		x = 0
+		y = 1
+		available = {
+			NOT = { has_character = AOT_timon_thaddas }
+			fascism > 0.4
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = fascism
+			}
+			add_stability = -0.2
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_consolidate_power
+		icon = GFX_goal_generic_political_pressure
+		cost = 10
+		relative_position_id = AOT_new_tane
+		prerequisite = { focus = AOT_new_tane }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = AOT_neo_taneist_consolidation
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = AOT_restart_safety_patrols
+		icon = GFX_goal_support_fascism
+		cost = 10
+		relative_position_id = AOT_consolidate_power
+		prerequisite = { focus = AOT_consolidate_power }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = AOT_neo_taneist_patrols
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	#####################
+	### Industry Path ###
+	#####################
 	focus = {
 		id = AOT_industrial_checkup
 		icon = GFX_focus_generic_industry_1
 		cost = 10
-		x = 20
+		x = 22
 		y = 0
 		completion_reward = {
 			add_tech_bonus = {
@@ -102,6 +620,9 @@ focus_tree = {
 				bonus = 0.5
 				uses = 2
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 
@@ -115,7 +636,189 @@ focus_tree = {
 		x = -1
 		y = 1
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			swap_ideas = {
+				remove_idea = AOT_trauma_of_black_thursday
+				add_idea = AOT_regional_focus_idea
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_protect_local_industry
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10
+		relative_position_id = AOT_regional_economics
+		prerequisite = { focus = AOT_regional_economics }
+		x = -1
+		y = 1
+		complete_tooltip = {
+			swap_ideas = {
+				remove_idea = AOT_regional_focus_idea
+				add_idea = AOT_protectionism_idea
+			}
+			random_state = {
+				limit = { has_state_flag = AOT_protect_local_industry_state }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_regional_focus_idea
+				add_idea = AOT_protectionism_idea
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = AOT_protect_local_industry_state
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_encourge_redevolpment
+		icon = GFX_focus_generic_industry_3
+		cost = 10
+		relative_position_id = AOT_regional_economics
+		prerequisite = { focus = AOT_regional_economics focus = AOT_international_economics }
+		x = 1
+		y = 1
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = production_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+	
+		complete_tooltip = {
+			random_state = {
+				limit = { has_state_flag = AOT_encourge_redevolpment_state }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}		
+	
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 1
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = AOT_encourge_redevolpment_state
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_expand_resource_extraction
+		icon = GFX_goal_generic_construction2
+		cost = 10
+		relative_position_id = AOT_encourge_redevolpment
+		prerequisite = { focus = AOT_encourge_redevolpment }
+		x = 0
+		y = 1
+
+		available = {
+			has_full_control_of_state = 409 # significant_number - North Island
+			has_full_control_of_state = 410 # significant_number - South Island
+		}
+		completion_reward = {
+			409 = { # significant_number - North Island
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+			410 = { # significant_number - South Island
+				add_resource = {
+					type = tungsten
+					amount = 10
+				}
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 
@@ -128,8 +831,209 @@ focus_tree = {
 		mutually_exclusive = { focus = AOT_regional_economics }
 		x = 1
 		y = 1
+		complete_tooltip = {
+			add_ideas = free_trade
+			swap_ideas = {
+				remove_idea = AOT_trauma_of_black_thursday
+				add_idea = AOT_international_focus_idea
+			}
+		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			swap_ideas = {
+				remove_idea = AOT_trauma_of_black_thursday
+				add_idea = AOT_international_focus_idea
+			}
+			custom_effect_tooltip = AOT_international_economics_locked_free_trade
+			if = {
+				limit = {
+					has_idea = free_trade
+				}
+				add_political_power = 150
+				else_if = {
+					limit = { has_idea = export_focus }
+					swap_ideas = {
+						remove_idea = export_focus
+						add_idea = free_trade
+					}
+				}
+				else_if = {
+					limit = { has_idea = limited_exports }
+					swap_ideas = {
+						remove_idea = limited_exports
+						add_idea = free_trade
+					}
+				}
+				else_if = {
+					limit = { has_idea = closed_economy }
+					swap_ideas = {
+						remove_idea = closed_economy
+						add_idea = free_trade
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_seek_outside_investment
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		relative_position_id = AOT_international_economics
+		prerequisite = { focus = AOT_international_economics }
+		x = 1
+		y = 1
+		complete_tooltip = {
+			swap_ideas = {
+				remove_idea = AOT_international_focus_idea
+				add_idea = AOT_international_investments_idea
+			}
+			random_state = {
+				limit = { has_state_flag = AOT_seek_outside_investment_state }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_international_focus_idea
+				add_idea = AOT_international_investments_idea
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 1
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = AOT_seek_outside_investment_state
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	#######################
+	### Militarism path ###
+	#######################
+	focus = {
+		id = AOT_vunerable_peace
+		icon = GFX_focus_hol_war_on_pacifism
+		cost = 10
+		x = 28
+		y = 0
+		completion_reward = {
+			add_political_power = 30
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_commit_to_pacifism
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = {
+			focus = AOT_vunerable_peace
+		}
+		mutually_exclusive = {
+			focus = AOT_protect_the_islands focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_vunerable_peace
+		cost = 10
+		x = -2
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_committed_pacifists
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_protect_the_islands
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = {
+			focus = AOT_vunerable_peace
+		}
+		mutually_exclusive = {
+			focus = AOT_commit_to_pacifism focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_vunerable_peace
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_protective_measures
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_preemptive_action
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = {
+			focus = AOT_vunerable_peace
+		}
+		mutually_exclusive = {
+			focus = AOT_commit_to_pacifism focus = AOT_protect_the_islands
+		}
+		available = {
+			OR = {
+				NOT = { has_government = democratic }
+				has_war_support > 0.4
+			}
+		}
+		relative_position_id = AOT_vunerable_peace
+		cost = 10
+		x = 2
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_preparing_for_conflict
+			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 }

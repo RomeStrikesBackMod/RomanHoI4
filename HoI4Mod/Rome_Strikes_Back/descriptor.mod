@@ -1,5 +1,8 @@
 name = "Converted - Rome_Strikes_Back"
+replace_path="common/countries"
 replace_path="common/ideologies"
+replace_path="common/national_focus"
+replace_path="events"
 replace_path="history/countries"
 replace_path="history/states"
 replace_path="history/units"
