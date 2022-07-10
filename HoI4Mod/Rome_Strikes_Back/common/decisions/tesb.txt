@@ -192,6 +192,40 @@ regaining_rome = {
 			}
 		}
 	}
+
+	negotiate_with_foederati_2 = {
+		icon = generic_form_nation
+		
+		visible = {
+			has_completed_focus = RME_integrate_foederati
+			FROM = {
+				exists = yes
+				is_subject_of = RME
+			}
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_idea = RME_former_territory
+				has_country_flag = RME_region_integration_started
+				is_subject_of = RME
+			}
+		}
+
+		days_re_enable = 120
+		days_remove = 60
+
+		remove_effect = {
+			FROM = { country_event = { id = tesb_restore_rome.51 hours = 12 } }
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				check_variable = { From.integrate_willingness < 0 }
+				factor = 0.001
+			}
+		}
+	}
 	
 }
 
