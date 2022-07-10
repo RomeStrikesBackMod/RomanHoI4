@@ -651,3 +651,97 @@ country_event = {
 		}
 	}
 }
+
+
+# Fully Reintegrating with Rome?
+country_event = {
+	id = tesb_restore_rome.51
+	title = tesb_restore_rome.51.t
+	desc = tesb_restore_rome.51.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			TESB_check_integrate_willingness = yes
+		}
+	}
+
+	# No
+	option = {
+		name = tesb_restore_rome.51.a
+		set_country_flag = refused_dem_RME_once
+		RME = {
+			hidden_effect = { country_event = { id = tesb_restore_rome.52 hours = 12 } }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Be annexed
+	option = {
+		name = tesb_restore_rome.51.b
+		trigger = {
+			check_variable = { Root.integrate_willingness > 10 }
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+		RME = {
+			effect_tooltip = {
+				annex_country = {
+					target = ROOT
+					transfer_troops = yes
+				}
+			}
+			hidden_effect = { country_event = { id = tesb_restore_rome.53 hours = 12 } }
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+
+# Rejected integration
+country_event = {
+	id = tesb_restore_rome.52
+	title = tesb_restore_rome.52.t
+	desc = tesb_restore_rome.52.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_restore_rome.52.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_RME_integration
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+
+# Was annexed
+country_event = {
+	id = tesb_restore_rome.53
+	title = tesb_restore_rome.53.t
+	desc = tesb_restore_rome.53.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_restore_rome.53.a
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
