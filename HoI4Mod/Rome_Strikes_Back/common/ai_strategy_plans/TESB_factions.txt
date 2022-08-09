@@ -4,12 +4,7 @@ BRG_minor_allies = { #Don't Ally Burgundy unless supposed to
 
 	enable = {
 		is_in_faction = no
-		BRG = {
-			OR = {
-				has_government = absolutist
-				has_government = democratic
-			}
-		}
+		BRG = { is_faction_leader = yes }
 		NOT = {
 			original_tag = FRA
 			original_tag = FLD
@@ -63,9 +58,7 @@ UTA_allies = {
 
 	enable = {
 		is_in_faction = no
-		UTA = {
-			has_government = democratic
-		}
+		UTA = { is_faction_leader = yes }
 		NOT = {
 			original_tag = CAN
 			original_tag = MEX
@@ -114,10 +107,8 @@ MNG_allies = {
 	desc = "Don't ally China if not native to Asia"
 
 	enable = {
+		MNG = { is_faction_leader = yes }
 		is_in_faction = no
-		MNG = {
-			has_government = absolutist
-		}
 		NOT = {
 			original_tag = JAP
 			original_tag = KOR
@@ -154,13 +145,8 @@ HUN_minor_allies = { #Don't Ally Hungary unless supposed to
 	desc = ""
 
 	enable = {
+		HUN = { is_faction_leader = yes }
 		is_in_faction = no
-		HUN = {
-			OR = {
-				has_government = democratic
-				has_government = communism
-			}
-		}
 		NOT = {
 			original_tag = CRO
 			original_tag = YUG
@@ -185,10 +171,11 @@ ITA_HRE_faction = { #Don't Ally Italy unless supposed to
 	desc = ""
 
 	enable = {
-		is_in_faction = no
 		ITA = {
+			is_faction_leader = yes
 			has_government = absolutist
 		}
+		is_in_faction = no
 		NOT = {
 			original_tag = BRG
 			original_tag = AQI
@@ -213,10 +200,11 @@ ITA_med_faction = { #Don't Ally Italy unless supposed to
 	desc = ""
 
 	enable = {
-		is_in_faction = no
 		ITA = {
+			is_faction_leader = yes
 			has_government = democratic
 		}
+		is_in_faction = no
 		NOT = {
 			original_tag = BRG
 			original_tag = AQI
@@ -243,12 +231,8 @@ RUS_faction = { #Don't Ally Russia unless supposed to
 
 	enable = {
 		is_in_faction = no
-		RUS = {
-			has_government = democratic
-		}
-		NOT = {
-			is_owner_neighbor_of = RUS
-		}
+		RUS = { is_faction_leader = yes }
+		NOT = { is_owner_neighbor_of = RUS }
 	}
 	abort = {
 		is_in_faction_with = RUS
@@ -261,3 +245,44 @@ RUS_faction = { #Don't Ally Russia unless supposed to
 	}
 }
 
+ETH_faction = { #Don't Ally Ethiopia unless supposed to
+	name = "Don't ally Ethiopia"
+	desc = ""
+
+	enable = {
+		is_in_faction = no
+		ETH = { is_faction_leader = yes }
+		NOT = {
+			capital_scope = { is_on_continent = africa }
+		}
+	}
+	abort = {
+		is_in_faction_with = ETH
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "ETH"
+		value = -500
+	}
+}
+
+IRN_faction = { #Don't Ally Iran unless supposed to
+	name = "Don't ally Iran"
+	desc = ""
+
+	enable = {
+		is_in_faction = no
+		IRN = { is_faction_leader = yes }
+		NOT = { is_owner_neighbor_of = IRN }
+	}
+	abort = {
+		is_in_faction_with = IRN
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "IRN"
+		value = -500
+	}
+}
