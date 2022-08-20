@@ -126,7 +126,11 @@ regaining_rome = {
 		days_remove = 60
 
 		complete_effect = {
-			set_country_flag = negotiation_in_progress
+			set_country_flag = {
+				flag = negotiation_in_progress
+				days = 7
+				value = 1
+			}
 		}
 		remove_effect = {
 			if = {
@@ -191,7 +195,11 @@ regaining_rome = {
 		days_remove = 60
 
 		complete_effect = {
-			set_country_flag = negotiation_in_progress
+			set_country_flag = {
+				flag = negotiation_in_progress
+				days = 7
+				value = 1
+			}
 		}
 		remove_effect = {
 			FROM = { country_event = { id = tesb_restore_rome.41 hours = 12 } }
@@ -231,7 +239,11 @@ regaining_rome = {
 		days_remove = 60
 
 		complete_effect = {
-			set_country_flag = negotiation_in_progress
+			set_country_flag = {
+				flag = negotiation_in_progress
+				days = 7
+				value = 1
+			}
 		}
 		remove_effect = {
 			FROM = { country_event = { id = tesb_restore_rome.51 hours = 12 } }
@@ -242,20 +254,6 @@ regaining_rome = {
 				check_variable = { From.integrate_willingness < 0 }
 				factor = 0.001
 			}
-		}
-	}
-	
-	negotiation_in_progress_mission = {
-		icon = generic_form_nation
-		activation = {
-			tag = RME
-			has_country_flag = negotiation_in_progress
-		}
-		is_good = yes
-		selectable_mission = no
-		days_mission_timeout = 7
-		timeout_effect  = {
-			clr_country_flag = negotiation_in_progress
 		}
 	}
 }
