@@ -65,7 +65,7 @@ ideas = {
 			picture = SOV_second_five_year_plan
 			modifier = {
 				consumer_goods_factor = 0.05
-				production_speed_buildings_factor = -0.05
+				production_speed_buildings_factor = -0.066
 			}
 		}
 		AOT_protectionism_idea = {
@@ -79,8 +79,23 @@ ideas = {
 			picture = SOV_third_five_year_plan
 			modifier = {
 				consumer_goods_factor = 0.0
-				production_speed_buildings_factor = 0.0
+				production_speed_buildings_factor = -0.033
 				min_export = -0.05
+			}
+		}
+		AOT_state_industry_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = SOV_fourth_five_year_plan
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0
+				min_export = -0.1
 			}
 		}
 		AOT_international_focus_idea = {
@@ -93,7 +108,7 @@ ideas = {
 			removal_cost = -1
 			picture = can_wartime_prices_and_trade_board
 			modifier = {
-				consumer_goods_factor = 0.05
+				consumer_goods_factor = 0.066
 				production_speed_buildings_factor = -0.05
 				min_export = -0.05
 			}
@@ -108,9 +123,24 @@ ideas = {
 			removal_cost = -1
 			picture = generic_foreign_capital
 			modifier = {
-				consumer_goods_factor = 0.0
+				consumer_goods_factor = 0.033
 				production_speed_buildings_factor = 0.0
 				min_export = -0.1
+			}
+		}
+		AOT_overseas_production = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_foreign_capital
+			modifier = {
+				consumer_goods_factor = 0
+				production_speed_buildings_factor = 0.05
+				min_export = -0.15
 			}
 		}
 		AOT_staunch_anti_militarists = {
@@ -142,9 +172,6 @@ ideas = {
 				stability_factor = 0.1
 				war_support_factor = -0.3
 			}
-			rule = {
-				can_join_factions = no
-			}
 		}
 		AOT_protective_measures = {
 			allowed = {
@@ -154,10 +181,38 @@ ideas = {
 				always = yes
 			}
 			removal_cost = -1
-			picture = fortify_the_borders
+			picture = generic_fortify_the_borders
 			modifier = {
-				stability_factor = -0.05
-				war_support_factor = -0.25
+				production_speed_bunker_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.1
+			}
+		}
+		AOT_elite_corps_idea = {
+			name = AOT_elite_corps
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_morale_bonus
+			modifier = {
+				special_forces_min = 24
+			}
+		}
+		AOT_defensive_militia_idea = {
+			name = AOT_defensive_militia
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = ast_volunteer_defence_corps
+			modifier = {
+				conscription = 0.01
+				training_time_factor = -0.1
 			}
 		}
 		AOT_preparing_for_conflict = {
@@ -175,6 +230,21 @@ ideas = {
 			}
 			rule = {
 				can_send_volunteers = yes
+			}
+		}
+		AOT_mandatory_service_idea = {
+			name = AOT_mandatory_service
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_reserve_divisons
+			modifier = {
+				conscription = 0.005
+				training_time_factor = -0.15
 			}
 		}
 		AOT_timon_abroad = {
@@ -255,7 +325,6 @@ ideas = {
 			}
 		}
 		AOT_mesazon_leadership_idea = {
-			name = AOT_mesazon_leadership
 			allowed = {
 				always = no
 			}
@@ -265,6 +334,27 @@ ideas = {
 			removal_cost = -1
 			picture = generic_pp_unity_bonus
 			modifier = {
+				political_advisor_cost_factor = -0.2
+				high_command_cost_factor = -0.2
+				theorist_cost_factor = -0.2
+				air_chief_cost_factor = -0.2
+				army_chief_cost_factor = -0.2
+				navy_chief_cost_factor = -0.2
+				max_command_power = 50
+			}
+		}
+		AOT_mesazon_leadership_idea_2 = {
+			name = AOT_mesazon_leadership_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+			modifier = {
+				stability_factor = 0.1
 				political_advisor_cost_factor = -0.2
 				high_command_cost_factor = -0.2
 				theorist_cost_factor = -0.2

@@ -512,6 +512,64 @@ country_event = {
 }
 
 country_event = {
+	id = tesb_AOT.14
+	title = tesb_AOT.14.t
+	desc = tesb_AOT.14.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.14.a #welcome back
+		add_to_faction = AOT
+		AOT = { country_event = { id = tesb_AOT.15 } }
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.14.b #reject
+		AOT = { country_event = { id = tesb_AOT.15 } }
+	}
+}
+
+country_event = {
+	id = tesb_AOT.15
+	title = tesb_AOT.15.t
+	desc = {
+		text = tesb_AOT.15.da
+		trigger = { is_in_faction_with = FROM }
+	}
+	desc = {
+		text = tesb_AOT.15.db
+		trigger = { NOT = { is_in_faction_with = FROM } }
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.15.a #welcome back
+		trigger = { is_in_faction_with = FROM }
+		effect_tooltip = {
+			FROM = { add_to_faction = AOT }
+		}
+	}
+	option = {
+		name = tesb_AOT.15.b #reject
+		trigger = { NOT = { is_in_faction_with = FROM } }
+	}
+}
+
+country_event = {
 	id = tesb_AOT.20
 	title = tesb_AOT.20.t
 	desc = tesb_AOT.20.d
@@ -559,6 +617,65 @@ country_event = {
 				has_completed_focus = AOT_reluctant_leader
 				factor = 5
 			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.25
+	title = tesb_AOT.25.t
+	desc = tesb_AOT.25.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.25.a
+		set_technology = {
+			AOT_marines = 1
+		}
+		add_tech_bonus = {
+			name = marine_bonus
+			bonus = 0.5
+			uses = 1
+			category = marine_tech
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.25.b
+		set_technology = {
+			AOT_paratroopers = 1
+		}
+		add_tech_bonus = {
+			name = special_forces_bonus
+			bonus = 0.5
+			uses = 1
+			category = para_tech
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.25.c
+		set_technology = {
+			AOT_mountaineers = 1
+		}
+		add_tech_bonus = {
+			name = special_forces_bonus
+			bonus = 0.5
+			uses = 1
+			category = mountaineers_tech
+		}
+		ai_chance = {
+			base = 10
 		}
 	}
 }
