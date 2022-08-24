@@ -286,3 +286,27 @@ IRN_faction = { #Don't Ally Iran unless supposed to
 		value = -500
 	}
 }
+
+PLC_faction = { #Don't Ally Poland-Lithuania unless supposed to
+	name = "Don't ally PLC"
+	desc = ""
+
+	enable = {
+		is_in_faction = no
+		PLC = { is_faction_leader = yes }
+		NOT = {
+			original_tag = GER
+			original_tag = SCA
+			original_tag = BAV
+		}
+	}
+	abort = {
+		is_in_faction_with = PLC
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "PLC"
+		value = -500
+	}
+}
