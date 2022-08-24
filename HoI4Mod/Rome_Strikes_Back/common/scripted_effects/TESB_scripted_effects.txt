@@ -631,3 +631,51 @@ TESB_AOT_socialist_support = {
 		AOT_socialist_support = 10
 	}
 }
+
+aot_island_control_tooltip = {
+	if = {
+		limit = {
+			check_variable = { var = aot_island_control value = 0 compare = equals }
+		}
+		custom_effect_tooltip = AOT_island_influence_none_tt
+	}
+	if = {
+		limit = {
+			check_variable = { var = aot_island_control value = 1 compare = equals }
+		}
+		custom_effect_tooltip = AOT_island_influence_weak_tt
+	}
+	if = {
+		limit = {
+			check_variable = { var = aot_island_control value = 2 compare = equals }
+		}
+		custom_effect_tooltip = AOT_island_influence_strong_tt
+	}
+	if = {
+		limit = {
+			check_variable = { var = aot_island_control value = 3 compare = equals }
+		}
+		custom_effect_tooltip = AOT_island_influence_total_tt
+	}
+}
+
+aot_island_control_cost_calculation = {
+	if = {
+		limit = {
+			check_variable = { var = aot_island_control value = 1 compare = equals }
+		}
+		set_variable = { var = aot_island_control_cost value = 10 }
+	}
+	if = {
+		limit = {
+			check_variable = { var = aot_island_control value = 2 compare = equals }
+		}
+		set_variable = { var = aot_island_control_cost value = 20 }
+	}
+	if = {
+		limit = {
+			check_variable = { var = aot_island_control value = 3 compare = equals }
+		}
+		set_variable = { var = aot_island_control_cost value = 30 }
+	}
+}

@@ -32,18 +32,9 @@ every_possible_country = {
 	}
 }
 
-# Military advisors
 every_possible_country = {
-	# generic political advisors
-	generate_character = {
-		token_base = generic_captain_of_industry # token will be TAG_token_base
-		advisor = {
-			slot = political_advisor
-			traits = { captain_of_industry }
-		}
-		portraits = { 
-			army = { small = GFX_idea_generic_captain_of_industry }
-		}
+	limit = {
+		NOT = { tag = AOT }
 	}
 	generate_character = {
 		token_base = generic_fortification_engineer # token will be TAG_token_base
@@ -55,6 +46,20 @@ every_possible_country = {
 			army = { small = GFX_idea_generic_fortification_engineer }
 		}
 	}
+	generate_character = {
+		token_base = generic_captain_of_industry # token will be TAG_token_base
+		advisor = {
+			slot = political_advisor
+			traits = { captain_of_industry }
+		}
+		portraits = { 
+			army = { small = GFX_idea_generic_captain_of_industry }
+		}
+	}
+}
+# Military advisors
+every_possible_country = {
+	# generic political advisors
 	generate_character = {
 		token_base = generic_war_industrialist # token will be TAG_token_base
 		advisor = {

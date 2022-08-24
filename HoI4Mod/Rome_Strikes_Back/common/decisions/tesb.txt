@@ -1032,10 +1032,31 @@ aotearoa_decisions = {
 		visible = {
 			is_debug = yes
 		}
+		available = {
+
+		}
 		complete_effect = {
-			TESB_AOT_socialist_support = yes
-			add_dynamic_modifier = {
-				modifier = AOT_socialism_support
+			every_state = {
+				clear_variable = AOT.test_@THIS
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 42
+						state = 43
+						state = 44
+						state = 45
+						state = 46
+						state = 54
+						state = 55
+					}
+				}
+				set_variable = {
+					AOT.test_@THIS = id.THIS
+				}
+			}
+			every_state = {
+				clr_state_flag = AOT_already_expanding_influence_flag_@ROOT
 			}
 		}
 	}
@@ -1067,6 +1088,11 @@ aotearoa_decisions = {
 						remove_idea = AOT_timon_abroad
 						add_idea = AOT_timon_at_home
 					}
+					uncomplete_national_focus = {
+						focus = AOT_send_timon_to_constantiople
+						uncomplete_children = yes
+					}
+					unlock_national_focus = AOT_keep_timon_in_aotearoa
 				}
 				else_if = {
 					limit = { has_country_flag = AOT_timon_visit }
@@ -1161,7 +1187,7 @@ aotearoa_decisions = {
 		complete_effect = {
 			if = {
 				limit = { RMD = { is_faction_leader = yes } }
-				RMD = { country_event = { id = generic.2 } }
+				RMD = { country_event = { id = tesb_AOT.14 } }
 				else = { custom_effect_tooltip = AOT_join_RME_faction_TT }
 			}
 			set_country_flag = AOT_reconciled_rome
@@ -1325,6 +1351,9 @@ aotearoa_decisions = {
 				}
 				complete_national_focus = AOT_taneist_tendrils
 			}
+			news_event = {
+				id = tesb_AOT.7
+			}
 		}
 		complete_effect = {
 			add_stability = 0.05
@@ -1371,6 +1400,500 @@ aotearoa_decisions = {
 			}
 		}
 	}
+}
+
+@AOT_island_mission = 365
+AOT_islands = {
+	IRN_iranian_pacific_islands_countdown = {
+		priority = 100
+		days_mission_timeout = @AOT_island_mission
+		is_good = no
+		activation = {
+			always = no
+		}
+		allowed = {
+			OR = {
+				original_tag = IRN
+				original_tag = X01
+			}
+		}
+		available = {
+			OR = {
+				is_in_faction_with = AOT
+				has_war_with = AOT
+				AOT = { is_subject_of = ROOT }
+			}
+		}
+		timeout_effect = {
+			custom_effect_tooltip = IRN_iranian_pacific_islands_countdown_TT
+		}
+	}
+	AOT_iranian_pacific_islands_countdown = {
+		priority = 100
+		days_mission_timeout = @AOT_island_mission
+		activation = {
+			always = no
+		}
+		allowed = {
+			original_tag = AOT
+		}
+		available = {
+			OR = {
+				has_war_with = IRN
+				has_war_with = X01
+				is_in_faction_with = IRN
+				is_in_faction_with = X01
+				X01 = { is_subject_of = AOT }
+				IRN = { is_subject_of = AOT }
+				is_subject_of = IRN
+				is_subject_of = X01
+			}
+		}
+		timeout_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = AOT.AOT_iranian_pacific_islands
+						value = THIS.id
+					}
+					OWNER = { has_full_control_of_state = PREV }
+				}
+				custom_effect_tooltip = AOT_pacific_islands_countdown_TT
+				hidden_effect = {			
+					random_list = {
+						aot_island_control = { #0:1, 1:1, 3:1, 19:1
+							modifier = {
+								add = 1 #total 3:1
+								check_variable = { aot_island_control = 2 }
+							}
+							modifier = {
+								add = 16 #total 19:1
+								check_variable = { aot_island_control = 3 }
+							}
+							OWNER = {
+								if = {
+									limit = {
+										check_variable = { num_owned_states = 1 }
+									}
+									AOT = {
+										annex_country = { target = PREV }
+									}
+								}
+							}
+							teleport_armies = {
+								limit = {
+									owns_state = PREV
+								}
+							}
+							transfer_state_to = AOT
+							add_core_of = AOT
+						}
+						1 = {
+							modifier = {
+								factor = 0
+								OWNER = {
+									all_owned_state = {
+										check_variable = { aot_island_control = 3 }
+									}
+								}
+							}
+							OWNER = {
+								add_political_power = 5
+							}
+						}
+					}
+				}
+				tooltip = AOT_iranian_pacific_islands_countdown_state_TT
+			}
+		}
+	}
+	AOT_influence_iranian_pacific_islands = {
+		state_target = yes
+		target_array = AOT.AOT_iranian_pacific_islands
+		icon = {
+			key = aot_island_control_none
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 0 compare = equals } }
+			}
+		}
+		icon = {
+			key = aot_island_control_weak
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 1 compare = equals }}
+			}
+		}
+		icon = {
+			key = aot_island_control_strong
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 2 compare = equals } }
+			}
+		}
+		icon = {
+			key = aot_island_control_total
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 3 compare = greater_than_or_equals } }
+			}
+		}
+
+		target_root_trigger = {
+			OR = {
+				original_tag = AOT
+				original_tag = IRN
+				original_tag = X01
+			}
+			NOT = {
+				has_war_with = AOT
+				has_war_with = IRN
+				has_war_with = X01
+			}
+			OR = {
+				has_active_mission = AOT_iranian_pacific_islands_countdown
+				has_active_mission = IRN_iranian_pacific_islands_countdown
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_fully_controlled_by = IRN
+					is_fully_controlled_by = X01
+				}
+			}
+		}
+		available = {
+			if = {
+				limit = {
+					original_tag = AOT
+				}
+				custom_trigger_tooltip = {
+					tooltip = AOT_expand_influence_trigger_tt
+					FROM = { check_variable = { var = aot_island_control value = 3 compare = less_than } }
+				}
+			}
+			else = {
+				controls_state = FROM
+				custom_trigger_tooltip = {
+					tooltip = AOT_reduce_influence_trigger_tt
+					FROM = { check_variable = { var = aot_island_control value = 1 compare = greater_than_or_equals } }
+				}
+			}
+			FROM = {
+				NOT = { has_state_flag = AOT_already_expanding_influence_flag_@ROOT }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = FROM }
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = FROM.aot_island_control_cost?10
+
+		fire_only_once = no
+
+		days_remove = 14
+
+		visible = {
+			
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			FROM = { set_state_flag = AOT_already_expanding_influence_flag_@ROOT }
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					original_tag = AOT
+				}
+				FROM = {
+					custom_effect_tooltip = AOT_expand_influence_tt
+					set_state_flag = { flag = AOT_recently_expanded_influence_flag value = 1 days = 15 }
+					hidden_effect = {
+						if = {
+							limit = { check_variable = { aot_island_control < 3 } }
+							add_to_variable = { var = aot_island_control value = 1 }
+						}
+					}
+					aot_island_control_tooltip = yes
+					aot_island_control_cost_calculation = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = { original_tag = AOT }
+				}
+				FROM = {
+					custom_effect_tooltip = AOT_reduce_influence_tt
+					set_state_flag = { flag = AOT_recently_expanded_influence_flag value = 1 days = 15 }
+					hidden_effect = {
+						subtract_from_variable = { var = aot_island_control value = 1 }
+					}
+					aot_island_control_tooltip = yes
+					aot_island_control_cost_calculation = yes
+				}
+			}
+			FROM = { clr_state_flag = AOT_already_expanding_influence_flag_@ROOT }
+		}
+
+		ai_will_do = {
+			base = 50
+			modifier = {
+				FROM = { has_state_flag = AOT_recently_expanded_influence_flag }
+				factor = 10
+			}
+			modifier = {
+				original_tag = AOT
+				FROM = { check_variable = { var = aot_island_control value = 2 compare = greater_than_or_equals } }
+				factor = 5
+			}
+			modifier = {
+				original_tag = AOT
+				FROM = { check_variable = { var = aot_island_control value = 3 compare = greater_than_or_equals } }
+				factor = 5
+			}
+		}
+	}
+	AST_australian_pacific_islands_countdown = {
+		priority = 100
+		days_mission_timeout = @AOT_island_mission
+		is_good = no
+		activation = {
+			always = no
+		}
+		allowed = {
+			original_tag = AST
+		}
+		available = {
+			OR = {
+				is_in_faction_with = AOT
+				has_war_with = AOT
+				AOT = { is_subject_of = ROOT }
+			}
+		}
+		timeout_effect = {
+			custom_effect_tooltip = AST_australian_pacific_islands_countdown_TT
+		}
+	}
+	AOT_australian_pacific_islands_countdown = {
+		priority = 100
+		days_mission_timeout = @AOT_island_mission
+		activation = {
+			always = no
+		}
+		allowed = {
+			original_tag = AOT
+		}
+		available = {
+			OR = {
+				is_in_faction_with = AST
+				has_war_with = AST
+				is_subject_of = AST
+			}
+		}
+		timeout_effect = {
+			every_state = {
+				limit = {
+					is_in_array = {
+						array = AOT.AOT_australian_pacific_islands
+						value = THIS.id
+					}
+					OWNER = { has_full_control_of_state = PREV }
+				}
+				custom_effect_tooltip = AOT_pacific_islands_countdown_TT
+				hidden_effect = {			
+					random_list = {
+						aot_island_control = { #0:1, 1:1, 3:1, 19:1
+							modifier = {
+								add = 1 #total 3:1
+								check_variable = { aot_island_control = 2 }
+							}
+							modifier = {
+								add = 16 #total 19:1
+								check_variable = { aot_island_control = 3 }
+							}
+							OWNER = {
+								if = {
+									limit = {
+										check_variable = { num_owned_states = 1 }
+									}
+									AOT = {
+										annex_country = { target = PREV }
+									}
+								}
+							}
+							teleport_armies = {
+								limit = {
+									owns_state = PREV
+								}
+							}
+							transfer_state_to = AOT
+							add_core_of = AOT
+						}
+						1 = {
+							modifier = {
+								factor = 0
+								OWNER = {
+									all_owned_state = {
+										check_variable = { aot_island_control = 3 }
+									}
+								}
+							}
+							OWNER = {
+								add_political_power = 5
+							}
+						}
+					}
+				}
+				tooltip = AOT_australian_pacific_islands_countdown_state_TT
+			}
+		}
+	}
+	AOT_influence_australian_pacific_islands = {
+		state_target = yes
+		target_array = AOT.AOT_australian_pacific_islands
+		icon = {
+			key = aot_island_control_none
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 0 compare = equals } }
+			}
+		}
+		icon = {
+			key = aot_island_control_weak
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 1 compare = equals }}
+			}
+		}
+		icon = {
+			key = aot_island_control_strong
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 2 compare = equals } }
+			}
+		}
+		icon = {
+			key = aot_island_control_total
+			trigger = {
+				FROM = { check_variable = { var = aot_island_control value = 3 compare = greater_than_or_equals } }
+			}
+		}
+		target_root_trigger = {
+			OR = {
+				original_tag = AOT
+				original_tag = AST
+			}
+			NOT = {
+				has_war_with = AOT
+				has_war_with = AST
+			}
+			OR = {
+				has_active_mission = AOT_australian_pacific_islands_countdown
+				has_active_mission = AST_australian_pacific_islands_countdown
+			}
+		}
+		target_trigger = {
+			FROM = { is_fully_controlled_by = AST }
+		}
+		available = {
+			if = {
+				limit = {
+					original_tag = AOT
+				}
+				custom_trigger_tooltip = {
+					tooltip = AOT_expand_influence_trigger_tt
+					FROM = { check_variable = { var = aot_island_control value = 3 compare = less_than } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = AOT_reduce_influence_trigger_tt
+					FROM = { check_variable = { var = aot_island_control value = 1 compare = greater_than_or_equals } }
+				}
+			}
+			FROM = {
+				NOT = {
+					has_state_flag = AOT_already_expanding_influence_flag_@ROOT
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = FROM } 
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		cost = FROM.aot_island_control_cost?10
+
+		fire_only_once = no
+
+		days_remove = 14
+
+		visible = {
+			
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			FROM = { set_state_flag = AOT_already_expanding_influence_flag_@ROOT }
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					original_tag = AOT
+				}
+				FROM = {
+					custom_effect_tooltip = AOT_expand_influence_tt
+					set_state_flag = { flag = AOT_recently_expanded_influence_flag value = 1 days = 15 }
+					hidden_effect = {
+						if = {
+							limit = { check_variable = { aot_island_control < 3 } }
+							add_to_variable = { var = aot_island_control value = 1 }
+						}
+					}
+					aot_island_control_tooltip = yes
+					aot_island_control_cost_calculation = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = { original_tag = AOT }
+				}
+				FROM = {
+					custom_effect_tooltip = AOT_reduce_influence_tt
+					set_state_flag = { flag = AOT_recently_expanded_influence_flag value = 1 days = 15 }
+					hidden_effect = {
+						subtract_from_variable = { var = aot_island_control value = 1 }
+					}
+					aot_island_control_tooltip = yes
+					aot_island_control_cost_calculation = yes
+				}
+			}
+			FROM = { clr_state_flag = AOT_already_expanding_influence_flag_@ROOT }
+		}
+
+		ai_will_do = {
+			base = 50
+			modifier = {
+				FROM = { has_state_flag = AOT_recently_expanded_influence_flag }
+				factor = 10
+			}
+			modifier = {
+				original_tag = AOT
+				FROM = { check_variable = { var = aot_island_control value = 2 compare = greater_than_or_equals } }
+				factor = 5
+			}
+			modifier = {
+				original_tag = AOT
+				FROM = { check_variable = { var = aot_island_control value = 3 compare = greater_than_or_equals } }
+				factor = 5
+			}
+		}
+	}
+
 }
 
 mexhico_decisions = {

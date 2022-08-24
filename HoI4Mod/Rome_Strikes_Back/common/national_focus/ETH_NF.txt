@@ -40,16 +40,27 @@ focus_tree = {
 		available = {
 		}
 		completion_reward = {
-			NGR = { add_ideas = african_democratic_support }
-			SOK = { add_ideas = african_democratic_support }
-			BEN = { add_ideas = african_democratic_support }
-			DAH = { add_ideas = african_democratic_support }
-			TOG = { add_ideas = african_democratic_support }
-			BRK = { add_ideas = african_democratic_support }
-			MLI = { add_ideas = african_democratic_support }
-			GUI = { add_ideas = african_democratic_support }
-			MAU = { add_ideas = african_democratic_support }
-			SEN = { add_ideas = african_democratic_support }
+			every_country = {
+				limit = {
+					OR = {
+						tag = NGR
+						tag = SOK
+						tag = BEN
+						tag = DAH
+						tag = TOG
+						tag = BRK
+						tag = MLI
+						tag = GUI
+						tag = MAU
+						tag = SEN
+					}
+				}
+				tooltip = ETH_west_africa_TT
+				add_timed_idea = {
+					idea = african_democratic_support
+					days = 730
+				}
+			}
 		}
 	}
 
@@ -250,9 +261,20 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = ETH_african_union }
 		completion_reward = {
-			CHD = { add_ideas = african_democratic_support }
-			CMR = { add_ideas = african_democratic_support }
-			GAB = { add_ideas = african_democratic_support }
+			every_country = {
+				limit = {
+					OR = {
+						tag = CHD
+						tag = CMR
+						tag = GAB
+					}
+				}
+				tooltip = ETH_central_africa_TT
+				add_timed_idea = {
+					idea = african_democratic_support
+					days = 730
+				}
+			}
 		}
 	}
 
@@ -411,8 +433,19 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = ETH_african_union }
 		completion_reward = {
-			MUT = { add_ideas = african_democratic_support }
-			ADA = { add_ideas = african_democratic_support }
+			every_country = {
+				limit = {
+					OR = {
+						tag = MUT
+						tag = ADA
+					}
+				}
+				tooltip = ETH_eastern_africa_TT
+				add_timed_idea = {
+					idea = african_democratic_support
+					days = 730
+				}
+			}
 		}
 	}
 
