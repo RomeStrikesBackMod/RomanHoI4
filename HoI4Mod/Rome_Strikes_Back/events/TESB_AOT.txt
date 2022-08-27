@@ -384,6 +384,42 @@ news_event = {
 }
 
 country_event = {
+	id = tesb_AOT.8
+	title = tesb_AOT.8.t
+	desc = tesb_AOT.8.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.8.a #Alvertos
+		trigger = {
+			RMD = { exists = yes }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			RMA = { exists = yes }
+		}
+		name = tesb_AOT.8.b #Konstatinos
+	}
+	option = {
+		trigger = {
+			RMD = { exists = no }
+			RMA = { exists = no }
+		}
+		name = tesb_AOT.8.c #reject
+	}
+}
+
+country_event = {
 	id = tesb_AOT.10
 	title = tesb_AOT.10.t
 	desc = tesb_AOT.10.d
@@ -409,6 +445,9 @@ country_event = {
 	option = {
 		name = tesb_AOT.10.b #reject
 		AOT = { country_event = { id = tesb_AOT.11 } }
+		ai_chance = {
+			base = 1
+		}
 	}
 }
 
@@ -473,6 +512,9 @@ country_event = {
 	option = {
 		name = tesb_AOT.12.b #reject
 		AOT = { country_event = { id = tesb_AOT.13 } }
+		ai_chance = {
+			base = 1
+		}
 	}
 }
 
@@ -534,6 +576,9 @@ country_event = {
 	option = {
 		name = tesb_AOT.14.b #reject
 		AOT = { country_event = { id = tesb_AOT.15 } }
+		ai_chance = {
+			base = 1
+		}
 	}
 }
 
@@ -566,6 +611,72 @@ country_event = {
 	option = {
 		name = tesb_AOT.15.b #reject
 		trigger = { NOT = { is_in_faction_with = FROM } }
+		set_country_flag = RME_refused_AOT
+	}
+}
+
+country_event = {
+	id = tesb_AOT.16
+	title = tesb_AOT.14.t
+	desc = tesb_AOT.14.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.14.a #welcome back
+		give_guarantee = AOT
+		AOT = {
+			give_guarantee = ROOT
+			country_event = { id = tesb_AOT.17 } }
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.14.b #reject
+		AOT = { country_event = { id = tesb_AOT.17 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.17
+	title = tesb_AOT.15.t
+	desc = {
+		text = tesb_AOT.15.da
+		trigger = { has_guaranteed = FROM is_guaranteed_by = FROM }
+	}
+	desc = {
+		text = tesb_AOT.15.db
+		trigger = { NOT = { has_guaranteed = FROM is_guaranteed_by = FROM } }
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.15.a #welcome back
+		trigger = { has_guaranteed = FROM is_guaranteed_by = FROM }
+		effect_tooltip = {
+			FROM = { give_guarantee = AOT }
+			give_guarantee = FROM
+		}
+	}
+	option = {
+		name = tesb_AOT.15.b #reject
+		trigger = { NOT = { has_guaranteed = FROM is_guaranteed_by = FROM } }
+		set_country_flag = RME_refused_AOT
 	}
 }
 

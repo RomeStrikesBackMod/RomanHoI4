@@ -623,6 +623,7 @@ TESB_check_integrate_willingness = {
 	}
 }
 
+#Aotearoa
 TESB_AOT_socialist_support = {
 	set_variable = {
 		AOT_socialist_support = party_popularity@communism
@@ -677,5 +678,36 @@ aot_island_control_cost_calculation = {
 			check_variable = { var = aot_island_control value = 3 compare = equals }
 		}
 		set_variable = { var = aot_island_control_cost value = 30 }
+	}
+}
+
+#Set state owner flags, used in certain effects
+root_takes_prev = {
+	#root is new owner, prev is old owner, in state scope
+	if = {
+		limit = { has_state_flag = original_owner_@PREV }
+		set_state_flag = old_owner_@PREV
+		set_state_flag = owner_@ROOT
+	}
+	if = {
+		limit = { has_state_flag = owner_@PREV }
+		set_state_flag = old_owner_@PREV
+		set_state_flag = owner_@ROOT
+		clr_state_flag = owner_@PREV
+	}
+}
+
+prev_takes_root = {
+	#prev is new owner, root is old owner, in state scope
+	if = {
+		limit = { has_state_flag = original_owner_@ROOT }
+		set_state_flag = old_owner_@ROOT
+		set_state_flag = owner_@PREV
+	}
+	if = {
+		limit = { has_state_flag = owner_@ROOT }
+		set_state_flag = old_owner_@ROOT
+		set_state_flag = owner_@PREV
+		clr_state_flag = owner_@ROOT
 	}
 }

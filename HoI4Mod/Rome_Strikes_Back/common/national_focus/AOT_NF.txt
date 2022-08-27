@@ -50,9 +50,19 @@ focus_tree = {
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_timon_abroad
-			reverse_add_opinion_modifier = {
-				target = RME
-				modifier = AOT_imperial_representative
+			if = {
+				limit = {
+					has_global_flag = RME_civil_war_ongoing
+				}
+				country_event = {
+					id = tesb_AOT.8
+				}
+			}
+			RME = {
+				add_opinion_modifier = {
+					target = AOT
+					modifier = AOT_imperial_representative
+				}
 			}
 		}
 		ai_will_do = {
@@ -99,7 +109,7 @@ focus_tree = {
 		relative_position_id = AOT_send_timon_to_constantiople
 		prerequisite = { focus = AOT_send_timon_to_constantiople }
 		mutually_exclusive = {
-			focus = AOT_maintain_transitional_council
+			focus = AOT_maintain_transitional_council focus = AOT_appoint_timon_as_exarch
 		}
 		x = -3
 		y = 1
@@ -300,13 +310,37 @@ focus_tree = {
 			base = 10
 		}
 	}
+
+	### Imperial Confirmation ###
 	focus = {
 		id = AOT_in_imperial_hands
 		icon = GFX_focus_generic_self_management
 		cost = 10
+		mutually_exclusive = {
+			focus = AOT_empty_seat
+		}
 		relative_position_id = AOT_waiting_for_exarch
 		prerequisite = { focus = AOT_waiting_for_exarch }
 		x = -1
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = AOT_new_exarch
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_in_imperial_hands
+		prerequisite = { focus = AOT_in_imperial_hands }
+		x = 0
 		y = 1
 		available = {
 
@@ -325,6 +359,9 @@ focus_tree = {
 		cost = 10
 		relative_position_id = AOT_waiting_for_exarch
 		prerequisite = { focus = AOT_waiting_for_exarch focus = AOT_reluctant_leader }
+		mutually_exclusive = {
+			focus = AOT_in_imperial_hands focus = AOT_honorary_post
+		}
 		x = 1
 		y = 1
 		available = {
@@ -452,7 +489,7 @@ focus_tree = {
 		relative_position_id = AOT_keep_timon_in_aotearoa
 		prerequisite = { focus = AOT_keep_timon_in_aotearoa }
 		mutually_exclusive = {
-			focus = AOT_maintain_transitional_council
+			focus = AOT_maintain_transitional_council focus = AOT_rely_on_mesazon
 		}
 		x = 0
 		y = 1
@@ -510,6 +547,9 @@ focus_tree = {
 		cost = 10
 		relative_position_id = AOT_reluctant_leader
 		prerequisite = { focus = AOT_reluctant_leader }
+		mutually_exclusive = {
+			focus = AOT_empty_seat
+		}
 		x = 1
 		y = 1
 		available = {
@@ -709,7 +749,7 @@ focus_tree = {
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = AOT_trauma_of_black_thursday
-				add_idea = AOT_regional_focus_idea
+				add_idea = AOT_recovering_from_black_thursday_reg
 			}
 		}
 		ai_will_do = {
@@ -726,30 +766,22 @@ focus_tree = {
 		x = -1
 		y = 1
 		complete_tooltip = {
-			swap_ideas = {
-				remove_idea = AOT_regional_focus_idea
-				add_idea = AOT_protectionism_idea
-			}
 			random_state = {
 				limit = { has_state_flag = AOT_protect_local_industry_state }
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
 		}
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = AOT_regional_focus_idea
-				add_idea = AOT_protectionism_idea
-			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 					OR = {
@@ -759,7 +791,7 @@ focus_tree = {
 								any_owned_state = {
 									free_building_slots = {
 										building = industrial_complex
-										size > 0
+										size > 1
 										include_locked = yes
 									}
 									is_in_home_area = yes
@@ -768,10 +800,10 @@ focus_tree = {
 						}
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = AOT_protect_local_industry_state
@@ -783,7 +815,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_state_industry
+		id = AOT_economic_hegemon
 		icon = GFX_goal_generic_soviet_construction
 		cost = 10
 		relative_position_id = AOT_protect_local_industry
@@ -792,11 +824,11 @@ focus_tree = {
 		y = 1
 		complete_tooltip = {
 			swap_ideas = {
-				remove_idea = AOT_protectionism_idea
-				add_idea = AOT_state_industry_idea
+				remove_idea = AOT_recovering_from_black_thursday_reg
+				add_idea = AOT_regional_market
 			}
 			random_state = {
-				limit = { has_state_flag = AOT_state_industry_state_civ }
+				limit = { has_state_flag = AOT_economic_hegemon_state_civ }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
@@ -805,19 +837,19 @@ focus_tree = {
 				}
 			}
 			random_state = {
-				limit = { has_state_flag = AOT_state_industry_state_mil }
-				add_extra_state_shared_building_slots = 1
+				limit = { has_state_flag = AOT_economic_hegemon_state_mil }
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
 		}
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = AOT_protectionism_idea
-				add_idea = AOT_state_industry_idea
+				remove_idea = AOT_recovering_from_black_thursday_reg
+				add_idea = AOT_regional_market
 			}
 			random_owned_controlled_state = {
 				limit = {
@@ -848,13 +880,13 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = AOT_state_industry_state_civ
+				set_state_flag = AOT_economic_hegemon_state_civ
 			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 					OR = {
@@ -864,7 +896,7 @@ focus_tree = {
 								any_owned_state = {
 									free_building_slots = {
 										building = arms_factory
-										size > 0
+										size > 1
 										include_locked = yes
 									}
 									is_in_home_area = yes
@@ -873,13 +905,13 @@ focus_tree = {
 						}
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
-				set_state_flag = AOT_state_industry_state_mil
+				set_state_flag = AOT_economic_hegemon_state_mil
 			}
 		}
 		ai_will_do = {
@@ -1021,13 +1053,13 @@ focus_tree = {
 			add_ideas = free_trade
 			swap_ideas = {
 				remove_idea = AOT_trauma_of_black_thursday
-				add_idea = AOT_international_focus_idea
+				add_idea = AOT_recovering_from_black_thursday_int
 			}
 		}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = AOT_trauma_of_black_thursday
-				add_idea = AOT_international_focus_idea
+				add_idea = AOT_recovering_from_black_thursday_int
 			}
 			custom_effect_tooltip = AOT_international_economics_locked_free_trade
 			if = {
@@ -1035,26 +1067,26 @@ focus_tree = {
 					has_idea = free_trade
 				}
 				add_political_power = 150
-				else_if = {
-					limit = { has_idea = export_focus }
-					swap_ideas = {
-						remove_idea = export_focus
-						add_idea = free_trade
-					}
+			}
+			else_if = {
+				limit = { has_idea = export_focus }
+				swap_ideas = {
+					remove_idea = export_focus
+					add_idea = free_trade
 				}
-				else_if = {
-					limit = { has_idea = limited_exports }
-					swap_ideas = {
-						remove_idea = limited_exports
-						add_idea = free_trade
-					}
+			}
+			else_if = {
+				limit = { has_idea = limited_exports }
+				swap_ideas = {
+					remove_idea = limited_exports
+					add_idea = free_trade
 				}
-				else_if = {
-					limit = { has_idea = closed_economy }
-					swap_ideas = {
-						remove_idea = closed_economy
-						add_idea = free_trade
-					}
+			}
+			else_if = {
+				limit = { has_idea = closed_economy }
+				swap_ideas = {
+					remove_idea = closed_economy
+					add_idea = free_trade
 				}
 			}
 		}
@@ -1072,10 +1104,6 @@ focus_tree = {
 		x = 1
 		y = 1
 		complete_tooltip = {
-			swap_ideas = {
-				remove_idea = AOT_international_focus_idea
-				add_idea = AOT_international_investments_idea
-			}
 			random_state = {
 				limit = { has_state_flag = AOT_seek_outside_investment_state }
 				add_extra_state_shared_building_slots = 2
@@ -1087,10 +1115,6 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = AOT_international_focus_idea
-				add_idea = AOT_international_investments_idea
-			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -1138,8 +1162,8 @@ focus_tree = {
 		y = 1
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = AOT_international_investments_idea
-				add_idea = AOT_overseas_production
+				remove_idea = AOT_recovering_from_black_thursday_int
+				add_idea = AOT_international_investments_idea
 			}
 			add_offsite_building = {
 				type = arms_factory
