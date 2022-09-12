@@ -10,11 +10,15 @@ focus_tree = {
 		}
 	}
 	
+	continuous_focus_position = {
+		x = 50
+		y = 1200
+	}
 	default = no
 	
-	shared_focus = army_effort
-	shared_focus = aviation_effort
-	shared_focus = naval_effort
+	#shared_focus = army_effort
+	#shared_focus = aviation_effort
+	#shared_focus = naval_effort
 	#shared_focus = industrial_effort
 	#shared_focus = political_effort
 
@@ -22,7 +26,7 @@ focus_tree = {
 		id = AOT_pizetan_passing
 		icon = GFX_focus_generic_monarchy_2 #placeholder
 		cost = 10
-		x = 16
+		x = 5
 		y = 0
 		available = {
 			has_country_flag = AOT_ol_ness_died
@@ -46,7 +50,7 @@ focus_tree = {
 		relative_position_id = AOT_pizetan_passing
 		prerequisite = { focus = AOT_pizetan_passing }
 		mutually_exclusive = { focus = AOT_keep_timon_in_aotearoa }
-		x = -1
+		x = -2
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_timon_abroad
@@ -83,7 +87,7 @@ focus_tree = {
 		relative_position_id = AOT_pizetan_passing
 		prerequisite = { focus = AOT_pizetan_passing }
 		mutually_exclusive = { focus = AOT_send_timon_to_constantiople }
-		x = 1
+		x = 2
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_timon_at_home
@@ -274,7 +278,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = AOT_appoint_timon_as_exarch focus = AOT_rely_on_mesazon
 		}
-		x = 0
+		x = 1
 		y = 1
 		available = {
 			NOT = {
@@ -303,6 +307,9 @@ focus_tree = {
 		available = {
 
 		}
+		bypass = {
+			
+		}
 		completion_reward = {
 			custom_effect_tooltip = effect_WIP_TT
 		}
@@ -321,7 +328,7 @@ focus_tree = {
 		}
 		relative_position_id = AOT_waiting_for_exarch
 		prerequisite = { focus = AOT_waiting_for_exarch }
-		x = -1
+		x = -2
 		y = 1
 		available = {
 
@@ -354,6 +361,25 @@ focus_tree = {
 	}
 
 	focus = {
+		id = AOT_new_exarch_2
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_new_exarch
+		prerequisite = { focus = AOT_new_exarch }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	# Self-choice
+	focus = {
 		id = AOT_empty_seat
 		icon = GFX_focus_generic_self_management
 		cost = 10
@@ -381,7 +407,7 @@ focus_tree = {
 		cost = 5
 		relative_position_id = AOT_empty_seat
 		prerequisite = { focus = AOT_empty_seat }
-		x = 0
+		x = -1
 		y = 1
 		available = {
 
@@ -402,9 +428,9 @@ focus_tree = {
 		id = AOT_prepare_for_elections
 		icon = GFX_goal_support_democracy
 		cost = 5
-		relative_position_id = AOT_eka_ideals
-		prerequisite = { focus = AOT_eka_ideals }
-		x = 0
+		relative_position_id = AOT_empty_seat
+		prerequisite = { focus = AOT_empty_seat }
+		x = 1
 		y = 1
 		available = {
 
@@ -426,7 +452,8 @@ focus_tree = {
 		cost = 10
 		relative_position_id = AOT_prepare_for_elections
 		prerequisite = { focus = AOT_prepare_for_elections }
-		x = 0
+		prerequisite = { focus = AOT_eka_ideals }
+		x = -1
 		y = 1
 		available = {
 			if = {
@@ -463,7 +490,7 @@ focus_tree = {
 		icon = GFX_focus_generic_treaty
 		cost = 10
 		relative_position_id = AOT_new_beginning
-		prerequisite = { focus = AOT_new_beginning }
+		prerequisite = { focus = AOT_new_exarch_2 focus = AOT_new_beginning focus = AOT_confirmed_leader }
 		x = 0
 		y = 1
 		available = {
@@ -491,7 +518,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = AOT_maintain_transitional_council focus = AOT_rely_on_mesazon
 		}
-		x = 0
+		x = 1
 		y = 1
 		available = {
 			NOT = {
@@ -516,7 +543,7 @@ focus_tree = {
 		relative_position_id = AOT_appoint_timon_as_exarch
 		prerequisite = { focus = AOT_appoint_timon_as_exarch }
 		mutually_exclusive = { focus = AOT_taneist_tendrils }
-		x = 0
+		x = -1
 		y = 1
 		available = {
 			has_country_leader = {
@@ -609,7 +636,7 @@ focus_tree = {
 		relative_position_id = AOT_appoint_timon_as_exarch
 		prerequisite = { focus = AOT_appoint_timon_as_exarch }
 		mutually_exclusive = { focus = AOT_reluctant_leader }
-		x = 3
+		x = 2
 		y = 1
 		available = {
 
@@ -716,13 +743,13 @@ focus_tree = {
 	}
 
 	#####################
-	### Industry Path ###
+	### Industry Tree ###
 	#####################
 	focus = {
 		id = AOT_industrial_checkup
 		icon = GFX_focus_generic_industry_1
 		cost = 10
-		x = 24
+		x = 14
 		y = 0
 		completion_reward = {
 			add_tech_bonus = {
@@ -1179,14 +1206,33 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = AOT_research_investments
+		icon = GFX_focus_research
+		cost = 10
+		relative_position_id = AOT_expand_resource_extraction
+		prerequisite = { focus = AOT_expand_resource_extraction }
+		prerequisite = {
+			focus = AOT_economic_hegemon focus = AOT_overseas_investing
+		}
+		x = 0
+		y = 1
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
 	#######################
-	### Militarism path ###
+	### Militarism Tree ###
 	#######################
 	focus = {
 		id = AOT_vunerable_peace
 		icon = GFX_focus_hol_war_on_pacifism
 		cost = 10
-		x = 30
+		x = 28
 		y = 0
 		completion_reward = {
 			add_political_power = 30
@@ -1198,17 +1244,17 @@ focus_tree = {
 
 	### Pacifism ###
 	focus = {
-		id = AOT_commit_to_pacifism
+		id = AOT_regional_cooperation
 		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = {
 			focus = AOT_vunerable_peace
 		}
 		mutually_exclusive = {
-			focus = AOT_preemptive_action
+			focus = AOT_preemptive_action focus = AOT_protect_the_islands
 		}
 		relative_position_id = AOT_vunerable_peace
 		cost = 10
-		x = -1
+		x = -6
 		y = 1
 		completion_reward = {
 			swap_ideas = {
@@ -1222,33 +1268,124 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_defensive_militia
-		icon = GFX_goal_generic_allies_build_infantry
+		id = AOT_faction_1
+		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = {
-			focus = AOT_commit_to_pacifism
+			focus = AOT_regional_cooperation
 		}
-		relative_position_id = AOT_commit_to_pacifism
+		relative_position_id = AOT_regional_cooperation
+		cost = 10
+		x = -3
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = AOT_faction_2
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = {
+			focus = AOT_faction_1
+		}
+		relative_position_id = AOT_faction_1
 		cost = 10
 		x = -1
 		y = 1
 		completion_reward = {
-			add_ideas = AOT_defensive_militia_idea
+
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = AOT_faction_3
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = {
+			focus = AOT_faction_1
+		}
+		relative_position_id = AOT_faction_1
+		cost = 10
+		x = 1
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_joint_ops_1
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = {
+			focus = AOT_regional_cooperation
+		}
+		relative_position_id = AOT_regional_cooperation
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
 		}
 		ai_will_do = {
 			base = 2
 		}
 	}
 
-	### Shared ###
+	focus = {
+		id = AOT_joint_ops_2
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = {
+			focus = AOT_joint_ops_1
+		}
+		relative_position_id = AOT_joint_ops_1
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+	focus = {
+		id = AOT_faction_research
+		icon = GFX_focus_research2
+		prerequisite = {
+			focus = AOT_joint_ops_2
+		}
+		relative_position_id = AOT_joint_ops_2
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	### Defensive ###
 	focus = {
 		id = AOT_protect_the_islands
 		icon = GFX_focus_generic_coastal_fort
 		prerequisite = {
-			focus = AOT_commit_to_pacifism focus = AOT_preemptive_action
+			focus = AOT_vunerable_peace
 		}
-		relative_position_id = AOT_commit_to_pacifism
+		mutually_exclusive = {
+			focus = AOT_regional_cooperation focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_vunerable_peace
 		cost = 10
-		x = 1
+		x = 0
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_protective_measures
@@ -1259,8 +1396,42 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_elite_corps
-		icon = GFX_goal_generic_special_forces
+		id = AOT_war_econ_1
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_protect_the_islands focus = AOT_regional_cooperation
+		}
+		relative_position_id = AOT_protect_the_islands
+		cost = 10
+		x = -3
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_war_econ_2
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_war_econ_1
+		}
+		relative_position_id = AOT_war_econ_1
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_defensive_militia
+		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = {
 			focus = AOT_protect_the_islands
 		}
@@ -1269,10 +1440,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-			country_event = {
-				id = tesb_AOT.25
-			}
-			add_ideas = AOT_elite_corps_idea
+			add_ideas = AOT_defensive_militia_idea
 		}
 		ai_will_do = {
 			base = 2
@@ -1287,7 +1455,7 @@ focus_tree = {
 			focus = AOT_vunerable_peace
 		}
 		mutually_exclusive = {
-			focus = AOT_commit_to_pacifism
+			focus = AOT_regional_cooperation focus = AOT_protect_the_islands
 		}
 		available = {
 			OR = {
@@ -1297,7 +1465,7 @@ focus_tree = {
 		}
 		relative_position_id = AOT_vunerable_peace
 		cost = 10
-		x = 1
+		x = 6
 		y = 1
 		completion_reward = {
 			swap_ideas = {
@@ -1311,17 +1479,107 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_mandatory_service
+		id = AOT_defense_1
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = {
+			focus = AOT_preemptive_action focus = AOT_protect_the_islands
+		}
+		relative_position_id = AOT_preemptive_action
+		cost = 10
+		x = -3
+		y = 1
+		completion_reward = {
+			add_ideas = AOT_mandatory_service_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_offense_1
 		icon = GFX_goal_generic_axis_build_infantry
 		prerequisite = {
 			focus = AOT_preemptive_action
 		}
 		relative_position_id = AOT_preemptive_action
 		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			add_ideas = AOT_mandatory_service_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_elite_corps
+		icon = GFX_goal_generic_special_forces
+		prerequisite = {
+			focus = AOT_offense_1
+		}
+		relative_position_id = AOT_offense_1
+		cost = 10
+		x = -1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = tesb_AOT.25
+			}
+			add_ideas = AOT_elite_corps_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_mandatory_service
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = {
+			focus = AOT_offense_1
+		}
+		relative_position_id = AOT_offense_1
+		cost = 10
 		x = 1
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_mandatory_service_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_pa_war_econ_1
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_preemptive_action
+		cost = 10
+		x = 3
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_pa_war_econ_2
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_pa_war_econ_1
+		}
+		relative_position_id = AOT_pa_war_econ_1
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
 		}
 		ai_will_do = {
 			base = 2
