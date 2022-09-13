@@ -694,13 +694,19 @@ country_event = {
 
 	option = {
 		name = tesb_AOT.20.a
-		add_ideas = AOT_conservative_constituion
+		trigger = {
+			NOT = {
+				has_government = absolutist
+				has_government = fascism
+			}
+		}
+		add_ideas = AOT_socialist_constitution
 		add_popularity = {
-			ideology = democratic
+			ideology = communism
 			popularity = 0.1
 		}
 		if = {
-			limit = { has_completed_focus = AOT_reluctant_leader }
+			limit = { has_completed_focus = AOT_empty_seat }
 			add_stability = -0.05
 		}
 		ai_chance = {
@@ -713,13 +719,13 @@ country_event = {
 	}
 	option = {
 		name = tesb_AOT.20.b
-		add_ideas = AOT_socialist_constituion
+		add_ideas = AOT_conservative_constitution
 		add_popularity = {
-			ideology = communism
+			ideology = democratic
 			popularity = 0.1
 		}
 		if = {
-			limit = { has_completed_focus = AOT_empty_seat }
+			limit = { has_completed_focus = AOT_reluctant_leader }
 			add_stability = -0.05
 		}
 		ai_chance = {
@@ -728,6 +734,20 @@ country_event = {
 				has_completed_focus = AOT_reluctant_leader
 				factor = 5
 			}
+		}
+	}
+	option = {
+		name = tesb_AOT.20.c
+		trigger = {
+			has_government = absolutist
+		}
+		add_ideas = AOT_absolutist_constitution
+		add_popularity = {
+			ideology = absolutist
+			popularity = 0.1
+		}
+		ai_chance = {
+			base = 10
 		}
 	}
 }
@@ -787,6 +807,195 @@ country_event = {
 		}
 		ai_chance = {
 			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.30
+	title = tesb_AOT.30.t
+	desc = tesb_AOT.30.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.30.a
+		promote_character = {
+			character = AOT_manaaki_awerama
+			ideology = socialism
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+			}
+		}
+		hidden_effect = {
+			retire_character = AOT_transitional_council
+			if = {
+				limit = {
+					has_idea = AOT_manaaki_awerama_dr
+				}
+				deactivate_advisor = AOT_manaaki_awerama_dr
+				add_political_power = 50
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.30.b
+		promote_character = {
+			character = AOT_iahepa_ambrosiadis
+			ideology = anarchist_communism
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = yes
+			}
+		}
+		hidden_effect = {
+			retire_character = AOT_transitional_council
+			if = {
+				limit = {
+					has_idea = AOT_iahepa_ambrosiadis_cr
+				}
+				deactivate_advisor = AOT_iahepa_ambrosiadis_cr
+				add_political_power = 50
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		name = tesb_AOT.30.c
+		add_country_leader_role = {
+			character = AOT_haralambos_dougenis
+			country_leader = {
+				ideology = dictatorship
+			}
+			promote_leader = yes
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_government = absolutist
+				}
+			}
+			set_politics = {
+				ruling_party = absolutist
+				elections_allowed = yes
+			}
+		}
+		hidden_effect = {
+			retire_character = AOT_transitional_council
+			if = {
+				limit = {
+					has_idea = AOT_haralambos_dougenis_fs
+				}
+				deactivate_advisor = AOT_haralambos_dougenis_fs
+				add_political_power = 50
+			}
+			set_temp_variable = {
+				stab_hit = 0
+			}
+			subtract_from_temp_variable = {
+				stab_hit = party_popularity@democratic
+			}
+			subtract_from_temp_variable = {
+				stab_hit = party_popularity@communism
+			}
+			add_to_temp_variable = {
+				stab_hit = party_popularity@absolutist
+			}
+			clamp_temp_variable = {
+				var = stab_hit
+				min = -0.5
+				max = 0
+			}
+			divide_temp_variable = {
+				stab_hit = 2
+			}
+		}
+		add_stability = stab_hit
+		ai_chance = {
+			base = 5
+		}
+	}
+	option = {
+		trigger = {
+			always = no #not enough space in event options for 5 choices, but leaving the script in case of changes
+		}
+		name = tesb_AOT.30.do
+		promote_character = {
+			character = AOT_kauri_kaaka
+			ideology = conservatism_neutral
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_government = neutrality
+				}
+			}
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = yes
+			}
+		}
+		hidden_effect = {
+			retire_character = AOT_transitional_council
+			if = {
+				limit = {
+					has_idea = AOT_iahepa_ambrosiadis_cr
+				}
+				deactivate_advisor = AOT_iahepa_ambrosiadis_cr
+				add_political_power = 50
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_AOT.30.e
+		promote_character = {
+			character = AOT_timon_thaddas
+			ideology = socialism
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+			}
+		}
+		hidden_effect = {
+			retire_character = AOT_transitional_council
+		}
+		ai_chance = {
+			base = 1
 		}
 	}
 }

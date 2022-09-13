@@ -1033,10 +1033,9 @@ aotearoa_decisions = {
 			is_debug = yes
 		}
 		available = {
-
 		}
 		complete_effect = {
-			hold_election = AOT
+			clr_country_flag = AOT_reconciled_rome
 		}
 	}
 	AOT_recall_timon = {
@@ -1142,25 +1141,25 @@ aotearoa_decisions = {
 		fire_only_once = yes
 		activation = {
 			always = no
-			has_global_flag = RME_civil_war_over #activated by on_action
+			#has_global_flag = RME_civil_war_over #activated by on_action
 		}
 		available = {
 			has_country_flag = AOT_reconciled_rome
 		}
 		cancel_trigger = {
 			if = {
-				limit = { country_exists = RMA }
+				limit = { country_exists = RMD }
 				OR = {
 					is_subject = yes
-					RMA = { exists = no }
-					is_in_faction_with = RMA
+					RMD = { exists = no }
+					is_in_faction_with = RMD
 				}
 				else_if = {
-					limit = { country_exists = RMD }
+					limit = { country_exists = RMA }
 					OR = {
 						is_subject = yes
-						RMD = { exists = no }
-						is_in_faction_with = RMD
+						RMA = { exists = no }
+						is_in_faction_with = RMA
 					}
 				}
 				else = {
@@ -1182,7 +1181,8 @@ aotearoa_decisions = {
 			
 		}
 		complete_effect = {
-			set_country_flag = AOT_reconciled_rome
+			remove_mission = AOT_reconciling_with_rome
+			#set_country_flag = AOT_reconciled_rome
 		}
 		ai_will_do = {
 			base = 0
@@ -1207,7 +1207,7 @@ aotearoa_decisions = {
 			country_exists = RMD
 		}
 		available = {
-			RMD = { has_government = democratic is_faction_leader = yes }
+			RMD = { has_government = democratic }
 			NOT = { has_war_with = RMD }
 		}
 		complete_effect = {
@@ -1269,7 +1269,7 @@ aotearoa_decisions = {
 			country_exists = RMA
 		}
 		available = {
-			RMA = { has_government = absolutist is_faction_leader = yes }
+			RMA = { has_government = absolutist }
 			NOT = { has_war_with = RMA }
 		}
 		complete_effect = {
@@ -1278,7 +1278,7 @@ aotearoa_decisions = {
 				RMA = { country_event = { id = tesb_AOT.14 } }
 			}
 			else = {
-				RMD = { country_event = { id = tesb_AOT.16 } }
+				RMA = { country_event = { id = tesb_AOT.16 } }
 			}
 			set_country_flag = AOT_reconciled_rome
 		}
@@ -1339,6 +1339,16 @@ aotearoa_decisions = {
 				ideology = democratic
 				ruling_party = absolutist
 			}
+			#hidden_effect = {
+				random_other_country = {
+					limit = { original_tag = AOT }
+					uncomplete_national_focus = {
+						focus = AOT_rely_on_mesazon
+						uncomplete_children = yes
+					}
+					unlock_national_focus = AOT_maintain_transitional_council
+				}
+			#}
 		}
 		is_good = no
 		fire_only_once = yes
@@ -1401,7 +1411,7 @@ aotearoa_decisions = {
 		is_good = no
 		fire_only_once = yes
 		activation = {
-			always = no
+			always = no #activated by event
 		}
 	}
 	AOT_investigate_neo_taneists = {
