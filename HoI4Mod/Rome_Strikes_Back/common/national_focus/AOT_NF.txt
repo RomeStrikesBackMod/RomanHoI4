@@ -6,23 +6,30 @@ focus_tree = {
 		
 		modifier = {
 			add = 10
-			tag = AOT
+			original_tag = AOT
 		}
 	}
 	
+	continuous_focus_position = {
+		x = 50
+		y = 1200
+	}
 	default = no
-	
-	shared_focus = army_effort
-	shared_focus = aviation_effort
-	shared_focus = naval_effort
+	reset_on_civilwar = no
+	#shared_focus = army_effort
+	#shared_focus = aviation_effort
+	#shared_focus = naval_effort
 	#shared_focus = industrial_effort
 	#shared_focus = political_effort
 
+	initial_show_position = {
+		focus = AOT_pizetan_passing
+	}
 	focus = {
 		id = AOT_pizetan_passing
 		icon = GFX_focus_generic_monarchy_2 #placeholder
 		cost = 10
-		x = 16
+		x = 3
 		y = 0
 		available = {
 			has_country_flag = AOT_ol_ness_died
@@ -37,6 +44,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = TT_complete_by_event
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -46,24 +54,42 @@ focus_tree = {
 		relative_position_id = AOT_pizetan_passing
 		prerequisite = { focus = AOT_pizetan_passing }
 		mutually_exclusive = { focus = AOT_keep_timon_in_aotearoa }
-		x = -1
+		x = -2
 		y = 1
+		available = {
+			OR = {
+				RMD = { exists = yes }
+				RMA = { exists = yes }
+			}
+		}
 		completion_reward = {
 			add_ideas = AOT_timon_abroad
-			reverse_add_opinion_modifier = {
-				target = RME
-				modifier = AOT_imperial_representative
+			if = {
+				limit = { has_global_flag = RME_civil_war_ongoing }
+				country_event = { id = tesb_AOT.8 }
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = AOT_send_timon_to_constantiople_TT
+				add_opinion_modifier = {
+					target = AOT
+					modifier = AOT_imperial_representative
+				}
+			}
+		}
+		bypass = {
+			all_country_with_original_tag = {
+				original_tag_to_check = RME
+				exists = no
 			}
 		}
 		ai_will_do = {
 			base = 5
 			modifier = {
 				factor = 10
-				RME = {
-					has_government = democratic
-				}
+				RME = { has_government = democratic }
 			}
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -73,7 +99,7 @@ focus_tree = {
 		relative_position_id = AOT_pizetan_passing
 		prerequisite = { focus = AOT_pizetan_passing }
 		mutually_exclusive = { focus = AOT_send_timon_to_constantiople }
-		x = 1
+		x = 2
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_timon_at_home
@@ -87,6 +113,7 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
 
 	#############################
@@ -99,15 +126,13 @@ focus_tree = {
 		relative_position_id = AOT_send_timon_to_constantiople
 		prerequisite = { focus = AOT_send_timon_to_constantiople }
 		mutually_exclusive = {
-			focus = AOT_maintain_transitional_council
+			focus = AOT_maintain_transitional_council focus = AOT_appoint_timon_as_exarch
 		}
-		x = -3
+		x = -1
 		y = 1
 		available = {
 			NOT = {
-				has_country_leader = {
-					character = AOT_kyrene_thaddas
-				}
+				has_country_leader = { character = AOT_kyrene_thaddas }
 			}
 		}
 		completion_reward = {
@@ -122,6 +147,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -147,6 +173,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -176,6 +203,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA }
 	}
 
 	focus = {
@@ -218,6 +246,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -229,7 +258,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		available = {
-			
+			has_civil_war = no
 		}
 		completion_reward = {
 			custom_effect_tooltip = AOT_silence_opposition_TT
@@ -242,6 +271,14 @@ focus_tree = {
 				limit = { has_idea = AOT_thaddai_hope }
 				remove_ideas = AOT_thaddai_hope
 			}
+			if = {
+				limit = { has_idea = AOT_timon_abroad }
+				remove_ideas = AOT_timon_abroad
+			}
+			if = {
+				limit = { has_idea = AOT_timon_at_home }
+				remove_ideas = AOT_timon_at_home
+			}
 			swap_ideas = {
 				remove_idea = AOT_mesazon_leadership_idea
 				add_idea = AOT_mesazon_leadership_idea_2
@@ -250,6 +287,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
 
 	####################
@@ -264,13 +302,11 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = AOT_appoint_timon_as_exarch focus = AOT_rely_on_mesazon
 		}
-		x = 0
+		x = 2
 		y = 1
 		available = {
 			NOT = {
-				has_country_leader = {
-					character = AOT_kyrene_thaddas
-				}
+				has_country_leader = { character = AOT_kyrene_thaddas }
 			}
 		}
 		completion_reward = {
@@ -280,6 +316,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 10
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -291,22 +328,83 @@ focus_tree = {
 		x = 0
 		y = 1
 		available = {
-
+			
+		}
+		bypass = {
+			
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			activate_mission = AOT_waiting_for_exarch_mission
+			add_stability = 0.1
+			add_political_power = 60
 		}
 		ai_will_do = {
 			base = 10
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
+
+	### Imperial Confirmation ###
 	focus = {
 		id = AOT_in_imperial_hands
 		icon = GFX_focus_generic_self_management
 		cost = 10
+		mutually_exclusive = {
+			focus = AOT_empty_seat
+		}
 		relative_position_id = AOT_waiting_for_exarch
 		prerequisite = { focus = AOT_waiting_for_exarch }
 		x = -1
+		y = 1
+		available = {
+			OR = {
+				AND = {
+					RMD = {
+						exists = yes
+						has_civil_war = no
+					}
+					RMA = { exists = no }
+				}
+				AND = {
+					RMA = {
+						exists = yes
+						has_civil_war = no
+					}
+					RMD = { exists = no }
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					RMD = { exists = yes }
+				}
+				RMD = {
+					country_event = { id = tesb_AOT.35 }
+				}
+			}
+			else_if = {
+				limit = {
+					RMA = { exists = yes }
+				}
+				RMA = {
+					country_event = { id = tesb_AOT.35 }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = AOT_new_exarch
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_in_imperial_hands
+		prerequisite = { focus = AOT_in_imperial_hands }
+		x = 0
 		y = 1
 		available = {
 
@@ -317,15 +415,40 @@ focus_tree = {
 		ai_will_do = {
 			base = 10
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
+	focus = {
+		id = AOT_new_exarch_2
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		relative_position_id = AOT_new_exarch
+		prerequisite = { focus = AOT_new_exarch }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+			custom_effect_tooltip = effect_WIP_TT
+		}
+		ai_will_do = {
+			base = 10
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	# Self-choice
 	focus = {
 		id = AOT_empty_seat
 		icon = GFX_focus_generic_self_management
 		cost = 10
 		relative_position_id = AOT_waiting_for_exarch
 		prerequisite = { focus = AOT_waiting_for_exarch focus = AOT_reluctant_leader }
-		x = 1
+		mutually_exclusive = {
+			focus = AOT_in_imperial_hands focus = AOT_honorary_post
+		}
+		x = 2
 		y = 1
 		available = {
 
@@ -336,6 +459,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 10
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -344,7 +468,7 @@ focus_tree = {
 		cost = 5
 		relative_position_id = AOT_empty_seat
 		prerequisite = { focus = AOT_empty_seat }
-		x = 0
+		x = -1
 		y = 1
 		available = {
 
@@ -359,15 +483,16 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
 
 	focus = {
 		id = AOT_prepare_for_elections
 		icon = GFX_goal_support_democracy
 		cost = 5
-		relative_position_id = AOT_eka_ideals
-		prerequisite = { focus = AOT_eka_ideals }
-		x = 0
+		relative_position_id = AOT_empty_seat
+		prerequisite = { focus = AOT_empty_seat }
+		x = 1
 		y = 1
 		available = {
 
@@ -381,6 +506,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 10
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA }
 	}
 
 	focus = {
@@ -389,7 +515,8 @@ focus_tree = {
 		cost = 10
 		relative_position_id = AOT_prepare_for_elections
 		prerequisite = { focus = AOT_prepare_for_elections }
-		x = 0
+		prerequisite = { focus = AOT_eka_ideals }
+		x = -1
 		y = 1
 		available = {
 			if = {
@@ -399,26 +526,15 @@ focus_tree = {
 		}
 		completion_reward = {
 			if = {
-				limit = {
-					has_idea = AOT_election_preparations
-				}
+				limit = { has_idea = AOT_election_preparations }
 				remove_ideas = AOT_election_preparations
 			}
-			hidden_effect = {
-				remove_country_leader_role = {
-					character = AOT_transitional_council
-					ideology = conservatism
-				}
-				remove_country_leader_role = {
-					character = AOT_timon_thaddas
-					ideology = socialism
-				}
-			}
-			hold_election = AOT
+			country_event = { id = tesb_AOT.30 }
 		}
 		ai_will_do = {
 			base = 10
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -426,20 +542,19 @@ focus_tree = {
 		icon = GFX_focus_generic_treaty
 		cost = 10
 		relative_position_id = AOT_new_beginning
-		prerequisite = { focus = AOT_new_beginning }
+		prerequisite = { focus = AOT_new_exarch_2 focus = AOT_new_beginning focus = AOT_confirmed_leader }
 		x = 0
 		y = 1
 		available = {
 
 		}
 		completion_reward = {
-			country_event = {
-				id = tesb_AOT.20
-			}
+			country_event = { id = tesb_AOT.20 }
 		}
 		ai_will_do = {
 			base = 10
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	##################
@@ -452,10 +567,16 @@ focus_tree = {
 		relative_position_id = AOT_keep_timon_in_aotearoa
 		prerequisite = { focus = AOT_keep_timon_in_aotearoa }
 		mutually_exclusive = {
-			focus = AOT_maintain_transitional_council
+			focus = AOT_maintain_transitional_council focus = AOT_rely_on_mesazon
 		}
-		x = 0
+		x = 2
 		y = 1
+		offset = {
+			trigger = {
+				has_country_flag = AOT_communists_revolt
+			}
+			x = 2
+		}
 		available = {
 			NOT = {
 				has_country_leader = {
@@ -470,6 +591,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -481,6 +603,9 @@ focus_tree = {
 		mutually_exclusive = { focus = AOT_taneist_tendrils }
 		x = 0
 		y = 1
+		allow_branch = {
+			NOT = { has_country_flag = AOT_communists_revolt }
+		}
 		available = {
 			has_country_leader = {
 				character = AOT_timon_thaddas
@@ -489,9 +614,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			if = {
-				limit = {
-					has_active_mission = AOT_neo_taneist_plot
-				}
+				limit = { has_active_mission = AOT_neo_taneist_plot }
 				add_days_mission_timeout = {
 					mission = AOT_neo_taneist_plot
 					days = 35
@@ -502,6 +625,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -510,10 +634,20 @@ focus_tree = {
 		cost = 10
 		relative_position_id = AOT_reluctant_leader
 		prerequisite = { focus = AOT_reluctant_leader }
+		mutually_exclusive = {
+			focus = AOT_empty_seat
+		}
 		x = 1
 		y = 1
 		available = {
-
+			has_country_leader = {
+				character = AOT_timon_thaddas
+				ruling_only = yes
+			}
+			if = {
+				limit = { has_active_mission = AOT_neo_taneist_plot }
+				NOT = { has_active_mission = AOT_neo_taneist_plot }
+			}
 		}
 		completion_reward = {
 			add_political_power = 120
@@ -521,6 +655,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 	focus = {
 		id = AOT_national_leader
@@ -531,14 +666,21 @@ focus_tree = {
 		x = 0
 		y = 1
 		available = {
-
+			has_country_leader = {
+				character = AOT_timon_thaddas
+				ruling_only = yes
+			}
 		}
 		completion_reward = {
-			add_political_power = 120
+			swap_ruler_traits = {
+				remove = reluctant_leader
+				add = peoples_exarch
+			}
 		}
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 	focus = {
 		id = AOT_confirmed_leader
@@ -549,14 +691,19 @@ focus_tree = {
 		x = 0
 		y = 1
 		available = {
-
+			has_country_leader = {
+				character = AOT_timon_thaddas
+				ruling_only = yes
+			}
 		}
 		completion_reward = {
+			add_country_leader_trait = chosen_successor
 			add_political_power = 120
 		}
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	#####################
@@ -571,35 +718,29 @@ focus_tree = {
 		mutually_exclusive = { focus = AOT_reluctant_leader }
 		x = 3
 		y = 1
+		offset = {
+			trigger = {
+				has_country_flag = AOT_communists_revolt
+			}
+			x = -3
+		}
 		available = {
 
 		}
 		completion_reward = {
 			if = {
-				limit = {
-					has_active_mission = AOT_neo_taneist_plot
-					check_variable = { var:days_mission_timeout@AOT_neo_taneist_plot < 71 }
-				}
-				set_temp_variable = {
-					AOT_taneist_plot_days = days_mission_timeout@AOT_neo_taneist_plot
-				}
-				multiply_temp_variable = {
-					AOT_taneist_plot_days = -0.5
+				limit = { has_active_mission = AOT_neo_taneist_plot }
+				set_temp_variable = { AOT_taneist_plot_days = days_mission_timeout@AOT_neo_taneist_plot }
+				multiply_temp_variable = { AOT_taneist_plot_days = -0.5 }
+				clamp_temp_variable = {
+					var = AOT_taneist_plot_days
+					min = -70
+					max = -1
 				}
 				round_temp_variable = AOT_taneist_plot_days
 				add_days_mission_timeout = {
 					mission = AOT_neo_taneist_plot
 					days = AOT_taneist_plot_days
-				}
-			}
-			else_if = {
-				limit = {
-					has_active_mission = AOT_neo_taneist_plot
-					check_variable = { var:days_mission_timeout@AOT_neo_taneist_plot > 70 }
-				}
-				add_days_mission_timeout = {
-					mission = AOT_neo_taneist_plot
-					days = -70
 				}
 			}
 			add_timed_idea = {
@@ -610,6 +751,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA }
 	}
 
 	focus = {
@@ -624,14 +766,13 @@ focus_tree = {
 			NOT = { has_character = AOT_timon_thaddas }
 		}
 		completion_reward = {
-			set_politics = {
-				ruling_party = fascism
-			}
+			set_politics = { ruling_party = fascism }
 			add_stability = -0.2
 		}
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
 
 	focus = {
@@ -642,6 +783,15 @@ focus_tree = {
 		prerequisite = { focus = AOT_tanes_resurrection }
 		x = 0
 		y = 1
+		offset = {
+			trigger = {
+				has_country_flag = AOT_communists_revolt
+			}
+			x = 1
+		}
+		mutually_exclusive = {
+			focus = AOT_last_opposition
+		}
 		available = {
 			fascism > 0.4
 		}
@@ -654,6 +804,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_PROPAGANDA }
 	}
 
 	focus = {
@@ -673,16 +824,111 @@ focus_tree = {
 		ai_will_do = {
 			base = 5
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	######################
+	### Secret Commies ###
+	######################
+	focus = {
+		id = AOT_last_opposition
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		cost = 10
+		relative_position_id = AOT_tanes_resurrection
+		prerequisite = { focus = AOT_tanes_resurrection }
+		x = -1
+		y = 1
+		allow_branch = {
+			has_country_flag = AOT_communists_revolt
+		}
+		mutually_exclusive = {
+			focus = AOT_consolidate_power
+		}
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = AOT_communist_militia
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = AOT_aid_from_internationale
+		icon = GFX_goal_support_communism
+		cost = 10
+		relative_position_id = AOT_last_opposition
+		prerequisite = { focus = AOT_last_opposition }
+		x = 0
+		y = 1
+		available = {
+
+		}
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = AOT_council_communism
+		icon = GFX_focus_generic_soviet_politics
+		cost = 10
+		relative_position_id = AOT_aid_from_internationale
+		prerequisite = { focus = AOT_aid_from_internationale }
+		x = 0
+		y = 1
+		available = {
+			has_civil_war = no
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_taneist_terror
+				add_idea = AOT_communist_rebuttal
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = AOT_implement_reforms
+		icon = GFX_goal_generic_national_unity
+		cost = 10
+		relative_position_id = AOT_council_communism
+		prerequisite = { focus = AOT_council_communism }
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 5
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	#####################
-	### Industry Path ###
+	### Industry Tree ###
 	#####################
 	focus = {
 		id = AOT_industrial_checkup
 		icon = GFX_focus_generic_industry_1
 		cost = 10
-		x = 24
+		x = 14
 		y = 0
 		completion_reward = {
 			add_tech_bonus = {
@@ -695,6 +941,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 	}
 
 	focus = {
@@ -709,12 +956,13 @@ focus_tree = {
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = AOT_trauma_of_black_thursday
-				add_idea = AOT_regional_focus_idea
+				add_idea = AOT_recovering_from_black_thursday_reg
 			}
 		}
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
 	focus = {
@@ -726,30 +974,22 @@ focus_tree = {
 		x = -1
 		y = 1
 		complete_tooltip = {
-			swap_ideas = {
-				remove_idea = AOT_regional_focus_idea
-				add_idea = AOT_protectionism_idea
-			}
 			random_state = {
 				limit = { has_state_flag = AOT_protect_local_industry_state }
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
 		}
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = AOT_regional_focus_idea
-				add_idea = AOT_protectionism_idea
-			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
 						building = industrial_complex
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 					OR = {
@@ -759,7 +999,7 @@ focus_tree = {
 								any_owned_state = {
 									free_building_slots = {
 										building = industrial_complex
-										size > 0
+										size > 1
 										include_locked = yes
 									}
 									is_in_home_area = yes
@@ -768,10 +1008,10 @@ focus_tree = {
 						}
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = AOT_protect_local_industry_state
@@ -780,10 +1020,11 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
 	focus = {
-		id = AOT_state_industry
+		id = AOT_economic_hegemon
 		icon = GFX_goal_generic_soviet_construction
 		cost = 10
 		relative_position_id = AOT_protect_local_industry
@@ -792,11 +1033,11 @@ focus_tree = {
 		y = 1
 		complete_tooltip = {
 			swap_ideas = {
-				remove_idea = AOT_protectionism_idea
-				add_idea = AOT_state_industry_idea
+				remove_idea = AOT_recovering_from_black_thursday_reg
+				add_idea = AOT_regional_market
 			}
 			random_state = {
-				limit = { has_state_flag = AOT_state_industry_state_civ }
+				limit = { has_state_flag = AOT_economic_hegemon_state_civ }
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
@@ -805,19 +1046,19 @@ focus_tree = {
 				}
 			}
 			random_state = {
-				limit = { has_state_flag = AOT_state_industry_state_mil }
-				add_extra_state_shared_building_slots = 1
+				limit = { has_state_flag = AOT_economic_hegemon_state_mil }
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
 		}
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = AOT_protectionism_idea
-				add_idea = AOT_state_industry_idea
+				remove_idea = AOT_recovering_from_black_thursday_reg
+				add_idea = AOT_regional_market
 			}
 			random_owned_controlled_state = {
 				limit = {
@@ -848,13 +1089,13 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = AOT_state_industry_state_civ
+				set_state_flag = AOT_economic_hegemon_state_civ
 			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
 						building = arms_factory
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 					OR = {
@@ -864,7 +1105,7 @@ focus_tree = {
 								any_owned_state = {
 									free_building_slots = {
 										building = arms_factory
-										size > 0
+										size > 1
 										include_locked = yes
 									}
 									is_in_home_area = yes
@@ -873,18 +1114,19 @@ focus_tree = {
 						}
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 1
+					level = 2
 					instant_build = yes
 				}
-				set_state_flag = AOT_state_industry_state_mil
+				set_state_flag = AOT_economic_hegemon_state_mil
 			}
 		}
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
 	focus = {
@@ -897,11 +1139,11 @@ focus_tree = {
 		y = 1
 		bypass = {
 			custom_trigger_tooltip = {
-				tooltip = production_effort_tt
+				tooltip = construction_effort_tt
 				all_owned_state = {
 					free_building_slots = {
-						building = arms_factory
-						size < 1
+						building = industrial_complex
+						size < 2
 						include_locked = yes
 					}
 				}
@@ -966,6 +1208,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
 	}
 
 	focus = {
@@ -1006,6 +1249,7 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
 	focus = {
@@ -1021,46 +1265,45 @@ focus_tree = {
 			add_ideas = free_trade
 			swap_ideas = {
 				remove_idea = AOT_trauma_of_black_thursday
-				add_idea = AOT_international_focus_idea
+				add_idea = AOT_recovering_from_black_thursday_int
 			}
 		}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = AOT_trauma_of_black_thursday
-				add_idea = AOT_international_focus_idea
+				add_idea = AOT_recovering_from_black_thursday_int
 			}
 			custom_effect_tooltip = AOT_international_economics_locked_free_trade
 			if = {
-				limit = {
-					has_idea = free_trade
-				}
+				limit = { has_idea = free_trade }
 				add_political_power = 150
-				else_if = {
-					limit = { has_idea = export_focus }
-					swap_ideas = {
-						remove_idea = export_focus
-						add_idea = free_trade
-					}
+			}
+			else_if = {
+				limit = { has_idea = export_focus }
+				swap_ideas = {
+					remove_idea = export_focus
+					add_idea = free_trade
 				}
-				else_if = {
-					limit = { has_idea = limited_exports }
-					swap_ideas = {
-						remove_idea = limited_exports
-						add_idea = free_trade
-					}
+			}
+			else_if = {
+				limit = { has_idea = limited_exports }
+				swap_ideas = {
+					remove_idea = limited_exports
+					add_idea = free_trade
 				}
-				else_if = {
-					limit = { has_idea = closed_economy }
-					swap_ideas = {
-						remove_idea = closed_economy
-						add_idea = free_trade
-					}
+			}
+			else_if = {
+				limit = { has_idea = closed_economy }
+				swap_ideas = {
+					remove_idea = closed_economy
+					add_idea = free_trade
 				}
 			}
 		}
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
 	focus = {
@@ -1072,10 +1315,6 @@ focus_tree = {
 		x = 1
 		y = 1
 		complete_tooltip = {
-			swap_ideas = {
-				remove_idea = AOT_international_focus_idea
-				add_idea = AOT_international_investments_idea
-			}
 			random_state = {
 				limit = { has_state_flag = AOT_seek_outside_investment_state }
 				add_extra_state_shared_building_slots = 2
@@ -1087,10 +1326,6 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = AOT_international_focus_idea
-				add_idea = AOT_international_investments_idea
-			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
@@ -1126,11 +1361,12 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
 	focus = {
 		id = AOT_overseas_investing
-		icon = GFX_goal_generic_improve_relations
+		icon = GFX_focus_mex_privatisation
 		cost = 10
 		relative_position_id = AOT_seek_outside_investment
 		prerequisite = { focus = AOT_seek_outside_investment }
@@ -1138,8 +1374,8 @@ focus_tree = {
 		y = 1
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = AOT_international_investments_idea
-				add_idea = AOT_overseas_production
+				remove_idea = AOT_recovering_from_black_thursday_int
+				add_idea = AOT_international_investments_idea
 			}
 			add_offsite_building = {
 				type = arms_factory
@@ -1153,16 +1389,43 @@ focus_tree = {
 		ai_will_do = {
 			base = 1
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = AOT_research_investments
+		icon = GFX_focus_research
+		cost = 10
+		relative_position_id = AOT_expand_resource_extraction
+		prerequisite = { focus = AOT_expand_resource_extraction }
+		prerequisite = {
+			focus = AOT_economic_hegemon focus = AOT_overseas_investing
+		}
+		x = 0
+		y = 1
+		completion_reward = {
+			add_research_slot = 1
+			add_tech_bonus = {
+				name = electronics_bonus
+				category = electronics
+				uses = 1
+				bonus = 0.5
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
 
 	#######################
-	### Militarism path ###
+	### Militarism Tree ###
 	#######################
 	focus = {
 		id = AOT_vunerable_peace
 		icon = GFX_focus_hol_war_on_pacifism
 		cost = 10
-		x = 30
+		x = 28
 		y = 0
 		completion_reward = {
 			add_political_power = 30
@@ -1174,17 +1437,17 @@ focus_tree = {
 
 	### Pacifism ###
 	focus = {
-		id = AOT_commit_to_pacifism
+		id = AOT_regional_cooperation
 		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = {
 			focus = AOT_vunerable_peace
 		}
 		mutually_exclusive = {
-			focus = AOT_preemptive_action
+			focus = AOT_preemptive_action focus = AOT_protect_the_islands
 		}
 		relative_position_id = AOT_vunerable_peace
 		cost = 10
-		x = -1
+		x = -6
 		y = 1
 		completion_reward = {
 			swap_ideas = {
@@ -1198,33 +1461,124 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_defensive_militia
-		icon = GFX_goal_generic_allies_build_infantry
+		id = AOT_faction_1
+		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = {
-			focus = AOT_commit_to_pacifism
+			focus = AOT_regional_cooperation
 		}
-		relative_position_id = AOT_commit_to_pacifism
+		relative_position_id = AOT_regional_cooperation
+		cost = 10
+		x = -3
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = AOT_faction_2
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = {
+			focus = AOT_faction_1
+		}
+		relative_position_id = AOT_faction_1
 		cost = 10
 		x = -1
 		y = 1
 		completion_reward = {
-			add_ideas = AOT_defensive_militia_idea
+
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = AOT_faction_3
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = {
+			focus = AOT_faction_1
+		}
+		relative_position_id = AOT_faction_1
+		cost = 10
+		x = 1
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_joint_ops_1
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = {
+			focus = AOT_regional_cooperation
+		}
+		relative_position_id = AOT_regional_cooperation
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
 		}
 		ai_will_do = {
 			base = 2
 		}
 	}
 
-	### Shared ###
+	focus = {
+		id = AOT_joint_ops_2
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = {
+			focus = AOT_joint_ops_1
+		}
+		relative_position_id = AOT_joint_ops_1
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+	focus = {
+		id = AOT_faction_research
+		icon = GFX_focus_research2
+		prerequisite = {
+			focus = AOT_joint_ops_2
+		}
+		relative_position_id = AOT_joint_ops_2
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	### Defensive ###
 	focus = {
 		id = AOT_protect_the_islands
 		icon = GFX_focus_generic_coastal_fort
 		prerequisite = {
-			focus = AOT_commit_to_pacifism focus = AOT_preemptive_action
+			focus = AOT_vunerable_peace
 		}
-		relative_position_id = AOT_commit_to_pacifism
+		mutually_exclusive = {
+			focus = AOT_regional_cooperation focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_vunerable_peace
 		cost = 10
-		x = 1
+		x = 0
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_protective_measures
@@ -1235,8 +1589,42 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_elite_corps
-		icon = GFX_goal_generic_special_forces
+		id = AOT_war_econ_1
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_protect_the_islands focus = AOT_regional_cooperation
+		}
+		relative_position_id = AOT_protect_the_islands
+		cost = 10
+		x = -3
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_war_econ_2
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_war_econ_1
+		}
+		relative_position_id = AOT_war_econ_1
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_defensive_militia
+		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = {
 			focus = AOT_protect_the_islands
 		}
@@ -1245,10 +1633,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-			country_event = {
-				id = tesb_AOT.25
-			}
-			add_ideas = AOT_elite_corps_idea
+			add_ideas = AOT_defensive_militia_idea
 		}
 		ai_will_do = {
 			base = 2
@@ -1263,7 +1648,7 @@ focus_tree = {
 			focus = AOT_vunerable_peace
 		}
 		mutually_exclusive = {
-			focus = AOT_commit_to_pacifism
+			focus = AOT_regional_cooperation focus = AOT_protect_the_islands
 		}
 		available = {
 			OR = {
@@ -1273,7 +1658,7 @@ focus_tree = {
 		}
 		relative_position_id = AOT_vunerable_peace
 		cost = 10
-		x = 1
+		x = 6
 		y = 1
 		completion_reward = {
 			swap_ideas = {
@@ -1287,17 +1672,107 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_mandatory_service
+		id = AOT_defense_1
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = {
+			focus = AOT_preemptive_action focus = AOT_protect_the_islands
+		}
+		relative_position_id = AOT_preemptive_action
+		cost = 10
+		x = -3
+		y = 1
+		completion_reward = {
+			add_ideas = AOT_mandatory_service_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_offense_1
 		icon = GFX_goal_generic_axis_build_infantry
 		prerequisite = {
 			focus = AOT_preemptive_action
 		}
 		relative_position_id = AOT_preemptive_action
 		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+			add_ideas = AOT_mandatory_service_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_elite_corps
+		icon = GFX_goal_generic_special_forces
+		prerequisite = {
+			focus = AOT_offense_1
+		}
+		relative_position_id = AOT_offense_1
+		cost = 10
+		x = -1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = tesb_AOT.25
+			}
+			add_ideas = AOT_elite_corps_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_mandatory_service
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = {
+			focus = AOT_offense_1
+		}
+		relative_position_id = AOT_offense_1
+		cost = 10
 		x = 1
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_mandatory_service_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_pa_war_econ_1
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_preemptive_action
+		}
+		relative_position_id = AOT_preemptive_action
+		cost = 10
+		x = 3
+		y = 1
+		completion_reward = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+	focus = {
+		id = AOT_pa_war_econ_2
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = {
+			focus = AOT_pa_war_econ_1
+		}
+		relative_position_id = AOT_pa_war_econ_1
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+
 		}
 		ai_will_do = {
 			base = 2

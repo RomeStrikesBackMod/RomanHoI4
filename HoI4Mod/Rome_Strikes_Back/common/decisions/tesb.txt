@@ -1033,31 +1033,9 @@ aotearoa_decisions = {
 			is_debug = yes
 		}
 		available = {
-
 		}
 		complete_effect = {
-			every_state = {
-				clear_variable = AOT.test_@THIS
-			}
-			every_state = {
-				limit = {
-					OR = {
-						state = 42
-						state = 43
-						state = 44
-						state = 45
-						state = 46
-						state = 54
-						state = 55
-					}
-				}
-				set_variable = {
-					AOT.test_@THIS = id.THIS
-				}
-			}
-			every_state = {
-				clr_state_flag = AOT_already_expanding_influence_flag_@ROOT
-			}
+			set_cosmetic_tag = AOT_canton
 		}
 	}
 	AOT_recall_timon = {
@@ -1088,11 +1066,15 @@ aotearoa_decisions = {
 						remove_idea = AOT_timon_abroad
 						add_idea = AOT_timon_at_home
 					}
-					uncomplete_national_focus = {
-						focus = AOT_send_timon_to_constantiople
-						uncomplete_children = yes
+					if = {
+						limit = {
+							NOT = { has_completed_focus = AOT_rely_on_mesazon }
+						}
+						uncomplete_national_focus = {
+							focus = AOT_send_timon_to_constantiople
+						}
+						unlock_national_focus = AOT_keep_timon_in_aotearoa
 					}
-					unlock_national_focus = AOT_keep_timon_in_aotearoa
 				}
 				else_if = {
 					limit = { has_country_flag = AOT_timon_visit }
@@ -1111,30 +1093,55 @@ aotearoa_decisions = {
 			base = 1
 		}
 	}
+	AOT_recall_timon_protest = {
+		visible = {
+			has_country_flag = RME_refused_AOT
+			has_idea = AOT_timon_abroad
+			NOT = { has_completed_focus = AOT_rely_on_mesazon }
+		}
+		fire_only_once = yes
+		days_remove = 60
+		complete_effect = {
+			add_political_power = 200
+		}
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = AOT_timon_abroad
+				add_idea = AOT_timon_at_home
+			}
+			uncomplete_national_focus = {
+				focus = AOT_send_timon_to_constantiople
+			}
+			unlock_national_focus = AOT_keep_timon_in_aotearoa
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
 	AOT_reconciling_with_rome = {
 		days_mission_timeout = 730
 		fire_only_once = yes
 		activation = {
 			always = no
-			has_global_flag = RME_civil_war_over #activated by on_action
+			#has_global_flag = RME_civil_war_over #activated by on_action
 		}
 		available = {
 			has_country_flag = AOT_reconciled_rome
 		}
 		cancel_trigger = {
 			if = {
-				limit = { country_exists = RMA }
+				limit = { country_exists = RMD }
 				OR = {
 					is_subject = yes
-					RMA = { exists = no }
-					is_in_faction_with = RMA
+					RMD = { exists = no }
+					is_in_faction_with = RMD
 				}
 				else_if = {
-					limit = { country_exists = RMD }
+					limit = { country_exists = RMA }
 					OR = {
 						is_subject = yes
-						RMD = { exists = no }
-						is_in_faction_with = RMD
+						RMA = { exists = no }
+						is_in_faction_with = RMA
 					}
 				}
 				else = {
@@ -1153,10 +1160,16 @@ aotearoa_decisions = {
 			has_active_mission = AOT_reconciling_with_rome
 		}
 		available = {
-			
+			NOT = {
+				focus_progress = {
+					focus = AOT_in_imperial_hands
+					progress > 0
+				}
+			}
 		}
 		complete_effect = {
-			set_country_flag = AOT_reconciled_rome
+			remove_mission = AOT_reconciling_with_rome
+			set_country_flag = AOT_rejected_rome
 		}
 		ai_will_do = {
 			base = 0
@@ -1181,14 +1194,16 @@ aotearoa_decisions = {
 			country_exists = RMD
 		}
 		available = {
-			RMD = { has_government = democratic is_faction_leader = yes }
+			RMD = { has_government = democratic }
 			NOT = { has_war_with = RMD }
 		}
 		complete_effect = {
 			if = {
 				limit = { RMD = { is_faction_leader = yes } }
 				RMD = { country_event = { id = tesb_AOT.14 } }
-				else = { custom_effect_tooltip = AOT_join_RME_faction_TT }
+			}
+			else = {
+				RMD = { country_event = { id = tesb_AOT.16 } }
 			}
 			set_country_flag = AOT_reconciled_rome
 		}
@@ -1241,14 +1256,16 @@ aotearoa_decisions = {
 			country_exists = RMA
 		}
 		available = {
-			RMA = { has_government = absolutist is_faction_leader = yes }
+			RMA = { has_government = absolutist }
 			NOT = { has_war_with = RMA }
 		}
 		complete_effect = {
 			if = {
 				limit = { RMA = { is_faction_leader = yes } }
-				RMA = { country_event = { id = generic.2 } }
-				else = { custom_effect_tooltip = AOT_join_RME_faction_TT }
+				RMA = { country_event = { id = tesb_AOT.14 } }
+			}
+			else = {
+				RMA = { country_event = { id = tesb_AOT.16 } }
 			}
 			set_country_flag = AOT_reconciled_rome
 		}
@@ -1309,9 +1326,45 @@ aotearoa_decisions = {
 				ideology = democratic
 				ruling_party = absolutist
 			}
+			#hidden_effect = {
+				random_country = {
+					limit = { original_tag = AOT }
+					uncomplete_national_focus = {
+						focus = AOT_rely_on_mesazon
+						uncomplete_children = yes
+					}
+					unlock_national_focus = AOT_maintain_transitional_council
+				}
+			#}
 		}
 		is_good = no
 		fire_only_once = yes
+		activation = {
+			always = no
+		}
+	}
+	AOT_waiting_for_exarch_mission = {
+		days_mission_timeout = 730
+		available = {
+			OR = {
+				focus_progress = {
+					focus = AOT_empty_seat
+					progress > 0
+				}
+				focus_progress = {
+					focus = AOT_in_imperial_hands
+					progress > 0
+				}
+			}
+		}
+		complete_effect = {
+			add_political_power = 60
+		}
+		timeout_effect = {
+			add_stability = -0.1
+			add_political_power = -50
+		}
+		is_good = no
 		activation = {
 			always = no
 		}
@@ -1340,6 +1393,10 @@ aotearoa_decisions = {
 			}
 			hidden_effect = {
 				retire_character = AOT_timon_thaddas
+				swap_ideas = {
+					remove_idea = AOT_thaddai_hope
+					add_idea = AOT_taneist_terror
+				}
 			}
 			if = {
 				limit = {
@@ -1354,6 +1411,7 @@ aotearoa_decisions = {
 			news_event = {
 				id = tesb_AOT.7
 			}
+			activate_mission = AOT_communist_threat
 		}
 		complete_effect = {
 			add_stability = 0.05
@@ -1371,7 +1429,7 @@ aotearoa_decisions = {
 		is_good = no
 		fire_only_once = yes
 		activation = {
-			always = no
+			always = no #activated by event
 		}
 	}
 	AOT_investigate_neo_taneists = {
@@ -1398,6 +1456,30 @@ aotearoa_decisions = {
 					days_mission_timeout@AOT_neo_taneist_plot < 80
 				}
 			}
+		}
+	}
+	AOT_communist_threat = {
+		days_mission_timeout = 350
+		available = {
+			has_completed_focus = AOT_consolidate_power
+		}
+		complete_effect = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_popularity = {
+				ideology = communism
+				popularity = -0.2
+			}
+		}
+		timeout_effect = {
+			country_event = {
+				id = tesb_AOT.9
+			}
+		}
+		is_good = no
+		fire_only_once = yes
+		activation = {
+			always = no #activated by event
 		}
 	}
 }
@@ -1459,7 +1541,7 @@ AOT_islands = {
 					OWNER = { has_full_control_of_state = PREV }
 				}
 				custom_effect_tooltip = AOT_pacific_islands_countdown_TT
-				hidden_effect = {			
+				hidden_effect = {
 					random_list = {
 						aot_island_control = { #0:1, 1:1, 3:1, 19:1
 							modifier = {
@@ -1471,6 +1553,7 @@ AOT_islands = {
 								check_variable = { aot_island_control = 3 }
 							}
 							OWNER = {
+								PREV = { root_takes_prev = yes }
 								if = {
 									limit = {
 										check_variable = { num_owned_states = 1 }
@@ -1479,6 +1562,7 @@ AOT_islands = {
 										annex_country = { target = PREV }
 									}
 								}
+								
 							}
 							teleport_armies = {
 								limit = {
@@ -1715,6 +1799,7 @@ AOT_islands = {
 								check_variable = { aot_island_control = 3 }
 							}
 							OWNER = {
+								PREV = { root_takes_prev = yes }
 								if = {
 									limit = {
 										check_variable = { num_owned_states = 1 }

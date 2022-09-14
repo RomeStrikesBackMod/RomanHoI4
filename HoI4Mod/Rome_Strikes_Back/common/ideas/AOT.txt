@@ -1,5 +1,6 @@
 ideas = {
 	country = {
+		#Thaddai related ideas
 		AOT_thaddai_power_couple = {
 			allowed = {
 				always = no
@@ -35,11 +36,244 @@ ideas = {
 				always = yes
 			}
 			removal_cost = -1
-			picture = generic_morale_bonus
+			picture = thaddai_hope
 			modifier = {
 				stability_factor = 0.1
 			}
 		}
+		AOT_timon_abroad = {
+			name = AOT_timon_thaddas
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = timon_thaddas
+			modifier = {
+				opinion_gain_monthly_factor = 0.1
+			}
+		}
+		AOT_timon_at_home = {
+			name = AOT_timon_thaddas
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = timon_thaddas
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = 0.1
+			}
+		}
+		#consitution ideas
+		AOT_socialist_constitution = {
+			name = AOT_new_constitution
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = fascism
+					has_government = absolutist
+				}
+			}
+			removal_cost = -1
+			picture = generic_constitutional_guarantees
+			modifier = {
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.05
+				communism_acceptance = 50
+				democratic_acceptance = 50
+			}
+		}
+		AOT_conservative_constitution = {
+			name = AOT_new_constitution
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = { has_government = fascism }
+			}
+			removal_cost = -1
+			picture = generic_constitutional_guarantees
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.05
+				democratic_acceptance = 50
+			}
+		}
+		AOT_absolutist_constitution = {
+			name = AOT_new_constitution
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_constitutional_guarantees
+			modifier = {
+				political_power_gain = 0.1
+				war_support_factor = 0.05
+				absolutist_acceptance = 50
+			}
+		}
+		AOT_election_preparations = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			modifier = {
+				democratic_drift = 0.1
+				party_popularity_stability_factor = 1
+			}
+		}
+
+		AOT_mesazon_leadership_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+			modifier = {
+				political_advisor_cost_factor = -0.2
+				high_command_cost_factor = -0.2
+				theorist_cost_factor = -0.2
+				air_chief_cost_factor = -0.2
+				army_chief_cost_factor = -0.2
+				navy_chief_cost_factor = -0.2
+				max_command_power = 50
+			}
+		}
+		AOT_mesazon_leadership_idea_2 = {
+			name = AOT_mesazon_leadership_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+			modifier = {
+				stability_factor = 0.1
+				political_advisor_cost_factor = -0.2
+				high_command_cost_factor = -0.2
+				theorist_cost_factor = -0.2
+				air_chief_cost_factor = -0.2
+				army_chief_cost_factor = -0.2
+				navy_chief_cost_factor = -0.2
+				max_command_power = 50
+			}
+		}
+		AOT_nationalist_zeal = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_intel_bonus
+			modifier = {
+				absolutist_drift = 0.1
+			}
+		}
+		AOT_taneist_tendrils_idea = {
+			name = AOT_taneist_tendrils
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			removal_cost = -1
+			picture = generic_fascism_drift_bonus
+			modifier = {
+				fascism_drift = 0.1
+			}
+		}
+		AOT_neo_taneist_consolidation = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			removal_cost = -1
+			picture = generic_fascism_drift_2
+			modifier = {
+				fascism_drift = 0.1
+				war_support_weekly = 0.005
+			}
+		}
+		AOT_neo_taneist_patrols = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			removal_cost = -1
+			picture = generic_oppression
+			modifier = {
+				stability_factor = 0.05
+				resistance_damage_to_garrison = -0.05
+			}
+		}
+		AOT_taneist_terror = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = taneist_terror
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+		AOT_communist_rebuttal = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = thaddai_hope
+			modifier = {
+				stability_factor = 0.1
+			}
+		}
+		AOT_communist_militia = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_manpower_bonus
+			modifier = {
+				conscription = 0.02
+				training_time_factor = -0.1
+			}
+		}
+		#black thursday related ideas
 		AOT_trauma_of_black_thursday = {
 			allowed = {
 				always = no
@@ -54,7 +288,7 @@ ideas = {
 				production_speed_buildings_factor = -0.1
 			}
 		}
-		AOT_regional_focus_idea = {
+		AOT_recovering_from_black_thursday_reg = {
 			allowed = {
 				always = no
 			}
@@ -65,10 +299,10 @@ ideas = {
 			picture = SOV_second_five_year_plan
 			modifier = {
 				consumer_goods_factor = 0.05
-				production_speed_buildings_factor = -0.066
+				production_speed_buildings_factor = -0.075
 			}
 		}
-		AOT_protectionism_idea = {
+		AOT_regional_market = {
 			allowed = {
 				always = no
 			}
@@ -78,27 +312,12 @@ ideas = {
 			removal_cost = -1
 			picture = SOV_third_five_year_plan
 			modifier = {
-				consumer_goods_factor = 0.0
-				production_speed_buildings_factor = -0.033
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0
 				min_export = -0.05
 			}
 		}
-		AOT_state_industry_idea = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = SOV_fourth_five_year_plan
-			modifier = {
-				consumer_goods_factor = -0.05
-				production_speed_buildings_factor = 0
-				min_export = -0.1
-			}
-		}
-		AOT_international_focus_idea = {
+		AOT_recovering_from_black_thursday_int = {
 			allowed = {
 				always = no
 			}
@@ -108,7 +327,7 @@ ideas = {
 			removal_cost = -1
 			picture = can_wartime_prices_and_trade_board
 			modifier = {
-				consumer_goods_factor = 0.066
+				consumer_goods_factor = 0.075
 				production_speed_buildings_factor = -0.05
 				min_export = -0.05
 			}
@@ -123,26 +342,12 @@ ideas = {
 			removal_cost = -1
 			picture = generic_foreign_capital
 			modifier = {
-				consumer_goods_factor = 0.033
-				production_speed_buildings_factor = 0.0
+				consumer_goods_factor = 0
+				production_speed_buildings_factor = 0.05
 				min_export = -0.1
 			}
 		}
-		AOT_overseas_production = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = generic_foreign_capital
-			modifier = {
-				consumer_goods_factor = 0
-				production_speed_buildings_factor = 0.05
-				min_export = -0.15
-			}
-		}
+		#military related ideas
 		AOT_staunch_anti_militarists = {
 			allowed = {
 				always = no
@@ -245,178 +450,6 @@ ideas = {
 			modifier = {
 				conscription = 0.005
 				training_time_factor = -0.15
-			}
-		}
-		AOT_timon_abroad = {
-			name = AOT_timon_thaddas
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = timon_thaddas
-			modifier = {
-				opinion_gain_monthly_factor = 0.1
-			}
-		}
-		AOT_timon_at_home = {
-			name = AOT_timon_thaddas
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = timon_thaddas
-			modifier = {
-				political_power_gain = 0.15
-				stability_factor = 0.1
-			}
-		}
-		AOT_conservative_constituion = {
-			name = AOT_new_constitution
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = democratic
-			}
-			removal_cost = -1
-			picture = generic_constitutional_guarantees
-			modifier = {
-				political_power_gain = 0.05
-				stability_factor = 0.05
-			}
-		}
-		AOT_election_preparations = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = democratic
-			}
-			removal_cost = -1
-			picture = generic_democratic_drift_bonus
-			modifier = {
-				democratic_drift = 0.1
-				party_popularity_stability_factor = 1
-			}
-		}
-		AOT_socialist_constituion = {
-			name = AOT_new_constitution
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-			removal_cost = -1
-			picture = generic_constitutional_guarantees
-			modifier = {
-				political_power_gain = 0.05
-				consumer_goods_factor = -0.05
-				communism_acceptance = 50
-			}
-		}
-		AOT_mesazon_leadership_idea = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = absolutist
-			}
-			removal_cost = -1
-			picture = generic_pp_unity_bonus
-			modifier = {
-				political_advisor_cost_factor = -0.2
-				high_command_cost_factor = -0.2
-				theorist_cost_factor = -0.2
-				air_chief_cost_factor = -0.2
-				army_chief_cost_factor = -0.2
-				navy_chief_cost_factor = -0.2
-				max_command_power = 50
-			}
-		}
-		AOT_mesazon_leadership_idea_2 = {
-			name = AOT_mesazon_leadership_idea
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = absolutist
-			}
-			removal_cost = -1
-			picture = generic_pp_unity_bonus
-			modifier = {
-				stability_factor = 0.1
-				political_advisor_cost_factor = -0.2
-				high_command_cost_factor = -0.2
-				theorist_cost_factor = -0.2
-				air_chief_cost_factor = -0.2
-				army_chief_cost_factor = -0.2
-				navy_chief_cost_factor = -0.2
-				max_command_power = 50
-			}
-		}
-		AOT_nationalist_zeal = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = absolutist
-			}
-			removal_cost = -1
-			picture = generic_intel_bonus
-			modifier = {
-				absolutist_drift = 0.1
-			}
-		}
-		AOT_taneist_tendrils_idea = {
-			name = AOT_taneist_tendrils
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			removal_cost = -1
-			picture = generic_fascism_drift_bonus
-			modifier = {
-				fascism_drift = 0.1
-			}
-		}
-		AOT_neo_taneist_consolidation = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			removal_cost = -1
-			picture = generic_fascism_drift_2
-			modifier = {
-				fascism_drift = 0.1
-				war_support_weekly = 0.005
-			}
-		}
-		AOT_neo_taneist_patrols = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				has_government = fascism
-			}
-			removal_cost = -1
-			picture = generic_oppression
-			modifier = {
-				stability_factor = 0.05
-				resistance_damage_to_garrison = -0.05
 			}
 		}
 	}
