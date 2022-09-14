@@ -1,5 +1,6 @@
 ideas = {
 	country = {
+		#Thaddai related ideas
 		AOT_thaddai_power_couple = {
 			allowed = {
 				always = no
@@ -35,186 +36,9 @@ ideas = {
 				always = yes
 			}
 			removal_cost = -1
-			picture = generic_morale_bonus
+			picture = thaddai_hope
 			modifier = {
 				stability_factor = 0.1
-			}
-		}
-		AOT_trauma_of_black_thursday = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = great_depression
-			modifier = {
-				consumer_goods_factor = 0.1
-				production_speed_buildings_factor = -0.1
-			}
-		}
-		AOT_recovering_from_black_thursday_reg = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = SOV_second_five_year_plan
-			modifier = {
-				consumer_goods_factor = 0.05
-				production_speed_buildings_factor = -0.075
-			}
-		}
-		AOT_regional_market = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = SOV_third_five_year_plan
-			modifier = {
-				consumer_goods_factor = -0.05
-				production_speed_buildings_factor = 0
-				min_export = -0.05
-			}
-		}
-		AOT_recovering_from_black_thursday_int = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = can_wartime_prices_and_trade_board
-			modifier = {
-				consumer_goods_factor = 0.075
-				production_speed_buildings_factor = -0.05
-				min_export = -0.05
-			}
-		}
-		AOT_international_investments_idea = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = generic_foreign_capital
-			modifier = {
-				consumer_goods_factor = 0
-				production_speed_buildings_factor = 0.05
-				min_export = -0.1
-			}
-		}
-		AOT_staunch_anti_militarists = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = hol_aloof_neutrality
-			modifier = {
-				war_support_factor = -0.3
-			}
-		}
-		AOT_committed_pacifists = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				OR = {
-					has_government = democratic
-					has_government = neutrality
-				}
-			}
-			removal_cost = -1
-			picture = hol_aloof_neutrality
-			modifier = {
-				stability_factor = 0.1
-				war_support_factor = -0.3
-			}
-		}
-		AOT_protective_measures = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = generic_fortify_the_borders
-			modifier = {
-				production_speed_bunker_factor = 0.1
-				production_speed_coastal_bunker_factor = 0.1
-			}
-		}
-		AOT_elite_corps_idea = {
-			name = AOT_elite_corps
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			picture = generic_morale_bonus
-			modifier = {
-				special_forces_min = 24
-			}
-		}
-		AOT_defensive_militia_idea = {
-			name = AOT_defensive_militia
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = ast_volunteer_defence_corps
-			modifier = {
-				conscription = 0.01
-				training_time_factor = -0.1
-			}
-		}
-		AOT_preparing_for_conflict = {
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = war_preparation
-			modifier = {
-				stability_factor = -0.1
-				war_support_factor = -0.2
-			}
-			rule = {
-				can_send_volunteers = yes
-			}
-		}
-		AOT_mandatory_service_idea = {
-			name = AOT_mandatory_service
-			allowed = {
-				always = no
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			picture = generic_reserve_divisons
-			modifier = {
-				conscription = 0.005
-				training_time_factor = -0.15
 			}
 		}
 		AOT_timon_abroad = {
@@ -246,15 +70,16 @@ ideas = {
 				stability_factor = 0.1
 			}
 		}
+		#consitution ideas
 		AOT_socialist_constitution = {
 			name = AOT_new_constitution
 			allowed = {
 				always = no
 			}
 			allowed_civil_war = {
-				OR = {
-					has_government = democratic
-					has_government = communism
+				NOT = {
+					has_government = fascism
+					has_government = absolutist
 				}
 			}
 			removal_cost = -1
@@ -263,6 +88,7 @@ ideas = {
 				political_power_gain = 0.05
 				consumer_goods_factor = -0.05
 				communism_acceptance = 50
+				democratic_acceptance = 50
 			}
 		}
 		AOT_conservative_constitution = {
@@ -271,15 +97,14 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				NOT = {
-					has_government = fascism
-				}
+				NOT = { has_government = fascism }
 			}
 			removal_cost = -1
 			picture = generic_constitutional_guarantees
 			modifier = {
 				political_power_gain = 0.05
 				stability_factor = 0.05
+				democratic_acceptance = 50
 			}
 		}
 		AOT_absolutist_constitution = {
@@ -288,17 +113,14 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
+				has_government = absolutist
 			}
 			removal_cost = -1
 			picture = generic_constitutional_guarantees
 			modifier = {
-				political_power_gain = 0.05
-				consumer_goods_factor = -0.05
-				communism_acceptance = 50
+				political_power_gain = 0.1
+				war_support_factor = 0.05
+				absolutist_acceptance = 50
 			}
 		}
 		AOT_election_preparations = {
@@ -409,6 +231,225 @@ ideas = {
 			modifier = {
 				stability_factor = 0.05
 				resistance_damage_to_garrison = -0.05
+			}
+		}
+		AOT_taneist_terror = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = taneist_terror
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+		AOT_communist_rebuttal = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = thaddai_hope
+			modifier = {
+				stability_factor = 0.1
+			}
+		}
+		AOT_communist_militia = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_manpower_bonus
+			modifier = {
+				conscription = 0.02
+				training_time_factor = -0.1
+			}
+		}
+		#black thursday related ideas
+		AOT_trauma_of_black_thursday = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = great_depression
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_speed_buildings_factor = -0.1
+			}
+		}
+		AOT_recovering_from_black_thursday_reg = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = SOV_second_five_year_plan
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = -0.075
+			}
+		}
+		AOT_regional_market = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = SOV_third_five_year_plan
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0
+				min_export = -0.05
+			}
+		}
+		AOT_recovering_from_black_thursday_int = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = can_wartime_prices_and_trade_board
+			modifier = {
+				consumer_goods_factor = 0.075
+				production_speed_buildings_factor = -0.05
+				min_export = -0.05
+			}
+		}
+		AOT_international_investments_idea = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_foreign_capital
+			modifier = {
+				consumer_goods_factor = 0
+				production_speed_buildings_factor = 0.05
+				min_export = -0.1
+			}
+		}
+		#military related ideas
+		AOT_staunch_anti_militarists = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = hol_aloof_neutrality
+			modifier = {
+				war_support_factor = -0.3
+			}
+		}
+		AOT_committed_pacifists = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
+			removal_cost = -1
+			picture = hol_aloof_neutrality
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = -0.3
+			}
+		}
+		AOT_protective_measures = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_fortify_the_borders
+			modifier = {
+				production_speed_bunker_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.1
+			}
+		}
+		AOT_elite_corps_idea = {
+			name = AOT_elite_corps
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_morale_bonus
+			modifier = {
+				special_forces_min = 24
+			}
+		}
+		AOT_defensive_militia_idea = {
+			name = AOT_defensive_militia
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = ast_volunteer_defence_corps
+			modifier = {
+				conscription = 0.01
+				training_time_factor = -0.1
+			}
+		}
+		AOT_preparing_for_conflict = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = war_preparation
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.2
+			}
+			rule = {
+				can_send_volunteers = yes
+			}
+		}
+		AOT_mandatory_service_idea = {
+			name = AOT_mandatory_service
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_reserve_divisons
+			modifier = {
+				conscription = 0.005
+				training_time_factor = -0.15
 			}
 		}
 	}

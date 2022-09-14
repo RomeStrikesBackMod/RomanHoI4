@@ -1,7 +1,16 @@
 AOT_socialism_support = {
 	icon = GFX_idea_generic_communism_drift_bonus
+	enable = {
+		OR = {
+			has_government = communism
+			has_government = democratic
+		}
+	}
 	remove_trigger = {
-		NOT = { has_government = democratic }
+		NOT = {
+			has_government = communism
+			has_government = democratic
+		}
 	}
 
 	#gain 10% of communism party popularity as stability, use TESB_AOT_socialist_support to update var

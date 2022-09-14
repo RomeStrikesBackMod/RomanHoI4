@@ -625,8 +625,13 @@ TESB_check_integrate_willingness = {
 
 #Aotearoa
 TESB_AOT_socialist_support = {
-	set_variable = {
-		AOT_socialist_support = party_popularity@communism
+	if = {
+		limit = { has_government = communism }
+		set_variable = { AOT_socialist_support = party_popularity@democratic }
+	}
+	else_if = {
+		limit = { has_government = democratic }
+		set_variable = { AOT_socialist_support = party_popularity@communism }
 	}
 	divide_variable = {
 		AOT_socialist_support = 10

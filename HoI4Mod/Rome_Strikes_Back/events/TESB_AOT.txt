@@ -1,5 +1,6 @@
 ﻿add_namespace = tesb_AOT
 
+# Ol' Ness sick
 news_event = {
 	id = tesb_AOT.1
 	title = tesb_AOT.1.t
@@ -33,6 +34,7 @@ news_event = {
 	}
 }
 
+# Ol' Ness dies
 news_event = {
 	id = tesb_AOT.2
 	title = tesb_AOT.2.t
@@ -96,6 +98,7 @@ news_event = {
 	}
 }
 
+# Kyrene sick
 news_event = {
 	id = tesb_AOT.3
 	title = tesb_AOT.3.t
@@ -153,6 +156,7 @@ news_event = {
 	}
 }
 
+# Timon asks for leave
 country_event = {
 	id = tesb_AOT.4
 	title = tesb_AOT.4.t
@@ -188,6 +192,7 @@ country_event = {
 	}
 }
 
+# Kyrene dies
 news_event = {
 	id = tesb_AOT.5
 	title = tesb_AOT.5.t
@@ -274,6 +279,7 @@ news_event = {
 	}
 }
 
+# Choose acting exarch
 country_event = {
 	id = tesb_AOT.6
 	title = tesb_AOT.6.t
@@ -290,6 +296,11 @@ country_event = {
 					ideology = conservatism
 				}
 				retire_character = AOT_kyrene_thaddas
+				add_trait = {
+					character = AOT_timon_thaddas
+					ideology = socialism
+					trait = reluctant_leader
+			   }
 			}
 		}
 	}
@@ -350,6 +361,7 @@ country_event = {
 	}
 }
 
+# Timon assassinated
 news_event = {
 	id = tesb_AOT.7
 	title = tesb_AOT.7.t
@@ -383,6 +395,7 @@ news_event = {
 	}
 }
 
+# Choose sides of Roman civil war
 country_event = {
 	id = tesb_AOT.8
 	title = tesb_AOT.8.t
@@ -400,6 +413,12 @@ country_event = {
 		trigger = {
 			RMD = { exists = yes }
 		}
+		RMD = {
+			add_opinion_modifier = {
+				target = AOT
+				modifier = AOT_imperial_representative
+			}
+		}
 		ai_chance = {
 			base = 10
 		}
@@ -407,6 +426,12 @@ country_event = {
 	option = {
 		trigger = {
 			RMA = { exists = yes }
+		}
+		RMA = {
+			add_opinion_modifier = {
+				target = AOT
+				modifier = AOT_imperial_representative
+			}
 		}
 		name = tesb_AOT.8.b #Konstatinos
 	}
@@ -419,6 +444,79 @@ country_event = {
 	}
 }
 
+# Taneist or Communist
+country_event = {
+	id = tesb_AOT.9
+	title = tesb_AOT.9.t
+	desc = tesb_AOT.9.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_party_name = {
+				ideology = communism
+				long_name = AOT_communist_party_long
+				name = AOT_communist_party
+			}
+		}
+	}
+
+	option = {
+		name = tesb_AOT.9.a #Taneist
+		start_civil_war = {
+			ideology = communism
+			ruling_party = fascism
+		}
+		set_country_flag = AOT_communists_revolt
+		mark_focus_tree_layout_dirty = yes
+		hidden_effect = {
+			random_other_country = {
+				limit = { original_tag = AOT }
+				set_popularities = {
+					absolutist = 9
+					communism = 43
+					democratic = 36
+					neutrality = 12
+				}
+				set_country_flag = AOT_communists_revolt
+				mark_focus_tree_layout_dirty = yes
+				complete_national_focus = AOT_last_opposition
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.9.b #Communist
+		hidden_effect = {
+			set_capital = { state = 410 }
+		}
+		start_civil_war = {
+			ideology = fascism
+			ruling_party = communism
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -1
+			}
+		}
+		set_country_flag = AOT_communists_revolt
+		mark_focus_tree_layout_dirty = yes
+		complete_national_focus = AOT_last_opposition
+		random_other_country = {
+			limit = { original_tag = AOT }
+			set_country_flag = AOT_communists_revolt
+			mark_focus_tree_layout_dirty = yes
+		}
+}
+}
+
+
+# Ask Democratic Rome to rejoin as subject
 country_event = {
 	id = tesb_AOT.10
 	title = tesb_AOT.10.t
@@ -451,6 +549,7 @@ country_event = {
 	}
 }
 
+# Rome responds to AOT request
 country_event = {
 	id = tesb_AOT.11
 	title = tesb_AOT.11.t
@@ -479,6 +578,7 @@ country_event = {
 				autonomy_state = autonomy_dominion
 			}
 		}
+		hidden_effect = { set_cosmetic_tag = AOT_canton }
 	}
 	option = {
 		name = tesb_AOT.11.b #reject
@@ -486,6 +586,7 @@ country_event = {
 	}
 }
 
+# ask Absolutist Rome to rejoin as subject
 country_event = {
 	id = tesb_AOT.12
 	title = tesb_AOT.12.t
@@ -518,6 +619,7 @@ country_event = {
 	}
 }
 
+# Rome responds to AOT request
 country_event = {
 	id = tesb_AOT.13
 	title = tesb_AOT.13.t
@@ -546,6 +648,7 @@ country_event = {
 				autonomy_state = autonomy_colony
 			}
 		}
+		hidden_effect = { set_cosmetic_tag = AOT_canton }
 	}
 	option = {
 		name = tesb_AOT.13.b #reject
@@ -553,6 +656,7 @@ country_event = {
 	}
 }
 
+# AOT asks to join Rome's faction
 country_event = {
 	id = tesb_AOT.14
 	title = tesb_AOT.14.t
@@ -582,6 +686,7 @@ country_event = {
 	}
 }
 
+# Rome responds to AOT
 country_event = {
 	id = tesb_AOT.15
 	title = tesb_AOT.15.t
@@ -615,6 +720,7 @@ country_event = {
 	}
 }
 
+# AOT asks for mutual alliance (guarantee) with Rome
 country_event = {
 	id = tesb_AOT.16
 	title = tesb_AOT.14.t
@@ -632,7 +738,8 @@ country_event = {
 		give_guarantee = AOT
 		AOT = {
 			give_guarantee = ROOT
-			country_event = { id = tesb_AOT.17 } }
+			country_event = { id = tesb_AOT.17 }
+		}
 		ai_chance = {
 			base = 10
 		}
@@ -646,6 +753,7 @@ country_event = {
 	}
 }
 
+# Rome responds
 country_event = {
 	id = tesb_AOT.17
 	title = tesb_AOT.15.t
@@ -680,6 +788,7 @@ country_event = {
 	}
 }
 
+# New Constitution
 country_event = {
 	id = tesb_AOT.20
 	title = tesb_AOT.20.t
@@ -811,6 +920,7 @@ country_event = {
 	}
 }
 
+# Tumuaki Election
 country_event = {
 	id = tesb_AOT.30
 	title = tesb_AOT.30.t
@@ -831,9 +941,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					has_government = democratic
-				}
+				NOT = { has_government = democratic }
 			}
 			set_politics = {
 				ruling_party = democratic
@@ -843,9 +951,7 @@ country_event = {
 		hidden_effect = {
 			retire_character = AOT_transitional_council
 			if = {
-				limit = {
-					has_idea = AOT_manaaki_awerama_dr
-				}
+				limit = { has_idea = AOT_manaaki_awerama_dr }
 				deactivate_advisor = AOT_manaaki_awerama_dr
 				add_political_power = 50
 			}
@@ -862,9 +968,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					has_government = communism
-				}
+				NOT = { has_government = communism }
 			}
 			set_politics = {
 				ruling_party = communism
@@ -874,9 +978,7 @@ country_event = {
 		hidden_effect = {
 			retire_character = AOT_transitional_council
 			if = {
-				limit = {
-					has_idea = AOT_iahepa_ambrosiadis_cr
-				}
+				limit = { has_idea = AOT_iahepa_ambrosiadis_cr }
 				deactivate_advisor = AOT_iahepa_ambrosiadis_cr
 				add_political_power = 50
 			}
@@ -889,16 +991,12 @@ country_event = {
 		name = tesb_AOT.30.c
 		add_country_leader_role = {
 			character = AOT_haralambos_dougenis
-			country_leader = {
-				ideology = dictatorship
-			}
+			country_leader = { ideology = dictatorship }
 			promote_leader = yes
 		}
 		if = {
 			limit = {
-				NOT = {
-					has_government = absolutist
-				}
+				NOT = { has_government = absolutist }
 			}
 			set_politics = {
 				ruling_party = absolutist
@@ -908,32 +1006,20 @@ country_event = {
 		hidden_effect = {
 			retire_character = AOT_transitional_council
 			if = {
-				limit = {
-					has_idea = AOT_haralambos_dougenis_fs
-				}
+				limit = { has_idea = AOT_haralambos_dougenis_fs }
 				deactivate_advisor = AOT_haralambos_dougenis_fs
 				add_political_power = 50
 			}
-			set_temp_variable = {
-				stab_hit = 0
-			}
-			subtract_from_temp_variable = {
-				stab_hit = party_popularity@democratic
-			}
-			subtract_from_temp_variable = {
-				stab_hit = party_popularity@communism
-			}
-			add_to_temp_variable = {
-				stab_hit = party_popularity@absolutist
-			}
+			set_temp_variable = { stab_hit = 0 }
+			subtract_from_temp_variable = { stab_hit = party_popularity@democratic }
+			subtract_from_temp_variable = { stab_hit = party_popularity@communism }
+			add_to_temp_variable = { stab_hit = party_popularity@absolutist }
 			clamp_temp_variable = {
 				var = stab_hit
 				min = -0.5
 				max = 0
 			}
-			divide_temp_variable = {
-				stab_hit = 2
-			}
+			divide_temp_variable = { stab_hit = 2 }
 		}
 		add_stability = stab_hit
 		ai_chance = {
@@ -951,9 +1037,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					has_government = neutrality
-				}
+				NOT = { has_government = neutrality }
 			}
 			set_politics = {
 				ruling_party = neutrality
@@ -963,9 +1047,7 @@ country_event = {
 		hidden_effect = {
 			retire_character = AOT_transitional_council
 			if = {
-				limit = {
-					has_idea = AOT_iahepa_ambrosiadis_cr
-				}
+				limit = { has_idea = AOT_iahepa_ambrosiadis_cr }
 				deactivate_advisor = AOT_iahepa_ambrosiadis_cr
 				add_political_power = 50
 			}
@@ -982,9 +1064,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					has_government = democratic
-				}
+				NOT = { has_government = democratic }
 			}
 			set_politics = {
 				ruling_party = democratic
@@ -997,5 +1077,40 @@ country_event = {
 		ai_chance = {
 			base = 1
 		}
+	}
+}
+
+# AOT asks rome for an Exarch
+country_event = {
+	id = tesb_AOT.35
+	title = tesb_AOT.35.t
+	desc = tesb_AOT.35.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.35.a
+		AOT = {
+			promote_character = {
+				character = AOT_timon_thaddas
+				ideology = socialism
+			}
+		}
+	}
+	option = {
+		name = tesb_AOT.35.b
+		AOT = {
+			create_country_leader = {
+				ideology = conservatism
+			}
+		}
+	}
+	option = {
+		name = tesb_AOT.35.c
 	}
 }
