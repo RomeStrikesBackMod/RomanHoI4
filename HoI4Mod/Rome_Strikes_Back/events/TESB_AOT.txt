@@ -306,7 +306,7 @@ country_event = {
 	}
 
 	option = {
-		name = tesb_AOT.6.a
+		name = tesb_AOT.6.a #council
 		unlock_national_focus = AOT_maintain_transitional_council
 		effect_tooltip = { retire_character = AOT_kyrene_thaddas }
 		hidden_effect = {
@@ -330,7 +330,7 @@ country_event = {
 				has_idea = AOT_timon_abroad
 			}
 		}
-		name = tesb_AOT.6.b
+		name = tesb_AOT.6.b #mesazon
 		complete_national_focus = AOT_rely_on_mesazon
 		activate_mission = AOT_mesazon_power_struggle
 		effect_tooltip = { retire_character = AOT_kyrene_thaddas }
@@ -345,7 +345,7 @@ country_event = {
 				has_idea = AOT_timon_at_home
 			}
 		}
-		name = tesb_AOT.6.c
+		name = tesb_AOT.6.c #timon
 		unlock_national_focus = AOT_appoint_timon_as_exarch
 		activate_mission = AOT_neo_taneist_plot
 		hidden_effect = {
@@ -353,6 +353,7 @@ country_event = {
 				character = AOT_timon_thaddas
 				ideology = socialism
 			}
+			remove_ideas = AOT_timon_at_home
 		}
 		effect_tooltip = { retire_character = AOT_kyrene_thaddas }
 		ai_chance = {
@@ -444,7 +445,7 @@ country_event = {
 	}
 }
 
-# Taneist or Communist
+# Notify Rome
 country_event = {
 	id = tesb_AOT.9
 	title = tesb_AOT.9.t
@@ -454,65 +455,18 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		hidden_effect = {
-			set_party_name = {
-				ideology = communism
-				long_name = AOT_communist_party_long
-				name = AOT_communist_party
-			}
-		}
+
 	}
 
 	option = {
-		name = tesb_AOT.9.a #Taneist
-		start_civil_war = {
-			ideology = communism
-			ruling_party = fascism
-		}
-		set_country_flag = AOT_communists_revolt
-		mark_focus_tree_layout_dirty = yes
-		hidden_effect = {
-			random_other_country = {
-				limit = { original_tag = AOT }
-				set_popularities = {
-					absolutist = 9
-					communism = 43
-					democratic = 36
-					neutrality = 12
-				}
-				set_country_flag = AOT_communists_revolt
-				mark_focus_tree_layout_dirty = yes
-				complete_national_focus = AOT_last_opposition
+		name = tesb_AOT.9.a
+		effect_tooltip = {
+			add_opinion_modifier = {
+				target = AOT
+				modifier = AOT_imperial_representative
 			}
-		}
-		ai_chance = {
-			base = 10
 		}
 	}
-	option = {
-		name = tesb_AOT.9.b #Communist
-		hidden_effect = {
-			set_capital = { state = 410 }
-		}
-		start_civil_war = {
-			ideology = fascism
-			ruling_party = communism
-		}
-		hidden_effect = {
-			add_popularity = {
-				ideology = fascism
-				popularity = -1
-			}
-		}
-		set_country_flag = AOT_communists_revolt
-		mark_focus_tree_layout_dirty = yes
-		complete_national_focus = AOT_last_opposition
-		random_other_country = {
-			limit = { original_tag = AOT }
-			set_country_flag = AOT_communists_revolt
-			mark_focus_tree_layout_dirty = yes
-		}
-}
 }
 
 
@@ -788,6 +742,77 @@ country_event = {
 	}
 }
 
+# Taneist or Communist
+country_event = {
+	id = tesb_AOT.19
+	title = tesb_AOT.19.t
+	desc = tesb_AOT.19.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_party_name = {
+				ideology = communism
+				long_name = AOT_communist_party_long
+				name = AOT_communist_party
+			}
+		}
+	}
+
+	option = {
+		name = tesb_AOT.19.a #Taneist
+		start_civil_war = {
+			ideology = communism
+			ruling_party = fascism
+		}
+		set_country_flag = AOT_communists_revolt
+		mark_focus_tree_layout_dirty = yes
+		hidden_effect = {
+			random_other_country = {
+				limit = { original_tag = AOT }
+				set_popularities = {
+					absolutist = 9
+					communism = 43
+					democratic = 36
+					neutrality = 12
+				}
+				set_country_flag = AOT_communists_revolt
+				mark_focus_tree_layout_dirty = yes
+				complete_national_focus = AOT_last_opposition
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.19.b #Communist
+		hidden_effect = {
+			set_capital = { state = 410 }
+		}
+		start_civil_war = {
+			ideology = fascism
+			ruling_party = communism
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -1
+			}
+		}
+		set_country_flag = AOT_communists_revolt
+		mark_focus_tree_layout_dirty = yes
+		complete_national_focus = AOT_last_opposition
+		random_other_country = {
+			limit = { original_tag = AOT }
+			set_country_flag = AOT_communists_revolt
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}
+
 # New Constitution
 country_event = {
 	id = tesb_AOT.20
@@ -924,7 +949,24 @@ country_event = {
 country_event = {
 	id = tesb_AOT.30
 	title = tesb_AOT.30.t
-	desc = tesb_AOT.30.d
+	desc = {
+		trigger = {
+			NOT = {
+				has_idea = AOT_timon_at_home
+				has_completed_focus = AOT_appoint_timon_as_exarch
+			}
+		}
+		text = tesb_AOT.30.da
+	}
+	desc = {
+		trigger = {
+			OR = {
+				has_idea = AOT_timon_at_home
+				has_completed_focus = AOT_appoint_timon_as_exarch
+			}
+		}
+		text = tesb_AOT.30.db
+	}
 	picture = GFX_report_event_ast_parliament_house #placeholder
 
 	is_triggered_only = yes
@@ -989,6 +1031,12 @@ country_event = {
 	}
 	option = {
 		name = tesb_AOT.30.c
+		trigger = {
+			NOT = {
+				has_idea = AOT_timon_at_home
+				has_completed_focus = AOT_appoint_timon_as_exarch
+			}
+		}
 		add_country_leader_role = {
 			character = AOT_haralambos_dougenis
 			country_leader = { ideology = dictatorship }
@@ -1027,10 +1075,7 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = {
-			always = no #not enough space in event options for 5 choices, but leaving the script in case of changes
-		}
-		name = tesb_AOT.30.do
+		name = tesb_AOT.30.d
 		promote_character = {
 			character = AOT_kauri_kaaka
 			ideology = conservatism_neutral
@@ -1058,6 +1103,12 @@ country_event = {
 	}
 	option = {
 		name = tesb_AOT.30.e
+		trigger = {
+			OR = {
+				has_idea = AOT_timon_at_home
+				has_completed_focus = AOT_appoint_timon_as_exarch
+			}
+		}
 		promote_character = {
 			character = AOT_timon_thaddas
 			ideology = socialism
@@ -1090,27 +1141,163 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-
+		hidden_effect = {
+			AOT = {
+				set_country_flag = AOT_new_exarch_chosen
+			}
+		}
 	}
 
 	option = {
 		name = tesb_AOT.35.a
-		AOT = {
-			promote_character = {
-				character = AOT_timon_thaddas
-				ideology = socialism
+		hidden_effect = {
+			AOT = {
+				country_event = {
+					id = tesb_AOT.36 hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				has_government = absolutist
 			}
 		}
 	}
 	option = {
 		name = tesb_AOT.35.b
-		AOT = {
-			create_country_leader = {
-				ideology = conservatism
+		hidden_effect = {
+			AOT = {
+				country_event = {
+					id = tesb_AOT.37 hours = 1
+				}
+				create_country_leader = {
+					ideology = conservatism
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+			modifier = {
+				factor = 2
+				has_government = absolutist
 			}
 		}
 	}
 	option = {
 		name = tesb_AOT.35.c
+		hidden_effect = {
+			AOT = {
+				country_event = {
+					id = tesb_AOT.38 hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_government = absolutist
+			}
+		}
+	}
+}
+
+#Timon chosen
+country_event = {
+	id = tesb_AOT.36
+	title = tesb_AOT.36.t
+	desc = tesb_AOT.36.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.36.a
+		promote_character = {
+			character = AOT_timon_thaddas
+			ideology = socialism
+		}
+		add_country_leader_trait = chosen_successor
+		if = {
+			limit = { has_idea = AOT_timon_abroad }
+			remove_ideas = AOT_timon_abroad
+		}
+		if = {
+			limit = { has_idea = AOT_timon_at_home }
+			remove_ideas = AOT_timon_at_home
+		}
+	}
+}
+
+#A new exarch
+country_event = {
+	id = tesb_AOT.37
+	title = tesb_AOT.37.t
+	desc = tesb_AOT.37.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.37.a
+		create_country_leader = {
+			ideology = conservatism
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.38
+	title = tesb_AOT.38.t
+	desc = tesb_AOT.38.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.38.a
+		promote_character = {
+			character = AOT_timon_thaddas
+			ideology = socialism
+		}
+		add_country_leader_trait = chosen_successor
+		if = {
+			limit = { has_idea = AOT_timon_abroad }
+			remove_ideas = AOT_timon_abroad
+		}
+		if = {
+			limit = { has_idea = AOT_timon_at_home }
+			remove_ideas = AOT_timon_at_home
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_AOT.38.b
+		create_country_leader = {
+			ideology = conservatism
+		}
+		ai_chance = {
+			base = 1
+		}
 	}
 }
