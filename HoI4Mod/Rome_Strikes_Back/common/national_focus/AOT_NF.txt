@@ -348,7 +348,7 @@ focus_tree = {
 	focus = {
 		id = AOT_in_imperial_hands
 		icon = GFX_focus_generic_self_management
-		cost = 10
+		cost = 5
 		mutually_exclusive = {
 			focus = AOT_empty_seat
 		}
@@ -401,16 +401,28 @@ focus_tree = {
 	focus = {
 		id = AOT_new_exarch
 		icon = GFX_focus_generic_self_management
-		cost = 10
+		cost = 5
 		relative_position_id = AOT_in_imperial_hands
 		prerequisite = { focus = AOT_in_imperial_hands }
 		x = 0
 		y = 1
 		available = {
-
+			has_country_flag = AOT_new_exarch_chosen
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_timon_thaddas
+						ruling_only = yes
+					}
+				}
+				add_country_leader_trait = reluctant_leader
+				add_political_power = 30
+			}
+			else = {
+				add_political_power = 60
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -419,7 +431,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_new_exarch_2
+		id = AOT_affirmed_status_quo
 		icon = GFX_focus_generic_self_management
 		cost = 10
 		relative_position_id = AOT_new_exarch
@@ -430,7 +442,19 @@ focus_tree = {
 
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_timon_thaddas
+						ruling_only = yes
+					}
+				}
+				swap_ruler_traits = {
+					remove = reluctant_leader
+					add = peoples_exarch
+				}
+			}
+			add_stability = 0.05
 		}
 		ai_will_do = {
 			base = 10
@@ -451,10 +475,17 @@ focus_tree = {
 		x = 2
 		y = 1
 		available = {
-
+			if = {
+				limit = { has_active_mission = AOT_neo_taneist_plot }
+				NOT = { has_active_mission = AOT_neo_taneist_plot }
+			}
 		}
 		completion_reward = {
-			custom_effect_tooltip = effect_WIP_TT
+			add_political_power = 60
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -542,7 +573,7 @@ focus_tree = {
 		icon = GFX_focus_generic_treaty
 		cost = 10
 		relative_position_id = AOT_new_beginning
-		prerequisite = { focus = AOT_new_exarch_2 focus = AOT_new_beginning focus = AOT_confirmed_leader }
+		prerequisite = { focus = AOT_affirmed_status_quo focus = AOT_new_beginning focus = AOT_confirmed_leader }
 		x = 0
 		y = 1
 		available = {
