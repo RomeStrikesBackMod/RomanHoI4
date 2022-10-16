@@ -22,8 +22,6 @@ if = {
 # Starting tech
 set_technology = {
 	basic_train = 1
-	early_bomber = 1
-	early_fighter = 1
 	electronic_mechanical_engineering = 1
 	fuel_refining = 1
 	fuel_silos = 1
@@ -38,6 +36,18 @@ set_technology = {
 }
 
 if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_technology = {
+		aa_lmg = 1
+		early_bombs = 1
+		engines_1 = 1
+		iw_large_airframe = 1
+		iw_medium_airframe = 1
+		iw_small_airframe = 1
+	}
+}
+
+if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
 		basic_battery = 1
@@ -47,6 +57,14 @@ if = {
 		early_ship_hull_cruiser = 1
 		early_ship_hull_heavy = 1
 		early_ship_hull_light = 1
+	}
+}
+
+if = {
+	limit = { not = { has_dlc = "By Blood Alone" } }
+	set_technology = {
+		early_bomber = 1
+		early_fighter = 1
 	}
 }
 
@@ -73,9 +91,6 @@ add_doctrine_cost_reduction = {
 set_country_flag = conv_south_asia
 set_convoys = 10
 
-add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 297 producer = IND }
-add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 6270 producer = IND }
-
 set_politics = {
     ruling_party = democratic
     last_election = "1934.3.25"
@@ -97,18 +112,18 @@ if = {
         has_dlc = "Together for Victory"
     }
     set_autonomy = {
-        target = X01
-        autonomous_state = autonomy_integrated_puppet
-        freedom_level = 0.4
-    }
-    set_autonomy = {
         target = X02
         autonomous_state = autonomy_integrated_puppet
         freedom_level = 0.4
     }
+    set_autonomy = {
+        target = X03
+        autonomous_state = autonomy_integrated_puppet
+        freedom_level = 0.4
+    }
     else = {
-        puppet = X01
         puppet = X02
+        puppet = X03
     }
 }
 
@@ -379,7 +394,91 @@ if = {
 		}
 	}
 }
+### PLANE DESIGNS ###
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	create_equipment_variant = {
+		name = "Interwar CAS"
+		type = small_plane_cas_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = bomb_locks
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Carrier CAS"
+		type = cv_small_plane_cas_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = bomb_locks
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Carrier Fighter"
+		type = cv_small_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_main_weapon_slot = light_mg_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Carrier Naval Bomber"
+		type = cv_small_plane_naval_bomber_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = torpedo_mounting
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Fighter"
+		type = small_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_main_weapon_slot = light_mg_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Naval Bomber"
+		type = small_plane_naval_bomber_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = torpedo_mounting
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Strategic Bomber"
+		type = large_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_4x
+			fixed_main_weapon_slot = large_bomb_bay
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Tactical Bomber"
+		type = medium_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_2x
+			fixed_main_weapon_slot = medium_bomb_bay
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = lmg_defense_turret
+		}
+	}
+}
 ### TANK DESIGNS ###
 if = {
 	limit = { has_dlc = "No Step Back" }
 }
+add_equipment_to_stockpile = { type = artillery_equipment amount = 276 producer = IND }
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 21 producer = IND }
+add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 6270 producer = IND }
+

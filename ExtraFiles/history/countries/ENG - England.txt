@@ -33,10 +33,7 @@ if = {
 # Starting tech
 set_technology = {
 	basic_train = 1
-	early_bomber = 1
-	early_fighter = 1
 	electronic_mechanical_engineering = 1
-	fighter1 = 1
 	fuel_refining = 1
 	fuel_silos = 1
 	gw_artillery = 1
@@ -48,7 +45,6 @@ set_technology = {
 	motorised_infantry = 1
 	support_weapons = 1
 	synth_oil_experiments = 1
-	tactical_bomber1 = 1
 	tech_engineers = 1
 	tech_recon = 1
 	tech_support = 1
@@ -59,6 +55,22 @@ if = {
 	set_technology = {
 		basic_light_tank = 1
 		gwtank = 1
+	}
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_technology = {
+		aa_lmg = 1
+		aircraft_construction = 1
+		basic_medium_airframe = 1
+		basic_small_airframe = 1
+		early_bombs = 1
+		engines_1 = 1
+		engines_2 = 1
+		iw_large_airframe = 1
+		iw_medium_airframe = 1
+		iw_small_airframe = 1
 	}
 }
 
@@ -102,6 +114,16 @@ if = {
 }
 
 if = {
+	limit = { not = { has_dlc = "By Blood Alone" } }
+	set_technology = {
+		early_bomber = 1
+		early_fighter = 1
+		fighter1 = 1
+		tactical_bomber1 = 1
+	}
+}
+
+if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
 		basic_battleship = 1
@@ -141,9 +163,6 @@ set_country_flag = conv_brazil
 starting_train_buffer = 1.5
 set_convoys = 0
 
-add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 1 producer = ENG }
-add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 38 producer = ENG }
-
 set_politics = {
     ruling_party = democratic
     last_election = "1935.1.1"
@@ -165,12 +184,12 @@ if = {
         has_dlc = "Together for Victory"
     }
     set_autonomy = {
-        target = X00
+        target = X01
         autonomous_state = autonomy_integrated_puppet
         freedom_level = 0.4
     }
     else = {
-        puppet = X00
+        puppet = X01
     }
 }
 
@@ -253,7 +272,7 @@ recruit_character = ENG_arthur_madden
 recruit_character = ENG_henrey_williams
 recruit_character = ENG_colin_thesiger
 recruit_character = ENG_graham_montgomery
-recruit_character = ENG_david_odoni
+recruit_character = ENG_ian_de_robeck
 
 if = {
 	limit = {
@@ -452,6 +471,159 @@ if = {
 		}
 	}
 }
+### PLANE DESIGNS ###
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	create_equipment_variant = {
+		name = "Basic CAS"
+		type = small_plane_cas_airframe_1
+		modules = {
+			engine_type_slot = engine_2_1x
+			fixed_main_weapon_slot = bomb_locks
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Carrier CAS"
+		type = cv_small_plane_cas_airframe_1
+		modules = {
+			engine_type_slot = engine_2_1x
+			fixed_main_weapon_slot = bomb_locks
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Carrier Fighter"
+		type = cv_small_plane_airframe_1
+		modules = {
+			engine_type_slot = engine_2_1x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_main_weapon_slot = light_mg_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Carrier Naval Bomber"
+		type = cv_small_plane_naval_bomber_airframe_1
+		modules = {
+			engine_type_slot = engine_2_1x
+			fixed_main_weapon_slot = torpedo_mounting
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Fighter"
+		type = small_plane_airframe_1
+		modules = {
+			engine_type_slot = engine_2_1x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_main_weapon_slot = light_mg_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Naval Bomber"
+		type = small_plane_naval_bomber_airframe_1
+		modules = {
+			engine_type_slot = engine_2_1x
+			fixed_main_weapon_slot = torpedo_mounting
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Basic Tactical Bomber"
+		type = medium_plane_airframe_1
+		modules = {
+			engine_type_slot = engine_2_2x
+			fixed_main_weapon_slot = medium_bomb_bay
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar CAS"
+		type = small_plane_cas_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = bomb_locks
+			special_type_slot_1 = lmg_defense_turret
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Interwar Carrier CAS"
+		type = cv_small_plane_cas_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = bomb_locks
+			special_type_slot_1 = lmg_defense_turret
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Interwar Carrier Fighter"
+		type = cv_small_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_main_weapon_slot = light_mg_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Interwar Carrier Naval Bomber"
+		type = cv_small_plane_naval_bomber_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = torpedo_mounting
+			special_type_slot_1 = lmg_defense_turret
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Interwar Fighter"
+		type = small_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_main_weapon_slot = light_mg_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Interwar Naval Bomber"
+		type = small_plane_naval_bomber_airframe_0
+		modules = {
+			engine_type_slot = engine_1_1x
+			fixed_main_weapon_slot = torpedo_mounting
+			special_type_slot_1 = lmg_defense_turret
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Interwar Strategic Bomber"
+		type = large_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_4x
+			fixed_main_weapon_slot = large_bomb_bay
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Interwar Tactical Bomber"
+		type = medium_plane_airframe_0
+		modules = {
+			engine_type_slot = engine_1_2x
+			fixed_main_weapon_slot = medium_bomb_bay
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = lmg_defense_turret
+		}
+		obsolete = yes
+	}
+}
 ### TANK DESIGNS ###
 if = {
 	limit = { has_dlc = "No Step Back" }
@@ -494,3 +666,6 @@ if = {
 		icon = "gfx/interface/technologies/SOV_basic_heavy_tank.dds"
 	}
 }
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 1 producer = ENG }
+add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 38 producer = ENG }
+
