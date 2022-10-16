@@ -193,7 +193,50 @@ recruit_character = AOT_adamantios_kanaris
 recruit_character = AOT_kyrene_thaddas
 recruit_character = AOT_timon_thaddas
 recruit_character = AOT_transitional_council
+recruit_character = AOT_ieni_papadopoulos
+recruit_character = AOT_akahata_aetos
+recruit_character = AOT_taneist_council
+recruit_character = AOT_haralambos_dougenis
+recruit_character = AOT_autororo_taurima
+recruit_character = AOT_iahepa_ambrosiadis
+recruit_character = AOT_manaaki_awerama
+recruit_character = AOT_kauri_kaaka
+recruit_character = AOT_tama_ngata
 
+#Pacific islands array for decisions
+X01 = {
+	every_owned_state = {
+		AOT = {
+			add_to_array = {
+				array = AOT_iranian_pacific_islands
+				value = PREV
+			}
+		}
+		set_variable = { aot_island_control = 0 }
+	}
+}
+AST = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 42
+				state = 43
+				state = 44
+				state = 45
+				state = 46
+				state = 54
+				state = 55
+			}
+		}
+		AOT = {
+			add_to_array = {
+				array = AOT_australian_pacific_islands
+				value = PREV
+			}
+		}
+		set_variable = { aot_island_control = 0 }
+	}
+}
 if = {
 	limit = {
 		has_dlc = "La Resistance"

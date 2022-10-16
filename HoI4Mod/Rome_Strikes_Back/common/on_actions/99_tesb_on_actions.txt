@@ -60,7 +60,9 @@ on_actions = {
 						}
 					}
 					NOT = {
-						tag = RME
+						has_idea = RME_former_territory
+						has_idea = RME_former_dominion
+						original_tag = RME
 						is_in_faction_with = RME # I guess USA will not go to war with someone they are in faction with
 						has_war_with = RME
 						#USA = { has_war_with = FROM } Should USA enforce peace in a nation it is already at war with?
@@ -286,6 +288,66 @@ on_actions = {
 	on_weekly_AOT = {
 		effect = {
 			TESB_AOT_socialist_support = yes
+		}
+	}
+
+	on_ruling_party_change = {
+		effect = {
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_kauri_kaaka
+						ruling_only = yes
+					}
+					has_idea = AOT_kauri_kaaka_ne
+				}
+				deactivate_advisor = AOT_kauri_kaaka_ne
+				add_political_power = 50
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_iahepa_ambrosiadis
+						ruling_only = yes
+					}
+					has_idea = AOT_iahepa_ambrosiadis_cr
+				}
+				deactivate_advisor = AOT_iahepa_ambrosiadis_cr
+				add_political_power = 50
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_haralambos_dougenis
+						ruling_only = yes
+					}
+					has_idea = AOT_haralambos_dougenis_fs
+				}
+				deactivate_advisor = AOT_haralambos_dougenis_fs
+				add_political_power = 50
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_manaaki_awerama
+						ruling_only = yes
+					}
+					has_idea = AOT_manaaki_awerama_dr
+				}
+				deactivate_advisor = AOT_manaaki_awerama_dr
+				add_political_power = 50
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						character = AOT_ieni_papadopoulos
+						ruling_only = yes
+					}
+					has_idea = AOT_ieni_papadopoulos_fe
+				}
+				deactivate_advisor = AOT_ieni_papadopoulos_fe
+				add_political_power = 50
+			}
 		}
 	}
 }
