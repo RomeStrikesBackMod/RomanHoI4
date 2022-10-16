@@ -206,14 +206,28 @@ instant_effect = {
 		progress = 0.88
 		efficiency = 100
 	}
-	add_equipment_production = {
-		equipment = {
-			type = fighter_equipment_0
-			creator = "LIV"
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+		add_equipment_production = {
+			equipment = {
+				type = small_plane_airframe_0
+				creator = "LIV"
+			}
+			requested_factories = 5
+			progress = 0.88
+			efficiency = 100
 		}
-		requested_factories = 5
-		progress = 0.88
-		efficiency = 100
+	}
+	else = {
+		add_equipment_production = {
+			equipment = {
+				type = fighter_equipment_0
+				creator = "LIV"
+			}
+			requested_factories = 5
+			progress = 0.88
+			efficiency = 100
+		}
 	}
 	add_equipment_production = {
 		equipment = {
