@@ -1376,17 +1376,17 @@ focus_tree = {
 			if = {
 				limit = { country_exists = RMD }
 				country_exists = RMD
-				else_if = {
-					limit = { country_exists = RMA }
-					country_exists = RMA
-				}
-				else_if = {
-					limit = { country_exists = RMF }
-					country_exists = RMF
-				}
-				else = {
-					country_exists = RME
-				}
+			}
+			else_if = {
+				limit = { country_exists = RMA }
+				country_exists = RMA
+			}
+			else_if = {
+				limit = { country_exists = RMF }
+				country_exists = RMF
+			}
+			else = {
+				country_exists = RME
 			}
 		}
 		completion_reward = {
@@ -1442,18 +1442,18 @@ focus_tree = {
 		available = {
 			if = {
 				limit = { country_exists = RMA }
-				country_exists = RMA
-				else_if = {
-					limit = { country_exists = RMF }
-					country_exists = RMF
-				}
-				else_if = {
-					limit = { country_exists = RMD }
-					country_exists = RMD
-				}
-				else = {
-					country_exists = RME
-				}
+				RMA = { NOT = { has_civil_war = yes } }
+			}
+			else_if = {
+				limit = { country_exists = RMF }
+				RMF = { NOT = { has_civil_war = yes } }
+			}
+			else_if = {
+				limit = { country_exists = RMD }
+				RMD = { NOT = { has_civil_war = yes } }
+			}
+			else = {
+				RME = { NOT = { has_civil_war = yes } }
 			}
 		}
 		will_lead_to_war_with = RME
