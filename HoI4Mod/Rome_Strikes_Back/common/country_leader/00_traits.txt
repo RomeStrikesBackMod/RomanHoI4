@@ -2274,9 +2274,9 @@ leader_traits = {
 	SWI_guisan_leader_trait = {
 		random = no 
 		sprite = 5
-		army_defence_factor = 0.2
-		army_attack_factor = 0.15
-		war_support_factor = 0.1
+		army_defence_factor = 0.15
+		army_attack_factor = 0.1
+		war_support_factor = 0.15
 		stability_factor = 0.1  
 	}
 
@@ -2327,7 +2327,7 @@ leader_traits = {
 		production_factory_max_efficiency_factor = 0.1
 		neutrality_drift = 0.03 
 		materiel_manufacturer_cost_factor = -0.75
-		research_speed_factor = 0.2
+		research_speed_factor = 0.1
 	}
 
 	SWI_brandy_the_st_bernard_trait = {
@@ -2579,7 +2579,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.05
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.05
 		civilian_intel_to_others = -5
 		custom_modifier_tooltip = SOV_head_of_the_nkvd_locked_tt
@@ -2589,7 +2589,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.05
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.05
 		civilian_intel_to_others = -5
 		custom_modifier_tooltip = SOV_head_of_the_nkvd_yagoda_tt
@@ -2600,7 +2600,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.05
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.05
 		civilian_intel_to_others = -5
 	}
@@ -2609,7 +2609,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.1
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.1
 		civilian_intel_to_others = -10
 		agency_upgrade_time = -0.1
@@ -2620,7 +2620,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.1
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.1
 		civilian_intel_to_others = -10
 		agency_upgrade_time = -0.1
@@ -2632,7 +2632,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.1
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.1
 		civilian_intel_to_others = -10
 		agency_upgrade_time = -0.1
@@ -2642,7 +2642,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.05
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.15
 		civilian_intel_to_others = -10
 		intel_network_gain_factor = 0.1
@@ -2653,7 +2653,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.05
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.1
 		enemy_operative_capture_chance_factor = 0.15
 		civilian_intel_to_others = -10
 		intel_network_gain_factor = 0.1
@@ -2665,7 +2665,7 @@ leader_traits = {
 		random = no
 		sprite = 13
 		stability_factor = -0.05
-		enemy_operative_detection_chance = 5
+		enemy_operative_detection_chance = 0.2
 		enemy_operative_capture_chance_factor = 0.15
 		civilian_intel_to_others = -10
 		intel_network_gain_factor = 0.1
@@ -6434,5 +6434,50 @@ leader_traits = {
 		}
 	}
 
+	evans_deakin_trait = { #at end for save compat
+		random = no
+		equipment_bonus = {
+			carrier = {
+				naval_range = 0.25
+			}
+			capital_ship = {
+				naval_range = 0.25
+			}
+			screen_ship = {
+				naval_range = 0.25
+			}
+			submarine = {
+				naval_range = 0.25
+				build_cost_ic = -0.1
+			}
+			convoy = {
+				build_cost_ic = -0.1
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	cockatoo_trait = { #at end for save compat
+		random = no
+		equipment_bonus = {
+			heavy_cruiser = {
+				naval_range = 0.3 
+				sub_detection = 0.1 
+				naval_speed = 0.1
+			}
+			screen_ship = {
+				naval_range = 0.3 
+				sub_detection = 0.1 
+				naval_speed = 0.1
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 }

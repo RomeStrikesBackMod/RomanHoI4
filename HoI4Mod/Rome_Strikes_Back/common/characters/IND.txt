@@ -1,6 +1,14 @@
 characters={
 	IND_vasireddy_hanumathu={
 		name=IND_vasireddy_hanumathu
+		portraits={
+			army={
+				large="gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
+			}
+			army={
+				small="gfx/leaders/RAJ/Portrait_The_Raj_Army_Generic.dds"
+			}
+		}
 		corps_commander={
 			skill=3
 			attack_skill=3
@@ -13,6 +21,14 @@ characters={
 
 	IND_veerapandiya_naidu={
 		name=IND_veerapandiya_naidu
+		portraits={
+			army={
+				large="gfx/leaders/Indian/Portrait_BHC_Janjuh_Khan.tga"
+			}
+			army={
+				small="gfx/leaders/Indian/Portrait_BHC_Janjuh_Khan.tga"
+			}
+		}
 		corps_commander={
 			skill=1
 			attack_skill=1
@@ -25,6 +41,14 @@ characters={
 
 	IND_narasimha_naidu={
 		name=IND_narasimha_naidu
+		portraits={
+			army={
+				large="gfx/leaders/Generic/Portrait_India_Generic_land_new_3.tga"
+			}
+			army={
+				small="gfx/leaders/Generic/Portrait_India_Generic_land_new_3.tga"
+			}
+		}
 		corps_commander={
 			skill=2
 			attack_skill=1
@@ -37,6 +61,14 @@ characters={
 
 	IND_durgabai_sitaramaraju={
 		name=IND_durgabai_sitaramaraju
+		portraits={
+			army={
+				large="gfx/leaders/Indian/Portrait_DEH_Malik_Khizar_Hayat_Tiwana.tga"
+			}
+			army={
+				small="gfx/leaders/Indian/Portrait_DEH_Malik_Khizar_Hayat_Tiwana.tga"
+			}
+		}
 		corps_commander={
 			skill=2
 			attack_skill=1
@@ -49,6 +81,14 @@ characters={
 
 	IND_alluri_kattabomman={
 		name=IND_alluri_kattabomman
+		portraits={
+			army={
+				large="gfx/leaders/Indian/Portrait_Madras_Thimayya.tga"
+			}
+			army={
+				small="gfx/leaders/Indian/Portrait_Madras_Thimayya.tga"
+			}
+		}
 		corps_commander={
 			skill=1
 			attack_skill=1
@@ -61,6 +101,14 @@ characters={
 
 	IND_narasimha_veeresalingam={
 		name=IND_narasimha_veeresalingam
+		portraits={
+			navy={
+				large="gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+			}
+			navy={
+				small="gfx/leaders/Generic/Portrait_Asia_Generic_navy_new_1.tga"
+			}
+		}
 		navy_leader={
 			skill=1
 			attack_skill=1
@@ -71,8 +119,8 @@ characters={
 		}
 	}
 
-	IND_keneganti_sriramulu={
-		name=IND_keneganti_sriramulu
+	IND_uyyalawada_kattabomman={
+		name=IND_uyyalawada_kattabomman
 		portraits={
 			civilian={
 				large="gfx/leaders/Indian/Portrait_BHC_Mohandas_Karamchand_Gandhi.tga"
@@ -82,6 +130,94 @@ characters={
 			ideology=conservatism
 			expire="1965.1.1.1"
 			id=-1
+		}
+	}
+
+	UTI_maurice_gamelin={
+		advisor={
+			slot = army_chief
+			idea_token = maurice_gamelin
+			available = {
+                has_completed_focus = FRA_aggressive_focus
+            }
+			allowed = {
+                original_tag = event_target:FRA_begin_rearmament_FRA
+            }
+			traits = {
+				army_chief_offensive_2
+			}
+			cost = 100
+			ai_will_do = {
+                factor = 1.000
+            }
+		}
+		field_marshal={
+			traits={ old_guard inflexible_strategist career_officer defensive_doctrine }
+			skill=2
+			attack_skill=1
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=0
+		}
+	}
+
+	UTI_maxime_weygand={
+		advisor={
+			slot = army_chief
+			idea_token = maxime_weygand
+			available = {
+                has_completed_focus = FRA_defensive_focus
+            }
+			allowed = {
+                original_tag = event_target:FRA_begin_rearmament_FRA
+            }
+			traits = {
+				army_chief_defensive_2
+			}
+			cost = 100
+			ai_will_do = {
+                factor = 1.000
+            }
+		}
+		field_marshal={
+			traits={ old_guard inflexible_strategist career_officer defensive_doctrine }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=0
+		}
+	}
+
+	UTI_charles_de_gaulle={
+		advisor={
+			slot = theorist
+			idea_token = charles_de_gaulle
+			ledger = army
+			available = {
+                has_completed_focus = FRA_battle_of_maneuver
+            }
+			allowed = {
+                original_tag = event_target:FRA_begin_rearmament_FRA
+            }
+			traits = {
+				blitzkrieg_theorist
+			}
+			cost = 100
+			ai_will_do = {
+                factor = 1.000
+            }
+		}
+		corps_commander={
+			traits={ media_personality harsh_leader armor_officer }
+			skill=4
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=0
 		}
 	}
 

@@ -8,6 +8,20 @@ peace_ai_desires = {
 		ai_desire = -200
 	}
 
+	force_gov_puppets = {
+		peace_action_type = force_government
+		enable = {
+			ROOT = {
+				has_government = democratic
+				ROOT.FROM.FROM = {
+					NOT = { has_government = democratic }
+					is_subject = yes
+				}
+			}
+		}
+		ai_desire = 100
+	}
+
 	democracy_owner_does_not_have_core = {
 		peace_action_type = { force_government puppet take_states }
 		enable = {
@@ -71,7 +85,7 @@ peace_ai_desires = {
 			}
 		}
 
-		ai_desire = 30
+		ai_desire = 20
 	}
 	
 	wrong_ideology_faction_members_dont_force_gov = {
@@ -86,20 +100,6 @@ peace_ai_desires = {
 			}
 		}
 		ai_desire = -200
-	}
-
-	force_gov_puppets = {
-		peace_action_type = force_government
-		enable = {
-			ROOT = {
-				has_government = democratic
-				ROOT.FROM.FROM = {
-					NOT = { has_government = democratic }
-					is_subject = yes
-				}
-			}
-		}
-		ai_desire = 100
 	}
 
 	fascist_majors_on_a_mission = {
@@ -157,5 +157,69 @@ peace_ai_desires = {
 		}
 		ai_desire = -200
 	}
+
+	dont_puppet_and_force_government = {
+		peace_action_type = { puppet }
+
+		enable = {
+			if = {
+				limit = { has_government = neutrality }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = neutrality }
+			}
+			else_if = {
+				limit = { has_government = absolutist }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = absolutist }
+			}
+			else_if = {
+				limit = { has_government = communism }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = communism }
+			}
+			else_if = {
+				limit = { has_government = democratic }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = democratic }
+			}
+			else_if = {
+				limit = { has_government = fascism }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = fascism }
+			}
+			else = {
+				always = no
+			}
+		}
+		ai_desire = -200
+	}
+
+
+	do_force_government_if_forced_to_our_ideology = {
+		peace_action_type = { force_government }
+
+		enable = {
+			if = {
+				limit = { has_government = neutrality }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = neutrality }
+			}
+			else_if = {
+				limit = { has_government = absolutist }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = absolutist }
+			}
+			else_if = {
+				limit = { has_government = communism }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = communism }
+			}
+			else_if = {
+				limit = { has_government = democratic }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = democratic }
+			}
+			else_if = {
+				limit = { has_government = fascism }
+				ROOT.FROM.FROM = { pc_is_forced_government_to = fascism }
+			}
+			else = {
+				always = no
+			}
+		}
+		ai_desire = 20
+	}
+
 
 }
