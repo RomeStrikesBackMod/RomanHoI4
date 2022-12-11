@@ -1,0 +1,40 @@
+peace_ai_desires = {
+	england_should_not_puppet_biru_at_first = {
+
+        peace_action_type = puppet
+
+        enable = {
+            ROOT.FROM = { tag = ENG }
+            ROOT.FROM.FROM.FROM = { tag = BIR }
+			date < 1939.1.1
+        }
+
+        ai_desire = -800
+    }
+
+	india_should_not_puppet_tibet_at_first = {
+
+        peace_action_type = puppet
+
+        enable = {
+			ROOT.FROM = { tag = IND }
+            ROOT.FROM.FROM.FROM = { tag = TIB }
+			date < 1939.1.1
+        }
+
+        ai_desire = -800
+    }
+	
+	india_should_take_states_from_tibet = {
+
+        peace_action_type = take_states
+
+        enable = {
+			ROOT.FROM = { tag = IND }
+            ROOT.FROM.FROM.FROM = { tag = TIB }
+			date < 1939.1.1
+        }
+
+        ai_desire = 800
+    }
+}
