@@ -900,9 +900,6 @@ country_event = {
 
 	option = {
 		name = tesb_AOT.25.a
-		set_technology = {
-			AOT_marines = 1
-		}
 		add_tech_bonus = {
 			name = marine_bonus
 			bonus = 0.5
@@ -915,9 +912,6 @@ country_event = {
 	}
 	option = {
 		name = tesb_AOT.25.b
-		set_technology = {
-			AOT_paratroopers = 1
-		}
 		add_tech_bonus = {
 			name = special_forces_bonus
 			bonus = 0.5
@@ -930,9 +924,6 @@ country_event = {
 	}
 	option = {
 		name = tesb_AOT.25.c
-		set_technology = {
-			AOT_mountaineers = 1
-		}
 		add_tech_bonus = {
 			name = special_forces_bonus
 			bonus = 0.5
@@ -1295,6 +1286,419 @@ country_event = {
 		name = tesb_AOT.38.b
 		create_country_leader = {
 			ideology = conservatism
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.50
+	title = tesb_AOT.50.t
+	desc = tesb_AOT.50.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.50.a
+		AST = {
+			country_event = {
+				id = tesb_AOT.51
+				hours = 1
+			}
+		}
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 2
+				JAV = { has_government = ROOT }
+			}
+		}
+	}
+
+	option = {
+		name = tesb_AOT.50.b
+		JAV = {
+			country_event = {
+				id = tesb_AOT.52
+				hours = 1
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				AST = { has_government = ROOT }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.51
+	title = tesb_AOT.51.t
+	desc = tesb_AOT.51.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.51.a
+		add_timed_idea = {
+			idea = AOT_new_guinea_payments
+			days = 730
+		}
+		JAV = {
+			transfer_state = 44
+			transfer_state = 54
+		}
+		hidden_effect = {
+			AOT = {
+				remove_from_array = {
+					array = AOT_australian_pacific_islands
+					value = 44.id
+				}
+				remove_from_array = {
+					array = AOT_australian_pacific_islands
+					value = 54.id
+				}
+				set_country_flag = cede_new_guinea_AST
+				country_event = {
+					id = tesb_AOT.53
+					hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 0.5
+				AOT = {
+					NOT = { has_government = ROOT }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = tesb_AOT.51.b
+		hidden_effect = {
+			AOT = {
+				set_country_flag = keep_new_guinea_AST
+				country_event = {
+					id = tesb_AOT.53
+					hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				AOT = {
+					NOT = { has_government = ROOT }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.52
+	title = tesb_AOT.52.t
+	desc = tesb_AOT.52.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.52.a
+		add_timed_idea = {
+			idea = AOT_new_guinea_payments
+			days = 730
+		}
+		AST = {
+			transfer_state = 322
+		}
+		hidden_effect = {
+			AOT = {
+				set_country_flag = cede_new_guinea_JAV
+				country_event = {
+					id = tesb_AOT.53
+					hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 0.5
+				AOT = {
+					NOT = { has_government = ROOT }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = tesb_AOT.52.b
+		hidden_effect = {
+			AOT = {
+				set_country_flag = keep_new_guinea_JAV
+				country_event = {
+					id = tesb_AOT.53
+					hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				AOT = {
+					NOT = { has_government = ROOT }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.53
+	title = {
+		text = tesb_AOT.53.ta
+		trigger = {
+			has_country_flag = cede_new_guinea_@FROM
+		}
+	}
+	title = {
+		text = tesb_AOT.53.tb
+		trigger = {
+			has_country_flag = keep_new_guinea_@FROM
+		}
+	}
+	desc = {
+		text = tesb_AOT.53.da
+		trigger = {
+			has_country_flag = cede_new_guinea_@FROM
+		}
+	}
+	desc = {
+		text = tesb_AOT.53.db
+		trigger = {
+			has_country_flag = keep_new_guinea_@FROM
+		}
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.53.a
+		trigger = {
+			has_country_flag = cede_new_guinea_@FROM
+		}
+	}
+
+	option = {
+		name = tesb_AOT.53.b
+		trigger = {
+			has_country_flag = keep_new_guinea_@FROM
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+
+	option = {
+		name = tesb_AOT.53.c
+		trigger = {
+			has_country_flag = keep_new_guinea_AST
+			NOT = {
+				has_country_flag = keep_new_guinea_JAV
+				has_country_flag = cede_new_guinea_@FROM
+			}
+		}
+		JAV = {
+			country_event = {
+				id = tesb_AOT.52
+				hours = 1
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_AOT.53.d
+		trigger = {
+			has_country_flag = keep_new_guinea_JAV
+			NOT = {
+				has_country_flag = keep_new_guinea_AST
+				has_country_flag = cede_new_guinea_@FROM
+			}
+		}
+		AST = {
+			country_event = {
+				id = tesb_AOT.51
+				hours = 1
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.55
+	title = tesb_AOT.55.t
+	desc = tesb_AOT.55.d
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.55.a
+		add_timed_idea = {
+			idea = AOT_pacific_payments
+			days = 730
+		}
+		for_each_scope_loop = {
+			array = AOT.AOT_australian_pacific_islands
+			if = {
+				limit = {
+					is_owned_and_controlled_by = AST
+				}
+				transfer_state_to = AOT
+			}
+		}
+		hidden_effect = {
+			AOT = {
+				set_country_flag = cede_pacific_AST
+				country_event = {
+					id = tesb_AOT.56
+					hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 0.5
+				AOT = {
+					NOT = { has_government = ROOT }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = tesb_AOT.51.b
+		hidden_effect = {
+			AOT = {
+				set_country_flag = keep_pacific_AST
+				country_event = {
+					id = tesb_AOT.56
+					hours = 1
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				AOT = {
+					NOT = { has_government = ROOT }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.56
+	title = {
+		text = tesb_AOT.56.ta
+		trigger = {
+			has_country_flag = cede_pacific_AST
+		}
+	}
+	title = {
+		text = tesb_AOT.56.tb
+		trigger = {
+			has_country_flag = keep_pacific_AST
+		}
+	}
+	desc = {
+		text = tesb_AOT.56.da
+		trigger = {
+			has_country_flag = cede_pacific_AST
+		}
+	}
+	desc = {
+		text = tesb_AOT.56.db
+		trigger = {
+			has_country_flag = keep_pacific_AST
+		}
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+
+	immediate = {
+
+	}
+
+	option = {
+		name = tesb_AOT.56.a
+		trigger = {
+			has_country_flag = cede_pacific_AST
+		}
+	}
+
+	option = {
+		name = tesb_AOT.56.b
+		trigger = {
+			has_country_flag = keep_pacific_AST
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+
+	option = {
+		name = tesb_AOT.56.c
+		trigger = {
+			has_country_flag = keep_pacific_AST
+		}
+		activate_mission = AOT_australian_pacific_islands_countdown
+		hidden_effect = {
+			AST = {
+				activate_mission = AST_australian_pacific_islands_countdown
+			}
 		}
 		ai_chance = {
 			base = 1

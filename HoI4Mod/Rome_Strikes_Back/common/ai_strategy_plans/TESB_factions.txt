@@ -310,3 +310,51 @@ PLC_faction = { #Don't Ally Poland-Lithuania unless supposed to
 		value = -500
 	}
 }
+
+AOT_minor_allies = { #Don't Ally Aotearoa unless supposed to
+	name = "Don't ally Aotearoa"
+	desc = ""
+
+	enable = {
+		is_in_faction = no
+		AOT = { is_faction_leader = yes }
+		NOT = {
+			original_tag = AST
+			original_tag = JAV
+			original_tag = PHI
+		}
+	}
+	abort = {
+		is_in_faction_with = AOT
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "AOT"
+		value = -500
+	}
+}
+
+AOT_keep_minor_allies = { #Do Ally Aotearoa when supposed to
+	name = "Do ally Aotearoa"
+	desc = ""
+
+	enable = {
+		is_in_faction_with = AOT
+		AOT = { is_faction_leader = yes }
+		OR = {
+			original_tag = AST
+			original_tag = JAV
+			original_tag = PHI
+		}
+	}
+	abort = {
+		NOT = { is_in_faction_with = AOT }
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "AOT"
+		value = 500
+	}
+}
