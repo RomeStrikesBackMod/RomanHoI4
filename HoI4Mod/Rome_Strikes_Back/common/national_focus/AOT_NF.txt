@@ -742,7 +742,7 @@ focus_tree = {
 	#####################
 	focus = {
 		id = AOT_taneist_tendrils
-		icon = GFX_goal_support_fascism
+		icon = GFX_focus_generic_conspiracy
 		cost = 10
 		relative_position_id = AOT_appoint_timon_as_exarch
 		prerequisite = { focus = AOT_appoint_timon_as_exarch }
@@ -840,7 +840,7 @@ focus_tree = {
 
 	focus = {
 		id = AOT_restart_safety_patrols
-		icon = GFX_goal_support_fascism
+		icon = GFX_focus_generic_fascist_troops
 		cost = 10
 		relative_position_id = AOT_consolidate_power
 		prerequisite = { focus = AOT_consolidate_power }
@@ -1456,7 +1456,7 @@ focus_tree = {
 		id = AOT_vunerable_peace
 		icon = GFX_focus_hol_war_on_pacifism
 		cost = 10
-		x = 28
+		x = 30
 		y = 0
 		completion_reward = {
 			add_political_power = 30
@@ -1469,7 +1469,7 @@ focus_tree = {
 	### Pacifism ###
 	focus = {
 		id = AOT_regional_cooperation
-		icon = GFX_goal_generic_neutrality_focus
+		icon = GFX_goal_generic_national_unity
 		prerequisite = {
 			focus = AOT_vunerable_peace
 		}
@@ -1492,51 +1492,184 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_faction_1
-		icon = GFX_goal_generic_neutrality_focus
+		id = AOT_komnenion_treaty
+		icon = GFX_focus_generic_treaty
 		prerequisite = {
 			focus = AOT_regional_cooperation
 		}
 		relative_position_id = AOT_regional_cooperation
 		cost = 10
-		x = -3
+		x = -4
 		y = 1
 		completion_reward = {
-
+			set_rule = {
+				can_create_factions = yes
+			}
+			create_faction = Oceanian_Accord
 		}
 		ai_will_do = {
 			base = 1
 		}
 	}
 	focus = {
-		id = AOT_faction_2
-		icon = GFX_goal_generic_neutrality_focus
+		id = AOT_call_on_australia
+		icon = GFX_goal_generic_major_alliance
 		prerequisite = {
-			focus = AOT_faction_1
+			focus = AOT_komnenion_treaty
 		}
-		relative_position_id = AOT_faction_1
+		relative_position_id = AOT_komnenion_treaty
 		cost = 10
-		x = -1
+		x = -2
 		y = 1
+		available = {
+			is_faction_leader = yes
+			AST = { is_potential_friend_of_ROOT = yes }
+		}
 		completion_reward = {
-
+			AST = {
+				country_event = {
+					id = generic.5
+					hours = 1
+				}
+			}
 		}
 		ai_will_do = {
 			base = 1
 		}
 	}
 	focus = {
-		id = AOT_faction_3
-		icon = GFX_goal_generic_neutrality_focus
+		id = AOT_island_guardianship
+		icon = GFX_goal_generic_position_armies
 		prerequisite = {
-			focus = AOT_faction_1
+			focus = AOT_call_on_australia
 		}
-		relative_position_id = AOT_faction_1
+		relative_position_id = AOT_call_on_australia
 		cost = 10
-		x = 1
+		x = 0
 		y = 1
+		available = {
+			is_faction_leader = yes
+			AST = {
+				is_in_faction_with = ROOT
+				OR = {
+					owns_state = 42
+					owns_state = 43
+					owns_state = 45
+					owns_state = 46
+					owns_state = 55
+				}
+			}
+		}
 		completion_reward = {
-
+			country_event = {
+				id = tesb_AOT.55
+				hours = 1
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = AOT_call_on_java
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = {
+			focus = AOT_komnenion_treaty
+		}
+		relative_position_id = AOT_komnenion_treaty
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			is_faction_leader = yes
+			JAV = { is_potential_friend_of_ROOT = yes }
+		}
+		completion_reward = {
+			JAV = {
+				country_event = {
+					id = generic.5
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = AOT_consolidate_new_guinea
+		icon = GFX_goal_generic_position_armies
+		prerequisite = {
+			focus = AOT_call_on_java
+		}
+		prerequisite = {
+			focus = AOT_call_on_australia
+		}
+		relative_position_id = AOT_call_on_java
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			is_faction_leader = yes
+			JAV = {
+				is_in_faction_with = ROOT
+				owns_state = 322
+			}
+			OR = {
+				AST = {
+					is_in_faction_with = ROOT
+					owns_state = 44
+					owns_state = 54
+				}
+				AOT = {
+					owns_state = 44
+					owns_state = 54
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					owns_state = 44
+					owns_state = 54
+				}
+				JAV = {
+					transfer_state = 44
+					transfer_state = 54
+				}
+			}
+			else = {
+				country_event = {
+					id = tesb_AOT.50
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	focus = {
+		id = AOT_call_on_philippines
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = {
+			focus = AOT_komnenion_treaty
+		}
+		relative_position_id = AOT_komnenion_treaty
+		cost = 10
+		x = 2
+		y = 1
+		available = {
+			is_faction_leader = yes
+			PHI = { is_potential_friend_of_ROOT = yes }
+		}
+		completion_reward = {
+			PHI = {
+				country_event = {
+					id = generic.5
+					hours = 1
+				}
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -1544,7 +1677,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_joint_ops_1
+		id = AOT_allied_exercises
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = {
 			focus = AOT_regional_cooperation
@@ -1553,8 +1686,38 @@ focus_tree = {
 		cost = 10
 		x = 0
 		y = 1
+		available = {
+			is_in_faction = yes
+		}
 		completion_reward = {
-			
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				custom_effect_tooltip = tesb_all_faction_members
+				effect_tooltip = {
+					army_experience = 25
+					add_doctrine_cost_reduction = {
+						name = land_doc_bonus
+						cost_reduction = 0.5
+						uses = 1
+						category = land_doctrine
+					}
+				}
+			}
+			every_country = {
+				tooltip = tesb_all_faction_members
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				army_experience = 25
+				add_doctrine_cost_reduction = {
+					name = land_doc_bonus
+					cost_reduction = 0.5
+					uses = 1
+					category = land_doctrine
+				}
+			}
 		}
 		ai_will_do = {
 			base = 2
@@ -1562,41 +1725,53 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_joint_ops_2
+		id = AOT_joint_operations
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = {
-			focus = AOT_joint_ops_1
+			focus = AOT_allied_exercises
 		}
-		relative_position_id = AOT_joint_ops_1
+		relative_position_id = AOT_allied_exercises
 		cost = 10
 		x = 0
 		y = 1
+		available = {
+			is_in_faction = yes
+		}
 		completion_reward = {
-			
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				custom_effect_tooltip = tesb_all_faction_members
+				effect_tooltip = {
+					army_experience = 25
+					add_doctrine_cost_reduction = {
+						name = land_doc_bonus
+						cost_reduction = 0.5
+						uses = 1
+						category = land_doctrine
+					}
+				}
+			}
+			every_country = {
+				tooltip = tesb_all_faction_members
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				army_experience = 25
+				add_doctrine_cost_reduction = {
+					name = land_doc_bonus
+					cost_reduction = 0.5
+					uses = 1
+					category = land_doctrine
+				}
+			}
 		}
 		ai_will_do = {
 			base = 2
 		}
 	}
 	
-	focus = {
-		id = AOT_faction_research
-		icon = GFX_focus_research2
-		prerequisite = {
-			focus = AOT_joint_ops_2
-		}
-		relative_position_id = AOT_joint_ops_2
-		cost = 10
-		x = 0
-		y = 1
-		completion_reward = {
-			
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-
 	### Defensive ###
 	focus = {
 		id = AOT_protect_the_islands
@@ -1612,7 +1787,10 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-			add_ideas = AOT_protective_measures
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_protective_measures
+			}
 		}
 		ai_will_do = {
 			base = 2
@@ -1620,39 +1798,211 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_war_econ_1
+		id = AOT_develop_military_industry
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = {
 			focus = AOT_protect_the_islands focus = AOT_regional_cooperation
 		}
 		relative_position_id = AOT_protect_the_islands
 		cost = 10
-		x = -3
+		x = -4
 		y = 1
 		completion_reward = {
-			
+			if = {
+				limit = {
+					is_in_faction = yes
+				}
+				every_country = {
+					tooltip = tesb_all_faction_members
+					limit = {
+						is_in_faction_with = ROOT
+					}
+					custom_effect_tooltip = tesb_random_owned_state_arms_factory
+					hidden_effect = {
+						random_owned_controlled_state = {
+							limit = {
+								free_building_slots = {
+									building = arms_factory
+									size > 0
+									include_locked = yes
+								}
+								OR = {
+									is_in_home_area = yes
+									NOT = {
+										owner = {
+											any_owned_state = {
+												free_building_slots = {
+													building = arms_factory
+													size > 0
+													include_locked = yes
+												}
+												is_in_home_area = yes
+											}
+										}
+									}
+								}
+							}
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = arms_factory
+								level = 1
+								instant_build = yes
+							}
+						}
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						OR = {
+							is_in_home_area = yes
+							NOT = {
+								owner = {
+									any_owned_state = {
+										free_building_slots = {
+											building = arms_factory
+											size > 1
+											include_locked = yes
+										}
+										is_in_home_area = yes
+									}
+								}
+							}
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
 		}
 		ai_will_do = {
 			base = 2
 		}
 	}
 	focus = {
-		id = AOT_war_econ_2
+		id = AOT_coordinate_military_production
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = {
-			focus = AOT_war_econ_1
+			focus = AOT_develop_military_industry
 		}
-		relative_position_id = AOT_war_econ_1
+		relative_position_id = AOT_develop_military_industry
 		cost = 10
 		x = 0
 		y = 1
 		completion_reward = {
-			
+			if = {
+				limit = {
+					is_in_faction = yes
+				}
+				every_country = {
+					tooltip = tesb_all_faction_members
+					limit = {
+						is_in_faction_with = ROOT
+					}
+					custom_effect_tooltip = tesb_random_owned_state_arms_factory
+					hidden_effect = {
+						random_owned_controlled_state = {
+							limit = {
+								free_building_slots = {
+									building = arms_factory
+									size > 0
+									include_locked = yes
+								}
+								OR = {
+									is_in_home_area = yes
+									NOT = {
+										owner = {
+											any_owned_state = {
+												free_building_slots = {
+													building = arms_factory
+													size > 0
+													include_locked = yes
+												}
+												is_in_home_area = yes
+											}
+										}
+									}
+								}
+							}
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+								type = arms_factory
+								level = 1
+								instant_build = yes
+							}
+						}
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+						OR = {
+							is_in_home_area = yes
+							NOT = {
+								owner = {
+									any_owned_state = {
+										free_building_slots = {
+											building = arms_factory
+											size > 1
+											include_locked = yes
+										}
+										is_in_home_area = yes
+									}
+								}
+							}
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}			
 		}
 		ai_will_do = {
 			base = 2
 		}
 	}
+
+	focus = {
+		id = AOT_faction_research
+		icon = GFX_focus_research2
+		prerequisite = {
+			focus = AOT_joint_operations focus = AOT_coordinate_military_production
+		}
+		relative_position_id = AOT_joint_operations
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			is_in_faction = yes
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
 	focus = {
 		id = AOT_defensive_militia
 		icon = GFX_goal_generic_allies_build_infantry
@@ -1665,6 +2015,117 @@ focus_tree = {
 		y = 1
 		completion_reward = {
 			add_ideas = AOT_defensive_militia_idea
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_coastal_defenses
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = {
+			focus = AOT_protect_the_islands
+		}
+		relative_position_id = AOT_protect_the_islands
+		cost = 10
+		x = -2
+		y = 1
+		available = {
+			controls_state = 409
+			controls_state = 410
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOT_coastal_defenses_tt
+			hidden_effect = {
+				409 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 3
+						province = 1814
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 4543
+					}
+				}
+				410 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 2211
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 2197
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_naval_construction
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = {
+			focus = AOT_coastal_defenses
+		}
+		relative_position_id = AOT_coastal_defenses
+		cost = 10
+		x = 0
+		y = 1
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = AOT_naval_construction_state_flag
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+					is_coastal = yes
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = dockyard
+										size > 2
+										include_locked = yes
+									}
+									is_in_home_area = yes
+									is_coastal = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				set_state_flag = AOT_naval_construction_state_flag
+			}
 		}
 		ai_will_do = {
 			base = 2
@@ -1703,25 +2164,131 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_defense_1
-		icon = GFX_goal_generic_axis_build_infantry
+		id = AOT_iranian_pacific_islands
+		icon = GFX_focus_generic_attack_iran
 		prerequisite = {
 			focus = AOT_preemptive_action focus = AOT_protect_the_islands
 		}
 		relative_position_id = AOT_preemptive_action
 		cost = 10
-		x = -3
+		x = -4
 		y = 1
+		available = {
+			
+		}
 		completion_reward = {
-			add_ideas = AOT_mandatory_service_idea
+			custom_effect_tooltip = AOT_iranian_pacific_islands_tt
+			activate_mission = AOT_iranian_pacific_islands_countdown
+			hidden_effect = {
+				IRN = {
+					activate_mission = IRN_iranian_pacific_islands_countdown
+				}
+				X02 = {
+					activate_mission = IRN_iranian_pacific_islands_countdown
+				}
+			}
 		}
 		ai_will_do = {
 			base = 2
 		}
 	}
+
 	focus = {
-		id = AOT_offense_1
-		icon = GFX_goal_generic_axis_build_infantry
+		id = AOT_australian_pacific_islands
+		icon = GFX_focus_attack_australia
+		prerequisite = {
+			focus = AOT_iranian_pacific_islands
+		}
+		relative_position_id = AOT_iranian_pacific_islands
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOT_australian_pacific_islands_tt
+			activate_mission = AOT_australian_pacific_islands_countdown
+			hidden_effect = {
+				AST = {
+					activate_mission = AST_australian_pacific_islands_countdown
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_basic_defenses
+		icon = GFX_goal_generic_defence
+		prerequisite = {
+			focus = AOT_preemptive_action focus = AOT_protect_the_islands
+		}
+		relative_position_id = AOT_preemptive_action
+		cost = 10
+		x = -2
+		y = 1
+		available = {
+			controls_state = 409
+			controls_state = 410
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOT_basic_defenses_tt
+			hidden_effect = {
+				409 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 1814
+					}
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 4543
+					}
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 4748
+					}
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+					}
+				}
+				410 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 2211
+					}
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 2203
+					}
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 2197
+					}
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = AOT_war_gaming
+		icon = GFX_focus_generic_military_academy
 		prerequisite = {
 			focus = AOT_preemptive_action
 		}
@@ -1730,7 +2297,13 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-			add_ideas = AOT_mandatory_service_idea
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
 		}
 		ai_will_do = {
 			base = 2
@@ -1740,9 +2313,9 @@ focus_tree = {
 		id = AOT_elite_corps
 		icon = GFX_goal_generic_special_forces
 		prerequisite = {
-			focus = AOT_offense_1
+			focus = AOT_war_gaming
 		}
-		relative_position_id = AOT_offense_1
+		relative_position_id = AOT_war_gaming
 		cost = 10
 		x = -1
 		y = 1
@@ -1761,9 +2334,9 @@ focus_tree = {
 		id = AOT_mandatory_service
 		icon = GFX_goal_generic_axis_build_infantry
 		prerequisite = {
-			focus = AOT_offense_1
+			focus = AOT_war_gaming
 		}
-		relative_position_id = AOT_offense_1
+		relative_position_id = AOT_war_gaming
 		cost = 10
 		x = 1
 		y = 1
@@ -1776,7 +2349,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_pa_war_econ_1
+		id = AOT_military_build_up
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = {
 			focus = AOT_preemptive_action
@@ -1785,25 +2358,160 @@ focus_tree = {
 		cost = 10
 		x = 3
 		y = 1
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = AOT_military_build_up_flag
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 		completion_reward = {
-
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+					is_coastal = yes
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 2
+										include_locked = yes
+									}
+									is_in_home_area = yes
+									is_coastal = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = AOT_military_build_up_flag
+			}
 		}
 		ai_will_do = {
 			base = 2
 		}
 	}
 	focus = {
-		id = AOT_pa_war_econ_2
+		id = AOT_war_economy
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = {
-			focus = AOT_pa_war_econ_1
+			focus = AOT_military_build_up
 		}
-		relative_position_id = AOT_pa_war_econ_1
+		relative_position_id = AOT_military_build_up
 		cost = 10
 		x = 0
 		y = 1
+		available = {
+			has_war_support > 0.5
+		}
+		complete_tooltip = {
+			if = {
+				limit = {
+					has_country_flag = AOT_war_economy_flag
+				}
+				add_ideas = war_economy
+			}
+			else = {
+				add_political_power = 150
+			}
+			random_state = {
+				limit = {
+					has_state_flag = AOT_war_economy_state_flag
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 		completion_reward = {
-
+			if = {
+				limit = {
+					NOT = {
+						has_idea = war_economy
+						has_idea = tot_economic_mobilisation
+					}
+				}
+				add_ideas = war_economy
+				set_country_flag = AOT_war_economy_flag
+			}
+			else = {
+				add_political_power = 150
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+					is_coastal = yes
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 2
+										include_locked = yes
+									}
+									is_in_home_area = yes
+									is_coastal = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = AOT_war_economy_state_flag
+			}
 		}
 		ai_will_do = {
 			base = 2
