@@ -7,7 +7,14 @@ news_event = {
 	desc = tesb_AOT.1.d
 	picture = GFX_news_event_royal_visit #placeholder
 	fire_only_once = yes
-
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = AOT
+			original_tag = RME
+		}
+	}
+	
 	trigger = {
 		original_tag = AOT
 		has_idea = AOT_thaddai_power_couple
@@ -105,6 +112,13 @@ news_event = {
 	desc = tesb_AOT.3.d
 	picture = GFX_news_event_royal_visit #placeholder
 	fire_only_once = yes
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = AOT
+			original_tag = RME
+		}
+	}
 
 	trigger = {
 		original_tag = AOT
@@ -414,10 +428,34 @@ country_event = {
 		trigger = {
 			RMD = { exists = yes }
 		}
-		RMD = {
-			add_opinion_modifier = {
-				target = AOT
-				modifier = AOT_imperial_representative
+		effect_tooltip = {
+			RMD = {
+				add_opinion_modifier = {
+					target = AOT
+					modifier = AOT_imperial_representative
+				}
+			}
+		}
+		hidden_effect = {
+			set_country_flag = AOT_timon_alvertos
+			random_list = {
+				80 = {
+					set_country_flag = AOT_timon_arrives
+					RMD = { country_event = { id = tesb_AOT.9 hours = 1 } }
+				}
+				12 = {
+					set_country_flag = AOT_timon_nearly_captured
+					set_country_flag = AOT_timon_arrives
+					RMD = { country_event = { id = tesb_AOT.9 hours = 1 } }
+				}
+				6 = {
+					set_country_flag = AOT_timon_captured
+					RMA = { country_event = { id = tesb_AOT.801 hours = 1 } }
+				}
+				2 = {
+					set_country_flag = AOT_timon_wounded
+					RMA = { country_event = { id = tesb_AOT.801 hours = 1 } }
+				}
 			}
 		}
 		ai_chance = {
@@ -428,13 +466,35 @@ country_event = {
 		trigger = {
 			RMA = { exists = yes }
 		}
-		RMA = {
-			add_opinion_modifier = {
-				target = AOT
-				modifier = AOT_imperial_representative
+		effect_tooltip = {
+			RMA = {
+				add_opinion_modifier = {
+					target = AOT
+					modifier = AOT_imperial_representative
+				}
+			}
+		}
+		hidden_effect = {
+			set_country_flag = AOT_timon_konstantinos
+			random_list = {
+				50 = {
+					set_country_flag = AOT_timon_arrives
+					RMA = { country_event = { id = tesb_AOT.9 hours = 1 } }
+				}
+				50 = {
+					set_country_flag = AOT_timon_captured
+					RMD = { country_event = { id = tesb_AOT.801 hours = 1 } }
+				}
 			}
 		}
 		name = tesb_AOT.8.b #Konstatinos
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0.5
+				NOT = { has_government = absolutist }
+			}
+		}
 	}
 	option = {
 		trigger = {
@@ -445,11 +505,66 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = tesb_AOT.801
+	title = tesb_AOT.801.t
+	desc = {
+		trigger = { AOT = { has_country_flag = AOT_timon_captured } }
+		text = tesb_AOT.801.da
+	}
+	desc = {
+		trigger = { AOT = { has_country_flag = AOT_timon_wounded } }
+		text = tesb_AOT.801.db
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+	
+	option = {
+		trigger = { tag = RMA }
+		name = tesb_AOT.801.a
+		RMD = { country_event = { id = tesb_AOT.802 hours = 1 } }
+	}
+	option = {
+		trigger = { tag = RMD }
+		name = tesb_AOT.801.a
+		RMA = { country_event = { id = tesb_AOT.802 hours = 1 } }
+	}
+}
+
+country_event = {
+	id = tesb_AOT.802
+	title = tesb_AOT.802.t
+	desc = {
+		trigger = { AOT = { has_country_flag = AOT_timon_captured } }
+		text = tesb_AOT.802.da
+	}
+	desc = {
+		trigger = { AOT = { has_country_flag = AOT_timon_wounded } }
+		text = tesb_AOT.802.db
+	}
+	picture = GFX_report_event_ast_parliament_house #placeholder
+
+	is_triggered_only = yes
+	
+	option = {
+		name = tesb_AOT.802.a
+		set_country_flag = timon_rescue_op
+	}
+}
+
 # Notify Rome
 country_event = {
 	id = tesb_AOT.9
 	title = tesb_AOT.9.t
-	desc = tesb_AOT.9.d
+	desc = {
+		trigger = { AOT = { NOT = { has_country_flag = AOT_timon_nearly_captured } } }
+		text = tesb_AOT.9.da
+	}
+	desc = {
+		trigger = { AOT = { has_country_flag = AOT_timon_nearly_captured } }
+		text = tesb_AOT.9.db
+	}
 	picture = GFX_report_event_ast_parliament_house #placeholder
 
 	is_triggered_only = yes
@@ -460,11 +575,9 @@ country_event = {
 
 	option = {
 		name = tesb_AOT.9.a
-		effect_tooltip = {
-			add_opinion_modifier = {
-				target = AOT
-				modifier = AOT_imperial_representative
-			}
+		add_opinion_modifier = {
+			target = AOT
+			modifier = AOT_imperial_representative
 		}
 	}
 }

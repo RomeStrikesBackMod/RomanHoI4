@@ -5,6 +5,7 @@ regaining_rome = {
 		}
 		visible = {
 			original_tag = RME
+			is_debug = yes
 		}
 		complete_effect = {
 			if = {
@@ -30,6 +31,7 @@ regaining_rome = {
 				exists = yes
 			}
 			has_country_flag = RME_check_territories
+			is_debug = yes
 		}
 		target_trigger = {
 			FROM = {
@@ -73,7 +75,7 @@ regaining_rome = {
 
 	test_rme_vars = {
 		available = { always = yes }
-		visible = { always = yes }
+		visible = { is_debug = yes }
 		complete_effect = {
 			every_country = {
 				limit = {
@@ -377,6 +379,34 @@ rome_civil_war_decisions = {
 		}
 		ai_will_do = {
 			base = 100
+		}
+	}
+	rescue_timon_thaddas = {
+		available = {
+			
+		}
+		visible = {
+			has_country_flag = timon_rescue_op
+		}
+		complete_effect = {
+			hidden_effect = {
+				AOT = {
+					clr_country_flag = AOT_timon_captured
+					clr_country_flag = AOT_timon_wounded
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = AOT_imperial_representative }
+				}
+				add_opinion_modifier = {
+					target = AOT
+					modifier = AOT_imperial_representative
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
 		}
 	}
 }
@@ -1045,6 +1075,17 @@ aotearoa_decisions = {
 			}
 			has_country_flag = AOT_kyrene_dying
 			has_idea = AOT_timon_abroad
+			OR = {
+				NOT = {
+					has_country_flag = AOT_timon_wounded
+					has_country_flag = AOT_timon_captured
+					has_country_flag = AOT_timon_konstantinos
+				}
+				AND = {
+					has_country_flag = AOT_timon_captured
+					has_country_flag = AOT_timon_konstantinos
+				}
+			}
 		}
 		fire_only_once = yes
 		days_remove = 60
