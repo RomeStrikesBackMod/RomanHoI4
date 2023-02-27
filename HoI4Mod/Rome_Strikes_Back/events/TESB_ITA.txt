@@ -156,6 +156,47 @@ country_event = {
 }
 
 country_event = {
+	id = tesb_ITA.5
+	title = tesb_ITA.5.t
+	desc = tesb_ITA.5.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.5.a
+		set_global_flag = pope_has_returned_to_rome
+		add_political_power = -10
+		hidden_effect = {
+			news_event = { id = tesb_ITA.6 }
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	option = {
+		name = tesb_ITA.5.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_ITA.6
+	title = tesb_ITA.6.t
+	desc = tesb_ITA.6.d
+	picture = GFX_news_event_royal_visit
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.6.a
+		set_global_flag = pope_has_returned_to_rome
+	}
+}
+
+country_event = {
 	id = tesb_ITA.10
 	title = tesb_ITA.10.t
 	desc = tesb_ITA.10.desc
