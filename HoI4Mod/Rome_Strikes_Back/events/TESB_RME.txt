@@ -862,6 +862,160 @@ country_event = {
 
 
 country_event = {
+	id = tesb_rome.30
+	title = tesb_rome.30.t
+	desc = tesb_rome.30.d
+	picture = GFX_report_event_ger_civil_war
+	fire_only_once = yes
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = RME
+		}
+	}
+	
+	trigger = {
+		original_tag = RME
+		has_government = absolutist
+	}
+
+	mean_time_to_happen = {
+		days = 30
+		modifier = {
+			factor = 0.5
+			date > 1936.1.16
+		}
+		modifier = {
+			factor = 0.5
+			date > 1936.1.23
+		}
+	}
+
+	immediate = {
+		set_country_flag = emperor_dead
+		hidden_effect = {
+			add_stability = -0.05
+		}
+	}
+
+	option = {
+		name = tesb_rome.30.a
+	}
+}
+
+
+country_event = {
+	id = tesb_rome.31
+	title = tesb_rome.31.t
+	desc = tesb_rome.31.d
+	picture = GFX_report_event_ger_civil_war
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = RME
+		}
+	}
+
+	trigger = {
+		original_tag = RME
+		has_country_flag = emperor_dead
+	}
+
+	mean_time_to_happen = {
+		days = 30
+		modifier = {
+			factor = 0.5
+			date > 1936.2.15
+		}
+		modifier = {
+			factor = 0.1
+			date > 1936.2.22
+		}
+	}
+
+	immediate = {
+		set_country_flag = konstantinos_excommunicated
+		hidden_effect = {
+			add_stability = -0.10
+		}
+	}
+
+	option = {
+		name = tesb_rome.31.a
+		hidden_effect = {
+			country_event = { id = tesb_rome.32 }
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_rome.32
+	title = tesb_rome.32.t
+	desc = tesb_rome.32.d
+	picture = GFX_report_event_ger_civil_war
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = RME
+		}
+	}
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {		
+			add_stability = -0.10
+		}
+	}
+
+	option = {
+		name = tesb_rome.32.a
+		trigger = {
+			has_government = absolutist
+		}
+	}
+	option = {
+		name = tesb_rome.32.b
+		trigger = {
+			has_government = democratic
+		}
+		hidden_effect = {
+			RME = {
+				country_event = { id = tesb_rome.33 }
+			}
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_rome.33
+	title = tesb_rome.33.t
+	desc = tesb_rome.33.d
+	picture = GFX_report_event_ger_civil_war
+	major = yes
+	show_major = {
+		OR = {
+			original_tag = RME
+		}
+	}
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {		
+			add_stability = 0.10
+		}
+	}
+
+	option = {
+		name = tesb_rome.33.a
+	}
+}
+
+
+country_event = {
 	id = tesb_rome.75
 	title = tesb_rome.75.t
 	desc = tesb_rome.75.desc
