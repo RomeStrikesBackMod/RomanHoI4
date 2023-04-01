@@ -866,7 +866,6 @@ country_event = {
 	title = tesb_rome.30.t
 	desc = tesb_rome.30.d
 	picture = GFX_report_event_ger_civil_war
-	fire_only_once = yes
 	major = yes
 	show_major = {
 		OR = {
@@ -875,8 +874,9 @@ country_event = {
 	}
 	
 	trigger = {
-		original_tag = RME
+		tag = RMA
 		has_government = absolutist
+		NOT = { has_global_flag = roman_emperor_dead }
 	}
 
 	mean_time_to_happen = {
@@ -892,7 +892,7 @@ country_event = {
 	}
 
 	immediate = {
-		set_country_flag = emperor_dead
+		set_global_flag = roman_emperor_dead
 		hidden_effect = {
 			add_stability = -0.05
 		}
@@ -917,8 +917,8 @@ country_event = {
 	}
 
 	trigger = {
-		original_tag = RME
-		has_country_flag = emperor_dead
+		tag = RMA
+		has_global_flag = roman_emperor_dead
 	}
 
 	mean_time_to_happen = {
@@ -934,7 +934,7 @@ country_event = {
 	}
 
 	immediate = {
-		set_country_flag = konstantinos_excommunicated
+		set_global_flag = konstantinos_excommunicated
 		hidden_effect = {
 			add_stability = -0.10
 		}
@@ -942,8 +942,18 @@ country_event = {
 
 	option = {
 		name = tesb_rome.31.a
+		trigger = {
+			tag = RMA
+		}
 		hidden_effect = {
 			country_event = { id = tesb_rome.32 }
+		}
+	}
+	
+	option = {
+		name = tesb_rome.31.b
+		trigger = {
+			tag = RMD
 		}
 	}
 }
@@ -972,19 +982,15 @@ country_event = {
 	option = {
 		name = tesb_rome.32.a
 		trigger = {
-			has_government = absolutist
+			tag = RMA
 		}
 	}
 	option = {
 		name = tesb_rome.32.b
 		trigger = {
-			has_government = democratic
+			tag = RMD
 		}
-		hidden_effect = {
-			RME = {
-				country_event = { id = tesb_rome.33 }
-			}
-		}
+		set_global_flag = holy_father_in_trebizond
 	}
 }
 
@@ -1001,7 +1007,14 @@ country_event = {
 		}
 	}
 	
-	is_triggered_only = yes
+	trigger = {
+		tag = RMD
+		has_global_flag = holy_father_in_trebizond
+	}
+	
+	mean_time_to_happen = {
+		days = 3
+	}
 
 	immediate = {
 		hidden_effect = {		
