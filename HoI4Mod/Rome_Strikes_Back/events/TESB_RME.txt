@@ -482,13 +482,13 @@ country_event = {
 					}
 					divisions_in_state = {
 						size < 10
-						state = 453	# significant_number - Konya
+						state = 475	# significant_number - Anatolia
 					}
 				}
 			}
 			random_list = {
 				40 = { country_event = { id = tesb_rome.16 } } # Aydin
-				40 = { country_event = { id = tesb_rome.17 } } # Konya
+				40 = { country_event = { id = tesb_rome.17 } } # Anatolia
 				20 = { country_event = { id = tesb_rome.18 } } # disaster
 			}
 		}
@@ -502,13 +502,13 @@ country_event = {
 					}
 					divisions_in_state = {
 						size < 10
-						state = 453	# significant_number - Konya
+						state = 475	# significant_number - Anatolia
 					}
 				}
 			}
 			random_list = {
 				25 = { country_event = { id = tesb_rome.16 } } # Aydin
-				45 = { country_event = { id = tesb_rome.17 } } # Konya
+				45 = { country_event = { id = tesb_rome.17 } } # Anatolia
 				30 = { country_event = { id = tesb_rome.18 } } # disaster
 			}
 		}
@@ -522,13 +522,13 @@ country_event = {
 					}
 					divisions_in_state = {
 						size < 10
-						state = 453	# significant_number - Konya
+						state = 475	# significant_number - Anatolia
 					}
 				}
 			}
 			random_list = {
 				45 = { country_event = { id = tesb_rome.16 } } # Aydin
-				25 = { country_event = { id = tesb_rome.17 } } # Konya
+				25 = { country_event = { id = tesb_rome.17 } } # Anatolia
 				30 = { country_event = { id = tesb_rome.18 } } # disaster
 			}
 		}
@@ -542,20 +542,20 @@ country_event = {
 					}
 					divisions_in_state = {
 						size > 9
-						state = 453	# significant_number - Konya
+						state = 475	# significant_number - Anatolia
 					}
 				}
 			}
 			random_list = {
 				25 = { country_event = { id = tesb_rome.16 } } # Aydin
-				25 = { country_event = { id = tesb_rome.17 } } # Konya
+				25 = { country_event = { id = tesb_rome.17 } } # Anatolia
 				50 = { country_event = { id = tesb_rome.18 } } # disaster
 			}
 		}
 		else = {
 			random_list = {
 				33 = { country_event = { id = tesb_rome.16 } } # Aydin
-				33 = { country_event = { id = tesb_rome.17 } } # Konya
+				33 = { country_event = { id = tesb_rome.17 } } # Anatolia
 				33 = { country_event = { id = tesb_rome.18 } } # disaster
 			}
 		}
@@ -604,7 +604,7 @@ country_event = {
 	option = {
 		name = tesb_rome.17.a
 		set_province_controller = 1005
-		453 = {	# significant_number - Konya
+		475 = {	# significant_number - Konya
 			create_unit = {
 				division = "name = \"Landing Party\" division_template = \"Light Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1"
 				owner = ROOT
@@ -919,6 +919,9 @@ country_event = {
 	trigger = {
 		tag = RMA
 		has_global_flag = roman_emperor_dead
+		NOT = {
+			has_global_flag = konstantinos_excommunicated
+		}
 	}
 
 	mean_time_to_happen = {
@@ -1010,6 +1013,9 @@ country_event = {
 	trigger = {
 		tag = RMD
 		has_global_flag = holy_father_in_trebizond
+		NOT = {
+			has_global_flag = holy_father_visited_alvertos
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -1024,6 +1030,16 @@ country_event = {
 
 	option = {
 		name = tesb_rome.33.a
+		trigger = {
+			tag = RMD
+			set_global_flag = holy_father_visited_alvertos
+		}
+	}
+	option = {
+		name = tesb_rome.33.b
+		trigger = {
+			tag = RMA
+		}
 	}
 }
 
