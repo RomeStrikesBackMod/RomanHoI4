@@ -128,6 +128,12 @@ country_event = {
 					type = train_equipment_1
 					amount = 250
 				}
+				set_popularities = {
+					absolutist = 27
+					communism = 24
+					fascism = 39
+					neutrality = 10
+				}
 			}
 			#hidden_effect = { news_event = { id = wtt_news.1 hours = 6 } }
 			
@@ -223,6 +229,13 @@ country_event = {
 						load_oob = "RME_republic_naval_legacy"
 					}
 				}
+				set_popularities = {
+					absolutist = 16
+					communism = 14
+					democratic = 41
+					fascism = 23
+					neutrality = 6
+				}
 				set_capital = { state = 478 }	# significant_number - Trabizond
 				add_equipment_to_stockpile = {
 					type = train_equipment_1
@@ -230,6 +243,12 @@ country_event = {
 				}
 			}
 			#hidden_effect = { news_event = { id = wtt_news.1 hours = 6 } }
+			set_popularities = {
+					absolutist = 27
+					communism = 24
+					fascism = 39
+					neutrality = 10
+				}
 			set_stability = 0.9
 			set_war_support = 0.8
 			add_equipment_to_stockpile = {
@@ -875,7 +894,10 @@ country_event = {
 	
 	trigger = {
 		tag = RMA
-		has_government = absolutist
+		OR={
+			has_government = absolutist
+			has_government = fascism
+		}
 		NOT = { has_global_flag = roman_emperor_dead }
 	}
 
