@@ -4023,7 +4023,7 @@ focus_tree = {
 			is_puppet = no
 			has_war = no
 		}
-		x = 32
+		x = 35
 		y = 0
 		cost = 10
 		ai_will_do = {
@@ -4041,10 +4041,6 @@ focus_tree = {
 		icon = GFX_focus_ger_revive_kaiserreich
 		prerequisite = { focus = RME_secure_the_new_state }
 		mutually_exclusive = { focus = RME_establish_free_elections }
-		bypass = {
-			#has_country_flag = RME_mackensen_dead
-			#NOT = { has_government = democratic }
-		}
 		available = {
 			is_puppet = no
 			has_government = absolutist
@@ -4060,12 +4056,16 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = RME_imperial_coronation
 			#hidden_effect = { set_cosmetic_tag = RME_german_empire }
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
 			create_country_leader = {
 				name = "Konstantinos XXI"
 				desc = "POLITICS_KONSTANTINOS_XXI_DESC"
 				picture = "gfx/leaders/ENG/Portrait_Britain_Edward_VIII.dds"
 				expire = "1965.1.1"
-				ideology = absolute_monarchy
+				ideology = rexism
 				traits = {
 					inexperienced_imperialist
 				}
@@ -4222,9 +4222,9 @@ focus_tree = {
 		prerequisite = { focus = RME_imperial_coronation }
 		available = {
 			is_puppet = no
-			absolutist > 0.4
+			fascism > 0.4
 		}
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = RME_imperial_coronation
 		cost = 10
@@ -4234,7 +4234,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_named_threat = { threat = 5 name = RME_eimai_to_kratos }
-			add_popularity = { ideology = absolutist popularity = 0.1 }
+			add_popularity = { ideology = fascism popularity = 0.1 }
 			add_stability = 0.05
 		}
 	}
@@ -4283,7 +4283,7 @@ focus_tree = {
 			num_subjects > 5
 		}
 		cancel_if_invalid = yes
-		x = -2
+		x = 0
 		y = 1
 		relative_position_id = RME_reestablish_roman_hegemony
 		cost = 10
@@ -4350,7 +4350,7 @@ focus_tree = {
 		mutually_exclusive = { focus = RME_reject_imperialists }
 		available = {
 			is_puppet = no
-			fascism > 0.4
+			absolutist > 0.4
 		}
 		cancel_if_invalid = yes
 		x = 2
@@ -4362,7 +4362,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_popularity = { ideology = fascism popularity = 0.1 }
+			add_popularity = { ideology = absolutist popularity = 0.1 }
 			swap_ideas = {
 				remove_idea = RME_establish_free_elections
 				add_idea = RME_imperial_ambitions
@@ -4409,7 +4409,7 @@ focus_tree = {
 		id = RME_approach_iran
 		dynamic = yes
 		icon = GFX_goal_support_fascism
-		prerequisite = { focus = RME_embrace_imperialists }
+		prerequisite = { focus = RME_eimai_to_kratos }
 		mutually_exclusive = { focus = RME_approach_plc }
 		available = {
 			is_puppet = no
@@ -4420,9 +4420,9 @@ focus_tree = {
 			is_in_faction_with = IRN
 		}
 		cancel_if_invalid = yes
-		x = 4
+		x = -4
 		y = 1
-		relative_position_id = RME_embrace_imperialists
+		relative_position_id = RME_eimai_to_kratos
 		cost = 10
 		ai_will_do = {
 			factor = 3
@@ -4444,7 +4444,7 @@ focus_tree = {
 		id = RME_approach_plc
 		dynamic = yes
 		icon = GFX_focus_generic_polish_deal
-		prerequisite = { focus = RME_embrace_imperialists }
+		prerequisite = { focus = RME_eimai_to_kratos }
 		mutually_exclusive = { focus = RME_approach_iran }
 		available = {
 			is_puppet = no
@@ -4455,9 +4455,9 @@ focus_tree = {
 			is_in_faction_with = PLC
 		}
 		cancel_if_invalid = yes
-		x = 2
+		x = -2
 		y = 1
-		relative_position_id = RME_embrace_imperialists
+		relative_position_id = RME_eimai_to_kratos
 		cost = 10
 		ai_will_do = {
 			factor = 3
@@ -4557,7 +4557,7 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = yes
-		x = 1
+		x = -1
 		y = 2
 		relative_position_id = RME_approach_plc
 		cost = 10
@@ -4643,7 +4643,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_popularity = { ideology = fascism popularity = -0.2 }
+			add_popularity = { ideology = absolutist popularity = -0.2 }
 			add_stability = -0.05
 			swap_ideas = {
 				remove_idea = RME_establish_free_elections
@@ -4739,7 +4739,7 @@ focus_tree = {
 		available = {
 			is_puppet = no
 		}
-		x = 7
+		x = 4
 		y = 1
 		relative_position_id = RME_constitutional_convention
 		cost = 10
@@ -4759,7 +4759,7 @@ focus_tree = {
 		available = {
 			is_puppet = no
 		}
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = RME_university_of_constantinople
 		cost = 10
