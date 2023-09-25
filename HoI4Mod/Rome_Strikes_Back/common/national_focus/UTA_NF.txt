@@ -70,6 +70,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = UTA_the_yona_doctrine  }
 		ai_will_do = { factor = 80 }
+		available = {
+			is_faction_leader = yes
+			NOT = { has_war_with = CAN }
+		}
 		bypass = {
 			is_in_faction_with = CAN
 		}
@@ -111,6 +115,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
 		available = {
+			is_faction_leader = yes
 			NOT = { has_war_with = COL }
 		}
 		bypass = {
@@ -135,6 +140,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
 		available = {
+			is_faction_leader = yes
 			NOT = { has_war_with = BIR }
 		}
 		bypass = {
@@ -159,6 +165,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = UTA_focus_on_south_america  }
 		available = {
+			is_faction_leader = yes
 			NOT = { has_war_with = ARG }
 		}
 		bypass = {
@@ -185,6 +192,7 @@ focus_tree = {
 		ai_will_do = { factor = 100 }
 		available = {
 			NOT = { has_war = yes }
+			is_independent_country = yes
 		}
 		bypass = {
 			is_in_faction_with = ENG
@@ -233,6 +241,7 @@ focus_tree = {
 		prerequisite = { focus = UTA_focus_on_the_caribbean }
 		available = {
 			NOT = { has_war = yes }
+			is_independent_country = yes
 		}
 		bypass = {
 			is_in_faction_with = HAI
@@ -241,9 +250,9 @@ focus_tree = {
 		ai_will_do = { factor = 70 }
 		will_lead_to_war_with = HAI
 		completion_reward = {
-			declare_war_on = {
-				type = topple_government
+			create_wargoal = {
 				target = HAI
+				type = topple_government
 			}
 		}
 	}
@@ -262,6 +271,7 @@ focus_tree = {
 		prerequisite = { focus = UTA_focus_on_the_caribbean }
 		available = {
 			NOT = { has_war = yes }
+			is_independent_country = yes
 		}
 		bypass = {
 			is_in_faction_with = CUB
@@ -270,9 +280,9 @@ focus_tree = {
 		ai_will_do = { factor = 70 }
 		will_lead_to_war_with  = CUB
 		completion_reward = {
-			declare_war_on = {
-				type = topple_government
+			create_wargoal = {
 				target = CUB
+				type = topple_government
 			}
 		}
 	}
@@ -291,6 +301,7 @@ focus_tree = {
 		prerequisite = { focus = UTA_freedom_for_brazil  } prerequisite = { focus = UTA_haitian_democracy  } prerequisite = { focus = UTA_cuban_democracy  }
 		available = {
 			NOT = { has_war = yes }
+			is_faction_leader = yes
 		}
 		ai_will_do = { factor = 100 }
 		completion_reward = {
