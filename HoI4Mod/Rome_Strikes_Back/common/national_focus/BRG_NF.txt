@@ -309,10 +309,11 @@ focus_tree = {
 		relative_position_id = BRG_italian_politics
 		prerequisite = { focus = BRG_italian_politics }
 		available = {
-
+			is_in_faction = no
+			is_independent_country = yes
 		}
 		bypass = {
-			
+			is_in_faction = yes
 		}
 		completion_reward = {
 			set_rule = {
@@ -338,6 +339,7 @@ focus_tree = {
 		mutually_exclusive = { focus = BRG_win_italian_throne }
 		will_lead_to_war_with = ITA
 		available = {
+			is_independent_country = yes
 			OR = {
 				ITA = {
 					NOT = { has_idea = BRG_absolutist_influence }
@@ -383,6 +385,7 @@ focus_tree = {
 		mutually_exclusive = { focus = BRG_seize_italian_throne }
 		will_lead_to_war_with = ITA
 		available = {
+			is_independent_country = yes
 			ITA = {
 				NOT = { has_idea = BRG_absolutist_influence }
 				is_independent_country = yes
@@ -395,12 +398,27 @@ focus_tree = {
 					BRG.BRG_hre_influence > 20
 				}
 			}
-			custom_trigger_tooltip = {
-				tooltip = BRG_win_italian_throne_TT_2
-				check_variable = {
-					var = ITA.hre_influence_diff
-					value = -10
-					compare = less_than_or_equals
+			if = {
+				limit = {
+					ITA = { has_country_flag = ITA_orthodox_reconciliation_flag }
+				}
+				custom_trigger_tooltip = {
+					tooltip = BRG_win_italian_throne_TT_3
+					check_variable = {
+						var = ITA.hre_influence_diff
+						value = -20
+						compare = less_than_or_equals
+					}
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = BRG_win_italian_throne_TT_2
+					check_variable = {
+						var = ITA.hre_influence_diff
+						value = -10
+						compare = less_than_or_equals
+					}
 				}
 			}
 		}
@@ -566,6 +584,7 @@ focus_tree = {
 		relative_position_id = BRG_rhine_defenses
 		will_lead_to_war_with = FLD
 		available = {
+			is_independent_country = yes
 			FLD = {
 				is_potential_friend_of_ROOT = yes
 				owns_state = 59	# significant_number - Zeeland
@@ -598,6 +617,7 @@ focus_tree = {
 		relative_position_id = BRG_pressure_flanders
 		will_lead_to_war_with = FRA
 		available = {
+			is_independent_country = yes
 			FRA = {
 				is_independent_country = yes
 				NOT = { has_war_with = BRG }
@@ -681,6 +701,7 @@ focus_tree = {
 		relative_position_id = BRG_secure_northern_france
 		will_lead_to_war_with = BRI
 		available = {
+			is_independent_country = yes
 			OR = {
 				BRI = { is_potential_friend_of_ROOT = yes has_government = ROOT }
 				BRI = { NOT = { has_government = ROOT } }
@@ -717,6 +738,7 @@ focus_tree = {
 		relative_position_id = BRG_secure_northern_france
 		will_lead_to_war_with = AQI
 		available = {
+			is_independent_country = yes
 			AQI = {
 				is_independent_country = yes
 				NOT = { has_war_with = BRG }
@@ -869,7 +891,7 @@ focus_tree = {
 			base = 3
 			modifier = {
 				factor = 1.75
-				RME = { has_government = absolutist }
+				RME = { has_government = fascism }
 			}
 			modifier = {
 				factor = 0.01
@@ -1013,6 +1035,7 @@ focus_tree = {
 		relative_position_id = BRG_write_new_constitution
 		prerequisite = { focus = BRG_write_new_constitution }
 		available = {
+			is_independent_country = yes
 			OR = {
 				FRA = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
 				FLD = { is_potential_friend_of_ROOT = yes NOT = { has_government = democratic } }
@@ -1053,7 +1076,8 @@ focus_tree = {
 		relative_position_id = BRG_gallic_politics
 		prerequisite = { focus = BRG_gallic_politics }
 		available = {
-
+			is_in_faction = no
+			is_independent_country = yes
 		}
 		bypass = {
 			
