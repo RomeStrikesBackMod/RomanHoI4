@@ -28,7 +28,7 @@ focus_tree = {
 		icon = GFX_focus_generic_monarchy_2
 		mutually_exclusive = { focus = ITA_the_roman_republic }
 		cost = 10
-		x = 19
+		x = 20
 		y = 0
 		completion_reward = {
 			add_country_leader_role = {
@@ -137,29 +137,20 @@ focus_tree = {
 				BRG = {
 					country_event = { id = tesb_ITA.1 }
 				}
-				else_if = {
-					limit = { has_global_flag = pope_has_returned_to_rome }
-					set_country_flag = ITA_crowned_giuseppe
-					add_country_leader_trait = crowned_monarch
-					set_character_name = {
-						character = ITA_giuseppe_lombardi
-						name = ITA_giuseppe_ii_lombardi
-					}
-					hidden_effect = {
-						news_event = { id = tesb_news.5 }
-					}
+				custom_effect_tooltip = ITA_our_most_holy_monarch_refuse_TT
+			}
+			else_if = {
+				limit = { has_global_flag = pope_has_returned_to_rome }
+				crown_giuseppe = yes
+				hidden_effect = {
+					news_event = { id = tesb_news.5 }
 				}
-				else = {
-					set_country_flag = ITA_crowned_giuseppe
-					add_country_leader_trait = crowned_monarch
-					set_character_name = {
-						character = ITA_giuseppe_lombardi
-						name = ITA_giuseppe_ii_lombardi
-					}
-					add_political_power = -250
-					hidden_effect = {
-						news_event = { id = tesb_news.5 }
-					}
+			}
+			else = {
+				add_political_power = -150
+				crown_giuseppe = yes
+				hidden_effect = {
+					news_event = { id = tesb_news.5 }
 				}
 			}
 		}
@@ -170,6 +161,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_holy_roman_empire
+		dynamic = yes
 		icon = GFX_focus_ger_revive_kaiserreich
 		relative_position_id = ITA_our_most_holy_monarch
 		prerequisite = { focus = ITA_our_most_holy_monarch }
@@ -242,12 +234,13 @@ focus_tree = {
 		prerequisite = { focus = ITA_holy_roman_empire }
 		mutually_exclusive = { focus = ITA_separation_of_church_and_state }
 		cost = 10
-		x = -1
+		x = -2
 		y = 1
 		available = {
+			is_independent_country = yes
 			BRG = {
 				is_in_faction_with = ITA
-				is_subject = no
+				is_independent_country = yes
 			}
 			custom_trigger_tooltip = {
 				tooltip = ITA_union_of_church_and_state_TT
@@ -255,12 +248,27 @@ focus_tree = {
 					ITA.ITA_hre_influence > 20
 				}
 			}
-			custom_trigger_tooltip = {
-				tooltip = ITA_union_of_church_and_state_TT_2
-				check_variable = {
-					var = ITA.hre_influence_diff
-					value = 10
-					compare = greater_than_or_equals
+			if = {
+				limit = {
+					has_country_flag = ITA_orthodox_reconciliation_flag
+				}
+				custom_trigger_tooltip = {
+					tooltip = ITA_union_of_church_and_state_TT_3
+					check_variable = {
+						var = ITA.hre_influence_diff
+						value = 15
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = ITA_union_of_church_and_state_TT_2
+					check_variable = {
+						var = ITA.hre_influence_diff
+						value = 10
+						compare = greater_than_or_equals
+					}
 				}
 			}
 		}
@@ -290,9 +298,10 @@ focus_tree = {
 		prerequisite = { focus = ITA_holy_roman_empire }
 		mutually_exclusive = { focus = ITA_union_of_church_and_state }
 		cost = 10
-		x = 1
+		x = 0
 		y = 1
 		available = {
+			is_independent_country = yes
 			OR = {
 				NOT = {
 					BRG = { is_in_faction_with = ITA }
@@ -334,13 +343,13 @@ focus_tree = {
 	focus = {
 		id = ITA_secure_raetia
 		icon = GFX_focus_attack_switzerland
-		relative_position_id = ITA_union_of_church_and_state
-		prerequisite = { focus = ITA_union_of_church_and_state focus = ITA_separation_of_church_and_state }
+		relative_position_id = ITA_holy_roman_empire
+		prerequisite = { focus = ITA_holy_roman_empire }
 		cost = 10
-		x = 1
+		x = 2
 		y = 1
 		available = {
-			is_subject = no
+			is_independent_country = yes
 		}
 		bypass = {
 			604 = { is_owned_by_ROOT_or_subject = yes } # significant_number - East Switzerland
@@ -350,18 +359,8 @@ focus_tree = {
 		}
 		will_lead_to_war_with = SWI
 		completion_reward = {
-			if = {
-				limit = { country_exists = SWI }
-				create_wargoal = {
-					target = SWI
-					type = annex_everything
-				}
-				else = {
-					add_state_claim = 604 # significant_number - East Switzerland
-					add_state_claim = 605 # significant_number - West Switzerland
-					add_state_claim = 606 # significant_number - Tirol
-					add_state_claim = 607 # significant_number - Karntern-Steiermark
-				}
+			country_event = {
+				id = tesb_ITA.16
 			}
 		}
 		ai_will_do = {
@@ -372,14 +371,21 @@ focus_tree = {
 	focus = {
 		id = ITA_eliminate_the_german_claimant
 		icon = GFX_focus_attack_germany
-		relative_position_id = ITA_secure_raetia
+		relative_position_id = ITA_separation_of_church_and_state
 		prerequisite = { focus = ITA_secure_raetia }
+		prerequisite = { focus = ITA_union_of_church_and_state focus = ITA_separation_of_church_and_state }
 		cost = 10
-		x = -1
+		x = 0
 		y = 1
 		available = {
-			is_subject = no
+			is_independent_country = yes
 			country_exists = GMR
+			OR = {
+				is_neighbor_of = GMR
+				any_allied_country = {
+					is_neighbor_of = GMR
+				}
+			}
 		}
 		will_lead_to_war_with = GMR
 		completion_reward = {
@@ -396,23 +402,26 @@ focus_tree = {
 	focus = {
 		id = ITA_there_can_only_be_one
 		icon = GFX_focus_generic_strike_at_democracy1
-		relative_position_id = ITA_secure_raetia
-		prerequisite = { focus = ITA_secure_raetia }
+		relative_position_id = ITA_eliminate_the_german_claimant
+		prerequisite = { focus = ITA_eliminate_the_german_claimant }
+		mutually_exclusive = {
+			focus = ITA_understanding_between_equals
+		}
 		cost = 10
-		x = 1
+		x = -1
 		y = 1
 		available = {
-			is_subject = no
+			is_independent_country = yes
 			if = {
-				limit = { country_exists = RMA }
-				country_exists = RMA
+				limit = { country_exists = RMF }
+				country_exists = RMF
 				else_if = {
 					limit = { country_exists = RMD }
 					country_exists = RMD
 				}
 				else_if = {
-					limit = { country_exists = RMF }
-					country_exists = RMF
+					limit = { country_exists = RMA }
+					country_exists = RMA
 				}
 				else = {
 					country_exists = RME
@@ -422,9 +431,9 @@ focus_tree = {
 		will_lead_to_war_with = RME
 		completion_reward = {
 			if = {
-				limit = { country_exists = RMA }
+				limit = { country_exists = RMF }
 				create_wargoal = {
-					target = RMA
+					target = RMF
 					type = annex_everything
 				}
 				else_if = {
@@ -435,9 +444,9 @@ focus_tree = {
 					}
 				}
 				else_if = {
-					limit = { country_exists = RMF }
+					limit = { country_exists = RMA }
 					create_wargoal = {
-						target = RMF
+						target = RMA
 						type = annex_everything
 					}
 				}
@@ -451,6 +460,96 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = RME
+					value < -24
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_country_flag = ITA_orthodox_reconciliation
+			}
+		}
+	}
+
+	focus = {
+		id = ITA_understanding_between_equals
+		icon = GFX_goal_generic_dangerous_deal
+		relative_position_id = ITA_eliminate_the_german_claimant
+		prerequisite = { focus = ITA_eliminate_the_german_claimant }
+		mutually_exclusive = {
+			focus = ITA_there_can_only_be_one
+		}
+		cost = 10
+		x = 1
+		y = 1
+		available = {
+			is_independent_country = yes
+			if = {
+				limit = { country_exists = RMD }
+				country_exists = RMD
+				else_if = {
+					limit = { country_exists = RMF }
+					country_exists = RMF
+				}
+				else_if = {
+					limit = { country_exists = RMA }
+					country_exists = RMA
+				}
+				else = {
+					country_exists = RME
+				}
+			}
+		}
+		will_lead_to_war_with = RME
+		completion_reward = {
+			if = {
+				limit = { country_exists = RMD }
+				RMD = {
+					country_event = {
+						id = tesb_ITA.25
+					}
+				}
+				else_if = {
+					limit = { country_exists = RMF }
+					RMF = {
+						country_event = {
+							id = tesb_ITA.25
+						}
+					}
+				}
+				else_if = {
+					limit = { country_exists = RMA }
+					RMA = {
+						country_event = {
+							id = tesb_ITA.25
+						}
+					}
+				}
+				else = {
+					RME = {
+						country_event = {
+							id = tesb_ITA.25
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = RME
+					value > 24
+				}
+			}
+			modifier = {
+				factor = 2
+				has_country_flag = ITA_orthodox_reconciliation_flag
+			}
 		}
 	}
 
@@ -567,7 +666,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		available = {
-			is_subject = no
+			is_independent_country = yes
 			has_government = fascism
 		}
 		completion_reward = {
@@ -590,7 +689,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		available = {
-			is_subject = no
+			is_independent_country = yes
 			has_government = fascism
 			custom_trigger_tooltip = {
 				tooltip = ITA_unify_italia_done_TT
@@ -647,7 +746,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		available = {
-			is_subject = no
+			is_independent_country = yes
 			has_government = fascism
 			custom_trigger_tooltip = {
 				tooltip = ITA_reclaim_gallia_done_TT
@@ -699,7 +798,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		available = {
-			is_subject = no
+			is_independent_country = yes
 			has_government = fascism
 			custom_trigger_tooltip = {
 				tooltip = ITA_reclaim_gallia_done_TT
@@ -741,7 +840,7 @@ focus_tree = {
 		y = 1
 		will_lead_to_war_with = RME
 		available = {
-			is_subject = no
+			is_independent_country = yes
 			has_government = fascism
 			custom_trigger_tooltip = {
 				tooltip = ITA_unify_italia_done_TT
@@ -853,9 +952,9 @@ focus_tree = {
 				}
 			}
 			if = {
-				limit = { country_exists = RMA }
+				limit = { country_exists = RMF }
 				create_wargoal = {
-					target = RMA
+					target = RMF
 					type = annex_everything
 				}
 				else_if = {
@@ -866,9 +965,9 @@ focus_tree = {
 					}
 				}
 				else_if = {
-					limit = { country_exists = RMF }
+					limit = { country_exists = RMA }
 					create_wargoal = {
-						target = RMF
+						target = RMA
 						type = annex_everything
 					}
 				}
@@ -1295,7 +1394,7 @@ focus_tree = {
 			base = 3
 			modifier = {
 				factor = 2
-				RME = { has_government = absolutist }
+				RME = { has_government = fascism }
 			}
 		}
 	}
@@ -1378,12 +1477,12 @@ focus_tree = {
 				country_exists = RMD
 			}
 			else_if = {
-				limit = { country_exists = RMA }
-				country_exists = RMA
-			}
-			else_if = {
 				limit = { country_exists = RMF }
 				country_exists = RMF
+			}
+			else_if = {
+				limit = { country_exists = RMA }
+				country_exists = RMA
 			}
 			else = {
 				country_exists = RME
@@ -1397,16 +1496,16 @@ focus_tree = {
 					relation = non_aggression_pact
 				}
 				else_if = {
-					limit = { country_exists = RMA }
+					limit = { country_exists = RMF }
 					diplomatic_relation = {
-						country = RMA
+						country = RMF
 						relation = non_aggression_pact
 					}
 				}
 				else_if = {
-					limit = { country_exists = RMF }
+					limit = { country_exists = RMA }
 					diplomatic_relation = {
-						country = RMF
+						country = RMA
 						relation = non_aggression_pact
 					}
 				}
@@ -1441,12 +1540,12 @@ focus_tree = {
 		y = 1
 		available = {
 			if = {
-				limit = { country_exists = RMA }
-				RMA = { NOT = { has_civil_war = yes } }
-			}
-			else_if = {
 				limit = { country_exists = RMF }
 				RMF = { NOT = { has_civil_war = yes } }
+			}
+			else_if = {
+				limit = { country_exists = RMA }
+				RMA = { NOT = { has_civil_war = yes } }
 			}
 			else_if = {
 				limit = { country_exists = RMD }
@@ -1459,15 +1558,15 @@ focus_tree = {
 		will_lead_to_war_with = RME
 		completion_reward = {
 			if = {
-				limit = { country_exists = RMA }
+				limit = { country_exists = RMF }
 				create_wargoal = {
-					target = RMA
+					target = RMF
 					type = liberate_wargoal
 				}
 				else_if = {
-					limit = { country_exists = RMF }
+					limit = { country_exists = RMA }
 					create_wargoal = {
-						target = RMF
+						target = RMA
 						type = liberate_wargoal
 					}
 				}

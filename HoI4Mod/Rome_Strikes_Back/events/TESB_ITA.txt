@@ -100,12 +100,8 @@ country_event = {
 
 	option = {
 		name = tesb_ITA.2.a
-		set_country_flag = ITA_crowned_giuseppe
-		add_country_leader_trait = crowned_monarch
-		set_character_name = {
-			character = ITA_giuseppe_lombardi
-			name = ITA_giuseppe_ii_lombardi
-		}
+		crown_giuseppe = yes
+		set_country_flag = ITA_papal_coronation
 		hidden_effect = {
 			news_event = { id = tesb_news.5 }
 		}
@@ -115,40 +111,53 @@ country_event = {
 country_event = {
 	id = tesb_ITA.3
 	title = tesb_ITA.3.t
-	desc = tesb_ITA.3.d
+	desc = tesb_ITA.3.desc
 	picture = GFX_report_event_royal_parade
 
 	is_triggered_only = yes
 
 	option = {
+		trigger = { NOT = { has_country_flag = ITA_pope_refused_coronation } }
 		name = tesb_ITA.3.a
 		set_country_flag = ITA_pope_refused_coronation
+		ai_chance = {
+			base = 10
+		}
 	}
 	option = {
-		trigger = {
-			has_political_power > 250
-		}
+		trigger = { has_political_power > 150 }
 		name = tesb_ITA.3.b
-		add_political_power = -250
+		add_political_power = -150
 		country_event = { id = tesb_ITA.4 }
+		ai_chance = { base = 6 }
+	}
+	option ={
+		trigger = { has_political_power > 150 }
+		name = tesb_ITA.3.c
+		add_political_power = -150
+		country_event = { id = tesb_ITA.7 }
+		ai_chance = { base = 4 }
+	}
+	option = {
+		name = tesb_ITA.3.d
+		if = {
+			limit = { NOT = { has_country_flag = ITA_pope_refused_coronation } }
+			set_country_flag = ITA_pope_refused_coronation
+		}
 	}
 }
 country_event = {
 	id = tesb_ITA.4
-	title = tesb_ITA.4.t
+	title = tesb_ITA.2.t
 	desc = tesb_ITA.4.d
 	picture = GFX_report_event_royal_parade
 
 	is_triggered_only = yes
 
 	option = {
-		name = tesb_ITA.4.a
-		set_country_flag = ITA_crowned_giuseppe
-		add_country_leader_trait = crowned_monarch
-		set_character_name = {
-			character = ITA_giuseppe_lombardi
-			name = ITA_giuseppe_ii_lombardi
-		}
+		name = tesb_ITA.2.a
+		crown_giuseppe = yes
+		set_country_flag = ITA_catholic_coronation
 		hidden_effect = {
 			news_event = { id = tesb_news.5 }
 		}
@@ -193,6 +202,29 @@ news_event = {
 	option = {
 		name = tesb_ITA.6.a
 		set_global_flag = pope_has_returned_to_rome
+	}
+}
+
+country_event = {
+	id = tesb_ITA.7
+	title = tesb_ITA.2.t
+	desc = tesb_ITA.7.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.2.a
+		crown_giuseppe = yes
+		set_country_flag = ITA_orthodox_coronation		
+		set_country_flag = ITA_orthodox_reconciliation_flag
+		hidden_effect = {
+			reverse_add_opinion_modifier = {
+				target = RME
+				modifier = ITA_orthodox_reconciliation
+			}
+			news_event = { id = tesb_news.5 }
+		}
 	}
 }
 
@@ -331,6 +363,128 @@ country_event = {
 }
 
 country_event = {
+	id = tesb_ITA.15
+	title = tesb_ITA.15.t
+	desc = tesb_ITA.15.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			is_faction_leader = no
+		}
+		name = tesb_ITA.10.a
+		set_country_flag = join_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.11 hours = 24 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		trigger = {
+			is_faction_leader = yes
+		}
+		name = tesb_ITA.10.b
+		set_country_flag = join_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.11 hours = 24 }
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ROOT
+			}
+			country_event = { id = tesb_ITA.12 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_ITA.10.c
+		set_country_flag = reject_ITA
+		ITA = {
+			country_event = { id = tesb_ITA.13 hours = 24 }
+			effect_tooltip = {
+				create_wargoal = {
+					target = ROOT
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.16
+	title = tesb_ITA.16.t
+	desc = {
+		trigger = { SWI = { is_potential_friend_of_ROOT = yes } }
+		text = tesb_ITA.16.desca
+	}
+	desc = {
+		trigger = { SWI = { is_potential_friend_of_ROOT = no } }
+		text = tesb_ITA.16.descb
+	}
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.16.a
+		if = {
+			limit = { country_exists = SWI }
+			create_wargoal = {
+				target = SWI
+				type = annex_everything
+			}
+			else = {
+				add_state_claim = 604 # significant_number - East Switzerland
+				add_state_claim = 605 # significant_number - West Switzerland
+				add_state_claim = 606 # significant_number - Tirol
+				add_state_claim = 607 # significant_number - Karntern-Steiermark
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = SWI
+					value > 24
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			is_faction_leader = yes
+			SWI = { is_potential_friend_of_ROOT = yes }
+		}
+		name = tesb_ITA.16.b
+		SWI = {
+			country_event = { id = tesb_ITA.15 }
+		}
+		custom_effect_tooltip = tesb_ITA.16.b.tt
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = SWI
+					value < -24
+				}
+			}
+		}
+	}
+}
+
+country_event = {
 	id = tesb_ITA.20
 	title = tesb_ITA.20.t
 	desc = tesb_ITA.20.desc
@@ -453,5 +607,79 @@ country_event = {
 			type = annex_everything
 		}
 		remove_from_faction = FROM
+	}
+}
+
+country_event = {
+	id = tesb_ITA.25
+	title = tesb_ITA.25.t
+	desc = tesb_ITA.25.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.25.a
+		set_country_flag = NAP_with_ITA
+		ITA = {
+			set_country_flag = NAP_with_RME
+			country_event = { id = tesb_ITA.26 }
+			effect_tooltip = {
+				diplomatic_relation = {
+					country = ROOT
+					relation = non_aggression_pact
+					active = yes
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_ITA.25.b
+		ITA = {
+			country_event = { id = tesb_ITA.27 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.26
+	title = tesb_ITA.26.t
+	desc = tesb_ITA.26.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.26.a
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.27
+	title = tesb_ITA.27.t
+	desc = tesb_ITA.27.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.27.a
+		ai_chance = {
+			base = 10
+		}
 	}
 }

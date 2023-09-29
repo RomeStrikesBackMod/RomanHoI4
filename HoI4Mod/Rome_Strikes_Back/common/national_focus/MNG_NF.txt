@@ -58,6 +58,7 @@ focus_tree = {
 		will_lead_to_war_with = CHG
 		available = {
 			NOT = { has_war = yes }
+			is_independent_country = yes
 		}
 		completion_reward = {
 			create_wargoal = {
@@ -81,6 +82,7 @@ focus_tree = {
 		will_lead_to_war_with = KHI
 		available = {
 			NOT = { has_war = yes }
+			is_independent_country = yes
 		}
 		bypass = {
 			is_in_faction_with = KHI
@@ -106,6 +108,7 @@ focus_tree = {
 		prerequisite = { focus = MNG_look_west }
 		available = {
 			date > 1940.3.21
+			is_independent_country = yes
 		}
 		will_lead_to_war_with = TIB
 		completion_reward = {
@@ -130,6 +133,7 @@ focus_tree = {
 		prerequisite = { focus = MNG_tibet }
 		available = {
 			KHI = { is_puppet = yes }
+			is_independent_country = yes
 		}
 		will_lead_to_war_with = RUS
 		completion_reward = {
@@ -170,6 +174,10 @@ focus_tree = {
 		prerequisite = { focus = MNG_look_north }
 		available = {
 			NOT = { has_war = yes }
+			is_independent_country = yes
+			RUS = {
+				owns_state = 510
+			}
 		}
 		completion_reward = {
 			RUS = {
@@ -194,6 +202,7 @@ focus_tree = {
 		prerequisite = { focus = MNG_look_north }
 		available = {
 			NOT = { has_war = yes }
+			is_independent_country = yes
 		}
 		will_lead_to_war_with = MAN
 		completion_reward = {
@@ -217,6 +226,7 @@ focus_tree = {
 		prerequisite = { focus = MNG_russian_mongolia }
 		prerequisite = { focus = MNG_manchu }
 		available = {
+			is_independent_country = yes
 			owns_state = 338
 			owns_state = 510
 		}
@@ -252,6 +262,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_south }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = SHN
 		}
@@ -276,6 +289,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_invite_shan }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = BUR
 		}
@@ -300,6 +316,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_south }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = LAO
 		}
@@ -324,6 +343,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_invite_luang_prabang }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = CAM
 		}
@@ -349,6 +371,10 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = MNG_invite_luang_prabang }
 		will_lead_to_war_with = MAK
+		available = {
+			is_independent_country = yes
+			MAK = { owns_state = 362 }
+		}
 		completion_reward = {
 			MAK = {
 				country_event = {
@@ -373,6 +399,9 @@ focus_tree = {
 		prerequisite = { focus = MNG_free_dai_nam }
 		will_lead_to_war_with = SUK
 		will_lead_to_war_with = MAK
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = SIA
 		}
@@ -397,6 +426,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_invite_siam }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = PAT
 		}
@@ -437,6 +469,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_south_china_sea }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = MAK
 		}
@@ -463,6 +498,9 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = MNG_makassar }
 		will_lead_to_war_with = JAV
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = JAV
 		}
@@ -488,6 +526,9 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = MNG_south_china_sea }
 		will_lead_to_war_with = PHI
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = PHI
 		}
@@ -511,12 +552,15 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_philippines }
-		will_lead_to_war_with = X01
+		will_lead_to_war_with = X02
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
-			is_in_faction_with = X01
+			is_in_faction_with = X02
 		}
 		completion_reward = {
-			X01 = {
+			X02 = {
 				country_event = {
 					id = tesb_MNG.200
 				}
@@ -551,6 +595,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_east }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = KOR
 		}
@@ -574,6 +621,9 @@ focus_tree = {
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_east }
+		available = {
+			is_faction_leader = yes
+		}
 		bypass = {
 			is_in_faction_with = JAP
 		}

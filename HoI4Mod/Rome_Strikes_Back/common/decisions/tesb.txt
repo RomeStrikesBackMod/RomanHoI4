@@ -331,7 +331,7 @@ rome_civil_war_decisions = {
 			}
 		}
 		visible = {
-			has_government = absolutist
+			has_government = fascism
 		}
 		custom_cost_trigger = {
 			command_power > 30
@@ -1178,11 +1178,11 @@ aotearoa_decisions = {
 					is_in_faction_with = RMD
 				}
 				else_if = {
-					limit = { country_exists = RMA }
+					limit = { country_exists = RMF }
 					OR = {
 						is_subject = yes
-						RMA = { exists = no }
-						is_in_faction_with = RMA
+						RMF = { exists = no }
+						is_in_faction_with = RMF
 					}
 				}
 				else = {
@@ -1224,7 +1224,7 @@ aotearoa_decisions = {
 				add = 1
 				OR = {
 					has_war_with = RMD
-					has_war_with = RMA
+					has_war_with = RMF
 				}
 			}
 		}
@@ -1299,22 +1299,22 @@ aotearoa_decisions = {
 			}
 		}
 	}
-	AOT_ally_RMA = {
+	AOT_ally_RMF = {
 		visible = {
 			has_active_mission = AOT_reconciling_with_rome
-			country_exists = RMA
+			country_exists = RMF
 		}
 		available = {
-			RMA = { has_government = absolutist }
-			NOT = { has_war_with = RMA }
+			RMF = { has_government = fascism }
+			NOT = { has_war_with = RMF }
 		}
 		complete_effect = {
 			if = {
-				limit = { RMA = { is_faction_leader = yes } }
-				RMA = { country_event = { id = tesb_AOT.14 } }
+				limit = { RMF = { is_faction_leader = yes } }
+				RMF = { country_event = { id = tesb_AOT.14 } }
 			}
 			else = {
-				RMA = { country_event = { id = tesb_AOT.16 } }
+				RMF = { country_event = { id = tesb_AOT.16 } }
 			}
 			set_country_flag = AOT_reconciled_rome
 		}
@@ -1323,7 +1323,7 @@ aotearoa_decisions = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_government = absolutist
+					has_government = fascism
 					has_government = neutrality
 				}
 			}
@@ -1333,17 +1333,17 @@ aotearoa_decisions = {
 			}
 		}
 	}
-	AOT_subject_RMA = {
+	AOT_subject_RMF = {
 		visible = {
 			has_active_mission = AOT_reconciling_with_rome
-			country_exists = RMA
+			country_exists = RMF
 		}
 		available = {
-			RMA = { has_government = absolutist }
-			NOT = { has_war_with = RMA }
+			RMF = { has_government = fascism }
+			NOT = { has_war_with = RMF }
 		}
 		complete_effect = {
-			RMA = { country_event = { id = tesb_AOT.12 } }
+			RMF = { country_event = { id = tesb_AOT.12 } }
 			set_country_flag = AOT_reconciled_rome
 		}
 		ai_will_do = {
@@ -1351,13 +1351,13 @@ aotearoa_decisions = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_government = absolutist
+					has_government = fascism
 					has_government = neutrality
 				}
 			}
 			modifier = {
 				factor = 0
-				RMA = { is_faction_leader = no }
+				RMF = { is_faction_leader = no }
 				check_variable = {
 					days_mission_timeout@AOT_reconciling_with_rome > 80
 				}
@@ -2248,13 +2248,36 @@ italy_decisions = {
 		}
 		days_remove = 10
 		remove_effect = {
+			set_country_flag = asked_pope_again
 			BRG = {
 				country_event = { id = tesb_ITA.1 }
 			}
 		}
 		cost = 50
+		ai_will_do = {
+			base = 10
+		}
 	}
-	ITA_self_coronation = {
+	ITA_orthodox_coronation = {
+		fire_only_once = yes
+		visible = {
+			NOT = { has_country_flag = ITA_crowned_giuseppe }
+			has_country_flag = ITA_pope_refused_coronation
+		}
+		available = {
+			has_country_leader = {
+				character = ITA_giuseppe_lombardi
+			}
+		}
+		complete_effect = {
+			country_event = { id = tesb_ITA.7 }
+		}
+		cost = 150
+		ai_will_do = {
+			base = 5
+		}
+	}
+	ITA_catholic_coronation = {
 		fire_only_once = yes
 		visible = {
 			NOT = { has_country_flag = ITA_crowned_giuseppe }
@@ -2268,7 +2291,10 @@ italy_decisions = {
 		complete_effect = {
 			country_event = { id = tesb_ITA.4 }
 		}
-		cost = 250
+		cost = 150
+		ai_will_do = {
+			base = 5
+		}
 	}
 }
 

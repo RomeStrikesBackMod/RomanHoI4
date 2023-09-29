@@ -4043,7 +4043,7 @@ focus_tree = {
 		mutually_exclusive = { focus = RME_establish_free_elections }
 		available = {
 			is_puppet = no
-			has_government = absolutist
+			has_government = fascism
 		}
 		x = -1
 		y = 1
@@ -4055,20 +4055,9 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = RME_imperial_coronation
-			#hidden_effect = { set_cosmetic_tag = RME_german_empire }
 			set_politics = {
 				ruling_party = fascism
 				elections_allowed = no
-			}
-			create_country_leader = {
-				name = "Konstantinos XXI"
-				desc = "POLITICS_KONSTANTINOS_XXI_DESC"
-				picture = "gfx/leaders/ENG/Portrait_Britain_Edward_VIII.dds"
-				expire = "1965.1.1"
-				ideology = rexism
-				traits = {
-					inexperienced_imperialist
-				}
 			}
 			set_rule = { can_send_volunteers = yes }
 			add_named_threat = { threat = 5 name = RME_imperial_coronation }
@@ -4240,8 +4229,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_reestablish_roman_hegemony
-		icon = GFX_goal_generic_political_pressure
+		id = RME_reclaim_the_empire
+		icon = GFX_goal_generic_attack_allies
 		prerequisite = { focus = RME_eimai_to_kratos }
 		available = {
 			is_puppet = no
@@ -4256,7 +4245,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_named_threat = { threat = 10 name = RME_reclaim_the_empire }
+			add_named_threat = { threat = 15 name = RME_reclaim_the_empire }
 			every_country = {
 				limit = {
 					OR = {
@@ -4264,35 +4253,13 @@ focus_tree = {
 						has_idea = RME_former_dominion
 					}
 				}
-				country_event = { id = tesb_news.3 }
+				news_event = { id = tesb_news.4 }
 				add_ai_strategy = {
 					type = contain
 					id = "RME"
 					value = 200
 				}
 			}
-		}
-	}
-
-	focus = {
-		id = RME_incorporate_clientes
-		icon = GFX_goal_continuous_restrict_freedom
-		prerequisite = { focus = RME_reestablish_roman_hegemony }
-		available = {
-			is_puppet = no
-			num_subjects > 5
-		}
-		cancel_if_invalid = yes
-		x = 0
-		y = 1
-		relative_position_id = RME_reestablish_roman_hegemony
-		cost = 10
-		ai_will_do = {
-			factor = 10
-		}
-
-		completion_reward = {
-			add_ideas = RME_incorporate_clientes_idea
 		}
 	}
 
@@ -4371,8 +4338,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_reclaim_the_empire
-		icon = GFX_goal_generic_attack_allies
+		id = RME_reestablish_roman_hegemony
+		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = RME_embrace_imperialists }
 		available = {
 			is_puppet = no
@@ -4387,7 +4354,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_named_threat = { threat = 15 name = RME_reclaim_the_empire }
+			add_named_threat = { threat = 10 name = RME_reclaim_the_empire }
 			every_country = {
 				limit = {
 					OR = {
@@ -4395,13 +4362,35 @@ focus_tree = {
 						has_idea = RME_former_dominion
 					}
 				}
-				news_event = { id = tesb_news.4 }
+				country_event = { id = tesb_news.3 }
 				add_ai_strategy = {
 					type = contain
 					id = "RME"
 					value = 200
 				}
 			}
+		}
+	}
+
+	focus = {
+		id = RME_incorporate_clientes
+		icon = GFX_goal_continuous_restrict_freedom
+		prerequisite = { focus = RME_reestablish_roman_hegemony }
+		available = {
+			is_puppet = no
+			num_subjects > 5
+		}
+		cancel_if_invalid = yes
+		x = 0
+		y = 1
+		relative_position_id = RME_reestablish_roman_hegemony
+		cost = 10
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_ideas = RME_incorporate_clientes_idea
 		}
 	}
 
