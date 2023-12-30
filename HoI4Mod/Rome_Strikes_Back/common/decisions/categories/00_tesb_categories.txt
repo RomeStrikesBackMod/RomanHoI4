@@ -194,3 +194,38 @@ african_decisions = {
 		}
 	}
 }
+
+dresden_conference_decisions = {
+	priority = 100
+	picture = GFX_decision_cat_picture_government_in_exile
+	visible = {
+		OR = {
+			has_country_flag = attending_dresden_1
+			has_country_flag = attending_dresden_2
+		}
+		OR = {
+			GMR = { has_variable = GER_dresden_1 }
+			PLC = { has_variable = PLC_dresden_2 }
+			PLC = { has_variable = BAV_dresden_2 }
+		}
+	}
+	visible_when_empty = yes
+	custom_icon = {
+		tag = GMR
+		value = GER_dresden_1_value
+		desc = GER_dresden_1_desc
+		visible = { GMR = { has_variable = GER_dresden_1 } }
+	}
+	custom_icon = {
+		tag = BAV
+		value = BAV_dresden_2_value
+		desc = BAV_dresden_2_desc
+		visible = { PLC = { has_variable = BAV_dresden_2 } }
+	}
+	custom_icon = {
+		tag = PLC
+		value = PLC_dresden_2_value
+		desc = PLC_dresden_2_desc
+		visible = { PLC = { has_variable = PLC_dresden_2 } }
+	}
+}
