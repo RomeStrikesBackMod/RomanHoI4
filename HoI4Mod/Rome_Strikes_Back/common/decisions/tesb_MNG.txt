@@ -440,6 +440,38 @@ MNG_decisions = {
 		}
 	}
 
+	MNG_force_siam_into_sukhothai = {
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = MNG_invite_siam
+			SUK = {
+				is_in_faction_with = MNG
+				OR = {
+					NOT = { owns_state = 581 } # significant number - Nakhon Sawan
+					NOT = { owns_state = 582 } # significant number - Nakhon Ratchasima
+					NOT = { owns_state = 583 } # significant number - Rayong
+				}
+			}
+		}
+		available = {
+			NOT = { has_war_with = SIA }
+			SIA = {
+				OR = {
+					owns_state = 581 # significant number - Nakhon Sawan
+					owns_state = 582 # significant number - Nakhon Ratchasima
+					owns_state = 583 # significant number - Rayong
+				}
+			}
+		}
+		cost = 50
+		complete_effect = {
+			SIA = { country_event = { id = tesb_MNG.125 } }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
 	MNG_negotiate_for_siam_IND = {
 		fire_only_once = yes
 		visible = {
@@ -463,7 +495,7 @@ MNG_decisions = {
 				NOT = { has_war_with = IND }
 				is_in_faction_with = IND
 			}
-			is_in_faction_with = SIA
+			is_in_faction_with = TAI
 		}
 		cost = 50
 		complete_effect = {
@@ -479,14 +511,14 @@ MNG_decisions = {
 		visible = {
 			has_completed_focus = MNG_invite_siam
 			country_exists = MAK
-			SIA = { NOT = { owns_state = 364 } } # significant number - Ayutthaya
+			TAI = { NOT = { owns_state = 364 } } # significant number - Ayutthaya
 		}
 		available = {
 			OR = {
 				NOT = { has_war_with = MAK }
 				is_in_faction_with = MAK
 			}
-			is_in_faction_with = SIA
+			is_in_faction_with = TAI
 		}
 		cost = 50
 		complete_effect = {
@@ -500,14 +532,14 @@ MNG_decisions = {
 	MNG_give_FROM_to_SIA = {
 		state_target = yes
 		target_root_trigger = {
-			is_in_faction_with = SIA
-			country_exists = SIA
+			is_in_faction_with = TAI
+			country_exists = TAI
 		}
 		visible = {
 			FROM = {
 				NOT = { has_state_flag = MNG_gave_SIA }
 			}
-			SIA = {
+			TAI = {
 				NOT = { owns_state = FROM }
 			}
 		}
@@ -525,7 +557,7 @@ MNG_decisions = {
 			275
 		}
 		complete_effect = {
-			SIA = {
+			TAI = {
 				transfer_state = FROM
 				if = {
 					limit = {

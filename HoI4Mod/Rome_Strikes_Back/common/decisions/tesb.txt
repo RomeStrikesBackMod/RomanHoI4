@@ -833,8 +833,10 @@ russia_decisions = {
 					limit = {
 						is_subject_of = RUS
 					}
-					transfer_state = 564 # significant_number - Karelia
-					transfer_state = 408 # significant_number - Kola
+					RUS = {
+						transfer_state = 564 # significant_number - Karelia
+						transfer_state = 408 # significant_number - Kola
+					}
 					else_if = {
 						limit = {
 							is_subject = yes
@@ -888,7 +890,9 @@ russia_decisions = {
 					limit = {
 						is_subject_of = RUS
 					}
-					transfer_state = 564 # significant_number - Karelia
+					RUS = {
+						transfer_state = 564 # significant_number - Karelia
+					}
 					else_if = {
 						limit = {
 							is_subject = yes
@@ -942,7 +946,9 @@ russia_decisions = {
 					limit = {
 						is_subject_of = RUS
 					}
-					transfer_state = 408 # significant_number - Kola
+					RUS = {
+						transfer_state = 408 # significant_number - Kola
+					}
 					else_if = {
 						limit = {
 							is_subject = yes
@@ -996,8 +1002,10 @@ russia_decisions = {
 					limit = {
 						is_subject_of = RUS
 					}
-					transfer_state = 312 # significant_number - Sakhalin
-					transfer_state = 313 # significant_number - Kuril Islands
+					RUS = {
+						transfer_state = 312 # significant_number - Sakhalin
+						transfer_state = 313 # significant_number - Kuril Islands
+					}
 					else = {
 						country_event = { id = tesb_RUS.130 }
 					}
@@ -1042,14 +1050,45 @@ russia_decisions = {
 					limit = {
 						is_subject_of = RUS
 					}
-					transfer_state = 337 # significant_number - Haishenwai
-					transfer_state = 338 # significant_number - Eastern Mongolia
+					RUS = {
+						transfer_state = 337 # significant_number - Haishenwai
+						transfer_state = 338 # significant_number - Eastern Mongolia
+					}
 					else = {
 						country_event = { id = tesb_RUS.140 } 
 					}
 				}
 			}
 			custom_effect_tooltip = RUS_manchu_treaty_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	manchu_puppet = {
+		days_remove = 7
+		visible = {
+			NOT = { country_exists = MAN }
+			has_completed_focus = RUS_asian_expansion
+		}
+		available = {
+			owns_state = 337 # significant_number - Haishenwai
+		}
+		cost = 50
+		highlight_states = {
+			highlight_state_targets = {
+				state = 337 # significant_number - Haishenwai
+			}
+		}
+		complete_effect = {
+			release_autonomy = {
+				target = MAN
+				autonomy_state = autonomy_puppet
+			}
+			hidden_effect = {
+				337 = { reset_state_name = yes } #  significant_number - Haishenwai
+				reset_province_name = 957
+			}
 		}
 		ai_will_do = {
 			base = 10
