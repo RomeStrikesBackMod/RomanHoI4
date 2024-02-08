@@ -194,6 +194,14 @@ on_actions = {
 					set_cosmetic_tag = united_siam
 				}
 			}
+			if = {
+				limit = {
+					tag = BAV
+					has_cosmetic_tag = bohemia
+					owns_state = 226 # significant_number - Bavaria
+				}
+				drop_cosmetic_tag = yes
+			}
 		}
 	}
 
@@ -291,6 +299,14 @@ on_actions = {
 					}
 				}
 			}
+			if = {
+				limit = {
+					tag = BAV
+					has_cosmetic_tag = bohemia
+					owns_state = 226 # significant_number - Bavaria
+				}
+				drop_cosmetic_tag = yes
+			}
 		}
 	}
 
@@ -356,6 +372,34 @@ on_actions = {
 				}
 				deactivate_advisor = AOT_ieni_papadopoulos_fe
 				add_political_power = 50
+			}
+		}
+	}
+
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					tag = BAV
+					has_cosmetic_tag = bohemia
+					FROM.FROM = { state = 226 } # significant_number - Bavaria
+				}
+				drop_cosmetic_tag = yes
+			}
+		}
+	}
+
+	#ROOT is free nation FROM is releaser
+	on_release_as_free = {
+		effect = {
+			if = {
+				limit = {
+					tag = BAV
+					owns_state = 287 # significant_number - Bohemia
+					NOT = { owns_state = 226 } # significant_number - Bavaria
+				}
+				set_cosmetic_tag = bohemia
 			}
 		}
 	}
