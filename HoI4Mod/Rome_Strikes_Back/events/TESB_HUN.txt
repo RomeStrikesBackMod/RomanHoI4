@@ -3426,3 +3426,180 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = tesb_HUN.235
+	title = tesb_HUN.235.t
+	desc = tesb_HUN.235.d
+	picture = GFX_report_event_german_italian_pact #Placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#accept immediate trade of states for support
+	option = {
+		name = tesb_HUN.230.a
+		if = {
+			limit = {
+				OR = {
+					owns_state = 287	# significant_number - Bohemia
+					owns_state = 283	# significant_number - Moravia
+					owns_state = 284	# significant_number - Österreich
+				}
+			}
+			effect_tooltip = {
+				every_owned_state = {
+					limit = {
+						OR = {
+							state = 287	# significant_number - Bohemia
+							state = 283	# significant_number - Moravia
+							state = 284	# significant_number - Österreich
+						}
+						OR = {
+							is_claimed_by = HUN
+							is_core_of = HUN
+						}
+					}
+					transfer_state_to = HUN
+					remove_core_of = ROOT
+				}
+			}
+			custom_effect_tooltip = tesb_HUN.235.a_tt
+			hidden_effect = {
+				HUN = { country_event = { id = tesb_HUN.236 hours = 1 } }
+			}
+		}
+		if = {
+			limit = {
+				is_potential_friend_of_ROOT = yes
+				HUN = {
+					is_faction_leader = yes
+				}
+			}
+			effect_tooltip = {
+				HUN = { add_to_faction = ROOT }
+			}
+			hidden_effect = {
+				HUN = { country_event = { id = tesb_HUN.231 hours = 1 } }
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				NOT = { has_government = FROM }
+				factor = 0.5
+			}
+			modifier = {
+				has_government = FROM
+				factor = 2
+			}
+		}
+	}
+	#Reject HUN alliance
+	option = {
+		name = tesb_HUN.230.b
+		effect_tooltip = {
+			reverse_add_opinion_modifier = {
+				target = HUN
+				modifier = rejected_faction
+			}
+		}
+		custom_effect_tooltip = tesb_HUN.230.tt
+		hidden_effect = {
+			HUN = { country_event = { id = tesb_HUN.237 hours = 1 } }
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio < 0.5
+				}
+				factor = 0.5
+			}
+			modifier = {
+				strength_ratio = {
+					tag = HUN
+					ratio > 1
+				}
+				factor = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.236
+	title = tesb_HUN.236.t
+	desc = tesb_HUN.236.d
+	picture = GFX_report_event_german_italian_pact #Placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join HUN alliance
+	option = {
+		name = tesb_HUN.236.a
+		BAV = {
+			if = {
+				limit = {
+					controls_state = 226	# significant_number - Bavaria
+				}
+				bav_hun_deal_effect = yes
+			}
+			else = {
+				custom_effect_tooltip = tesb_HUN.236.a_tt
+				set_country_flag = BAV_HUN_deal
+			}
+		}
+		add_to_faction = BAV
+	}
+}
+
+
+country_event = {
+	id = tesb_HUN.237
+	title = tesb_HUN.237.t
+	desc = tesb_HUN.237.d
+	picture = GFX_report_event_german_italian_pact #Placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	#Join HUN alliance
+	option = {
+		name = tesb_HUN.237.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_faction
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Reject HUN alliance
+	option = {
+		name = tesb_HUN.237.b
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_faction
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}

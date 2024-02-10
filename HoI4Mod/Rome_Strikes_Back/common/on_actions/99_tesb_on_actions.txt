@@ -307,6 +307,17 @@ on_actions = {
 				}
 				drop_cosmetic_tag = yes
 			}
+			if = {
+				limit = {
+					BAV = { has_country_flag = BAV_HUN_deal }
+					OR = {
+						tag = BAV
+						tag = HUN
+					}
+					owns_state = 226 # significant_number - Bavaria
+				}
+				bav_hun_deal_effect = yes
+			}
 		}
 	}
 
@@ -387,6 +398,20 @@ on_actions = {
 				}
 				drop_cosmetic_tag = yes
 			}
+			if = {
+				limit = {
+					BAV = { has_country_flag = BAV_HUN_deal }
+					OR = {
+						tag = BAV
+						tag = HUN
+					}
+					FROM.FROM = {
+						state = 226 # significant_number - Bavaria
+						is_owned_by = GMR
+					}
+				}
+				bav_hun_deal_effect = yes
+			}
 		}
 	}
 
@@ -400,6 +425,14 @@ on_actions = {
 					NOT = { owns_state = 226 } # significant_number - Bavaria
 				}
 				set_cosmetic_tag = bohemia
+			}
+			if = {
+				limit = {
+					tag = BAV
+				}
+				HUN = {
+					mark_focus_tree_layout_dirty = yes
+				}
 			}
 		}
 	}
