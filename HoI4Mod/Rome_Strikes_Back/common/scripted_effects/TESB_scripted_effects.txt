@@ -726,3 +726,44 @@ crown_giuseppe = {
 		name = ITA_giuseppe_ii_lombardi
 	}
 }
+
+bav_hun_deal_effect = {
+	BAV = {
+		clr_country_flag = BAV_HUN_deal
+		transfer_state = 226 # significant_number - Bavaria
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 287	# significant_number - Bohemia
+					state = 283	# significant_number - Moravia
+					state = 284	# significant_number - Österreich
+				}
+				OR = {
+					is_claimed_by = HUN
+					is_core_of = HUN
+				}
+			}
+			if = {
+				limit = {
+					is_fully_controlled_by = BAV
+				}
+				transfer_state_to = HUN
+			}
+			else = {
+				set_state_owner_to = HUN
+			}
+			remove_core_of = BAV
+		}
+	}
+}
+d_set_bohemia = {
+	BAV = {
+		set_cosmetic_tag = bohemia
+	}
+}
+
+d_drop_bohemia = {
+	BAV = {
+		drop_cosmetic_tag = yes
+	}
+}

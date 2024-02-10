@@ -403,6 +403,144 @@ focus_tree = {
 	}
 	
 	focus = {
+		id = HUN_reclaim_bohemia
+		icon = GFX_goal_generic_occupy_start_war
+		x = 1
+		y = 1
+		cost = 10
+		relative_position_id = HUN_integrate_bohemia
+		prerequisite = { focus = HUN_integrate_bohemia }
+		will_lead_to_war_with = BAV
+		will_lead_to_war_with = GMR
+		allow_branch = {
+			OR = {
+				NOT = { owns_state = 287 }	# significant_number - Bohemia
+				NOT = { owns_state = 283 }	# significant_number - Moravia
+				NOT = { owns_state = 284 }	# significant_number - Österreich
+			}
+		}
+		available = {
+			OR = {
+				NOT = { owns_state = 287 }	# significant_number - Bohemia
+				NOT = { owns_state = 283 }	# significant_number - Moravia
+				NOT = { owns_state = 284 }	# significant_number - Österreich
+			}
+			is_independent_country = yes
+		}
+		bypass = {
+
+		}
+		complete_tooltip = {
+			if = {
+				limit = { has_country_flag = HUN_reclaim_bohemia_cores }
+				create_wargoal = {
+					target = GMR
+					type = take_core_state
+				}
+			}
+			if = {
+				limit = { has_country_flag = HUN_reclaim_bohemia_claims }
+				create_wargoal = {
+					target = GMR
+					type = take_claimed_state
+				}
+			}
+			if = {
+				limit = { has_country_flag = HUN_reclaim_bohemia_bav }
+				BAV = {
+					country_event = { id = tesb_HUN.235 days = 1 }
+				}
+			}
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 287	# significant_number - Bohemia
+						state = 283	# significant_number - Moravia
+						state = 284	# significant_number - Österreich
+					}
+					NOT = {
+						is_claimed_by = ROOT
+						is_core_of = ROOT
+						is_owned_by = ROOT
+					}
+				}
+				add_claim_by = ROOT
+			}
+			if = {
+				limit = {
+					or = {
+						#always = yes
+						is_faction_leader = yes
+						BAV = {
+							OR = {
+								owns_state = 287	# significant_number - Bohemia
+								owns_state = 283	# significant_number - Moravia
+								owns_state = 284	# significant_number - Österreich
+							}
+							has_government = ROOT
+							is_friend_or_potential_friend_of_ROOT = yes
+						}
+					}
+				}
+				BAV = {
+					country_event = { id = tesb_HUN.235 days = 1 }
+				}
+				set_country_flag = HUN_reclaim_bohemia_bav
+			}
+			if = {
+				limit = {
+					GMR = {
+						any_owned_state = {
+							OR = {
+								state = 287	# significant_number - Bohemia
+								state = 283	# significant_number - Moravia
+								state = 284	# significant_number - Österreich
+							}
+							is_core_of = root
+						}
+					}
+				}
+				create_wargoal = {
+					target = GMR
+					type = take_core_state
+				}
+				set_country_flag = HUN_reclaim_bohemia_cores
+			}
+			else_if = {
+				limit = {
+					GMR = {
+						any_owned_state = {
+							OR = {
+								state = 287	# significant_number - Bohemia
+								state = 283	# significant_number - Moravia
+								state = 284	# significant_number - Österreich
+							}
+							is_claimed_by = root
+						}
+					}
+				}
+				create_wargoal = {
+					target = GMR
+					type = take_claimed_state
+				}
+				set_country_flag = HUN_reclaim_bohemia_claims
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { has_completed_focus = HUN_expanding_outward }
+					NOT = { has_completed_focus = HUN_looking_outward }
+				}
+			}
+		}
+	}
+
+	focus = {
 		id = HUN_galician_settlers
 		icon = GFX_goal_generic_fortify_city
 		x = 1
@@ -535,6 +673,7 @@ focus_tree = {
 		cost = 10
 		relative_position_id = HUN_expanding_outward
 		prerequisite = { focus = HUN_expanding_outward }
+		will_lead_to_war_with = CRO
 		available = {
 			has_army_manpower ={
 				size > 200000
@@ -558,6 +697,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1
+			}
 		}
 	}
 	
@@ -570,6 +713,7 @@ focus_tree = {
 		relative_position_id = HUN_expanding_outward
 		prerequisite = { focus = HUN_expanding_outward }
 		prerequisite = { focus = HUN_integrate_bohemia }
+		will_lead_to_war_with = SWI
 		available = {
 			has_army_manpower ={
 				size > 200000
@@ -593,6 +737,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1
+			}
 		}
 	}
 	
@@ -604,6 +752,7 @@ focus_tree = {
 		cost = 10
 		relative_position_id = HUN_annex_pannonia
 		prerequisite = { focus = HUN_annex_pannonia }
+		will_lead_to_war_with = YUG
 		available = {
 			OR = {
 				owns_state = 107	# significant_number - Transdanubia
@@ -631,6 +780,10 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1
+			}
 		}
 	}
 	
@@ -642,6 +795,8 @@ focus_tree = {
 		cost = 10
 		relative_position_id = HUN_expanding_outward
 		prerequisite = { focus = HUN_expanding_outward }
+		will_lead_to_war_with = SER
+		will_lead_to_war_with = MOS
 		available = {
 			has_army_manpower ={
 				size > 300000
@@ -678,9 +833,88 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1
+			}
 		}
 	}
 	
+	focus = {
+		id = HUN_dismantle_baltic_axis
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HUN_annex_karnten
+		prerequisite = {
+			focus = HUN_annex_karnten focus = HUN_reclaim_bohemia
+		}
+		will_lead_to_war_with = PLC
+		will_lead_to_war_with = GMR
+		will_lead_to_war_with = SCA
+		available = {
+			is_independent_country = yes
+			OR = {
+				PLC = { has_government = fascism }
+				GMR = { has_government = fascism }
+				if = {
+					limit = {
+						SCA = { is_in_faction_with = PLC }
+					}
+					SCA = { has_government = fascism }
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					PLC = { has_government = fascism }
+				}
+				create_wargoal = {
+					target = PLC
+					type = liberate_wargoal
+				}
+			}
+			if = {
+				limit = {
+					GMR = { has_government = fascism }
+				}
+				create_wargoal = {
+					target = GMR
+					type = liberate_wargoal
+				}
+			}
+			if = {
+				limit = {
+					SCA = {
+						has_government = fascism
+						is_in_faction_with = PLC
+					}
+				}
+				create_wargoal = {
+					target = GMR
+					type = liberate_wargoal
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0.1
+				OR = {
+					strength_ratio = {
+						tag = PLC
+						ratio < 1
+					}
+					strength_ratio = {
+						tag = GMR
+						ratio < 1
+					}
+				}
+			}
+		}
+	}
 	### Democratic Branch ###
 
 	focus = {
