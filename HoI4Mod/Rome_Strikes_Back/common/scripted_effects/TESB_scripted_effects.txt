@@ -767,3 +767,41 @@ d_drop_bohemia = {
 		drop_cosmetic_tag = yes
 	}
 }
+
+d_rus_to_neutral = {
+	RUS = {
+		set_temp_variable = {
+			pop_demo = party_popularity_100@democratic
+		}
+		set_temp_variable = {
+			pop_fasc = party_popularity_100@fascism
+		}
+		set_temp_variable = {
+			pop_abs = party_popularity_100@absolutist
+		}
+		set_temp_variable = {
+			pop_comm = party_popularity_100@communism
+		}
+		set_temp_variable = {
+			pop_neut = party_popularity_100@neutrality
+		}
+		set_popularities = {
+			democratic = var:pop_neut
+			fascism = var:pop_fasc
+			absolutist = var:pop_abs
+			communism = var:pop_comm
+			neutrality = var:pop_demo
+		}
+		RUS_grigoriy_budyonny = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					ideology = socialism_neutral
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = neutrality
+		}
+	}
+}
