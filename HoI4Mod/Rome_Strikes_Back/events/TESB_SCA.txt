@@ -1,0 +1,249 @@
+﻿add_namespace = tesb_SCA
+
+# Demand Danish land
+country_event = {
+	id = tesb_SCA.1
+	title = tesb_SCA.1.t
+	desc = tesb_SCA.1.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.1.a
+		every_owned_state = {
+			limit = {
+				is_core_of = DEN
+			}
+			transfer_state_to = SCA
+		}
+		SCA = {
+			country_event = { id = tesb_SCA.3 hours = 1 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_SCA.1.b
+		SCA = {
+			country_event = { id = tesb_SCA.2 hours = 1 }
+			effect_tooltip = {
+				create_wargoal = {
+					target = GMR
+					type = take_claimed_state
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Demand Danish land
+country_event = {
+	id = tesb_SCA.2
+	title = tesb_SCA.2.t
+	desc = tesb_SCA.2.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.2.a
+		every_state = {
+			limit = {
+				is_core_of = DEN
+				is_owned_by = GMR
+			}
+			add_claim_by = SCA
+		}
+		create_wargoal = {
+			target = GMR
+			type = take_claimed_state
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = tesb_SCA.2.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# Demand Danish land
+country_event = {
+	id = tesb_SCA.3
+	title = tesb_SCA.3.t
+	desc = tesb_SCA.3.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.3.a
+		every_owned_state = {
+			limit = {
+				OR = {
+					is_core_of = DEN
+					state = 229
+				}
+			}
+			add_core_of = SCA
+		}
+	}
+}
+
+# Demand Ingria
+country_event = {
+	id = tesb_SCA.11
+	title = tesb_SCA.11.t
+	desc = tesb_SCA.11.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.1.a
+		495 = {
+			transfer_state_to = SCA
+		}
+		SCA = {
+			country_event = { id = tesb_SCA.13 hours = 1 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_SCA.1.b
+		SCA = {
+			country_event = { id = tesb_SCA.12 hours = 1 }
+			effect_tooltip = {
+				create_wargoal = {
+					target = RUS
+					type = take_core_state
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Demand Ingria
+country_event = {
+	id = tesb_SCA.12
+	title = tesb_SCA.12.t
+	desc = tesb_SCA.12.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.2.a
+		create_wargoal = {
+			target = RUS
+			type = take_core_state
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = tesb_SCA.2.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# Demand Ingria
+country_event = {
+	id = tesb_SCA.13
+	title = tesb_SCA.13.t
+	desc = tesb_SCA.13.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.3.a
+	}
+}
+
+# Demand Ingria
+country_event = {
+	id = tesb_SCA.21
+	title = tesb_SCA.21.t
+	desc = tesb_SCA.21.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.1.a
+		569 = {
+			transfer_state_to = SCA
+		}
+		SCA = {
+			country_event = { id = tesb_SCA.13 hours = 1 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_SCA.1.b
+		SCA = {
+			country_event = { id = tesb_SCA.12 hours = 1 }
+			effect_tooltip = {
+				create_wargoal = {
+					target = SCO
+					type = take_claimed_state
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+# Demand Ingria
+country_event = {
+	id = tesb_SCA.22
+	title = tesb_SCA.22.t
+	desc = tesb_SCA.22.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.2.a
+		create_wargoal = {
+			target = SCO
+			type = take_claimed_state
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_SCA.2.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+# Demand Greenland
+country_event = {
+	id = tesb_SCA.23
+	title = tesb_SCA.23.t
+	desc = tesb_SCA.23.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.3.a
+		add_state_core = 569
+	}
+}
