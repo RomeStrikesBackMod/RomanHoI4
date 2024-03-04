@@ -1,0 +1,1718 @@
+russia_decisions = {
+	negotiate_for_karelia_kola = {
+		days_remove = 7
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_karelia }
+			NOT = { has_country_flag = RUS_purchased_kola }
+			NOT = { owns_state = 564 } # significant_number - Karelia
+			any_other_country = {
+				owns_state = 564 # significant_number - Karelia
+				owns_state = 408 # significant_number - Kola
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 564 # significant_number - Karelia
+				owns_state = 408 # significant_number - Kola
+				has_war = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			highlight_state_targets = {
+				state = 564 # significant_number - Karelia
+				state = 408 # significant_number - Kola
+			}
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 564 # significant_number - Karelia
+					owns_state = 408 # significant_number - Kola
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					RUS = {
+						transfer_state = 564 # significant_number - Karelia
+						transfer_state = 408 # significant_number - Kola
+					}
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}	
+	negotiate_for_karelia = {
+		days_remove = 7
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_karelia }
+			NOT = { owns_state = 564 } # significant_number - Karelia
+			any_other_country = {
+				owns_state = 564 # significant_number - Karelia
+				NOT = { owns_state = 408 } # significant_number - Kola
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 564 # significant_number - Karelia
+				NOT = { owns_state = 408 } # significant_number - Kola
+				has_war = no
+			}
+		}
+		cost = 25
+		highlight_states = {
+			highlight_state_targets = {
+				state = 564 # significant_number - Karelia
+			}
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 564 # significant_number - Karelia
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					RUS = {
+						transfer_state = 564 # significant_number - Karelia
+					}
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	negotiate_for_kola = {
+		days_remove = 7
+		visible = {
+			has_completed_focus = RUS_karelia
+			NOT = { has_country_flag = RUS_purchased_kola }
+			NOT = { owns_state = 408 } # significant_number - Kola
+			any_other_country = {
+				owns_state = 408 # significant_number - Kola
+				NOT = { owns_state = 564 } # significant_number - Karelia
+			}
+		}
+		available = {
+			has_war = no
+			any_other_country = {
+				owns_state = 408 # significant_number - Kola
+				NOT = { owns_state = 564 } # significant_number - Karelia
+				has_war = no
+			}
+		}
+		cost = 25
+		highlight_states = {
+			highlight_state_targets = {
+				state = 408 # significant_number - Kola
+			}
+		}
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					owns_state = 408 # significant_number - Kola
+				}
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					RUS = {
+						transfer_state = 408 # significant_number - Kola
+					}
+					else_if = {
+						limit = {
+							is_subject = yes
+						}
+						custom_effect_tooltip = RUS_karelia_kola_overlord
+						OVERLORD = {
+							country_event = { id = tesb_RUS.120 }
+						}
+					}
+					else = {
+						country_event = { id = tesb_RUS.120 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	negotiate_for_sakhalin_kurils = {
+		days_remove = 7
+		visible = {
+			has_completed_focus = RUS_asian_expansion
+			NOT = { has_country_flag = RUS_purchased_kurils }
+			NOT = { owns_state = 312 } # significant_number - Sakhalin
+			NOT = { owns_state = 313 } # significant_number - Kuril Islands
+			JAP = {
+				owns_state = 312 # significant_number - Sakhalin
+				owns_state = 313 # significant_number - Kuril Islands
+			}
+		}
+		available = {
+			has_war = no
+			JAP = {
+				owns_state = 312 # significant_number - Sakhalin
+				owns_state = 313 # significant_number - Kuril Islands
+				has_war = no
+				is_subject = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			highlight_state_targets = {
+				state = 312 # significant_number - Sakhalin
+				state = 313 # significant_number - Kuril Islands
+			}
+		}
+		complete_effect = {
+			JAP = {
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					RUS = {
+						transfer_state = 312 # significant_number - Sakhalin
+						transfer_state = 313 # significant_number - Kuril Islands
+					}
+					else = {
+						country_event = { id = tesb_RUS.130 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}	
+	negotiate_with_manchu = {
+		days_remove = 7
+		visible = {
+			has_completed_focus = RUS_asian_expansion
+			NOT = { has_country_flag = RUS_manchu_treaty }
+			NOT = { owns_state = 337 } # significant_number - Haishenwai
+			NOT = { owns_state = 338 } # significant_number - Eastern Mongolia
+			MAN = {
+				owns_state = 337 # significant_number - Haishenwai
+				owns_state = 338 # significant_number - Eastern Mongolia
+			}
+		}
+		available = {
+			has_war = no
+			MAN = {
+				owns_state = 337 # significant_number - Haishenwai
+				owns_state = 338 # significant_number - Eastern Mongolia
+				has_war = no
+				is_subject = no
+			}
+		}
+		cost = 50
+		highlight_states = {
+			highlight_state_targets = {
+				state = 337 # significant_number - Haishenwai
+				state = 338 # significant_number - Eastern Mongolia
+			}
+		}
+		complete_effect = {
+			MAN = {
+				if = {
+					limit = {
+						is_subject_of = RUS
+					}
+					RUS = {
+						transfer_state = 337 # significant_number - Haishenwai
+						transfer_state = 338 # significant_number - Eastern Mongolia
+						set_country_flag = RUS_manchu_treaty
+					}
+					else = {
+						country_event = { id = tesb_RUS.140 } 
+					}
+				}
+			}
+			custom_effect_tooltip = RUS_manchu_treaty_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	manchu_puppet = {
+		days_remove = 7
+		visible = {
+			NOT = { country_exists = MAN }
+			has_completed_focus = RUS_asian_expansion
+		}
+		available = {
+			owns_state = 337 # significant_number - Haishenwai
+		}
+		cost = 50
+		highlight_states = {
+			highlight_state_targets = {
+				state = 337 # significant_number - Haishenwai
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				337 = { #  significant_number - Haishenwai
+					reset_state_name = yes
+					if = {
+						limit = { NOT = { is_core_of = MAN } }
+						add_core_of = MAN
+					}
+					if = {
+						limit = { is_core_of = RUS }
+						remove_core_of = RUS
+					}
+				}
+				reset_province_name = 957
+			}
+			release_autonomy = {
+				target = MAN
+				autonomy_state = autonomy_puppet
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+russia_export_socialism = {
+	socialist_republics_ally = {
+		visible = {
+			has_completed_focus = RUS_restore_socialist_republics
+		}
+		targets = { GRB FRA BRI }
+		target_trigger = {
+			NOT = {
+				FROM = { is_in_faction_with = ROOT }
+			}
+		}
+		available = {
+			is_faction_leader = yes
+			FROM = {
+				is_potential_friend_of_ROOT = yes
+				has_government = communism
+			}
+		}
+		cost = 10
+		complete_effect = {
+			if = {
+				limit = { is_faction_leader = yes }
+				FROM = {
+					country_event = {
+						id = generic.5
+						hours = 1
+					}
+				}
+			}
+			else = { custom_effect_tooltip = socialist_republics_ally_tt }
+		}
+		days_re_enable = 365
+		ai_will_do = {
+			base = 10
+		}
+	}
+	socialist_republics_influence = {
+		visible = {
+			has_completed_focus = RUS_restore_socialist_republics
+		}
+		targets = { GRB FRA BRI }
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = communism }
+			}
+		}
+		available = {
+			NOT = { FROM = { has_government = communism } }
+		}
+		cost = FROM.socialist_republics_influence?20
+		days_remove = 180
+		complete_effect = {
+			FROM = {
+				activate_mission = russian_communist_influence_mission
+				add_timed_idea = {
+					idea = RUS_communist_influence
+					days = 180
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						NOT = { has_variable = socialist_republics_influence }
+					}
+					set_variable = { socialist_republics_influence = 20 }
+				}
+				add_to_variable = { socialist_republics_influence = 20 }
+				country_event = { id = tesb_RUS.15 }
+			}
+		}
+		cancel_trigger = {
+			FROM = {
+				OR = {
+					has_government = communism
+					has_country_flag = Russia_no_comming
+				}
+			}
+		}
+		cancel_effect = {
+			remove_ideas = RUS_communist_influence
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0.5
+				check_variable = { FROM.socialist_republics_influence > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { FROM.socialist_republics_influence > 100 }
+			}
+		}
+	}
+	socialist_republics_liberate = {
+		visible = {
+			has_completed_focus = RUS_restore_socialist_republics
+		}
+		targets = { GRB FRA BRI }
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = communism }
+			}
+		}
+		target_root_trigger = {
+			is_independent_country = yes
+		}
+		fire_only_once = yes
+		available = {
+			FROM = {
+				OR = {
+					is_friend_or_potential_friend_of_ROOT = no
+					custom_trigger_tooltip = {
+						tooltip = socialist_republics_liberate_tt
+						NOT = { has_government = communism }
+						check_variable = { socialist_republics_influence > 100 }
+					}
+					has_country_flag = Russia_no_comming
+				}
+			}
+		}
+		cost = 100
+		days_remove = 180
+		remove_effect = {
+			create_wargoal = {
+				target = FROM
+				type = puppet_wargoal_focus
+			}
+		}
+		cancel_trigger = {
+			FROM = { is_friend_or_potential_friend_of_ROOT = yes }
+		}
+		war_with_target_on_remove = yes
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				FROM = { is_potential_friend_of_ROOT = yes }
+				check_variable = { FROM.socialist_republics_influence < 100 }
+			}
+			modifier = {
+				factor = 0
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+	expand_revolution_ally = {
+		visible = {
+			has_completed_focus = RUS_expand_revolution
+		}
+		targets = { FLD AQI CAT SPA }
+		target_trigger = {
+			NOT = {
+				FROM = { is_in_faction_with = ROOT }
+			}
+		}
+		available = {
+			is_faction_leader = yes
+			FROM = {
+				is_potential_friend_of_ROOT = yes
+				has_government = communism
+			}
+		}
+		cost = 10
+		complete_effect = {
+			if = {
+				limit = { is_faction_leader = yes }
+				FROM = {
+					country_event = {
+						id = generic.5
+						hours = 1
+					}
+				}
+			}
+			else = { custom_effect_tooltip = socialist_republics_ally_tt }
+		}
+		days_re_enable = 365
+		ai_will_do = {
+			base = 10
+		}
+	}
+	expand_revolution_influence = {
+		visible = {
+			has_completed_focus = RUS_expand_revolution
+		}
+		targets = { FLD AQI CAT SPA }
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = communism }
+			}
+		}
+		available = {
+			NOT = { FROM = { has_government = communism } }
+		}
+		cost = FROM.socialist_republics_influence?30
+		days_remove = 180
+		complete_effect = {
+			FROM = {
+				activate_mission = russian_communist_influence_mission
+				add_timed_idea = {
+					idea = RUS_communist_influence
+					days = 180
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						NOT = { has_variable = socialist_republics_influence }
+					}
+					set_variable = { socialist_republics_influence = 30 }
+				}
+				add_to_variable = { socialist_republics_influence = 30 }
+				country_event = { id = tesb_RUS.15 }
+			}
+		}
+		cancel_trigger = {
+			FROM = {
+				OR = {
+					has_government = communism
+					has_country_flag = Russia_no_comming
+				}
+			}
+		}
+		cancel_effect = {
+			remove_ideas = RUS_communist_influence
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0.5
+				check_variable = { FROM.socialist_republics_influence > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { FROM.socialist_republics_influence > 90 }
+			}
+		}
+	}
+	expand_revolution_liberate = {
+		visible = {
+			has_completed_focus = RUS_expand_revolution
+		}
+		targets = { FLD AQI CAT SPA }
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = communism }
+			}
+		}
+		target_root_trigger = {
+			is_independent_country = yes
+		}
+		fire_only_once = yes
+		available = {
+			FROM = {
+				OR = {
+					is_friend_or_potential_friend_of_ROOT = no
+					custom_trigger_tooltip = {
+						tooltip = socialist_republics_liberate_tt
+						NOT = { has_government = communism }
+						check_variable = { socialist_republics_influence > 90 }
+					}
+					has_country_flag = Russia_no_comming
+				}
+			}
+		}
+		cost = 100
+		days_remove = 180
+		remove_effect = {
+			create_wargoal = {
+				target = FROM
+				type = puppet_wargoal_focus
+			}
+		}
+		cancel_trigger = {
+			FROM = { is_friend_or_potential_friend_of_ROOT = yes }
+		}
+		war_with_target_on_remove = yes
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				FROM = { is_potential_friend_of_ROOT = yes }
+				check_variable = { FROM.socialist_republics_influence < 90 }
+			}
+			modifier = {
+				factor = 0
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+}
+
+russia_support_republicans = {
+	national_republics_ally = {
+		visible = {
+			#has_completed_focus = RUS_support_republicans_overseas
+		}
+		targets = { HUN SCA MNG CHG KHI IRN BCS }
+		target_trigger = {
+			NOT = {
+				FROM = { is_in_faction_with = ROOT }
+			}
+		}
+		available = {
+			is_faction_leader = yes
+			FROM = {
+				is_potential_friend_of_ROOT = yes
+				has_government = fascism
+			}
+		}
+		cost = 10
+		complete_effect = {
+			if = {
+				limit = { is_faction_leader = yes }
+				FROM = {
+					country_event = {
+						id = generic.5
+						hours = 1
+					}
+				}
+			}
+			else = { custom_effect_tooltip = national_republics_ally_tt }
+		}
+		days_re_enable = 365
+		ai_will_do = {
+			base = 10
+		}
+	}
+	national_republics_influence = {
+		visible = {
+			#has_completed_focus = RUS_support_republicans_overseas
+		}
+		targets = { HUN SCA MNG CHG KHI IRN BCS }
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = fascism }
+				NOT = { has_country_flag = Russia_no_fascing }
+			}
+		}
+		available = {
+			NOT = { FROM = { has_government = fascism } }
+		}
+		cost = FROM.national_republics_influence?20
+		days_remove = 180
+		complete_effect = {
+			FROM = {
+				activate_mission = russian_fascist_influence_mission
+				add_timed_idea = {
+					idea = RUS_fascist_influence
+					days = 180
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						NOT = { has_variable = national_republics_influence }
+					}
+					set_variable = { national_republics_influence = 20 }
+				}
+				add_to_variable = { national_republics_influence = 20 }
+				country_event = { id = tesb_RUS.16 }
+			}
+		}
+		cancel_trigger = {
+			FROM = {
+				OR = {
+					has_government = fascism
+					has_country_flag = Russia_no_fascing
+				}
+			}
+		}
+		cancel_effect = {
+			remove_ideas = RUS_fascist_influence
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0.5
+				check_variable = { FROM.national_republics_influence > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { FROM.national_republics_influence > 100 }
+			}
+		}
+	}
+	national_republics_liberate = {
+		visible = {
+			#has_completed_focus = RUS_support_republicans_overseas
+		}
+		targets = { HUN SCA CHG KHI IRN BCS }
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = fascism }
+			}
+		}
+		target_root_trigger = {
+			is_independent_country = yes
+		}
+		fire_only_once = yes
+		available = {
+			FROM = {
+				OR = {
+					is_friend_or_potential_friend_of_ROOT = no
+					custom_trigger_tooltip = {
+						tooltip = national_republics_liberate_tt
+						NOT = { has_government = fascism }
+						check_variable = { national_republics_influence > 100 }
+					}
+					has_country_flag = Russia_no_fascing
+				}
+			}
+		}
+		cost = 100
+		days_remove = 180
+		remove_effect = {
+			create_wargoal = {
+				target = FROM
+				type = puppet_wargoal_focus
+			}
+		}
+		cancel_trigger = {
+			FROM = { is_friend_or_potential_friend_of_ROOT = yes }
+		}
+		war_with_target_on_remove = yes
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				FROM = { is_potential_friend_of_ROOT = yes }
+				check_variable = { FROM.national_republics_influence < 100 }
+			}
+			modifier = {
+				factor = 0
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+	rsr_test = {
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = RME_former_territory
+						has_idea = RME_former_dominion
+					}
+					capital_scope = {
+						is_on_continent = africa
+					}
+				}
+				add_to_array = { RUS.RUS_colonial_countries = THIS.id }
+			}
+		}
+	}
+	support_pindorama = {
+		visible = {
+			#has_completed_focus = RUS_support_republicans_overseas
+		}
+		targets = { ENG }
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = fascism }
+			}
+		}
+		days_remove = 70
+		remove_effect = {
+			ENG = {
+				set_variable = {
+					pindorama_revolt = 0.4
+				}
+				activate_mission = RUS_pindorama_revolt
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_guaranteed = ENG
+				}
+				diplomatic_relation = {
+					country = ENG
+					relation = guarantee
+					active = no
+				}
+			}
+			if = {
+				limit = {
+					has_non_aggression_pact_with = ENG
+				}
+				diplomatic_relation = {
+					country = ENG
+					relation = non_aggression_pact
+					active = no
+				}
+			}
+		}
+		cost = 150
+		ai_will_do = {
+			base = 10
+		}
+	}
+	colonies_ally = {
+		visible = {
+			always = no
+			#has_completed_focus = RUS_support_republicans_overseas
+		}
+		target_array = RUS_colonial_countries
+		target_trigger = {
+			NOT = {
+				FROM = { is_in_faction_with = ROOT }
+			}
+		}
+		available = {
+			is_faction_leader = yes
+			FROM = {
+				is_potential_friend_of_ROOT = yes
+				has_government = fascism
+			}
+		}
+		cost = 10
+		complete_effect = {
+			if = {
+				limit = { is_faction_leader = yes }
+				FROM = {
+					country_event = {
+						id = generic.5
+						hours = 1
+					}
+				}
+			}
+			else = { custom_effect_tooltip = national_republics_ally_tt }
+		}
+		days_re_enable = 365
+		ai_will_do = {
+			base = 10
+		}
+	}
+	colonies_influence = {
+		visible = {
+			#has_completed_focus = RUS_support_republicans_overseas
+		}
+		target_array = RUS_colonial_countries
+		target_trigger = {
+			FROM = {
+				is_friend_or_potential_friend_of_ROOT = yes
+				NOT = { has_country_flag = Russia_no_fascing }
+				check_variable = { FROM.national_republics_influence < 101 }
+			}
+		}
+		available = {
+			FROM = { is_friend_or_potential_friend_of_ROOT = yes }
+		}
+		cost = FROM.national_republics_influence?20
+		days_remove = 180
+		complete_effect = {
+			FROM = {
+				activate_mission = russian_fascist_influence_mission
+				add_timed_idea = {
+					idea = RUS_fascist_colonial_influence
+					days = 180
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						NOT = { has_variable = national_republics_influence }
+					}
+					set_variable = { national_republics_influence = 20 }
+				}
+				add_to_variable = { national_republics_influence = 20 }
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0.5
+				check_variable = { FROM.national_republics_influence > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { FROM.national_republics_influence > 100 }
+			}
+		}
+	}
+	colonies_liberate = {
+		visible = {
+			always = no
+			#has_completed_focus = RUS_support_republicans_overseas
+		}
+		target_array = RUS_colonial_countries
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = fascism }
+			}
+		}
+		available = {
+			FROM = {
+				OR = {
+					is_friend_or_potential_friend_of_ROOT = no
+					custom_trigger_tooltip = {
+						tooltip = national_republics_liberate_tt
+						NOT = { has_government = fascism }
+						check_variable = { national_republics_influence > 100 }
+					}
+				}
+			}
+		}
+		cost = 100
+		days_remove = 180
+		remove_effect = {
+			create_wargoal = {
+				target = FROM
+				type = puppet_wargoal_focus
+			}
+		}
+		cancel_trigger = {
+			FROM = { is_friend_or_potential_friend_of_ROOT = yes }
+		}
+		war_with_target_on_remove = yes
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				FROM = { is_potential_friend_of_ROOT = yes }
+				check_variable = { FROM.national_republics_influence < 100 }
+			}
+			modifier = {
+				factor = 0
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+}
+
+russia_enforce_unity = {
+	ukraine_unity = {
+		icon = generic_nationalism
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = RUS_enforce_unity
+		}
+		target_array = owned_controlled_states
+		target_trigger = {
+			FROM = {
+				is_ukraine_state = yes
+			}
+		}
+		available = {
+			FROM = {
+				set_temp_variable = { root.ukraine_unity_cost = 20 }
+				if = {
+					limit = {
+						ROOT = { has_completed_focus = RUS_ukrainian_integration }
+					}
+					add_to_temp_variable = { root.ukraine_unity_cost = -5 }
+				}
+				multiply_temp_variable = { root.ukraine_unity_cost = core_countries^num }
+				if = {
+					limit = { is_core_of = RUS }
+					add_to_temp_variable = { root.ukraine_unity_cost = -10 }
+				}
+				if = {
+					limit = { NOT = { is_core_of = RUS } }
+					add_to_temp_variable = { root.ukraine_unity_cost = 20 }
+				}
+			}
+		}
+		cost = var:ukraine_unity_cost?10
+		days_remove = 70
+		modifier = {
+			stability_weekly = -0.001
+		}
+		remove_effect = {
+			set_temp_variable = { unity_stab = 0 }
+			every_possible_country = {
+				limit = {
+					FROM = { is_core_of = PREV }
+					NOT = { tag = ROOT }
+				}
+				remove_state_core = FROM
+				add_to_temp_variable = { root.unity_stab = 0.005 }
+			}
+			if = {
+				limit = {
+					NOT = { FROM = { is_core_of = ROOT } }
+				}
+				add_to_temp_variable = { root.unity_stab = 0.005 }
+				add_state_core = FROM
+			}
+			add_stability = var:unity_stab
+			add_war_support = var:unity_stab
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	siberian_unity = {
+		icon = generic_nationalism
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = RUS_enforce_unity
+		}
+		target_array = owned_controlled_states
+		target_trigger = {
+			FROM = {
+				is_siberia_state = yes
+			}
+		}
+		available = {
+			FROM = {
+				set_temp_variable = { root.siberia_unity_cost = 20 }
+				multiply_temp_variable = { root.siberia_unity_cost = core_countries^num }
+				if = {
+					limit = { is_core_of = RUS }
+					add_to_temp_variable = { root.siberia_unity_cost = -10 }
+				}
+				if = {
+					limit = { NOT = { is_core_of = RUS } }
+					add_to_temp_variable = { root.siberia_unity_cost = 20 }
+				}
+			}
+		}
+		cost = var:siberia_unity_cost?10
+		days_remove = 70
+		modifier = {
+			stability_weekly = -0.001
+		}
+		remove_effect = {
+			set_temp_variable = { unity_stab = 0.002 }
+			every_possible_country = {
+				limit = {
+					FROM = { is_core_of = PREV }
+					NOT = { tag = ROOT }
+				}
+				remove_state_core = FROM
+				add_to_temp_variable = { root.unity_stab = 0.005 }
+			}
+			if = {
+				limit = {
+					NOT = { FROM = { is_core_of = ROOT } }
+				}
+				add_to_temp_variable = { root.unity_stab = 0.005 }
+				add_state_core = FROM
+			}
+			add_stability = var:unity_stab
+			add_war_support = var:unity_stab
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	other_unity = {
+		icon = generic_nationalism
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = RUS_enforce_unity
+		}
+		target_array = owned_controlled_states
+		target_trigger = {
+			FROM = {
+				OR = {
+					has_state_flag = original_owner_@ROOT
+					is_core_of = ROOT
+					state = 206
+					state = 337
+				}
+				is_siberia_state = no
+				is_ukraine_state = no
+				OR = {
+					NOT = { is_core_of = RUS }
+					check_variable = { core_countries^num > 1 }
+				}
+			}
+		}
+		available = {
+			FROM = {
+				set_temp_variable = { root.other_unity_cost = 20 }
+				multiply_temp_variable = { root.other_unity_cost = core_countries^num }
+				if = {
+					limit = { is_core_of = RUS }
+					add_to_temp_variable = { root.other_unity_cost = -10 }
+				}
+				if = {
+					limit = { NOT = { is_core_of = RUS } }
+					add_to_temp_variable = { root.other_unity_cost = 20 }
+				}
+			}
+		}
+		cost = var:other_unity_cost?10
+		days_remove = 70
+		modifier = {
+			stability_weekly = -0.001
+		}
+		remove_effect = {
+			set_temp_variable = { unity_stab = 0 }
+			every_possible_country = {
+				limit = {
+					FROM = { is_core_of = PREV }
+					NOT = { tag = ROOT }
+				}
+				remove_state_core = FROM
+				add_to_temp_variable = { root.unity_stab = 0.005 }
+			}
+			if = {
+				limit = {
+					NOT = { FROM = { is_core_of = ROOT } }
+				}
+				add_to_temp_variable = { root.unity_stab = 0.005 }
+				add_state_core = FROM
+			}
+			add_stability = var:unity_stab
+			add_war_support = var:unity_stab
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}
+
+counter_russian_influence = {
+	russian_communist_influence_mission = {
+		selectable_mission = yes
+		days_mission_timeout = 180
+		activation = {
+			always = no
+		}
+		available = {
+			NOT = { has_government = communism }
+		}
+		complete_effect = {
+			set_country_flag = Russia_no_comming
+			remove_ideas = RUS_communist_influence
+		}
+		timeout_effect = {
+			effect_tooltip = {
+				country_event = { id = tesb_RUS.15 }
+			}
+		}
+		cost = 150
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 9
+				OR = {
+					has_government = fascism
+					has_government = absolutist
+				}
+			}
+		}
+	}
+	russian_fascist_influence_mission = {
+		selectable_mission = yes
+		days_mission_timeout = 180
+		activation = {
+			always = no
+		}
+		available = {
+			NOT = { has_government = fascism }
+		}
+		complete_effect = {
+			set_country_flag = Russia_no_fascing
+			remove_ideas = RUS_fascist_influence
+		}
+		timeout_effect = {
+			effect_tooltip = {
+				country_event = { id = tesb_RUS.16 }
+			}
+		}
+		cost = 150
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 9
+				OR = {
+					has_government = communism
+					has_government = absolutist
+				}
+			}
+		}
+	}
+	RUS_pindorama_revolt = {
+		activation = {
+			always = no
+		}
+		days_mission_timeout = 180
+		is_good = no
+		timeout_effect = {
+			start_civil_war = {
+				ideology = fascism
+				size = var:pindorama_revolt
+			}
+		}
+		available = {
+			OR = {
+				has_government = fascism
+				fascism < 0.1
+			}
+		}
+	}
+}
+
+russia_establish_national_republics = {
+	NEN = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = { is_core_of = NEN }
+			}
+		}
+		available = {
+			any_owned_state = { is_core_of = NEN }
+			NOT = {
+				country_exists = NEN
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				release_autonomy = {
+					target = NEN
+					autonomy_state = autonomy_puppet
+				}
+				NEN = {
+					set_capital = {
+						state = 651
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	HAW = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = { is_core_of = HAW }
+			}
+		}
+		available = {
+			any_owned_state = { is_core_of = HAW }
+			NOT = {
+				country_exists = HAW
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				release_autonomy = {
+					target = HAW
+					autonomy_state = autonomy_puppet
+				}
+				if = {
+					limit = {
+						owns_state = 664 # Whale Atoll
+					}
+					HAW = {
+						transfer_state = 664 # Whale Atoll
+						add_state_core = 664 # Whale Atoll
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	UTA_california = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = {
+					OR = {
+						state = 656 # Yancuic Mexihco
+						state = 653 # West Newe Land
+						state = 652 # Wimahl
+						state = 665 # Whulge Sound
+					}
+				}
+			}
+		}
+		available = {
+			any_owned_state = {
+				OR = {
+					state = 656 # Yancuic Mexihco
+					state = 653 # West Newe Land
+					state = 652 # Wimahl
+					state = 665 # Whulge Sound
+				}
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				create_dynamic_country = {
+					original_tag = UTA
+					set_cosmetic_tag = UTA_california
+					set_temp_variable = { new_country = this }
+					every_core_state = {
+						remove_core_of = PREV
+					}
+					PREV = {
+						every_owned_state = {
+							limit = {
+								OR = {
+									state = 656 # Yancuic Mexihco
+									state = 653 # West Newe Land
+									state = 652 # Wimahl
+									state = 665 # Whulge Sound
+								}
+							}
+							transfer_state_to = var:new_country
+						}
+						set_autonomy = {
+							target = new_country
+							autonomy_state = autonomy_puppet
+						}
+					}
+					every_owned_state = {
+						add_core_of = PREV
+					}
+					set_capital = {
+						state = 656
+					}
+				}
+			}
+		}
+	}
+	UTA_dinetah = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = {
+					OR = {
+						state = 659 # southwest dinetah
+						state = 658 # northwest dinetah
+						state = 660 # northeast dinetah
+						state = 657 # southeast dinetah
+					}
+				}
+			}
+		}
+		available = {
+			any_owned_state = {
+				OR = {
+					state = 659 # southwest dinetah
+					state = 658 # northwest dinetah
+					state = 660 # northeast dinetah
+					state = 657 # southeast dinetah
+				}
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				create_dynamic_country = {
+					original_tag = UTA
+					set_cosmetic_tag = UTA_dinetah
+					set_temp_variable = { new_country = this }
+					every_core_state = {
+						remove_core_of = PREV
+					}
+					PREV = {
+						every_owned_state = {
+							limit = {
+								OR = {
+									state = 659 # southwest dinetah
+									state = 658 # northwest dinetah
+									state = 660 # northeast dinetah
+									state = 657 # southeast dinetah
+								}
+							}
+							transfer_state_to = var:new_country
+						}
+						set_autonomy = {
+							target = new_country
+							autonomy_state = autonomy_puppet
+						}
+					}
+					every_owned_state = {
+						add_core_of = PREV
+					}
+					set_capital = {
+						state = 659
+					}
+				}
+			}
+		}
+	}
+	UTA_cahokia = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = {
+					OR = {
+						state = 630 # west cahokia
+						state = 631 # Hoocak
+						state = 632 # Mnissota
+						state = 633 # Omaeqnomenew-ahkew
+						state = 634 # east cahokia
+						state = 635 # Irenweewa Confederation
+						state = 636 # Meskwaki Land
+						state = 637 # Ohiyo
+					}
+				}
+			}
+		}
+		available = {
+			any_owned_state = {
+				OR = {
+					state = 630 # west cahokia
+					state = 631 # Hoocak
+					state = 632 # Mnissota
+					state = 633 # Omaeqnomenew-ahkew
+					state = 634 # east cahokia
+					state = 635 # Irenweewa Confederation
+					state = 636 # Meskwaki Land
+					state = 637 # Ohiyo
+				}
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				create_dynamic_country = {
+					original_tag = UTA
+					set_cosmetic_tag = UTA_cahokia
+					set_temp_variable = { new_country = this }
+					every_core_state = {
+						remove_core_of = PREV
+					}
+					PREV = {
+						every_owned_state = {
+							limit = {
+								OR = {
+									state = 630 # west cahokia
+									state = 631 # Hoocak
+									state = 632 # Mnissota
+									state = 633 # Omaeqnomenew-ahkew
+									state = 634 # east cahokia
+									state = 635 # Irenweewa Confederation
+									state = 636 # Meskwaki Land
+									state = 637 # Ohiyo
+								}
+							}
+							transfer_state_to = var:new_country
+						}
+						set_autonomy = {
+							target = new_country
+							autonomy_state = autonomy_puppet
+						}
+					}
+					every_owned_state = {
+						add_core_of = PREV
+					}
+					set_capital = {
+						state = 630
+					}
+				}
+			}
+		}
+	}
+	UTA_lakota = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = {
+					OR = {
+						state = 620 # Niimiipuu Land
+						state = 621 # Niitsitpiis-stahkoii
+						state = 622 # North Oceti Sakowin
+						state = 623 # South Oceti Sakowin
+						state = 624 # Ni Bthaska
+						state = 625 # Etzanoa
+						state = 661 # East Newe Land
+					}
+				}
+			}
+		}
+		available = {
+			any_owned_state = {
+				OR = {
+					state = 620 # Niimiipuu Land
+					state = 621 # Niitsitpiis-stahkoii
+					state = 622 # North Oceti Sakowin
+					state = 623 # South Oceti Sakowin
+					state = 624 # Ni Bthaska
+					state = 625 # Etzanoa
+					state = 661 # East Newe Land
+				}
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				create_dynamic_country = {
+					original_tag = UTA
+					set_cosmetic_tag = UTA_lakota
+					set_temp_variable = { new_country = this }
+					every_core_state = {
+						remove_core_of = PREV
+					}
+					PREV = {
+						every_owned_state = {
+							limit = {
+								OR = {
+									state = 620 # Niimiipuu Land
+									state = 621 # Niitsitpiis-stahkoii
+									state = 622 # North Oceti Sakowin
+									state = 623 # South Oceti Sakowin
+									state = 624 # Ni Bthaska
+									state = 625 # Etzanoa
+									state = 661 # East Newe Land
+								}
+							}
+							transfer_state_to = var:new_country
+						}
+						set_autonomy = {
+							target = new_country
+							autonomy_state = autonomy_puppet
+						}
+					}
+					every_owned_state = {
+						add_core_of = PREV
+					}
+					set_capital = {
+						state = 622
+					}
+				}
+			}
+		}
+	}
+	UTA_caddo = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = {
+					OR = {
+						state = 626 # Uukuhuuwa
+						state = 627 # Hasiinay
+						state = 628 # Bulbancha
+						state = 629 # Wazhazhe Land
+					}
+				}
+			}
+		}
+		available = {
+			any_owned_state = {
+				OR = {
+					state = 626 # Uukuhuuwa
+					state = 627 # Hasiinay
+					state = 628 # Bulbancha
+					state = 629 # Wazhazhe Land
+				}
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				create_dynamic_country = {
+					original_tag = UTA
+					set_cosmetic_tag = UTA_caddo
+					set_temp_variable = { new_country = this }
+					every_core_state = {
+						remove_core_of = PREV
+					}
+					PREV = {
+						every_owned_state = {
+							limit = {
+								OR = {
+									state = 626 # Uukuhuuwa
+									state = 627 # Hasiinay
+									state = 628 # Bulbancha
+									state = 629 # Wazhazhe Land
+								}
+							}
+							transfer_state_to = var:new_country
+							add_core_of = var:new_country
+						}
+						set_autonomy = {
+							target = new_country
+							autonomy_state = autonomy_puppet
+						}
+					}
+					every_owned_state = {
+						add_core_of = PREV
+					}
+					set_capital = {
+						state = 628
+					}
+				}
+			}
+		}
+	}
+	UTA = {
+		fire_only_once = yes
+		visible = {
+			OR = {
+				is_debug = yes
+				any_controlled_state = {
+					OR = {
+						state = 638 # Kispoko Land
+						state = 639 # Tana-tsee-dgee
+						state = 640 # Nanih Waiya
+						state = 641 # Alibamu Land
+						state = 642 # Este Muskogulgee
+						state = 643 # Ocmulgee
+						state = 644 # South Tsalagihi Ayeli
+						state = 645 # Central Tsalagihi Ayeli
+						state = 646 # Tsenacommacah
+						state = 647 # West Tsalagihi Ayeli
+					}
+				}
+			}
+		}
+		available = {
+			any_owned_state = {
+				OR = {
+					state = 638 # Kispoko Land
+					state = 639 # Tana-tsee-dgee
+					state = 640 # Nanih Waiya
+					state = 641 # Alibamu Land
+					state = 642 # Este Muskogulgee
+					state = 643 # Ocmulgee
+					state = 644 # South Tsalagihi Ayeli
+					state = 645 # Central Tsalagihi Ayeli
+					state = 646 # Tsenacommacah
+					state = 647 # West Tsalagihi Ayeli
+				}
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = RUS_new_republic_tt
+			hidden_effect = {
+				create_dynamic_country = {
+					original_tag = UTA
+					set_temp_variable = { new_country = this }
+					every_core_state = {
+						remove_core_of = PREV
+					}
+					PREV = {
+						every_owned_state = {
+							limit = {
+								OR = {
+									state = 638 # Kispoko Land
+									state = 639 # Tana-tsee-dgee
+									state = 640 # Nanih Waiya
+									state = 641 # Alibamu Land
+									state = 642 # Este Muskogulgee
+									state = 643 # Ocmulgee
+									state = 644 # South Tsalagihi Ayeli
+									state = 645 # Central Tsalagihi Ayeli
+									state = 646 # Tsenacommacah
+									state = 647 # West Tsalagihi Ayeli
+								}
+							}
+							transfer_state_to = var:new_country
+							add_core_of = var:new_country
+						}
+						set_autonomy = {
+							target = new_country
+							autonomy_state = autonomy_puppet
+						}
+					}
+					every_owned_state = {
+						add_core_of = PREV
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}

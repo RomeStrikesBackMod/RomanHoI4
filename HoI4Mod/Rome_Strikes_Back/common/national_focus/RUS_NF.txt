@@ -16,6 +16,63 @@ focus_tree = {
 	shared_focus = aviation_effort
 	shared_focus = naval_effort
 
+	focus = {
+		id = RUS_expand_black_sea_fleet
+		icon = GFX_focus_SOV_reinforce_southern_naval_bases
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = destroyer_effort
+		allow_branch = {
+			original_tag = RUS
+		}
+		prerequisite = {
+			focus = destroyer_effort focus = capital_ships_effort
+		}
+		available = {
+			540 = { is_owned_and_controlled_by = RUS } # Crimea
+			541 = { is_owned_and_controlled_by = RUS } # Transnistria
+			542 = { is_owned_and_controlled_by = RUS } # Zaporizhia
+			492 = { is_owned_and_controlled_by = RUS } # Donets
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 540 # Crimea 
+						state = 541 # Transnistria
+						state = 542 # Zaporizhia
+						state = 492 # Donets
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_building_level = {
+					type = coastal_bunker
+					level = 2
+					province = {
+						level < 2
+						id = 11670
+						id = 11700
+						id = 9417
+						id = 3686
+					}
+				}
+			}
+			navy_experience = 50
+			add_tech_bonus = {
+				name = RUS_black_sea_bonus
+				category = naval_equipment
+				bonus = 0.5
+				uses = 2
+			}
+		}
+	}
+	
 	#####################
 	### Politics Tree ###
 	#####################
@@ -974,13 +1031,1001 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RUS_karelia
-		icon = GFX_focus_generic_treaty
-		x = -2
+		id = RUS_defensive_stance
+		icon = GFX_focus_generic_little_entente
+		x = -1
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_second_northern_alliance }
 		relative_position_id = RUS_second_northern_alliance
+		mutually_exclusive = { focus = RUS_interventionist_stance }
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = RUS_defensive_stance_idea
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	focus = {
+		id = RUS_interventionist_stance
+		icon = GFX_goal_generic_territory_or_war
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_second_northern_alliance }
+		mutually_exclusive = { focus = RUS_defensive_stance }
+		relative_position_id = RUS_second_northern_alliance
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_ideas = RUS_interventionist_stance_idea
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_root_out_the_cliques
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_defensive_stance focus = RUS_interventionist_stance }
+		relative_position_id = RUS_defensive_stance
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = RUS_root_out_the_cliques_idea
+				days = 365
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_expand_siberian_mines
+		icon = GFX_focus_generic_land_reclamation
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_defensive_stance focus = RUS_interventionist_stance }
+		relative_position_id = RUS_interventionist_stance
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_expand_siberian_mines_tt
+				any_owned_state = {
+					is_siberia_state = yes
+				}
+			}
+		}
+		bypass = {
+			
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = {
+					has_state_flag = RUS_expand_siberian_mines_state_infra
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+				}
+			}
+			every_state = {
+				limit = {
+					has_state_flag = RUS_expand_siberian_mines_state_civ
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_expand_siberian_mines_tt2
+			for_loop_effect = {
+				start = 1
+				end = 5
+				compare = less_than_or_equals
+				random_owned_controlled_state = {
+					limit = {
+						is_siberia_state = yes
+						free_building_slots = {
+							building = infrastructure
+							size > 0
+						}
+						NOT = { has_state_flag = RUS_expand_siberian_mines_state_infra }
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					set_state_flag = RUS_expand_siberian_mines_state_infra
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_siberia_state = yes
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+						}
+						NOT = { has_state_flag = RUS_expand_siberian_mines_state_civ }
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					set_state_flag = RUS_expand_siberian_mines_state_civ
+				}
+				if = {
+					limit = {
+						NOT = {
+							any_owned_state = {
+								is_siberia_state = yes
+								NOT = {
+									has_state_flag = RUS_expand_siberian_mines_state_civ
+									has_state_flag = RUS_expand_siberian_mines_state_infra
+								}
+							}
+						}
+					}
+					add_to_temp_variable = {
+						break = 1
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_fortify_siberia
+		icon = GFX_goal_fortify_the_westwall
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_expand_siberian_mines }
+		relative_position_id = RUS_expand_siberian_mines
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					any_neighbor_state = {
+						owner = {
+							OR = {
+								tag = MNG
+								is_subject_of = MNG
+							}
+						}
+
+					}
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border_country = MNG
+					}
+				}
+			}
+			add_timed_idea = {
+				idea = RUS_fortification
+				days = 180
+			}
+		}
+		ai_will_do = {
+			factor = 1.5
+		}
+	}
+
+	focus = {
+		id = RUS_left_perspective
+		icon = GFX_goal_support_communism
+		x = 3
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_interventionist_stance }
+		mutually_exclusive = { focus = RUS_right_perspective }
+		relative_position_id = RUS_interventionist_stance
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = RUS_left_perspective_idea
+				days = 730
+			}
+		}
+		ai_will_do = {
+			factor = 1.5
+		}
+	}
+
+	focus = {
+		id = RUS_empower_soviets
+		icon = GFX_focus_generic_soviet_politics
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_left_perspective }
+		relative_position_id = RUS_left_perspective
+		available = {
+			communism > 0.4
+		}
+		bypass = {
+			has_government = communism
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Russian National Soviet Council"
+				picture = GFX_portrait_SPR_anarchist_commune
+				ideology = anarchist_communism
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_third_international
+		icon = GFX_focus_generic_join_comintern
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_empower_soviets }
+		relative_position_id = RUS_empower_soviets
+		available = {
+			is_subject = no
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_faction_leader = yes
+				}
+				set_faction_name = RUS_third_international
+			}
+			else_if = {
+				limit = { is_in_faction = yes }
+				leave_faction = yes
+				country_event = {
+					id = tesb_RUS.10
+				}
+			}
+			else = {
+				create_faction = RUS_third_international
+			}
+			country_event = {
+				id = tesb_GER.100
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_restore_socialist_republics
+		icon = GFX_focus_generic_join_comintern
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_third_international }
+		relative_position_id = RUS_third_international
+		available = {
+			
+		}
+		bypass = {
+			OR = {
+				FRA = { exists = no }
+				is_in_faction_with = FRA
+			}
+			OR = {
+				BRI = { exists = no }
+				is_in_faction_with = BRI
+			}
+			OR = {
+				GRB = { exists = no }
+				is_in_faction_with = GRB
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_restore_socialist_republics_tt
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_expand_revolution
+		icon = GFX_focus_generic_join_comintern
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_third_international }
+		relative_position_id = RUS_third_international
+		available = {
+			
+		}
+		bypass = {
+			OR = {
+				CAT = { exists = no }
+				is_in_faction_with = CAT
+			}
+			OR = {
+				FLD = { exists = no }
+				is_in_faction_with = FLD
+			}
+			OR = {
+				AQI = { exists = no }
+				is_in_faction_with = AQI
+			}
+			OR = {
+				SPA = { exists = no }
+				is_in_faction_with = SPA
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_expand_revolution_tt
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	focus = {
+		id = RUS_assert_slavic_hegemony
+		icon = GFX_goal_poland_goal
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_restore_socialist_republics }
+		prerequisite = { focus = RUS_expand_revolution }
+		relative_position_id = RUS_restore_socialist_republics
+		will_lead_to_war_with = PLC
+		available = {
+			NOT = { is_in_faction_with = PLC }
+			is_independent_country = yes
+		}
+		bypass = {
+			PLC = {
+				OR = {
+					is_free_ally_or_subject_of_ROOT = yes
+					exists = no
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = PLC
+				type = puppet_wargoal_focus
+			}
+		}
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+
+	focus = {
+		id = RUS_end_hungarian_tyrrany
+		icon = GFX_goal_generic_territory_or_war
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_restore_socialist_republics }
+		prerequisite = { focus = RUS_expand_revolution }
+		relative_position_id = RUS_expand_revolution
+		will_lead_to_war_with = HUN
+		available = {
+			NOT = { is_in_faction_with = HUN }
+			is_independent_country = yes
+		}
+		bypass = {
+			HUN = {
+				OR = {
+					is_free_ally_or_subject_of_ROOT = yes
+					exists = no
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = HUN
+				type = puppet_wargoal_focus
+			}
+		}
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+
+	focus = {
+		id = RUS_crush_germans
+		icon = GFX_focus_attack_germany
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_assert_slavic_hegemony focus = RUS_end_hungarian_tyrrany }
+		relative_position_id = RUS_assert_slavic_hegemony
+		will_lead_to_war_with = GMR
+		available = {
+			NOT = { is_in_faction_with = GMR }
+			is_independent_country = yes
+		}
+		bypass = {
+			GMR = {
+				OR = {
+					is_free_ally_or_subject_of_ROOT = yes
+					exists = no
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = GMR
+				type = puppet_wargoal_focus
+			}
+		}
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+
+	focus = {
+		id = RUS_eagle_hunt
+		icon = GFX_focus_generic_balkans_focus
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_crush_germans }
+		relative_position_id = RUS_crush_germans
+		will_lead_to_war_with = RME
+		available = {
+			NOT = { is_in_faction_with = RME }
+			is_independent_country = yes
+		}
+		bypass = {
+			RME = {
+				OR = {
+					is_free_ally_or_subject_of_ROOT = yes
+					exists = no
+				}
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = RME
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+
+	focus = {
+		id = RUS_right_perspective
+		icon = GFX_goal_support_fascism
+		x = 7
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_interventionist_stance }
+		mutually_exclusive = { focus = RUS_left_perspective }
+		relative_position_id = RUS_interventionist_stance
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = RUS_right_perspective_idea
+				days = 730
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_national_restoration
+		icon = GFX_focus_generic_fascist_propaganda
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_right_perspective }
+		relative_position_id = RUS_right_perspective
+		available = {
+			fascism > 0.3
+		}
+		bypass = {
+			has_government = fascism
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Ruslan Buzhansky"
+				ideology = fascism_ideology
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_RNRP_supremacy
+		icon = GFX_goal_generic_political_pressure
+		cost = 10
+		x = -1
+		y = 1
+		prerequisite = { focus = RUS_national_restoration }
+		relative_position_id = RUS_national_restoration
+		available = {
+
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.2
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_national_republican_alliance_focus
+		dynamic = yes
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 10
+		x = 0
+		y = 2
+		prerequisite = { focus = RUS_national_restoration }
+		relative_position_id = RUS_national_restoration
+		available = {
+			OR = {
+				is_faction_leader = yes
+				is_in_faction = no
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_faction_leader = yes
+					PLC = { is_faction_leader = yes }
+				}
+				PLC = {
+					country_event = { id = tesb_RUS.20 }
+				}
+			}
+			else_if = {
+				limit = {
+					PLC = { is_faction_leader = yes }
+				}
+				PLC = {
+					country_event = { id = tesb_RUS.25 }
+				}
+			}
+			else_if = {
+				limit = {
+					is_faction_leader = yes
+				}
+				set_faction_name = RUS_international_republican_axis
+			}
+			else = {
+				create_faction = RUS_international_republican_axis
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_enforce_unity
+		icon = GFX_goal_generic_national_unity
+		cost = 10
+		x = 1
+		y = 1
+		prerequisite = { focus = RUS_national_restoration }
+		relative_position_id = RUS_national_restoration
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_enforce_unity_tt
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	
+	focus = {
+		id = RUS_support_republicans_overseas
+		icon = GFX_focus_generic_spread_fascism
+		cost = 10
+		x = -1
+		y = 1
+		prerequisite = { focus = RUS_national_republican_alliance_focus }
+		prerequisite = { focus = RUS_RNRP_supremacy }
+		relative_position_id = RUS_national_republican_alliance_focus
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_support_republicans_overseas_tt
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_anti_colonialism
+		icon = GFX_focus_generic_africa_liberation
+		cost = 10
+		x = 1
+		y = 1
+		prerequisite = { focus = RUS_national_republican_alliance_focus }
+		prerequisite = { focus = RUS_enforce_unity }
+		relative_position_id = RUS_national_republican_alliance_focus
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = RME_former_territory
+						has_idea = RME_former_dominion
+					}
+					capital_scope = {
+						is_on_continent = africa
+					}
+				}
+				add_to_array = { RUS.RUS_colonial_countries = THIS.id }
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_end_monarchists
+		icon = GFX_focus_generic_strike_at_democracy1
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = { focus = RUS_support_republicans_overseas }
+		relative_position_id = RUS_support_republicans_overseas
+		will_lead_to_war_with = RME
+		will_lead_to_war_with = MNG
+		available = {
+			is_independent_country = yes
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = RME
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = MNG
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+
+	
+	focus = {
+		id = RUS_american_republics
+		icon = GFX_focus_generic_strike_at_democracy3
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = { focus = RUS_anti_colonialism }
+		relative_position_id = RUS_anti_colonialism
+		will_lead_to_war_with = CAN
+		will_lead_to_war_with = UTA
+		available = {
+			is_independent_country = yes
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = CAN
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = UTA
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+
+	focus = {
+		id = RUS_exile_dissidents
+		icon = GFX_focus_SOV_military_purge
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_left_perspective focus = RUS_right_perspective }
+		prerequisite = { focus = RUS_expand_siberian_mines }
+		relative_position_id = RUS_left_perspective
+		available = {
+
+		}
+		bypass = {
+			
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = RUS_left_perspective
+				}
+				hidden_effect = {
+					set_temp_variable = {
+						var = ban_ideology_var
+						value = party_popularity@fascism
+					}
+					multiply_temp_variable = {
+						var = ban_ideology_var
+						value = -1
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = ban_ideology_var
+					}
+					multiply_temp_variable = {
+						var = ban_ideology_var
+						value = 0.5
+					}				
+				}
+				custom_effect_tooltip = ban_fascist_party_tt
+				add_stability = ban_ideology_var
+				multiply_temp_variable = { ban_ideology_var = -1 }
+				add_popularity = {
+					ideology = communism
+					popularity = ban_ideology_var
+				}
+			}
+			else = {
+				hidden_effect = {
+					set_temp_variable = {
+						var = ban_ideology_var
+						value = party_popularity@communism
+					}
+					multiply_temp_variable = {
+						var = ban_ideology_var
+						value = -1
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = ban_ideology_var
+					}
+					multiply_temp_variable = {
+						var = ban_ideology_var
+						value = 0.5
+					}				
+				}
+				custom_effect_tooltip = ban_communist_party_tt
+				add_stability = ban_ideology_var
+				multiply_temp_variable = { ban_ideology_var = -1 }
+				add_popularity = {
+					ideology = fascism
+					popularity = ban_ideology_var
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = RUS_nationalize_economy
+		icon = GFX_goal_generic_construct_mil_factory
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_left_perspective focus = RUS_right_perspective }
+		relative_position_id = RUS_right_perspective
+		available = {
+			
+		}
+		bypass = {
+			
+		}
+		complete_tooltip = {
+			if = {
+				limit = {
+					has_country_flag = RUS_nationalize_economy_flag
+				}
+				add_political_power = 150
+			}
+			else = {
+				add_ideas = war_economy
+			}
+			if = {
+				limit = {
+					has_country_flag = RUS_nationalize_economy_flag2
+				}
+				add_political_power = 150
+			}
+			else = {
+				add_ideas = limited_exports
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = isolation
+				}
+				swap_ideas = {
+					remove_idea = isolation
+					add_idea = war_economy
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = civilian_economy
+				}
+				swap_ideas = {
+					remove_idea = civilian_economy
+					add_idea = war_economy
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = low_economic_mobilisation
+				}
+				swap_ideas = {
+					remove_idea = low_economic_mobilisation
+					add_idea = war_economy
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = partial_economic_mobilisation
+				}
+				swap_ideas = {
+					remove_idea = partial_economic_mobilisation
+					add_idea = war_economy
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = war_economy
+						has_idea = tot_economic_mobilisation
+					}
+				}
+				set_country_flag = RUS_nationalize_economy_flag
+				add_political_power = 150
+			}
+			if = {
+				limit = {
+					has_idea = free_trade
+				}
+				swap_ideas = {
+					remove_idea = free_trade
+					add_idea = limited_exports
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = export_focus
+				}
+				swap_ideas = {
+					remove_idea = export_focus
+					add_idea = limited_exports
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = limited_exports
+						has_idea = closed_economy
+					}
+				}
+				set_country_flag = RUS_nationalize_economy_flag2
+				add_political_power = 150
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = RUS_karelia
+		icon = GFX_focus_generic_treaty
+		x = -2
+		y = 2
+		cost = 10
+		prerequisite = { focus = RUS_defensive_stance focus = RUS_interventionist_stance }
+		relative_position_id = RUS_defensive_stance
 		available = {
 			OR = {
 				NOT = { owns_state = 559 } # significant_number - Karelia
@@ -1002,10 +2047,10 @@ focus_tree = {
 		id = RUS_caucasus
 		icon = GFX_goal_generic_forceful_treaty
 		x = 0
-		y = 1
+		y = 2
 		cost = 10
-		prerequisite = { focus = RUS_second_northern_alliance }
-		relative_position_id = RUS_second_northern_alliance
+		prerequisite = { focus = RUS_defensive_stance focus = RUS_interventionist_stance }
+		relative_position_id = RUS_defensive_stance
 		available = {
 			OR = {
 				GEO = { is_neutral_to_ROOT = yes }
@@ -1114,11 +2159,11 @@ focus_tree = {
 	focus = {
 		id = RUS_asian_expansion
 		icon = GFX_focus_usa_focus_on_asia
-		x = 2
+		x = 0
 		y = 1
 		cost = 10
-		prerequisite = { focus = RUS_second_northern_alliance }
-		relative_position_id = RUS_second_northern_alliance
+		prerequisite = { focus = RUS_fortify_siberia }
+		relative_position_id = RUS_fortify_siberia
 		available = {
 
 		}
@@ -1142,6 +2187,7 @@ focus_tree = {
 		prerequisite = { focus = RUS_asian_expansion }
 		relative_position_id = RUS_asian_expansion
 		available = {
+			NOT = { has_government = fascism }
 			OR = {
 				CHG = {
 					is_neutral_to_ROOT = yes
@@ -1219,8 +2265,8 @@ focus_tree = {
 	focus = {
 		id = RUS_restoring_manchu
 		icon = GFX_goal_generic_major_war
-		x = 1
-		y = 1
+		x = 0
+		y = 3
 		cost = 10
 		prerequisite = { focus = RUS_asian_expansion }
 		relative_position_id = RUS_asian_expansion
