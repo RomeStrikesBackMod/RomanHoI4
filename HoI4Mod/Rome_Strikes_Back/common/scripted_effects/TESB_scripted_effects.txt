@@ -777,6 +777,16 @@ bav_hun_deal_effect = {
 		}
 	}
 }
+
+set_teichu = {
+	if = {
+		limit = {
+			date < 1938.1.30
+		}
+		set_global_flag = teichu
+	}
+}
+
 d_set_bohemia = {
 	BAV = {
 		set_cosmetic_tag = bohemia
@@ -823,6 +833,22 @@ d_rus_to_neutral = {
 		}
 		set_politics = {
 			ruling_party = neutrality
+		}
+	}
+}
+
+d_rome_territory_focus_update = {
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = RME_former_dominion
+				has_idea = RME_former_territory
+			}
+			has_focus_tree = generic_focus
+		}
+		load_focus_tree = {
+			tree = roman_territory_focus
+			keep_completed = yes
 		}
 	}
 }
