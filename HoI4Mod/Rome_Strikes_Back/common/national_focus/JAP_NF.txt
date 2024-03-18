@@ -669,23 +669,26 @@ focus_tree = {
 		relative_position_id = PrepTheBorderJAP
 		cost = 10
 		completion_reward = {
-		add_ideas = paramilitarism_focus
-	}
-		ai_will_do = {
-		factor = 10
-		modifier = {
+			add_ideas = paramilitarism_focus
 		}
-	}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+			}
+		}
 	}
 	
 	focus = {
 		id = JAP_civil_war_ended
 		icon = GFX_goal_anschluss
 		text = JAP_civil_war_ended
-		x = 10
+		x = 9
 		y = 0
 		relative_position_id = EmpireGloryJAP
 		cost = 10
+		available = {
+			has_global_flag = JAP_civil_war_done
+		}
 		completion_reward = {
 			add_stability = 0.05
 		}
@@ -703,7 +706,8 @@ focus_tree = {
 		icon = GFX_goal_anschluss
 		text = JAP_reinforce_bakfu
 		prerequisite = { focus = JAP_civil_war_ended }
-		x = -3
+		mutually_exclusive = { focus = JAP_abolish_bakfu }
+		x = -2
 		y = 1
 		relative_position_id = JAP_civil_war_ended
 		cost = 10
@@ -837,12 +841,12 @@ focus_tree = {
 			add_stability = 0.05
 		}
 		ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0
-			date < 1937.1.1
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1937.1.1
+			}
 		}
-	}
 	}
 	
 	focus = {
@@ -858,20 +862,24 @@ focus_tree = {
 			add_stability = 0.05
 		}
 		ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0
-			date < 1937.1.1
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1937.1.1
+			}
 		}
 	}
-	}
 	
+	##################
+	# Imperial route #
+	##################
 	focus = {
 		id = JAP_abolish_bakfu
 		icon = GFX_goal_anschluss
 		text = JAP_abolish_bakfu
 		prerequisite = { focus = JAP_civil_war_ended }
-		x = -1
+		mutually_exclusive = { focus = JAP_reinforce_bakfu }
+		x = 2
 		y = 1
 		relative_position_id = JAP_civil_war_ended
 		cost = 10
@@ -891,10 +899,10 @@ focus_tree = {
 		id = JAP_judgement_for_traitors
 		icon = GFX_goal_anschluss
 		text = JAP_judgement_for_traitors
-		prerequisite = { focus = JAP_civil_war_ended }
-		x = 1
+		prerequisite = { focus = JAP_abolish_bakfu }
+		x = -1
 		y = 1
-		relative_position_id = JAP_civil_war_ended
+		relative_position_id = JAP_abolish_bakfu
 		cost = 10
 		completion_reward = {
 			add_stability = 0.05
@@ -912,10 +920,10 @@ focus_tree = {
 		id = JAP_fate_of_tachibana
 		icon = GFX_goal_anschluss
 		text = JAP_fate_of_tachibana
-		prerequisite = { focus = JAP_civil_war_ended }
-		x = 3
+		prerequisite = { focus = JAP_abolish_bakfu }
+		x = 1
 		y = 1
-		relative_position_id = JAP_civil_war_ended
+		relative_position_id = JAP_abolish_bakfu
 		cost = 10
 		completion_reward = {
 			add_stability = 0.05
@@ -933,10 +941,9 @@ focus_tree = {
 		id = JAP_abdication_of_tenpo
 		icon = GFX_goal_anschluss
 		text = JAP_abdication_of_tenpo
-		prerequisite = { focus = JAP_abolish_bakfu }
 		prerequisite = { focus = JAP_judgement_for_traitors }
 		prerequisite = { focus = JAP_fate_of_tachibana }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = JAP_judgement_for_traitors
 		cost = 10

@@ -6,16 +6,903 @@ news_event = {
 	title = tesb_JAP.1.t
 	desc = tesb_JAP.1.desc
 	picture = GFX_news_event_japanese_army_parade
-
+	major = yes
 	fire_only_once = yes
 	trigger = {
 		date > 1937.1.1
 		tag = JAP
 	}
 	mean_time_to_happen = {
-		days = 1
+		days = 10
+	}
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				random_list = {
+					5 = { set_country_flag = JAP_mutsuhito }
+					95 = { set_country_flag = JAP_myoukougein  }
+				}
+				news_event = { id = tesb_JAP.2 days = 7 }
+			}
+		}
 	}
 	option = {
 		name = tesb_JAP.1.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.2
+	title = tesb_JAP.2.t
+	desc = {
+		trigger = { has_country_flag = JAP_mutsuhito }
+		text = tesb_JAP.2.desc_1
+	}
+	desc = {
+		trigger = { has_country_flag = JAP_myoukougein }
+		text = tesb_JAP.2.desc_2
+	}
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				if = {
+					limit = { date < 1938.1.28 }
+					set_global_flag = teichu
+				}
+				news_event = { id = tesb_JAP.3 days = 7 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.2.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.3
+	title = {
+		trigger = { has_country_flag = JAP_mutsuhito }
+		text = tesb_JAP.3.t_1
+	}
+	title = {
+		trigger = { has_country_flag = JAP_myoukougein }
+		text = tesb_JAP.3.t_2
+	}
+	desc = {
+		trigger = { has_country_flag = JAP_mutsuhito }
+		text = tesb_JAP.3.desc_1
+	}
+	desc = {
+		trigger = { has_country_flag = JAP_myoukougein }
+		text = tesb_JAP.3.desc_2
+	}
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				if = {
+					limit = { has_country_flag = JAP_mutsuhito }
+					news_event = { id = tesb_JAP.32 days = 14 random_days = 14 }
+				}
+				if = {
+					limit = { has_country_flag = JAP_myoukougein }
+					news_event = { id = tesb_JAP.5 days = 2 }
+				}
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.3.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.32
+	title = tesb_JAP.32.t
+	desc = tesb_JAP.32.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				news_event = { id = tesb_JAP.4 days = 14 random_days = 14 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.32.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.4
+	title = tesb_JAP.4.t
+	desc = tesb_JAP.4.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		name = tesb_JAP.4.a
+	}
+}
+
+
+news_event = {
+	id = tesb_JAP.5
+	title = tesb_JAP.5.t
+	desc = tesb_JAP.5.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				news_event = { id = tesb_JAP.33 days = 7 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.5.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.33
+	title = tesb_JAP.33.t
+	desc = tesb_JAP.33.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				news_event = { id = tesb_JAP.34 days = 2 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.33.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.34
+	title = tesb_JAP.34.t
+	desc = tesb_JAP.34.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		trigger = {
+			NOT = { tag = JAP }
+		}
+		name = tesb_JAP.34.a
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.34.b
+		news_event = {
+			id = tesb_JAP.35 days = 7
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.34.c
+		random_list = {
+			95 = {
+				news_event = { id = tesb_JAP.341 hours = 1 }
+			}
+			5 = {
+				custom_effect_tooltip = JAP_mutsuhito_arrested
+				hidden_effect = {
+					unlock_national_focus = JAP_civil_war_ended
+					complete_national_focus = JAP_reinforce_bakfu
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_JAP.341
+	title = tesb_JAP.341.t
+	desc = tesb_JAP.341.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = JAP_civil_war_start
+	}
+	option = {
+		trigger = {
+			NOT = { tag = JAP }
+		}
+		name = tesb_JAP.341.a
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.341.b
+		start_civil_war = {
+			ideology = neutrality
+			capital = 309
+			states = {
+				309 310 306
+			}
+			set_cosmetic_tag = JAP_imperial
+			set_country_flag = JAP_emperor
+		}
+		set_country_flag = JAP_shogun
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.341.c
+		set_capital = {
+			state = 309
+		}
+		set_cosmetic_tag = JAP_imperial
+		start_civil_war = {
+			ruling_party = neutrality
+			ideology = ROOT
+			capital = 308
+			states = {
+				308 304 307 311 305 313 312
+			}
+			set_country_flag = JAP_shogun
+		}
+		set_country_flag = JAP_emperor
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_JAP.35
+	title = tesb_JAP.35.t
+	desc = tesb_JAP.35.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		trigger = {
+			NOT = { tag = JAP }
+		}
+		name = tesb_JAP.35.a
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.35.b
+		news_event = { id = tesb_JAP.351 days = 1 }
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.35.c
+		news_event = { id = tesb_JAP.36 hours = 1 }
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+
+news_event = {
+	id = tesb_JAP.351
+	title = tesb_JAP.351.t
+	desc = tesb_JAP.351.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = JAP_civil_war_start
+	}
+	option = {
+		trigger = {
+			NOT = { tag = JAP }
+		}
+		name = tesb_JAP.351.a
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.351.b
+		start_civil_war = {
+			ideology = neutrality
+			capital = 307
+			states = {
+				307 309 311 306
+			}
+			set_cosmetic_tag = JAP_equalist
+			set_country_flag = JAP_emperor
+		}
+		set_country_flag = JAP_shogun
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.351.c
+		set_capital = {
+			state = 307
+		}
+		set_cosmetic_tag = JAP_equalist
+		start_civil_war = {
+			ruling_party = neutrality
+			ideology = ROOT
+			capital = 308
+			states = {
+				308 304 310 305 313 312
+			}
+			set_country_flag = JAP_shogun
+		}
+		set_country_flag = JAP_emperor
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_JAP.36
+	title = tesb_JAP.36.t
+	desc = tesb_JAP.36.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		trigger = {
+			NOT = { tag = JAP }
+		}
+		name = tesb_JAP.36.a
+	}
+	option = {
+		trigger = {
+			tag = JAP
+		}
+		name = tesb_JAP.36.b
+		news_event = { id = tesb_JAP.361 hours = 1 }
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		trigger = {
+			tag = JAP
+		}
+		name = tesb_JAP.36.c
+		news_event = { id = tesb_JAP.6 days = 1 }
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+
+news_event = {
+	id = tesb_JAP.361
+	title = tesb_JAP.361.t
+	desc = tesb_JAP.361.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = JAP_civil_war_start
+	}
+	option = {
+		trigger = {
+			NOT = { tag = JAP }
+		}
+		name = tesb_JAP.361.a
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.361.b
+		start_civil_war = {
+			ideology = neutrality
+			capital = 311
+			states = {
+				311
+			}
+			set_cosmetic_tag = JAP_fujiwara
+			set_country_flag = JAP_emperor
+		}
+		set_country_flag = JAP_shogun
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.361.c
+		set_capital = {
+			state = 311
+		}
+		set_cosmetic_tag = JAP_fujiwara
+		start_civil_war = {
+			ruling_party = neutrality
+			ideology = ROOT
+			capital = 308
+			states = {
+				308 304 306 309 307 310 305 313 312
+			}
+			set_country_flag = JAP_shogun
+		}
+		set_country_flag = JAP_emperor
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_JAP.6
+	title = tesb_JAP.6.t
+	desc = tesb_JAP.6.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				news_event = { id = tesb_JAP.7 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.6.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.7
+	title = tesb_JAP.7.t
+	desc = tesb_JAP.7.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = JAP_civil_war_start
+	}
+	option = {
+		trigger = {
+			NOT = { tag = JAP }
+		}
+		name = tesb_JAP.7.a
+	}
+	option = {
+		trigger = { tag = JAP }
+		start_civil_war = {
+			ideology = democratic
+			capital = 307
+			states = {
+				307 306 309 310 311 305 313 312
+			}
+			set_country_flag = JAP_emperor
+		}
+		set_country_flag = JAP_shogun
+		name = tesb_JAP.7.b
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		trigger = { tag = JAP }
+		name = tesb_JAP.7.c
+		start_civil_war = {
+			ruling_party = democratic
+			ideology = ROOT
+			capital = 308
+			states = {
+				308 304
+			}
+			set_country_flag = JAP_shogun
+		}
+		set_country_flag = JAP_emperor
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_JAP.37
+	title = tesb_JAP.37.t
+	desc = tesb_JAP.37.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	fire_only_once = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_shogun
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	immediate = {
+		hidden_effect = {
+			JPS = {
+				news_event = { id = tesb_JAP.38 days = 1 random_days = 9 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.37.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.38
+	title = tesb_JAP.38.t
+	desc = tesb_JAP.38.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_shogun
+	}
+	immediate = {
+		hidden_effect = {
+			JPS = {
+				news_event = { id = tesb_JAP.8 days = 1 random_days = 19 }
+				news_event = { id = tesb_JAP.9 days = 1 random_days = 19 }
+				news_event = { id = tesb_JAP.10 days = 1 random_days = 19 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.38.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.8
+	title = tesb_JAP.8.t
+	desc = tesb_JAP.8.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_shogun
+	}
+	immediate = {
+		hidden_effect = {
+			JPS = {
+				set_country_flag = minamoto_shigemori
+				news_event = { id = tesb_JAP.11 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.8.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.9
+	title = tesb_JAP.9.t
+	desc = tesb_JAP.9.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_shogun
+	}
+	immediate = {
+		hidden_effect = {
+			JPS = {
+				set_country_flag = iwamoto_kanehira
+				news_event = { id = tesb_JAP.11 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.9.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.10
+	title = tesb_JAP.10.t
+	desc = tesb_JAP.10.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_shogun
+	}
+	immediate = {
+		hidden_effect = {
+			JPS = {
+				set_country_flag = taira_yoritomo
+				news_event = { id = tesb_JAP.11 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.10.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.11
+	title = tesb_JAP.11.t
+	desc = tesb_JAP.11.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_shogun
+		has_country_flag = minamoto_shigemori
+		has_country_flag = iwamoto_kanehira
+		has_country_flag = taira_yoritomo
+	}
+	immediate = {
+		hidden_effect = {
+			JPS = {
+
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.11.a
+	}
+}
+
+
+news_event = {
+	id = tesb_JAP.39
+	title = tesb_JAP.39.t
+	desc = tesb_JAP.39.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	fire_only_once = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_emperor
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+	immediate = {
+		hidden_effect = {
+			JPE = {
+				news_event = { id = tesb_JAP.40 days = 1 random_days = 9 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.39.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.40
+	title = tesb_JAP.40.t
+	desc = tesb_JAP.40.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_emperor
+	}
+	immediate = {
+		hidden_effect = {
+			JPE = {
+				news_event = { id = tesb_JAP.401 days = 1 random_days = 9 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.40.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.401
+	title = tesb_JAP.401.t
+	desc = tesb_JAP.401.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_emperor
+	}
+	immediate = {
+		hidden_effect = {
+			JPE = {
+				news_event = { id = tesb_JAP.12 days = 1 random_days = 19 }
+				news_event = { id = tesb_JAP.13 days = 1 random_days = 19 }
+				news_event = { id = tesb_JAP.14 days = 1 random_days = 19 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.401.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.12
+	title = tesb_JAP.12.t
+	desc = tesb_JAP.12.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_emperor
+	}
+	immediate = {
+		hidden_effect = {
+			JPE = {
+				set_country_flag = fujiwara_tomoe
+				news_event = { id = tesb_JAP.15 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.12.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.13
+	title = tesb_JAP.13.t
+	desc = tesb_JAP.13.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_emperor
+	}
+	immediate = {
+		hidden_effect = {
+			JPE = {
+				set_country_flag = minamoto_bennosuke
+				news_event = { id = tesb_JAP.15 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.13.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.14
+	title = tesb_JAP.14.t
+	desc = tesb_JAP.14.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_emperor
+	}
+	immediate = {
+		hidden_effect = {
+			JPE = {
+				set_country_flag = saitou_kichinosuke
+				news_event = { id = tesb_JAP.15 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.14.a
+	}
+}
+
+news_event = {
+	id = tesb_JAP.15
+	title = tesb_JAP.15.t
+	desc = tesb_JAP.15.desc
+	picture = GFX_news_event_japanese_army_parade
+	major = yes
+
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = JAP_civil_war_start
+		NOT = { has_global_flag = JAP_civil_war_done }
+		original_tag = JAP
+		has_country_flag = JAP_emperor
+		has_country_flag = minamoto_shigemori
+		has_country_flag = iwamoto_kanehira
+		has_country_flag = saitou_kichinosuke
+	}
+	immediate = {
+		hidden_effect = {
+			JPE = {
+
+			}
+		}
+	}
+	option = {
+		name = tesb_JAP.15.a
 	}
 }

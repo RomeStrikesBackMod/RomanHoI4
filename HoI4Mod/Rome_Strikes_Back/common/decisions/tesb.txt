@@ -2291,3 +2291,33 @@ dresden_conference_decisions = {
 		}
 	}
 }
+
+JAP_decisions = {
+	JAP_civil_war_victory = {
+		days_mission_timeout = 10
+		activation = {
+			controls_state = 308
+			controls_state = 307
+		}
+		available = {
+			OR = {
+				NOT = { controls_state = 307 }
+				NOT = { controls_state = 308 }
+			}
+		}
+		is_good = yes
+		timeout_effect = {
+			every_country_with_original_tag = {
+				original_tag_to_check = JAP
+				limit = {
+					NOT = { tag = ROOT }
+				}
+				ROOT = {
+					annex_country = {
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+}
