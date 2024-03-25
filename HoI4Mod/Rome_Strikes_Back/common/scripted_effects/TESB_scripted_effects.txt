@@ -787,6 +787,42 @@ set_teichu = {
 	}
 }
 
+jap_start_civil_war = {
+	hidden_effect = {
+		every_country_with_original_tag = {
+			original_tag_to_check = JAP
+			add_ideas = JAP_civil_war_starter
+		}
+	}
+}
+jap_end_civil_war = {
+	hidden_effect = {
+		every_country_with_original_tag = {
+			original_tag_to_check = JAP
+			remove_ideas = JAP_civil_war_starter
+			remove_ideas = JAP_civil_war_finisher
+			delete_unit_template_and_units = {
+				division_template = "Shogunate Militia"
+				disband = yes
+			}
+			delete_unit_template_and_units = {
+				division_template = "Imperial Militia"
+				disband = yes
+			}
+			delete_unit_template_and_units = {
+				division_template = "Imperial Tanks"
+				disband = yes
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = JAP_volunteers
+			}
+			remove_ideas = JAP_volunteers
+		}
+	}
+}
+
 d_set_bohemia = {
 	BAV = {
 		set_cosmetic_tag = bohemia
