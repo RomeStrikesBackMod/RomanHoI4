@@ -147,6 +147,18 @@ country_event = {
 	immediate = {
 		news_event = { id = tesb_JAP.32 }
 		news_event = { id = tesb_JAP.4 days = 14 random_days = 14 }
+		305 = {
+			add_dynamic_modifier = {
+				modifier = generic_unrest
+				days = 730
+			}
+		}
+		311 = {
+			add_dynamic_modifier = {
+				modifier = generic_unrest
+				days = 730
+			}
+		}
 	}
 	option = {
 		name = BUTTON_OK
@@ -163,6 +175,23 @@ news_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_JAP.32.a
+		if = {
+			limit = { tag = JAP }
+			effect_tooltip = {
+				305 = {
+					add_dynamic_modifier = {
+						modifier = generic_unrest
+						days = 730
+					}
+				}
+				311 = {
+					add_dynamic_modifier = {
+						modifier = generic_unrest
+						days = 730
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -218,6 +247,18 @@ country_event = {
 	immediate = {
 		news_event = { id = tesb_JAP.33 }
 		country_event = { id = tesb_JAP.34 days = 2 }
+		307 = {
+			add_dynamic_modifier = {
+				modifier = generic_unrest
+				days = 180
+			}
+		}
+		308 = {
+			add_dynamic_modifier = {
+				modifier = generic_unrest
+				days = 180
+			}
+		}
 	}
 	option = {
 		name = BUTTON_OK
@@ -234,6 +275,23 @@ news_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_JAP.33.a
+		if = {
+			limit = { tag = JAP }
+			effect_tooltip = {
+				307 = {
+					add_dynamic_modifier = {
+						modifier = generic_unrest
+						days = 180
+					}
+				}
+				308 = {
+					add_dynamic_modifier = {
+						modifier = generic_unrest
+						days = 180
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -304,6 +362,16 @@ country_event = {
 	immediate = {
 		set_global_flag = JAP_civil_war_start
 		hidden_effect = { news_event = { id = tesb_JAP.342 hours = 1 } }
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		MNG = {
+			if = {
+				limit = { has_completed_focus = MNG_invite_japan }
+				uncomplete_national_focus = { focus = MNG_invite_japan }
+			}
+		}
 	}
 	option = {
 		name = tesb_JAP.341.b
@@ -448,6 +516,16 @@ country_event = {
 	immediate = {
 		set_global_flag = JAP_civil_war_start
 		hidden_effect = { news_event = { id = tesb_JAP.352 } }
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		MNG = {
+			if = {
+				limit = { has_completed_focus = MNG_invite_japan }
+				uncomplete_national_focus = { focus = MNG_invite_japan }
+			}
+		}
 	}
 	option = {
 		name = tesb_JAP.351.b
@@ -574,7 +652,17 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		set_global_flag = JAP_civil_war_start
-		hidden_effect = { news_event = { id = tesb_JAP.362 hours = 1 } }
+		hidden_effect = { news_event = { id = tesb_JAP.362 } }
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		MNG = {
+			if = {
+				limit = { has_completed_focus = MNG_invite_japan }
+				uncomplete_national_focus = { focus = MNG_invite_japan }
+			}
+		}
 	}
 	option = {
 		name = tesb_JAP.361.b
@@ -685,6 +773,16 @@ country_event = {
 	immediate = {
 		set_global_flag = JAP_civil_war_start
 		hidden_effect = { news_event = { id = tesb_JAP.71 } }
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		MNG = {
+			if = {
+				limit = { has_completed_focus = MNG_invite_japan }
+				uncomplete_national_focus = { focus = MNG_invite_japan }
+			}
+		}
 	}
 	option = {
 		start_civil_war = {
@@ -1609,6 +1707,10 @@ country_event = {
 	}
 	immediate = {
 		news_event = { id = tesb_JAP.20 }
+		add_timed_idea = {
+			idea = JPS_kanehira_loyalty
+			days = 180
+		}
 	}
 	option = {
 		name = BUTTON_OK
@@ -1643,6 +1745,12 @@ country_event = {
 	}
 	immediate = {
 		news_event = { id = tesb_JAP.21 }
+		308 = {
+			add_dynamic_modifier = {
+				modifier = generic_unrest
+				days = 180
+			}
+		}
 	}
 	option = {
 		name = BUTTON_OK
@@ -1657,6 +1765,17 @@ news_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_JAP.21.a
+		if = {
+			limit = { tag = JPS }
+			effect_tooltip = {
+				308 = {
+					add_dynamic_modifier = {
+						modifier = generic_unrest
+						days = 180
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -1677,6 +1796,12 @@ country_event = {
 	}
 	immediate = {
 		news_event = { id = tesb_JAP.22 }
+		307 = {
+			add_dynamic_modifier = {
+				modifier = generic_unrest
+				days = 180
+			}
+		}
 	}
 	option = {
 		name = BUTTON_OK
@@ -1692,6 +1817,17 @@ news_event = {
 
 	option = {
 		name = tesb_JAP.22.a
+		if = {
+			limit = { tag = JPE }
+			effect_tooltip = {
+				307 = {
+					add_dynamic_modifier = {
+						modifier = generic_unrest
+						days = 180
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -1826,7 +1962,7 @@ country_event = {
 		name = tesb_JAP.2500.a
 		set_country_flag = support_JPE
 		hidden_effect = {
-			JPE = { country_event = { id = tesb_JAP.2501 random_hours = 24 } }
+			JPE = { country_event = { id = tesb_JAP.2501 random_hours = 48 } }
 			add_ideas = JAP_volunteers
 		}
 		ai_chance = {
@@ -1848,7 +1984,7 @@ country_event = {
 		name = tesb_JAP.2500.b
 		set_country_flag = support_JPS
 		hidden_effect = {
-			JPS = { country_event = { id = tesb_JAP.2501 random_hours = 24 } }
+			JPS = { country_event = { id = tesb_JAP.2501 random_hours = 48 } }
 			add_ideas = JAP_volunteers
 		}
 		ai_chance = {
@@ -1891,7 +2027,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		news_event = { id = tesb_JAP.25 random_hours = 24 }
+		news_event = { id = tesb_JAP.25 random_hours = 48 }
 	}
 	option = {
 		name = BUTTON_OK
