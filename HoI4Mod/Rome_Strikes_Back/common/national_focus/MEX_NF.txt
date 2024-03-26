@@ -133,9 +133,47 @@ focus_tree = {
 		y = 1
 		relative_position_id = MEX_iakobists_ascendant
 		prerequisite = { focus = MEX_iakobists_ascendant }
+		complete_tooltip = {
+			add_stability = 0.05
+			every_state = {
+				limit = {
+					has_state_flag = MEX_reduce_altepetl_autonomy_state
+				}
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+			}
+		}
 		completion_reward = {
 			add_stability = 0.05
-			add_war_support = -0.05
+			random_owned_controlled_state = {
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+				set_state_flag = MEX_reduce_altepetl_autonomy_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = MEX_reduce_altepetl_autonomy_state }
+				}
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+				set_state_flag = MEX_reduce_altepetl_autonomy_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = MEX_reduce_altepetl_autonomy_state }
+				}
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+				set_state_flag = MEX_reduce_altepetl_autonomy_state
+			}
 		}
 		ai_will_do = {
 			factor = 3
@@ -281,7 +319,7 @@ focus_tree = {
 		relative_position_id = MEX_federalists_prevail
 		prerequisite = { focus = MEX_federalists_prevail }
 		completion_reward = {
-			add_stability = -0.05
+			add_stability = 0.05
 			add_war_support = 0.05
 		}
 		ai_will_do = {
