@@ -6,7 +6,7 @@ focus_tree = {
 		
 		modifier = {
 			add = 10
-			tag = JAP
+			original_tag = JAP
 		}
 	}
 	
@@ -669,11 +669,592 @@ focus_tree = {
 		relative_position_id = PrepTheBorderJAP
 		cost = 10
 		completion_reward = {
-		add_ideas = paramilitarism_focus
+			add_ideas = paramilitarism_focus
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+			}
+		}
 	}
+	
+	focus = {
+		id = JAP_civil_war_ended
+		icon = GFX_goal_anschluss
+		text = JAP_civil_war_ended
+		x = 9
+		y = 0
+		relative_position_id = EmpireGloryJAP
+		cost = 10
+		available = {
+			has_global_flag = JAP_civil_war_done
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
 		ai_will_do = {
 		factor = 10
 		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_reinforce_bakfu
+		icon = GFX_goal_anschluss
+		text = JAP_reinforce_bakfu
+		prerequisite = { focus = JAP_civil_war_ended }
+		mutually_exclusive = { focus = JAP_abolish_bakfu }
+		x = -2
+		y = 1
+		relative_position_id = JAP_civil_war_ended
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_crush_fujiwara
+		icon = GFX_goal_anschluss
+		text = JAP_crush_fujiwara
+		prerequisite = { focus = JAP_reinforce_bakfu }
+		x = 0
+		y = 1
+		relative_position_id = JAP_reinforce_bakfu
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_exile_mutsuhito
+		icon = GFX_goal_anschluss
+		text = JAP_exile_mutsuhito
+		prerequisite = { focus = JAP_crush_fujiwara }
+		x = 0
+		y = 1
+		relative_position_id = JAP_crush_fujiwara
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_eradicate_equalists
+		icon = GFX_goal_anschluss
+		text = JAP_eradicate_equalists
+		prerequisite = { focus = JAP_exile_mutsuhito }
+		x = 0
+		y = 1
+		relative_position_id = JAP_exile_mutsuhito
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_reward_supporters
+		icon = GFX_goal_anschluss
+		text = JAP_reward_supporters
+		prerequisite = { focus = JAP_eradicate_equalists }
+		x = 0
+		y = 1
+		relative_position_id = JAP_eradicate_equalists
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_promote_industrial_development
+		icon = GFX_goal_anschluss
+		text = JAP_promote_industrial_development
+		prerequisite = { focus = JAP_reward_supporters }
+		x = 0
+		y = 1
+		relative_position_id = JAP_reward_supporters
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_assimilate_ainu
+		icon = GFX_goal_anschluss
+		text = JAP_assimilate_ainu
+		prerequisite = { focus = JAP_promote_industrial_development }
+		x = 0
+		y = 1
+		relative_position_id = JAP_promote_industrial_development
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1937.1.1
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_reinforce_border
+		icon = GFX_goal_anschluss
+		text = JAP_reinforce_border
+		prerequisite = { focus = JAP_assimilate_ainu }
+		x = 0
+		y = 1
+		relative_position_id = JAP_assimilate_ainu
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1937.1.1
+			}
+		}
+	}
+	
+	##################
+	# Imperial route #
+	##################
+	focus = {
+		id = JAP_abolish_bakfu
+		icon = GFX_goal_anschluss
+		text = JAP_abolish_bakfu
+		prerequisite = { focus = JAP_civil_war_ended }
+		mutually_exclusive = { focus = JAP_reinforce_bakfu }
+		x = 2
+		y = 1
+		relative_position_id = JAP_civil_war_ended
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_judgement_for_traitors
+		icon = GFX_goal_anschluss
+		text = JAP_judgement_for_traitors
+		prerequisite = { focus = JAP_abolish_bakfu }
+		x = -1
+		y = 1
+		relative_position_id = JAP_abolish_bakfu
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_fate_of_tachibana
+		icon = GFX_goal_anschluss
+		text = JAP_fate_of_tachibana
+		prerequisite = { focus = JAP_abolish_bakfu }
+		x = 1
+		y = 1
+		relative_position_id = JAP_abolish_bakfu
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_abdication_of_tenpo
+		icon = GFX_goal_anschluss
+		text = JAP_abdication_of_tenpo
+		prerequisite = { focus = JAP_judgement_for_traitors }
+		prerequisite = { focus = JAP_fate_of_tachibana }
+		x = 1
+		y = 1
+		relative_position_id = JAP_judgement_for_traitors
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_coronation_of_tenwa
+		icon = GFX_goal_anschluss
+		text = JAP_coronation_of_tenwa
+		prerequisite = { focus = JAP_abdication_of_tenpo }
+		x = 0
+		y = 1
+		relative_position_id = JAP_abdication_of_tenpo
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_reward_ainu
+		icon = GFX_goal_anschluss
+		text = JAP_reward_ainu
+		prerequisite = { focus = JAP_coronation_of_tenwa }
+		x = -2
+		y = 1
+		relative_position_id = JAP_coronation_of_tenwa
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = -2
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_placate_chinese
+		icon = GFX_goal_anschluss
+		text = JAP_placate_chinese
+		prerequisite = { focus = JAP_coronation_of_tenwa }
+		x = 2
+		y = 1
+		relative_position_id = JAP_coronation_of_tenwa
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_tenwa_restoration
+		icon = GFX_goal_anschluss
+		text = JAP_tenwa_restoration
+		prerequisite = { focus = JAP_coronation_of_tenwa }
+		x = 0
+		y = 1
+		relative_position_id = JAP_coronation_of_tenwa
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_royal_marriage
+		icon = GFX_goal_anschluss
+		text = JAP_royal_marriage
+		prerequisite = { focus = JAP_tenwa_restoration }
+		prerequisite = { focus = JAP_placate_chinese }
+		prerequisite = { focus = JAP_reward_ainu }
+		x = 0
+		y = 1
+		relative_position_id = JAP_tenwa_restoration
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_rehabilitate_clans
+		icon = GFX_goal_anschluss
+		text = JAP_rehabilitate_clans
+		prerequisite = { focus = JAP_royal_marriage }
+		x = 0
+		y = 1
+		relative_position_id = JAP_royal_marriage
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_reform_ministries
+		icon = GFX_goal_anschluss
+		text = JAP_reform_ministries
+		prerequisite = { focus = JAP_rehabilitate_clans }
+		x = -2
+		y = 1
+		relative_position_id = JAP_rehabilitate_clans
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_encourage_modern_industry
+		icon = GFX_goal_anschluss
+		text = JAP_encourage_modern_industry
+		prerequisite = { focus = JAP_rehabilitate_clans }
+		x = 0
+		y = 1
+		relative_position_id = JAP_rehabilitate_clans
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_new_japanese_army
+		icon = GFX_goal_anschluss
+		text = JAP_new_japanese_army
+		prerequisite = { focus = JAP_rehabilitate_clans }
+		x = 2
+		y = 1
+		relative_position_id = JAP_rehabilitate_clans
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_establish_constitutional_government
+		icon = GFX_goal_anschluss
+		text = JAP_establish_constitutional_government
+		prerequisite = { focus = JAP_reform_ministries }
+		prerequisite = { focus = JAP_encourage_modern_industry }
+		prerequisite = { focus = JAP_new_japanese_army }
+		x = 0
+		y = 1
+		relative_position_id = JAP_encourage_modern_industry
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_abolish_samurai
+		icon = GFX_goal_anschluss
+		text = JAP_abolish_samurai
+		prerequisite = { focus = JAP_establish_constitutional_government }
+		x = -2
+		y = 1
+		relative_position_id = JAP_establish_constitutional_government
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_reform_provinces
+		icon = GFX_goal_anschluss
+		text = JAP_reform_provinces
+		prerequisite = { focus = JAP_establish_constitutional_government }
+		x = 0
+		y = 1
+		relative_position_id = JAP_establish_constitutional_government
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_rural_welfare_programs
+		icon = GFX_goal_anschluss
+		text = JAP_rural_welfare_programs
+		prerequisite = { focus = JAP_establish_constitutional_government }
+		x = 2
+		y = 1
+		relative_position_id = JAP_establish_constitutional_government
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
+		}
+	}
+	}
+	
+	focus = {
+		id = JAP_build_new_bureaucracy
+		icon = GFX_goal_anschluss
+		text = JAP_build_new_bureaucracy
+		prerequisite = { focus = JAP_abolish_samurai }
+		prerequisite = { focus = JAP_reform_provinces }
+		prerequisite = { focus = JAP_rural_welfare_programs }
+		x = 0
+		y = 1
+		relative_position_id = JAP_reform_provinces
+		cost = 10
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			date < 1937.1.1
 		}
 	}
 	}

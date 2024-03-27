@@ -198,6 +198,13 @@ TESB_check_puppet_willingness = {
 		add_to_variable = { This.puppet_willingness = 5 }
 		custom_effect_tooltip = pw.greek		
 	}
+	if = {
+		limit = {
+			has_variable = pw_focus
+		}
+		add_to_variable = { This.puppet_willingness = pw_focus }
+		custom_effect_tooltip = pw.focus
+	}
 }
 #check if a Roman breakaway will join the faction of Rome
 TESB_check_faction_willingness = {
@@ -405,6 +412,13 @@ TESB_check_faction_willingness = {
 		}
 		add_to_variable = { This.faction_willingness = 10 }
 		custom_effect_tooltip = pw.greek_d		
+	}
+	if = {
+		limit = {
+			has_variable = pw_focus
+		}
+		add_to_variable = { This.puppet_willingness = pw_focus }
+		custom_effect_tooltip = pw.focus
 	}
 }
 #integrate the faction into Rome
@@ -621,6 +635,13 @@ TESB_check_integrate_willingness = {
 		#add_to_variable = { This.integrate_willingness = 10 }
 		#custom_effect_tooltip = pw.faction
 	}
+	if = {
+		limit = {
+			has_variable = pw_focus
+		}
+		add_to_variable = { This.puppet_willingness = pw_focus }
+		custom_effect_tooltip = pw.focus
+	}
 }
 
 #Aotearoa
@@ -756,6 +777,52 @@ bav_hun_deal_effect = {
 		}
 	}
 }
+
+set_teichu = {
+	if = {
+		limit = {
+			date < 1938.1.30
+		}
+		set_global_flag = teichu
+	}
+}
+
+jap_start_civil_war = {
+	hidden_effect = {
+		every_country_with_original_tag = {
+			original_tag_to_check = JAP
+			add_ideas = JAP_civil_war_starter
+		}
+	}
+}
+jap_end_civil_war = {
+	hidden_effect = {
+		every_country_with_original_tag = {
+			original_tag_to_check = JAP
+			remove_ideas = JAP_civil_war_starter
+			remove_ideas = JAP_civil_war_finisher
+			delete_unit_template_and_units = {
+				division_template = "Shogunate Militia"
+				disband = yes
+			}
+			delete_unit_template_and_units = {
+				division_template = "Imperial Militia"
+				disband = yes
+			}
+			delete_unit_template_and_units = {
+				division_template = "Imperial Tanks"
+				disband = yes
+			}
+		}
+		every_country = {
+			limit = {
+				has_idea = JAP_volunteers
+			}
+			remove_ideas = JAP_volunteers
+		}
+	}
+}
+
 d_set_bohemia = {
 	BAV = {
 		set_cosmetic_tag = bohemia
@@ -802,6 +869,22 @@ d_rus_to_neutral = {
 		}
 		set_politics = {
 			ruling_party = neutrality
+		}
+	}
+}
+
+d_rome_territory_focus_update = {
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = RME_former_dominion
+				has_idea = RME_former_territory
+			}
+			has_focus_tree = generic_focus
+		}
+		load_focus_tree = {
+			tree = roman_territory_focus
+			keep_completed = yes
 		}
 	}
 }

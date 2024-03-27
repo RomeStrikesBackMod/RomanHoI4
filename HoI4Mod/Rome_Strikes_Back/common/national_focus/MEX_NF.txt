@@ -16,6 +16,377 @@ focus_tree = {
 	shared_focus = aviation_effort
 	shared_focus = naval_effort
 	shared_focus = industrial_effort
-	shared_focus = political_effort
+	
+	focus = {
+		id = MEX_return_of_federation
+		icon = GFX_focus_generic_the_giant_wakes
+		x = 19
+		y = 0
+		cost = 5
+		available = {
+			has_government = democratic
+		}
+		completion_reward = {
+			add_political_power = 60
+			hidden_effect = {
+				news_event = {
+					id = tesb_MEX.1 hours = 12
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = MEX_iakobists_ascendant
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = MEX_return_of_federation
+		prerequisite = { focus = MEX_return_of_federation }
+		mutually_exclusive = { focus = MEX_federalists_prevail }
+		completion_reward = {
+			#create_country_leader = {
+			#	ideology = conservatism
+			#}
+			add_political_power = 30
+			set_cosmetic_tag = MEX_iakobist
+			hidden_effect = {
+				news_event = {
+					id = tesb_MEX.2 hours = 12
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_approach_new_paphlagonia
+		dynamic = yes
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = MEX_iakobists_ascendant
+		prerequisite = { focus = MEX_iakobists_ascendant }
+		completion_reward = {
+			add_political_power = 15
+			add_opinion_modifier = {
+				target = ARG
+				modifier = MEX_democratic_diplomacy
+			}
+			reverse_add_opinion_modifier = {
+				target = ARG
+				modifier = MEX_democratic_diplomacy
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_restore_anahuaca_army
+		icon = GFX_focus_generic_manpower
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_approach_new_paphlagonia
+		prerequisite = { focus = MEX_approach_new_paphlagonia }
+		completion_reward = {
+			add_ideas = MEX_anahuac_army
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_defender_of_democracy
+		icon = GFX_goal_support_democracy
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_restore_anahuaca_army
+		prerequisite = { focus = MEX_restore_anahuaca_army }
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_reduce_altepetl_autonomy
+		icon = GFX_goal_generic_political_pressure
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = MEX_iakobists_ascendant
+		prerequisite = { focus = MEX_iakobists_ascendant }
+		complete_tooltip = {
+			add_stability = 0.05
+			every_state = {
+				limit = {
+					has_state_flag = MEX_reduce_altepetl_autonomy_state
+				}
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+			}
+		}
+		completion_reward = {
+			add_stability = 0.05
+			random_owned_controlled_state = {
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+				set_state_flag = MEX_reduce_altepetl_autonomy_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = MEX_reduce_altepetl_autonomy_state }
+				}
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+				set_state_flag = MEX_reduce_altepetl_autonomy_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					NOT = { has_state_flag = MEX_reduce_altepetl_autonomy_state }
+				}
+				add_dynamic_modifier = {
+					modifier = generic_unrest
+					days = 365
+				}
+				set_state_flag = MEX_reduce_altepetl_autonomy_state
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_end_cipac_corruption
+		icon = GFX_goal_generic_political_pressure
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_reduce_altepetl_autonomy
+		prerequisite = { focus = MEX_reduce_altepetl_autonomy }
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_tech_bonus = {
+				name = MEX_end_cipac_corruption
+				uses = 1
+				bonus = 0.5
+				category = industry
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_strong_leader_for_people
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_end_cipac_corruption
+		prerequisite = { focus = MEX_end_cipac_corruption }
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_federalists_prevail
+		icon = GFX_focus_generic_court
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = MEX_return_of_federation
+		mutually_exclusive = { focus = MEX_iakobists_ascendant }
+		prerequisite = { focus = MEX_return_of_federation }
+		completion_reward = {
+			#create_country_leader = {
+			#	ideology = socialism
+			#}
+			add_political_power = 30
+			hidden_effect = {
+				news_event = {
+					id = tesb_MEX.3 hours = 12
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_approach_new_arcadia
+		dynamic = yes
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = MEX_federalists_prevail
+		prerequisite = { focus = MEX_federalists_prevail }
+		completion_reward = {
+			add_political_power = 15
+			add_opinion_modifier = {
+				target = COL
+				modifier = MEX_democratic_diplomacy
+			}
+			reverse_add_opinion_modifier = {
+				target = COL
+				modifier = MEX_democratic_diplomacy
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_restore_federal_army
+		icon = GFX_focus_generic_manpower
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_approach_new_arcadia
+		prerequisite = { focus = MEX_approach_new_arcadia }
+		completion_reward = {
+			add_ideas = MEX_federal_army
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_restore_democratic_institutions
+		icon = GFX_goal_support_democracy
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_restore_federal_army
+		prerequisite = { focus = MEX_restore_federal_army }
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_guarantee_altepetl_autonomy
+		icon = GFX_focus_generic_concessions
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = MEX_federalists_prevail
+		prerequisite = { focus = MEX_federalists_prevail }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_work_with_longhouseists
+		icon = GFX_goal_support_communism
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_guarantee_altepetl_autonomy
+		prerequisite = { focus = MEX_guarantee_altepetl_autonomy }
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_new_constitution
+		icon = GFX_focus_generic_treaty
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = MEX_work_with_longhouseists
+		prerequisite = { focus = MEX_work_with_longhouseists }
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	focus = {
+		id = MEX_second_anahuac_revolution
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = MEX_strong_leader_for_people
+		prerequisite = { focus = MEX_strong_leader_for_people focus = MEX_new_constitution }
+		prerequisite = { focus = MEX_defender_of_democracy focus = MEX_restore_democratic_institutions }
+		completion_reward = {
+			add_political_power = 60
+			hidden_effect = {
+				news_event = {
+					id = tesb_MEX.4 hours = 12
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
 
 }

@@ -795,307 +795,6 @@ england_decisions = {
 	}
 }
 
-russia_decisions = {
-	negotiate_for_karelia_kola = {
-		days_remove = 7
-		visible = {
-			has_completed_focus = RUS_karelia
-			NOT = { has_country_flag = RUS_purchased_karelia }
-			NOT = { has_country_flag = RUS_purchased_kola }
-			NOT = { owns_state = 564 } # significant_number - Karelia
-			any_other_country = {
-				owns_state = 564 # significant_number - Karelia
-				owns_state = 408 # significant_number - Kola
-			}
-		}
-		available = {
-			has_war = no
-			any_other_country = {
-				owns_state = 564 # significant_number - Karelia
-				owns_state = 408 # significant_number - Kola
-				has_war = no
-			}
-		}
-		cost = 50
-		highlight_states = {
-			highlight_state_targets = {
-				state = 564 # significant_number - Karelia
-				state = 408 # significant_number - Kola
-			}
-		}
-		complete_effect = {
-			random_other_country = {
-				limit = {
-					owns_state = 564 # significant_number - Karelia
-					owns_state = 408 # significant_number - Kola
-				}
-				if = {
-					limit = {
-						is_subject_of = RUS
-					}
-					RUS = {
-						transfer_state = 564 # significant_number - Karelia
-						transfer_state = 408 # significant_number - Kola
-					}
-					else_if = {
-						limit = {
-							is_subject = yes
-						}
-						custom_effect_tooltip = RUS_karelia_kola_overlord
-						OVERLORD = {
-							country_event = { id = tesb_RUS.120 }
-						}
-					}
-					else = {
-						country_event = { id = tesb_RUS.120 }
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}	
-	negotiate_for_karelia = {
-		days_remove = 7
-		visible = {
-			has_completed_focus = RUS_karelia
-			NOT = { has_country_flag = RUS_purchased_karelia }
-			NOT = { owns_state = 564 } # significant_number - Karelia
-			any_other_country = {
-				owns_state = 564 # significant_number - Karelia
-				NOT = { owns_state = 408 } # significant_number - Kola
-			}
-		}
-		available = {
-			has_war = no
-			any_other_country = {
-				owns_state = 564 # significant_number - Karelia
-				NOT = { owns_state = 408 } # significant_number - Kola
-				has_war = no
-			}
-		}
-		cost = 25
-		highlight_states = {
-			highlight_state_targets = {
-				state = 564 # significant_number - Karelia
-			}
-		}
-		complete_effect = {
-			random_other_country = {
-				limit = {
-					owns_state = 564 # significant_number - Karelia
-				}
-				if = {
-					limit = {
-						is_subject_of = RUS
-					}
-					RUS = {
-						transfer_state = 564 # significant_number - Karelia
-					}
-					else_if = {
-						limit = {
-							is_subject = yes
-						}
-						custom_effect_tooltip = RUS_karelia_kola_overlord
-						OVERLORD = {
-							country_event = { id = tesb_RUS.120 }
-						}
-					}
-					else = {
-						country_event = { id = tesb_RUS.120 }
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-	negotiate_for_kola = {
-		days_remove = 7
-		visible = {
-			has_completed_focus = RUS_karelia
-			NOT = { has_country_flag = RUS_purchased_kola }
-			NOT = { owns_state = 408 } # significant_number - Kola
-			any_other_country = {
-				owns_state = 408 # significant_number - Kola
-				NOT = { owns_state = 564 } # significant_number - Karelia
-			}
-		}
-		available = {
-			has_war = no
-			any_other_country = {
-				owns_state = 408 # significant_number - Kola
-				NOT = { owns_state = 564 } # significant_number - Karelia
-				has_war = no
-			}
-		}
-		cost = 25
-		highlight_states = {
-			highlight_state_targets = {
-				state = 408 # significant_number - Kola
-			}
-		}
-		complete_effect = {
-			random_other_country = {
-				limit = {
-					owns_state = 408 # significant_number - Kola
-				}
-				if = {
-					limit = {
-						is_subject_of = RUS
-					}
-					RUS = {
-						transfer_state = 408 # significant_number - Kola
-					}
-					else_if = {
-						limit = {
-							is_subject = yes
-						}
-						custom_effect_tooltip = RUS_karelia_kola_overlord
-						OVERLORD = {
-							country_event = { id = tesb_RUS.120 }
-						}
-					}
-					else = {
-						country_event = { id = tesb_RUS.120 }
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-	negotiate_for_sakhalin_kurils = {
-		days_remove = 7
-		visible = {
-			has_completed_focus = RUS_asian_expansion
-			NOT = { has_country_flag = RUS_purchased_kurils }
-			NOT = { owns_state = 312 } # significant_number - Sakhalin
-			NOT = { owns_state = 313 } # significant_number - Kuril Islands
-			JAP = {
-				owns_state = 312 # significant_number - Sakhalin
-				owns_state = 313 # significant_number - Kuril Islands
-			}
-		}
-		available = {
-			has_war = no
-			JAP = {
-				owns_state = 312 # significant_number - Sakhalin
-				owns_state = 313 # significant_number - Kuril Islands
-				has_war = no
-				is_subject = no
-			}
-		}
-		cost = 50
-		highlight_states = {
-			highlight_state_targets = {
-				state = 312 # significant_number - Sakhalin
-				state = 313 # significant_number - Kuril Islands
-			}
-		}
-		complete_effect = {
-			JAP = {
-				if = {
-					limit = {
-						is_subject_of = RUS
-					}
-					RUS = {
-						transfer_state = 312 # significant_number - Sakhalin
-						transfer_state = 313 # significant_number - Kuril Islands
-					}
-					else = {
-						country_event = { id = tesb_RUS.130 }
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}	
-	negotiate_with_manchu = {
-		days_remove = 7
-		visible = {
-			has_completed_focus = RUS_asian_expansion
-			NOT = { has_country_flag = RUS_manchu_treaty }
-			NOT = { owns_state = 337 } # significant_number - Haishenwai
-			NOT = { owns_state = 338 } # significant_number - Eastern Mongolia
-			MAN = {
-				owns_state = 337 # significant_number - Haishenwai
-				owns_state = 338 # significant_number - Eastern Mongolia
-			}
-		}
-		available = {
-			has_war = no
-			MAN = {
-				owns_state = 337 # significant_number - Haishenwai
-				owns_state = 338 # significant_number - Eastern Mongolia
-				has_war = no
-				is_subject = no
-			}
-		}
-		cost = 50
-		highlight_states = {
-			highlight_state_targets = {
-				state = 337 # significant_number - Haishenwai
-				state = 338 # significant_number - Eastern Mongolia
-			}
-		}
-		complete_effect = {
-			MAN = {
-				if = {
-					limit = {
-						is_subject_of = RUS
-					}
-					RUS = {
-						transfer_state = 337 # significant_number - Haishenwai
-						transfer_state = 338 # significant_number - Eastern Mongolia
-					}
-					else = {
-						country_event = { id = tesb_RUS.140 } 
-					}
-				}
-			}
-			custom_effect_tooltip = RUS_manchu_treaty_tt
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-	manchu_puppet = {
-		days_remove = 7
-		visible = {
-			NOT = { country_exists = MAN }
-			has_completed_focus = RUS_asian_expansion
-		}
-		available = {
-			owns_state = 337 # significant_number - Haishenwai
-		}
-		cost = 50
-		highlight_states = {
-			highlight_state_targets = {
-				state = 337 # significant_number - Haishenwai
-			}
-		}
-		complete_effect = {
-			release_autonomy = {
-				target = MAN
-				autonomy_state = autonomy_puppet
-			}
-			hidden_effect = {
-				337 = { reset_state_name = yes } #  significant_number - Haishenwai
-				reset_province_name = 957
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-}
-
 aotearoa_decisions = {
 	AOT_testing = {
 		visible = {
@@ -1819,19 +1518,19 @@ AOT_islands = {
 		}
 
 		ai_will_do = {
-			base = 50
+			base = 100
 			modifier = {
 				FROM = { has_state_flag = AOT_recently_expanded_influence_flag }
 				factor = 10
 			}
 			modifier = {
 				original_tag = AOT
-				FROM = { check_variable = { var = aot_island_control value = 2 compare = greater_than_or_equals } }
+				FROM = { check_variable = { var = aot_island_control value = 2 compare = less_than_or_equals } }
 				factor = 5
 			}
 			modifier = {
 				original_tag = AOT
-				FROM = { check_variable = { var = aot_island_control value = 3 compare = greater_than_or_equals } }
+				FROM = { check_variable = { var = aot_island_control value = 1 compare = less_than_or_equals } }
 				factor = 5
 			}
 		}
@@ -2057,19 +1756,19 @@ AOT_islands = {
 		}
 
 		ai_will_do = {
-			base = 50
+			base = 100
 			modifier = {
 				FROM = { has_state_flag = AOT_recently_expanded_influence_flag }
 				factor = 10
 			}
 			modifier = {
 				original_tag = AOT
-				FROM = { check_variable = { var = aot_island_control value = 2 compare = greater_than_or_equals } }
+				FROM = { check_variable = { var = aot_island_control value = 2 compare = less_than_or_equals } }
 				factor = 5
 			}
 			modifier = {
 				original_tag = AOT
-				FROM = { check_variable = { var = aot_island_control value = 3 compare = greater_than_or_equals } }
+				FROM = { check_variable = { var = aot_island_control value = 1 compare = less_than_or_equals } }
 				factor = 5
 			}
 		}
@@ -2295,7 +1994,7 @@ italy_decisions = {
 		}
 		cost = 50
 		ai_will_do = {
-			base = 10
+			base = 5
 		}
 	}
 	ITA_orthodox_coronation = {
@@ -2314,7 +2013,7 @@ italy_decisions = {
 		}
 		cost = 150
 		ai_will_do = {
-			base = 5
+			base = 10
 		}
 	}
 	ITA_catholic_coronation = {
@@ -2333,7 +2032,7 @@ italy_decisions = {
 		}
 		cost = 150
 		ai_will_do = {
-			base = 5
+			base = 10
 		}
 	}
 }
@@ -2589,6 +2288,90 @@ dresden_conference_decisions = {
 			hidden_trigger = {
 				always = no
 			}
+		}
+	}
+}
+
+JAP_decisions = {
+	JAP_test = {
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			add_ideas = JPS_shogunate_supporters
+			add_ideas = JPS_genpei_war
+			add_ideas = JPE_imperial_supporters
+			add_ideas = JAP_volunteers
+		}
+	}
+}
+
+JAP_civil_war = {
+	JAP_civil_war_victory = {
+		days_mission_timeout = 90
+		activation = {
+			has_global_flag = JAP_civil_war_start
+			NOT = { has_global_flag = JAP_civil_war_done }
+			controls_state = 308
+			controls_state = 307
+		}
+		available = {
+			OR = {
+				NOT = { controls_state = 307 }
+				NOT = { controls_state = 308 }
+			}
+		}
+		allowed = {
+			original_tag = JAP
+		}
+		is_good = yes
+		timeout_effect = {
+			every_country_with_original_tag = {
+				original_tag_to_check = JAP
+				limit = {
+					NOT = { tag = ROOT }
+				}
+				hidden_effect = {
+					add_ideas = JAP_civil_war_finisher
+					every_owned_state = {
+						set_state_controller_to = ROOT
+					}
+				}
+				effect_tooltip = {
+					ROOT = {
+						annex_country = {
+							target = PREV
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = tesb_JAP.2600
+				}
+			}
+		}
+		cancel_trigger = {
+			has_global_flag = JAP_civil_war_done
+		}
+	}
+	JAP_choose_side = {
+		icon = jap_pacific_guardian
+		fire_only_once = yes
+		allowed = {
+			NOT = { original_tag = JAP }
+		}
+		visible = {
+			has_global_flag = JAP_civil_war_start
+			NOT = { has_global_flag = JAP_civil_war_done }
+		}
+		complete_effect = {
+			country_event = {
+				id = tesb_JAP.2500 hours = 1 random_hours = 47
+			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 }

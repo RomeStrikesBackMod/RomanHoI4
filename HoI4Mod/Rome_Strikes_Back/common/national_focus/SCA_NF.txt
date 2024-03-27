@@ -16,815 +16,600 @@ focus_tree = {
 	shared_focus = aviation_effort
 	shared_focus = naval_effort
 	shared_focus = industrial_effort
-	shared_focus = political_effort
 
 	focus = {
-		id = reclaim_coresSCA
-		icon = GFX_goal_generic_more_territorial_claims
-		text = reclaim_cores
-		x = 27
+		id = SCA_democratic_traditions
+		icon = GFX_goal_support_democracy
+		cost = 10
+		x = 17
 		y = 0
-		cost = 10
-		available = {
-			is_subject = no
-		}
-		select_effect = {
-			set_variable = { unowned_cores_@GER = 4 }
-			set_variable = { unowned_cores_@RUS = 10 }
-			set_variable = { revanchism = 0.000140 }
-			set_variable = { revanchism_stab = -0.000014 }
-			add_dynamic_modifier = { modifier = revanchism }
-			add_dynamic_modifier = { modifier = revanchism_fasc }
-		}
-
 		completion_reward = {
-			custom_effect_tooltip = revanchism_reduction
-			divide_variable = { revanchism = 2 }
-			divide_variable = { revanchism_stab = 2 }
-			add_political_power = 150
-			add_ideas = reclaim_cores_idea
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_political_power = 90
+			hidden_effect = {
+				if = {
+					limit = {
+						not = { has_idea = SCA_monarch }
+					}
+					add_ideas = SCA_monarch
+				}
+			}
 		}
 		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				date < 1939.1.1
-			}
+			base = 3
 		}
 	}
 
 	focus = {
-		id = raise_matterSCAGER
+		id = SCA_secure_institutions
 		icon = GFX_focus_generic_self_management
-		text = raise_matterGER
-		prerequisite = { focus = reclaim_coresSCA }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = GER
-				is_in_faction_with = GER
-				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 26
-		y = 1
 		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = SCA_democratic_traditions
+		prerequisite = { focus = SCA_democratic_traditions }
+		mutually_exclusive = { focus = SCA_democracy_at_all_costs }
 		available = {
-			date > 1936.7.11
-			NOT = { is_in_faction_with = GER }
-			NOT = { has_war_with = GER }
+			OR = {
+				has_idea = PLC_supporting_fascists
+				threat > 0.2
+			}
 		}
 		completion_reward = {
-			if = {
-				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000004 }
-			}
-			else = {
-				add_popularity = { ideology = fascism popularity = -0.000004 }
-			}
-			add_political_power = 150
-			add_timed_idea = { idea = generic_military_industry days = 180 }
+			add_ideas = SCA_secured_institutions
 		}
 		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				NOT = { has_government = fascism }
-				NOT = { fascism > 0.35 }
-			}
-			modifier = {
-				factor = 0
-				GER = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = GER
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = GER value > 0 }
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -50 }
-			}
+			base = 3
 		}
 	}
-
+	
 	focus = {
-		id = build_public_supportSCAGER
-		icon = GFX_goal_generic_propaganda
-		text = build_public_supportGER
-		prerequisite = { focus = raise_matterSCAGER }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = GER
-				is_in_faction_with = GER
-				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
+		id = SCA_expose_fascist_threat
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		cost = 10
 		x = 0
 		y = 1
-		relative_position_id = raise_matterSCAGER
-		cost = 10
+		relative_position_id = SCA_secure_institutions
+		prerequisite = { focus = SCA_secure_institutions }
 		available = {
-			date > 1936.7.11
-			NOT = { is_in_faction_with = GER }
-			NOT = { has_war_with = GER }
+			has_government = democratic
 		}
 		completion_reward = {
-			if = {
-				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000004 }
-			}
-			else = {
-				add_popularity = { ideology = fascism popularity = -0.000004 }
-			}
-			add_war_support = 0.000040
-			add_political_power = 150
-			add_timed_idea = { idea = generic_recruit_centers days = 180 }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				NOT = { has_government = fascism }
-				NOT = { fascism > 0.4 }
-			}
-			modifier = {
-				factor = 0
-				GER = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = GER
-					in_weak_faction = no
+			hidden_effect = {
+				set_temp_variable = {
+					var = ban_ideology_var
+					value = party_popularity@fascism
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = -0.5
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = ban_ideology_var
+				}
+				set_temp_variable = {
+					check_var = ban_ideology_var
+				}
+				set_country_flag = banned_fascism_flag
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = 0.5
 				}
 			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = GER value > 0 }
+			custom_effect_tooltip = ban_fascist_party_sca_tt
+			add_stability = ban_ideology_var
+			every_other_country = {
+				limit = {
+					has_government = fascism
+					OR = {
+						original_tag = PLC
+						original_tag = GER
+						original_tag = RUS
+					}
+				}
+				reverse_add_opinion_modifier = {
+					target = SCA
+					modifier = fascist_opposition
+				}
+				add_opinion_modifier = {
+					target = SCA
+					modifier = fascist_opposition
+				}
 			}
-			modifier = {
-				factor = 1.5
-				has_completed_focus = raise_matterSCAGER
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -50 }
-			}
+		}
+		ai_will_do = {
+			base = 3
 		}
 	}
-
+	
 	focus = {
-		id = territory_or_warSCAGER
-		icon = GFX_goal_generic_territory_or_war
-		text = territory_or_warGER
-		prerequisite = { focus = build_public_supportSCAGER }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = GER
-				is_in_faction_with = GER
-				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
-				NOT = { GER = { any_owned_state = { is_capital = no } } }
-			}
-		}
+		id = SCA_strength_in_numbers
+		icon = GFX_focus_generic_little_entente
+		cost = 10
 		x = 0
 		y = 1
-		relative_position_id = build_public_supportSCAGER
-		cost = 3
+		relative_position_id = SCA_expose_fascist_threat
+		prerequisite = { focus = SCA_expose_fascist_threat }
 		available = {
-			date > 1936.7.11
-			NOT = { is_in_faction_with = GER }
-			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
-			hidden_trigger = {
-				GER = {
-					all_owned_state = {
-						OR = {
-							NOT = { is_core_of = ROOT }
-							is_fully_controlled_by = GER
-						}
+			has_government = democratic
+			any_country = {
+				is_faction_leader = yes
+				has_government = democratic
+			}
+		}
+		completion_reward = {
+			hidden_effect = {
+				random_other_country = {
+					limit = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+					set_temp_variable = {
+						ROOT.best_leader = THIS
 					}
 				}
 			}
-			has_war = no
-		}
-		completion_reward = {
-			GER = {
-				country_event = { id = reconquest_wars.1 }
-				custom_effect_tooltip = needs_approval
-				hidden_effect = {
-					country_event = { id = reconquest_news.1 }
-				}
-			}
-			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
-			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				GER = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = GER
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = GER value > 0 }
-			}
-			modifier = {
-				factor = 1.5
-				has_completed_focus = build_public_supportSCAGER
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = war_planSCAGER
-		icon = GFX_goal_generic_position_armies
-		text = war_planGER
-		prerequisite = { focus = territory_or_warSCAGER }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = GER
-				is_in_faction_with = GER
-				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = territory_or_warSCAGER
-		cost = 4
-		available = {
-			date > 1936.7.11
-			NOT = { is_in_faction_with = GER }
-			has_war = no
-		}
-		completion_reward = {
-			add_ai_strategy = { type = prepare_for_war id = GER value = 1000 }
-			GER = { add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 } }
-			random_list = {
-			    25 = { add_command_power = 25 }
-			    25 = { add_manpower = 10000 }
-			    25 = { add_war_support = 0.25 }
-			    25 = { army_experience = 10 }
-			}
-			add_timed_idea = { idea = generic_war_of_national_liberation days = 180 }
-			add_named_threat = { threat = 1 name = war_plan_NF_threat }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				GER = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = GER
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = GER value > 0 }
-			}
-			modifier = {
-				factor = 2
-				has_completed_focus = territory_or_warSCAGER
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = declare_warSCAGER
-		icon = GFX_goal_generic_army_tanks
-		text = declare_warGER
-		prerequisite = { focus = war_planSCAGER }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = GER
-				is_in_faction_with = GER
-				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = war_planSCAGER
-		cost = 3
-		available = {
-			date > 1936.7.11
-			NOT = { is_in_faction_with = GER }
-			has_war = no
-		}
-		completion_reward = {
-			declare_war_on = {
-				target = GER
-				type = take_core_state
-				generator = { 228 }
-			}
-			add_named_threat = { threat = 1 name = declare_war_NF_threat }
-		}
-		ai_will_do = {
-			factor = 4
-			modifier = {
-				factor = 0
-				GER = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = GER
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = GER value > 0 }
-			}
-			modifier = {
-				factor = 2
-				has_completed_focus = war_planSCAGER
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = GER value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = cleanup_revanchismSCAGER
-		icon = GFX_focus_generic_treaty
-		text = cleanup_revanchismGER
-		prerequisite = { focus = declare_warSCAGER }
-		x = 0
-		y = 1
-		relative_position_id = declare_warSCAGER
-		cost = 0
-		available = {
-			OR = {
-				is_in_faction_with = GER
-				NOT = { GER = { any_owned_state = { is_core_of = ROOT } } }
-			}
-			NOT = { has_war_with = GER }
-		}
-		completion_reward = {
-			add_ai_strategy = { type = prepare_for_war id = GER value = -1000 }
-			GER = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
-			custom_effect_tooltip = decrease_revanchism
-			subtract_from_variable = { revanchism = 0.000020 }
-			add_to_variable = { revanchism_stab = 0.000002 }
-			add_ideas = generic_national_unification
-		}
-		ai_will_do = {
-			factor = 100
-		}
-	}
-
-	focus = {
-		id = raise_matterSCARUS
-		icon = GFX_focus_generic_self_management
-		text = raise_matterRUS
-		prerequisite = { focus = reclaim_coresSCA }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = RUS
-				is_in_faction_with = RUS
-				NOT = { RUS = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 28
-		y = 1
-		cost = 10
-		available = {
-			NOT = { is_in_faction_with = RUS }
-			NOT = { has_war_with = RUS }
-		}
-		completion_reward = {
+			get_best_alliance_match_democratic_effect = yes
 			if = {
-				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000010 }
-			}
-			else = {
-				add_popularity = { ideology = fascism popularity = -0.000010 }
-			}
-			add_political_power = 150
-			add_timed_idea = { idea = generic_military_industry days = 180 }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				NOT = { has_government = fascism }
-				NOT = { fascism > 0.35 }
-			}
-			modifier = {
-				factor = 0
-				RUS = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = RUS
-					in_weak_faction = no
+				limit = {
+					country_exists = var:best_leader
 				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = RUS value > 0 }
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = build_public_supportSCARUS
-		icon = GFX_goal_generic_propaganda
-		text = build_public_supportRUS
-		prerequisite = { focus = raise_matterSCARUS }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = RUS
-				is_in_faction_with = RUS
-				NOT = { RUS = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = raise_matterSCARUS
-		cost = 10
-		available = {
-			NOT = { is_in_faction_with = RUS }
-			NOT = { has_war_with = RUS }
-		}
-		completion_reward = {
-			if = {
-				limit = { has_government = fascism }
-				add_popularity = { ideology = fascism popularity = 0.000010 }
-			}
-			else = {
-				add_popularity = { ideology = fascism popularity = -0.000010 }
-			}
-			add_war_support = 0.000100
-			add_political_power = 150
-			add_timed_idea = { idea = generic_recruit_centers days = 180 }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				NOT = { has_government = fascism }
-				NOT = { fascism > 0.4 }
-			}
-			modifier = {
-				factor = 0
-				RUS = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = RUS
-					in_weak_faction = no
-				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = RUS value > 0 }
-			}
-			modifier = {
-				factor = 1.5
-				has_completed_focus = raise_matterSCARUS
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = territory_or_warSCARUS
-		icon = GFX_goal_generic_territory_or_war
-		text = territory_or_warRUS
-		prerequisite = { focus = build_public_supportSCARUS }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = RUS
-				is_in_faction_with = RUS
-				NOT = { RUS = { any_owned_state = { is_core_of = ROOT } } }
-				NOT = { RUS = { any_owned_state = { is_capital = no } } }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = build_public_supportSCARUS
-		cost = 3
-		available = {
-			NOT = { is_in_faction_with = RUS }
-			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
-			hidden_trigger = {
-				RUS = {
-					all_owned_state = {
-						OR = {
-							NOT = { is_core_of = ROOT }
-							is_fully_controlled_by = RUS
-						}
+				var:best_leader = {
+					country_event = {
+						id = generic.2
 					}
 				}
 			}
-			has_war = no
+			else = {
+				custom_effect_tooltip = SCA_strength_in_numbers_tt
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	focus = {
+		id = SCA_democracy_at_all_costs
+		icon = GFX_focus_generic_the_giant_wakes
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = SCA_democratic_traditions
+		prerequisite = { focus = SCA_democratic_traditions }
+		mutually_exclusive = { focus = SCA_secure_institutions }
+		available = {
+			has_government = democratic
+		}
+		completion_reward = {
+			add_ideas = SCA_democratic_commitment
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = SCA_coalition_government
+		icon = GFX_focus_generic_improve_the_administration
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SCA_democracy_at_all_costs
+		prerequisite = { focus = SCA_democracy_at_all_costs }
+		available = {
+			has_government = democratic
+		}
+		completion_reward = {
+			add_ideas = SCA_coalition_government
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.07
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.06
+			}
+			add_popularity = {
+				ideology = absolutist
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = SCA_appeasement
+		icon = GFX_focus_generic_concessions
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SCA_coalition_government
+		prerequisite = { focus = SCA_coalition_government }
+		available = {
+			has_government = democratic
+		}
+		completion_reward = {
+			add_ideas = SCA_appeasement
+			every_other_country = {
+				limit = {
+					has_government = fascism
+					OR = {
+						original_tag = PLC
+						original_tag = GER
+						original_tag = RUS
+					}
+				}
+				reverse_add_opinion_modifier = {
+					target = SCA
+					modifier = fascist_appeasement
+				}
+				add_opinion_modifier = {
+					target = SCA
+					modifier = fascist_appeasement
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	focus = {
+		id = SCA_national_militia
+		icon = GFX_focus_generic_manpower
+		cost = 10
+		x = 20
+		y = 0
+		available = {
+			threat > 0.2
+		}
+		completion_reward = {
+			add_ideas = SCA_national_militia
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	focus = {
+		id = SCA_prepare_for_worst
+		icon = GFX_focus_generic_fascist_troops
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SCA_national_militia
+		prerequisite = { focus = SCA_national_militia }
+		available = {
+			threat > 0.3
+		}
+		completion_reward = {
+			army_experience = 25
+			add_war_support = 0.1
+			add_ideas = SCA_preparations
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = SCA_ramp_up_production
+		icon = GFX_goal_generic_production
+		cost = 10
+		x = 22
+		y = 0
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			add_ideas = SCA_civ_industry
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	focus = {
+		id = SCA_military_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SCA_ramp_up_production
+		prerequisite = { focus = SCA_ramp_up_production }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SCA_civ_industry
+				add_idea = SCA_industry
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = SCA_secure_our_borders
+		icon = GFX_goal_generic_fortify_city
+		cost = 10
+		x = 24
+		y = 0
+		completion_reward = {
+			568 = { # Sjaelland
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = {
+						id = 3325
+						id = 3260
+						id = 6287
+					}
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					province = {
+						id = 6287
+					}
+					instant_build = yes
+				}
+			}
+			563 = { # Viipuri
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = {
+						id = 3060
+						id = 9150
+					}
+					instant_build = yes
+				}
+			}
+			564 = { # Karelia
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = {
+						all_provinces = yes
+						limit_to_border_country = RUS
+					}
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	focus = {
+		id = SCA_naval_supremacy
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SCA_secure_our_borders
+		prerequisite = { focus = SCA_secure_our_borders }
+		available = {
+			any_owned_state = { is_coastal = yes }
+		}
+		complete_tooltip = {
+			navy_experience = 50
+			every_state = {
+				limit = {
+					has_state_flag = SCA_naval_supremacy_state
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = SCA_naval_supremacy_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					NOT = { has_state_flag = SCA_naval_supremacy_state }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = SCA_naval_supremacy_state
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					NOT = { has_state_flag = SCA_naval_supremacy_state }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = SCA_naval_supremacy_state
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = SCA_danish_question
+		icon = GFX_focus_generic_attack_denmark
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SCA_prepare_for_worst
+		prerequisite = { focus = SCA_prepare_for_worst }
+		prerequisite = { focus = SCA_military_industry }
+		prerequisite = { focus = SCA_naval_supremacy }
+		available = {
+			GMR = {
+				is_neutral_to_ROOT = yes
+				any_owned_state = {
+					is_core_of = DEN
+				}
+			}
+			is_independent_country = yes
+		}
+		will_lead_to_war_with = GMR
+		completion_reward = {
+			set_country_flag = SCA_danish_question_flag
+			GMR = {
+				country_event = {
+					id = tesb_SCA.1 hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor < 0.1
+				alliance_strength_ratio < 1.25
+			}
+			modifier = {
+				factor < 0.1
+				is_in_faction = no
+				strength_ratio = {
+					tag = GMR
+					ratio < 1.25
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SCA_reclaim_ingria
+		icon = GFX_goal_generic_territory_or_war
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = SCA_military_industry
+		prerequisite = { focus = SCA_prepare_for_worst }
+		prerequisite = { focus = SCA_military_industry }
+		prerequisite = { focus = SCA_naval_supremacy }
+		will_lead_to_war_with = RUS
+		available = {
+			RUS = {
+				is_neutral_to_ROOT = yes
+				owns_state = 495
+			}
+			is_independent_country = yes
 		}
 		completion_reward = {
 			RUS = {
-				country_event = { id = reconquest_wars.1 }
-				custom_effect_tooltip = needs_approval
-				hidden_effect = {
-					country_event = { id = reconquest_news.1 }
+				country_event = {
+					id = tesb_SCA.11 hours = 1
 				}
 			}
-			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
-			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 1
+			base = 3
 			modifier = {
-				factor = 0
-				RUS = { in_weak_faction = no }
+				factor < 0.1
+				alliance_strength_ratio < 1.25
 			}
 			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = RUS
-					in_weak_faction = no
+				factor < 0.1
+				is_in_faction = no
+				strength_ratio = {
+					tag = RUS
+					ratio < 1.25
 				}
-			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = RUS value > 0 }
-			}
-			modifier = {
-				factor = 1.5
-				has_completed_focus = build_public_supportSCARUS
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -50 }
 			}
 		}
 	}
 
 	focus = {
-		id = war_planSCARUS
-		icon = GFX_goal_generic_position_armies
-		text = war_planRUS
-		prerequisite = { focus = territory_or_warSCARUS }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = RUS
-				is_in_faction_with = RUS
-				NOT = { RUS = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
+		id = SCA_seize_greenland
+		icon = GFX_focus_generic_annex_country
+		cost = 10
 		x = 0
 		y = 1
-		relative_position_id = territory_or_warSCARUS
-		cost = 4
+		relative_position_id = SCA_naval_supremacy
+		prerequisite = { focus = SCA_prepare_for_worst }
+		prerequisite = { focus = SCA_military_industry }
+		prerequisite = { focus = SCA_naval_supremacy }
+		will_lead_to_war_with = SCO
 		available = {
-			NOT = { is_in_faction_with = RUS }
-			has_war = no
+			SCO = {
+				is_neutral_to_ROOT = yes
+				owns_state = 569
+			}
+			is_independent_country = yes
 		}
 		completion_reward = {
-			add_ai_strategy = { type = prepare_for_war id = RUS value = 1000 }
-			RUS = { add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 } }
-			random_list = {
-			    25 = { add_command_power = 25 }
-			    25 = { add_manpower = 10000 }
-			    25 = { add_war_support = 0.25 }
-			    25 = { army_experience = 10 }
-			}
-			add_timed_idea = { idea = generic_war_of_national_liberation days = 180 }
-			add_named_threat = { threat = 1 name = war_plan_NF_threat }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				RUS = { in_weak_faction = no }
-			}
-			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = RUS
-					in_weak_faction = no
+			set_country_flag = SCA_seize_greenland_flag
+			SCO = {
+				country_event = {
+					id = tesb_SCA.21 hours = 1
 				}
 			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = RUS value > 0 }
-			}
-			modifier = {
-				factor = 2
-				has_completed_focus = territory_or_warSCARUS
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = declare_warSCARUS
-		icon = GFX_goal_generic_army_tanks
-		text = declare_warRUS
-		prerequisite = { focus = war_planSCARUS }
-		bypass = {
-			OR = {
-				is_subject = yes
-				has_war_with = RUS
-				is_in_faction_with = RUS
-				NOT = { RUS = { any_owned_state = { is_core_of = ROOT } } }
-			}
-		}
-		x = 0
-		y = 1
-		relative_position_id = war_planSCARUS
-		cost = 3
-		available = {
-			NOT = { is_in_faction_with = RUS }
-			has_war = no
-		}
-		completion_reward = {
-			declare_war_on = {
-				target = RUS
-				type = take_core_state
-				generator = { 495 }
-			}
-			add_named_threat = { threat = 1 name = declare_war_NF_threat }
 		}
 		ai_will_do = {
-			factor = 10
+			base = 3
 			modifier = {
-				factor = 0
-				RUS = { in_weak_faction = no }
+				factor < 0.1
+				alliance_strength_ratio < 1.25
 			}
 			modifier = {
-				factor = 0
-				any_country = {
-					has_subject = RUS
-					in_weak_faction = no
+				factor < 0.1
+				is_in_faction = no
+				strength_ratio = {
+					tag = SCO
+					ratio < 1.25
 				}
 			}
-			modifier = {
-				factor = 0
-				has_opinion = { target = RUS value > 0 }
-			}
-			modifier = {
-				factor = 2
-				has_completed_focus = war_planSCARUS
-			}
-			modifier = {
-				factor = 5
-				has_government = fascism
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -25 }
-			}
-			modifier = {
-				factor = 2
-				has_opinion = { target = RUS value < -50 }
-			}
-		}
-	}
-
-	focus = {
-		id = cleanup_revanchismSCARUS
-		icon = GFX_focus_generic_treaty
-		text = cleanup_revanchismRUS
-		prerequisite = { focus = declare_warSCARUS }
-		x = 0
-		y = 1
-		relative_position_id = declare_warSCARUS
-		cost = 0
-		available = {
-			OR = {
-				is_in_faction_with = RUS
-				NOT = { RUS = { any_owned_state = { is_core_of = ROOT } } }
-			}
-			NOT = { has_war_with = RUS }
-		}
-		completion_reward = {
-			add_ai_strategy = { type = prepare_for_war id = RUS value = -1000 }
-			RUS = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
-			custom_effect_tooltip = decrease_revanchism
-			subtract_from_variable = { revanchism = 0.000050 }
-			add_to_variable = { revanchism_stab = 0.000005 }
-			add_ideas = generic_national_unification
-		}
-		ai_will_do = {
-			factor = 100
 		}
 	}
 

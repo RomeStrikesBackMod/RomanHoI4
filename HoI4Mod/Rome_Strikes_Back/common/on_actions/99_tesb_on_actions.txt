@@ -152,6 +152,12 @@ on_actions = {
 					division_template = "Black Shirt Militia"
 				}
 			}
+			if = {
+				limit = {
+					original_tag = JAP
+				}
+				country_event = { id = tesb_JAP.2600 }
+			}
 		}
 	}
 
@@ -201,6 +207,29 @@ on_actions = {
 					owns_state = 226 # significant_number - Bavaria
 				}
 				drop_cosmetic_tag = yes
+			}
+			if = {
+				limit = {
+					tag = SCA
+					has_country_flag = SCA_danish_question_flag
+				}
+				every_owned_state = {
+					limit = {
+						OR = {
+							is_core_of = DEN
+							state = 229
+						}
+					}
+					add_core_of = SCA
+				}
+			}
+			if = {
+				limit = {
+					tag = SCA
+					has_country_flag = SCA_seize_greenland_flag
+					owns_state = 569
+				}
+				add_state_core = 569
 			}
 		}
 	}
@@ -317,6 +346,29 @@ on_actions = {
 					owns_state = 226 # significant_number - Bavaria
 				}
 				bav_hun_deal_effect = yes
+			}
+			if = {
+				limit = {
+					tag = SCA
+					has_country_flag = SCA_danish_question_flag
+				}
+				every_owned_state = {
+					limit = {
+						OR = {
+							is_core_of = DEN
+							state = 229
+						}
+					}
+					add_core_of = SCA
+				}
+			}
+			if = {
+				limit = {
+					tag = SCA
+					has_country_flag = SCA_seize_greenland_flag
+					owns_state = 569
+				}
+				add_state_core = 569
 			}
 		}
 	}

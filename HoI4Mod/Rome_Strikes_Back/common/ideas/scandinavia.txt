@@ -1,0 +1,129 @@
+ideas = {
+	country = {
+		SCA_secured_institutions = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			picture = generic_pp_unity_bonus
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.1
+				stability_factor = 0.05
+			}
+		}
+		SCA_democratic_commitment = {
+			allowed = {
+				always = no
+			}
+			picture = generic_disjointed_gov
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = -0.1
+			}
+		}
+		SCA_coalition_government = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			picture = generic_disjointed_gov
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+				absolutist_acceptance = 10
+				communism_acceptance = 10
+			}
+		}
+		SCA_appeasement = {
+			allowed = {
+				always = no
+			}
+			picture = generic_fascism_drift_bonus
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			removal_cost = -1
+			modifier = {
+				fascism_acceptance = 10
+			}
+		}
+		SCA_national_militia = {
+			allowed = {
+				always = no
+			}
+			picture = generic_manpower_bonus
+			removal_cost = -1
+			modifier = {
+				conscription = 0.02
+			}
+		}
+		SCA_preparations = {
+			allowed = {
+				always = no
+			}
+			picture = generic_manpower_bonus
+			removal_cost = -1
+			modifier = {
+				training_time_army_factor = -0.05
+				mobilization_laws_cost_factor = -0.15
+			}
+		}
+		SCA_civ_industry = {
+			allowed = {
+				always = no
+			}
+			picture = generic_production_bonus
+			removal_cost = -1
+			modifier = {
+				production_speed_industrial_complex_factor = 0.1
+			}
+		}
+		SCA_industry = {
+			allowed = {
+				always = no
+			}
+			picture = generic_production_bonus
+			removal_cost = -1
+			modifier = {
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_arms_factory_factor = 0.1
+				economy_cost_factor = -0.15
+			}
+		}
+	}
+	# TECHNOLOGY
+	materiel_manufacturer = {
+
+		designer = yes
+
+		SCA_infantry_equipment_manufacturer = {
+
+			picture = generic_infantry_equipment_manufacturer_2
+
+			allowed = {
+				original_tag = SCA
+				NOT = {
+					has_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
+				}
+			}
+
+			cost = 150
+			removal_cost = 10
+
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+
+			traits = { infantry_equipment_manufacturer }
+		}
+
+	}
+}

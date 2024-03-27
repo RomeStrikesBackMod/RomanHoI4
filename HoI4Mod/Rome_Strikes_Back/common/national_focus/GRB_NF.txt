@@ -16,6 +16,460 @@ focus_tree = {
 	shared_focus = aviation_effort
 	shared_focus = naval_effort
 	shared_focus = industrial_effort
-	shared_focus = political_effort
 
+	focus = {
+		id = GRB_open_diplomacy
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		x = 16
+		y = 0
+		mutually_exclusive = { focus = GRB_socialist_roots focus = GRB_splendid_isolation }
+		completion_reward = {
+			add_ideas = GRB_open_diplomacy
+			add_political_power = 90
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_rapprochement_with_rome
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_open_diplomacy
+		prerequisite = { focus = GRB_open_diplomacy }
+		available = {
+			OR = {
+				RME = { has_civil_war = no }
+				any_country_with_original_tag = {
+					original_tag_to_check = RME
+					NOT = { tag = RME }
+					has_civil_war = no
+				}
+			}
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = RMD
+				modifier = rapproachement
+			}
+			reverse_add_opinion_modifier = {
+				target = RMD
+				modifier = rapproachement
+			}
+			if = {
+				limit = {
+					RMD = { has_government = democratic }
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.1
+				}
+			}
+			if = {
+				limit = {
+					RMD = { has_government = fascism }
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.1
+				}
+			}
+			if = {
+				limit = {
+					RMD = { has_government = absolutist }
+				}
+				add_popularity = {
+					ideology = absolutist
+					popularity = 0.1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_glory_to_empire
+		icon = GFX_focus_GRE_reviving_the_double_headed_eagle
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_rapprochement_with_rome
+		prerequisite = { focus = GRB_rapprochement_with_rome }
+		completion_reward = {
+			set_variable = {
+				pw_focus = 10
+			}
+			add_political_power = 60
+			custom_effect_tooltip = GRB_glory_to_empire_tt
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_socialist_roots
+		icon = GFX_focus_generic_soviet_politics
+		cost = 10
+		x = 18
+		y = 0
+		mutually_exclusive = { focus = GRB_open_diplomacy focus = GRB_splendid_isolation }
+		completion_reward = {
+			add_political_power = 60
+			add_ideas = GRB_socialist_roots
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	focus = {
+		id = GRB_old_comrades_in_arms
+		icon = GFX_focus_chi_reach_out_to_france
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_socialist_roots
+		prerequisite = { focus = GRB_socialist_roots }
+		completion_reward = {
+			if = {
+				limit = {
+					FRA = { NOT = { has_government = communism } }
+				}
+				FRA = {
+					add_timed_idea = {
+						idea = GRB_socialist_roots
+						days = 730
+					}
+				}
+			}
+			if = {
+				limit = {
+					BRI = { NOT = { has_government = communism } }
+				}
+				BRI = {
+					add_timed_idea = {
+						idea = GRB_socialist_roots
+						days = 730
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_revive_revolution
+		icon = GFX_focus_SOV_the_supreme_soviet
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_old_comrades_in_arms
+		prerequisite = { focus = GRB_old_comrades_in_arms }
+		available = {
+			communism > 0.4
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			set_politics = {
+				ruling_party = communism
+			}
+			remove_ideas = GRB_socialist_roots
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_UWCWERCF
+		icon = GFX_focus_generic_join_comintern
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_revive_revolution
+		prerequisite = { focus = GRB_revive_revolution }
+		available = {
+			is_independent_country = yes
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				create_faction = united_workers_council
+			}
+			if = {
+				limit = {
+					is_faction_leader = yes
+					FRA = { is_potential_friend_of_ROOT = yes }
+				}
+				FRA = {
+					country_event = {
+						id = generic.5 hours = 1
+					}
+				}
+			}
+			else = {
+				FRA = {
+					custom_effect_tooltip = invite_to_faction_tt
+				}
+			}
+			if = {
+				limit = {
+					is_faction_leader = yes
+					BRI = { is_potential_friend_of_ROOT = yes }
+				}
+				BRI = {
+					country_event = {
+						id = generic.5 hours = 1
+					}
+				}
+			}
+			else = {
+				BRI = {
+					custom_effect_tooltip = invite_to_faction_tt
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_trans_atlantic_socialist_pipeline
+		icon = GFX_goal_support_communism
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_UWCWERCF
+		prerequisite = { focus = GRB_UWCWERCF }
+		completion_reward = {
+			if = {
+				limit = {
+					ENG = { NOT = { has_government = communism } }
+				}
+				ENG = {
+					add_timed_idea = {
+						idea = GRB_socialist_roots
+						days = 730
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_world_revolution
+		icon = GFX_focus_ETH_callout_to_the_world
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_trans_atlantic_socialist_pipeline
+		prerequisite = { focus = GRB_trans_atlantic_socialist_pipeline }
+		available = {
+			is_faction_leader = yes
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_faction_leader = yes
+					ENG = { is_potential_friend_of_ROOT = yes }
+				}
+				ENG = {
+					country_event = {
+						id = generic.5 hours = 1
+					}
+				}
+			}
+			else = {
+				ENG = {
+					custom_effect_tooltip = invite_to_faction_tt
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_splendid_isolation
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 10
+		x = 20
+		y = 0
+		mutually_exclusive = { focus = GRB_open_diplomacy focus = GRB_socialist_roots }
+		completion_reward = {
+			add_ideas = GRB_splendid_isolation
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	
+	focus = {
+		id = GRB_rule_waves
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_splendid_isolation
+		prerequisite = { focus = GRB_splendid_isolation }
+		complete_tooltip = {
+			navy_experience = 50
+			every_state = {
+				limit = {
+					has_state_flag = GRB_rule_waves
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GRB_rule_waves
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					NOT = { has_state_flag = GRB_rule_waves }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GRB_rule_waves
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					NOT = { has_state_flag = GRB_rule_waves }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = GRB_rule_waves
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_coastal_defences
+		icon = GFX_focus_generic_coastal_fort
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_rule_waves
+		prerequisite = { focus = GRB_rule_waves }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_coastal = yes
+					is_in_home_area = yes
+				}
+				set_building_level = {
+					type = coastal_bunker
+					level = 2
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+						level < 2
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	focus = {
+		id = GRB_secure_isles
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = GRB_coastal_defences
+		prerequisite = { focus = GRB_coastal_defences }
+		will_lead_to_war_with = SCO
+		available = {
+			is_independent_country = yes
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_owned_by = SCO
+					OR = {
+						region = 3
+						region = 4
+					}
+				}
+				add_claim_by = ROOT
+			}
+			create_wargoal = {
+				target = SCO
+				type = take_claimed_state
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
 }

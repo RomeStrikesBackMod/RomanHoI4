@@ -1,6 +1,268 @@
 ﻿add_namespace = tesb_RUS
 
 country_event = {
+	id = tesb_RUS.10
+	title = tesb_RUS.10.t
+	desc = tesb_RUS.10.d
+	picture = GFX_report_event_communist_leader
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_RUS.10.a
+		leave_faction = yes
+		create_faction = RUS_third_international
+		ai_chance = {
+			base = 100
+			modifier = { #Don't leave faction with stronger communist
+				factor = 0
+				is_in_faction = yes
+				faction_leader = {
+					has_government = communism
+					strength_ratio = {
+						tag = root
+						ratio > 1
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = tesb_RUS.10.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.15
+	title = tesb_RUS.15.t
+	desc = tesb_RUS.15.d
+	picture = GFX_report_event_communist_leader
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_RUS.15.a
+		set_politics = {
+			ruling_party = communism
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				communism < 0.4
+			}
+			modifier = {
+				factor = 2
+				communism > 0.6
+			}
+		}
+	}
+	option = {
+		name = tesb_RUS.15.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				communism > 0.7
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.16
+	title = tesb_RUS.16.t
+	desc = tesb_RUS.16.d
+	picture = GFX_report_event_fascist_speech
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_RUS.15.a
+		set_politics = {
+			ruling_party = fascism
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				fascism < 0.4
+			}
+			modifier = {
+				factor = 2
+				fascism > 0.6
+			}
+		}
+	}
+	option = {
+		name = tesb_RUS.15.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				fascism > 0.7
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.20
+	title = tesb_RUS.20.t
+	desc = tesb_RUS.20.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_RUS.20.a
+		set_country_flag = join_RUS
+		RUS = {
+			country_event = { id = tesb_RUS.21 hours = 24 }
+		}
+		every_country = {
+			limit = { is_in_faction_with = ROOT }
+			country_event = { id = tesb_RUS.22 }
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_RUS.20.b
+		set_country_flag = reject_RUS
+		RUS = {
+			country_event = { id = tesb_RUS.23 hours = 24 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.21
+	title = tesb_RUS.21.t
+	desc = tesb_RUS.21.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_RUS.21.a
+		set_faction_name = RUS_national_republican_alliance
+		every_country = {
+			limit = {
+				has_country_flag = join_RUS
+			}
+			RME = { add_to_faction = PREV }
+		}
+	}
+}
+
+
+#alliance with PLC or IRAN
+country_event = {
+	id = tesb_RUS.22
+	title = tesb_RUS.22.t
+	desc = tesb_RUS.22.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_RUS.22.a
+		set_country_flag = join_RUS
+		ai_chance = {
+			factor = 10
+			modifier = {
+				NOT = { has_government = fascism }
+				factor = 0.1
+			}
+		}
+	}
+	
+	#leave
+	option = {
+		name = tesb_RUS.22.b
+		leave_faction = yes
+		ai_chance = {
+			factor = 1
+			modifier = {
+				has_government = democratic
+				factor = 5
+			}
+			modifier = {
+				has_government = communism
+				factor = 5
+			}
+		}
+	}
+}
+
+#no alliance with PLC or IRAN
+country_event = {
+	id = tesb_RUS.23
+	title = tesb_RUS.23.t
+	desc = tesb_RUS.23.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_RUS.23.a
+	}
+}
+
+country_event = {
+	id = tesb_RUS.25
+	title = tesb_RUS.25.t
+	desc = tesb_RUS.25.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_RUS.20.a
+		RUS = {
+			country_event = { id = tesb_RUS.26 hours = 24 }
+		}
+		add_to_faction = RUS
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = tesb_RUS.20.b
+		RUS = {
+			country_event = { id = tesb_RUS.23 hours = 24 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_RUS.26
+	title = tesb_RUS.26.t
+	desc = tesb_RUS.26.desc
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	#stay
+	option = {
+		name = tesb_RUS.20.a
+		effect_tooltip = {
+			FROM = { add_to_faction = RUS }
+		}
+	}
+}
+
+country_event = {
 	id = tesb_RUS.100
 	title = tesb_RUS.100.t
 	desc = tesb_RUS.100.d
@@ -682,15 +944,59 @@ country_event = {
 	
 	option = {
 		name = tesb_RUS.145.a
-		every_state = {
-			limit = {
-				has_state_flag = original_owner_MNG
-				is_core_of = MAN
-				NOT = { is_owned_by = MAN }
-				is_owned_by_ROOT_or_subject = yes
-			}
+		trigger = {
 			MAN = {
-				transfer_state = PREV
+				OR = {
+					exists = no
+					is_subject_of = RUS
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { country_exists = MAN }
+				any_owned_state = {
+					has_state_flag = original_owner_MNG
+					is_core_of = MAN
+					NOT = { is_owned_by = MAN }
+					is_owned_by_ROOT_or_subject = yes
+				}
+			}
+			release_autonomy = {
+				target = MAN
+				autonomy_state = autonomy_puppet
+			}
+		}
+		else_if = {
+			limit = {
+				MAN = { is_subject_of = RUS }
+			}
+			every_state = {
+				limit = {
+					has_state_flag = original_owner_MNG
+					is_core_of = MAN
+					NOT = { is_owned_by = MAN }
+					is_owned_by_ROOT_or_subject = yes
+				}
+				transfer_state_to = MAN
+			}
+		}
+		else_if = {
+			limit = {
+				MAN = { is_subject = no }
+			}
+			set_autonomy = {
+				target = MAN
+				autonomy_state = autonomy_puppet
+			}
+			every_state = {
+				limit = {
+					has_state_flag = original_owner_MNG
+					is_core_of = MAN
+					NOT = { is_owned_by = MAN }
+					is_owned_by_ROOT_or_subject = yes
+				}
+				transfer_state_to = MAN
 			}
 		}
 		ai_chance = {
@@ -699,6 +1005,14 @@ country_event = {
 	}
 	option = {
 		name = tesb_RUS.145.b
+		trigger = {
+			MAN = {
+				OR = {
+					exists = no
+					is_subject_of = RUS
+				}
+			}
+		}
 		every_state = {
 			limit = {
 				has_state_flag = original_owner_MNG
@@ -706,7 +1020,7 @@ country_event = {
 				NOT = { is_owned_by = MAN }
 				is_owned_by_ROOT_or_subject = yes
 			}
-			RUS = { add_political_power = -5 add_stability = -0.01 }
+			RUS = { add_political_power = -5 add_stability = -0.005 }
 		}
 		ai_chance = {
 			base = 1
@@ -714,6 +1028,19 @@ country_event = {
 				factor = 0
 				NOT = { has_political_power > 200 }
 			}
+		}
+	}
+	option = {
+		name = tesb_RUS.145.c
+		trigger = {
+			MAN = {
+				exists = yes
+				is_subject = yes
+				NOT = { is_subject_of = RUS }
+			}
+		}
+		ai_chance = {
+			base = 1
 		}
 	}
 }

@@ -1,4 +1,114 @@
 ideas = {
+	country = {
+		JPS_shogunate_supporters = {
+			picture = generic_manpower_bonus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			targeted_modifier = {
+				tag = JPE
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+		JPS_genpei_war = {
+			picture = generic_manpower_bonus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			modifier = {
+				experience_gain_army_unit_factor = 0.05
+				army_morale_factor = 0.05
+				army_org_regain = 0.05
+			}
+		}
+		JPE_imperial_supporters = {
+			picture = generic_manpower_bonus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+			}
+			modifier = {
+				army_speed_factor = 0.05
+				supply_consumption_factor = -0.05
+				planning_speed = 0.05
+			}
+		}
+		JPE_tank_smash = {
+			picture = generic_morale_bonus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			modifier = {
+				army_morale_factor = -0.05
+			}
+			targeted_modifier = {
+				tag = JPE
+				attack_bonus_against = -0.05
+				breakthrough_bonus_against = -0.05
+				defense_bonus_against = -0.05
+			}
+		}
+		JPS_kanehira_loyalty = {
+			picture = generic_morale_bonus
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			modifier = {
+				army_morale_factor = 0.05
+			}
+		}
+		JAP_volunteers = {
+			picture = generic_manpower_bonus
+			allowed = {
+				always = no
+			}
+			modifier = {
+				send_volunteers_tension = -0.5
+				send_volunteer_size = 5
+				forced_surrender_limit = 0.1
+			}
+			rule = {
+				can_send_volunteers = yes
+			}
+		}
+	}
+	hidden_ideas = {
+		JAP_civil_war_starter = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				surrender_limit = 0.6
+			}
+		}
+		JAP_civil_war_finisher = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				forced_surrender_limit = 0.1
+			}
+		}
+	}
 	# TECHNOLOGY
 	tank_manufacturer = {
 
