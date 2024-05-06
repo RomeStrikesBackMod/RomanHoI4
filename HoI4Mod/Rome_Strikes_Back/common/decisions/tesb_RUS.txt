@@ -12,11 +12,10 @@ russia_decisions = {
 			}
 		}
 		available = {
-			has_war = no
 			any_other_country = {
 				owns_state = 564 # significant_number - Karelia
 				owns_state = 408 # significant_number - Kola
-				has_war = no
+				NOT = { has_war_with = RUS }
 			}
 		}
 		cost = 50
@@ -71,11 +70,10 @@ russia_decisions = {
 			}
 		}
 		available = {
-			has_war = no
 			any_other_country = {
 				owns_state = 564 # significant_number - Karelia
 				NOT = { owns_state = 408 } # significant_number - Kola
-				has_war = no
+				NOT = { has_war_with = RUS }
 			}
 		}
 		cost = 25
@@ -127,11 +125,10 @@ russia_decisions = {
 			}
 		}
 		available = {
-			has_war = no
 			any_other_country = {
 				owns_state = 408 # significant_number - Kola
 				NOT = { owns_state = 564 } # significant_number - Karelia
-				has_war = no
+				NOT = { has_war_with = RUS }
 			}
 		}
 		cost = 25
@@ -184,11 +181,10 @@ russia_decisions = {
 			}
 		}
 		available = {
-			has_war = no
+			NOT = { has_war_with = JAP }
 			JAP = {
 				owns_state = 312 # significant_number - Sakhalin
 				owns_state = 313 # significant_number - Kuril Islands
-				has_war = no
 				is_subject = no
 			}
 		}
@@ -232,11 +228,10 @@ russia_decisions = {
 			}
 		}
 		available = {
-			has_war = no
+			NOT = { has_war_with = MAN }
 			MAN = {
 				owns_state = 337 # significant_number - Haishenwai
 				owns_state = 338 # significant_number - Eastern Mongolia
-				has_war = no
 				is_subject = no
 			}
 		}
@@ -762,6 +757,12 @@ russia_support_republicans = {
 		}
 	}
 	rsr_test = {
+		visible = {
+			is_debug = yes
+		}
+		available = {
+			is_ai = no
+		}
 		complete_effect = {
 			every_country = {
 				limit = {
@@ -779,7 +780,7 @@ russia_support_republicans = {
 	}
 	support_pindorama = {
 		visible = {
-			#has_completed_focus = RUS_support_republicans_overseas
+			has_completed_focus = RUS_support_republicans_overseas
 		}
 		targets = { ENG }
 		target_trigger = {
@@ -827,7 +828,7 @@ russia_support_republicans = {
 	colonies_ally = {
 		visible = {
 			always = no
-			#has_completed_focus = RUS_support_republicans_overseas
+			has_completed_focus = RUS_support_republicans_overseas
 		}
 		target_array = RUS_colonial_countries
 		target_trigger = {
@@ -862,7 +863,7 @@ russia_support_republicans = {
 	}
 	colonies_influence = {
 		visible = {
-			#has_completed_focus = RUS_support_republicans_overseas
+			has_completed_focus = RUS_support_republicans_overseas
 		}
 		target_array = RUS_colonial_countries
 		target_trigger = {
@@ -913,7 +914,7 @@ russia_support_republicans = {
 	colonies_liberate = {
 		visible = {
 			always = no
-			#has_completed_focus = RUS_support_republicans_overseas
+			has_completed_focus = RUS_support_republicans_overseas
 		}
 		target_array = RUS_colonial_countries
 		target_trigger = {

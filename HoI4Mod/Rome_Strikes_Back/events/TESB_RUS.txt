@@ -155,7 +155,12 @@ country_event = {
 			limit = {
 				has_country_flag = join_RUS
 			}
-			RME = { add_to_faction = PREV }
+			RUS = { add_to_faction = PREV }
+		}
+		hidden_effect = {
+			news_event = {
+				id = tesb_RUS_news.601
+			}
 		}
 	}
 }
@@ -213,6 +218,23 @@ country_event = {
 	#stay
 	option = {
 		name = tesb_RUS.23.a
+		if = {
+			limit = {
+				is_faction_leader = yes
+			}
+			set_faction_name = RUS_international_republican_axis
+		}
+		else_if = {
+			limit = {
+				is_in_faction = no
+			}
+			create_faction = RUS_international_republican_axis
+		}
+		hidden_effect = {
+			news_event = {
+				id = tesb_RUS_news.60
+			}
+		}
 	}
 }
 

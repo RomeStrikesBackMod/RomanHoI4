@@ -664,7 +664,10 @@ focus_tree = {
 		#available_if_capitulated = yes
 		available = {
 			has_government = fascism
-			is_in_faction_with = PLC
+			OR = {
+				is_in_faction_with = PLC
+				PLC = { is_faction_leader = no }
+			}
 			has_army_manpower = { size > 300000 }
 			if = {
 				limit = {
@@ -679,7 +682,12 @@ focus_tree = {
 				}
 				custom_trigger_tooltip = {
 					tooltip = GER_reclaim_bohemia_HUN_TT
-					PLC = { has_completed_focus = PLC_second_dresden_conference }
+					PLC = {
+						OR = {
+							has_completed_focus = PLC_second_dresden_conference
+							exists = no
+						}
+					}
 					HUN = { any_owned_state = { is_core_of = ROOT } }
 				}
 				HUN = { is_neutral_to_ROOT = yes }

@@ -1686,39 +1686,48 @@ focus_tree = {
 		}
 		completion_reward = {
 			if = {
-				limit = {
-					is_faction_leader = yes
-					PLC = { is_faction_leader = yes }
+				limit = { is_faction_leader = yes }
+				if = {
+					limit = {
+						NOT = { has_war_with = PLC }
+						PLC = { is_faction_leader = yes }
+					}
+					PLC = { country_event = { id = tesb_RUS.20 } }
 				}
-				PLC = {
-					country_event = { id = tesb_RUS.20 }
+				else_if = {
+					limit = {
+						PLC = { exists = no }
+						NOT = { has_war_with = GMR }
+						GMR = { is_faction_leader = yes }
+					}
+					GMR = { country_event = { id = tesb_RUS.20 } }
 				}
-			}
-			else_if = {
-				limit = {
-					PLC = { is_faction_leader = yes }
-				}
-				PLC = {
-					country_event = { id = tesb_RUS.25 }
-				}
-			}
-			else_if = {
-				limit = {
-					is_faction_leader = yes
-				}
-				set_faction_name = RUS_international_republican_axis
-				hidden_effect = {
-					news_event = {
-						id = tesb_RUS_news.60
+				else = {
+					set_faction_name = RUS_international_republican_axis
+					hidden_effect = {
+						news_event = { id = tesb_RUS_news.60 }
 					}
 				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_war_with = PLC }
+					PLC = { is_faction_leader = yes }
+				}
+				PLC = { country_event = { id = tesb_RUS.25 } }
+			}
+			else_if = {
+				limit = {
+					PLC = { exists = no }
+					NOT = { has_war_with = GMR }
+					GMR = { is_faction_leader = yes }
+				}
+				GMR = { country_event = { id = tesb_RUS.25 } }
 			}
 			else = {
 				create_faction = RUS_international_republican_axis
 				hidden_effect = {
-					news_event = {
-						id = tesb_RUS_news.60
-					}
+					news_event = { id = tesb_RUS_news.60 }
 				}
 			}
 		}
@@ -2111,6 +2120,9 @@ focus_tree = {
 		cost = 10
 		prerequisite = { focus = RUS_defensive_stance focus = RUS_interventionist_stance }
 		relative_position_id = RUS_defensive_stance
+		will_lead_to_war_with = GEO
+		will_lead_to_war_with = ARM
+		will_lead_to_war_with = AZR
 		available = {
 			OR = {
 				GEO = { is_neutral_to_ROOT = yes }

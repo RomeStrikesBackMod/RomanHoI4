@@ -803,7 +803,7 @@ aotearoa_decisions = {
 		available = {
 		}
 		complete_effect = {
-			set_cosmetic_tag = AOT_canton
+			activate_mission = AOT_iranian_pacific_islands_countdown
 		}
 	}
 	AOT_recall_timon = {
@@ -1329,9 +1329,16 @@ AOT_islands = {
 		timeout_effect = {
 			every_state = {
 				limit = {
-					is_in_array = {
-						array = AOT.AOT_iranian_pacific_islands
-						value = THIS.id
+					OR = {
+						state = 426
+						state = 427
+						state = 428
+						state = 429
+						state = 430
+						state = 431
+						state = 432
+						state = 433
+						state = 434
 					}
 					OWNER = { has_full_control_of_state = PREV }
 				}
@@ -1575,9 +1582,14 @@ AOT_islands = {
 		timeout_effect = {
 			every_state = {
 				limit = {
-					is_in_array = {
-						array = AOT.AOT_australian_pacific_islands
-						value = THIS.id
+					OR = {
+						state = 42
+						state = 43
+						state = 44
+						state = 45
+						state = 46
+						state = 54
+						state = 55
 					}
 					OWNER = { has_full_control_of_state = PREV }
 				}
