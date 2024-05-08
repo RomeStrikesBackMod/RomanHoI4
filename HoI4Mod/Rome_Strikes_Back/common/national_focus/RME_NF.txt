@@ -1796,7 +1796,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = IRQ autonomy_state = autonomy_satellite }
+					set_autonomy = { target = IRQ autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -1808,7 +1808,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = HED autonomy_state = autonomy_satellite }
+					set_autonomy = { target = HED autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -1820,7 +1820,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = OMA autonomy_state = autonomy_satellite }
+					set_autonomy = { target = OMA autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -2522,7 +2522,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = ETH autonomy_state = autonomy_satellite }
+					set_autonomy = { target = ETH autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -2534,7 +2534,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = MUT autonomy_state = autonomy_satellite }
+					set_autonomy = { target = MUT autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -2546,7 +2546,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = SOK autonomy_state = autonomy_satellite }
+					set_autonomy = { target = SOK autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -2558,7 +2558,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = BEN autonomy_state = autonomy_satellite }
+					set_autonomy = { target = BEN autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -2846,7 +2846,7 @@ focus_tree = {
 					is_subject = no
 				}
 				RME = {
-					set_autonomy = { target = CAM autonomy_state = autonomy_satellite }
+					set_autonomy = { target = CAM autonomy_state = autonomy_dominion }
 				}
 			}
 			if = {
@@ -4666,7 +4666,7 @@ focus_tree = {
 				limit = {
 					NOT = { is_faction_leader = yes }
 				}
-				create_faction = "RME_foederati"
+				create_faction = RME_foederati
 			}
 			every_country = {
 				limit = {
@@ -4830,11 +4830,11 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			206 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Ekaterinodar
-			207 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - North Caucasia
-			208 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Georgia
-			41 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Armenia
-			56 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Azerbaijan
+			206 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Ekaterinodar
+			207 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - North Caucasia
+			208 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Georgia
+			41 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Armenia
+			56 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Azerbaijan
 		}
 		x = 2
 		y = 1
@@ -4888,50 +4888,15 @@ focus_tree = {
 				add_state_core = 41		# significant_number - Armenia
 				add_state_core = 56		# significant_number - Azerbaijan
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
-				}
+			else = {
 				GEO = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				ARM = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				AZR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				GEO = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				ARM = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				AZR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -4946,17 +4911,17 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			608 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Aleppo
-			609 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Syria
-			610 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Lebanon
-			147 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Cairo
-			148 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Alexandria
-			149 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Qattara
-			150 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Sinai
-			151 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Aswan
-			152 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Middle Egypt
-			153 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Upper Egypt
-			292 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Palestine
+			608 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Aleppo
+			609 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Syria
+			610 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Lebanon
+			147 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Cairo
+			148 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Alexandria
+			149 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Qattara
+			150 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Sinai
+			151 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Aswan
+			152 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Middle Egypt
+			153 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Upper Egypt
+			292 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Palestine
 		}
 		x = -2
 		y = 1
@@ -5016,50 +4981,15 @@ focus_tree = {
 				add_state_core = 153	# significant_number - Upper Egypt
 				add_state_claim = 151	# significant_number - Aswan
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
-				}
+			else = {
 				SYR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				ISR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				EGY = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				SYR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				ISR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				EGY = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -5074,20 +5004,20 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			107 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Transdanubia
-			666 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Moldavia
-			667 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Wallachia
-			668 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Dobrudja
-			669 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Bessarabia
-			670 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Istria
-			671 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Slovenia
-			672 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Croatia
-			673 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Slavonia
-			674 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Dalmatia
-			675 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Bosnia
-			676 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Montenegro
-			579 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Northern Serbia
-			580 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Southern Serbia
+			107 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Transdanubia
+			666 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Moldavia
+			667 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Wallachia
+			668 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Dobrudja
+			669 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Bessarabia
+			670 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Istria
+			671 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Slovenia
+			672 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Croatia
+			673 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Slavonia
+			674 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Dalmatia
+			675 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Bosnia
+			676 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Montenegro
+			579 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Northern Serbia
+			580 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Southern Serbia
 		}
 		x = 0
 		y = 1
@@ -5150,62 +5080,18 @@ focus_tree = {
 				add_state_core = 675	# significant_number - Bosnia
 				add_state_core = 676	# significant_number - Montenegro
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
-				}
+			else = {
 				MOS = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				SER = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				YUG = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				CRO = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				MOS = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				SER = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				YUG = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				CRO = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -5220,18 +5106,18 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			613 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Tripolitania
-			614 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Cyrenaica
-			615 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - East Sahara
-			616 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Fezzan
-			617 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Sahara
-			618 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Tunisia
-			619 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Gabes
-			11 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Algiers
-			12 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Constantine
-			13 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Oran
-			14 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Atlas Mountains
-			15 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - West Sahara
+			613 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Tripolitania
+			614 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Cyrenaica
+			615 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - East Sahara
+			616 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Fezzan
+			617 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Sahara
+			618 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Tunisia
+			619 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Gabes
+			11 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Algiers
+			12 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Constantine
+			13 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Oran
+			14 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Atlas Mountains
+			15 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - West Sahara
 		}
 		x = 0
 		y = 1
@@ -5306,50 +5192,15 @@ focus_tree = {
 				add_state_core = 14		# significant_number - Atlas Mountains
 				add_state_claim = 15	# significant_number - West Sahara
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
-				}
+			else = {
 				ALG = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				TUN = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				TRI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				ALG = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				TUN = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				TRI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -5364,24 +5215,24 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			293 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Nice
-			294 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Savoie
-			295 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Sardinia & Corsica
-			296 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Piemonte
-			297 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Lombardia
-			298 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Venetia
-			299 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Emilia
-			300 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Romagna
-			301 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Toscana
-			302 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - South Tirol
-			303 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Lazio
-			604 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - East Switzerland
-			605 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - West Switzerland
-			606 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Tirol
-			607 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Kärnten-Steiermark
-			584 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Puglia
-			585 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Campania
-			586 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Sicily
+			293 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Nice
+			294 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Savoie
+			295 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Sardinia & Corsica
+			296 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Piemonte
+			297 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Lombardia
+			298 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Venetia
+			299 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Emilia
+			300 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Romagna
+			301 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Toscana
+			302 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - South Tirol
+			303 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Lazio
+			604 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - East Switzerland
+			605 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - West Switzerland
+			606 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Tirol
+			607 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Kärnten-Steiermark
+			584 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Puglia
+			585 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Campania
+			586 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Sicily
 		}
 		x = 0
 		y = 1
@@ -5462,50 +5313,15 @@ focus_tree = {
 				add_state_core = 585	# significant_number - Campania
 				add_state_core = 586	# significant_number - Sicily
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
+			else = {
+				SIC = {
+					TESB_restore_rome_region_effect = yes
 				}
 				SWI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				ITA = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-				SIC = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				SIC = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				SWI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				ITA = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -5519,30 +5335,30 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			16 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Poitou
-			17 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Le Midi
-			18 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Aquitaine
-			19 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Languedoc
-			20 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Provence
-			21 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Catalonia
-			22 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Balearic Islands
-			63 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Rheinland
-			64 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Franche-Comté
-			65 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Alsace-Lorraine
-			66 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Bourgogne
-			67 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Palatinate
-			68 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Wallonia
-			69 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Rhone
-			70 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Champagne
-			71 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Auvergne
-			72 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Limousin
-			201 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Normandie
-			202 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Ile de France
-			203 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Loire
-			204 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Region Centre
-			205 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Picardie
-			59 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Zeeland
-			60 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Flanders
+			16 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Poitou
+			17 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Le Midi
+			18 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Aquitaine
+			19 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Languedoc
+			20 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Provence
+			21 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Catalonia
+			22 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Balearic Islands
+			63 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Rheinland
+			64 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Franche-Comté
+			65 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Alsace-Lorraine
+			66 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Bourgogne
+			67 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Palatinate
+			68 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Wallonia
+			69 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Rhone
+			70 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Champagne
+			71 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Auvergne
+			72 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Limousin
+			201 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Normandie
+			202 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Ile de France
+			203 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Loire
+			204 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Region Centre
+			205 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Picardie
+			59 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Zeeland
+			60 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Flanders
 		}
 		x = 0
 		y = 1
@@ -5637,62 +5453,18 @@ focus_tree = {
 				add_state_core = 59		# significant_number - Zeeland
 				add_state_core = 60		# significant_number - Flanders
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
-				}
+			else = {
 				AQI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				BRG = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				FRA = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				FLD = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				AQI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				BRG = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				FRA = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				FLD = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -5706,23 +5478,23 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			402 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Fez
-			403 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Taza
-			404 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - al Rif
-			405 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Marrakesh
-			406 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Agadir
-			407 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - West Morocco
-			94 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - León-Castilla
-			95 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Castilla la Nueva
-			96 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Valencia
-			97 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Granada
-			593 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Galicia
-			594 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Extremadura
-			595 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Vasconia-Aragón
-			596 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Andalucía
-			597 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Douro
-			598 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Lisboa
-			599 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Alentejo
+			402 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Fez
+			403 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Taza
+			404 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - al Rif
+			405 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Marrakesh
+			406 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Agadir
+			407 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - West Morocco
+			94 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - León-Castilla
+			95 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Castilla la Nueva
+			96 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Valencia
+			97 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Granada
+			593 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Galicia
+			594 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Extremadura
+			595 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Vasconia-Aragón
+			596 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Andalucía
+			597 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Douro
+			598 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Lisboa
+			599 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Alentejo
 		}
 		x = 0
 		y = 2
@@ -5818,50 +5590,15 @@ focus_tree = {
 				add_state_core = 598	# significant_number - Lisboa
 				add_state_core = 599	# significant_number - Alentejo
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
-				}
+			else = {
 				MOR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				SPA = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				CAT = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				MOR = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				SPA = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				CAT = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -5875,14 +5612,14 @@ focus_tree = {
 			is_puppet = no
 		}
 		bypass = {
-			73 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Bretagne
-			154 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - North West Britain
-			155 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - North East Britain
-			156 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Midlands
-			157 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Eastern Counties
-			158 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - South East Britain
-			159 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - South West Britain
-			160 = { is_owned_by_ROOT_or_subject = yes }	# significant_number - Wales
+			73 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Bretagne
+			154 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - North West Britain
+			155 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - North East Britain
+			156 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Midlands
+			157 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Eastern Counties
+			158 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - South East Britain
+			159 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - South West Britain
+			160 = { is_owned_by_ROOT_or_ally = yes }	# significant_number - Wales
 		}
 		x = 2
 		y = 1
@@ -5975,38 +5712,12 @@ focus_tree = {
 				add_state_core = 159	# significant_number - South West Britain
 				add_state_core = 160	# significant_number - Wales
 			}
-			if = {
-				limit = {
-					has_completed_focus = RME_reestablish_roman_hegemony
-				}
+			else = {
 				GRB = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 				BRI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.10 hours = 12 random = 12 }
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_completed_focus = RME_restore_rome_focus
-				}
-				GRB = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
-				}
-				BRI = {
-					if = {
-						limit = { exists = yes }
-						country_event = { id = tesb_restore_rome.20 hours = 12 random = 12 }
-					}
+					TESB_restore_rome_region_effect = yes
 				}
 			}
 		}
@@ -6023,7 +5734,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_caucasus_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}
@@ -6032,7 +5743,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_levant_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}
@@ -6041,7 +5752,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_balkan_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}
@@ -6050,7 +5761,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_north_africa_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}
@@ -6059,7 +5770,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_italy_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}
@@ -6068,7 +5779,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_gaul_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}
@@ -6077,7 +5788,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_iberia_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}
@@ -6086,7 +5797,7 @@ focus_tree = {
 				NOT = {
 					any_state = {
 						is_britain_state = yes
-						NOT = { is_owned_by_ROOT_or_subject = yes }
+						NOT = { is_owned_by_ROOT_or_ally = yes }
 					}
 				}
 			}

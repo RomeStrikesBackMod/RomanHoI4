@@ -385,6 +385,12 @@ country_event = {
 		}
 		ai_chance = {
 			base = 10
+			modifier = {
+				factor = 1.5
+				tag = SIC
+				SWI = { is_in_faction_with = ITA }
+				RME = { NOT = { has_completed_focus = RME_italy } }
+			}
 		}
 	}
 	option = {
@@ -483,6 +489,74 @@ country_event = {
 					target = SWI
 					value < -24
 				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_ITA.17
+	title = tesb_ITA.17.t
+	desc = {
+		trigger = { SIC = { is_potential_friend_of_ROOT = yes } }
+		text = tesb_ITA.17.desca
+	}
+	desc = {
+		trigger = { SIC = { is_potential_friend_of_ROOT = no } }
+		text = tesb_ITA.17.descb
+	}
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.17.a
+		if = {
+			limit = { country_exists = SIC }
+			create_wargoal = {
+				target = SIC
+				type = annex_everything
+			}
+			else = {
+				add_state_claim = 584 # significant_number - Puglia
+				add_state_claim = 585 # significant_number - Campania
+				add_state_claim = 586 # significant_number - Sicily
+				add_state_claim = 587 # significant_number - Malta
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = SIC
+					value > 24
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			is_faction_leader = yes
+			SIC = { is_potential_friend_of_ROOT = yes }
+		}
+		name = tesb_ITA.16.b
+		SIC = {
+			country_event = { id = tesb_ITA.15 }
+		}
+		custom_effect_tooltip = tesb_ITA.17.b.tt
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = SIC
+					value < -24
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction_with = SWI
 			}
 		}
 	}
