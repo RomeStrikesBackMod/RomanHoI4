@@ -28,7 +28,7 @@ focus_tree = {
 		icon = GFX_focus_generic_monarchy_2
 		mutually_exclusive = { focus = ITA_the_roman_republic }
 		cost = 10
-		x = 20
+		x = 21
 		y = 0
 		completion_reward = {
 			add_country_leader_role = {
@@ -62,7 +62,7 @@ focus_tree = {
 		prerequisite = { focus = ITA_return_of_the_lombardi }
 		mutually_exclusive = { focus = ITA_a_populist_leader }
 		cost = 10
-		x = -2
+		x = -3
 		y = 1
 		completion_reward = {
 			add_popularity = {
@@ -366,13 +366,41 @@ focus_tree = {
 	}
 
 	focus = {
+		id = ITA_italian_unity
+		icon = GFX_focus_befriend_italy
+		relative_position_id = ITA_secure_raetia
+		prerequisite = { focus = ITA_secure_raetia }
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			is_independent_country = yes
+		}
+		bypass = {
+			584 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Puglia
+			585 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Campania
+			586 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Sicily
+			587 = { is_owned_by_ROOT_or_subject = yes } # significant_number - Malta
+		}
+		will_lead_to_war_with = SIC
+		completion_reward = {
+			country_event = {
+				id = tesb_ITA.17
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
 		id = ITA_eliminate_the_german_claimant
 		icon = GFX_focus_attack_germany
 		relative_position_id = ITA_separation_of_church_and_state
 		prerequisite = { focus = ITA_secure_raetia }
 		prerequisite = { focus = ITA_union_of_church_and_state focus = ITA_separation_of_church_and_state }
 		cost = 10
-		x = 0
+		x = -1
 		y = 1
 		available = {
 			is_independent_country = yes
@@ -381,6 +409,14 @@ focus_tree = {
 				is_neighbor_of = GMR
 				any_allied_country = {
 					is_neighbor_of = GMR
+				}
+			}
+		}
+		bypass = {
+			GMR = {
+				OR = {
+					exists = no
+					is_ally_with = ROOT
 				}
 			}
 		}
@@ -401,11 +437,12 @@ focus_tree = {
 		icon = GFX_focus_generic_strike_at_democracy1
 		relative_position_id = ITA_eliminate_the_german_claimant
 		prerequisite = { focus = ITA_eliminate_the_german_claimant }
+		prerequisite = { focus = ITA_italian_unity }
 		mutually_exclusive = {
 			focus = ITA_understanding_between_equals
 		}
 		cost = 10
-		x = -1
+		x = 0
 		y = 1
 		available = {
 			is_independent_country = yes
@@ -466,7 +503,7 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0.5
-				has_country_flag = ITA_orthodox_reconciliation
+				has_country_flag = ITA_orthodox_reconciliation_flag
 			}
 		}
 	}
@@ -476,11 +513,12 @@ focus_tree = {
 		icon = GFX_goal_generic_dangerous_deal
 		relative_position_id = ITA_eliminate_the_german_claimant
 		prerequisite = { focus = ITA_eliminate_the_german_claimant }
+		prerequisite = { focus = ITA_italian_unity }
 		mutually_exclusive = {
 			focus = ITA_there_can_only_be_one
 		}
 		cost = 10
-		x = 1
+		x = 2
 		y = 1
 		available = {
 			is_independent_country = yes
@@ -560,7 +598,7 @@ focus_tree = {
 		prerequisite = { focus = ITA_return_of_the_lombardi }
 		mutually_exclusive = { focus = ITA_centralize_power }
 		cost = 10
-		x = 2
+		x = 3
 		y = 1
 		available = {
 			has_country_leader = {
@@ -985,14 +1023,25 @@ focus_tree = {
 		id = ITA_form_roman_legion
 		icon = GFX_focus_ger_reichskommisariats
 		relative_position_id = ITA_a_populist_leader
-		prerequisite = { focus = ITA_a_populist_leader }
+		prerequisite = { focus = ITA_a_populist_leader focus = ITA_centralize_power }
 		cost = 10
-		x = 2
+		x = -2
 		y = 1
 		completion_reward = {
-			add_popularity = {
-				ideology = fascism
-				popularity = 0.05
+			if = {
+				limit = {
+					has_completed_focus = ITA_centralize_power
+				}
+				add_popularity = {
+					ideology = absolutist
+					popularity = 0.05
+				}
+			}
+			else = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
 			}
 			add_ideas = ITA_new_roman_legions
 		}
@@ -1164,10 +1213,10 @@ focus_tree = {
 	focus = {
 		id = ITA_fortify_rome
 		icon = GFX_goal_generic_fortify_city
-		relative_position_id = ITA_a_populist_leader
+		relative_position_id = ITA_centralize_power
 		prerequisite = { focus = ITA_a_populist_leader focus = ITA_centralize_power }
 		cost = 10
-		x = -2
+		x = 2
 		y = 1
 		available = {
 			controls_state = 303 # significant_number - Lazio
@@ -1378,7 +1427,7 @@ focus_tree = {
 		mutually_exclusive = { focus = ITA_return_of_the_lombardi }
 		relative_position_id = ITA_return_of_the_lombardi
 		cost = 10
-		x = 8
+		x = 7
 		y = 0
 		completion_reward = {
 			add_popularity = {

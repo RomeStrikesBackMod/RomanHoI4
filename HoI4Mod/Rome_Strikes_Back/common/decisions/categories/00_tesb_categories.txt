@@ -210,6 +210,43 @@ BRG_hre_influence_decisions = {
 	}
 }
 
+RME_hre_influence_decisions = {
+	icon = power_struggle
+	picture = GFX_decision_cat_generic_hre
+
+	priority = 100
+	allowed = {
+		original_tag = RME
+	}
+	custom_icon = {
+		tag = ITA
+		value = ITA_hre_influence_icon_value
+		desc = ITA_hre_influence_full_influence_breakdown
+
+		visible = {
+			country_exists = ITA
+		}
+	}
+	
+	custom_icon = {
+		tag = BRG
+		value = BRG_hre_influence_icon_value
+		desc = BRG_hre_influence_full_influence_breakdown
+
+		visible = {
+			country_exists = BRG
+		}
+	}
+	visible_when_empty = yes
+	visible = {
+		OR = {
+			#always = yes #testing
+			ITA = { has_completed_focus = ITA_holy_roman_empire }
+			BRG = { has_completed_focus = BRG_third_roman_empire }
+		}
+	}
+}
+
 mexhico_decisions = {
 	priority = 10
 	allowed = {
