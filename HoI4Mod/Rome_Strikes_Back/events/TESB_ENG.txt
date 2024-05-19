@@ -31,3 +31,60 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = tesb_england.2
+	title = tesb_england.2.t
+	desc = tesb_england.2.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_england.2.a
+		hidden_effect = {
+			GRB = {
+				country_event = { id = tesb_england.3 days = 2 }
+			}
+		}
+		ai_chance = {
+			base = 7
+		}
+	}
+	option = {
+		name = tesb_england.2.b
+		ai_chance = {
+			base = 3
+		}
+	}
+}
+
+country_event = {
+	id = tesb_england.3
+	title = tesb_england.3.t
+	desc = tesb_england.3.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_england.3.a
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = GRB
+				}
+				RME = {
+					country_event = { id = tesb_england.3 days = 2 }
+				}
+			}
+		}
+		ai_chance = {
+			base = 7
+		}
+	}
+	option = {
+		name = tesb_england.3.b
+		ai_chance = {
+			base = 3
+		}
+	}
+}

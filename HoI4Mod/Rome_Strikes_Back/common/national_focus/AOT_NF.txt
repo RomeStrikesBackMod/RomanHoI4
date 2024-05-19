@@ -2113,225 +2113,12 @@ focus_tree = {
 	}
 
 	focus = {
-		id = AOT_coastal_defenses
-		icon = GFX_focus_generic_coastal_fort
+		id = AOT_basic_defenses
+		icon = GFX_goal_generic_defence
 		prerequisite = {
 			focus = AOT_protect_the_islands
 		}
 		relative_position_id = AOT_protect_the_islands
-		cost = 10
-		x = -2
-		y = 1
-		available = {
-			controls_state = 409
-			controls_state = 410
-		}
-		completion_reward = {
-			custom_effect_tooltip = AOT_coastal_defenses_tt
-			hidden_effect = {
-				409 = {
-					add_building_construction = {
-						type = coastal_bunker
-						level = 3
-						province = 1814
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						province = 4543
-					}
-				}
-				410 = {
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						province = 2211
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 2
-						province = 2197
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-
-	focus = {
-		id = AOT_naval_construction
-		icon = GFX_goal_generic_construct_naval_dockyard
-		prerequisite = {
-			focus = AOT_coastal_defenses
-		}
-		relative_position_id = AOT_coastal_defenses
-		cost = 10
-		x = 0
-		y = 1
-		complete_tooltip = {
-			random_state = {
-				limit = {
-					has_state_flag = AOT_naval_construction_state_flag
-				}
-				add_extra_state_shared_building_slots = 3
-				add_building_construction = {
-					type = dockyard
-					level = 3
-					instant_build = yes
-				}
-			}
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = dockyard
-						size > 2
-						include_locked = yes
-					}
-					is_coastal = yes
-					OR = {
-						is_in_home_area = yes
-						NOT = {
-							owner = {
-								any_owned_state = {
-									free_building_slots = {
-										building = dockyard
-										size > 2
-										include_locked = yes
-									}
-									is_in_home_area = yes
-									is_coastal = yes
-								}
-							}
-						}
-					}
-				}
-				add_extra_state_shared_building_slots = 3
-				add_building_construction = {
-					type = dockyard
-					level = 3
-					instant_build = yes
-				}
-				set_state_flag = AOT_naval_construction_state_flag
-			}
-		}
-		ai_will_do = {
-			base = 2
-		}
-	}
-
-	### Engagement
-	focus = {
-		id = AOT_preemptive_action
-		icon = GFX_goal_generic_territory_or_war
-		prerequisite = {
-			focus = AOT_vunerable_peace
-		}
-		mutually_exclusive = {
-			focus = AOT_regional_cooperation focus = AOT_protect_the_islands
-		}
-		available = {
-			OR = {
-				NOT = { has_government = democratic }
-				has_war_support > 0.4
-			}
-		}
-		relative_position_id = AOT_vunerable_peace
-		cost = 10
-		x = 6
-		y = 1
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = AOT_staunch_anti_militarists
-				add_idea = AOT_preparing_for_conflict
-			}
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
-
-	focus = {
-		id = AOT_iranian_pacific_islands
-		icon = GFX_focus_generic_attack_iran
-		prerequisite = {
-			focus = AOT_preemptive_action focus = AOT_protect_the_islands
-		}
-		relative_position_id = AOT_preemptive_action
-		cost = 10
-		x = -4
-		y = 1
-		available = {
-			
-		}
-		completion_reward = {
-			custom_effect_tooltip = AOT_iranian_pacific_islands_tt
-			activate_mission = AOT_iranian_pacific_islands_countdown
-			hidden_effect = {
-				IRN = {
-					activate_mission = IRN_iranian_pacific_islands_countdown
-				}
-				X02 = {
-					activate_mission = IRN_iranian_pacific_islands_countdown
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
-			modifier = {
-				factor = 0
-				OR = {
-					has_active_mission = AOT_australian_pacific_islands_countdown
-					has_active_mission = AOT_iranian_pacific_islands_countdown
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = AOT_australian_pacific_islands
-		icon = GFX_focus_attack_australia
-		prerequisite = {
-			focus = AOT_iranian_pacific_islands
-		}
-		relative_position_id = AOT_iranian_pacific_islands
-		cost = 10
-		x = 0
-		y = 1
-		available = {
-			
-		}
-		completion_reward = {
-			custom_effect_tooltip = AOT_australian_pacific_islands_tt
-			activate_mission = AOT_australian_pacific_islands_countdown
-			hidden_effect = {
-				AST = {
-					activate_mission = AST_australian_pacific_islands_countdown
-				}
-			}
-		}
-		ai_will_do = {
-			base = 2
-			modifier = {
-				factor = 0
-				OR = {
-					has_active_mission = AOT_australian_pacific_islands_countdown
-					has_active_mission = AOT_iranian_pacific_islands_countdown
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = AOT_basic_defenses
-		icon = GFX_goal_generic_defence
-		prerequisite = {
-			focus = AOT_preemptive_action focus = AOT_protect_the_islands
-		}
-		relative_position_id = AOT_preemptive_action
 		cost = 10
 		x = -2
 		y = 1
@@ -2395,6 +2182,250 @@ focus_tree = {
 					has_active_mission = AOT_iranian_pacific_islands_countdown
 				}
 			}
+		}
+	}
+
+	focus = {
+		id = AOT_coastal_defenses
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = {
+			focus = AOT_basic_defenses
+		}
+		relative_position_id = AOT_basic_defenses
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			controls_state = 409
+			controls_state = 410
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOT_coastal_defenses_tt
+			hidden_effect = {
+				409 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 3
+						province = 1814
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 4543
+					}
+				}
+				410 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 2211
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 2197
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	### Engagement
+	focus = {
+		id = AOT_preemptive_action
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = {
+			focus = AOT_vunerable_peace
+		}
+		mutually_exclusive = {
+			focus = AOT_regional_cooperation focus = AOT_protect_the_islands
+		}
+		available = {
+			OR = {
+				NOT = { has_government = democratic }
+				has_war_support > 0.4
+			}
+		}
+		relative_position_id = AOT_vunerable_peace
+		cost = 10
+		x = 6
+		y = 1
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AOT_staunch_anti_militarists
+				add_idea = AOT_preparing_for_conflict
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = AOT_iranian_pacific_islands
+		icon = GFX_focus_generic_attack_iran
+		prerequisite = {
+			focus = AOT_preemptive_action focus = AOT_protect_the_islands
+		}
+		relative_position_id = AOT_preemptive_action
+		cost = 10
+		x = -4
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOT_iranian_pacific_islands_tt
+			activate_mission = AOT_iranian_pacific_islands_countdown
+			hidden_effect = {
+				IRN = {
+					activate_mission = IRN_iranian_pacific_islands_countdown
+				}
+				X02 = {
+					activate_mission = IRN_iranian_pacific_islands_countdown
+					every_owned_state = {
+						AOT = {
+							clear_array = AOT_iranian_pacific_islands
+							add_to_array = {
+								array = AOT_iranian_pacific_islands
+								value = PREV
+							}
+						}
+						set_variable = { aot_island_control = 0 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				OR = {
+					has_active_mission = AOT_australian_pacific_islands_countdown
+					has_active_mission = AOT_iranian_pacific_islands_countdown
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_australian_pacific_islands
+		icon = GFX_focus_attack_australia
+		prerequisite = {
+			focus = AOT_iranian_pacific_islands
+		}
+		relative_position_id = AOT_iranian_pacific_islands
+		cost = 10
+		x = 0
+		y = 1
+		available = {
+			
+		}
+		completion_reward = {
+			custom_effect_tooltip = AOT_australian_pacific_islands_tt
+			activate_mission = AOT_australian_pacific_islands_countdown
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							state = 42
+							state = 43
+							state = 44
+							state = 45
+							state = 46
+							state = 54
+							state = 55
+						}
+					}
+					AOT = {
+						clear_array = AOT_australian_pacific_islands
+						add_to_array = {
+							array = AOT_australian_pacific_islands
+							value = PREV
+						}
+					}
+					set_variable = { aot_island_control = 0 }
+				}
+				AST = {
+					activate_mission = AST_australian_pacific_islands_countdown
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				OR = {
+					has_active_mission = AOT_australian_pacific_islands_countdown
+					has_active_mission = AOT_iranian_pacific_islands_countdown
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AOT_naval_construction
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = {
+			focus = AOT_preemptive_action focus = AOT_protect_the_islands
+		}
+		relative_position_id = AOT_preemptive_action
+		cost = 10
+		x = -2
+		y = 1
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = AOT_naval_construction_state_flag
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 2
+						include_locked = yes
+					}
+					is_coastal = yes
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = dockyard
+										size > 2
+										include_locked = yes
+									}
+									is_in_home_area = yes
+									is_coastal = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				set_state_flag = AOT_naval_construction_state_flag
+			}
+		}
+		ai_will_do = {
+			base = 2
 		}
 	}
 

@@ -2085,3 +2085,197 @@ news_event = {
 		name = tesb_JAP.26.a_2
 	}
 }
+
+country_event = {
+	id = tesb_JAP.2700
+	title = tesb_JAP.27.t
+	desc = tesb_JAP.27.d
+	picture = GFX_report_event_japanese_parade
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_JAP.27.b
+		set_country_flag = tach_ded
+		hidden_effect = {
+			news_event = {
+				id = tesb_JAP.27
+			}
+		}
+		ai_chance = {
+			base = 6
+		}
+	}
+	option = {
+		name = tesb_JAP.27.c
+		set_country_flag = tach_dem
+		hidden_effect = {
+			news_event = {
+				id = tesb_JAP.27
+			}
+		}
+		ai_chance = {
+			base = 4
+		}
+	}
+}
+news_event = {
+	id = tesb_JAP.27
+	title = tesb_JAP.27.t
+	desc = {
+		trigger = { FROM = { has_country_flag = tach_ded } }
+		text = tesb_JAP.27.desc_1
+	}
+	desc = {
+		trigger = { FROM = { has_country_flag = tach_dem } }
+		text = tesb_JAP.27.desc_2
+	}
+	picture = GFX_news_event_japanese_parade
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = tesb_JAP.27.a
+		ai_chance = {
+			base = 6
+		}
+	}
+}
+country_event = {
+	id = tesb_JAP.2701
+	title = tesb_JAP.271.t
+	desc = tesb_JAP.271.d
+	picture = GFX_report_event_japanese_parade
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_JAP.2701.a
+		set_country_flag = rehabilitate_traitors
+		hidden_effect = {
+			create_corps_commander = {
+				name = JAP_iwamoto_kanehira
+				picture = "GFX_portrait_JAP_yoshijiro_umezu"
+				skill = 3
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 2
+				logistics_skill = 2
+				traits = {
+					JAP_samurai_lineage
+					cavalry_officer
+					cavalry_leader
+					cavalry_expert
+				}
+			}
+			create_corps_commander = {
+				name = JAP_taira_yoritomo
+				picture = "GFX_portrait_JAP_kanji_ishiwara"
+				skill = 3
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 2
+				logistics_skill = 2
+				traits = {
+					JAP_samurai_lineage
+					cavalry_officer
+					cavalry_leader
+					cavalry_expert
+				}
+			}
+			news_event = {
+				id = tesb_JAP.271
+			}
+		}
+		ai_chance = {
+			base = 6
+		}
+	}
+	option = {
+		name = tesb_JAP.2701.b
+		set_country_flag = exile_traitors
+		hidden_effect = {
+			news_event = {
+				id = tesb_JAP.271
+			}
+		}
+		ai_chance = {
+			base = 2
+		}
+	}
+	option = {
+		name = tesb_JAP.2701.c
+		set_country_flag = execute_traitors
+		hidden_effect = {
+			news_event = {
+				id = tesb_JAP.271
+			}
+		}
+		ai_chance = {
+			base = 2
+		}
+	}
+}
+news_event = {
+	id = tesb_JAP.271
+	title = tesb_JAP.271.t
+	desc = {
+		trigger = { FROM = { has_country_flag = rehabilitate_traitors } }
+		text = tesb_JAP.271.desc_1
+	}
+	desc = {
+		trigger = { FROM = { has_country_flag = exile_traitors } }
+		text = tesb_JAP.271.desc_2
+	}
+	desc = {
+		trigger = { FROM = { has_country_flag = execute_traitors } }
+		text = tesb_JAP.271.desc_3
+	}
+	picture = GFX_news_event_japanese_parade
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = tesb_JAP.271.a
+	}
+}
+news_event = {
+	id = tesb_JAP.28
+	title = tesb_JAP.28.t
+	desc = tesb_JAP.28.desc
+	picture = GFX_news_event_japanese_parade
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = tesb_JAP.28.a
+	}
+}
+news_event = {
+	id = tesb_JAP.29
+	title = tesb_JAP.29.t
+	desc = tesb_JAP.29.desc
+	picture = GFX_news_event_japanese_parade
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = tesb_JAP.29.a
+	}
+}
+news_event = {
+	id = tesb_JAP.30
+	title = tesb_JAP.30.t
+	desc = tesb_JAP.30.desc
+	picture = GFX_news_event_japanese_parade
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = tesb_JAP.30.a
+	}
+}
+news_event = {
+	id = tesb_JAP.31
+	title = tesb_JAP.31.t
+	desc = tesb_JAP.31.desc
+	picture = GFX_news_event_japanese_parade
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = tesb_JAP.31.a
+	}
+}
