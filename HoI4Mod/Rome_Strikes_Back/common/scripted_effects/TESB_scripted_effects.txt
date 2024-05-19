@@ -829,6 +829,7 @@ jap_end_civil_war = {
 	hidden_effect = {
 		every_country_with_original_tag = {
 			original_tag_to_check = JAP
+			add_ideas = JAP_myoukougein
 			remove_ideas = JAP_civil_war_starter
 			remove_ideas = JAP_civil_war_finisher
 			delete_unit_template_and_units = {
@@ -995,7 +996,7 @@ d_hire_folks = {
 		create_corps_commander = {
 			name = JAP_fujiwara_tomoe
 			female = yes
-			picture = "GFX_portrait_yoshiko_kawashima"
+			picture = "portrait_jap_yoshiko_kawashima"
 			skill = 3
 			attack_skill = 3
 			defense_skill = 2
@@ -1011,7 +1012,7 @@ d_hire_folks = {
 		}
 		create_corps_commander = {
 			name = JAP_saitou_kichinosuke
-			picture = "GFX_portrait_JAP_yasuji_okamura"
+			picture = "Portrait_Japan_Yasuji_Okamura"
 			skill = 3
 			attack_skill = 3
 			defense_skill = 2
@@ -1026,7 +1027,7 @@ d_hire_folks = {
 		}
 		create_corps_commander = {
 			name = JAP_sakamoto_hajime
-			picture = "GFX_portrait_JAP_jo_iimura"
+			picture = "Portrait_Japan_Jo_Iimura"
 			skill = 3
 			attack_skill = 2
 			defense_skill = 2
@@ -1069,7 +1070,7 @@ d_hire_folks = {
 		#}
 		create_corps_commander = {
 			name = JAP_iwamoto_kanehira
-			picture = "GFX_portrait_JAP_yoshijiro_umezu"
+			picture = "Portrait_Japan_Yoshijiro_Umezu"
 			skill = 3
 			attack_skill = 3
 			defense_skill = 2
@@ -1084,7 +1085,7 @@ d_hire_folks = {
 		}
 		create_corps_commander = {
 			name = JAP_taira_yoritomo
-			picture = "GFX_portrait_JAP_kanji_ishiwara"
+			picture = "Portrait_Japan_Kanji_Ishiwara"
 			skill = 3
 			attack_skill = 3
 			defense_skill = 2
@@ -1110,5 +1111,109 @@ d_various_updates = {
 			value = 20
 		}
 	}
+	if = {
+		limit = {
+			MEX = { is_in_faction = no }
+		}
+		UTA = {
+			add_to_faction = MEX
+		}
+	}
 	reset_province_name = 3151
+	MNG = {
+		MNG_huang_qiu = {
+			set_portraits = {
+				civilian = {
+					large = "GFX_MNG_zhu_wei"
+				}
+			}
+		}
+	}
+	MEX = {
+		MEX_natalio_hernandez = {
+			set_portraits = {
+				civilian = {
+					large = "GFX_MEX_absolutist_leader"
+				}
+			}
+		}
+		random_character = {
+			limit = {
+				has_ideology_group = democratic
+			}
+			set_portraits = {
+				civilian = {
+					large = "GFX_MEX_democratic_leader"
+				}
+			}
+		}
+	}
+	CAN = {
+		CAN_daniel_bruce = {
+			set_portraits = {
+				civilian = {
+					large = "GFX_KAN_democratic_leader"
+				}
+			}
+		}
+	}
+	IND = {
+		IND_uyyalawada_kattabomman = {
+			set_portraits = {
+				civilian = {
+					large = "GFX_IND_democratic_leader"
+				}
+			}
+		}
+		random_character = {
+			limit = {
+				has_ideology_group = absolutist
+			}
+			set_portraits = {
+				civilian = {
+					large = "GFX_IND_absolutist_leader"
+				}
+			}
+		}
+	}
+	UTA = {
+		UTA_andrew_potter = {
+			set_portraits = {
+				civilian = {
+					large = "GFX_UTA_democratic_leader"
+				}
+			}
+		}
+	}
+	BIR = {
+		BIR_alejandro_chambi = {
+			set_portraits = {
+				civilian = {
+					large = "GFX_BIR_democratic_leader"
+				}
+			}
+		}
+	}
+	ENG = {
+		random_character = {
+			limit = {
+				has_ideology_group = fascism
+			}
+			set_portraits = {
+				civilian = {
+					large = "GFX_ENL_fascism_leader"
+				}
+			}
+		}
+		random_character = {
+			limit = {
+				has_ideology_group = communism
+			}
+			set_portraits = {
+				civilian = {
+					large = "GFX_ENL_communist_leader"
+				}
+			}
+		}
+	}
 }

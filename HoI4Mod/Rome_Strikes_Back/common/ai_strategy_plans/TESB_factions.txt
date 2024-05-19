@@ -69,6 +69,10 @@ UTA_allies = {
 			original_tag = HAI
 			original_tag = CUB
 		}
+		OR = {
+			NOT = { original_tag = ENG }
+			NOT = { has_completed_focus = ENG_align_UTA }
+		}
 	}
 	abort = {
 		is_in_faction_with = UTA
@@ -78,6 +82,27 @@ UTA_allies = {
 		type = alliance
 		id = "UTA"
 		value = -500
+	}
+}
+
+
+stay_with_UTA = {
+	name = "Ally UTA if meant to"
+	desc = "Don't leave because of ideology"
+
+	enable = {
+		has_completed_focus = ENG_align_UTA
+		is_in_faction_with = UTA
+	}
+	abort = {
+		NOT = {
+			is_in_faction_with = UTA
+		}
+	}
+	ai_strategy = {
+		type = alliance
+		id = UTA
+		value = 1000
 	}
 }
 

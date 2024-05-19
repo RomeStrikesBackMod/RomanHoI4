@@ -271,7 +271,6 @@ regaining_rome = {
 				is_owned_by_ROOT_or_ally = no
 				NOT = { is_claimed_by = ROOT }
 			}
-			ai_will_do = { base = 1 }
 		}
 		target_non_existing = yes
 		complete_effect = {
@@ -283,6 +282,7 @@ regaining_rome = {
 				}
 			}
 		}
+		ai_will_do = { base = 1 }
 	}
 	reclaim_annexed_territory_2 = {
 		name = reclaim_annexed_territory
@@ -414,7 +414,7 @@ regaining_rome = {
 		}
 		ai_will_do = { base = 1 }
 	}
-	reclaim_annexed_territory_6 = {
+	reclaim_annexed_territory_7 = {
 		name = reclaim_annexed_territory
 		targets = { MOR SPA CAT }
 		target_trigger = {
@@ -440,7 +440,7 @@ regaining_rome = {
 		}
 		ai_will_do = { base = 1 }
 	}
-	reclaim_annexed_territory_7 = {
+	reclaim_annexed_territory_8 = {
 		name = reclaim_annexed_territory
 		targets = { GRB BRI }
 		target_trigger = {
@@ -1572,7 +1572,6 @@ AOT_islands = {
 										annex_country = { target = PREV }
 									}
 								}
-								
 							}
 							teleport_armies = {
 								limit = {
@@ -1581,6 +1580,11 @@ AOT_islands = {
 							}
 							transfer_state_to = AOT
 							add_core_of = AOT
+							AOT = {
+								add_to_variable = {
+									AOT_annexed_X02_states = 1
+								}
+							}
 						}
 						1 = {
 							modifier = {
@@ -1598,6 +1602,11 @@ AOT_islands = {
 					}
 				}
 				tooltip = AOT_iranian_pacific_islands_countdown_state_TT
+			}
+			hidden_effect = {
+				news_event = {
+					id = tesb_AOT.60
+				}
 			}
 		}
 	}
@@ -1831,6 +1840,11 @@ AOT_islands = {
 							}
 							transfer_state_to = AOT
 							add_core_of = AOT
+							AOT = {
+								add_to_variable = {
+									AOT_annexed_AST_states = 1
+								}
+							}
 						}
 						1 = {
 							modifier = {
@@ -1848,6 +1862,11 @@ AOT_islands = {
 					}
 				}
 				tooltip = AOT_australian_pacific_islands_countdown_state_TT
+			}
+			hidden_effect = {
+				news_event = {
+					id = tesb_AOT.61
+				}
 			}
 		}
 	}
@@ -2518,17 +2537,18 @@ JAP_decisions = {
 			is_debug = yes
 		}
 		complete_effect = {
-			add_ideas = JPS_shogunate_supporters
-			add_ideas = JPS_genpei_war
-			add_ideas = JPE_imperial_supporters
-			add_ideas = JAP_volunteers
+			every_country_with_original_tag = {
+				original_tag_to_check = JAP
+				add_ideas = JAP_civil_war_finisher
+				add_ideas = JAP_civil_war_starter
+			}
 		}
 	}
 }
 
 JAP_civil_war = {
 	JAP_civil_war_victory = {
-		days_mission_timeout = 90
+		days_mission_timeout = 30
 		activation = {
 			has_global_flag = JAP_civil_war_start
 			NOT = { has_global_flag = JAP_civil_war_done }
@@ -2567,7 +2587,7 @@ JAP_civil_war = {
 			}
 			hidden_effect = {
 				country_event = {
-					id = tesb_JAP.2600
+					id = tesb_JAP.2600 days = 2
 				}
 			}
 		}

@@ -270,6 +270,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		available = {
 			has_war = no
+			NOT = { has_government = communism }
 		}
 		completion_reward = {
 			set_temp_variable = {
@@ -316,7 +317,7 @@ focus_tree = {
 		cost = 10
 		available_if_capitulated = yes
 		available = {
-			has_war = no
+			OR = { has_war = no has_government = communism }
 		}
 		completion_reward = {
 			set_temp_variable = {
@@ -340,4 +341,91 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = ENG_consolidate_new_regime
+		icon = GFX_goal_generic_political_pressure
+		cost = 5
+		prerequisite = {
+			focus = ENG_continue_reforms
+		}
+		relative_position_id = ENG_continue_reforms
+		x = 2
+		y = 1
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			add_political_power = 30
+		}
+	}
+
+	focus = {
+		id = ENG_fate_of_english
+		icon = GFX_focus_attack_britain
+		cost = 5
+		prerequisite = {
+			focus = ENG_consolidate_new_regime
+		}
+		relative_position_id = ENG_consolidate_new_regime
+		x = 0
+		y = 1
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			remove_ideas = ENG_monarch
+			country_event = {
+				id = tesb_england.2
+			}
+		}
+	}
+
+	focus = {
+		id = ENG_align_UTA
+		icon = GFX_focus_chi_mission_to_the_us
+		cost = 5
+		prerequisite = {
+			focus = ENG_fate_of_english
+		}
+		mutually_exclusive = {
+			focus = ENG_true_third_international
+		}
+		relative_position_id = ENG_fate_of_english
+		x = -1
+		y = 1
+		available = {
+			UTA = { is_faction_leader = yes }
+		}
+		completion_reward = {
+			UTA = {
+				country_event = {
+					id = generic.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = ENG_true_third_international
+		icon = GFX_goal_support_communism
+		cost = 5
+		prerequisite = {
+			focus = ENG_fate_of_english
+		}
+		mutually_exclusive = {
+			focus = ENG_align_UTA
+		}
+		relative_position_id = ENG_fate_of_english
+		x = 1
+		y = 1
+		available = {
+			is_in_faction = no
+		}
+		completion_reward = {
+			create_faction = ENG_true_third_international
+		}
+	}
 }
