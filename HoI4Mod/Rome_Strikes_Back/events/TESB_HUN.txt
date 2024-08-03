@@ -3625,7 +3625,6 @@ country_event = {
 	}
 }
 
-
 country_event = {
 	id = tesb_HUN.237
 	title = tesb_HUN.237.t
@@ -3660,6 +3659,158 @@ country_event = {
 		}
 		ai_chance = {
 			base = 10
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_HUN.250
+	title = tesb_HUN.250.t
+	desc = tesb_HUN.250.d
+	picture = GFX_report_event_election_vote #Placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_country_flag = HUN_capitulation
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	
+	#Agnes
+	option = {
+		name = tesb_HUN.250.a
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HUN_agnes
+		}
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 1.1
+				democratic > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				democratic > 0.75
+			}
+		}
+	}
+	#Janos
+	option = {
+		name = tesb_HUN.250.b
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HUN_janos
+		}
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+		add_popularity = {
+			ideology = absolutist
+			popularity = 0.3
+		}
+		ai_chance = {
+			base = 15
+			modifier = {
+				factor = 1.1
+				absolutist > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				absolutist > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				absolutist > 0.75
+			}
+		}
+	}
+	#Republic
+	option = {
+		name = tesb_HUN.250.c
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HUN_republic
+		}
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 1.1
+				communism > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				communism > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				communism > 0.75
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.75
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.25
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.5
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.75
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.25
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.5
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.75
+			}
 		}
 	}
 }

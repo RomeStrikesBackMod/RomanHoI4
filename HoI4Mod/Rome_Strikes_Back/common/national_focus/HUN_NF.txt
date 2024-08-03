@@ -426,9 +426,13 @@ focus_tree = {
 				NOT = { owns_state = 284 }	# significant_number - Österreich
 			}
 			is_independent_country = yes
+			has_government = absolutist
 		}
 		bypass = {
-
+			OR = {
+				is_in_faction_with = BAV
+				BAV = { is_subject_of = ROOT }
+			}
 		}
 		complete_tooltip = {
 			if = {
@@ -470,18 +474,16 @@ focus_tree = {
 			}
 			if = {
 				limit = {
-					or = {
-						#always = yes
-						is_faction_leader = yes
-						BAV = {
-							OR = {
-								owns_state = 287	# significant_number - Bohemia
-								owns_state = 283	# significant_number - Moravia
-								owns_state = 284	# significant_number - Österreich
-							}
-							has_government = ROOT
-							is_friend_or_potential_friend_of_ROOT = yes
+					#always = yes
+					is_faction_leader = yes
+					BAV = {
+						OR = {
+							owns_state = 287	# significant_number - Bohemia
+							owns_state = 283	# significant_number - Moravia
+							owns_state = 284	# significant_number - Österreich
 						}
+						has_government = ROOT
+						is_friend_or_potential_friend_of_ROOT = yes
 					}
 				}
 				BAV = {
@@ -1422,7 +1424,7 @@ focus_tree = {
 			}
 			swap_ideas = {
 				remove_idea = BRG_strengthen_democracy
-				add_idea = HUN_new_constitution
+				add_idea = HUN_new_constitution_idea
 			}
 		}
 		ai_will_do = {
@@ -1677,6 +1679,7 @@ focus_tree = {
 		relative_position_id = HUN_danube_alliance
 		prerequisite = { focus = HUN_danube_alliance }
 		available = {
+			is_faction_leader = yes
 			OR = {
 				SER = { is_potential_friend_of_ROOT = yes }
 				MOS = { is_potential_friend_of_ROOT = yes }
@@ -1711,6 +1714,7 @@ focus_tree = {
 		relative_position_id = HUN_danube_alliance
 		prerequisite = { focus = HUN_danube_alliance }
 		available = {
+			is_faction_leader = yes
 			YUG = { is_potential_friend_of_ROOT = yes }
 		}
 		bypass = {
@@ -1734,6 +1738,7 @@ focus_tree = {
 		relative_position_id = HUN_danube_alliance
 		prerequisite = { focus = HUN_danube_alliance }
 		available = {
+			is_faction_leader = yes
 			CRO = { is_potential_friend_of_ROOT = yes }
 		}
 		bypass = {
@@ -1746,4 +1751,311 @@ focus_tree = {
 			base = 3
 		}
 	}
+
+	#########################
+	###  Political  Tree  ###
+	## CAPITULATION BRANCH ##
+	#########################
+
+	focus = {
+		id = HUN_rise_from_ashes
+		icon = GFX_goal_generic_demand_territory
+		x = 24
+		y = 6
+		cost = 2
+		available = {
+			has_country_flag = HUN_capitulation
+		}
+		completion_reward = {
+			add_political_power = 35
+		}
+		allow_branch = {
+			#has_country_flag = HUN_capitulation
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	focus = {
+		id = HUN_church_support
+		icon = GFX_focus_GRE_an_orthodox_state
+		x = -2
+		y = 1
+		cost = 3
+		relative_position_id = HUN_rise_from_ashes
+		prerequisite = { focus = HUN_rise_from_ashes }
+		available = {
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = HUN_purge_esterhazy_loyalists
+		icon = GFX_focus_generic_national_security
+		x = 0
+		y = 1
+		cost = 3
+		relative_position_id = HUN_rise_from_ashes
+		prerequisite = { focus = HUN_rise_from_ashes }
+		available = {
+		}
+		bypass = {
+			absolutist < 0.1
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = absolutist
+				popularity = -0.2
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = HUN_deal_with_nobility
+		icon = GFX_goal_tripartite_pact
+		x = 2
+		y = 1
+		cost = 3
+		relative_position_id = HUN_rise_from_ashes
+		prerequisite = { focus = HUN_rise_from_ashes }
+		available = {
+		}
+		completion_reward = {
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = HUN_constitutional_reform
+		icon = GFX_focus_generic_treaty
+		x = 0
+		y = 1
+		cost = 3
+		relative_position_id = HUN_purge_esterhazy_loyalists
+		prerequisite = { focus = HUN_church_support }
+		prerequisite = { focus = HUN_purge_esterhazy_loyalists }
+		prerequisite = { focus = HUN_deal_with_nobility }
+		available = {
+		}
+		bypass = {
+			absolutist < 0.1
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			every_country = {
+				limit = {
+					OR = {
+						is_neighbor_of = ROOT
+						tag = RME
+					}
+					OR = {
+						is_in_faction_with = ROOT
+						has_government = democratic
+						has_government = neutrality
+					}
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HUN_constitutional_reform
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = HUN_fortress_carpathia
+		icon = GFX_goal_generic_fortify_city
+		x = -2
+		y = 1
+		cost = 3
+		relative_position_id = HUN_constitutional_reform
+		prerequisite = { focus = HUN_constitutional_reform }
+		available = {
+		}
+		completion_reward = {
+			every_owned_state = {
+				tooltip = HUN_fortress_carpathia_tt
+				limit = {
+					bunker > 0
+					any_neighbor_state = {
+						owner = {
+							NOT = { tag = ROOT }
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				set_building_level = {
+					type = bunker
+					level = 0
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			custom_effect_tooltip = HUN_fortress_carpathia_tt_2
+			hidden_effect = {
+				276 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+							limit_to_border_country = POL
+						}
+					}
+				}
+				278 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						instant_build = yes
+						province = {
+							id = 9704
+							id = 727
+						}
+					}
+				}
+				280 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						instant_build = yes
+						province = {
+							id = 9685
+							id = 711
+							id = 3689
+							id = 690
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = HUN_normalize_relations
+		icon = GFX_goal_generic_improve_relations
+		x = 0
+		y = 1
+		cost = 3
+		relative_position_id = HUN_constitutional_reform
+		prerequisite = { focus = HUN_constitutional_reform }
+		available = {
+		}
+		completion_reward = {
+			every_neighbor_country = {
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HUN_normalize_relations_op
+				}
+				reverse_add_opinion_modifier = {
+					target = ROOT
+					modifier = HUN_normalize_relations_op
+				}
+				diplomatic_relation = {
+					country = root
+					relation = non_aggression_pact
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = HUN_imperial_rapprochement
+		icon = GFX_focus_generic_concessions
+		x = 2
+		y = 1
+		cost = 3
+		relative_position_id = HUN_constitutional_reform
+		prerequisite = { focus = HUN_constitutional_reform }
+		available = {
+			is_ally_with = RME
+		}
+		completion_reward = {
+			RME = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HUN_normalize_relations_op
+				}
+				reverse_add_opinion_modifier = {
+					target = ROOT
+					modifier = HUN_normalize_relations_op
+				}
+				diplomatic_relation = {
+					country = root
+					relation = non_aggression_pact
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	focus = {
+		id = HUN_democratic_hungary
+		icon = GFX_goal_support_democracy
+		x = 0
+		y = 1
+		cost = 3
+		relative_position_id = HUN_normalize_relations
+		prerequisite = { focus = HUN_fortress_carpathia }
+		prerequisite = { focus = HUN_normalize_relations }
+		prerequisite = { focus = HUN_imperial_rapprochement }
+		available = {
+			has_autonomy_state = autonomy_supervised_state
+		}
+		bypass = {
+			is_subject = no
+		}
+		completion_reward = {
+			OVERLORD = {
+				set_autonomy = {
+					target = root
+					autonomous_state = autonomy_free
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
 }

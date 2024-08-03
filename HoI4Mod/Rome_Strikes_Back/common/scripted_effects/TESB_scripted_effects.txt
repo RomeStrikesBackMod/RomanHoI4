@@ -866,354 +866,44 @@ d_drop_bohemia = {
 	}
 }
 
-d_rus_to_neutral = {
-	RUS = {
-		set_temp_variable = {
-			pop_demo = party_popularity_100@democratic
-		}
-		set_temp_variable = {
-			pop_fasc = party_popularity_100@fascism
-		}
-		set_temp_variable = {
-			pop_abs = party_popularity_100@absolutist
-		}
-		set_temp_variable = {
-			pop_comm = party_popularity_100@communism
-		}
-		set_temp_variable = {
-			pop_neut = party_popularity_100@neutrality
-		}
-		set_popularities = {
-			democratic = var:pop_neut
-			fascism = var:pop_fasc
-			absolutist = var:pop_abs
-			communism = var:pop_comm
-			neutrality = var:pop_demo
-		}
-		RUS_grigoriy_budyonny = {
-			add_country_leader_role = {
-				promote_leader = yes
-				country_leader = {
-					ideology = socialism_neutral
-				}
-			}
-		}
-		set_politics = {
-			ruling_party = neutrality
-		}
-	}
-}
-
-d_rome_territory_focus_update = {
-	every_country = {
-		limit = {
-			OR = {
-				has_idea = RME_former_dominion
-				has_idea = RME_former_territory
-			}
-			has_focus_tree = generic_focus
-		}
-		load_focus_tree = {
-			tree = roman_territory_focus
-			keep_completed = yes
-		}
-	}
-}
-
-d_fasc_rus = {
-	RUS = {
-		complete_national_focus = RUS_interventionist_stance
-		complete_national_focus = RUS_right_perspective
-		complete_national_focus = RUS_national_restoration
-	}
-}
-
 d_hire_folks = {
-	MNG = {
+	HUN = {
 		create_country_leader = {
-			name = MNG_kang_youwei
-			picture = "GFX_China_Wu_Peifu"
-			ideology = anti_revisionism
-			traits = { equalist_leader }
+			name = HUN_lajos_esterhazy
+			picture = GFX_Portrait_hungary_miklos_horthy
+			ideology = dictatorship
 		}
 		random_character = {
 			limit = {
 				can_be_country_leader = yes
-				has_trait = equalist_leader
+				has_ideology = dictatorship
 			}
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					idea_token = MNG_kang_youwei_el
-					traits = { equalist_leader }
-					available = {
-						#is_country_leader = no
-					}
-				}
-			}
-		}
-	}
-	JAP = {
-		create_country_leader = {
-			name = JAP_mutsuhito
-			picture = "GFX_Portrait_Japan_Generic_land_4"
-			ideology = conservatism
-		}
-		random_character = {
-			limit = {
-				can_be_country_leader = yes
-				has_ideology = conservatism
-			}
-			promote_character = conservatism
-			add_country_leader_role = {
-				promote_leader = yes
-				country_leader = {
-					ideology = conservatism_neutral
-				}
-			}
-		}
-		create_corps_commander = {
-			name = JAP_minamoto_bennosuke
-			portrait_path = "gfx/leaders/JAP/Portrait_Japan_Morihiro_Higashikuni.dds"
-			skill = 5
-			attack_skill = 5
-			defense_skill = 5
-			planning_skill = 5
-			logistics_skill = 5
-			traits = {
-				JAP_samurai_lineage
-				brilliant_strategist
-				infantry_officer
-				armor_officer
-				cavalry_officer
-				infantry_leader
-				infantry_expert
-				cavalry_leader
-				panzer_leader
-				skilled_staffer
-			}
-		}
-		create_corps_commander = {
-			name = JAP_fujiwara_tomoe
-			female = yes
-			picture = "portrait_jap_yoshiko_kawashima"
-			skill = 3
-			attack_skill = 3
-			defense_skill = 2
-			planning_skill = 3
-			logistics_skill = 2
-			traits = {
-				JAP_samurai_lineage
-				cavalry_officer
-				cavalry_leader
-				cavalry_expert
-				organizer
-			}
-		}
-		create_corps_commander = {
-			name = JAP_saitou_kichinosuke
-			picture = "Portrait_Japan_Yasuji_Okamura"
-			skill = 3
-			attack_skill = 3
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 2
-			traits = {
-				JAP_samurai_lineage
-				armor_officer
-				panzer_leader
-				panzer_expert
-			}
-		}
-		create_corps_commander = {
-			name = JAP_sakamoto_hajime
-			picture = "Portrait_Japan_Jo_Iimura"
-			skill = 3
-			attack_skill = 2
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 3
-			traits = {
-				JAP_samurai_lineage
-				JAP_communist_sympathizer
-				organizer
-				commando
-				skilled_staffer
-			}
-		}
-	}
-	random_country_with_original_tag = {
-		original_tag_to_check = JAP
-		limit = {
-			NOT = { tag = JAP }
-		}
-		add_ideas = JAP_myoukougein
-		#create_country_leader = { #yoshinobu remains leader of shogunate japan
-		#	name = JAP_myoukougein
-		#	picture = "GFX_Portrait_Japan_Generic_land_3"
-		#	ideology = absolute_monarchy
-		#}
-		#create_corps_commander = { #already defeated
-		#	name = JAP_minamoto_shigemori
-		#	picture = "GFX_portrait_JAP_naruhiko_higashikuni"
-		#	skill = 3
-		#	attack_skill = 3
-		#	defense_skill = 3
-		#	planning_skill = 3
-		#	logistics_skill = 3
-		#	traits = {
-		#		JAP_samurai_lineage
-		#		infantry_officer
-		#		infantry_leader
-		#		infantry_expert
-		#	}
-		#}
-		create_corps_commander = {
-			name = JAP_iwamoto_kanehira
-			picture = "Portrait_Japan_Yoshijiro_Umezu"
-			skill = 3
-			attack_skill = 3
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 2
-			traits = {
-				JAP_samurai_lineage
-				cavalry_officer
-				cavalry_leader
-				cavalry_expert
-			}
-		}
-		create_corps_commander = {
-			name = JAP_taira_yoritomo
-			picture = "Portrait_Japan_Kanji_Ishiwara"
-			skill = 3
-			attack_skill = 3
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 2
-			traits = {
-				JAP_samurai_lineage
-				cavalry_officer
-				cavalry_leader
-				cavalry_expert
-			}
+			promote_character = yes
 		}
 	}
 }
 
 d_various_updates = {
-	SCA = {
-		set_capital = {
-			state = 554
-		}
-		set_victory_points = {
-			province = 6115
-			value = 20
-		}
+	364 = {
+		remove_core_of = PEG
+		add_core_of = SIA
+	}
+	333 = {
+		add_core_of = RYU
+	}
+	SIL = {
+		add_state_core = 282
+		add_state_core = 285
+	}
+	325 = {
+		transfer_state_to = IRN
 	}
 	if = {
 		limit = {
-			MEX = { is_in_faction = no }
+			MEX = { is_in_faction_with = UTA }
 		}
 		UTA = {
-			add_to_faction = MEX
-		}
-	}
-	reset_province_name = 3151
-	MNG = {
-		MNG_huang_qiu = {
-			set_portraits = {
-				civilian = {
-					large = "GFX_MNG_zhu_wei"
-				}
-			}
-		}
-	}
-	MEX = {
-		MEX_natalio_hernandez = {
-			set_portraits = {
-				civilian = {
-					large = "GFX_MEX_absolutist_leader"
-				}
-			}
-		}
-		random_character = {
-			limit = {
-				has_ideology_group = democratic
-			}
-			set_portraits = {
-				civilian = {
-					large = "GFX_MEX_democratic_leader"
-				}
-			}
-		}
-	}
-	CAN = {
-		CAN_daniel_bruce = {
-			set_portraits = {
-				civilian = {
-					large = "GFX_KAN_democratic_leader"
-				}
-			}
-		}
-	}
-	IND = {
-		IND_uyyalawada_kattabomman = {
-			set_portraits = {
-				civilian = {
-					large = "GFX_IND_democratic_leader"
-				}
-			}
-		}
-		random_character = {
-			limit = {
-				has_ideology_group = absolutist
-			}
-			set_portraits = {
-				civilian = {
-					large = "GFX_IND_absolutist_leader"
-				}
-			}
-		}
-	}
-	UTA = {
-		UTA_andrew_potter = {
-			set_portraits = {
-				civilian = {
-					large = "GFX_UTA_democratic_leader"
-				}
-			}
-		}
-	}
-	BIR = {
-		BIR_alejandro_chambi = {
-			set_portraits = {
-				civilian = {
-					large = "GFX_BIR_democratic_leader"
-				}
-			}
-		}
-	}
-	ENG = {
-		random_character = {
-			limit = {
-				has_ideology_group = fascism
-			}
-			set_portraits = {
-				civilian = {
-					large = "GFX_ENL_fascism_leader"
-				}
-			}
-		}
-		random_character = {
-			limit = {
-				has_ideology_group = communism
-			}
-			set_portraits = {
-				civilian = {
-					large = "GFX_ENL_communist_leader"
-				}
-			}
+			remove_from_faction = MEX
 		}
 	}
 }
