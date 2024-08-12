@@ -1,0 +1,64 @@
+add_namespace = tesb_JAP_2
+
+
+country_event = {
+	id = tesb_JAP_2.10
+	title = tesb_JAP_2.10.t
+	desc = tesb_JAP_2.10.d
+	picture = GFX_report_event_japanese_parade
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_JAP_2.10.a
+		diplomatic_relation = {
+			country = JAP
+			relation = non_aggression_pact
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = tesb_JAP_2.11 hours = 1 random_hours = 12
+				}
+			}
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	option = {
+		name = tesb_JAP_2.10.b
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = tesb_JAP_2.11 hours = 1 random_hours = 12
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_JAP_2.11
+	title = tesb_JAP_2.11.t
+	desc = tesb_JAP_2.11.d
+	picture = GFX_report_event_japanese_parade
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_JAP_2.11.a
+		trigger = {
+			has_non_aggression_pact_with = FROM
+		}
+	}
+	option = {
+		name = tesb_JAP_2.11.b
+		trigger = {
+			NOT = {
+				has_non_aggression_pact_with = FROM
+			}
+		}
+	}
+}

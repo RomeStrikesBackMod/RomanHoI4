@@ -2196,6 +2196,15 @@ focus_tree = {
 				AZR = { is_neutral_to_ROOT = yes }
 				ARM = { is_neutral_to_ROOT = yes }
 			}
+			if = {
+				limit = {
+					has_completed_focus = RUS_interventionist_stance
+				}
+				OR = {
+					has_completed_focus = RUS_third_international
+					has_completed_focus = RUS_national_republican_alliance_focus
+				}
+			}
 		}
 		bypass = {
 			OR = {
@@ -2292,6 +2301,14 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 3
+			modifier = {
+				OR = {
+					GEO = { is_in_faction_with = RME }
+					AZR = { is_in_faction_with = RME }
+					ARM = { is_in_faction_with = RME }
+				}
+				factor = 0.1
+			}
 		}
 	}
 

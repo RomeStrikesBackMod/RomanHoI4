@@ -854,6 +854,28 @@ jap_end_civil_war = {
 	}
 }
 
+set_BRG_subject_tag = {
+	if = {
+		limit = {
+			is_subject_of = BRG
+			BRG = { has_government = absolutist }
+		}
+		meta_effect = {
+			text = {
+				set_cosmetic_tag = [TAGNAME]_subj_BRG
+			}
+			TAGNAME = "[THIS.GetTag]"
+		}
+	}
+}
+
+drop_BRG_subject_tag = {
+	if = {
+		limit = { has_BRG_subject_tag = yes }
+		drop_cosmetic_tag = yes
+	}
+}
+
 d_set_bohemia = {
 	BAV = {
 		set_cosmetic_tag = bohemia
@@ -896,6 +918,8 @@ d_various_updates = {
 		add_state_core = 285
 	}
 	325 = {
+		add_core_of = IRN
+		remove_core_of = KHI
 		transfer_state_to = IRN
 	}
 	if = {

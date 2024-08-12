@@ -115,6 +115,34 @@ on_actions = {
 				}
 				BRG = { country_event = { id = tesb_BRG.135 } }
 			}
+			if = {
+				limit = {
+					FROM = { tag = BRG has_government = absolutist }
+				}
+				set_BRG_subject_tag = yes
+			}
+			else = {
+				drop_BRG_subject_tag = yes
+			}
+			if = {
+				limit = {
+					FROM = { tag = RME }
+					tag = HUN
+					NOT = { has_country_flag = HUN_capitulation }
+				}
+				country_event = { id = tesb_HUN.250 days = 1 }
+			}
+			if = {
+				limit = {
+					FROM = { tag = RME }
+					OR = {
+						tag = BAV
+						tag = POL
+					}
+					NOT = { has_country_flag = HUN_capitulation }
+				}
+				country_event = { id = tesb_HUN.252 days = 1 random_hours = 24 }
+			}
 		}
 	}
 	
@@ -448,6 +476,13 @@ on_actions = {
 				deactivate_advisor = AOT_ieni_papadopoulos_fe
 				add_political_power = 50
 			}
+			if = {
+				limit = {
+					tag = BRG
+					NOT = { has_government = absolutist }
+				}
+				every_subject_country = { drop_BRG_subject_tag = yes }
+			}
 		}
 	}
 
@@ -498,6 +533,26 @@ on_actions = {
 					mark_focus_tree_layout_dirty = yes
 				}
 			}
+		}
+	}
+
+	#used when puppeting through the occupied territories menu during peace time (or when releasing from non-core but owned territory, f.e. Britain releasing Egypt)
+	#ROOT = nation being released, FROM = overlord
+	on_release_as_puppet = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = BRG has_government = absolutist }
+				}
+				set_BRG_subject_tag = yes
+			}
+		}
+	}
+
+	#ROOT is subject FROM is previous overlord
+	on_subject_free = {
+		effect = {
+			drop_BRG_subject_tag = yes
 		}
 	}
 }
