@@ -32,6 +32,20 @@ peace_ai_desires = {
         ai_desire = -1000
     }
 
+    force_gov_puppets = {
+        peace_action_type = force_government
+        enable = {
+            ROOT = {
+                has_government = democratic
+                ROOT.FROM.FROM = {
+                    NOT = { has_government = democratic }
+                    is_subject = yes
+                }
+            }
+        }
+        ai_desire = 100
+    }
+
     doesnt_control_no_claim = {
         peace_action_type = { take_states }
         enable = {
