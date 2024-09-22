@@ -1841,6 +1841,18 @@ focus_tree = {
 		available = {
 			is_independent_country = yes
 			has_government = fascism
+			if = {
+				limit = {
+					has_completed_focus = RUS_end_chinese_monarchists
+				}
+				RME = {
+					OR = {
+						exists = no
+						has_government = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
 		}
 		completion_reward = {
 			create_wargoal = {
@@ -1874,6 +1886,18 @@ focus_tree = {
 		available = {
 			is_independent_country = yes
 			has_government = fascism
+			if = {
+				limit = {
+					has_completed_focus = RUS_end_monarchists
+				}
+				MNG = {
+					OR = {
+						exists = no
+						has_government = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
 		}
 		completion_reward = {
 			create_wargoal = {
@@ -1883,6 +1907,12 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 3
+			modifier = {
+				factor = 0.1
+				NOT = {
+					has_completed_focus = RUS_end_chinese_monarchists
+				}
+			}
 			modifier = {
 				factor = 0.1
 				alliance_strength_ratio < 1.25
@@ -2166,6 +2196,15 @@ focus_tree = {
 				AZR = { is_neutral_to_ROOT = yes }
 				ARM = { is_neutral_to_ROOT = yes }
 			}
+			if = {
+				limit = {
+					has_completed_focus = RUS_interventionist_stance
+				}
+				OR = {
+					has_completed_focus = RUS_third_international
+					has_completed_focus = RUS_national_republican_alliance_focus
+				}
+			}
 		}
 		bypass = {
 			OR = {
@@ -2262,6 +2301,14 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 3
+			modifier = {
+				OR = {
+					GEO = { is_in_faction_with = RME }
+					AZR = { is_in_faction_with = RME }
+					ARM = { is_in_faction_with = RME }
+				}
+				factor = 0.1
+			}
 		}
 	}
 

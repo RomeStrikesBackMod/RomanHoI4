@@ -3625,7 +3625,6 @@ country_event = {
 	}
 }
 
-
 country_event = {
 	id = tesb_HUN.237
 	title = tesb_HUN.237.t
@@ -3660,6 +3659,332 @@ country_event = {
 		}
 		ai_chance = {
 			base = 10
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_HUN.250
+	title = tesb_HUN.250.t
+	desc = tesb_HUN.250.d
+	picture = GFX_report_event_election_vote #Placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_country_flag = HUN_capitulation
+			mark_focus_tree_layout_dirty = yes
+		}
+		hidden_effect = {
+			news_event = { id = tesb_HUN.251 days = 1 }
+		}
+	}
+	
+	#Agnes
+	option = {
+		name = tesb_HUN.250.a
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HUN_agnes
+		}
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+		add_ideas = HUN_monarch_agnes
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 1.1
+				democratic > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				democratic > 0.75
+			}
+		}
+	}
+	#Janos
+	option = {
+		name = tesb_HUN.250.b
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HUN_janos
+		}
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+		add_ideas = HUN_monarch_janos
+		add_popularity = {
+			ideology = absolutist
+			popularity = 0.3
+		}
+		ai_chance = {
+			base = 15
+			modifier = {
+				factor = 1.1
+				absolutist > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				absolutist > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				absolutist > 0.75
+			}
+		}
+	}
+	#Republic
+	option = {
+		name = tesb_HUN.250.c
+		hidden_effect = {
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HUN_republic
+		}
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 1.1
+				communism > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				communism > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				communism > 0.75
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.75
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.25
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.5
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.75
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.25
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.5
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.75
+			}
+		}
+	}
+}
+
+news_event = {
+	id = tesb_HUN.251
+	title = tesb_HUN.251.t
+	desc = tesb_HUN.251.d
+	picture = GFX_news_event_generic_parliament
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_HUN.251.a
+		trigger = {
+			HUN = { has_cosmetic_tag = HUN_agnes }
+		}
+	}
+	option = {
+		name = tesb_HUN.251.b
+		trigger = {
+			HUN = { has_cosmetic_tag = HUN_janos }
+		}
+	}
+	option = {
+		name = tesb_HUN.251.c
+		trigger = {
+			HUN = { has_cosmetic_tag = HUN_republic }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_HUN.252
+	title = tesb_HUN.252.t
+	desc = tesb_HUN.252.d
+	picture = GFX_report_event_election_vote #Placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_country_flag = HUN_capitulation
+			#mark_focus_tree_layout_dirty = yes
+		}
+		hidden_effect = {
+			news_event = { id = tesb_HUN.253 days = 1 random_hours = 24 }
+		}
+	}
+	
+	#Monarchy
+	option = {
+		name = tesb_HUN.252.a
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+
+		ai_chance = {
+			base = 90
+			modifier = {
+				factor = 1.1
+				democratic > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				democratic > 0.75
+			}
+		}
+	}
+	#Republic
+	option = {
+		name = tesb_HUN.252.b
+		if = {
+			limit = {
+				NOT = { has_government = democratic }
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+		if = {
+			limit = { has_idea = BAV_monarch }
+			remove_ideas = BAV_monarch
+		}
+		if = {
+			limit = { has_idea = POL_monarch }
+			remove_ideas = POL_monarch
+		}
+		set_country_flag = republican_government
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 1.1
+				communism > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				communism > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				communism > 0.75
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.25
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.5
+			}
+			modifier = {
+				factor = 1.1
+				fascism > 0.75
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.25
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.5
+			}
+			modifier = {
+				factor = 0.9
+				democratic > 0.75
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.25
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.5
+			}
+			modifier = {
+				factor = 0.9
+				absolutist > 0.75
+			}
+		}
+	}
+}
+
+news_event = {
+	id = tesb_HUN.253
+	title = tesb_HUN.253.t
+	desc = tesb_HUN.253.d
+	picture = GFX_news_event_generic_parliament
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_HUN.253.a
+		trigger = {
+			FROM = { NOT = { has_country_flag = republican_government } }
+		}
+	}
+	option = {
+		name = tesb_HUN.253.b
+		trigger = {
+			FROM = { has_country_flag = republican_government }
 		}
 	}
 }

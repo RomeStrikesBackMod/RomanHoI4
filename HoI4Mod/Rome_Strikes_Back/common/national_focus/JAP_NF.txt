@@ -939,6 +939,7 @@ focus_tree = {
 		relative_position_id = JAP_abdication_of_tenpo
 		cost = 5
 		completion_reward = {
+			add_ideas = JAP_tenwa
 			news_event = {
 				id = tesb_JAP.29
 			}
@@ -971,7 +972,7 @@ focus_tree = {
 	
 	focus = {
 		id = JAP_placate_chinese
-		icon = GFX_focus_chi_cooperation_with_the_nationalists
+		icon = GFX_goal_generic_neutrality_focus
 		text = JAP_placate_chinese
 		prerequisite = { focus = JAP_coronation_of_tenwa }
 		x = 2
@@ -979,7 +980,29 @@ focus_tree = {
 		relative_position_id = JAP_coronation_of_tenwa
 		cost = 5
 		completion_reward = {
-			add_stability = 0.05
+			add_opinion_modifier = {
+				target = MNG
+				modifier = JAP_placate_chinese_op
+			}
+			reverse_add_opinion_modifier = {
+				target = MNG
+				modifier = JAP_placate_chinese_op
+			}
+			every_country = {
+				limit = {
+					is_neutral_to_ROOT = yes
+					OR = {
+						tag = MNG
+						tag = KOR
+						tag = RUS
+						tag = UTA
+						tag = RME
+					}
+				}
+				country_event = {
+					id = tesb_JAP_2.10 hours = 12 random_hours = 12
+				}
+			}
 		}
 		ai_will_do = {
 		factor = 10
