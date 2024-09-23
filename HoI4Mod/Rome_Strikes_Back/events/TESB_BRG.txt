@@ -471,19 +471,41 @@ country_event = {
 
 	is_triggered_only = yes
 	fire_only_once = yes
+	trigger = {
+		FLD = {
+			NOT = { owns_state = 205 }
+		}
+	}
 	immediate = {
 	}
 	
 	#Grant FLD picardie
 	option = {
+		trigger = {
+			OR = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
 		name = tesb_BRG.135.a
 		FLD = { transfer_state = 205 } # significant_number - Picardie
+		clr_country_flag = BRG_promised_picardie
 		ai_chance = {
 			base = 1
 		}
 	}
 	#Grant FRA picardie/Keep picardie
 	option = {
+		trigger = {
+			OR = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
 		name = tesb_BRG.135.b
 		FLD = {
 			add_opinion_modifier = {
@@ -491,6 +513,17 @@ country_event = {
 				target = BRG
 			}
 		}
+	}
+	option = {
+		trigger = {
+			NOT = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
+		name = tesb_BRG.135.c
 	}
 }
 
@@ -802,12 +835,91 @@ country_event = {
 
 	option = {
 		name = tesb_BRG.200.a
+		set_temp_variable = { german_part = SIL }
+		partition_germany = yes
 		set_temp_variable = { german_part = DEN }
 		partition_germany = yes
 		set_temp_variable = { german_part = BAV }
 		partition_germany = yes
-		set_temp_variable = { german_part = GMR }
-		partition_germany = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					any_subject_country = { original_tag = DEN }
+					owns_state = 218
+				}
+				random_subject_country = {
+					limit = { original_tag = DEN }
+					set_capital = { state = 218 }
+				}
+			}
+			if = {
+				limit = {
+					any_subject_country = { original_tag = BAV }
+					owns_state = 226
+				}
+				random_subject_country = {
+					limit = { original_tag = BAV }
+					set_capital = { state = 226 }
+				}
+			}
+			if = {
+				limit = {
+					any_subject_country = { original_tag = SIL }
+					owns_state = 285
+				}
+				random_subject_country = {
+					limit = { original_tag = SIL }
+					set_capital = { state = 285 }
+				}
+			}
+			if = {
+				limit = {
+					any_subject_country = {
+						owns_state = 228
+					}
+					controls_state = 229
+				}
+				random_subject_country = {
+					limit = {
+						controls_state = 228
+					}
+					transfer_state = 229
+				}
+			}
+		}
+		if = {
+			limit = {
+				GMR = {
+					owns_state = 209
+				}
+			}
+			transfer_state = 209 #holland
+		}
+		if = {
+			limit = {
+				GMR = {
+					owns_state = 210
+				}
+			}
+			transfer_state = 210 #friesland
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					GMR = { owns_state = 216 }
+					X03 = { owns_state = 577 }
+				}
+				216 = { transfer_state_to = X03 }
+			}
+			else_if = {
+				limit = {
+					GMR = { owns_state = 216 }
+				}
+				216 = {
+					random_neighbor_state = { owner = { transfer_state = 216 } }
+				}
+			}
+		}
 	}
 }
 

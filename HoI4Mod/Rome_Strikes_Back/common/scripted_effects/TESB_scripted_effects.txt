@@ -875,10 +875,9 @@ partition_germany = {
 		else = {
 			# if german_part exists, create a dynamic country as our new puppet
 
+			set_variable = { global.dyn_tag = german_part }
 			create_dynamic_country = {
 				original_tag = german_part
-
-				set_BRG_subject_tag = yes
 				set_temp_variable = { new_country = this }
 
 				PREV = {
@@ -898,6 +897,7 @@ partition_germany = {
 						freedom_level = 0.5
 					}
 				}
+				set_BRG_subject_tag = yes
 			}
 		}
 	}
@@ -908,6 +908,7 @@ set_BRG_subject_tag = {
 		limit = {
 			is_subject_of = BRG
 			BRG = { has_government = absolutist }
+			is_dynamic_country = no
 		}
 		meta_effect = {
 			text = {
@@ -915,6 +916,21 @@ set_BRG_subject_tag = {
 			}
 			TAGNAME = "[THIS.GetTag]"
 		}
+	}
+	if = {
+		limit = {
+			is_subject_of = BRG
+			BRG = { has_government = absolutist }
+			is_dynamic_country = yes
+		}
+		meta_effect = {
+			text = {
+				set_cosmetic_tag = [TAGNAME]_subj_BRG
+			}
+			TAGNAME = "[?global.dyn_tag.GetTag]"
+		}
+		log = "[?global.dyn_tag]"
+		clear_variable = global.dyn_tag
 	}
 }
 
@@ -969,10 +985,17 @@ d_various_updates = {
 		add_state_core = 282
 		add_state_core = 285
 	}
-	325 = {
-		add_core_of = IRN
-		remove_core_of = KHI
-		transfer_state_to = IRN
+	set_victory_points = {
+		province = 9570
+		value = 10
+	}
+	set_victory_points = {
+		province = 9347
+		value = 15
+	}
+	set_victory_points = {
+		province = 692
+		value = 15
 	}
 	if = {
 		limit = {

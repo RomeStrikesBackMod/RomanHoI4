@@ -108,15 +108,6 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					tag = FRA
-					FROM = { tag = BRG }
-					owns_state = 205 #  significant_number - Picardie
-					FLD = { is_subject_of = BRG has_country_flag = BRG_promised_picardie }
-				}
-				BRG = { country_event = { id = tesb_BRG.135 } }
-			}
-			if = {
-				limit = {
 					FROM = { tag = BRG has_government = absolutist }
 				}
 				set_BRG_subject_tag = yes
@@ -336,6 +327,12 @@ on_actions = {
 					}
 				}
 				BRG = { country_event = { id = tesb_BRG.135 } }
+			}
+			if = {
+				limit = {
+					FLD = { owns_state = 205 }
+				}
+				BRG = { clr_country_flag = BRG_promised_picardie }
 			}
 			if = {
 				limit = { num_subjects > 0 always = no }
