@@ -3671,6 +3671,13 @@ country_event = {
 	picture = GFX_report_event_election_vote #Placeholder image
 
 	is_triggered_only = yes
+	trigger = {
+		NOT = { has_country_flag = HUN_capitulation }
+		OR = {
+			is_subject_of = RME
+			is_in_faction_with = RME
+		}
+	}
 	immediate = {
 		hidden_effect = {
 			set_country_flag = HUN_capitulation
@@ -3855,13 +3862,17 @@ country_event = {
 	picture = GFX_report_event_election_vote #Placeholder image
 
 	is_triggered_only = yes
+	trigger = {
+		NOT = { has_country_flag = HUN_capitulation }
+		OR = {
+			is_subject_of = RME
+			is_in_faction_with = RME
+		}
+	}
 	immediate = {
 		hidden_effect = {
 			set_country_flag = HUN_capitulation
 			#mark_focus_tree_layout_dirty = yes
-		}
-		hidden_effect = {
-			news_event = { id = tesb_HUN.253 days = 1 random_hours = 24 }
 		}
 	}
 	
@@ -3877,8 +3888,11 @@ country_event = {
 				elections_allowed = yes
 				election_frequency = 48
 			}
-		}
 
+		}
+		hidden_effect = {
+			news_event = { id = tesb_HUN.253 days = 1 random_hours = 24 }
+		}
 		ai_chance = {
 			base = 90
 			modifier = {
@@ -3913,6 +3927,9 @@ country_event = {
 			remove_ideas = POL_monarch
 		}
 		set_country_flag = republican_government
+		hidden_effect = {
+			news_event = { id = tesb_HUN.253 days = 1 random_hours = 24 }
+		}
 		ai_chance = {
 			base = 10
 			modifier = {

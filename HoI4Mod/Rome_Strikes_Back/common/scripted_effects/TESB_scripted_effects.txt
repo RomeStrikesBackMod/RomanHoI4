@@ -854,6 +854,55 @@ jap_end_civil_war = {
 	}
 }
 
+partition_germany = {
+	#custom_effect_tooltip = compliance_80_effect_tooltip
+	hidden_effect = {
+		if = {
+			# if german_part does not exist, simply release it as a puppet
+			limit = {
+				var:german_part = {
+					exists = no
+				}
+			}
+			release_autonomy = {
+				target = german_part
+				autonomy_state = autonomy_puppet
+				freedom_level = 0.5
+				release_non_owned_controlled = yes
+			}
+			var:german_part = { set_BRG_subject_tag = yes }
+		}
+		else = {
+			# if german_part exists, create a dynamic country as our new puppet
+
+			create_dynamic_country = {
+				original_tag = german_part
+
+				set_BRG_subject_tag = yes
+				set_temp_variable = { new_country = this }
+
+				PREV = {
+					every_controlled_state = {
+						limit = { is_core_of = german_part }
+
+						var:new_country = {
+							transfer_state = PREV
+						}
+					}
+
+					puppet = new_country
+
+					set_autonomy = {
+						target = new_country
+						autonomy_state = autonomy_puppet
+						freedom_level = 0.5
+					}
+				}
+			}
+		}
+	}
+}
+
 set_BRG_subject_tag = {
 	if = {
 		limit = {
@@ -888,6 +937,9 @@ d_drop_bohemia = {
 	}
 }
 
+d_testing_effect = {
+	hold_election = ENG
+}
 d_hire_folks = {
 	HUN = {
 		create_country_leader = {
