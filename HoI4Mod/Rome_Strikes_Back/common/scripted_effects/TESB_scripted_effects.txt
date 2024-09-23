@@ -872,7 +872,12 @@ partition_germany = {
 			}
 			var:german_part = { set_BRG_subject_tag = yes }
 		}
-		else = {
+		else_if = {
+			limit = {
+				var:german_part = {
+					NOT = { is_subject_of = ROOT }
+				}
+			}
 			# if german_part exists, create a dynamic country as our new puppet
 
 			set_variable = { global.dyn_tag = german_part }
@@ -882,7 +887,17 @@ partition_germany = {
 
 				PREV = {
 					every_controlled_state = {
-						limit = { is_core_of = german_part }
+						limit = {
+							is_core_of = german_part
+							NOT = {
+								state = 209 #Holland
+								state = 210 #Friesland
+								state = 231 #East Friesland
+								state = 213 #Hessen
+								state = 214 #Eastern Rhineland
+								state = 215 #Westfalen
+							}
+						}
 
 						var:new_country = {
 							transfer_state = PREV
@@ -996,6 +1011,34 @@ d_various_updates = {
 	set_victory_points = {
 		province = 692
 		value = 15
+	}
+	GRB = {
+		diplomatic_relation = {
+			country = GER
+			relation = guarantee
+			active = no
+		}
+		diplomatic_relation = {
+			country = BRI
+			relation = guarantee
+			active = no
+		}
+		diplomatic_relation = {
+			country = BRG
+			relation = guarantee
+			active = no
+		}
+	}
+	SCA = {
+		complete_national_focus = SCA_national_militia
+		568 = {
+			add_building_construction = {
+				type = naval_base
+				level = 1
+				province = 3325
+				instant_build = yes
+			}
+		}
 	}
 	if = {
 		limit = {

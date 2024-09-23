@@ -519,6 +519,23 @@ on_actions = {
 				}
 				bav_hun_deal_effect = yes
 			}
+			if = {
+				limit = {
+					FROM = { tag = GMR }
+					FROM.FROM = { is_owned_by = GMR }
+					NOT = { tag = BRG }
+					is_ai = yes
+					is_in_faction_with = BRG
+				}
+				FROM.FROM = {
+					set_state_province_controller = {
+						controller = BRG
+						limit = {
+							is_in_faction_with = BRG
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -561,6 +578,51 @@ on_actions = {
 	on_subject_free = {
 		effect = {
 			drop_BRG_subject_tag = yes
+		}
+	}
+
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation_immediate = {
+		effect = {
+			if = {
+				limit = {
+					tag = GMR
+					has_war_with = BRG
+					#FROM = { tag = BRG }
+				}
+				BRG = {
+					country_event = { id = tesb_BRG.200 }
+				}
+			}
+		}
+	}
+
+	# ROOT is the winner, FROM is the loser
+	on_peaceconference_started = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = GMR
+						has_war_with = BRG
+					}
+					#FROM = { tag = BRG }
+				}
+				BRG = {
+					country_event = { id = tesb_BRG.200 }
+				}
+			}
+		}
+	}
+
+	on_new_term_election = {
+		effect = {
+			if = {
+				limit = {
+					tag = ENG
+				}
+				country_event = { id = tesb_england.1 }
+			}
 		}
 	}
 }

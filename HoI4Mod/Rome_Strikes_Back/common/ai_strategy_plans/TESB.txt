@@ -2,8 +2,10 @@ ADA_help_ENG = { #Don't worry about invasion
 	name = "Adal is safe"
 	desc = ""
 
-	enable = {
+	allowed = {
 		tag = ADA
+	}
+	enable = {
 		has_war_together_with = ENG
 		NOT = {
 			any_enemy_country = {
@@ -62,6 +64,9 @@ UTA_silly_wars = {
 	name = "UTA focus on the Americas"
 	desc = "UTA should stay focused on the Americas"
 
+	allowed = {
+		tag = UTA
+	}
 	enable = {
 		tag = UTA
 	}
@@ -77,8 +82,10 @@ prepare_to_fight_mexico = {
 	name = "Prepare to fight Mexico"
 	desc = "Mexico's dictator may not choose to give up power."
 
-	enable = {
+	allowed = {
 		tag = UTA
+	}
+	enable = {
 		has_completed_focus = UTA_support_mexhican_democracy
 	}
 	abort = {
@@ -96,8 +103,10 @@ prepare_to_fight_caribbean = {
 	name = "Prepare to fight Caribbean"
 	desc = "The Caribbean people must be given power over their own nations."
 
-	enable = {
+	allowed = {
 		tag = UTA
+	}
+	enable = {
 		has_completed_focus = UTA_focus_on_the_caribbean
 	}
 	abort = {
@@ -121,9 +130,11 @@ prepare_to_fight_england = {
 	name = "Prepare to fight England"
 	desc = "The English peoples' reign of terror must come to an end."
 
-	enable = {
+	allowed = {
 		tag = UTA
-		has_completed_focus = UTA_support_mexhican_democracy
+	}
+	enable = {
+		has_completed_focus = UTA_freedom_for_brazil
 	}
 	abort = {
 		is_in_faction_with = ENG
@@ -140,9 +151,11 @@ IND_no_war = {
 	name = "Don't declare wars"
 	desc = "After conquering Tibet, India should be inward focused"
 
+	allowed = {
+		tag = IND
+	}
 	enable = {
 		has_government = democratic
-		tag = IND
 	}
 	abort = {
 		IND = {
@@ -178,6 +191,9 @@ IND_silly_wars = {
 	name = "IND focus inward"
 	desc = "IND is more interested in internal development than throwing its weight around"
 
+	allowed = {
+		tag = IND
+	}
 	enable = {
 		tag = IND
 	}
@@ -197,26 +213,31 @@ SCA_claim_jylland = {
 		tag = SCA
 	}
 	enable = {
-		has_completed_focus = SCA_danish_question
+		has_completed_focus = SCA_prepare_for_worst
+		has_completed_focus = SCA_military_industry
+		has_completed_focus = SCA_naval_supremacy
+	}
+	abort = {
+		has_war_with = GMR
 	}
 	ai_strategy = {
 		type = prepare_for_war
-		id = "GER"
-		value = 50
+		id = "GMR"
+		value = 100
 	}
 	ai_strategy = {
 		type = declare_war
-		id = "GER"
-		value = 200
+		id = "GMR"
+		value = 250
 	}
 	ai_strategy = {
 		type = consider_weak
-		id = "GER"
-		value = 100
+		id = "GMR"
+		value = 150
 	}
 	ai_strategy = {
 		type = conquer
-		id = "GER"
-		value = 100
+		id = "GMR"
+		value = 150
 	}
 }
