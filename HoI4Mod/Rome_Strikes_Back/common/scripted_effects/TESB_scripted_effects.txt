@@ -854,11 +854,76 @@ jap_end_civil_war = {
 	}
 }
 
+partition_germany = {
+	#custom_effect_tooltip = compliance_80_effect_tooltip
+	hidden_effect = {
+		if = {
+			# if german_part does not exist, simply release it as a puppet
+			limit = {
+				var:german_part = {
+					exists = no
+				}
+			}
+			release_autonomy = {
+				target = german_part
+				autonomy_state = autonomy_puppet
+				freedom_level = 0.5
+				release_non_owned_controlled = yes
+			}
+			var:german_part = { set_BRG_subject_tag = yes }
+		}
+		else_if = {
+			limit = {
+				var:german_part = {
+					NOT = { is_subject_of = ROOT }
+				}
+			}
+			# if german_part exists, create a dynamic country as our new puppet
+
+			set_variable = { global.dyn_tag = german_part }
+			create_dynamic_country = {
+				original_tag = german_part
+				set_temp_variable = { new_country = this }
+
+				PREV = {
+					every_controlled_state = {
+						limit = {
+							is_core_of = german_part
+							NOT = {
+								state = 209 #Holland
+								state = 210 #Friesland
+								state = 231 #East Friesland
+								state = 213 #Hessen
+								state = 214 #Eastern Rhineland
+								state = 215 #Westfalen
+							}
+						}
+
+						var:new_country = {
+							transfer_state = PREV
+						}
+					}
+
+					puppet = new_country
+
+					set_autonomy = {
+						target = new_country
+						autonomy_state = autonomy_puppet
+						freedom_level = 0.5
+					}
+				}
+				set_BRG_subject_tag = yes
+			}
+		}
+	}
+}
+
 set_BRG_subject_tag = {
 	if = {
 		limit = {
 			is_subject_of = BRG
 			BRG = { has_government = absolutist }
+			is_dynamic_country = no
 		}
 		meta_effect = {
 			text = {
@@ -866,6 +931,21 @@ set_BRG_subject_tag = {
 			}
 			TAGNAME = "[THIS.GetTag]"
 		}
+	}
+	if = {
+		limit = {
+			is_subject_of = BRG
+			BRG = { has_government = absolutist }
+			is_dynamic_country = yes
+		}
+		meta_effect = {
+			text = {
+				set_cosmetic_tag = [TAGNAME]_subj_BRG
+			}
+			TAGNAME = "[?global.dyn_tag.GetTag]"
+		}
+		log = "[?global.dyn_tag]"
+		clear_variable = global.dyn_tag
 	}
 }
 
@@ -888,6 +968,9 @@ d_drop_bohemia = {
 	}
 }
 
+d_testing_effect = {
+	hold_election = ENG
+}
 d_hire_folks = {
 	HUN = {
 		create_country_leader = {
@@ -917,10 +1000,45 @@ d_various_updates = {
 		add_state_core = 282
 		add_state_core = 285
 	}
-	325 = {
-		add_core_of = IRN
-		remove_core_of = KHI
-		transfer_state_to = IRN
+	set_victory_points = {
+		province = 9570
+		value = 10
+	}
+	set_victory_points = {
+		province = 9347
+		value = 15
+	}
+	set_victory_points = {
+		province = 692
+		value = 15
+	}
+	GRB = {
+		diplomatic_relation = {
+			country = GER
+			relation = guarantee
+			active = no
+		}
+		diplomatic_relation = {
+			country = BRI
+			relation = guarantee
+			active = no
+		}
+		diplomatic_relation = {
+			country = BRG
+			relation = guarantee
+			active = no
+		}
+	}
+	SCA = {
+		complete_national_focus = SCA_national_militia
+		568 = {
+			add_building_construction = {
+				type = naval_base
+				level = 1
+				province = 3325
+				instant_build = yes
+			}
+		}
 	}
 	if = {
 		limit = {

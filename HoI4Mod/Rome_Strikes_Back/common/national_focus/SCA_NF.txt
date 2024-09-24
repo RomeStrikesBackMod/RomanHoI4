@@ -268,7 +268,7 @@ focus_tree = {
 	focus = {
 		id = SCA_national_militia
 		icon = GFX_focus_generic_manpower
-		cost = 10
+		cost = 5
 		x = 20
 		y = 0
 		available = {
@@ -279,13 +279,17 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 2
+				GMR = { has_war = yes }
+			}
 		}
 	}
 	
 	focus = {
 		id = SCA_prepare_for_worst
 		icon = GFX_focus_generic_fascist_troops
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = SCA_national_militia
@@ -300,13 +304,17 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 2
+				GMR = { has_war = yes }
+			}
 		}
 	}
 
 	focus = {
 		id = SCA_ramp_up_production
 		icon = GFX_goal_generic_production
-		cost = 10
+		cost = 5
 		x = 22
 		y = 0
 		completion_reward = {
@@ -320,13 +328,17 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 2
+				GMR = { has_war = yes }
+			}
 		}
 	}
 	
 	focus = {
 		id = SCA_military_industry
 		icon = GFX_goal_generic_construct_mil_factory
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = SCA_ramp_up_production
@@ -339,13 +351,17 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 2
+				GMR = { has_war = yes }
+			}
 		}
 	}
 
 	focus = {
 		id = SCA_secure_our_borders
 		icon = GFX_goal_generic_fortify_city
-		cost = 10
+		cost = 5
 		x = 24
 		y = 0
 		completion_reward = {
@@ -394,13 +410,17 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 2
+				GMR = { has_war = yes }
+			}
 		}
 	}
 	
 	focus = {
 		id = SCA_naval_supremacy
 		icon = GFX_goal_generic_construct_naval_dockyard
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = SCA_secure_our_borders
@@ -480,13 +500,17 @@ focus_tree = {
 		}
 		ai_will_do = {
 			base = 3
+			modifier = {
+				factor = 2
+				GMR = { has_war = yes }
+			}
 		}
 	}
 
 	focus = {
 		id = SCA_danish_question
 		icon = GFX_focus_generic_attack_denmark
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = SCA_prepare_for_worst
@@ -514,15 +538,35 @@ focus_tree = {
 		ai_will_do = {
 			base = 3
 			modifier = {
-				factor < 0.1
+				factor = 0.1
 				alliance_strength_ratio < 1.25
 			}
 			modifier = {
-				factor < 0.1
+				factor = 0.1
 				is_in_faction = no
 				strength_ratio = {
 					tag = GMR
 					ratio < 1.25
+				}
+				GMR = { has_war = no }
+			}
+			modifier = {
+				factor = 0.5
+				is_in_faction = no
+				strength_ratio = {
+					tag = GMR
+					ratio < 1.25
+				}
+				GMR = { has_war = yes }
+			}
+			modifier = {
+				factor = 4
+				GMR = { has_war = yes }
+			}
+			modifier = {
+				factor = 4
+				GMR = {
+					surrender_progress > 0.5
 				}
 			}
 		}
@@ -531,7 +575,7 @@ focus_tree = {
 	focus = {
 		id = SCA_reclaim_ingria
 		icon = GFX_goal_generic_territory_or_war
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = SCA_military_industry
@@ -553,14 +597,20 @@ focus_tree = {
 				}
 			}
 		}
+		bypass = {
+			OR = {
+				#has_war_with = RUS
+				owns_state = 495
+			}
+		}
 		ai_will_do = {
 			base = 3
 			modifier = {
-				factor < 0.1
+				factor = 0.1
 				alliance_strength_ratio < 1.25
 			}
 			modifier = {
-				factor < 0.1
+				factor = 0.1
 				is_in_faction = no
 				strength_ratio = {
 					tag = RUS
@@ -573,7 +623,7 @@ focus_tree = {
 	focus = {
 		id = SCA_seize_greenland
 		icon = GFX_focus_generic_annex_country
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = SCA_naval_supremacy
@@ -581,6 +631,7 @@ focus_tree = {
 		prerequisite = { focus = SCA_military_industry }
 		prerequisite = { focus = SCA_naval_supremacy }
 		will_lead_to_war_with = SCO
+		mutually_exclusive = { focus = SCA_normalize_relations_SCO }
 		available = {
 			SCO = {
 				is_neutral_to_ROOT = yes
@@ -596,19 +647,73 @@ focus_tree = {
 				}
 			}
 		}
+		bypass = {
+			owns_state = 569
+		}
 		ai_will_do = {
 			base = 3
 			modifier = {
-				factor < 0.1
+				factor = 0.1
 				alliance_strength_ratio < 1.25
 			}
 			modifier = {
-				factor < 0.1
+				factor = 0.1
 				is_in_faction = no
 				strength_ratio = {
 					tag = SCO
 					ratio < 1.25
 				}
+			}
+		}
+	}
+
+	focus = {
+		id = SCA_normalize_relations_SCO
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = SCA_naval_supremacy
+		prerequisite = { focus = SCA_prepare_for_worst }
+		prerequisite = { focus = SCA_military_industry }
+		prerequisite = { focus = SCA_naval_supremacy }
+		mutually_exclusive = { focus = SCA_seize_greenland }
+		available = {
+			SCO = {
+				is_neutral_to_ROOT = yes
+				owns_state = 569
+			}
+			is_independent_country = yes
+		}
+		completion_reward = {
+			set_country_flag = SCA_relations_SCO
+			SCO = {
+				country_event = {
+					id = tesb_SCA.30 hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 5
+				has_government = democratic
+			}
+			modifier = {
+				factor = 0.1
+				alliance_strength_ratio > 1.25
+			}
+			modifier = {
+				factor = 0.1
+				is_in_faction = no
+				strength_ratio = {
+					tag = SCO
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				has_government = fascism
+				factor = 0
 			}
 		}
 	}

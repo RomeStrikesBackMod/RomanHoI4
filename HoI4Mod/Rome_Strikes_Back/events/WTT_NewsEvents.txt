@@ -128,3 +128,155 @@ news_event = {
 		}
 	}
 }
+
+news_event = {
+	id = wtt_news.40
+	title = wtt_news.40.t
+	desc = {
+		text = wtt_news.40.desc_eng
+		trigger = {
+			FROM = {
+				has_country_flag = blew_up_suez
+				owns_state = 150
+				#owns_state = 453
+			}
+		}
+	}
+	desc = {
+		text = wtt_news.40.desc_not_eng
+		trigger = {
+			FROM = {
+				OR = {
+					NOT = {	has_country_flag = blew_up_suez }
+					NOT = {
+						owns_state = 150
+						#owns_state = 453
+					}
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_020
+
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = wtt_news.40.a
+		trigger = {
+			NOT = { has_country_flag = blew_up_suez }
+			owns_state = 150
+			#owns_state = 453
+		}
+		if = {
+			limit = {
+				original_tag = EGY
+			}
+			add_war_support = -0.05
+			add_stability = -0.05
+		}
+	}
+	option = {
+		name = wtt_news.40.b
+		trigger = {
+			has_country_flag = blew_up_suez
+			owns_state = 150
+			#owns_state = 453
+		}
+		if = {
+			limit = {
+				original_tag = EGY
+			}
+			add_war_support = -0.05
+			add_stability = -0.05
+		}
+		clr_country_flag = blew_up_suez
+	}
+	option = {
+		name = wtt_news.40.c
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 150
+				#owns_state = 453
+				has_country_flag = blew_up_suez
+			}
+		}
+	}
+	option = {
+		name = wtt_news.40.d
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 150
+				#owns_state = 453
+			}
+			has_country_flag = blew_up_suez
+		}
+		clr_country_flag = blew_up_suez
+	}
+	option = {
+		name = wtt_news.40.e
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				owns_state = 150
+				#owns_state = 453
+				NOT = { has_country_flag = blew_up_suez }
+			}
+			any_other_country = {
+				has_war_together_with = ROOT
+				has_country_flag = blew_up_suez
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+	option = {
+		name = wtt_news.40.f
+		trigger = {
+			any_other_country = {
+				has_war_together_with = ROOT
+				owns_state = 150
+				#owns_state = 453
+				has_country_flag = blew_up_suez
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+	option = {
+		name = wtt_news.40.g
+		trigger = {
+			any_country = {
+				has_war_with = ROOT
+				has_country_flag = blew_up_suez
+			}
+			any_other_country = {
+				has_war_together_with = ROOT
+				owns_state = 150
+				#owns_state = 453
+				NOT = { has_country_flag = blew_up_suez }
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+	option = {
+		name = wtt_news.40.h
+		trigger = {
+			NOT = {
+				any_country = {
+					has_war_with = ROOT
+					has_country_flag = blew_up_suez
+				}
+			}
+			NOT = {
+				any_other_country = {
+					has_war_together_with = ROOT
+					owns_state = 150
+					#owns_state = 453
+					has_country_flag = blew_up_suez
+				}
+			}
+			NOT = { has_country_flag = blew_up_suez }
+		}
+	}
+}

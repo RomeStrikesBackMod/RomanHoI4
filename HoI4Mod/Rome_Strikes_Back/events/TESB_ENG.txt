@@ -7,31 +7,40 @@ country_event = {
 	picture = GFX_report_event_ger_civil_war
 
 	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		communism > 0.5
+	}
 	option = {
 		name = tesb_england.1.a
-		ENG = {
-			add_state_claim = 437	# significant_number - Pastaza
-			declare_war_on = {
-				target = BIR
-				type = take_state
-				generator = { 437 }	# significant_number - Pastaza
-			}
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = yes
+			election_frequency = 48
 		}
-		ADA = {
-			add_to_war = { 
-				targeted_alliance = ENG
-				enemy = BIR
-			}
+		179 = { transfer_state_to = COL }
+		remove_ideas = ENG_monarch
+		set_autonomy = {
+			target = X01
+			autonomy_state = autonomy_free
 		}
-		MEX = {
-			add_to_war = { 
-				targeted_alliance = BIR
-				enemy = ENG
-			}
+		hidden_effect = {
+			news_event = { id = tesb_england.1000 }
 		}
 	}
 }
 
+news_event = {
+	id = tesb_england.1000
+	title = tesb_england.1000.t
+	desc = tesb_england.1000.d
+	picture = GFX_news_event_gathering_protest
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = tesb_england.1000.a
+	}
+}
 country_event = {
 	id = tesb_england.2
 	title = tesb_england.2.t

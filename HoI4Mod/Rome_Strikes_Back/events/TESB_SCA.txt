@@ -12,7 +12,10 @@ country_event = {
 		name = tesb_SCA.1.a
 		every_owned_state = {
 			limit = {
-				is_core_of = DEN
+				OR = {
+					is_core_of = DEN
+					state = 229
+				}
 			}
 			transfer_state_to = SCA
 		}
@@ -54,6 +57,7 @@ country_event = {
 			limit = {
 				is_core_of = DEN
 				is_owned_by = GMR
+				NOT = { is_core_of = SCA is_claimed_by = SCA }
 			}
 			add_claim_by = SCA
 		}
@@ -171,7 +175,7 @@ country_event = {
 	}
 }
 
-# Demand Ingria
+# Demand Greenland
 country_event = {
 	id = tesb_SCA.21
 	title = tesb_SCA.21.t
@@ -208,7 +212,7 @@ country_event = {
 	}
 }
 
-# Demand Ingria
+# Demand Greenland
 country_event = {
 	id = tesb_SCA.22
 	title = tesb_SCA.22.t
@@ -245,5 +249,74 @@ country_event = {
 	option = {
 		name = tesb_SCA.3.a
 		add_state_core = 569
+	}
+}
+
+
+# Ally Scotland
+country_event = {
+	id = tesb_SCA.30
+	title = tesb_SCA.30.t
+	desc = tesb_SCA.30.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.30.a
+		effect_tooltip = {
+			569 = {
+				remove_claim_by = SCA
+			}
+			give_guarantee = SCA
+			SCA = { give_guarantee = SCO }
+		}
+		hidden_effect = {
+			SCA = { country_event = { id = tesb_SCA.31 hours = 1 } }
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		name = tesb_SCA.30.b
+		hidden_effect = {
+			SCA = { country_event = { id = tesb_SCA.22 hours = 1 } }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = tesb_SCA.31
+	title = tesb_SCA.31.t
+	desc = tesb_SCA.31.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCA.31.a
+		569 = {
+			remove_claim_by = SCA
+		}
+		if = {
+			limit = {
+				is_faction_leader = yes
+				SCO = { is_in_faction = no }
+			}
+			add_to_faction = SCO
+		}
+		else_if = {
+			limit = {
+				SCO = { is_faction_leader = yes }
+				is_in_faction = no
+			}
+			SCO = { add_to_faction = SCA }
+		}
+		else = {
+			give_guarantee = SCO
+			SCO = { give_guarantee = SCA }
+		}
 	}
 }

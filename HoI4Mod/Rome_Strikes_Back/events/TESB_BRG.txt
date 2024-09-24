@@ -471,19 +471,41 @@ country_event = {
 
 	is_triggered_only = yes
 	fire_only_once = yes
+	trigger = {
+		FLD = {
+			NOT = { owns_state = 205 }
+		}
+	}
 	immediate = {
 	}
 	
 	#Grant FLD picardie
 	option = {
+		trigger = {
+			OR = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
 		name = tesb_BRG.135.a
 		FLD = { transfer_state = 205 } # significant_number - Picardie
+		clr_country_flag = BRG_promised_picardie
 		ai_chance = {
 			base = 1
 		}
 	}
 	#Grant FRA picardie/Keep picardie
 	option = {
+		trigger = {
+			OR = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
 		name = tesb_BRG.135.b
 		FLD = {
 			add_opinion_modifier = {
@@ -491,6 +513,17 @@ country_event = {
 				target = BRG
 			}
 		}
+	}
+	option = {
+		trigger = {
+			NOT = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
+		name = tesb_BRG.135.c
 	}
 }
 
@@ -687,7 +720,7 @@ country_event = {
 		trigger = { is_faction_leader = no }
 		text = tesb_BRG.160.db
 	}
-	picture = GFX_goal_generic_improve_relations
+	picture = GFX_report_event_generic_sign_treaty1
 
 	is_triggered_only = yes
 
@@ -730,7 +763,7 @@ country_event = {
 	id = tesb_BRG.161
 	title = tesb_BRG.161.t
 	desc = tesb_BRG.161.desc
-	picture = GFX_goal_generic_improve_relations
+	picture = GFX_report_event_generic_sign_treaty1
 
 	is_triggered_only = yes
 
@@ -752,7 +785,7 @@ country_event = {
 	id = tesb_BRG.162
 	title = tesb_BRG.162.t
 	desc = tesb_BRG.162.desc
-	picture = GFX_goal_generic_improve_relations
+	picture = GFX_report_event_generic_sign_treaty1
 
 	is_triggered_only = yes
 
@@ -761,7 +794,7 @@ country_event = {
 		name = tesb_BRG.162.a
 		set_country_flag = join_BRG
 		ai_chance = {
-			factor = 10
+			base = 10
 		}
 	}
 	
@@ -770,7 +803,7 @@ country_event = {
 		name = tesb_BRG.162.b
 		leave_faction = yes
 		ai_chance = {
-			factor = 1
+			base = 1
 		}
 	}
 }
@@ -781,12 +814,122 @@ country_event = {
 	id = tesb_BRG.163
 	title = tesb_BRG.163.t
 	desc = tesb_BRG.163.desc
-	picture = GFX_goal_generic_improve_relations
+	picture = GFX_report_event_generic_sign_treaty1
 
 	is_triggered_only = yes
 
 	#stay
 	option = {
 		name = tesb_BRG.163.a
+	}
+}
+
+#divide up GER
+country_event = {
+	id = tesb_BRG.200
+	title = tesb_BRG.200.t
+	desc = tesb_BRG.200.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_BRG.200.a
+		hidden_effect = {
+			every_controlled_state = {
+				limit = {
+					is_owned_by = GMR
+					OR = {
+						state = 209 #Holland
+						state = 210 #Friesland
+						state = 231 #East Friesland
+						state = 213 #Hessen
+						state = 214 #Eastern Rhineland
+						state = 215 #Westfalen
+					}
+				}
+				transfer_state_to = BRG
+			}
+		}
+		set_temp_variable = { german_part = SIL }
+		partition_germany = yes
+		set_temp_variable = { german_part = DEN }
+		partition_germany = yes
+		set_temp_variable = { german_part = BAV }
+		partition_germany = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					any_subject_country = {
+						owns_state = 228
+					}
+					controls_state = 229
+				}
+				random_subject_country = {
+					limit = {
+						controls_state = 228
+					}
+					transfer_state = 229
+				}
+			}
+			if = {
+				limit = {
+					GMR = { owns_state = 216 }
+					X03 = { owns_state = 577 }
+				}
+				216 = { transfer_state_to = X03 }
+			}
+			else_if = {
+				limit = {
+					GMR = { owns_state = 216 }
+				}
+				216 = {
+					random_neighbor_state = { owner = { transfer_state = 216 } }
+				}
+			}
+			country_event = { id = tesb_BRG.201 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = tesb_BRG.201
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				any_subject_country = { original_tag = DEN }
+				owns_state = 218
+			}
+			random_subject_country = {
+				limit = { original_tag = DEN }
+				set_capital = { state = 218 }
+			}
+		}
+		if = {
+			limit = {
+				any_subject_country = { original_tag = BAV }
+				owns_state = 226
+			}
+			random_subject_country = {
+				limit = { original_tag = BAV }
+				set_capital = { state = 226 }
+			}
+		}
+		if = {
+			limit = {
+				any_subject_country = { original_tag = SIL }
+				owns_state = 285
+			}
+			random_subject_country = {
+				limit = { original_tag = SIL }
+				set_capital = { state = 285 }
+			}
+		}
+	}
+	option = {
+		name = "OK"
 	}
 }
