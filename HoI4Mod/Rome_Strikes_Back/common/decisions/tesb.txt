@@ -1002,7 +1002,197 @@ england_decisions = {
 		days_re_enable = 60
 	}
 }
+england_support_colonies = {
+	eng_test = {
+		visible = {
+			is_debug = yes
+		}
+		available = {
+			is_ai = no
+		}
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = RME_former_territory
+						has_idea = RME_former_dominion
+					}
+					capital_scope = {
+						is_on_continent = africa
+					}
+				}
+				add_to_array = { ENG.ENG_colonial_countries = THIS.id }
+			}
+		}
+	}
+	ENG_colonies_ally = {
+		visible = {
+			always = no
+			has_completed_focus = ENG_anti_colonialism
+		}
+		target_array = ENG_colonial_countries
+		target_trigger = {
+			NOT = {
+				FROM = { is_in_faction_with = ROOT }
+			}
+		}
+		available = {
+			is_faction_leader = yes
+			FROM = {
+				is_potential_friend_of_ROOT = yes
+				has_government = communism
+			}
+		}
+		cost = 10
+		complete_effect = {
+			if = {
+				limit = { is_faction_leader = yes }
+				FROM = {
+					country_event = {
+						id = generic.5
+						hours = 1
+					}
+				}
+			}
+			else = { custom_effect_tooltip = colonies_ally_tt }
+		}
+		days_re_enable = 365
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ENG_colonies_influence = {
+		visible = {
+			#has_completed_focus = ENG_anti_colonialism
+		}
+		target_array = ENG_colonial_countries
+		target_trigger = {
+			FROM = {
+				is_friend_or_potential_friend_of_ROOT = yes
+				NOT = { has_country_flag = england_no_comming }
+				check_variable = { FROM.eng_communism_influence < 101 }
+			}
+		}
+		available = {
+			FROM = { is_friend_or_potential_friend_of_ROOT = yes }
+		}
+		cost = FROM.eng_communism_influence?20
+		days_remove = 180
+		complete_effect = {
+			FROM = {
+				activate_mission = england_communist_influence_mission
+				add_timed_idea = {
+					idea = ENG_communist_colonial_influence
+					days = 180
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						NOT = { has_variable = eng_communism_influence }
+					}
+					set_variable = { eng_communism_influence = 20 }
+				}
+				add_to_variable = { eng_communism_influence = 20 }
+			}
+		}
 
+		ai_will_do = {
+			base = 15
+			modifier = {
+				factor = 0.5
+				check_variable = { FROM.eng_communism_influence > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { FROM.eng_communism_influence > 100 }
+			}
+		}
+	}
+	ENG_colonies_liberate = {
+		visible = {
+			always = no
+			has_completed_focus = ENG_anti_colonialism
+		}
+		target_array = ENG_colonial_countries
+		target_trigger = {
+			FROM = {
+				is_neutral_to_ROOT = yes
+				NOT = { has_government = communism }
+			}
+		}
+		available = {
+			FROM = {
+				OR = {
+					is_friend_or_potential_friend_of_ROOT = no
+					custom_trigger_tooltip = {
+						tooltip = colonies_liberate_tt
+						NOT = { has_government = communism }
+						check_variable = { eng_communism_influence > 100 }
+					}
+				}
+			}
+		}
+		cost = 100
+		days_remove = 180
+		remove_effect = {
+			create_wargoal = {
+				target = FROM
+				type = puppet_wargoal_focus
+			}
+		}
+		cancel_trigger = {
+			FROM = { is_friend_or_potential_friend_of_ROOT = yes }
+		}
+		war_with_target_on_remove = yes
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				FROM = { is_potential_friend_of_ROOT = yes }
+				check_variable = { FROM.eng_communism_influence < 100 }
+			}
+			modifier = {
+				factor = 0
+				alliance_strength_ratio < 1.25
+			}
+		}
+	}
+}
+counter_pindoraman_influence = {
+	england_communist_influence_mission = {
+		selectable_mission = yes
+		days_mission_timeout = 180
+		activation = {
+			always = no
+		}
+		available = {
+			NOT = { has_government = communism }
+		}
+		complete_effect = {
+			set_country_flag = England_no_comming
+			remove_ideas = ENG_communist_colonial_influence
+		}
+		timeout_effect = {
+			#effect_tooltip = {
+				country_event = { id = tesb_RUS.15 }
+			#}
+		}
+		cost = 150
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 9
+				OR = {
+					has_government = fascism
+					has_government = absolutist
+				}
+			}
+		}
+	}
+}
 aotearoa_decisions = {
 	AOT_testing = {
 		visible = {

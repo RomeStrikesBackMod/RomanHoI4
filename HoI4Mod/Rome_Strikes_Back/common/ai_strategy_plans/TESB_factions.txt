@@ -383,3 +383,62 @@ AOT_keep_minor_allies = { #Do Ally Aotearoa when supposed to
 		value = 500
 	}
 }
+
+GER_faction = { #Don't Ally Germany unless supposed to
+	name = "Don't ally GER"
+	desc = ""
+
+	enable = {
+		is_in_faction = no
+		GMR = { is_faction_leader = yes }
+		NOT = {
+			original_tag = PLC
+			original_tag = SCA
+			original_tag = BAV
+			original_tag = AQI
+			original_tag = FRA
+			original_tag = BRI
+		}
+	}
+	abort = {
+		is_in_faction_with = GMR
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "GMR"
+		value = -500
+	}
+}
+
+SCA_demo_neutral = {
+	name = "Stay neutral"
+	desc = ""
+	allowed = {
+		original_tag = SCA
+	}
+	enable = {
+		has_government = democratic
+	}
+	abort = {
+		OR = {
+			NOT = { has_government = democratic }
+			is_in_faction = yes
+		}
+	}
+	ai_strategy = {
+		type = alliance
+		id = RME
+		value = -200
+	}
+	ai_strategy = {
+		type = alliance
+		id = RUS
+		value = -200
+	}
+	ai_strategy = {
+		type = alliance
+		id = ITA
+		value = -200
+	}
+}

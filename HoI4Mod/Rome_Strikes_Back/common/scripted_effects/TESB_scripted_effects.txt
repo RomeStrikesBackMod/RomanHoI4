@@ -859,25 +859,49 @@ partition_germany = {
 	hidden_effect = {
 		if = {
 			# if german_part does not exist, simply release it as a puppet
-			limit = {
-				var:german_part = {
-					exists = no
+			limit = { var:german_part = { exists = no } }
+			every_controlled_state = {
+				limit = {
+					is_core_of = german_part
+					NOT = {
+						state = 209 #Holland
+						state = 210 #Friesland
+						state = 231 #East Friesland
+						state = 213 #Hessen
+						state = 214 #Eastern Rhineland
+						state = 215 #Westfalen
+					}
 				}
+				transfer_state_to = german_part
 			}
-			release_autonomy = {
+			puppet = german_part
+
+			set_autonomy = {
 				target = german_part
 				autonomy_state = autonomy_puppet
 				freedom_level = 0.5
-				release_non_owned_controlled = yes
 			}
 			var:german_part = { set_BRG_subject_tag = yes }
 		}
 		else_if = {
-			limit = {
-				var:german_part = {
-					NOT = { is_subject_of = ROOT }
+			# if german_part is our puppet, give them the states
+			limit = { var:german_part = { is_subject_of = ROOT } }
+			every_controlled_state = {
+				limit = {
+					is_core_of = german_part
+					NOT = {
+						state = 209 #Holland
+						state = 210 #Friesland
+						state = 231 #East Friesland
+						state = 213 #Hessen
+						state = 214 #Eastern Rhineland
+						state = 215 #Westfalen
+					}
 				}
+				transfer_state_to = german_part
 			}
+		}
+		else = {
 			# if german_part exists, create a dynamic country as our new puppet
 
 			set_variable = { global.dyn_tag = german_part }
@@ -898,10 +922,7 @@ partition_germany = {
 								state = 215 #Westfalen
 							}
 						}
-
-						var:new_country = {
-							transfer_state = PREV
-						}
+						transfer_state_to = new_country
 					}
 
 					puppet = new_country
@@ -925,6 +946,7 @@ set_BRG_subject_tag = {
 			BRG = { has_government = absolutist }
 			is_dynamic_country = no
 		}
+		drop_cosmetic_tag = yes
 		meta_effect = {
 			text = {
 				set_cosmetic_tag = [TAGNAME]_subj_BRG
@@ -938,6 +960,7 @@ set_BRG_subject_tag = {
 			BRG = { has_government = absolutist }
 			is_dynamic_country = yes
 		}
+		drop_cosmetic_tag = yes
 		meta_effect = {
 			text = {
 				set_cosmetic_tag = [TAGNAME]_subj_BRG
@@ -972,20 +995,7 @@ d_testing_effect = {
 	hold_election = ENG
 }
 d_hire_folks = {
-	HUN = {
-		create_country_leader = {
-			name = HUN_lajos_esterhazy
-			picture = GFX_Portrait_hungary_miklos_horthy
-			ideology = dictatorship
-		}
-		random_character = {
-			limit = {
-				can_be_country_leader = yes
-				has_ideology = dictatorship
-			}
-			promote_character = yes
-		}
-	}
+
 }
 
 d_various_updates = {
@@ -993,12 +1003,18 @@ d_various_updates = {
 		remove_core_of = PEG
 		add_core_of = SIA
 	}
-	333 = {
-		add_core_of = RYU
+	RYU = {
+		add_state_core = 333
+		set_capital = {
+			state = 333
+		}
 	}
 	SIL = {
 		add_state_core = 282
 		add_state_core = 285
+		set_capital = {
+			state = 285
+		}
 	}
 	set_victory_points = {
 		province = 9570
@@ -1046,6 +1062,20 @@ d_various_updates = {
 		}
 		UTA = {
 			remove_from_faction = MEX
+		}
+	}
+	HUN = {
+		create_country_leader = {
+			name = HUN_lajos_esterhazy
+			picture = GFX_Portrait_hungary_miklos_horthy
+			ideology = dictatorship
+		}
+		random_character = {
+			limit = {
+				can_be_country_leader = yes
+				has_ideology = dictatorship
+			}
+			promote_character = yes
 		}
 	}
 }

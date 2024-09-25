@@ -18,7 +18,10 @@ country_event = {
 			elections_allowed = yes
 			election_frequency = 48
 		}
-		179 = { transfer_state_to = COL }
+		random_country = {
+			limit = { controls_state = 100 }
+			transfer_state = 179
+		}
 		remove_ideas = ENG_monarch
 		set_autonomy = {
 			target = X01
@@ -50,19 +53,37 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_england.2.a
+		add_ideas = ENG_expelled_english
 		hidden_effect = {
 			GRB = {
 				country_event = { id = tesb_england.3 days = 2 }
 			}
 		}
 		ai_chance = {
-			base = 7
+			base = 4
+			modifier = {
+				factor = 1.2
+				communism > 0.6
+			}
+			modifier = {
+				factor = 1.2
+				communism > 0.7
+			}
 		}
 	}
 	option = {
 		name = tesb_england.2.b
+		add_ideas = ENG_integrated_english
 		ai_chance = {
-			base = 3
+			base = 6
+			modifier = {
+				factor = 0.8
+				communism < 0.5
+			}
+			modifier = {
+				factor = 0.8
+				communism < 0.4
+			}
 		}
 	}
 }
@@ -95,5 +116,18 @@ country_event = {
 		ai_chance = {
 			base = 3
 		}
+	}
+}
+
+news_event = {
+	id = tesb_england.4
+	title = tesb_england.4.t
+	desc = tesb_england.4.desc
+	picture = GFX_news_event_generic_sign_treaty3
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = tesb_england.4.a
 	}
 }
