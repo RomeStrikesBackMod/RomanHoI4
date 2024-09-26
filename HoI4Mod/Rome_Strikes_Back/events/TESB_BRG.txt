@@ -828,7 +828,7 @@ country_event = {
 country_event = {
 	id = tesb_BRG.200
 	title = tesb_BRG.200.t
-	desc = tesb_BRG.200.desc
+	desc = tesb_BRG.200.d
 	picture = GFX_report_event_generic_sign_treaty1
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -874,20 +874,27 @@ country_event = {
 			}
 			if = {
 				limit = {
-					GMR = { owns_state = 216 }
+					OR = {
+						GMR = { owns_state = 216 }
+						controls_state = 216
+					}
 					X03 = { owns_state = 577 }
 				}
 				216 = { transfer_state_to = X03 }
 			}
 			else_if = {
 				limit = {
-					GMR = { owns_state = 216 }
+					OR = {
+						GMR = { owns_state = 216 }
+						controls_state = 216
+					}
 				}
 				216 = {
 					random_neighbor_state = { owner = { transfer_state = 216 } }
 				}
 			}
 			country_event = { id = tesb_BRG.201 days = 1 }
+			news_event = { id = tesb_BRG.202 hours = 1 }
 		}
 	}
 }
@@ -931,5 +938,27 @@ country_event = {
 	}
 	option = {
 		name = "OK"
+	}
+}
+
+news_event = {
+	id = tesb_BRG.202
+	title = tesb_BRG.202.t
+	desc = tesb_BRG.202.d
+	picture = GFX_news_event_generic_sign_treaty2
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_BRG.202.a
+		trigger = {
+			is_in_faction_with = BRG
+		}
+	}
+	option = {
+		name = tesb_BRG.202.b
+		trigger = {
+			NOT = { is_in_faction_with = BRG }
+		}
 	}
 }

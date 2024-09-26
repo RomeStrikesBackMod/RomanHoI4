@@ -1,40 +1,178 @@
 peace_ai_desires = {
 	england_should_not_puppet_biru_at_first = {
 
-        peace_action_type = puppet
+		peace_action_type = puppet
 
-        enable = {
-            ROOT = { tag = ENG } #Eng is negotiator
-            ROOT.FROM.FROM = { tag = BIR } #Bir is giver
+		enable = {
+			ROOT = { tag = ENG } #Eng is negotiator
+			ROOT.FROM.FROM = { tag = BIR } #Bir is giver
 			date < 1939.1.1
-        }
+		}
 
-        ai_desire = -800
-    }
+		ai_desire = -800
+	}
 
 	india_should_not_puppet_tibet_at_first = {
 
-        peace_action_type = puppet
+		peace_action_type = puppet
 
-        enable = {
+		enable = {
 			ROOT = { tag = IND }
-            ROOT.FROM.FROM = { tag = TIB }
+			ROOT.FROM.FROM = { tag = TIB }
 			date < 1939.1.1
-        }
+		}
 
-        ai_desire = -800
-    }
+		ai_desire = -800
+	}
 	
 	india_should_take_states_from_tibet = {
 
-        peace_action_type = take_states
+		peace_action_type = take_states
 
-        enable = {
+		enable = {
 			ROOT = { tag = IND }
-            ROOT.FROM.FROM.FROM = { state = 611 }
+			ROOT.FROM.FROM.FROM = { state = 611 }
 			date < 1939.1.1
-        }
+		}
 
-        ai_desire = 800
-    }
+		ai_desire = 800
+	}
+
+	burg_give_sca_something = {
+		peace_action_type = { take_states puppet }
+		enable = {
+			ROOT.FROM.FROM.FROM = {
+				pc_is_state_claimed_and_taken_by = SCA
+			}
+			ROOT = { tag = BRG }
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = -100
+	}
+	burgundy_partion_germany_puppet_SIL = {
+		peace_action_type = puppet
+		enable = {
+			ROOT.FROM.FROM.FROM = {
+				OR = {
+					state = 282 #Upper Sil
+					state = 285 #Lower Sil
+				}
+			}
+			ROOT = { tag = BRG }
+			ROOT.FROM = { tag = SIL }
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = 500
+	}
+
+	burgundy_partion_germany_puppet = {
+		peace_action_type = puppet
+		enable = {
+			ROOT.FROM.FROM.FROM = {
+				NOT = {
+					is_controlled_by = SCA
+					state = 209 #Holland
+					state = 210 #Friesland
+					state = 231 #East Friesland
+					state = 213 #Hessen
+					state = 214 #Eastern Rhineland
+					state = 215 #Westfalen
+					state = 285 #Lower Sil
+				}
+			}
+			ROOT = { tag = BRG }
+			ROOT.FROM = {
+				OR = {
+					tag = DEN
+					tag = BAV
+				}
+			}
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = 150
+	}
+
+	burgundy_partion_germany_border = {
+		peace_action_type = take_states
+		enable = {
+			ROOT.FROM.FROM.FROM = {
+				OR = {
+					state = 209 #Holland
+					state = 210 #Friesland
+					state = 231 #East Friesland
+					state = 213 #Hessen
+					state = 214 #Eastern Rhineland
+					state = 215 #Westfalen
+				}
+			}
+			ROOT = { tag = BRG }
+			ROOT.FROM = { tag = BRG }
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = 200
+	}
+
+	burgundy_partion_germany_by_effect = {
+		peace_action_type = take_states
+		enable = {
+			ROOT.FROM.FROM.FROM = {
+				NOT = { is_controlled_by = SCA }
+			}
+			ROOT = { tag = BRG }
+			ROOT.FROM = { tag = BRG }
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = 100
+	}
+
+	burg_accra_take = {
+		peace_action_type = { take_states }
+		enable = {
+			FROM.FROM.FROM = {
+				state = 216
+			}
+			ROOT = { tag = BRG }
+			ROOT.FROM = { tag = BRG }
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = 1000
+	}
+
+
+	burg_accra = {
+		peace_action_type = { liberate puppet }
+		enable = {
+			FROM.FROM.FROM = {
+				state = 216
+			}
+			ROOT = { tag = BRG }
+			ROOT.FROM = { tag = GHA }
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = -100
+	}
+	
+	raetia_stay_out = {
+		peace_action_type = { take_states puppet force_government liberate }
+		enable = {
+			ROOT = {
+				tag = SWI
+				is_in_faction_with = BRG
+			}
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = -500
+	}
+
+	ITA_stay_out = {
+		peace_action_type = { take_states puppet force_government liberate }
+		enable = {
+			ROOT = {
+				tag = ITA
+				is_in_faction_with = BRG
+			}
+			ROOT.FROM.FROM = { tag = GMR }
+		}
+		ai_desire = -500
+	}
 }

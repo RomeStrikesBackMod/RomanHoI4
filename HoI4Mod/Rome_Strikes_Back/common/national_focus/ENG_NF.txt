@@ -271,6 +271,7 @@ focus_tree = {
 		available = {
 			has_war = no
 			NOT = { has_government = communism }
+			communism < 0.45
 		}
 		completion_reward = {
 			set_temp_variable = {
@@ -342,8 +343,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ENG_consolidate_new_regime
-		icon = GFX_goal_generic_political_pressure
+		id = ENG_new_constitution
+		icon = GFX_focus_generic_treaty
 		cost = 5
 		prerequisite = {
 			focus = ENG_continue_reforms
@@ -363,6 +364,49 @@ focus_tree = {
 			set_capital = {
 				state = 168
 			}
+			remove_ideas = {
+				ENG_dissenters_appeased
+				ENG_union_support
+				ENG_integrated_militias
+			}
+			add_ideas = ENG_socialist_constitution
+			hidden_effect = {
+				set_victory_points = {
+					province = 10980
+					value = 30
+				}
+				set_victory_points = {
+					province = 10933
+					value = 20
+				}
+				if = {
+					limit = {
+						has_guaranteed = RUS
+						RUS = { NOT = { has_government = communism } }
+					}
+					diplomatic_relation = {
+						country = RUS
+						relation = guarantee
+						active = no
+					}
+				}
+				if = {
+					limit = {
+						is_guaranteed_by = RUS
+						RUS = { NOT = { has_government = communism } }
+					}
+					RUS = {
+						diplomatic_relation = {
+							country = ROOT
+							relation = guarantee
+							active = no
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
 		}
 	}
 
@@ -371,19 +415,23 @@ focus_tree = {
 		icon = GFX_focus_attack_britain
 		cost = 5
 		prerequisite = {
-			focus = ENG_consolidate_new_regime
+			focus = ENG_new_constitution
 		}
-		relative_position_id = ENG_consolidate_new_regime
+		relative_position_id = ENG_new_constitution
 		x = 0
 		y = 1
 		available = {
 			has_government = communism
 		}
 		completion_reward = {
-			remove_ideas = ENG_monarch
+			#remove_ideas = ENG_monarch
 			country_event = {
 				id = tesb_england.2
 			}
+			
+		}
+		ai_will_do = {
+			base = 5
 		}
 	}
 
@@ -398,17 +446,29 @@ focus_tree = {
 			focus = ENG_true_third_international
 		}
 		relative_position_id = ENG_fate_of_english
-		x = -1
+		x = -2
 		y = 1
 		available = {
 			UTA = { is_faction_leader = yes }
 		}
 		completion_reward = {
-			UTA = {
-				country_event = {
-					id = generic.2
+			if = {
+				limit = {
+					UTA = { is_faction_leader = yes }
+				}
+				UTA = {
+					country_event = { id = generic.2 }
 				}
 			}
+			else = {
+				custom_effect_tooltip = focus_join_faction_tt
+			}
+		}
+		bypass = {
+			is_in_faction_with = UTA
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	focus = {
@@ -422,13 +482,119 @@ focus_tree = {
 			focus = ENG_align_UTA
 		}
 		relative_position_id = ENG_fate_of_english
-		x = 1
+		x = 2
 		y = 1
 		available = {
 			is_in_faction = no
 		}
 		completion_reward = {
 			create_faction = ENG_true_third_international
+			hidden_effect = {
+				news_event = { id = tesb_england.4 }
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ENG_legacy_second_international
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 5
+		prerequisite = {
+			focus = ENG_true_third_international
+		}
+		relative_position_id = ENG_true_third_international
+		x = -1
+		y = 1
+		available = {
+			is_faction_leader = yes
+		}
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					has_government = communism
+					is_in_faction = no
+					NOT = {
+						original_tag = ISR
+						original_tag = SIA
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { is_faction_leader = yes }
+					}
+					country_event = {
+						id = generic.5
+					}
+				}
+				else = {
+					custom_effect_tooltip = focus_invite_faction_tt
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0.1
+				set_temp_variable = { num_commie_countries = 0 }
+				all_other_country = {
+					if = {
+						limit = { has_government = communism NOT = { original_tag = ISR original_tag = SIA } }
+						add_to_temp_variable = { ROOT.num_commie_countries = 1 }
+					}
+					
+				}
+				check_variable = { num_commie_countries < 5 }
+			}
+			modifier = {
+				factor = 0.5
+				set_temp_variable = { num_commie_countries = 0 }
+				all_other_country = {
+					if = {
+						limit = { has_government = communism NOT = { original_tag = ISR original_tag = SIA } }
+						add_to_temp_variable = { ROOT.num_commie_countries = 1 }
+					}
+					
+				}
+				check_variable = { num_commie_countries < 10 }
+			}
+		}
+	}
+	focus = {
+		id = ENG_anti_colonialism
+		icon = GFX_focus_generic_africa_liberation
+		cost = 5
+		x = 1
+		y = 1
+		prerequisite = { focus = ENG_true_third_international }
+		relative_position_id = ENG_true_third_international
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = RME_former_territory
+						has_idea = RME_former_dominion
+					}
+					capital_scope = {
+						is_on_continent = africa
+					}
+				}
+				add_to_array = { ENG.ENG_colonial_countries = THIS.id }
+			}
+			hidden_effect = {
+				news_event = {
+					id = tesb_RUS_news.64
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 3
 		}
 	}
 }
