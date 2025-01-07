@@ -95,7 +95,46 @@ regaining_rome = {
 			}
 		}
 	}
-	
+	set_infra_value_1 = {
+		visible = {
+			is_debug = yes
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				exists = yes
+				has_idea = RME_former_territory
+				has_country_flag = RME_region_integration_started
+				NOT = { is_subject_of = RME }
+				is_in_faction_with = RME
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				FROM.pw_infra = 1
+			}
+		}
+	}
+	set_infra_value_0.5 = {
+		visible = {
+			is_debug = yes
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				exists = yes
+				has_idea = RME_former_territory
+				has_country_flag = RME_region_integration_started
+				NOT = { is_subject_of = RME }
+				is_in_faction_with = RME
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				FROM.pw_infra = 0.5
+			}
+		}
+	}
 	negotiate_with_territory = {
 		icon = generic_form_nation
 		available = {
