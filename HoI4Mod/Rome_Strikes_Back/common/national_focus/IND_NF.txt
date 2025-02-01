@@ -18,4 +18,500 @@ focus_tree = {
 	shared_focus = industrial_effort
 	shared_focus = political_effort
 
+	focus = {
+		id = IND_faction
+		icon = GFX_goal_generic_improve_relations
+		x = 29
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+			add_named_threat = { threat = 5 name = IND_mandala_league }
+			set_rule = { can_create_factions = yes }
+			if = {
+				limit = {
+					NOT = { is_faction_leader = yes }
+				}
+				create_faction = IND_mandala_league
+			}
+			hidden_effect = {
+				news_event = { id = tesb_india.2 }
+			}
+		}
+	}
+	
+	focus = {
+		id = IND_democracy_west
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_faction }
+		x = -2
+		y = 1
+		relative_position_id = IND_faction
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+			ETH = { add_timed_idea  = { idea = IND_bolsters_democracy days = 730 } }
+			ADA = { add_timed_idea  = { idea = IND_bolsters_democracy days = 730 } }
+			BCS = { add_timed_idea  = { idea = IND_bolsters_democracy days = 730 } }
+		}
+	}
+	
+	focus = {
+		id = IND_ethiopia
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_democracy_west }
+		x = -1
+		y = 1
+		relative_position_id = IND_democracy_west
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_adal
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_ethiopia }
+		x = 0
+		y = 1
+		relative_position_id = IND_ethiopia
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_baloch
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_democracy_west }
+		x = 1
+		y = 1
+		relative_position_id = IND_democracy_west
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_iran
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_baloch }
+		x = 0
+		y = 1
+		relative_position_id = IND_baloch
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_democracy_east
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_faction }
+		x = 4
+		y = 1
+		relative_position_id = IND_faction
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_burma
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_democracy_east }
+		x = -2
+		y = 1
+		relative_position_id = IND_democracy_east
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_burma_russian_influence
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_burma }
+		x = -1
+		y = 1
+		relative_position_id = IND_burma
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_burma_fascism
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_burma }
+		x = 1
+		y = 1
+		relative_position_id = IND_burma
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_burma_unification
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_burma_russian_influence }
+		prerequisite = { focus = IND_burma_fascism }
+		x = 1
+		y = 1
+		relative_position_id = IND_burma_russian_influence
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_thai
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_democracy_east }
+		x = 2
+		y = 1
+		relative_position_id = IND_democracy_east
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_thai_thai_republic
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_thai }
+		x = -1
+		y = 1
+		relative_position_id = IND_thai
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_thai_sukhothai
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_thai }
+		x = 1
+		y = 1
+		relative_position_id = IND_thai
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_thai_unification
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_thai_thai_republic } 
+		prerequisite = { focus = IND_thai_sukhothai }
+		x = 1
+		y = 1
+		relative_position_id = IND_thai_thai_republic
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_bulwark_against_gacps
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_burma_unification } 
+		prerequisite = { focus = IND_thai_unification }
+		x = 2
+		y = 1
+		relative_position_id = IND_burma_unification
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_tibet
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_bulwark_against_gacps } 
+		x = 0
+		y = 1
+		relative_position_id = IND_bulwark_against_gacps
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_khmer
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_tibet } 
+		x = -2
+		y = 1
+		relative_position_id = IND_tibet
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_pattani
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_khmer } 
+		x = 0
+		y = 1
+		relative_position_id = IND_khmer
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_makassar
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_tibet } 
+		x = 0
+		y = 1
+		relative_position_id = IND_tibet
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = IND_decolonization
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_makassar } 
+		x = 0
+		y = 1
+		relative_position_id = IND_makassar
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_java
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_tibet } 
+		x = 2
+		y = 1
+		relative_position_id = IND_tibet
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_lazarou
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_java } 
+		x = 0
+		y = 1
+		relative_position_id = IND_java
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_beyond_indian_ocean
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_pattani } 
+		prerequisite = { focus = IND_decolonization } 
+		prerequisite = { focus = IND_lazarou } 
+		x = 2
+		y = 1
+		relative_position_id = IND_pattani
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_australia
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_beyond_indian_ocean } 
+		x = -2
+		y = 1
+		relative_position_id = IND_beyond_indian_ocean
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_rome
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_australia } 
+		x = 0
+		y = 1
+		relative_position_id = IND_australia
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_japan
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_beyond_indian_ocean } 
+		x = 0
+		y = 1
+		relative_position_id = IND_beyond_indian_ocean
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_aotearoa
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_japan } 
+		x = 0
+		y = 1
+		relative_position_id = IND_japan
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_khorasan
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_beyond_indian_ocean } 
+		x = 2
+		y = 1
+		relative_position_id = IND_beyond_indian_ocean
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = IND_russia
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_khorasan } 
+		x = 0
+		y = 1
+		relative_position_id = IND_khorasan
+		cost = 10
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+		}
+	}
 }
