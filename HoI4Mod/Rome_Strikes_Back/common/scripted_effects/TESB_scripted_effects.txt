@@ -417,7 +417,7 @@ TESB_check_faction_willingness = {
 		limit = {
 			has_variable = pw_focus
 		}
-		add_to_variable = { This.puppet_willingness = pw_focus }
+		add_to_variable = { This.faction_willingness = pw_focus }
 		custom_effect_tooltip = pw.focus
 	}
 }
@@ -637,9 +637,16 @@ TESB_check_integrate_willingness = {
 	}
 	if = {
 		limit = {
+			has_variable = pw_infra
+		}
+		add_to_variable = { This.integrate_willingness = pw_infra }
+		custom_effect_tooltip = pw.infra
+	}
+	if = {
+		limit = {
 			has_variable = pw_focus
 		}
-		add_to_variable = { This.puppet_willingness = pw_focus }
+		add_to_variable = { This.integrate_willingness = pw_focus }
 		custom_effect_tooltip = pw.focus
 	}
 }
