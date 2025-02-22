@@ -18,4 +18,442 @@ focus_tree = {
 	shared_focus = industrial_effort
 	shared_focus = political_effort
 
+	focus = {
+		id = SCO_succession
+		icon = GFX_goal_generic_improve_relations
+		x = 34
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+			country_event = {
+				id = tesb_SCO.1
+			}
+		}
+	}
+	
+	focus = {
+		id = SCO_modernizing
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_succession }
+		x = 0
+		y = 1
+		relative_position_id = SCO_succession
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+	
+	focus = {
+		id = SCO_bastion
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_modernizing }
+		mutually_exclusive = { focus = SCO_parliament }
+		x = -5
+		y = 1
+		relative_position_id = SCO_modernizing
+		cost = 10
+		ai_will_do = {
+			factor = 30
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_monarchist_sentiments
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_bastion }
+		x = -3
+		y = 1
+		relative_position_id = SCO_bastion
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_burgundy_ties
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_bastion }
+		x = -1
+		y = 1
+		relative_position_id = SCO_bastion
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_nationalism
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_bastion }
+		x = 2
+		y = 1
+		relative_position_id = SCO_bastion
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_ireland
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_nationalism }
+		x = -1
+		y = 1
+		relative_position_id = SCO_nationalism
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_lay_claim
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_nationalism }
+		x = 1
+		y = 1
+		relative_position_id = SCO_nationalism
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_ultimatum
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_monarchist_sentiments }
+		prerequisite = { focus = SCO_burgundy_ties }
+		prerequisite = { focus = SCO_ireland }
+		prerequisite = { focus = SCO_lay_claim }
+		x = -1
+		y = 1
+		relative_position_id = SCO_ireland
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_celtic_kingdom
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_ultimatum }
+		x = 0
+		y = 1
+		relative_position_id = SCO_ultimatum
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_parliament
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_modernizing }
+		mutually_exclusive = { focus = SCO_bastion }
+		x = 5
+		y = 1
+		relative_position_id = SCO_modernizing
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = SCO_uk
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_parliament }
+		x = -5
+		y = 1
+		relative_position_id = SCO_parliament
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_elevating_ireland
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_parliament }
+		x = -1
+		y = 1
+		relative_position_id = SCO_parliament
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_irish_culture
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_elevating_ireland }
+		x = -2
+		y = 1
+		relative_position_id = SCO_elevating_ireland
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_irish_rights
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_elevating_ireland }
+		x = 0
+		y = 1
+		relative_position_id = SCO_elevating_ireland
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_irish_industry
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_elevating_ireland }
+		x = 2
+		y = 1
+		relative_position_id = SCO_elevating_ireland
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_allies
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_parliament }
+		x = 4
+		y = 1
+		relative_position_id = SCO_parliament
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_scandinavia
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_allies }
+		x = -1
+		y = 1
+		relative_position_id = SCO_allies
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_northern_alliance
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_scandinavia }
+		x = 0
+		y = 1
+		relative_position_id = SCO_scandinavia
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_peace
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_allies }
+		x = 1
+		y = 1
+		relative_position_id = SCO_allies
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_eagle
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_peace }
+		x = 0
+		y = 1
+		relative_position_id = SCO_peace
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_africa
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_celtic_kingdom focus = SCO_uk }
+		x = 5
+		y = 1
+		relative_position_id = SCO_celtic_kingdom
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_gladach_coille
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_africa }
+		x = -4
+		y = 1
+		relative_position_id = SCO_africa
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_adal
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_africa }
+		x = -2
+		y = 1
+		relative_position_id = SCO_africa
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_hindustan
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_africa }
+		x = 0
+		y = 1
+		relative_position_id = SCO_africa
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_england
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_africa }
+		x = 2
+		y = 1
+		relative_position_id = SCO_africa
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SCO_new_cornwall
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_africa }
+		x = 4
+		y = 1
+		relative_position_id = SCO_africa
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+		}
+	}
 }
