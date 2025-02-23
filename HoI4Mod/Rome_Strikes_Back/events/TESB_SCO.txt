@@ -1,0 +1,130 @@
+﻿add_namespace = tesb_SCO
+
+# The Question of Succession
+country_event = {
+	id = tesb_SCO.1
+	title = tesb_SCO.1.t
+	desc = tesb_SCO.1.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_SCO.1.a
+		SCO = {
+			add_ideas = rhomanian_royal_marriage
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.30
+			}
+			diplomatic_relation = {
+				country = RME
+				relation = non_aggression_pact
+			}
+		}
+		news_event = { id = tesb_SCO.2 hours = 1 }
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_SCO.1.b
+		SCO = {
+			add_ideas = scandinavia_royal_marriage
+			hidden_effect = {
+				SCA = {
+					set_country_flag = west_africa_proxy_war_involvement
+				}
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.20
+			}
+		}
+		news_event = { id = tesb_SCO.3 hours = 1 }
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = tesb_SCO.1.c
+		SCO = {
+			add_ideas = english_royal_marriage
+		}
+		if = {
+			limit = {
+				ENG = {
+					exists = yes
+					has_government = communism
+				}
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = SCO_english_royal_marriage
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = SCO
+					modifier = SCO_english_royal_marriage
+				}
+			}
+		}
+		hidden_effect = {
+			set_country_flag = bigger_west_africa_proxy_war_involvement
+		}
+		news_event = { id = tesb_SCO.4 hours = 1 }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+news_event = {
+	id = tesb_SCO.2
+	title = tesb_SCO.2.t
+	desc = tesb_SCO.2.d
+	picture = GFX_news_event_royal_visit #placeholder
+
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = tesb_SCO.2.a
+	}
+}
+
+news_event = {
+	id = tesb_SCO.3
+	title = tesb_SCO.3.t
+	desc = tesb_SCO.3.d
+	picture = GFX_news_event_royal_visit #placeholder
+
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = tesb_SCO.3.a
+	}
+}
+
+news_event = {
+	id = tesb_SCO.4
+	title = tesb_SCO.4.t
+	desc = tesb_SCO.4.d
+	picture = GFX_news_event_royal_visit #placeholder
+
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = tesb_SCO.4.a
+	}
+}
