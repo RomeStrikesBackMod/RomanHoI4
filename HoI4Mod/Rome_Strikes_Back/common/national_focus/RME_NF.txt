@@ -36,32 +36,14 @@ focus_tree = {
 	}
 
 	focus = {
-		id = RME_danube_limes
+		id = RME_dnister_limes
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = RME_four_year_plan }
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = RME_danube_limes.trigtt
+				tooltip = RME_dnister_limes.trigtt
 				OR = {
-					579 = {	# significant_number - Northern Serbia
-						owner = {
-							has_full_control_of_state = PREV
-							OR = {
-								tag = RME
-								is_subject_of = RME
-							}
-						}
-					}
-					673 = {	# significant_number - Slavonia
-						owner = {
-							has_full_control_of_state = PREV
-							OR = {
-								tag = RME
-								is_subject_of = RME
-							}
-						}
-					}
-					107 = {	# significant_number - Transdanubia
+					669 = {	# significant_number - Transtyrania
 						owner = {
 							has_full_control_of_state = PREV
 							OR = {
@@ -85,25 +67,7 @@ focus_tree = {
 			if = {
 				limit = {
 					NOT = {
-						579 = {	# significant_number - Northern Serbia
-							owner = {
-								has_full_control_of_state = PREV
-								OR = {
-									tag = RME
-									is_subject_of = RME
-								}
-							}
-						}
-						673 = {	# significant_number - Slavonia
-							owner = {
-								has_full_control_of_state = PREV
-								OR = {
-									tag = RME
-									is_subject_of = RME
-								}
-							}
-						}
-						107 = {	# significant_number - Transdanubia
+						669 = {	# significant_number - Transtyrania
 							owner = {
 								has_full_control_of_state = PREV
 								OR = {
@@ -114,9 +78,9 @@ focus_tree = {
 						}
 					}
 				}
-				custom_effect_tooltip = RME_danube_limes.tt
+				custom_effect_tooltip = RME_dnister_limes.tt
 			}
-			579 = {	# significant_number - Northern Serbia
+			669 = {	# significant_number - Transtyrania
 				if = {
 					limit = {
 						controller = {
@@ -126,120 +90,59 @@ focus_tree = {
 							}
 						}
 					}
-					custom_effect_tooltip = RME_danube_limes_northern_serbia
 					hidden_effect = {
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 630
+							province = 577
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 6634
+							province = 3407
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 11583
+							province = 414
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 11586
+							province = 6600
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 3609
-							instant_build = yes
-						}
-					}
-				}
-			}
-			673 = {	# significant_number - Slavonia
-				if = {
-					limit = {
-						controller = {
-							OR = {
-								tag = RME
-								is_subject_of = RME
-							}
-						}
-					}
-					custom_effect_tooltip = RME_danube_limes_slavonia
-					hidden_effect = {
-						add_building_construction = {
-							type = bunker
-							level = 3
-							province = 11577
+							province = 11705
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 6647
+							province = 11686
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 9608
-							instant_build = yes
-						}
-					}
-				}
-			}
-			107 = {	# significant_number - Transdanubia
-				if = {
-					limit = {
-						controller = {
-							OR = {
-								tag = RME
-								is_subject_of = RME
-							}
-						}
-					}
-					custom_effect_tooltip = RME_danube_limes_transdanubia
-					hidden_effect = {
-						add_building_construction = {
-							type = bunker
-							level = 3
-							province = 9643
+							province = 9683
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 3680
+							province = 6743
 							instant_build = yes
 						}
 						add_building_construction = {
 							type = bunker
 							level = 3
-							province = 6703
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 3
-							province = 11663
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 3
-							province = 9676
-							instant_build = yes
-						}
-						add_building_construction = {
-							type = bunker
-							level = 3
-							province = 6720
+							province = 6727
 							instant_build = yes
 						}
 					}
@@ -251,7 +154,7 @@ focus_tree = {
 	focus = {
 		id = RME_rhine_limes
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = RME_danube_limes }
+		prerequisite = { focus = RME_four_year_plan }
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = RME_rhine_limes.trigtt
@@ -287,9 +190,9 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = yes
-		x = -1
+		x = -7
 		y = 1
-		relative_position_id = RME_danube_limes
+		relative_position_id = RME_four_year_plan
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -448,7 +351,9 @@ focus_tree = {
 	focus = {
 		id = RME_rebuild_hadrians_wall
 		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = RME_dnister_limes }
 		prerequisite = { focus = RME_rhine_limes }
+		prerequisite = { focus = RME_georgia_limes }
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = RME_rebuild_hadrians_wall.trigtt
@@ -477,7 +382,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		x = 0
 		y = 1
-		relative_position_id = RME_rhine_limes
+		relative_position_id = RME_dnister_limes
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -563,7 +468,7 @@ focus_tree = {
 	focus = {
 		id = RME_georgia_limes
 		icon = GFX_goal_generic_construct_military
-		prerequisite = { focus = RME_danube_limes }
+		prerequisite = { focus = RME_four_year_plan }
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = RME_georgia_limes.trigtt
@@ -589,9 +494,9 @@ focus_tree = {
 				}
 			}
 		}
-		x = 1
+		x = -3
 		y = 1
-		relative_position_id = RME_danube_limes
+		relative_position_id = RME_four_year_plan
 		cost = 10
 		ai_will_do = {
 			factor = 1
