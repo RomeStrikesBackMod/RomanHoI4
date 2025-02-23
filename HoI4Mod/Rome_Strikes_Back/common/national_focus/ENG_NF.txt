@@ -194,7 +194,7 @@ focus_tree = {
 		relative_position_id = ENG_war_time_concessions
 		x = 0
 		y = 1
-		cost = 5
+		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
 			swap_ideas = {
@@ -217,7 +217,7 @@ focus_tree = {
 		relative_position_id = ENG_war_time_concessions
 		x = 2
 		y = 1
-		cost = 5
+		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
 			swap_ideas = {
@@ -240,7 +240,7 @@ focus_tree = {
 		relative_position_id = ENG_war_time_concessions
 		x = -2
 		y = 1
-		cost = 5
+		cost = 10
 		available_if_capitulated = yes
 		completion_reward = {
 			swap_ideas = {
@@ -345,7 +345,7 @@ focus_tree = {
 	focus = {
 		id = ENG_new_constitution
 		icon = GFX_focus_generic_treaty
-		cost = 5
+		cost = 10
 		prerequisite = {
 			focus = ENG_continue_reforms
 		}
@@ -413,7 +413,7 @@ focus_tree = {
 	focus = {
 		id = ENG_fate_of_english
 		icon = GFX_focus_attack_britain
-		cost = 5
+		cost = 10
 		prerequisite = {
 			focus = ENG_new_constitution
 		}
@@ -438,7 +438,7 @@ focus_tree = {
 	focus = {
 		id = ENG_align_UTA
 		icon = GFX_focus_chi_mission_to_the_us
-		cost = 5
+		cost = 10
 		prerequisite = {
 			focus = ENG_fate_of_english
 		}
@@ -446,7 +446,7 @@ focus_tree = {
 			focus = ENG_true_third_international
 		}
 		relative_position_id = ENG_fate_of_english
-		x = -2
+		x = -6
 		y = 1
 		available = {
 			UTA = { is_faction_leader = yes }
@@ -474,7 +474,7 @@ focus_tree = {
 	focus = {
 		id = ENG_true_third_international
 		icon = GFX_goal_support_communism
-		cost = 5
+		cost = 10
 		prerequisite = {
 			focus = ENG_fate_of_english
 		}
@@ -482,7 +482,7 @@ focus_tree = {
 			focus = ENG_align_UTA
 		}
 		relative_position_id = ENG_fate_of_english
-		x = 2
+		x = 6
 		y = 1
 		available = {
 			is_in_faction = no
@@ -501,13 +501,13 @@ focus_tree = {
 	focus = {
 		id = ENG_legacy_second_international
 		icon = GFX_focus_SOV_proclaim_soviet_hegemony
-		cost = 5
+		cost = 10
 		prerequisite = {
 			focus = ENG_true_third_international
 		}
 		relative_position_id = ENG_true_third_international
-		x = -1
-		y = 1
+		x = -3
+		y = 2
 		available = {
 			is_faction_leader = yes
 		}
@@ -519,6 +519,7 @@ focus_tree = {
 					NOT = {
 						original_tag = ISR
 						original_tag = SIA
+						original_tag = CAS
 					}
 				}
 				if = {
@@ -562,19 +563,41 @@ focus_tree = {
 			}
 		}
 	}
+
 	focus = {
-		id = ENG_anti_colonialism
+		id = ENG_fight_african_colonialism
 		icon = GFX_focus_generic_africa_liberation
-		cost = 5
-		x = 1
+		cost = 10
+		prerequisite = {
+			focus = ENG_legacy_second_international
+		}
+		relative_position_id = ENG_legacy_second_international
+		x = -1
 		y = 1
-		prerequisite = { focus = ENG_true_third_international }
-		relative_position_id = ENG_true_third_international
 		available = {
-			has_government = communism
+			is_faction_leader = yes
 		}
 		completion_reward = {
-			custom_effect_tooltip = RUS_anti_colonialism_tt
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	focus = {
+		id = ENG_deal_with_west_african_colonies
+		icon = GFX_focus_generic_africa_liberation
+		cost = 10
+		prerequisite = {
+			focus = ENG_legacy_second_international
+		}
+		relative_position_id = ENG_legacy_second_international
+		x = 1
+		y = 1
+		available = {
+			is_faction_leader = yes
+		}
+		completion_reward = {
 			every_country = {
 				limit = {
 					OR = {
@@ -592,6 +615,172 @@ focus_tree = {
 					id = tesb_RUS_news.64
 				}
 			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	focus = {
+		id = ENG_red_torch
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = 4
+		y = 1
+		prerequisite = { focus = ENG_true_third_international }
+		relative_position_id = ENG_true_third_international
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = ENG_tawantinsuyuan_communists
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = -4
+		y = 1
+		prerequisite = { focus = ENG_red_torch }
+		relative_position_id = ENG_red_torch
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = ENG_settle_tawantinsuyuan_border_disputes
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = { focus = ENG_tawantinsuyuan_communists }
+		relative_position_id = ENG_tawantinsuyuan_communists
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = ENG_fund_quisqueyan_communists
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = -2
+		y = 1
+		prerequisite = { focus = ENG_red_torch }
+		relative_position_id = ENG_red_torch
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = ENG_support_new_arcadian_communists
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = { focus = ENG_red_torch }
+		relative_position_id = ENG_red_torch
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = ENG_support_new_paphlagonian_communists
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = 2
+		y = 1
+		prerequisite = { focus = ENG_red_torch }
+		relative_position_id = ENG_red_torch
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = ENG_support_united_longhouse
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = 4
+		y = 1
+		prerequisite = { focus = ENG_red_torch }
+		relative_position_id = ENG_red_torch
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
+		}
+		ai_will_do = {
+			factor = 3
+		}
+	}
+	
+	focus = {
+		id = ENG_the_international_reborn
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		cost = 10
+		x = 2
+		y = 1
+		prerequisite = { focus = ENG_fight_african_colonialism }
+		prerequisite = { focus = ENG_deal_with_west_african_colonies }
+		prerequisite = { focus = ENG_settle_tawantinsuyuan_border_disputes }
+		prerequisite = { focus = ENG_fund_quisqueyan_communists }
+		prerequisite = { focus = ENG_support_new_arcadian_communists }
+		prerequisite = { focus = ENG_support_new_paphlagonian_communists }
+		prerequisite = { focus = ENG_support_united_longhouse }
+		relative_position_id = ENG_settle_tawantinsuyuan_border_disputes
+		available = {
+			has_government = communism
+		}
+		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			
 		}
 		ai_will_do = {
 			factor = 3
