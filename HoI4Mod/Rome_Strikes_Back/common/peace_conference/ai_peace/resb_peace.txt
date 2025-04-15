@@ -1,17 +1,44 @@
 peace_ai_desires = {
 	england_should_not_puppet_biru_at_first = {
 
-		peace_action_type = puppet
+		peace_action_type = { puppet force_government }
 
 		enable = {
 			ROOT = { tag = ENG } #Eng is negotiator
 			ROOT.FROM.FROM = { tag = BIR } #Bir is giver
-			date < 1939.1.1
+			date < 1939.7.1
 		}
 
 		ai_desire = -800
 	}
-
+	
+	england_desires_amazonia = {
+		peace_action_type = take_states
+		enable = {
+			ROOT.FROM.FROM.FROM = {
+				OR = {
+					state = 446 #Chane
+					state = 443 #Chuquiago Marka
+					state = 440 #Ica
+				}
+			}
+			ROOT = { tag = ENG }
+			ROOT.FROM = { tag = ENG }
+			ROOT.FROM.FROM = { tag = BIR }
+		}
+		ai_desire = 600
+	}
+	
+	england_not_desires_other_states = {
+		peace_action_type = take_states
+		enable = {
+			ROOT = { tag = ENG }
+			ROOT.FROM = { tag = ENG }
+			ROOT.FROM.FROM = { tag = BIR }
+		}
+		ai_desire = -400
+	}
+	
 	india_should_not_puppet_tibet_at_first = {
 
 		peace_action_type = puppet
@@ -44,7 +71,10 @@ peace_ai_desires = {
 			ROOT.FROM.FROM.FROM = {
 				pc_is_state_claimed_and_taken_by = SCA
 			}
-			ROOT = { tag = BRG }
+			OR = {
+				ROOT = { tag = BRG }
+				ROOT = { tag = ITA }
+			}
 			ROOT.FROM.FROM = { tag = GMR }
 		}
 		ai_desire = -100
@@ -58,7 +88,10 @@ peace_ai_desires = {
 					state = 285 #Lower Sil
 				}
 			}
-			ROOT = { tag = BRG }
+			OR = {
+				ROOT = { tag = BRG }
+				ROOT = { tag = ITA }
+			}
 			ROOT.FROM = { tag = SIL }
 			ROOT.FROM.FROM = { tag = GMR }
 		}
@@ -80,7 +113,10 @@ peace_ai_desires = {
 					state = 285 #Lower Sil
 				}
 			}
-			ROOT = { tag = BRG }
+			OR = {
+				ROOT = { tag = BRG }
+				ROOT = { tag = ITA }
+			}
 			ROOT.FROM = {
 				OR = {
 					tag = DEN
@@ -131,8 +167,14 @@ peace_ai_desires = {
 			FROM.FROM.FROM = {
 				state = 216
 			}
-			ROOT = { tag = BRG }
-			ROOT.FROM = { tag = BRG }
+			OR = {
+				ROOT = { tag = BRG }
+				ROOT = { tag = ITA }
+			}
+			OR = {
+				ROOT.FROM = { tag = BRG }
+				ROOT.FROM = { tag = ITA }
+			}
 			ROOT.FROM.FROM = { tag = GMR }
 		}
 		ai_desire = 1000
@@ -145,7 +187,10 @@ peace_ai_desires = {
 			FROM.FROM.FROM = {
 				state = 216
 			}
-			ROOT = { tag = BRG }
+			OR = {
+				ROOT = { tag = BRG }
+				ROOT = { tag = ITA }
+			}
 			ROOT.FROM = { tag = GHA }
 			ROOT.FROM.FROM = { tag = GMR }
 		}
@@ -157,7 +202,10 @@ peace_ai_desires = {
 		enable = {
 			ROOT = {
 				tag = SWI
-				is_in_faction_with = BRG
+				OR = {
+					is_in_faction_with = BRG
+					is_in_faction_with = ITA
+				}
 			}
 			ROOT.FROM.FROM = { tag = GMR }
 		}
