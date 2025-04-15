@@ -490,8 +490,10 @@ country_event = {
 			}
 		}
 		name = tesb_BRG.135.a
-		FLD = { transfer_state = 205 } # significant_number - Picardie
-		clr_country_flag = BRG_promised_picardie
+		FLD = {
+			transfer_state = 205 # significant_number - Picardie
+			clr_country_flag = BRG_promised_picardie
+		}
 		ai_chance = {
 			base = 1
 		}
@@ -527,6 +529,72 @@ country_event = {
 	}
 }
 
+#Italian version of promise
+country_event = {
+	id = tesb_BRG.136
+	title = tesb_BRG.136.t
+	desc = tesb_BRG.136.d
+	picture = GFX_report_event_german_italian_pact #Placeholder image
+
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		FLD = {
+			NOT = { owns_state = 205 }
+		}
+	}
+	immediate = {
+	}
+	
+	#Grant FLD picardie
+	option = {
+		trigger = {
+			OR = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
+		name = tesb_BRG.135.a
+		FLD = {
+			transfer_state = 205 # significant_number - Picardie
+			clr_country_flag = BRG_promised_picardie
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Grant FRA picardie/Keep picardie
+	option = {
+		trigger = {
+			OR = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
+		name = tesb_BRG.135.b
+		FLD = {
+			add_opinion_modifier = {
+				modifier = BRG_broke_promise
+				target = ITA
+			}
+		}
+	}
+	option = {
+		trigger = {
+			NOT = {
+				owns_state = 205
+				any_subject_country = {
+					owns_state = 205
+				}
+			}
+		}
+		name = tesb_BRG.135.c
+	}
+}
 
 country_event = {
 	id = tesb_BRG.140
@@ -703,6 +771,17 @@ country_event = {
 		create_wargoal = {
 			type = puppet_wargoal_focus
 			target = ITA
+		}
+		if = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = ITA
+			}
+			remove_from_faction = ITA
+		}
+		else_if = {
+			limit = { is_in_faction_with = ITA }
+			leave_faction = yes
 		}
 	}
 }
@@ -899,6 +978,81 @@ country_event = {
 	}
 }
 
+#Italian version
+country_event = {
+	id = tesb_BRG.2001
+	title = tesb_BRG.200.t
+	desc = tesb_BRG.200.d
+	picture = GFX_report_event_generic_sign_treaty1
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_BRG.200.a
+		hidden_effect = {
+			every_controlled_state = {
+				limit = {
+					is_owned_by = GMR
+					OR = {
+						state = 209 #Holland
+						state = 210 #Friesland
+						state = 231 #East Friesland
+						state = 213 #Hessen
+						state = 214 #Eastern Rhineland
+						state = 215 #Westfalen
+					}
+				}
+				transfer_state_to = ITA
+			}
+		}
+		set_temp_variable = { german_part = SIL }
+		partition_germany = yes
+		set_temp_variable = { german_part = DEN }
+		partition_germany = yes
+		set_temp_variable = { german_part = BAV }
+		partition_germany = yes
+		hidden_effect = {
+			if = {
+				limit = {
+					any_subject_country = {
+						owns_state = 228
+					}
+					controls_state = 229
+				}
+				random_subject_country = {
+					limit = {
+						controls_state = 228
+					}
+					transfer_state = 229
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						GMR = { owns_state = 216 }
+						controls_state = 216
+					}
+					X03 = { owns_state = 577 }
+				}
+				216 = { transfer_state_to = X03 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						GMR = { owns_state = 216 }
+						controls_state = 216
+					}
+				}
+				216 = {
+					random_neighbor_state = { owner = { transfer_state = 216 } }
+				}
+			}
+			country_event = { id = tesb_BRG.201 days = 1 }
+			news_event = { id = tesb_BRG.2021 hours = 1 }
+		}
+	}
+}
+
 country_event = {
 	id = tesb_BRG.201
 	hidden = yes
@@ -959,6 +1113,28 @@ news_event = {
 		name = tesb_BRG.202.b
 		trigger = {
 			NOT = { is_in_faction_with = BRG }
+		}
+	}
+}
+
+news_event = {
+	id = tesb_BRG.2021
+	title = tesb_BRG.202.t
+	desc = tesb_BRG.2021.d
+	picture = GFX_news_event_generic_sign_treaty2
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_BRG.202.a
+		trigger = {
+			is_in_faction_with = ITA
+		}
+	}
+	option = {
+		name = tesb_BRG.2021.b
+		trigger = {
+			NOT = { is_in_faction_with = ITA }
 		}
 	}
 }
