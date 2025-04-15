@@ -684,7 +684,13 @@ country_event = {
 			target = FROM
 			type = annex_everything
 		}
-		remove_from_faction = FROM
+		if = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = FROM
+			}
+			remove_from_faction = FROM
+		}
 	}
 }
 

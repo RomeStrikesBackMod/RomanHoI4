@@ -963,8 +963,38 @@ set_BRG_subject_tag = {
 	}
 	if = {
 		limit = {
+			is_subject_of = ITA
+			ITA = { has_government = absolutist }
+			is_dynamic_country = no
+		}
+		drop_cosmetic_tag = yes
+		meta_effect = {
+			text = {
+				set_cosmetic_tag = [TAGNAME]_subj_BRG
+			}
+			TAGNAME = "[THIS.GetTag]"
+		}
+	}
+	if = {
+		limit = {
 			is_subject_of = BRG
 			BRG = { has_government = absolutist }
+			is_dynamic_country = yes
+		}
+		drop_cosmetic_tag = yes
+		meta_effect = {
+			text = {
+				set_cosmetic_tag = [TAGNAME]_subj_BRG
+			}
+			TAGNAME = "[?global.dyn_tag.GetTag]"
+		}
+		log = "[?global.dyn_tag]"
+		clear_variable = global.dyn_tag
+	}
+	if = {
+		limit = {
+			is_subject_of = ITA
+			ITA = { has_government = absolutist }
 			is_dynamic_country = yes
 		}
 		drop_cosmetic_tag = yes
