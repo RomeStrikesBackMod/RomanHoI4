@@ -1,6 +1,6 @@
 ﻿add_namespace = tesb_india
 
-# Event starting republican civil war
+# Start opening war
 country_event = {
 	id = tesb_india.1
 	title = tesb_india.1.t
@@ -30,5 +30,86 @@ news_event = {
 	is_triggered_only = yes
 	option = {
 		name = tesb_india.2.a
+	}
+}
+
+
+# Invite country to faction
+country_event = {
+	id = tesb_india.10
+	title = tesb_india.10.t
+	desc = tesb_india.10.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# accept unconditionally
+	option = {
+		name = tesb_india.10.a
+		IND = { country_event = { id = tesb_india.11 } }
+		trigger = {
+			NOT = { has_war_with = IND }
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { has_government = democratic }
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_india.10.b
+		IND = { country_event = { id = tesb_india.12 } }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+	}
+}
+
+# country accepts
+country_event = {
+	id = tesb_india.11
+	title = tesb_india.11.t
+	desc = tesb_india.11.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_india.11.a
+		FROM = { leave_faction = yes }
+		add_to_faction = FROM
+	}
+}
+
+# country refused to join
+country_event = {
+	id = tesb_india.12
+	title = tesb_india.12.t
+	desc = tesb_india.12.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# allow them to refuse
+	option = {
+		name = tesb_india.12.a
+		ai_chance = {
+			base = 0
+		}
+	}
+	# force them to join
+	option = {
+		name = tesb_india.12.b
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+		ai_chance = {
+			base = 100
+		}
 	}
 }
