@@ -140,7 +140,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			IRN = { add_timed_idea  = { idea = BRG_strengthen_democracy days = 730 } }
+			IRN = { add_timed_idea  = { idea = IND_bolsters_democracy days = 730 } }
 		}
 	}
 	
@@ -195,8 +195,11 @@ focus_tree = {
 		ai_will_do = {
 			factor = 5
 		}
+		will_lead_to_war_with = PEG
 
 		completion_reward = {
+			PEG = { add_timed_idea  = { idea = IND_bolsters_democracy days = 730 } }
+			RUS = { country_event = tesb_india.20 } 
 		}
 	}
 	
@@ -211,8 +214,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 5
 		}
+		will_lead_to_war_with = BUR
 
 		completion_reward = {
+			declare_war_on = {
+				target = BUR
+				type = topple_government
+			}
 		}
 	}
 	

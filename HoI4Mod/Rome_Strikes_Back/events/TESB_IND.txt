@@ -113,3 +113,99 @@ country_event = {
 		}
 	}
 }
+
+# Propose Russia frees Pegu
+country_event = {
+	id = tesb_india.20
+	title = tesb_india.20.t
+	desc = tesb_india.20.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# refuse
+	option = {
+		name = tesb_india.20.a
+		IND = { country_event = tesb_india.21 }
+		ai_chance = {
+			base = 5
+		}
+	}
+	# agree
+	option = {
+		name = tesb_india.20.b
+		end_puppet = PEG
+		IND = { country_event = tesb_india.22 }
+		ai_chance = {
+			base = 95
+		}
+	}
+}
+
+# Russia refused, now war
+country_event = {
+	id = tesb_india.21
+	title = tesb_india.21.t
+	desc = tesb_india.21.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.21.a
+		declare_war_on = {
+			target = PEG
+			type = topple_government
+		}
+	}
+}
+
+# Burma freed
+country_event = {
+	id = tesb_india.22
+	title = tesb_india.22.t
+	desc = tesb_india.22.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.22.a
+		PEG = { country_event = tesb_india.23 }
+	}
+}
+
+# Burma joins India
+country_event = {
+	id = tesb_india.23
+	title = tesb_india.23.t
+	desc = tesb_india.23.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.23.a
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			last_election = "1932.1.1"
+			election_frequency = 48
+		}
+		IND = { add_to_faction = PEG }
+		IND = { country_event = tesb_india.24 }
+	}
+}
+
+# Burma joins India notification
+country_event = {
+	id = tesb_india.24
+	title = tesb_india.24.t
+	desc = tesb_india.24.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.24.a
+	}
+}
