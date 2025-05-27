@@ -29,6 +29,23 @@ focus_tree = {
 		cost = 10
 		available = {
 			is_subject = no
+			OR = {
+				AND = {
+					country_exists = FRA
+					NOT = { is_in_faction_with = FRA }
+					NOT = { has_war_with = FRA }
+				}
+				AND = {
+					country_exists = ITA
+					NOT = { is_in_faction_with = ITA }
+					NOT = { has_war_with = ITA }
+				}
+				AND = {
+					country_exists = BRG
+					NOT = { is_in_faction_with = BRG }
+					NOT = { has_war_with = BRG }
+				}
+			}
 		}
 		select_effect = {
 			set_variable = { unowned_cores_@BRG = 9 }
