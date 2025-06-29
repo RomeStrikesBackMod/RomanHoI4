@@ -223,4 +223,45 @@ peace_ai_desires = {
 		}
 		ai_desire = -500
 	}
+	
+	ITA_puppet_brittany = {
+		peace_action_type = { puppet }
+		enable = {
+			ROOT = {
+				tag = ITA
+			}
+			NOT = { country_exists = BRG }
+			ROOT.FROM.FROM = { tag = BRI }
+		}
+		ai_desire = 500
+	}
+	
+	ITA_take_cored_states = {
+		peace_action_type = { take_states }
+		enable = {
+			ROOT.FROM.FROM.FROM = {
+				OR = {
+					state = 70 #Champagne
+				}
+			}
+			ROOT = {
+				tag = ITA
+			}
+			NOT = { country_exists = BRG }
+			ROOT.FROM.FROM = { tag = FRA }
+		}
+		ai_desire = 400
+	}
+	
+	ITA_puppet_france = {
+		peace_action_type = { puppet }
+		enable = {
+			ROOT = {
+				tag = ITA
+			}
+			NOT = { country_exists = BRG }
+			ROOT.FROM.FROM = { tag = FRA }
+		}
+		ai_desire = 300
+	}
 }
