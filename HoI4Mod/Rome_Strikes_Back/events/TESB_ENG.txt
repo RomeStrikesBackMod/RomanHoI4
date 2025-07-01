@@ -131,3 +131,77 @@ news_event = {
 		name = tesb_england.4.a
 	}
 }
+
+# New Arcadia invited to join The True Third International
+country_event = {
+	id = tesb_england.10
+	title = tesb_england.10.t
+	desc = tesb_england.10.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = tesb_england.10.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		hidden_effect = {
+			ENG = {
+				country_event = { id = tesb_england.11 }
+			}
+		}
+		ai_chance = {
+			base = 4
+		}
+	}
+	
+	# Refuse
+	option = {
+		name = tesb_england.10.b
+		hidden_effect = {
+			ENG = {
+				country_event = { id = tesb_england.12 }
+			}
+			UTA = {
+				country_event = { id = tesb_UTA.11 }
+			}
+		}
+		ai_chance = {
+			base = 6
+		}
+	}
+}
+
+
+# New Arcadia joins The True Third International
+country_event = {
+	id = tesb_england.11
+	title = tesb_england.11.t
+	desc = tesb_england.11.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	
+	option = {
+		name = tesb_england.11.a
+		add_to_faction = COL
+	}
+}
+
+
+# New Arcadia instead joins the Turtle Alliance
+country_event = {
+	id = tesb_england.12
+	title = tesb_england.12.t
+	desc = tesb_england.12.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	
+	option = {
+		name = tesb_england.12.a
+	}
+}

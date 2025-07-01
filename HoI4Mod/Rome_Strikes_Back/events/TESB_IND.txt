@@ -83,6 +83,10 @@ country_event = {
 		name = tesb_india.11.a
 		FROM = { leave_faction = yes }
 		add_to_faction = FROM
+		add_named_threat = {
+			threat = 0.2
+			name = "[This.GetName] joins [FROM.GetFactionName]"
+		}
 	}
 }
 
@@ -191,6 +195,16 @@ country_event = {
 			last_election = "1932.1.1"
 			election_frequency = 48
 		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.50
+		}
+		white_peace = FLD
+		white_peace = ITA
+		white_peace = BRI
+		white_peace = FRA
+		white_peace = SWI
+		white_peace = SCA
 		IND = { add_to_faction = PEG }
 		IND = { country_event = tesb_india.24 }
 	}
@@ -207,5 +221,136 @@ country_event = {
 
 	option = {
 		name = tesb_india.24.a
+	}
+}
+
+# Burma and Pegu unite
+country_event = {
+	id = tesb_india.25
+	title = tesb_india.25.t
+	desc = tesb_india.25.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.25.a
+		PEG = {
+			annex_country = {
+				target = BUR
+				transfer_troops = yes
+			}
+			74 = {
+				add_core_of = PEG
+			}
+			75 = {
+				add_core_of = PEG
+			}
+			transfer_state = 272
+			272 = {
+				add_core_of = PEG
+			}
+			transfer_state = 274
+			transfer_state = 275
+		}
+	}
+}
+
+
+country_event = {
+	id = tesb_india.26
+	title = tesb_india.26.t
+	desc = tesb_india.26.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+	}
+}
+
+
+# Propose Sukhothai become democratic
+country_event = {
+	id = tesb_india.30
+	title = tesb_india.30.t
+	desc = tesb_india.30.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	# refuse
+	option = {
+		name = tesb_india.30.a
+		IND = { country_event = tesb_india.31 }
+		ai_chance = {
+			base = 5
+		}
+	}
+	# agree
+	option = {
+		name = tesb_india.30.b
+		THIS = { country_event = tesb_india.32 }
+		ai_chance = {
+			base = 95
+		}
+	}
+}
+
+# Sukhothai refused, now war
+country_event = {
+	id = tesb_india.31
+	title = tesb_india.31.t
+	desc = tesb_india.31.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.31.a
+		create_wargoal = {
+			target = SUK
+			type = topple_government
+		}
+	}
+}
+
+# Sukhothai joins India
+country_event = {
+	id = tesb_india.32
+	title = tesb_india.32.t
+	desc = tesb_india.32.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.32.a
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			last_election = "1932.1.1"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.50
+		}
+		IND = { add_to_faction = SUK }
+		IND = { country_event = tesb_india.33 }
+	}
+}
+
+
+# Sukhothai joins India notification
+country_event = {
+	id = tesb_india.33
+	title = tesb_india.33.t
+	desc = tesb_india.33.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.33.a
 	}
 }

@@ -1,0 +1,39 @@
+ITA_decisions = {
+	ITA_give_zeeland_to_FLD = {
+		state_target = yes
+		target_root_trigger = {
+			is_in_faction_with = FLD
+		}
+		visible = {
+			FROM = {
+				NOT = { has_state_flag = ITA_gave_FLD }
+			}
+			FLD = {
+				NOT = { owns_state = FROM }
+			}
+		}
+		available = {
+			owns_state = FROM
+		}
+		targets = {
+			59 # Zeeland
+		}
+		complete_effect = {
+			FLD = {
+				transfer_state = FROM
+				if = {
+					limit = {
+						FROM = { NOT = { is_core_of = PREV } }
+					}
+					add_state_core = FROM
+				}
+			}
+			hidden_effect = {
+				FROM = { set_state_flag = ITA_gave_FLD }
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
