@@ -665,6 +665,7 @@ country_event = {
 	immediate = {
 	}
 	
+	# yes
 	option = {
 		name = tesb_RUS.130.a
 		ai_chance = {
@@ -687,6 +688,39 @@ country_event = {
 				has_opinion = {
 					target = RUS
 					value < 0
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					has_war = yes
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_completed_focus = JAP_placate_chinese
+			}
+			modifier = {
+				factor = 0.5
+				threat > 0.5
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					has_government = fascism
+				}
+				OR = {
+					has_government = democratic
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					has_government = fascism
+				}
+				OR = {
+					has_government = fascism
+					has_government = absolutism
 				}
 			}
 			modifier = {
@@ -724,6 +758,8 @@ country_event = {
 			country_event = { id = tesb_RUS.131 }
 		}
 	}
+	
+	# no
 	option = {
 		name = tesb_RUS.130.b
 		ai_chance = {
@@ -744,6 +780,39 @@ country_event = {
 				has_opinion = {
 					target = RUS
 					value < 0
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					has_war = yes
+				}
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = JAP_placate_chinese
+			}
+			modifier = {
+				factor = 2
+				threat > 0.5
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					has_government = fascism
+				}
+				OR = {
+					has_government = democratic
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					has_government = fascism
+				}
+				OR = {
+					has_government = fascism
+					has_government = absolutism
 				}
 			}
 			modifier = {
