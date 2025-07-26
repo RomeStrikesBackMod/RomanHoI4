@@ -28,7 +28,7 @@ focus_tree = {
 		icon = GFX_focus_generic_monarchy_2
 		mutually_exclusive = { focus = ITA_the_roman_republic }
 		cost = 10
-		x = 21
+		x = 22
 		y = 0
 		completion_reward = {
 			add_country_leader_role = {
@@ -231,7 +231,7 @@ focus_tree = {
 		prerequisite = { focus = ITA_holy_roman_empire }
 		mutually_exclusive = { focus = ITA_separation_of_church_and_state }
 		cost = 10
-		x = -2
+		x = -3
 		y = 1
 		available = {
 			is_independent_country = yes
@@ -297,7 +297,7 @@ focus_tree = {
 		prerequisite = { focus = ITA_holy_roman_empire }
 		mutually_exclusive = { focus = ITA_union_of_church_and_state }
 		cost = 10
-		x = 0
+		x = -1
 		y = 1
 		available = {
 			is_independent_country = yes
@@ -373,7 +373,7 @@ focus_tree = {
 		relative_position_id = ITA_secure_raetia
 		prerequisite = { focus = ITA_secure_raetia }
 		cost = 10
-		x = 0
+		x = -1
 		y = 1
 		available = {
 			is_independent_country = yes
@@ -436,15 +436,53 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = ITA_hre_hierarchy
+		id = ITA_invite_gaul
 		icon = GFX_focus_ger_revive_kaiserreich
-		relative_position_id = ITA_italian_unity
-		prerequisite = { focus = ITA_italian_unity }
-		prerequisite = { focus = ITA_union_of_church_and_state focus = ITA_separation_of_church_and_state }
+		relative_position_id = ITA_secure_raetia
+		prerequisite = { focus = ITA_secure_raetia }
 		cost = 10
-		x = 0
+		x = 1
 		y = 1
 		completion_reward = {
+			custom_effect_tooltip = ITA_gaul.tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						OR = {
+							original_tag = BRI
+							original_tag = AQI
+							original_tag = FRA
+							original_tag = FLD
+						}
+					}
+					set_country_flag = HRE_region_integration_started
+				}
+			}
+			set_country_flag = {
+				flag = negotiation_in_progress
+				days = 7
+				value = 1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	focus = {
+		id = ITA_hre_hierarchy
+		icon = GFX_focus_ger_revive_kaiserreich
+		relative_position_id = ITA_invite_gaul
+		prerequisite = { focus = ITA_invite_gaul }
+		prerequisite = { focus = ITA_italian_unity }
+		cost = 10
+		x = -1
+		y = 1
+		completion_reward = {
+			country_event = {
+				id = tesb_ITA.40
+				hours = 12
+			}
 		}
 		ai_will_do = {
 			base = 5

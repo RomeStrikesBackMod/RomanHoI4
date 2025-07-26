@@ -2504,6 +2504,105 @@ italy_decisions = {
 			base = 10
 		}
 	}
+	
+	hre_negotiate_with_territory = {
+		icon = generic_form_nation
+		available = {
+			FROM = { is_subject = no }
+			NOT = { has_war_with = FROM }
+		}
+		
+		visible = {
+			has_completed_focus = ITA_invite_gaul
+			FROM = {
+				exists = yes
+				NOT = { is_subject_of = ITA }
+				NOT = { is_in_faction_with = ITA }
+			}
+			NOT = {
+				has_country_flag = hre_negotiation_in_progress
+			}
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_country_flag = HRE_region_integration_started
+				NOT = { is_subject_of = ITA }
+				NOT = { is_in_faction_with = ITA }
+			}
+		}
+
+		days_re_enable = 120
+		days_remove = 60
+
+		complete_effect = {
+			set_country_flag = {
+				flag = hre_negotiation_in_progress
+				days = 7
+				value = 1
+			}
+		}
+		remove_effect = {
+			FROM = {
+				country_event = { id = tesb_ITA.50 hours = 1 }
+			}
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				check_variable = { From.faction_willingness < 0 }
+				factor = 0.001
+			}
+		}
+	}
+	
+	hre_negotiate_with_member = {
+		icon = generic_form_nation
+		available = {
+			FROM = { is_subject = no }
+		}
+		
+		visible = {
+			has_completed_focus = ITA_hre_hierarchy
+			FROM = {
+				exists = yes
+				NOT = { is_subject_of = ITA }
+				is_in_faction_with = ITA
+			}
+			NOT = {
+				has_country_flag = hre_negotiation_in_progress
+			}
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_country_flag = HRE_region_integration_started
+				NOT = { is_subject_of = ITA }
+				is_in_faction_with = ITA
+			}
+		}
+
+		days_re_enable = 120
+		days_remove = 60
+
+		complete_effect = {
+			set_country_flag = {
+				flag = hre_negotiation_in_progress
+				days = 7
+				value = 1
+			}
+		}
+		remove_effect = {
+			FROM = { country_event = { id = tesb_ITA.41 hours = 12 } }
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				check_variable = { From.hre_integrate_willingness < 0 }
+				factor = 0.001
+			}
+		}
+	}
 }
 
 ITA_hre_influence_decisions = {
