@@ -205,3 +205,75 @@ country_event = {
 		name = tesb_england.12.a
 	}
 }
+
+
+# New Paphlagonia invited to join The True Third International
+country_event = {
+	id = tesb_england.20
+	title = tesb_england.20.t
+	desc = tesb_england.20.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	
+	# Accept
+	option = {
+		name = tesb_england.20.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		hidden_effect = {
+			ENG = {
+				country_event = { id = tesb_england.21 }
+			}
+		}
+		ai_chance = {
+			base = 7
+		}
+	}
+	
+	# Refuse
+	option = {
+		name = tesb_england.20.b
+		hidden_effect = {
+			ENG = {
+				country_event = { id = tesb_england.22 }
+			}
+		}
+		ai_chance = {
+			base = 3
+		}
+	}
+}
+ 
+
+# New Paphlagonia joins The True Third International
+country_event = {
+	id = tesb_england.21
+	title = tesb_england.21.t
+	desc = tesb_england.21.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	
+	option = {
+		name = tesb_england.21.a
+		add_to_faction = ARG
+	}
+}
+
+
+# New Paphlagonia remains independent
+country_event = {
+	id = tesb_england.22
+	title = tesb_england.22.t
+	desc = tesb_england.22.d
+	picture = GFX_report_event_eng_royal_family
+
+	is_triggered_only = yes
+	
+	option = {
+		name = tesb_england.22.a
+	}
+}
