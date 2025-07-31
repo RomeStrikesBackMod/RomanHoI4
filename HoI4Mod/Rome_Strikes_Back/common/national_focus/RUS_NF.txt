@@ -1957,7 +1957,7 @@ focus_tree = {
 	focus = {
 		id = RUS_defensive_stance
 		icon = GFX_focus_generic_little_entente
-		x = -1
+		x = -2
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_second_northern_alliance }
@@ -1985,7 +1985,7 @@ focus_tree = {
 	focus = {
 		id = RUS_interventionist_stance
 		icon = GFX_goal_generic_territory_or_war
-		x = 1
+		x = 2
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_second_northern_alliance }
@@ -3263,7 +3263,7 @@ focus_tree = {
 	focus = {
 		id = RUS_anti_fascist_campaign
 		icon = GFX_focus_generic_anti_fascist_diplomacy
-		x = -1
+		x = -3
 		y = 1
 		cost = 10
 		prerequisite = { focus = RUS_asian_expansion }
@@ -3300,6 +3300,29 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 3
+		}
+	}
+	
+	focus = {
+		id = RUS_deal_with_japan
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = RUS_asian_expansion }
+		relative_position_id = RUS_asian_expansion
+		available = {
+			OR = {
+				has_war_with = MNG
+				has_war_with = IND
+				threat > 0.6
+			}
+		}
+		completion_reward = {
+			country_event = { id = tesb_RUS.160 }
+		}
+		ai_will_do = {
+			factor = 10
 		}
 	}
 

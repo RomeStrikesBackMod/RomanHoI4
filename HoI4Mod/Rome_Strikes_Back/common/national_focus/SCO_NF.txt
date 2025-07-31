@@ -411,6 +411,22 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			create_faction = NEW_NORTHERN_ALLIANCE
+			if = {
+				limit = {
+					SCA = { has_completed_focus = SCA_normalize_relations_SCO }
+				}
+				add_to_faction = SCA
+			}
+			if = {
+				limit = {
+					ENG = {
+						is_in_faction = no
+						has_government = democratic
+					}
+				}
+				THIS = { add_to_faction = ENG }
+			}
 		}
 	}
 	

@@ -767,3 +767,288 @@ country_event = {
 		}
 	}
 }
+
+
+### Integrate Foederati
+
+# Establishing HRE hierarchy
+country_event = {
+	id = tesb_ITA.40
+	title = tesb_ITA.40.t
+	desc = tesb_ITA.40.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+	
+	# Now
+	option = {
+		name = tesb_ITA.40.a
+		every_country = {
+			limit = {
+				is_in_faction_with = ITA
+				NOT = { tag = ITA }
+				is_subject = no
+			}
+			country_event = { id = tesb_ITA.41 hours = 12 }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	# Later
+	option = {
+		name = tesb_ITA.40.b
+		set_country_flag = HRE_hierarchy_flag
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+
+# Becoming part of the HRE hierarchy?
+country_event = {
+	id = tesb_ITA.41
+	title = tesb_ITA.41.t
+	desc = tesb_ITA.41.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			TESB_check_hre_integrate_willingness = yes
+		}
+	}
+
+	# Become puppet
+	option = {
+		name = tesb_ITA.41.a
+		ITA = {
+			effect_tooltip = {
+				if = {
+					limit = { has_dlc = "Together for Victory" }
+					set_autonomy = {
+						target = ROOT
+						autonomy_state = autonomy_puppet
+					}
+				}
+				else = {
+					puppet = ROOT
+				}
+			}
+			hidden_effect = { country_event = { id = tesb_ITA.43 hours = 12 } }
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				check_variable = { Root.hre_integrate_willingness > 0 }
+				factor = 2
+			}
+			modifier = {
+				check_variable = { Root.hre_integrate_willingness > 10 }
+				factor = 2
+			}
+			modifier = {
+				check_variable = { Root.hre_integrate_willingness > 20 }
+				factor = 2
+			}
+			modifier = {
+				is_subject = yes
+				factor = 0
+			}
+		}
+	}
+
+	# No
+	option = {
+		name = tesb_ITA.41.b
+		set_country_flag = refused_HRE_hierarchy_once
+		RME = {
+			hidden_effect = { country_event = { id = tesb_ITA.42 hours = 12 } }
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+
+# Rejected integration
+country_event = {
+	id = tesb_ITA.42
+	title = tesb_ITA.42.t
+	desc = tesb_ITA.42.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.42.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_HRE_hierarchy
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+
+# Became puppet
+country_event = {
+	id = tesb_ITA.43
+	title = tesb_ITA.43.t
+	desc = tesb_ITA.43.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.43.a
+		if = {
+			limit = { has_dlc = "Together for Victory" }
+			set_autonomy = {
+				target = FROM
+				autonomy_state = autonomy_puppet
+			}
+		}
+		else = {
+			puppet = FROM
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+
+# Alliance with HRE?
+country_event = {
+	id = tesb_ITA.50
+	title = tesb_ITA.50.t
+	desc = tesb_ITA.50.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			TESB_check_hre_faction_willingness = yes
+		}
+	}
+	# Yes
+	option = {
+		name = tesb_ITA.50.a
+		ITA = {
+			effect_tooltip = {
+				add_to_faction = ROOT
+			}
+			hidden_effect = { country_event = { id = tesb_ITA.51 hours = 12 } }
+		}
+		if = {
+			limit = { absolutist > 0.3 NOT = { has_government = absolutist } }
+			add_popularity = { ideology = absolutist popularity = 0.1 }
+			set_politics = { ruling_party = absolutist elections_allowed = no }
+		}
+		else = { add_popularity = { ideology = absolutist popularity = 0.1 } }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				check_variable = { Root.faction_willingness > 0 }
+				factor = 2
+			}
+			modifier = {
+				check_variable = { Root.faction_willingness > 10 }
+				factor = 2
+			}
+			modifier = {
+				check_variable = { Root.faction_willingness > 20 }
+				factor = 2
+			}
+			modifier = {
+				is_subject = yes
+				NOT = { is_subject_of = ITA }
+				factor = 0
+			}
+		}
+	}
+	# No
+	option = {
+		name = tesb_ITA.50.b
+		ITA = {
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = rejected_faction
+				}
+				if = {
+					limit = { ROOT = { NOT = { has_government = absolutist } } }
+					create_wargoal = {
+						type = topple_government
+						target = ROOT
+					}
+				}
+			}
+			hidden_effect = { country_event = { id = tesb_ITA.52 hours = 12 } }
+		}
+		add_popularity = { ideology = absolutist popularity = 0.1 }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				check_variable = { Root.faction_willingness < 0 }
+				factor = 2
+			}
+		}
+	}
+}
+
+
+# [Country] Joins our Faction
+country_event = {
+	id = tesb_ITA.51
+	title = tesb_ITA.51.t
+	desc = tesb_ITA.51.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_ITA.51.a
+		add_to_faction = FROM
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+
+# [Country] Rejects our Faction
+country_event = {
+	id = tesb_ITA.52
+	title = tesb_ITA.52.t
+	desc = tesb_ITA.52.d
+	picture = GFX_goal_generic_improve_relations
+	
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_restore_rome.12.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_faction
+		}
+		if = {
+			limit = { FROM = { NOT = { has_government = absolutist } } }
+			create_wargoal = {
+				type = topple_government
+				target = FROM
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}

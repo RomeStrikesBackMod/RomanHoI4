@@ -188,7 +188,7 @@ country_event = {
 	# accept unconditionally
 	option = {
 		name = tesb_UTA.10.a
-		trigger = { THIS = { is_in_faction = yes } }
+		trigger = { THIS = { is_in_faction_with = UTA } }
 		UTA = { country_event = { id = tesb_UTA.11 } }
 		ai_chance = {
 			base = 0
@@ -241,7 +241,10 @@ country_event = {
 		COL = { add_state_core = 177 } # Significant number - Guaviare
 		COL = { add_state_core = 179 } # Significant number - Panama Canal
 		add_to_faction = COL
-		COL = { country_event = { id = tesb_UTA.13 } }
+		COL = {
+			country_event = { id = tesb_UTA.13 }
+			set_political_party = { ideology = democratic }
+		}
 		ai_chance = {
 			base = 1
 		}
@@ -282,6 +285,9 @@ country_event = {
 	option = {
 		name = tesb_UTA.14.a
 		UTA = { add_to_faction = COL }
+		COL = {
+			set_political_party = { ideology = democratic }
+		}
 		ai_chance = {
 			base = 0
 		}

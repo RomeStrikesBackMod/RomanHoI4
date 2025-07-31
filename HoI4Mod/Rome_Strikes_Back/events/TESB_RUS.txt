@@ -1548,3 +1548,93 @@ country_event = {
 		}
 	}
 }
+
+# Invite Japan
+country_event = {
+	id = tesb_RUS.160
+	title = tesb_RUS.160.t
+	desc = tesb_RUS.160.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	option = {
+		name = tesb_RUS.160.a
+		JAP = {
+			country_event = { id = tesb_RUS.161 }
+		}
+	}
+}
+
+# Accept or deny
+country_event = {
+	id = tesb_RUS.161
+	title = tesb_RUS.161.t
+	desc = tesb_RUS.161.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+	}
+	
+	# Deny
+	option = {
+		name = tesb_RUS.161.a
+		RUS = {
+			country_event = { id = tesb_RUS.162 }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	
+	# Accept
+	option = {
+		name = tesb_RUS.161.b
+		RUS = {
+			country_event = { id = tesb_RUS.163 }
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Denied
+country_event = {
+	id = tesb_RUS.162
+	title = tesb_RUS.162.t
+	desc = tesb_RUS.162.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+		declare_war_on = {
+			target = JAP
+			type = topple_government
+		}
+	}
+	
+	option = {
+		name = tesb_RUS.162.a
+	}
+}
+
+
+country_event = {
+	id = tesb_RUS.163
+	title = tesb_RUS.163.t
+	desc = tesb_RUS.163.d
+	picture = GFX_report_event_german_italian_pact #placeholder image
+
+	is_triggered_only = yes
+	immediate = {
+		RUS = { add_to_faction = JAP }
+	}
+	
+	option = {
+		name = tesb_RUS.163.a
+	}
+}
