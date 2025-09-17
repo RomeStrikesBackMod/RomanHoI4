@@ -173,7 +173,12 @@ focus_tree = {
 			NOT = { has_war_with = ARG }
 		}
 		bypass = {
-			is_in_faction_with = ARG
+			OR = {
+				is_in_faction_with = ARG
+				ARG = {
+					is_in_faction_with = ENG
+				}
+			}
 		}
 		ai_will_do = { factor = 80 }
 		completion_reward = {
