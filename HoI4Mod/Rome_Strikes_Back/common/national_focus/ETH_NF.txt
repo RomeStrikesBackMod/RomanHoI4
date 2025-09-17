@@ -533,42 +533,36 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ETH_english_colony
+		id = ETH_expel_colonizers
 		icon = GFX_goal_generic_more_territorial_claims
 		relative_position_id = ETH_decolonization
-		x = -3
+		x = -2
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_decolonization }
 		will_lead_to_war_with = X01
 		available = {
-			X01 = { exists = yes is_subject = yes }
-			has_war = no
+			OR = {
+				X01 = { exists = yes is_subject = yes }
+				X03 = { exists = yes is_subject = yes }
+			}
 			is_faction_leader = yes
 			is_independent_country = yes
 		}
 		completion_reward = {
-			X01 = { overlord = { country_event = { id = tesb_ETH.210 } } }
-		}
-	}
-
-	focus = {
-		id = ETH_scottish_colonies
-		icon = GFX_goal_generic_more_territorial_claims
-		relative_position_id = ETH_decolonization
-		x = -1
-		y = 1
-		cost = 10
-		prerequisite = { focus = ETH_decolonization }
-		will_lead_to_war_with = X03
-		available = {
-			X03 = { exists = yes is_subject = yes }
-			has_war = no
-			is_faction_leader = yes
-			is_independent_country = yes
-		}
-		completion_reward = {
-			X03 = { overlord = { country_event = { id = tesb_ETH.230 } } }
+			set_global_flag = ETH_colonial_proxy_war
+			X01 = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.2
+				}
+			}
+			X03 = {
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.5
+				}
+			}
 		}
 	}
 
@@ -576,7 +570,7 @@ focus_tree = {
 		id = ETH_german_colony
 		icon = GFX_goal_generic_more_territorial_claims
 		relative_position_id = ETH_decolonization
-		x = 1
+		x = 0
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_decolonization }
@@ -600,7 +594,7 @@ focus_tree = {
 		id = ETH_iranian_colony
 		icon = GFX_goal_generic_more_territorial_claims
 		relative_position_id = ETH_decolonization
-		x = 3
+		x = 2
 		y = 1
 		cost = 10
 		prerequisite = { focus = ETH_decolonization }
