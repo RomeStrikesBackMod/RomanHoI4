@@ -57,3 +57,70 @@ islands_spend_amount = {
 		value = 100
 	}
 }
+
+
+support_AOT = {
+	allowed = {
+		OR = {
+			original_tag = JAP
+			original_tag = MNG
+			original_tag = UTA
+			original_tag = KOR
+			original_tag = CAN
+			original_tag = AST
+			original_tag = IND
+			original_tag = MEX
+			original_tag = BIR
+			original_tag = ENG
+			original_tag = RME
+		}
+	}
+	enable = {
+		has_idea = AOT_volunteers
+		has_country_flag = support_AOT
+	}
+	abort = {
+		OR = {
+			NOT = { country_exists = AOT }
+			NOT = { has_idea = AOT_volunteers }
+		}
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "AOT"
+		value = 400
+	}
+}
+
+support_D01 = {
+	allowed = {
+		OR = {
+			original_tag = JAP
+			original_tag = MNG
+			original_tag = UTA
+			original_tag = KOR
+			original_tag = CAN
+			original_tag = AST
+			original_tag = IND
+			original_tag = MEX
+			original_tag = BIR
+			original_tag = ENG
+			original_tag = RME
+		}
+	}
+	enable = {
+		has_idea = D01_volunteers
+		has_country_flag = support_D01
+	}
+	abort = {
+		OR = {
+			NOT = { country_exists = D01 }
+			NOT = { has_idea = D01_volunteers }
+		}
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "D01"
+		value = 400
+	}
+}

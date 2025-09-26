@@ -1964,3 +1964,162 @@ news_event = {
 		name = OK
 	}
 }
+
+
+# outside support
+country_event = {
+	id = tesb_AOT.2500
+	title = tesb_AOT.2500.t
+	desc = tesb_AOT.2500.desc
+	picture = GFX_report_event_japanese_parade
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_AOT.2500.a
+		set_country_flag = support_AOT
+		hidden_effect = {
+			AOT = { country_event = { id = tesb_AOT.2501 random_hours = 48 } }
+			add_ideas = AOT_volunteers
+		}
+		ai_chance = {
+			base = 0
+			modifier = { add = 70 tag = MNG }
+			modifier = { add = 60 tag = KOR }
+			modifier = { add = 50 tag = UTA }
+			modifier = { add = 50 tag = MEX }
+			modifier = { add = 50 tag = ENG }
+			modifier = { add = 50 tag = CAN }
+			modifier = { add = 50 tag = BIR }
+			modifier = { add = 30 tag = JAP }
+			modifier = { add = 30 tag = AST }
+			modifier = { add = 30 tag = RME }
+			modifier = { add = 30 tag = IND }
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+		}
+	}
+	option = {
+		name = tesb_AOT.2500.b
+		set_country_flag = support_D01
+		hidden_effect = {
+			D01 = { country_event = { id = tesb_AOT.2501 random_hours = 48 } }
+			add_ideas = AOT_volunteers
+		}
+		ai_chance = {
+			base = 0
+			modifier = { add = 30 tag = MNG }
+			modifier = { add = 40 tag = KOR }
+			modifier = { add = 50 tag = UTA }
+			modifier = { add = 50 tag = MEX }
+			modifier = { add = 50 tag = ENG }
+			modifier = { add = 50 tag = CAN }
+			modifier = { add = 50 tag = BIR }
+			modifier = { add = 70 tag = JAP }
+			modifier = { add = 70 tag = AST }
+			modifier = { add = 70 tag = RME }
+			modifier = { add = 70 tag = IND }
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+		}
+	}
+	option = {
+		name = tesb_AOT.2500.c
+		ai_chance = {
+			base = 0
+			modifier = { add = 30 tag = MNG }
+			modifier = { add = 40 tag = KOR }
+			modifier = { add = 50 tag = UTA }
+			modifier = { add = 50 tag = MEX }
+			modifier = { add = 50 tag = ENG }
+			modifier = { add = 50 tag = CAN }
+			modifier = { add = 50 tag = BIR }
+			modifier = { add = 70 tag = JAP }
+			modifier = { add = 70 tag = AST }
+			modifier = { add = 70 tag = RME }
+			modifier = { add = 70 tag = IND }
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tesb_AOT.2501
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		news_event = { id = tesb_AOT.2502 random_hours = 48 }
+	}
+	option = {
+		name = BUTTON_OK
+	}
+}
+
+news_event = {
+	id = tesb_AOT.2502
+	title = tesb_AOT.2502.t
+	desc = tesb_AOT.2502.desc
+	picture = GFX_news_event_japanese_parade
+	major = yes
+
+	is_triggered_only = yes
+	option = {
+		name = tesb_AOT.2502.a
+	}
+}
+
+# victory
+country_event = {
+	id = tesb_AOT.2600
+	hidden = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		news_event = { id = tesb_AOT.2600 }
+		set_global_flag = AOT_civil_war_done
+		AOT_end_civil_war = yes
+	}
+	option = {
+		name = BUTTON_OK
+	}
+}
+
+news_event = {
+	id = tesb_AOT.2601
+	title = {
+		trigger = { FROM = { has_government = democratic } }
+		text = tesb_AOT.2601.t_1
+	}
+	title = {
+		trigger = { FROM = { has_government = absolutist } }
+		text = tesb_AOT.2601.t_2
+	}
+	desc = {
+		trigger = { FROM = { has_government = democratic } }
+		text = tesb_AOT.2601.desc_1
+	}
+	desc = {
+		trigger = { FROM = { has_government = absolutist } }
+		text = tesb_AOT.2601.desc_2
+	}
+	picture = GFX_news_event_japanese_parade
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		trigger = { FROM = { has_government = democratic } }
+		name = tesb_AOT.2601.a_1
+	}
+	option = {
+		trigger = { FROM = { has_government = absolutist } }
+		name = tesb_AOT.2601.a_2
+	}
+}
