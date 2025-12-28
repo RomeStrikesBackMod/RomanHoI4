@@ -206,7 +206,10 @@ focus_tree = {
 		bypass = {
 			OR = {
 				is_in_faction_with = ENG
-				ENG = { has_government = communism }
+				AND = {
+					ENG = { has_government = communism }
+					NOT = { has_war_with = ENG }
+				}
 			}
 		}
 		will_lead_to_war_with  = ENG

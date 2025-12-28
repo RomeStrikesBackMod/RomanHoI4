@@ -578,6 +578,24 @@ focus_tree = {
 			is_faction_leader = yes
 		}
 		completion_reward = {
+			custom_effect_tooltip = RUS_anti_colonialism_tt
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = RME_former_territory
+						has_idea = RME_former_dominion
+					}
+					capital_scope = {
+						is_on_continent = africa
+					}
+				}
+				add_to_array = { ENG.ENG_colonial_countries = THIS.id }
+			}
+			hidden_effect = {
+				news_event = {
+					id = tesb_RUS_news.64
+				}
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -601,8 +619,8 @@ focus_tree = {
 			every_country = {
 				limit = {
 					OR = {
-						has_idea = RME_former_territory
-						has_idea = RME_former_dominion
+						tag = X01
+						tag = X03
 					}
 					capital_scope = {
 						is_on_continent = africa
@@ -615,6 +633,7 @@ focus_tree = {
 					id = tesb_RUS_news.64
 				}
 			}
+			set_country_flag = west_africa_proxy_war_involvement
 		}
 		ai_will_do = {
 			base = 5
@@ -650,6 +669,7 @@ focus_tree = {
 		relative_position_id = ENG_red_torch
 		available = {
 			has_government = communism
+			NOT = { has_war_with = BIR }
 		}
 		completion_reward = {
 			custom_effect_tooltip = RUS_anti_colonialism_tt

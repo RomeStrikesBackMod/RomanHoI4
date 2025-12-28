@@ -64,22 +64,8 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			if = {
-				limit = {
-					NOT = {
-						669 = {	# significant_number - Transtyrania
-							owner = {
-								has_full_control_of_state = PREV
-								OR = {
-									tag = RME
-									is_subject_of = RME
-								}
-							}
-						}
-					}
-				}
-				custom_effect_tooltip = RME_dnister_limes.tt
-			}
+			custom_effect_tooltip = RME_dnister_limes.tt
+			add_ideas = RME_dniester_limes_idea
 			669 = {	# significant_number - Transtyrania
 				if = {
 					limit = {
@@ -4723,10 +4709,7 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = RME_restoring_the_empire.tt
-			add_relation_rule_override = {
-				target = RME
-				can_send_volunteers = yes
-			}
+			set_rule = { can_send_volunteers = yes }
 		}
 	}
 
