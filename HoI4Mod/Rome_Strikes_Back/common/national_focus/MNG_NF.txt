@@ -1745,7 +1745,7 @@ focus_tree = {
 		id = MNG_look_east
 		icon = GFX_goal_anschluss
 		relative_position_id = MNG_GACPS
-		x = 6
+		x = 7
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_GACPS }
@@ -1767,7 +1767,7 @@ focus_tree = {
 		id = MNG_invite_korea
 		icon = GFX_goal_anschluss
 		relative_position_id = MNG_look_east
-		x = -1
+		x = -2
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_east }
@@ -1800,13 +1800,50 @@ focus_tree = {
 		id = MNG_invite_japan
 		icon = GFX_focus_chi_collaboration_with_the_japanese
 		relative_position_id = MNG_look_east
-		x = 1
+		x = 0
 		y = 1
 		cost = 10
 		prerequisite = { focus = MNG_look_east }
 		available = {
 			is_faction_leader = yes
 			hidden_trigger = { has_completed_focus = MNG_GACPS }
+			JAP = { has_government = absolutist }
+		}
+		bypass = {
+			is_in_faction_with = JAP
+		}
+		completion_reward = {
+			JAP = {
+				country_event = {
+					id = tesb_MNG.10
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = {
+					has_completed_focus = MNG_GACPS
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = MNG_force_japan
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		relative_position_id = MNG_look_east
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = MNG_look_east }
+		available = {
+			is_faction_leader = yes
+			hidden_trigger = { has_completed_focus = MNG_GACPS }
+			hidden_trigger = { IND = { has_completed_focus = IND_japan } }
+			JAP = { NOT = { has_government = absolutist } }
 		}
 		bypass = {
 			is_in_faction_with = JAP

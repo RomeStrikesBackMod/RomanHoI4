@@ -314,3 +314,39 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = tesb_england.40
+	title = tesb_england.40.t
+	desc = tesb_england.40.d
+	picture = GFX_report_event_fascist_speech
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_england.40.a
+		set_politics = {
+			ruling_party = communism
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				communism < 0.4
+			}
+			modifier = {
+				factor = 2
+				communism > 0.6
+			}
+		}
+	}
+	option = {
+		name = tesb_england.40.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				communism > 0.7
+			}
+		}
+	}
+}
