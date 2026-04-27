@@ -421,3 +421,340 @@ country_event = {
 	option = {
 	}
 }
+
+
+######
+## Convince China to release Tibet
+country_event = {
+	id = tesb_india.40
+	title = tesb_india.40.t
+	desc = tesb_india.40.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	# agree
+	option = {
+		name = tesb_india.40.a
+		IND = { country_event = tesb_india.41 }
+		ai_chance = {
+			base = 5
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_india.40.b
+		IND = { country_event = tesb_india.42 }
+		ai_chance = {
+			base = 50
+		}
+	}
+	# negotiate
+	option = {
+		name = tesb_india.40.c
+		IND = { country_event = tesb_india.44 }
+		ai_chance = {
+			base = 45
+		}
+	}
+}
+
+
+# China agrees
+country_event = {
+	id = tesb_india.41
+	title = tesb_india.41.t
+	desc = tesb_india.41.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.41.a
+		MNG = {
+			TIB = {
+				transfer_state = 400
+				transfer_state = 612
+			}
+		}
+		TIB = {
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.5
+			}
+		}
+		add_to_faction = TIB
+	}
+}
+
+# China refuses
+country_event = {
+	id = tesb_india.42
+	title = tesb_india.42.t
+	desc = tesb_india.42.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	# back down
+	option = {
+		name = tesb_india.42.a
+		MNG = { country_event = tesb_india.43 }
+		ai_chance = {
+			base = 20
+		}
+	}
+	# declare war
+	option = {
+		name = tesb_india.42.b
+		MNG = { country_event = tesb_india.44 }
+		ai_chance = {
+			base = 80
+		}
+	}
+}
+
+
+# India backs down
+country_event = {
+	id = tesb_india.43
+	title = tesb_india.43.t
+	desc = tesb_india.43.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.43.a
+	}
+}
+
+
+# India declares war
+country_event = {
+	id = tesb_india.44
+	title = tesb_india.44.t
+	desc = tesb_india.44.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.44.a
+		IND = {
+			declare_war_on = {
+				target = MNG
+				type = liberate_wargoal
+			}
+		}
+	}
+}
+
+
+# China negotiates
+country_event = {
+	id = tesb_india.45
+	title = tesb_india.45.t
+	desc = tesb_india.45.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	# agree
+	option = {
+		name = tesb_india.45.a
+		MNG = { country_event = tesb_india.46 }
+		ai_chance = {
+			base = 40
+		}
+	}
+	# declare war
+	option = {
+		name = tesb_india.45.b
+		MNG = { country_event = tesb_india.44 }
+		ai_chance = {
+			base = 60
+		}
+	}
+}
+
+
+# India agrees
+country_event = {
+	id = tesb_india.46
+	title = tesb_india.46.t
+	desc = tesb_india.46.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.46.a
+		MNG = {
+			TIB = {
+				transfer_state = 400
+				transfer_state = 612
+			}
+		}
+		TIB = {
+			set_politics = {
+				ruling_party = absolutist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = absolutist
+				popularity = 0.5
+			}
+		}
+		MNG = {
+			diplomatic_relation = {
+				country = TIB
+				relation = guarantee
+				active = yes
+			}
+		}
+		IND = {
+			diplomatic_relation = {
+				country = TIB
+				relation = guarantee
+				active = yes
+			}
+		}
+	}
+}
+
+
+######
+## Convince Makassar to release territories
+country_event = {
+	id = tesb_india.50
+	title = tesb_india.50.t
+	desc = tesb_india.50.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	# agree
+	option = {
+		name = tesb_india.50.a
+		IND = { country_event = tesb_india.51 }
+		ai_chance = {
+			base = 5
+		}
+	}
+	# refuse
+	option = {
+		name = tesb_india.50.b
+		IND = { country_event = tesb_india.52 }
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+
+# Makassar agrees
+country_event = {
+	id = tesb_india.51
+	title = tesb_india.51.t
+	desc = tesb_india.51.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.51.a
+		MAK = {
+			PEG = {
+				transfer_state = 363
+			}
+			SUK = {
+				transfer_state = 364
+			}
+			VIN = {
+				transfer_state = 362
+			}
+			PAT = {
+				transfer_state = 354
+			}
+			VIN = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.5
+				}
+			}
+		}
+	}
+}
+
+# Makassar refuses
+country_event = {
+	id = tesb_india.52
+	title = tesb_india.52.t
+	desc = tesb_india.52.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	# back down
+	option = {
+		name = tesb_india.52.a
+		MAK = { country_event = tesb_india.53 }
+		ai_chance = {
+			base = 20
+		}
+	}
+	# declare war
+	option = {
+		name = tesb_india.52.b
+		MAK = { country_event = tesb_india.54 }
+		ai_chance = {
+			base = 80
+		}
+	}
+}
+
+
+# India backs down
+country_event = {
+	id = tesb_india.53
+	title = tesb_india.53.t
+	desc = tesb_india.53.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.53.a
+	}
+}
+
+
+# India declares war
+country_event = {
+	id = tesb_india.54
+	title = tesb_india.54.t
+	desc = tesb_india.54.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = tesb_india.54.a
+		IND = {
+			declare_war_on = {
+				target = MAK
+				type = liberate_wargoal
+			}
+		}
+	}
+}

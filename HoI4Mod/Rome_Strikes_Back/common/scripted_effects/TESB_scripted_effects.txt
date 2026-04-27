@@ -415,6 +415,14 @@ TESB_check_faction_willingness = {
 	}
 	if = {
 		limit = {
+			RME = { has_government = democratic }
+			date > 1940.11.10
+		}
+		add_to_variable = { This.faction_willingness = 5 }
+		custom_effect_tooltip = pw.demo_d
+	}
+	if = {
+		limit = {
 			has_variable = pw_focus
 		}
 		add_to_variable = { This.faction_willingness = pw_focus }
@@ -641,6 +649,14 @@ TESB_check_integrate_willingness = {
 		}
 		add_to_variable = { This.integrate_willingness = pw_infra }
 		custom_effect_tooltip = pw.infra
+	}
+	if = {
+		limit = {
+			RME = { has_government = democratic }
+			date > 1940.11.10
+		}
+		add_to_variable = { This.faction_willingness = 5 }
+		custom_effect_tooltip = pw.demo_d
 	}
 	if = {
 		limit = {

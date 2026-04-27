@@ -1011,7 +1011,7 @@ focus_tree = {
 		relative_position_id = MNG_chagatai
 		x = 0
 		y = 1
-		cost = 10
+		cost = 8
 		prerequisite = { focus = MNG_chagatai }
 		will_lead_to_war_with = KHI
 		available = {
@@ -1388,10 +1388,41 @@ focus_tree = {
 			is_faction_leader = yes
 		}
 		bypass = {
-			BUR = { is_in_faction = yes }
+			OR = {
+				AND = {
+					BUR = { is_in_faction = yes }
+					PEG = { is_in_faction = yes }
+				}
+				AND = {
+					BUR = { exists = no }
+					PEG = { is_in_faction = yes }
+				}
+				AND = {
+					BUR = { is_in_faction = yes }
+					PEG = { exists = no }
+				}
+			}
 		}
 		completion_reward = {
 			BUR = {
+				limit = {
+					BUR = {
+						exists = no
+						is_in_faction = yes
+					}
+				}
+				country_event = {
+					id = tesb_MNG.40
+					hours = 1
+				}
+			}
+			PEG = {
+				limit = {
+				   PEG = {
+						exists = no
+						is_in_faction = yes
+					}
+				}
 				country_event = {
 					id = tesb_MNG.40
 					hours = 1
