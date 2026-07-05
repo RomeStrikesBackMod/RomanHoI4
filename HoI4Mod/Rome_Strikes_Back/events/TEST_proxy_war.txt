@@ -1,0 +1,169 @@
+add_namespace = TESB_proxy_war
+
+
+country_event = {
+	id = TESB_proxy_war.1
+	title = TESB_proxy_war.1.t
+	desc = TESB_proxy_war.1.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = TESB_proxy_war.1.a
+		hidden_effect = {
+			#172 = { transfer_state_to = X01 }
+			175 = { transfer_state_to = LIB }
+			178 = { transfer_state_to = X05 }
+			216 = { transfer_state_to = GHA }
+			#576 = { transfer_state_to = X03 }
+			577 = { transfer_state_to = X04 }
+			578 = { transfer_state_to = GAM }
+			X03 = {
+				load_oob = proxy_war_X03
+			}
+			X04 = {
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+					last_election = "1941.1.11"
+					election_frequency = 48
+				}
+				set_popularities = {
+					communism = 100
+				}
+				add_state_core = 576
+				add_state_core = 216
+				load_oob = proxy_war_X04
+			}
+			X05 = {
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+					last_election = "1941.1.1"
+					election_frequency = 48
+				}
+				set_popularities = {
+					communism = 100
+				}
+				add_state_core = 172
+				add_state_core = 175
+				load_oob = proxy_war_X05
+			}
+			LIB = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+					last_election = "1941.1.1"
+					election_frequency = 48
+				}
+				set_popularities = {
+					democratic = 100
+				}
+				load_oob = proxy_war_LIB
+			}
+			GAM = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+					last_election = "1941.1.1"
+					election_frequency = 48
+				}
+				set_popularities = {
+					democratic = 100
+				}
+				load_oob = proxy_war_GAM
+			}
+			GHA = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+					last_election = "1941.1.1"
+					election_frequency = 48
+				}
+				set_popularities = {
+					democratic = 100
+				}
+				load_oob = proxy_war_GHA
+			}
+			X01 = {
+				create_faction = proxy_war_colonies
+				add_to_faction = X03
+			}
+			X05 = {
+				create_faction = proxy_war_communist
+				add_to_faction = X04
+			}
+			LIB = {
+				create_faction = proxy_war_african
+				add_to_faction = GAM
+				add_to_faction = GHA
+			}
+			X01 = {
+				declare_war_on = {
+					target = X05
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = LIB
+					type = annex_everything
+				}
+			}
+			X03 = {
+				declare_war_on = {
+					target = X04
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = GHA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = GAM
+					type = annex_everything
+				}
+			}
+			X04 = {
+				declare_war_on = {
+					target = X03
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = GHA
+					type = annex_everything
+				}
+			}
+			X05 = {
+				declare_war_on = {
+					target = X01
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = LIB
+					type = annex_everything
+				}
+			}
+			news_event = TESB_proxy_war.2
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+news_event = {
+	id = TESB_proxy_war.2
+	title = TESB_proxy_war.2.t
+	desc = TESB_proxy_war.2.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+	option = {
+		name = TESB_proxy_war.2.a
+		hidden_effect = {
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
