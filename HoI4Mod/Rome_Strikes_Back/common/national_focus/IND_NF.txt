@@ -671,7 +671,18 @@ focus_tree = {
 	focus = {
 		id = IND_russia
 		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = IND_khorasan } 
+		prerequisite = { focus = IND_khorasan }
+		will_lead_to_war_with = RUS
+		available = {
+			OR = {
+				RUS = {
+					has_war_with = RME
+				}
+				RUS = {
+					has_war_with = MNG
+				}
+			}
+		}
 		x = 0
 		y = 1
 		relative_position_id = IND_khorasan
@@ -679,8 +690,40 @@ focus_tree = {
 		ai_will_do = {
 			factor = 5
 		}
+		
+		bypass = {
+			has_war_with = RUS
+		}
 
 		completion_reward = {
+			completion_reward = {
+				declare_war_on = {
+					target = RUS
+					type = topple_government
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = IND_triumphant
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = IND_rome }
+		prerequisite = { focus = IND_aotearoa }
+		prerequisite = { focus = IND_russia }
+		x = 0
+		y = 1
+		relative_position_id = IND_aotearoa
+		cost = 7
+		ai_will_do = {
+			factor = 5
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+			hidden_effect = {
+				news_event = { id = tesb_india.3 }
+			}
 		}
 	}
 }
