@@ -1,0 +1,166 @@
+shared_focus = {
+	id = emprace_pan_arabism
+	icon = GFX_goal_generic_allies_build_infantry
+	x = 27
+	y = 0
+	cost = 5
+
+	completion_reward = {
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+		leave_faction = yes
+		add_ideas = ARA_embracing_nationalism_idea
+	}
+}
+
+shared_focus = {
+	id = pan_arab_claims
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = emprace_pan_arabism }
+	x = 0
+	y = 1
+	relative_position_id = emprace_pan_arabism
+	cost = 5
+
+	completion_reward = {
+		add_state_claim = 23
+		add_state_claim = 24
+		add_state_claim = 25
+		add_state_claim = 240
+		add_state_claim = 241
+		add_state_claim = 242
+		add_state_claim = 243
+		add_state_claim = 289
+		add_state_claim = 290
+		add_state_claim = 291
+		add_state_claim = 411
+		add_state_claim = 412
+	}
+}
+
+shared_focus = {
+	id = gather_allies
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = pan_arab_claims }
+	x = -1
+	y = 1
+	relative_position_id = pan_arab_claims
+	cost = 5
+	
+	allowed = {
+		# communist
+	}
+
+	completion_reward = {
+		# event chain with all arabs sharing ideology:
+		#  1. offer to puppet others
+		#  2. offer recieved
+		#    2a. accept
+		#    2b. refuse
+		#    2c. the other already accepted to be puppeted - do nothing
+		#  3. offer accepted - puppet acceptor, acceptor locked from following focuses
+		#  4. offer refused - give war goal
+	}
+}
+
+shared_focus = {
+	id = a_new_direction
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = pan_arab_claims }
+	x = 1
+	y = 1
+	relative_position_id = pan_arab_claims
+	cost = 5
+	
+	allowed = {
+		# absolutist
+	}
+
+	completion_reward = {
+		# Choice of becoming democratic, remaining absolutist, and very chance of going fascist (affected by relations with Empire, weighted towards democracy and then absolutism)
+	}
+}
+
+shared_focus = {
+	id = claim_leadership_of_arabs
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = gather_allies focus = a_new_direction }
+	x = -1
+	y = 1
+	relative_position_id = a_new_direction
+	cost = 5
+	
+	allowed = {
+		# not puppteted
+	}
+
+	completion_reward = {
+		# spawn troops, commanders, resources, etc.
+	}
+}
+
+shared_focus = {
+	id = for_a_red_mecca
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = claim_leadership_of_arabs }
+	x = -1
+	y = 1
+	relative_position_id = claim_leadership_of_arabs
+	cost = 5
+	
+	available = {
+		# communist
+		# not puppeted
+	}
+
+	completion_reward = {
+		# war goal on non-communist arabs
+	}
+}
+
+shared_focus = {
+	id = end_arab_fitna
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = claim_leadership_of_arabs }
+	x = 1
+	y = 1
+	relative_position_id = claim_leadership_of_arabs
+	cost = 5
+	
+	available = {
+		# non-communist
+		# not puppeted
+	}
+
+	completion_reward = {
+		# war goal on communist arabs
+	}
+}
+
+shared_focus = {
+	id = united_arabs
+	icon = GFX_goal_generic_small_arms
+	prerequisite = { focus = for_a_red_mecca focus = end_arab_fitna }
+	x = 1
+	y = 1
+	relative_position_id = for_a_red_mecca
+	cost = 5
+	
+	available = {
+		# controls all arabia - either directly or through puppets
+		
+	}
+
+	completion_reward = {
+		# tag switch to Arabia (ARA)
+		# gets cores on Arabia
+	}
+}
+
+# something to lift the limits on joining factions and either form their own faction or join an existing faction
+# 	if communist - choice between (re)joining Pindorama's faction or forming a new faction "Arab True Third International"; influenced by relations with Pindorama and their status in their wars
+# 	if fascist - choice between joining Russia's faction or forming a new faction; influenced by relations with Russia and their status in their wars
+# 	if absolutist - choice between joining China's faction, Italy's faction, or forming a new faction; influenced by relations with Russia and their status in their wars
+# 	if democratic - choice between joining Rome's faction, Ethiopia's faction, India's faction, UTA's faction, or forming a new faction; influenced by relations with Russia and their status in their wars

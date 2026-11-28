@@ -216,7 +216,7 @@ focus_tree = {
 		id = SCO_elevating_ireland
 		icon = GFX_goal_generic_improve_relations
 		prerequisite = { focus = SCO_parliament }
-		x = -1
+		x = -3
 		y = 1
 		relative_position_id = SCO_parliament
 		cost = 10
@@ -359,7 +359,7 @@ focus_tree = {
 		id = SCO_allies
 		icon = GFX_goal_generic_improve_relations
 		prerequisite = { focus = SCO_parliament }
-		x = 4
+		x = 3
 		y = 1
 		relative_position_id = SCO_parliament
 		cost = 10
@@ -373,75 +373,10 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = SCO_scandinavia
-		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = SCO_allies }
-		x = -1
-		y = 1
-		relative_position_id = SCO_allies
-		cost = 10
-		ai_will_do = {
-			factor = 70
-		}
-
-		completion_reward = {
-			SCA = { add_timed_idea  = { idea = SCO_bolsters_democracy days = 730 } }
-			diplomatic_relation = {
-				country = SCA
-				relation = non_aggression_pact
-				active = yes
-			}
-			add_opinion_modifier = {
-				target = SCA
-				modifier = SCO_reconcile_with_scandinavia
-			}
-			reverse_add_opinion_modifier = {
-				target = SCA
-				modifier = SCO_reconcile_with_scandinavia
-			}
-		}
-	}
-	
-	focus = {
-		id = SCO_northern_alliance
-		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = SCO_scandinavia }
-		available = {
-			SCA = { exists = yes }
-		}
-		x = 0
-		y = 1
-		relative_position_id = SCO_scandinavia
-		cost = 10
-		ai_will_do = {
-			factor = 70
-		}
-
-		completion_reward = {
-			create_faction = NEW_NORTHERN_ALLIANCE
-			if = {
-				limit = {
-					SCA = { has_completed_focus = SCA_normalize_relations_SCO }
-				}
-				add_to_faction = SCA
-			}
-			if = {
-				limit = {
-					ENG = {
-						is_in_faction = no
-						has_government = democratic
-					}
-				}
-				THIS = { add_to_faction = ENG }
-			}
-		}
-	}
-	
-	focus = {
 		id = SCO_peace
 		icon = GFX_goal_generic_improve_relations
 		prerequisite = { focus = SCO_allies }
-		x = 1
+		x = -2
 		y = 1
 		relative_position_id = SCO_allies
 		cost = 10
@@ -480,6 +415,136 @@ focus_tree = {
 	}
 	
 	focus = {
+		id = SCO_scandinavia
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_allies }
+		available = {
+			SCA = { exists = yes }
+		}
+		x = 0
+		y = 1
+		relative_position_id = SCO_allies
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+			SCA = { add_timed_idea  = { idea = SCO_bolsters_democracy days = 730 } }
+			diplomatic_relation = {
+				country = SCA
+				relation = non_aggression_pact
+				active = yes
+			}
+			add_opinion_modifier = {
+				target = SCA
+				modifier = SCO_reconcile_with_scandinavia
+			}
+			reverse_add_opinion_modifier = {
+				target = SCA
+				modifier = SCO_reconcile_with_scandinavia
+			}
+		}
+	}
+	
+	focus = {
+		id = SCO_northern_alliance
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_scandinavia }
+		mutually_exclusive = { focus = SCO_defender_of_the_north }
+		available = {
+			SCA = { exists = yes }
+		}
+		x = 0
+		y = 1
+		relative_position_id = SCO_scandinavia
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+			create_faction = NEW_NORTHERN_ALLIANCE
+			if = {
+				limit = {
+					SCA = { has_completed_focus = SCA_normalize_relations_SCO }
+				}
+				add_to_faction = SCA
+			}
+			if = {
+				limit = {
+					ENG = {
+						is_in_faction = no
+						has_government = democratic
+					}
+				}
+				THIS = { add_to_faction = ENG }
+			}
+		}
+	}
+
+	focus = {
+		id = SCO_defender_of_the_north
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_allies }
+		mutually_exclusive = { focus = SCO_northern_alliance }
+		available = {
+			SCA = {
+				OR = {
+					NOT = { exists = yes }
+					is_puppet_of = RUS
+				}
+			}
+		}
+		x = 2
+		y = 1
+		relative_position_id = SCO_scandinavia
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+			create_faction = NEW_NORTHERN_ALLIANCE
+			if = {
+				limit = {
+					NOT = { exists = yes }
+				}
+				add_to_faction = SCA
+			}
+			if = {
+				limit = {
+					ENG = {
+						is_in_faction = no
+						has_government = democratic
+					}
+				}
+				THIS = { add_to_faction = ENG }
+			}
+		}
+	}
+	
+	focus = {
+		id = SCO_bear_hunting
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = SCO_defender_of_the_north }
+		x = 0
+		y = 1
+		relative_position_id = SCO_defender_of_the_north
+		cost = 10
+		ai_will_do = {
+			factor = 70
+		}
+
+		completion_reward = {
+			declare_war_on = {
+				target = RUS
+				type = independence_wargoal
+			}
+		}
+	}
+	
+	focus = {
 		id = SCO_africa
 		icon = GFX_goal_generic_improve_relations
 		prerequisite = { focus = SCO_celtic_kingdom focus = SCO_uk }
@@ -494,55 +559,6 @@ focus_tree = {
 		completion_reward = {
 			set_global_flag = SCO_colonial_proxy_war
 			X01 = { country_event = { id = TESB_proxy_war.1 } }
-		}
-	}
-
-	
-	focus = {
-		id = SCO_adal
-		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = SCO_africa }
-		x = -2
-		y = 1
-		relative_position_id = SCO_africa
-		cost = 10
-		ai_will_do = {
-			factor = 70
-		}
-
-		completion_reward = {
-		}
-	}
-	
-	focus = {
-		id = SCO_hindustan
-		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = SCO_africa }
-		x = 0
-		y = 1
-		relative_position_id = SCO_africa
-		cost = 10
-		ai_will_do = {
-			factor = 70
-		}
-
-		completion_reward = {
-		}
-	}
-	
-	focus = {
-		id = SCO_england
-		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = SCO_africa }
-		x = 2
-		y = 1
-		relative_position_id = SCO_africa
-		cost = 10
-		ai_will_do = {
-			factor = 70
-		}
-
-		completion_reward = {
 		}
 	}
 }
